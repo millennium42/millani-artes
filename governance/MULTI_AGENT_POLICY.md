@@ -23,7 +23,7 @@ Respeite os limites do cliente: `gpt-6.1-sol`, `gpt-6-astra` e `gpt-6-sol` aceit
 
 O padrão é um agente. Use no máximo três agentes ativos (líder e dois delegados) somente se as subtarefas forem independentes e evitarem um retry maior. No checkout compartilhado, o líder é o único escritor, executor de comandos de verificação, atualizador de evidência e autor do commit. Delegados são read-only; nunca editam os mesmos arquivos nem iniciam outro work item. Escrita paralela só é permitida em worktrees isolados, com paths sem sobreposição, dependências fechadas e integração serial pelo líder com todos os checks reexecutados.
 
-Fases: até dois `luna` em RECON para fontes, árvore ou rastreabilidade; líder sozinho em RED/BUILD/TEST/SECURITY; um `sol` independente pode revisar o diff; `6.1-sol` high ou `astra` high arbitra apenas P0/P1 concreto. Após qualquer escrita, capture o baseline antes de nova revisão paralela.
+Fases: o Integrador contrata os departamentos de `AGENT_PERSONAS.md` pelo problema atual e escolhe o menor modelo/esforço suficiente pelo roteador daquele catálogo. RECON pode usar Cartógrafo, Produto ou Rastreabilidade; domínio, dados, UI, QA, segurança e operações entram somente se a spec os exigir. Após qualquer escrita, capture o baseline antes de review. `P-ESC` arbitra apenas P0/P1 concreto ou tentativa high bloqueada.
 
 ## Contrato de delegação e evidência
 

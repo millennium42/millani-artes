@@ -59,3 +59,15 @@ Aprendizagem: personalidade operacional é contrato de escopo, não conversa adi
 Limitações: CI remoto não registrado.
 Commit: não registrado.
 CI: não registrado.
+
+## 2026-10-01 — GOV-009
+
+Implementado: escritório de desenvolvimento com departamentos e roteador dinâmico.
+Arquivos: catálogo de personas, políticas, roadmap, spec e handoff.
+Verificação: checks locais pendentes da finalização.
+Coverage: não aplicável.
+Security: autoridade de escrita e isolamento de worktree preservados.
+Aprendizagem: especialização vem do contrato de trabalho, não do modelo fixo.
+Limitações: telemetria e CI remoto não registrados.
+Commit: não registrado.
+CI: não registrado.

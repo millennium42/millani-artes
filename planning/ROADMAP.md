@@ -18,6 +18,7 @@ Fonte canônica de IDs. Formato: `ID — intenção observável ← dependência
 - GOV-006 — aplicar política de tokens ← GOV-005
 - GOV-007 — registrar baseline de uso disponível ← GOV-006
 - GOV-008 — institucionalizar personas operacionais ← GOV-005, GOV-006
+- GOV-009 — instituir departamentos e roteador dinâmico ← GOV-008
 - PLN-001 — validar template de spec ← GOV-001
 - PLN-002 — validar schema de work item ← PLN-001
 - PLN-003 — validar template de handoff ← PLN-001

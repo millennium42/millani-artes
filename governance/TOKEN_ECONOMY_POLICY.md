@@ -14,7 +14,7 @@ Minimizar tokens, custo e tempo **por tarefa aprovada**, sem remover validação
 
 ## Durante a chamada
 
-- Selecione modelo e esforço conforme `MULTI_AGENT_POLICY.md`; comece baixo e escale só após falha, ambiguidade material ou risco alto.
+- Selecione departamento, modelo e esforço conforme `AGENT_PERSONAS.md`; comece baixo e escale só após falha, ambiguidade material ou risco alto.
 - Combine subtarefas que compartilham o mesmo contexto e podem retornar campos independentes; não combine decisões com diferentes permissões, riscos ou critérios.
 - Para tarefas independentes, paralelize somente investigação/review com escopos distintos; um líder integra. Não use fan-out como votação ou para repetir a mesma análise.
 - Estabilize instruções, tools e contexto compartilhado no prefixo; coloque ticket, diff, resultado de tool e dados voláteis no final. Quando uma API expuser cache, use breakpoints/TTL apenas após medir reutilização.
