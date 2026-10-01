@@ -9,5 +9,5 @@ Coverage: não aplicável.
 Security: modelo e matriz documentados; scanners não instalados.
 Aprendizagem: skills entram no catálogo em nova sessão.
 Limitações: CI remoto não existe.
-Commit: não registrado.
+Commit: `687ae5202544179f7465f8a9285f23bd353a5a45`.
 CI: não registrado.
