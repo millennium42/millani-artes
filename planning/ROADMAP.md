@@ -1,195 +1,272 @@
-# Roadmap microgranular
+# Roadmap end-to-end, granular e com dependências
 
-Status: todos `todo`; IDs estáveis. Cada item ganha spec e JSON a partir do template antes de execução. Dependência implícita: fundação documental → ambiente/segurança → banco → domínio → UI/smoke/release.
+Fonte canônica de IDs. Formato: `ID — intenção observável ← dependências`; `—` indica que pode começar sem predecessor do bloco. Toda dependência exige `passes=true`, handoff e CI no SHA. RECON read-only pode ler antes, mas não editar. Um líder reserva paths; escrita em paralelo só em worktrees isolados, paths disjuntos e integração serial (`MULTI_AGENT_POLICY.md`).
 
-## Fundação
+`DOC-001`, `GOV-005` e `GOV-006` têm evidência local, ainda sem CI remoto. Todos os demais são `todo`. Próxima tarefa: `DOC-002`.
 
-- DOC-002 validar mapa contra árvore real
-- DOC-003 revisar README de entrada
-- GOV-001 revisar AGENTS por sessão
-- GOV-002 validar estados de evidência
-- GOV-003 revisar tool register antes de instalar
-- GOV-004 criar processo de exceção aprovado
-- GOV-005 aplicar política de agentes, modelos e esforço
-- GOV-006 aplicar política de economia de tokens
-- INF-001 fixar versões Node/Rust
-- INF-002 inicializar frontend Tauri mínimo
-- INF-003 adicionar lockfiles
-- INF-004 configurar Biome e TypeScript strict
-- INF-005 configurar Vitest e coverage
-- INF-006 configurar CI Windows
-- INF-007 adicionar Gitleaks
-- INF-008 adicionar OSV-Scanner
-- INF-009 adicionar npm audit gate
-- INF-010 adicionar cargo audit gate
-- INF-011 validar build limpo
-- SEC-001 definir capabilities iniciais
-- SEC-002 definir CSP inicial
-- SEC-003 definir política de logs
-- SEC-004 POC de formato de backup
-- SEC-005 revisar superfície de plugins
-- DB-001 criar harness SQLite temporário
-- DB-002 definir executor de migration
-- DB-003 testar banco vazio
-- DB-004 testar upgrade de migration
-- DB-005 registrar schema version
-- DB-006 testar rollback/falha de migration
+## B0 — Governança e planejamento
 
-## Financeiro e contas
+- DOC-002 — validar mapa contra árvore real ← —
+- DOC-003 — revisar README de entrada ← DOC-002
+- DOC-004 — conferir hierarquia documental ← DOC-002
+- DOC-005 — contar requisitos essenciais ← DOC-004
+- GOV-001 — revisar AGENTS por sessão ← DOC-003
+- GOV-002 — validar estados de evidência ← GOV-001
+- GOV-003 — revisar tool register antes de instalar ← GOV-001
+- GOV-004 — aprovar exceção temporária ← GOV-002
+- GOV-005 — aplicar política multiagente ← GOV-001
+- GOV-006 — aplicar política de tokens ← GOV-005
+- GOV-007 — registrar baseline de uso disponível ← GOV-006
+- PLN-001 — validar template de spec ← GOV-001
+- PLN-002 — validar schema de work item ← PLN-001
+- PLN-003 — validar template de handoff ← PLN-001
+- PLN-004 — validar progress log append-only ← PLN-003
+- PLN-005 — reservar paths por work item ← GOV-005
+- TRC-001 — rastrear requisito contas ← DOC-005
+- TRC-002 — rastrear requisito financeiro ← DOC-005
+- TRC-003 — rastrear requisito vendas ← DOC-005
+- TRC-004 — rastrear requisito backup ← DOC-005
+- TRC-005 — rastrear invariantes ← DOC-005
+- TRC-006 — rastrear segurança ← DOC-005
+- PLN-006 — canonicalizar dependências do roadmap ← PLN-002, TRC-005
 
-- FIN-001 definir tipo Account
-- FIN-002 validar nome de conta
-- FIN-003 definir tipo de conta
-- FIN-004 definir saldo inicial em centavos
-- FIN-005 provar saldo inicial fora de receita
-- FIN-006 definir contexto Casa/Fábrica
-- FIN-007 rejeitar contexto inválido
-- FIN-008 definir movimento financeiro
-- FIN-009 validar entrada positiva
-- FIN-010 validar saída positiva
-- FIN-011 definir transferência com origem/destino
-- FIN-012 provar neutralidade da transferência
-- FIN-013 calcular saldo por conta
-- FIN-014 provar saldo derivado de movimentos
-- FIN-015 criar migration de contas
-- FIN-016 testar constraint de conta
-- FIN-017 criar migration de movimentos
-- FIN-018 testar constraint de movimento
-- FIN-019 persistir entrada
-- FIN-020 persistir saída
-- FIN-021 persistir transferência atômica
-- FIN-022 provar rollback de transferência
-- FIN-023 listar extrato por conta
-- FIN-024 editar lançamento manual com audit event
-- FIN-025 validar que edição não altera saldo por atalho
-- FIN-026 testar cálculo de resultado por contexto
+## B1 — Ambiente, qualidade e segurança
 
-## Categorias e recorrências
+- INF-001 — fixar Node/Rust ← DOC-003
+- INF-002 — criar Tauri mínimo ← INF-001
+- INF-003 — commitar lockfiles ← INF-002
+- INF-004 — ativar TypeScript strict ← INF-002
+- INF-005 — configurar Biome ← INF-004
+- INF-006 — configurar Vitest ← INF-004
+- INF-007 — configurar coverage ← INF-006
+- INF-008 — criar typecheck ← INF-004
+- INF-009 — criar quality script ← INF-005, INF-006, INF-008
+- INF-010 — configurar CI Windows ← INF-009
+- INF-011 — provar build limpo ← INF-002, INF-003
+- INF-012 — registrar versões executadas ← INF-011
+- INF-013 — publicar coverage no CI ← INF-007, INF-010
+- INF-014 — build Tauri no CI ← INF-010, INF-011
+- INF-015 — provar checkout limpo ← INF-012
+- SEC-001 — capabilities deny-by-default ← INF-002
+- SEC-002 — CSP sem remoto ← INF-002
+- SEC-003 — política de logs sanitizados ← GOV-002
+- SEC-004 — listar plugins necessários ← SEC-001
+- SEC-005 — bloquear plugin sem ADR ← SEC-004
+- SEC-006 — instalar Gitleaks ← INF-003
+- SEC-007 — Gitleaks no CI ← SEC-006, INF-010
+- SEC-008 — instalar OSV-Scanner ← INF-003
+- SEC-009 — OSV no CI ← SEC-008, INF-010
+- SEC-010 — npm audit high/critical ← INF-003
+- SEC-011 — cargo audit ← INF-002
+- SEC-012 — audits no CI ← SEC-010, SEC-011, INF-010
+- SEC-013 — avaliar SAST útil ← INF-002
+- SEC-014 — testar redaction de telefone ← SEC-003
+- SEC-015 — testar redaction de dados financeiros ← SEC-003
 
-- CAT-001 definir categoria ativa
-- CAT-002 validar nome de categoria
-- CAT-003 criar migration de categoria
-- CAT-004 criar categoria
-- CAT-005 renomear categoria
-- CAT-006 desativar categoria
-- CAT-007 preservar referência histórica desativada
-- REC-001 definir recorrência fixa
-- REC-002 definir recorrência variável
-- REC-003 definir estado aguardando valor
-- REC-004 definir estado a pagar
-- REC-005 definir estado pago
-- REC-006 definir estado vencido
-- REC-007 criar migration de recorrência
-- REC-008 gerar obrigação fixa mensal
-- REC-009 gerar pendência variável
-- REC-010 informar valor pendente
-- REC-011 pagar recorrência por caso canônico
-- REC-012 provar saída única em pagamento
-- REC-013 provar rollback ao falhar pagamento
+## B2 — Arquitetura e migrations
 
-## Produtos, vendas e clientes
+- ARC-001 — criar camadas domínio/aplicação/infra/UI ← INF-002
+- ARC-002 — definir Result/erro de domínio ← ARC-001
+- ARC-003 — injetar relógio/UUID ← ARC-001
+- ARC-004 — definir fronteira de transação ← ARC-002
+- ARC-005 — bloquear SQL em componente ← ARC-001
+- DB-001 — criar harness SQLite temporário ← INF-006
+- DB-002 — abrir banco vazio ← DB-001
+- DB-003 — definir executor de migration ← DB-002
+- DB-004 — registrar schema version ← DB-003
+- DB-005 — testar migration vazia ← DB-004
+- DB-006 — criar snapshot de upgrade ← DB-004
+- DB-007 — testar upgrade ← DB-006
+- DB-008 — testar rollback de migration ← DB-003
+- DB-009 — ativar foreign keys ← DB-002
+- DB-010 — provar foreign keys ← DB-009
+- DB-011 — definir transação SQLite ← ARC-004, DB-002
+- DB-012 — provar rollback genérico ← DB-011
+- DB-013 — criar audit event técnico ← DB-011
+- DB-014 — auditar na mesma transação ← DB-013
 
-- PRD-001 definir produto template
-- PRD-002 validar produto ativo
-- PRD-003 criar migration de produto
-- PRD-004 criar produto
-- PRD-005 alterar produto
-- PRD-006 provar snapshot histórico imutável
-- SAL-001 definir item de venda congelado
-- SAL-002 validar quantidade positiva
-- SAL-003 validar desconto não negativo
-- SAL-004 calcular total de item em centavos
-- SAL-005 aceitar item livre
-- SAL-006 provar item livre não cria produto
-- SAL-007 definir venda
-- SAL-008 criar migration de venda
-- SAL-009 criar migration de item
-- SAL-010 adicionar item de produto
-- SAL-011 adicionar item livre
-- SAL-012 remover item antes de finalizar
-- SAL-013 calcular total da venda
-- SAL-014 definir pagamento parcial
-- SAL-015 provar venda pendente não muda saldo
-- CUS-001 definir cliente mínimo
-- CUS-002 validar nome obrigatório
-- CUS-003 criar migration de cliente
-- CUS-004 criar cliente
-- CUS-005 associar cliente à pendência
-- SAL-016 exigir cliente em venda pendente
-- SAL-017 exigir vencimento em venda pendente
-- SAL-018 finalizar venda em transação
-- SAL-019 provar rollback de finalização
+## B3 — Contas, categorias e movimentos
 
-## Recebimento, devolução e dashboard
+- FIN-001 — definir Account ← ARC-002
+- FIN-002 — validar nome de conta ← FIN-001
+- FIN-003 — definir tipo de conta ← FIN-001
+- FIN-004 — definir saldo inicial em centavos ← FIN-001
+- FIN-005 — provar saldo inicial fora de receita ← FIN-004
+- FIN-006 — migration de contas ← DB-005, FIN-001
+- FIN-007 — testar constraints de conta ← FIN-006
+- FIN-008 — criar caso de uso de conta ← FIN-002, FIN-003, FIN-004, FIN-006
+- FIN-009 — listar contas ← FIN-008
+- CAT-001 — definir categoria ativa ← ARC-002
+- CAT-002 — validar nome de categoria ← CAT-001
+- CAT-003 — migration de categoria ← DB-005, CAT-001
+- CAT-004 — criar categoria ← CAT-002, CAT-003
+- CAT-005 — renomear categoria ← CAT-004
+- CAT-006 — desativar categoria ← CAT-004
+- CAT-007 — preservar categoria histórica ← CAT-006
+- FIN-010 — definir contexto Casa/Fábrica ← ARC-002
+- FIN-011 — rejeitar contexto inválido ← FIN-010
+- FIN-012 — definir movimento ← FIN-001, CAT-001, FIN-010
+- FIN-013 — validar entrada positiva ← FIN-012
+- FIN-014 — validar saída positiva ← FIN-012
+- FIN-015 — migration de movimentos ← DB-005, FIN-012
+- FIN-016 — testar constraints de movimento ← FIN-015
+- FIN-017 — persistir entrada ← FIN-013, FIN-015, DB-011
+- FIN-018 — persistir saída ← FIN-014, FIN-015, DB-011
+- FIN-019 — definir transferência ← FIN-012
+- FIN-020 — rejeitar origem igual ao destino ← FIN-019
+- FIN-021 — persistir transferência atômica ← FIN-019, FIN-015, DB-011
+- FIN-022 — provar transferência neutra ← FIN-021
+- FIN-023 — provar rollback de transferência ← FIN-021, DB-012
+- FIN-024 — calcular saldo por conta ← FIN-004, FIN-017, FIN-018, FIN-021
+- FIN-025 — provar saldo derivado ← FIN-024
+- FIN-026 — listar extrato ← FIN-024
+- FIN-027 — calcular resultado por contexto ← FIN-017, FIN-018, FIN-022
+- FIN-028 — editar lançamento pelo caso canônico ← FIN-017, FIN-018, DB-013
+- FIN-029 — auditar edição ← FIN-028, DB-014
+- FIN-030 — provar sem saldo direto ← FIN-028, FIN-025
 
-- RCV-001 definir conta a receber
-- RCV-002 criar migration de recebível
-- RCV-003 calcular saldo devido
-- RCV-004 registrar recebimento parcial
-- RCV-005 criar entrada ao receber
-- RCV-006 provar uma conta alterada
-- RCV-007 rejeitar recebimento acima do devido
-- RCV-008 fechar recebido integral
-- RCV-009 provar rollback de recebimento
-- RET-001 definir devolução por item
-- RET-002 calcular quantidade disponível
-- RET-003 rejeitar devolução excedente
-- RET-004 criar migration de devolução
-- RET-005 reduzir dívida sem reembolso
-- RET-006 definir reembolso
-- RET-007 criar saída ao reembolsar
-- RET-008 permitir conta diferente da entrada
-- RET-009 provar uma conta reduzida
-- RET-010 testar cancelamento integral pago
-- DSH-001 definir projeção de saldo total
-- DSH-002 definir projeção por conta
-- DSH-003 definir entrou/saiu hoje
-- DSH-004 definir vendas do mês
-- DSH-005 definir a receber/a pagar
-- DSH-006 definir resultado fábrica/gastos casa
-- DSH-007 provar dashboard sem escrita agregada
+## B4 — Recorrências
 
-## Backup, UI, smoke e release
+- REC-001 — definir recorrência fixa ← ARC-002
+- REC-002 — definir recorrência variável ← ARC-002
+- REC-003 — estado aguardando valor ← REC-002
+- REC-004 — estado a pagar ← REC-001, REC-002
+- REC-005 — estado pago ← REC-004
+- REC-006 — estado vencido ← REC-004, ARC-003
+- REC-007 — migration de recorrência ← DB-005, REC-001
+- REC-008 — gerar obrigação fixa ← REC-007, REC-004
+- REC-009 — gerar pendência variável ← REC-007, REC-003
+- REC-010 — informar valor pendente ← REC-009
+- REC-011 — vencer obrigação ← REC-008, REC-006
+- REC-012 — pagar recorrência ← REC-010, FIN-018, DB-011
+- REC-013 — provar saída única ← REC-012
+- REC-014 — provar rollback ← REC-012, DB-012
+- REC-015 — impedir pagamento repetido ← REC-012
 
-- BKP-001 definir metadados/versionamento backup
-- BKP-002 escolher biblioteca criptográfica por POC
-- BKP-003 definir gestão de chave
-- BKP-004 criar backup manual consistente
-- BKP-005 criar backup automático local
-- BKP-006 validar backup recém-criado
-- BKP-007 rejeitar arquivo malformado
-- BKP-008 restaurar em staging
-- BKP-009 preservar banco ativo antes de restore
-- BKP-010 executar integrity check pós-restore
-- BKP-011 provar restore inválido não substitui ativo
-- BKP-012 testar path traversal
-- UI-001 criar shell acessível
-- UI-002 criar fluxo de configuração inicial
-- UI-003 criar formulário de conta
-- UI-004 criar formulário de movimento
-- UI-005 criar formulário de transferência
-- UI-006 criar formulário de produto
-- UI-007 criar carrinho de venda
-- UI-008 criar formulário de recebimento
-- UI-009 criar fluxo de recorrência
-- UI-010 criar fluxo de devolução/reembolso
-- UI-011 criar tela de dashboard
-- UI-012 criar tela de backup/restore
-- SMK-001 iniciar build de produção
-- SMK-002 abrir banco novo
-- SMK-003 exercitar configuração/conta/categoria
-- SMK-004 exercitar financeiro/transferência
-- SMK-005 exercitar venda e recebimento
-- SMK-006 exercitar pendência e recebimento posterior
-- SMK-007 exercitar recorrência
-- SMK-008 exercitar devolução/reembolso
-- SMK-009 exercitar backup/restore controlado
-- REL-001 revisar matriz funcional de entrega
-- REL-002 executar inspeção visual
-- REL-003 revisar P0/P1/P2
-- REL-004 verificar CI remoto no SHA
-- REL-005 preparar handoff/release
-- REL-006 gerar instalador NSIS `setup.exe` no Windows
-- REL-007 testar instalação limpa, abertura pelo menu Iniciar e desinstalação
-- REL-008 decidir e registrar estratégia WebView2 (bootstrap ou offline)
-- REL-009 decidir e registrar assinatura de código antes de distribuição pública
+## B5 — Produtos, clientes e vendas
+
+- PRD-001 — definir produto template ← ARC-002
+- PRD-002 — validar nome de produto ← PRD-001
+- PRD-003 — validar preço sugerido ← PRD-001
+- PRD-004 — migration de produto ← DB-005, PRD-001
+- PRD-005 — criar produto ← PRD-002, PRD-003, PRD-004
+- PRD-006 — alterar produto ← PRD-005
+- PRD-007 — desativar produto ← PRD-005
+- CUS-001 — definir cliente mínimo ← ARC-002
+- CUS-002 — validar nome ← CUS-001
+- CUS-003 — validar telefone opcional ← CUS-001
+- CUS-004 — migration de cliente ← DB-005, CUS-001
+- CUS-005 — criar cliente ← CUS-002, CUS-003, CUS-004
+- SAL-001 — definir item congelado ← ARC-002
+- SAL-002 — validar quantidade positiva ← SAL-001
+- SAL-003 — validar desconto ← SAL-001
+- SAL-004 — calcular total do item ← SAL-001
+- SAL-005 — aceitar item livre ← SAL-001
+- SAL-006 — provar item livre não cria produto ← SAL-005
+- SAL-007 — criar item de produto ← PRD-005, SAL-001
+- SAL-008 — provar snapshot imutável ← PRD-006, SAL-007
+- SAL-009 — definir venda ← SAL-001
+- SAL-010 — migration de venda ← DB-005, SAL-009
+- SAL-011 — migration de item ← SAL-010, SAL-001
+- SAL-012 — adicionar item de produto ← SAL-007, SAL-010, SAL-011
+- SAL-013 — adicionar item livre ← SAL-005, SAL-010, SAL-011
+- SAL-014 — remover item aberto ← SAL-012
+- SAL-015 — calcular total da venda ← SAL-004, SAL-009
+- SAL-016 — definir pagamento parcial ← SAL-009
+- SAL-017 — definir pendência ← SAL-016
+- SAL-018 — exigir cliente pendente ← SAL-017, CUS-005
+- SAL-019 — exigir vencimento pendente ← SAL-017
+- SAL-020 — finalizar venda transacional ← SAL-012, SAL-013, SAL-015, SAL-017, DB-011
+- SAL-021 — provar pendência sem saldo ← SAL-020, FIN-024
+- SAL-022 — provar rollback de venda ← SAL-020, DB-012
+
+## B6 — Recebimentos, devoluções e dashboard
+
+- RCV-001 — definir conta a receber ← SAL-020
+- RCV-002 — migration de recebível ← DB-005, RCV-001
+- RCV-003 — criar recebível pendente ← RCV-002, SAL-017
+- RCV-004 — calcular saldo devido ← RCV-003
+- RCV-005 — definir recebimento parcial ← RCV-001
+- RCV-006 — registrar recebimento ← RCV-005, FIN-017, DB-011
+- RCV-007 — criar entrada pelo recebimento ← RCV-006
+- RCV-008 — provar uma conta aumentada ← RCV-007, FIN-024
+- RCV-009 — rejeitar excesso recebido ← RCV-004, RCV-006
+- RCV-010 — fechar recebível integral ← RCV-004, RCV-006
+- RCV-011 — provar rollback ← RCV-006, DB-012
+- RET-001 — definir devolução por item ← SAL-020
+- RET-002 — calcular quantidade disponível ← RET-001, SAL-012
+- RET-003 — rejeitar excesso devolvido ← RET-002
+- RET-004 — migration de devolução ← DB-005, RET-001
+- RET-005 — registrar devolução parcial ← RET-004, RET-002
+- RET-006 — reduzir dívida sem reembolso ← RET-005, RCV-004
+- RET-007 — definir reembolso ← RET-005
+- RET-008 — selecionar conta de saída ← RET-007, FIN-018
+- RET-009 — permitir conta diferente ← RET-008
+- RET-010 — criar saída de reembolso ← RET-008, DB-011
+- RET-011 — provar uma conta reduzida ← RET-010, FIN-024
+- RET-012 — cancelar venda paga ← RET-010, RCV-010
+- RET-013 — provar rollback ← RET-010, DB-012
+- DSH-001 — saldo total ← FIN-024
+- DSH-002 — saldo por conta ← FIN-024
+- DSH-003 — entrou hoje ← FIN-017
+- DSH-004 — saiu hoje ← FIN-018
+- DSH-005 — vendas do mês ← SAL-020
+- DSH-006 — a receber ← RCV-004
+- DSH-007 — a pagar ← REC-008
+- DSH-008 — resultado fábrica ← FIN-027
+- DSH-009 — gastos casa ← FIN-027
+- DSH-010 — provar projeção sem escrita ← DSH-001, DSH-009
+
+## B7 — UI, backup, smoke e instalador
+
+- UI-001 — shell acessível ← INF-002, ARC-001
+- UI-002 — foco e teclado do shell ← UI-001
+- UI-003 — configuração inicial de contas ← UI-001, FIN-008
+- UI-004 — cadastro de categoria ← UI-001, CAT-004
+- UI-005 — formulário de entrada ← UI-001, FIN-017
+- UI-006 — formulário de saída ← UI-001, FIN-018
+- UI-007 — formulário de transferência ← UI-001, FIN-021
+- UI-008 — cadastro de produto ← UI-001, PRD-005
+- UI-009 — cadastro de cliente ← UI-001, CUS-005
+- UI-010 — carrinho de venda ← UI-001, SAL-020
+- UI-011 — recebimento ← UI-001, RCV-010
+- UI-012 — recorrência ← UI-001, REC-015
+- UI-013 — devolução/reembolso ← UI-001, RET-013
+- UI-014 — dashboard ← UI-001, DSH-010
+- UI-015 — estados vazio/erro/loading ← UI-005, UI-006, UI-007
+- UI-016 — labels/contraste/overflow ← UI-002, UI-014
+- BKP-001 — metadados/versionamento ← SEC-003
+- BKP-002 — escolher crypto por POC ← BKP-001
+- BKP-003 — gestão de chave ← BKP-002, SEC-003
+- BKP-004 — diretório permitido ← SEC-001
+- BKP-005 — backup manual consistente ← DB-011, BKP-001, BKP-002, BKP-004
+- BKP-006 — validar backup novo ← BKP-005
+- BKP-007 — backup automático ← BKP-005, ARC-003
+- BKP-008 — rejeitar arquivo malformado ← BKP-001
+- BKP-009 — rejeitar path traversal ← BKP-004, BKP-008
+- BKP-010 — restore em staging ← BKP-008, DB-002
+- BKP-011 — preservar banco ativo ← BKP-010
+- BKP-012 — integrity check ← BKP-010
+- BKP-013 — promover só validado ← BKP-011, BKP-012
+- BKP-014 — provar restore seguro ← BKP-013
+- UI-017 — tela backup/restore ← UI-001, BKP-014
+- SMK-001 — iniciar build produção ← INF-011
+- SMK-002 — abrir banco novo ← SMK-001, DB-005
+- SMK-003 — conta/categoria ← SMK-002, UI-003, UI-004
+- SMK-004 — entrada/saída/transferência ← SMK-003, UI-005, UI-006, UI-007
+- SMK-005 — produto/cliente/venda ← SMK-004, UI-008, UI-009, UI-010
+- SMK-006 — pendência/recebimento ← SMK-005, UI-011
+- SMK-007 — recorrência ← SMK-006, UI-012
+- SMK-008 — devolução/reembolso ← SMK-007, UI-013
+- SMK-009 — confirmar saldos ← SMK-008, UI-014
+- SMK-010 — backup/restore controlado ← SMK-009, UI-017
+- REL-001 — gerar NSIS Windows ← INF-014, SMK-001
+- REL-002 — testar instalação limpa ← REL-001
+- REL-003 — testar menu Iniciar/desinstalação ← REL-002
+- REL-004 — decidir WebView2 ← REL-001
+- REL-005 — decidir assinatura pública ← REL-001
+- REL-006 — inspeção visual produção ← SMK-010, UI-016
+- REL-007 — revisar matriz funcional ← SMK-010, TRC-001, TRC-004
+- REL-008 — revisar P0/P1/P2 ← REL-006, REL-007
+- REL-009 — CI remoto no SHA ← REL-008
+- REL-010 — handoff/release ← REL-003, REL-004, REL-005, REL-009

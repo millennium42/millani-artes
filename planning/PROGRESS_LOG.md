@@ -35,3 +35,15 @@ Aprendizagem: cache e modelo menor requerem métrica de tarefa aprovada.
 Limitações: telemetria e CI remoto não registrados.
 Commit: não registrado.
 CI: não registrado.
+
+## 2026-10-01 — PLN-006
+
+Implementado: roadmap end-to-end granular com dependências canônicas.
+Arquivos: roadmap, spec e handoff.
+Verificação: 242 IDs parseados, sem duplicidade, referência ausente ou dependência futura; `git diff --check` verde.
+Coverage: não aplicável.
+Security: busca de segredos sem achados.
+Aprendizagem: dependência explícita permite RECON paralelo e escrita serializada.
+Limitações: CI remoto não registrado.
+Commit: não registrado.
+CI: não registrado.
