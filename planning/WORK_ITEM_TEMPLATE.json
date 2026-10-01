@@ -1,0 +1,13 @@
+{
+  "id": "<ID>",
+  "title": "<comportamento único e observável>",
+  "specPath": "planning/specs/<ID>.md",
+  "status": "todo",
+  "dependencies": [],
+  "acceptanceCriteria": ["<critério verificável>"],
+  "checks": ["<comando/teste>"],
+  "evidence": "E0",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": ""
+}

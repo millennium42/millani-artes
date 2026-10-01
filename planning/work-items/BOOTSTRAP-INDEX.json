@@ -1,0 +1,8 @@
+[
+  {"id":"DOC-002","title":"validar mapa contra árvore real","specPath":"planning/specs/DOC-002.md","status":"todo","dependencies":[],"acceptanceCriteria":["mapa reflete a árvore"],"checks":["git status --short"],"evidence":"E0","humanGateRequired":false,"passes":false,"notes":"próxima tarefa"},
+  {"id":"INF-001","title":"fixar versões Node/Rust","specPath":"planning/specs/INF-001.md","status":"todo","dependencies":["DOC-002"],"acceptanceCriteria":["versões reproduzíveis registradas"],"checks":["comandos de versão"],"evidence":"E0","humanGateRequired":false,"passes":false,"notes":""},
+  {"id":"SEC-001","title":"definir capabilities iniciais","specPath":"planning/specs/SEC-001.md","status":"todo","dependencies":["INF-002"],"acceptanceCriteria":["deny-by-default comprovado"],"checks":["inspeção de configuração"],"evidence":"E0","humanGateRequired":true,"passes":false,"notes":""},
+  {"id":"DB-001","title":"criar harness SQLite temporário","specPath":"planning/specs/DB-001.md","status":"todo","dependencies":["INF-005"],"acceptanceCriteria":["teste usa banco limpo"],"checks":["teste de integração"],"evidence":"E0","humanGateRequired":false,"passes":false,"notes":""},
+  {"id":"FIN-001","title":"definir tipo Account","specPath":"planning/specs/FIN-001.md","status":"todo","dependencies":["DB-001"],"acceptanceCriteria":["contrato compilado e testado"],"checks":["typecheck","unit test"],"evidence":"E0","humanGateRequired":false,"passes":false,"notes":""},
+  {"id":"BKP-001","title":"definir metadados/versionamento backup","specPath":"planning/specs/BKP-001.md","status":"todo","dependencies":["SEC-004"],"acceptanceCriteria":["formato tem versão e validação"],"checks":["unit test"],"evidence":"E0","humanGateRequired":true,"passes":false,"notes":""}
+]

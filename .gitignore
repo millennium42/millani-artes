@@ -1,0 +1,12 @@
+# Artefatos locais e sensíveis
+*.db
+*.sqlite
+*.sqlite3
+*.backup
+*.bak
+.env
+.env.*
+coverage/
+dist/
+target/
+node_modules/

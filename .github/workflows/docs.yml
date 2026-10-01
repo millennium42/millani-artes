@@ -1,0 +1,26 @@
+name: Documentation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate planned JSON work items
+        shell: pwsh
+        run: |
+          Get-ChildItem planning/work-items -Filter *.json | ForEach-Object {
+            Get-Content $_.FullName -Raw | ConvertFrom-Json | Out-Null
+          }
+      - name: Require canonical documentation
+        shell: pwsh
+        run: |
+          $required = @('README.md','AGENTS.md','00-MAPA-DO-PROJETO.md','governance/AI_DEVELOPMENT_RULES.md','docs/product/INVARIANTS.md','docs/security/THREAT_MODEL.md','planning/ROADMAP.md')
+          $missing = $required | Where-Object { -not (Test-Path $_) }
+          if ($missing) { throw "Missing canonical documentation: $($missing -join ', ')" }
