@@ -12,4 +12,6 @@ Evidência / git (SHA, branch) / CI (run, status):
 
 Agentes: papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder
 
+Uso: input | output | reasoning | cache | custo | duração | retries (ou `não registrado`)
+
 Limitações / aprendizagens / próxima tarefa exata:

@@ -23,3 +23,15 @@ Aprendizagem: menor configuração que passa precisa ser medida; não inferir ec
 Limitações: telemetria de tokens/custo e CI remoto não registrados.
 Commit: não registrado.
 CI: não registrado.
+
+## 2026-10-01 — GOV-006
+
+Implementado: política abrangente de economia de tokens.
+Arquivos: governança, AGENTS, template de handoff, spec e handoff.
+Verificação: pesquisa em fontes primárias; checks locais pendentes da finalização.
+Coverage: não aplicável.
+Security: proíbe contexto/log sensível e cache como canal de inferência.
+Aprendizagem: cache e modelo menor requerem métrica de tarefa aprovada.
+Limitações: telemetria e CI remoto não registrados.
+Commit: não registrado.
+CI: não registrado.

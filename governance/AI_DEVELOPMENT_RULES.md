@@ -7,3 +7,5 @@ Para cada tarefa: fixe o comportamento observável; inspecione o estado; escreva
 Skills adaptadas da toolbox: `project-kickoff`, `granular-delivery` e `honest-verification`. Elas foram instaladas no perfil local; seu uso fica disponível em nova sessão. Estas regras preservam o comportamento enquanto isso.
 
 O roteamento de modelos, esforços, limites de paralelismo e prova por agente é obrigatório em `MULTI_AGENT_POLICY.md`. Delegação acelera RECON/review, mas não flexibiliza a regra de um work item, os gates ou a responsabilidade do líder.
+
+`TOKEN_ECONOMY_POLICY.md` é obrigatório para contexto, tools, cache e medição. Economia só é aceita quando preserva os gates desta política.
