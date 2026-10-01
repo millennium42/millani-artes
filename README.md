@@ -1,6 +1,6 @@
 # Millani Artes
 
-Aplicativo desktop, local-first e offline-first para a gestão financeira pessoal e da fábrica Millani Artes. A primeira versão serve uma única usuária em um computador Windows, sem login, servidor ou cloud obrigatória.
+Aplicativo desktop, local-first e offline-first para a gestão financeira pessoal e da fábrica Millani Artes. A primeira versão serve uma única usuária em um computador Windows, sem login, servidor ou cloud obrigatória. A entrega será um instalador Windows (`setup.exe`), para instalar e abrir pelo menu Iniciar.
 
 ## Comece aqui
 

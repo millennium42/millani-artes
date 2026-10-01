@@ -187,3 +187,7 @@ Status: todos `todo`; IDs estáveis. Cada item ganha spec e JSON a partir do tem
 - REL-003 revisar P0/P1/P2
 - REL-004 verificar CI remoto no SHA
 - REL-005 preparar handoff/release
+- REL-006 gerar instalador NSIS `setup.exe` no Windows
+- REL-007 testar instalação limpa, abertura pelo menu Iniciar e desinstalação
+- REL-008 decidir e registrar estratégia WebView2 (bootstrap ou offline)
+- REL-009 decidir e registrar assinatura de código antes de distribuição pública
