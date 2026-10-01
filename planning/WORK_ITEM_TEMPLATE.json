@@ -6,6 +6,7 @@
   "dependencies": [],
   "acceptanceCriteria": ["<critério verificável>"],
   "checks": ["<comando/teste>"],
+  "agentPlan": "single-agent | leader/delegates/model/effort/paths",
   "evidence": "E0",
   "humanGateRequired": false,
   "passes": false,

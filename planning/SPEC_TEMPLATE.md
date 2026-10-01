@@ -4,6 +4,7 @@
 ## Motivo
 ## Escopo / Fora de escopo
 ## Dependências e rastreabilidade
+## Plano de agentes (opcional): líder; delegados; modelo/esforço; paths; motivo do paralelismo
 ## Contrato: entradas, saídas, invariantes, erros esperados
 ## Critérios de aceite
 ## Testes previstos / coverage afetada

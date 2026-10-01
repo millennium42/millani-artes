@@ -10,6 +10,7 @@ Status: todos `todo`; IDs estáveis. Cada item ganha spec e JSON a partir do tem
 - GOV-002 validar estados de evidência
 - GOV-003 revisar tool register antes de instalar
 - GOV-004 criar processo de exceção aprovado
+- GOV-005 aplicar política de agentes, modelos e esforço
 - INF-001 fixar versões Node/Rust
 - INF-002 inicializar frontend Tauri mínimo
 - INF-003 adicionar lockfiles
