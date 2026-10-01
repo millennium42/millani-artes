@@ -27,6 +27,6 @@ Fases: até dois `luna` em RECON para fontes, árvore ou rastreabilidade; líder
 
 ## Contrato de delegação e evidência
 
-Delegação contém: ID, SHA, pergunta única, fontes canônicas, modo read/write, arquivos permitidos, limite de saída e critério de aceite. Retorno contém no máximo três achados, arquivos/linhas inspecionados, conclusão, risco e comandos executados/não executados. Análise delegada vale E1/E2 no máximo; somente execução reproduzida pelo líder é E3. Handoff registra `papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder` e tokens/custo quando o cliente os expuser; caso contrário, `não registrado`.
+Delegação contém: persona de `AGENT_PERSONAS.md`, ID, SHA, pergunta única, fontes canônicas, modo read/write, arquivos permitidos, limite de saída e critério de aceite. Retorno contém no máximo três achados, arquivos/linhas inspecionados, conclusão, risco e comandos executados/não executados. Análise delegada vale E1/E2 no máximo; somente execução reproduzida pelo líder é E3. Handoff registra `persona/papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder` e tokens/custo quando o cliente os expuser; caso contrário, `não registrado`.
 
 Meça por tarefa: número de delegados, escalonamentos, retries evitados e tokens/uso quando o cliente expuser telemetria. Revise a política após 10 work items; não infira economia apenas por usar modelo menor.

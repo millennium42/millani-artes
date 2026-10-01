@@ -10,7 +10,7 @@ Coverage / security / review (P0/P1/P2):
 
 Evidência / git (SHA, branch) / CI (run, status):
 
-Agentes: papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder
+Agentes: persona/papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder
 
 Uso: input | output | reasoning | cache | custo | duração | retries (ou `não registrado`)
 

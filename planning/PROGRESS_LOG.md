@@ -47,3 +47,15 @@ Aprendizagem: dependência explícita permite RECON paralelo e escrita serializa
 Limitações: CI remoto não registrado.
 Commit: não registrado.
 CI: não registrado.
+
+## 2026-10-01 — GOV-008
+
+Implementado: catálogo de personas operacionais e referências obrigatórias.
+Arquivos: governança, AGENTS, templates, roadmap, spec e handoff.
+Verificação: checagens locais pendentes da finalização.
+Coverage: não aplicável.
+Security: personas são read-only por padrão e não recebem dados sensíveis.
+Aprendizagem: personalidade operacional é contrato de escopo, não conversa adicional.
+Limitações: CI remoto não registrado.
+Commit: não registrado.
+CI: não registrado.
