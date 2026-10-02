@@ -125,3 +125,18 @@ Entrega a896f6c20af01c27b4946948487237cbc74ec0ca publicada. CI E3: https://githu
 Inspeção/review de hierarquia E2 sem P0/P1/P2; checks locais E3 verdes (link, workflow com 16 fontes/95 arquivos, mapa fixtures, ignore28/4, JSON/diff check, log staged append-only). Busca heurística dos sete paths sem padrões de segredo; não equivale a Gitleaks.
 Estado: registro atualiza passes=true após CI da entrega; conferir também CI do registro no SHA final e publicar nota refs/notes/evidence antes de DOC-005. Produto/thresholds/pipeline preservados; coverage/smoke não aplicáveis.
 Tokens/custo por agente: não registrado. Próximo ID: DOC-005 após gate final.
+
+## 2026-10-02 — DOC-005 — Inventário do escopo essencial
+
+Definida unidade: cada grupo funcional da lista SCOPE conta uma vez; 13 grupos. Conjuntos separados: 17 invariantes, sete jornadas, nove bullets de negócio e oito requisitos de segurança; sem soma ou alegação de requisito atômico/implementação.
+Base 0bca4a5 e CI 37040768801 revalidados; scripts/JSON baseline verdes. RED: inventário ausente. Contagem Python stdlib do Integrador confirmou 13/17/7/9/8; restrições transversais e fontes ficam em docs/traceability/ESSENTIAL_REQUIREMENTS.md.
+P-TRC Luna/low: distinção dos conjuntos usada; números 12/21 descartados contra execução do Integrador. Review P-REV e validação final pendentes; passes=false. Coverage/smoke não aplicáveis; scanners não configurados.
+Aprendizagem: contagem delegada pode falhar; ferramenta determinística e unidade explícita são necessárias. Handoff planning/handoffs/DOC-005.md. Tokens/custo por agente e commit/CI da entrega: não registrado. Próximo ID: GOV-001 após gate final.
+
+## 2026-10-02 — DOC-005 — Checks locais
+
+Contagem stdlib do bloco documentado confirmou 13 grupos/17 invariantes/7 jornadas/9 bullets/8 controles; 42 links locais resolvem dentro do checkout. Workflow completo verde: 16 fontes/98 arquivos, fixtures mapa, ignore28/4, JSON/sete documentos canônicos. Diff check e prefixo do log contra base verdes; busca heurística dos sete paths sem padrões detectados, sem Gitleaks. Review/CI pendentes; passes=false.
+
+## 2026-10-02 — DOC-005 — Review
+
+P-REV gpt-6-sol/medium conferiu diff staged/fontes: sem P0/P1/P2; saída E2 usada. Prefixo Git staged append-only verde. Risco: contagem automática valida rótulos/totais, sem substituir interpretação semântica. CI da entrega pendente; passes=false. Dois delegados, nenhum escalonamento; uso/custo por agente não registrado. Próximo ID: GOV-001 após gate final.

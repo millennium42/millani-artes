@@ -1,5 +1,7 @@
 # Matriz de requisitos
 
+Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md). Grupos, invariantes, jornadas e controles não são totais aditivos; as linhas de produto abaixo ainda planejam testes futuros.
+
 | requisito | regra/módulo | work item inicial | teste futuro | gate |
 |---|---|---|---|---|
 | contas/saldo | FIN | FIN-001 | unit+integração | coverage |
@@ -13,3 +15,4 @@
 | mapa reflete a árvore (documental) | mapa de fontes | DOC-002 | scripts/test-project-map.ps1 + scripts/check-project-map.ps1; E3 local/remoto | CI candidato 37037225188 verde; fechamento exige CI no SHA atual, evidência em refs/notes/evidence |
 | README de entrada reflete fontes/estado (documental) | README | DOC-003 | 9 links locais + comandos de scripts existentes; E3 local/remoto | CI entrega 37039057140 verde; fechamento exige CI no SHA final, nota refs/notes/evidence |
 | hierarquia e gates seguem autoridade superior (documental) | governança/AGENTS | DOC-004 | inspeção/review E2 + workflow E3 | CI entrega 37040416220 verde; fechamento exige CI no SHA final, nota refs/notes/evidence |
+| inventário conta grupos essenciais sem dupla contagem (documental) | escopo/fontes | DOC-005 | Python 13/17/7/9/8 + 42 links + workflow; E3 documental | review E2 sem achados; CI pendente, passes=false |
