@@ -186,3 +186,9 @@ Workflow completo E3 verde: mapa16fontes104arquivos/fixtures/ignore28-4/evidênc
 ## 2026-10-02 — GOV-002 — Review
 
 P-REV gpt-6-sol/medium read-only conferiu diff/scripts/spec/política/CI/registros: sem P0/P1/P2, saída E2 usada. Integrador reproduziu checker11items e confirmou links/diff/log staged/busca dez paths. Dois delegados, nenhum escalonamento/retry; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo ID GOV-003 após gate final.
+
+## 2026-10-02 — GOV-002 — CI da entrega e fechamento
+
+Entrega 389b65d22834c628e5881a20b96367c340f6f5df publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37046183514 completed/success no SHA exato; job 110968073613/todos os steps verdes, incluindo validador de evidência.
+RED/GREEN: parse-only aceitou E5/true; 25fixtures/diretório sem JSON/checker11items e workflow16fontes104arquivos/fixtures/ignore28-4/sete docs locais verdes. Links/scripts/diff/dez paths/log staged/busca heurística verdes, não Gitleaks. P-QA/P-REV E2, review sem P0/P1/P2; E3 do check não comprova fatos declarados/produto.
+Passes=true após CI da entrega; conferir CI do registro no SHA final e publicar nota refs/notes/evidence antes de GOV-003, sem terceira execução para registrar URL. Dois delegados, nenhum escalonamento/retry; coverage produto/smoke NA, percentual PS/tokens/custo por agente não registrado.
