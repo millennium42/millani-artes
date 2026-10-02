@@ -111,3 +111,10 @@ Entrega c2259bb66aef87ea97130a519ee10c988b781c9b publicada. CI E3: https://githu
 Checks locais: 9 links locais/2 HTTPS, workflow completo (16 fontes/93 arquivos, fixtures mapa, 28 ignorados/4 preservados), JSON/diff check e prefixo Git append-only verdes. Review P-REV sem P0/P1/P2; busca heurística nos sete arquivos sem padrões detectados.
 Estado: registro atualiza passes=true após CI da entrega; antes de avançar, verificar CI do fechamento no SHA final e publicar nota refs/notes/evidence. Sem terceiro run para gravar URL da evidência.
 Coverage/smoke: não aplicáveis. Tokens/custo por agente: não registrado. Próximo ID: DOC-004 após gate final.
+
+## 2026-10-02 — DOC-004 — Hierarquia documental
+
+Conferido: autoridade humana > produto > ADR aceito > spec > AGENTS > demais. README/mapa/ADRs/templates não criam autoridade nova. Removida exceção de AI_DEVELOPMENT_RULES que dispensava CI pela própria declaração do work item, em conflito com a instrução humana META PRINCIPAL.
+Base 00ba4f2; CI 37039408290 revalidado; baseline scripts/JSON verde. Inspeção semântica E2; checks e CI executados E3, sem prova de produto.
+Arquivos: política AI e seis registros da tarefa; sem mudança de produto, ADR, threshold ou pipeline. Coverage/smoke não aplicáveis; scanners não configurados. Review/CI da entrega pendentes; passes=false.
+Aprendizagem: navegação não determina autoridade. Handoff planning/handoffs/DOC-004.md. Tokens/custo por agente e commit/CI da entrega: não registrado. Próximo ID: DOC-005 após gate.
