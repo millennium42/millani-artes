@@ -140,3 +140,10 @@ Contagem stdlib do bloco documentado confirmou 13 grupos/17 invariantes/7 jornad
 ## 2026-10-02 — DOC-005 — Review
 
 P-REV gpt-6-sol/medium conferiu diff staged/fontes: sem P0/P1/P2; saída E2 usada. Prefixo Git staged append-only verde. Risco: contagem automática valida rótulos/totais, sem substituir interpretação semântica. CI da entrega pendente; passes=false. Dois delegados, nenhum escalonamento; uso/custo por agente não registrado. Próximo ID: GOV-001 após gate final.
+
+## 2026-10-02 — DOC-005 — CI da entrega e fechamento
+
+Entrega 6a1b467c05942c696a1df682908cfe685159ab27 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37042390429 completed/success no SHA exato; job 110955424039 e todos os steps verdes.
+Inventário/fontes e review E2 sem P0/P1/P2; checks locais E3: contagem 13/17/7/9/8, 42 links, workflow16fontes98arquivos, fixtures/ignore28-4/JSON/diff e log Git staged append-only. Busca heurística dos sete paths sem padrões, não Gitleaks; coverage/smoke não aplicáveis.
+Estado: passes=true após CI da entrega; antes de GOV-001, conferir CI do registro no SHA final e publicar nota refs/notes/evidence. Não abrir terceira execução para registrar URL. CI remoto cobre workflow documental existente, não testes de produto.
+Dois delegados, nenhum escalonamento/retry do Integrador; números do P-TRC descartados contra contagem executada. Tokens/custo por agente: não registrado. Próximo ID: GOV-001 após gate final.
