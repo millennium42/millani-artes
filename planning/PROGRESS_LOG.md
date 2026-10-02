@@ -212,3 +212,14 @@ P-REV gpt-6-sol/medium read-only conferiu diff/spec/fontes: sem P0/P1/P2, saída
 Entrega fba319ed9d6d9a181f3fe6ee111a5103325ac742 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37049083478 completed/success no SHA exato; job110977679063/todos os steps verdes.
 Checks locais E3: inventário/versões/PATH/help, workflow16fontes106arquivos/fixtures/ignore28-4/evidência25fixtures+12items/sete docs, dois links/JSON/gates/dependência/diff/log staged/busca heurística; não Gitleaks. Licenças/contexto e review P-REV sem P0/P1/P2 são E2. Nenhuma instalação/adoção/audit executado.
 Passes=true após CI da entrega; gate final exige CI do registro no SHA final e nota refs/notes/evidence antes de GOV-004. Segunda execução leve de CI prevista; nota evita terceiro commit/CI. Um delegado, nenhum escalonamento/retry de CI; uma correção de sintaxe PS no inventário. Coverage/smoke NA; tokens/custo por agente não registrado.
+
+## 2026-10-02 — GOV-004 — Aplicabilidade de exceção temporária
+
+Base cc43154/CI37049479416/nota revalidados, dependência GOV-002 b0cc139/CI37046606161/nota conferida. Primeira todo desbloqueada GOV-004; status/branch/HEAD/remoto e baseline mapa16fontes106arquivos/checker12items verdes. Turno anterior foi progresso: GOV-003 publicado, CI final verde e notas sincronizadas.
+Busca rg de título/campos e inventário de paths de exceção/audit/scan/manifests encontrou somente template vazio. Aplicabilidade E2 baseada em busca E3; nenhuma dispensa real registrada, gate humano NA e sem aprovação E4. RED documental E2: release aceita exceção expirada; corrigido para aprovada e vigente. Template deixa explícitos revisão/escopo/expiração/decisão humana e autoridade.
+Oito paths reservados, nenhuma instalação/scanner/script/pipeline/ADR/threshold ou dispensa preenchida. Checks/review/CI finais pendentes; passes=false. P-REV6sol/medium previsto após diff; uso/custo não registrado. Handoff planning/handoffs/GOV-004.md; próximo GOV-005 após gate final.
+
+## 2026-10-02 — GOV-004 — Checks e review verdes
+
+Workflow completo E3 do Integrador: mapa16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+13items/sete docs. Dois links locais/JSON/gates/dependência/oito paths/diff/log Git staged append-only verdes; busca heurística sem padrões de segredo/path privado detectados, não Gitleaks. Sem runtime/scanner/instalação; coverage/smoke NA.
+P-REV gpt-6-sol/medium read-only conferiu os cinco critérios e diff/fontes: sem P0/P1/P2, saída E2 usada. Aplicabilidade limitada ao inventário visível, sem E4 e sem aprovação de dispensa; gate humano NA neste resultado, obrigatório se surgir dispensa real. Um delegado, nenhum escalonamento/retry; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo GOV-005 após gate final.
