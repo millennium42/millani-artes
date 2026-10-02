@@ -223,3 +223,9 @@ Oito paths reservados, nenhuma instalação/scanner/script/pipeline/ADR/threshol
 
 Workflow completo E3 do Integrador: mapa16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+13items/sete docs. Dois links locais/JSON/gates/dependência/oito paths/diff/log Git staged append-only verdes; busca heurística sem padrões de segredo/path privado detectados, não Gitleaks. Sem runtime/scanner/instalação; coverage/smoke NA.
 P-REV gpt-6-sol/medium read-only conferiu os cinco critérios e diff/fontes: sem P0/P1/P2, saída E2 usada. Aplicabilidade limitada ao inventário visível, sem E4 e sem aprovação de dispensa; gate humano NA neste resultado, obrigatório se surgir dispensa real. Um delegado, nenhum escalonamento/retry; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo GOV-005 após gate final.
+
+## 2026-10-02 — GOV-004 — CI da entrega e fechamento
+
+Entrega 6073273db0efa1efea553d26a30e0c7877fc0783 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37050459499 completed/success no SHA exato; job110982285577/todos os steps verdes.
+Checks locais E3: inventário/links/JSON/gates/dependência/workflow16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+13items/sete docs/oito paths/diff/log staged/busca heurística (não Gitleaks). Aplicabilidade/gate/review E2, sem P0/P1/P2 e sem E4. Resultado não aplicável limitado ao inventário visível; nenhuma dispensa/controle relaxado.
+Passes=true após CI da entrega; gate final exige CI do registro no SHA final e nota refs/notes/evidence antes de GOV-005. Segunda execução leve prevista; nota evita terceiro commit/CI. Um delegado, nenhum escalonamento/retry; coverage/smoke NA, tokens/custo por agente não registrado.
