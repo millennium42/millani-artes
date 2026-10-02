@@ -118,3 +118,10 @@ Conferido: autoridade humana > produto > ADR aceito > spec > AGENTS > demais. RE
 Base 00ba4f2; CI 37039408290 revalidado; baseline scripts/JSON verde. Inspeção semântica E2; checks e CI executados E3, sem prova de produto.
 Arquivos: política AI e seis registros da tarefa; sem mudança de produto, ADR, threshold ou pipeline. Coverage/smoke não aplicáveis; scanners não configurados. Review/CI da entrega pendentes; passes=false.
 Aprendizagem: navegação não determina autoridade. Handoff planning/handoffs/DOC-004.md. Tokens/custo por agente e commit/CI da entrega: não registrado. Próximo ID: DOC-005 após gate.
+
+## 2026-10-02 — DOC-004 — CI da entrega e fechamento
+
+Entrega a896f6c20af01c27b4946948487237cbc74ec0ca publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37040416220 completed/success no SHA exato; job 110948873058/todos os steps verdes.
+Inspeção/review de hierarquia E2 sem P0/P1/P2; checks locais E3 verdes (link, workflow com 16 fontes/95 arquivos, mapa fixtures, ignore28/4, JSON/diff check, log staged append-only). Busca heurística dos sete paths sem padrões de segredo; não equivale a Gitleaks.
+Estado: registro atualiza passes=true após CI da entrega; conferir também CI do registro no SHA final e publicar nota refs/notes/evidence antes de DOC-005. Produto/thresholds/pipeline preservados; coverage/smoke não aplicáveis.
+Tokens/custo por agente: não registrado. Próximo ID: DOC-005 após gate final.
