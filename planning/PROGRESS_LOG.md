@@ -206,3 +206,9 @@ Workflow completo E3: mapa16fontes106arquivos/fixtures/ignore28-4/evidência25fi
 ## 2026-10-02 — GOV-003 — Review
 
 P-REV gpt-6-sol/medium read-only conferiu diff/spec/fontes: sem P0/P1/P2, saída E2 usada. Inventário distingue disponibilidade/adoção/versões/licenças/help versus audit; lacunas de origem/licença/compatibilidade ficam para adoção, sem instalar nesta tarefa. Um delegado, nenhum escalonamento; uma reexecução de inventário após sintaxe PS, sem CI iniciado; uso/custo não registrado. CI da entrega pendente, passes=false. Próximo GOV-004 após gate final.
+
+## 2026-10-02 — GOV-003 — CI da entrega e fechamento
+
+Entrega fba319ed9d6d9a181f3fe6ee111a5103325ac742 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37049083478 completed/success no SHA exato; job110977679063/todos os steps verdes.
+Checks locais E3: inventário/versões/PATH/help, workflow16fontes106arquivos/fixtures/ignore28-4/evidência25fixtures+12items/sete docs, dois links/JSON/gates/dependência/diff/log staged/busca heurística; não Gitleaks. Licenças/contexto e review P-REV sem P0/P1/P2 são E2. Nenhuma instalação/adoção/audit executado.
+Passes=true após CI da entrega; gate final exige CI do registro no SHA final e nota refs/notes/evidence antes de GOV-004. Segunda execução leve de CI prevista; nota evita terceiro commit/CI. Um delegado, nenhum escalonamento/retry de CI; uma correção de sintaxe PS no inventário. Coverage/smoke NA; tokens/custo por agente não registrado.
