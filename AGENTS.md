@@ -6,6 +6,6 @@ Trabalhe em uma tarefa por vez. Antes de editar: status, branch, HEAD, CI, teste
 
 Use o mínimo necessário: reutilize antes de criar, prefira stdlib/plataforma e não adicione dependência sem ADR/tool register. Teste invariantes explicitamente; cobertura não substitui comportamento. Não reduza thresholds. Para Rust execute fmt, clippy, test e audit; para TypeScript execute format/lint/typecheck/test/coverage quando existirem. Segurança proporcional ao diff é obrigatória.
 
-Migrations são versionadas, aditivas quando possível, nunca editadas após aplicadas, testadas em banco vazio e upgrade. Commits são atômicos. Atualize spec, matrizes, `PROGRESS_LOG.md` append-only e handoff antes de `passes: true`; não inicie a próxima tarefa.
+Migrations são versionadas, aditivas quando possível, nunca editadas após aplicadas, testadas em banco vazio e upgrade. Commits são atômicos. Atualize spec, matrizes, `planning/PROGRESS_LOG.md` append-only e handoff antes de `passes: true`; não inicie a próxima tarefa.
 
 Formato de atualização: `ID | estado | evidência E0–E4 | checks | riscos | próximo ID`. Ausências devem ser `não registrado`.

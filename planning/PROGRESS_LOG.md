@@ -147,3 +147,22 @@ Entrega 6a1b467c05942c696a1df682908cfe685159ab27 publicada. CI E3: https://githu
 Inventário/fontes e review E2 sem P0/P1/P2; checks locais E3: contagem 13/17/7/9/8, 42 links, workflow16fontes98arquivos, fixtures/ignore28-4/JSON/diff e log Git staged append-only. Busca heurística dos sete paths sem padrões, não Gitleaks; coverage/smoke não aplicáveis.
 Estado: passes=true após CI da entrega; antes de GOV-001, conferir CI do registro no SHA final e publicar nota refs/notes/evidence. Não abrir terceira execução para registrar URL. CI remoto cobre workflow documental existente, não testes de produto.
 Dois delegados, nenhum escalonamento/retry do Integrador; números do P-TRC descartados contra contagem executada. Tokens/custo por agente: não registrado. Próximo ID: GOV-001 após gate final.
+
+## 2026-10-02 — GOV-001 — Revisão de regras da sessão
+
+AGENTS blob a62d26bcbab0261b882b72e48419e7a9b99fc3a0 lido e conferido contra autoridade humana/políticas: sem correção necessária. Ordem de leitura, ciclo, gates, delegação/economia, invariantes/checks, migrations e registros preservados; publicação pública tem autorização humana e economia de CI não dispensa gate.
+Base d60e8f7 com CI 37042736209 verde; DOC-003/CI37039408290/notas revalidados. Baseline mapa16fontes98arquivos/ignore28-4/JSON verde. RED não aplicável, sem comportamento a corrigir. Somente seis registros; checks finais/review/CI pendentes, passes=false.
+Aprendizagem: sessão/blob limitam validade da revisão, não provam implementação. Handoff planning/handoffs/GOV-001.md. Coverage/smoke não aplicáveis; tokens/custo por agente e commit/CI da entrega não registrado. Próximo ID: GOV-002 após gate final.
+
+## 2026-10-02 — GOV-001 — Referência do log
+
+Check de referências E3 falhou para PROGRESS_LOG.md na raiz. A revisão semântica inicial não detectou o shorthand; atualizado escopo para AGENTS e seis registros, corrigindo apenas o caminho para planning/PROGRESS_LOG.md. Regras e gates preservados; nenhuma nova política.
+Workflow completo local verde (16 fontes/100 arquivos), diff e busca nos registros verdes; verificar novamente sete referências/paths e log staged após correção. Review/CI pendentes; passes=false. Uma falha diagnóstica no check do Integrador, sem CI remoto disparado.
+
+## 2026-10-02 — GOV-001 — Checks verdes após correção
+
+AGENTS corrigido blob a462eff00fc91d2935c1640817d135f1ed5d9e2f; check do Integrador confirmou somente path do log mudou. Sete referências/um link local resolvem dentro do checkout; workflow16fontes100arquivos/fixtures/ignore28-4/JSON/sete docs, diff e log Git staged append-only verdes. Busca heurística dos sete paths sem padrões detectados, não Gitleaks. Revisão semântica E2; execução E3 documental. Uma reexecução após correção; review/CI pendentes, passes=false.
+
+## 2026-10-02 — GOV-001 — Review
+
+P-REV gpt-6-sol/medium read-only conferiu diff/fontes: sem P0/P1/P2; saída E2 usada. Integrador confirmou JSON/gates/dependência, referências/diff mínimo e prefixo Git staged append-only. Um delegado, nenhum escalonamento; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo ID: GOV-002 após gate final.
