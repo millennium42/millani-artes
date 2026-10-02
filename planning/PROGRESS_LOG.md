@@ -84,3 +84,14 @@ Aprendizagem: Git index não prova presença física; fixtures negativas validam
 Limitações: configuração efetiva do Integrador e telemetria por agente/custo não expostas; `gh` ausente; aplicativo/setup.exe ainda não existem. DOC-003 não iniciada.
 Commit: será criado após checks/review; identificado pelo histórico Git da entrega.
 CI: remoto ainda não executado; `passes=false` até comprovação no SHA atual.
+
+## 2026-10-02 — DOC-002 — CI da entrega e registro de fechamento
+
+Entrega: 33ee614c156f896565fc8345de3fd79b83781533, publicada no repositório público millennium42/millani-artes.
+CI E3: Documentation run 37037225188 completed/success no SHA exato; URL https://github.com/millennium42/millani-artes/actions/runs/37037225188; job 110938301130 e todos os steps verdes.
+Review: P-REV inicial e incremental sem P0/P1/P2. Workflow completo local passou com 16 fontes/91 arquivos; prefixo histórico do log verificado byte a byte.
+Segurança: repetição do audit em 120 blobs/91 arquivos, zero padrões detectados; busca heurística, sem alegação de Gitleaks.
+Estado: registro de fechamento atualiza passes=true após CI da entrega; não avançar DOC-003 até novo CI no SHA do fechamento. URL/run/SHA finais serão vinculados em refs/notes/evidence após sucesso, preservando SHA testado.
+Coverage: não aplicável. Tokens/cache/custo/duração por agente: não registrado.
+Aprendizagem: separar entrega e registro de evidência permite exigir CI também no commit de fechamento.
+Próximo ID: DOC-003 após gate final.
