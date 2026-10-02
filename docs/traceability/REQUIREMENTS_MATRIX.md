@@ -11,3 +11,4 @@
 | dashboard | DSH | DSH-001 | componente | visual |
 | backup/restore | BKP | BKP-001 | integração+negativo | security |
 | mapa reflete a árvore (documental) | mapa de fontes | DOC-002 | scripts/test-project-map.ps1 + scripts/check-project-map.ps1; E3 local/remoto | CI candidato 37037225188 verde; fechamento exige CI no SHA atual, evidência em refs/notes/evidence |
+| README de entrada reflete fontes/estado (documental) | README | DOC-003 | links locais + comandos de scripts existentes; E3 local | CI Documentation no SHA final; pendente |

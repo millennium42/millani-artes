@@ -95,3 +95,12 @@ Estado: registro de fechamento atualiza passes=true após CI da entrega; não av
 Coverage: não aplicável. Tokens/cache/custo/duração por agente: não registrado.
 Aprendizagem: separar entrega e registro de evidência permite exigir CI também no commit de fechamento.
 Próximo ID: DOC-003 após gate final.
+
+## 2026-10-02 — DOC-003 — README de entrada
+
+Implementado: navegação com links existentes, estado público/CI documental correto e três comandos reais; produto/setup.exe continuam planejados.
+Dependência: DOC-002 no SHA 263e8db, CI 37037639347 completed/success revalidado.
+Verificação local E3: 9 links locais/2 HTTPS GitHub sem credenciais; testes/mapa/ignore e JSON verdes; git diff --check passou. Review e CI da entrega pendentes; passes=false.
+Coverage/smoke: não aplicáveis. Segurança: sem dados reais, secrets, ferramenta ou capability nova; scanners não configurados.
+Aprendizagem: evidência CI deve apontar run/SHA e não selo verde estático. Handoff: planning/handoffs/DOC-003.md.
+Commit/CI da entrega e tokens/custo por agente: não registrado. Próximo ID: DOC-004 após gate.
