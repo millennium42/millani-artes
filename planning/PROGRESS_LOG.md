@@ -104,3 +104,10 @@ Verificação local E3: 9 links locais/2 HTTPS GitHub sem credenciais; testes/ma
 Coverage/smoke: não aplicáveis. Segurança: sem dados reais, secrets, ferramenta ou capability nova; scanners não configurados.
 Aprendizagem: evidência CI deve apontar run/SHA e não selo verde estático. Handoff: planning/handoffs/DOC-003.md.
 Commit/CI da entrega e tokens/custo por agente: não registrado. Próximo ID: DOC-004 após gate.
+
+## 2026-10-02 — DOC-003 — CI da entrega e fechamento
+
+Entrega c2259bb66aef87ea97130a519ee10c988b781c9b publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37039057140 completed/success no SHA exato; job 110944374370 e todos os steps verdes.
+Checks locais: 9 links locais/2 HTTPS, workflow completo (16 fontes/93 arquivos, fixtures mapa, 28 ignorados/4 preservados), JSON/diff check e prefixo Git append-only verdes. Review P-REV sem P0/P1/P2; busca heurística nos sete arquivos sem padrões detectados.
+Estado: registro atualiza passes=true após CI da entrega; antes de avançar, verificar CI do fechamento no SHA final e publicar nota refs/notes/evidence. Sem terceiro run para gravar URL da evidência.
+Coverage/smoke: não aplicáveis. Tokens/custo por agente: não registrado. Próximo ID: DOC-004 após gate final.
