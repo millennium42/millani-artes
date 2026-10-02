@@ -12,6 +12,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate project map against checkout
+        shell: pwsh
+        run: |
+          ./scripts/test-project-map.ps1
+          ./scripts/check-project-map.ps1
+          ./scripts/test-gitignore.ps1
       - name: Validate planned JSON work items
         shell: pwsh
         run: |
