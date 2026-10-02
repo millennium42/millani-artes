@@ -2,7 +2,7 @@
 
 Fonte canônica de IDs. Formato: `ID — intenção observável ← dependências`; `—` indica que pode começar sem predecessor do bloco. Toda dependência exige `passes=true`, handoff e CI no SHA. RECON read-only pode ler antes, mas não editar. Um líder reserva paths; escrita em paralelo só em worktrees isolados, paths disjuntos e integração serial (`MULTI_AGENT_POLICY.md`).
 
-`DOC-001`, `GOV-005` e `GOV-006` têm evidência local histórica. `DOC-002` fechado em `263e8db`; `DOC-003` em `00ba4f2`; `DOC-004` em `0bca4a5`; `DOC-005` em `d60e8f7` com CI 37042736209 verde, evidência final em `refs/notes/evidence`. `GOV-001` em execução, passes=false. Demais tarefas planejadas permanecem `todo`. Próxima tarefa: `GOV-002`, após fechar GOV-001.
+`DOC-001`, `GOV-005` e `GOV-006` têm evidência local histórica. `DOC-002` fechado em `263e8db`; `DOC-003` em `00ba4f2`; `DOC-004` em `0bca4a5`; `DOC-005` em `d60e8f7`, evidência final em `refs/notes/evidence`. `GOV-001` teve entrega `665a262` e CI 37043981692 verde; seu registro de fechamento exige CI no SHA final e nota `refs/notes/evidence`. Demais tarefas planejadas permanecem `todo`. Próxima tarefa: `GOV-002`, após conferir esse gate final.
 
 ## B0 — Governança e planejamento
 

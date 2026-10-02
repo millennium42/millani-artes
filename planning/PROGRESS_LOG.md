@@ -166,3 +166,9 @@ AGENTS corrigido blob a462eff00fc91d2935c1640817d135f1ed5d9e2f; check do Integra
 ## 2026-10-02 — GOV-001 — Review
 
 P-REV gpt-6-sol/medium read-only conferiu diff/fontes: sem P0/P1/P2; saída E2 usada. Integrador confirmou JSON/gates/dependência, referências/diff mínimo e prefixo Git staged append-only. Um delegado, nenhum escalonamento; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo ID: GOV-002 após gate final.
+
+## 2026-10-02 — GOV-001 — CI da entrega e fechamento
+
+Entrega 665a2627249b15d667ae90c5d9998e010f70bf80 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37043981692 completed/success no SHA exato; job 110960706778/todos os steps verdes.
+Regras/review E2 sem P0/P1/P2; checks locais E3 verdes: sete referências/um link, diff mínimo AGENTS, workflow16fontes100arquivos/fixtures/ignore28-4/JSON/sete docs, diff e log Git staged append-only. Busca heurística sete paths sem padrões, não Gitleaks. Coverage/smoke não aplicáveis.
+Passes=true após gate da entrega; conferir também CI do registro no SHA final e publicar nota refs/notes/evidence antes de GOV-002, sem terceira execução para registrar URL. Um delegado, nenhum escalonamento; uma reexecução local após correção do path, nenhum retry de CI; tokens/custo por agente não registrado.
