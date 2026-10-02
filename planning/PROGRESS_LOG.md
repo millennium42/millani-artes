@@ -172,3 +172,17 @@ P-REV gpt-6-sol/medium read-only conferiu diff/fontes: sem P0/P1/P2; saída E2 u
 Entrega 665a2627249b15d667ae90c5d9998e010f70bf80 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37043981692 completed/success no SHA exato; job 110960706778/todos os steps verdes.
 Regras/review E2 sem P0/P1/P2; checks locais E3 verdes: sete referências/um link, diff mínimo AGENTS, workflow16fontes100arquivos/fixtures/ignore28-4/JSON/sete docs, diff e log Git staged append-only. Busca heurística sete paths sem padrões, não Gitleaks. Coverage/smoke não aplicáveis.
 Passes=true após gate da entrega; conferir também CI do registro no SHA final e publicar nota refs/notes/evidence antes de GOV-002, sem terceira execução para registrar URL. Um delegado, nenhum escalonamento; uma reexecução local após correção do path, nenhum retry de CI; tokens/custo por agente não registrado.
+
+## 2026-10-02 — GOV-002 — Estados de evidência
+
+RED E3: parse JSON atual aceitou E5/true sintético. Checker PowerShell nativo valida E0–E4 literais, passes booleano e E3/E4 para true; não prova fatos/execução/aceite/CI. Política inclui exemplos/limite; workflow substitui parse pelo fixture/check no mesmo job.
+Integrador executou 25 fixtures e diretório sem JSON, mensagens sanitizadas/cleanup confinado; checker real verde em 11 work items. P-QA6Sol/medium casos usados, sem E3 delegado. Nenhuma ferramenta instalada; produto/ADRs/thresholds preservados.
+Base db11682/CI37044352140/notas revalidados; checks finais/review/CI pendentes, passes=false. Coverage produto/smoke não aplicáveis; sem percentual PS/scanners configurados. Handoff planning/handoffs/GOV-002.md; tokens/custo por agente e commit/CI da entrega não registrado. Próximo ID GOV-003 após gate final.
+
+## 2026-10-02 — GOV-002 — Checks locais verdes
+
+Workflow completo E3 verde: mapa16fontes104arquivos/fixtures/ignore28-4/evidência25fixtures+diretório sem JSON+11items/sete docs canônicos. Um link local/scripts da política, dez paths reservados, diff e log Git staged append-only verdes. Busca heurística dez paths sem padrões detectados, não Gitleaks. Interpretação E2; execução E3 do check não prova fatos declarados. Review/CI pendentes; passes=false.
+
+## 2026-10-02 — GOV-002 — Review
+
+P-REV gpt-6-sol/medium read-only conferiu diff/scripts/spec/política/CI/registros: sem P0/P1/P2, saída E2 usada. Integrador reproduziu checker11items e confirmou links/diff/log staged/busca dez paths. Dois delegados, nenhum escalonamento/retry; uso/custo não registrado. CI da entrega pendente; passes=false. Próximo ID GOV-003 após gate final.

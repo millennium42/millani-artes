@@ -18,12 +18,11 @@ jobs:
           ./scripts/test-project-map.ps1
           ./scripts/check-project-map.ps1
           ./scripts/test-gitignore.ps1
-      - name: Validate planned JSON work items
+      - name: Validate evidence states in work items
         shell: pwsh
         run: |
-          Get-ChildItem planning/work-items -Filter *.json | ForEach-Object {
-            Get-Content $_.FullName -Raw | ConvertFrom-Json | Out-Null
-          }
+          ./scripts/test-evidence-states.ps1
+          ./scripts/check-evidence-states.ps1
       - name: Require canonical documentation
         shell: pwsh
         run: |
