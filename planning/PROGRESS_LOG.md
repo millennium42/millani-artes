@@ -192,3 +192,17 @@ P-REV gpt-6-sol/medium read-only conferiu diff/scripts/spec/política/CI/registr
 Entrega 389b65d22834c628e5881a20b96367c340f6f5df publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37046183514 completed/success no SHA exato; job 110968073613/todos os steps verdes, incluindo validador de evidência.
 RED/GREEN: parse-only aceitou E5/true; 25fixtures/diretório sem JSON/checker11items e workflow16fontes104arquivos/fixtures/ignore28-4/sete docs locais verdes. Links/scripts/diff/dez paths/log staged/busca heurística verdes, não Gitleaks. P-QA/P-REV E2, review sem P0/P1/P2; E3 do check não comprova fatos declarados/produto.
 Passes=true após CI da entrega; conferir CI do registro no SHA final e publicar nota refs/notes/evidence antes de GOV-003, sem terceira execução para registrar URL. Dois delegados, nenhum escalonamento/retry; coverage produto/smoke NA, percentual PS/tokens/custo por agente não registrado.
+
+## 2026-10-02 — GOV-003 — Revisão do tool register
+
+Inventário/versões E3: Git2.55.0.windows.3/RTK0.48.0/PS7.6.5/Python3.12.10/Node24.19.0/npm11.17.0; Node/npm disponíveis contradizem declaração ampla não instalados. Registrados PowerShell/Python usados; disponibilidade/PATH e adoção de projeto separadas. Outras11CLIs consultadas não encontradas no PATH, sem afirmar ausência global.
+npm audit --help disponível, audit não executado; rg manifests/lockfiles sem resultados na árvore visível. Licenças locais E2 GitGPLv2/PowerShellMIT/PythonPSFv2/avisos; outras origens/licenças/telemetria como não registrado. Nenhuma instalação/atualização/remoção, pin ou dependência.
+Base b0cc139/CI37046606161/notas revalidados; baseline mapa16fontes104arquivos/checker11items/JSON verde. Uma reexecução do inventário após erro de sintaxe PS; checks finais/review/CI pendentes, passes=false. Coverage/smoke NA; tokens/custo por agente e commit/CI da entrega não registrado. Handoff planning/handoffs/GOV-003.md. Próximo GOV-004 após gate final.
+
+## 2026-10-02 — GOV-003 — Checks locais verdes
+
+Workflow completo E3: mapa16fontes106arquivos/fixtures/ignore28-4/evidência25fixtures+12items/sete docs. Dois links locais/JSON/gates/dependência, sete paths reservados, diff e prefixo Git staged append-only verdes; busca heurística sem segredo/path privado detectado, não Gitleaks. Versões/PATH/help E3, licenças/contexto E2; nenhuma instalação ou adoção. Review/CI pendentes, passes=false.
+
+## 2026-10-02 — GOV-003 — Review
+
+P-REV gpt-6-sol/medium read-only conferiu diff/spec/fontes: sem P0/P1/P2, saída E2 usada. Inventário distingue disponibilidade/adoção/versões/licenças/help versus audit; lacunas de origem/licença/compatibilidade ficam para adoção, sem instalar nesta tarefa. Um delegado, nenhum escalonamento; uma reexecução de inventário após sintaxe PS, sem CI iniciado; uso/custo não registrado. CI da entrega pendente, passes=false. Próximo GOV-004 após gate final.
