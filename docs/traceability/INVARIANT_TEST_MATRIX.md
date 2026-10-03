@@ -8,3 +8,14 @@
 | INV-RET-001 | RET-* | DB/RET-* | devolução | todo |
 | INV-REC-001 | REC-* | DB/REC-* | recorrência | todo |
 | INV-BKP-001..002 | BKP-* | BKP-* | backup/restore | todo |
+
+## Contas — detalhe planejado de INV-FIN-001/002
+
+Vínculo [MVP-01/contas](REQUIREMENTS_MATRIX.md#mvp-01--contas-rastreabilidade-planejada), rastreado documentalmente por TRC-001. Detalha os dois IDs do range acima sem duplicar sua contagem ou alterar os outros invariantes. **Planejado / E0 de produto**: paths, comandos, outputs, coverage e CI dos testes financeiros não registrados; audit estrutural/CI documental não são prova dos comportamentos.
+
+| invariante / fonte | unit planejado / oráculo | SQLite planejado / oráculo | smoke futuro | executores concretos / evidência |
+|---|---|---|---|---|
+| INV-FIN-001 — [inicial não receita](../product/INVARIANTS.md) / [negócio](../product/BUSINESS_RULES.md) / [centavos](../architecture/adr/ADR-013-money-in-cents.md) | inicial10000 centavos, sem movimento posterior: saldo10000, receita0; não contar inicial duas vezes | banco limpo/upgrade conforme migration; cadastro/reabertura preserva saldo inicial/histórico sem criar receita ordinária; forma física não decidida nesta matriz | SMK-003/SMK-009 (subfluxo contas/saldo): configurar conta no build de produção, fechar/reabrir, inicial/saldo10000 e receita0 | FIN-004, FIN-005, FIN-006, FIN-007, FIN-008, UI-003, SMK-003, SMK-009; testes/run/coverage não registrados |
+| INV-FIN-002 — [saldo derivado](../product/INVARIANTS.md) / [negócio](../product/BUSINESS_RULES.md) / [SQLite](../architecture/adr/ADR-003-sqlite-source-of-truth.md) | inicial10000 + entrada2500 - saída900 =11600; sem movimentos mantém inicial; contrato não permite escrita direta do saldo derivado, prova por FIN-030 | histórico/query por conta coincidem após persistir/reabrir, outra conta inalterada; edição canônica reflete nova projeção e auditoria; rollback/atomicidade completos remetidos a INV-FIN-006/007/TRC-005 | SMK-003/SMK-009 (subfluxo contas/saldo): configurar, registrar entrada/saída e conferir11600 no extrato/projeção; reabrir e confirmar valor | FIN-024, FIN-025, FIN-017, FIN-018, FIN-021, FIN-028, FIN-029, FIN-030, FIN-026, DSH-002, SMK-003, SMK-009; testes/run/coverage não registrados |
+
+Unit não prova SQLite; SQLite exige fixtures reais/temporárias e migration banco vazio/upgrade. Componente exibe saída do caso de uso; smoke usa build de produção. [Política de coverage](../quality/COVERAGE_POLICY.md), [estratégia](../quality/TEST_STRATEGY.md) e [smoke](../quality/SMOKE_TEST_POLICY.md) continuam gates dos executores. Cenários de entrada/saída/transferência e recebimento/reembolso têm rastreamento próprio futuro; suas provas não são fechadas aqui.

@@ -4,7 +4,7 @@ Base documental: DOC-005, revisão de produto no SHA `0bca4a5`. São **13 grupos
 
 | ID | Grupo do escopo | Comportamento já definido / fonte |
 |---|---|---|
-| MVP-01 | contas | Saldo inicial fora de receita; saldo posterior derivado de movimentos ([negócio](../product/BUSINESS_RULES.md), INV-FIN-001/002). |
+| MVP-01 | contas | Saldo inicial fora de receita; saldo posterior derivado de movimentos ([negócio](../product/BUSINESS_RULES.md), INV-FIN-001/002). [Rastreabilidade planejada TRC-001](REQUIREMENTS_MATRIX.md#mvp-01--contas-rastreabilidade-planejada), produto E0/testes ainda não registrados. |
 | MVP-02 | categorias | Criar, renomear e desativar preservando referência histórica ([negócio](../product/BUSINESS_RULES.md)). |
 | MVP-03 | entradas | Movimento de entrada com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). |
 | MVP-04 | saídas | Movimento de saída com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). |
@@ -24,7 +24,7 @@ Base documental: DOC-005, revisão de produto no SHA `0bca4a5`. São **13 grupos
 - [USER_JOURNEYS](../product/USER_JOURNEYS.md): **7 jornadas**; uma jornada pode usar vários grupos.
 - [BUSINESS_RULES](../product/BUSINESS_RULES.md): **9 bullets**; um bullet pode conter várias regras.
 - [SECURITY_REQUIREMENTS](../security/SECURITY_REQUIREMENTS.md): **8 IDs**; controles transversais, não capacidades adicionais.
-- [Matriz](REQUIREMENTS_MATRIX.md): oito linhas de produto agrupam capacidades; linhas DOC-* são evidência documental. A decomposição requisito → invariante → teste será feita nos TRC-* do [roadmap](../../planning/ROADMAP.md).
+- [Matriz](REQUIREMENTS_MATRIX.md): oito linhas-síntese de produto agrupam capacidades; o detalhe MVP-01 remete a testes ainda planejados; linhas DOC-* são evidência documental. A decomposição requisito → invariante → teste será feita nos TRC-* do [roadmap](../../planning/ROADMAP.md).
 
 ## Restrições essenciais da entrega
 
