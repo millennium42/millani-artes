@@ -6,7 +6,7 @@
   "dependencies": [],
   "acceptanceCriteria": ["<critério verificável>"],
   "checks": ["<comando/teste>"],
-  "agentPlan": "single-agent | leader/delegates/model/effort/paths",
+  "agentPlan": "single-agent | leader/delegates/model/effort | reserva: ID/responsável/base/paths exatos/read-write/estado/conflitos/liberação após CI final e nota (spec/handoff)",
   "evidence": "E0",
   "humanGateRequired": false,
   "passes": false,

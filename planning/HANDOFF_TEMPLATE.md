@@ -2,7 +2,7 @@
 
 Estado / objetivo / resultado / passes e gates pendentes:
 
-Arquivos alterados:
+Arquivos alterados / reserva (ID, responsável, base/revisão, paths exatos, modo, estado, conflitos/reconciliação e liberação): remeter à spec; manter ativa até CI final no SHA exato e nota publicada, com liberação no recibo refs/notes/evidence.
 
 Critérios de aceite e testes executados:
 
