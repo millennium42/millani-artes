@@ -20,7 +20,7 @@ Base documental: DOC-005, revisão de produto no SHA `0bca4a5`. São **13 grupos
 
 ## Conjuntos que não devem ser somados
 
-- [INVARIANTS](../product/INVARIANTS.md): **17 IDs**; regras atravessam os grupos.
+- [INVARIANTS](../product/INVARIANTS.md): **17 IDs**; regras atravessam os grupos. [Índice explícito e testes globais planejadosTRC-005](INVARIANT_TEST_MATRIX.md#operações-compostas--testes-globais-planejados), produtoE0/testes não registrados; detalhes repetem referências sem somar IDs.
 - [USER_JOURNEYS](../product/USER_JOURNEYS.md): **7 jornadas**; uma jornada pode usar vários grupos.
 - [BUSINESS_RULES](../product/BUSINESS_RULES.md): **9 bullets**; um bullet pode conter várias regras.
 - [SECURITY_REQUIREMENTS](../security/SECURITY_REQUIREMENTS.md): **8 IDs**; controles transversais, não capacidades adicionais.
