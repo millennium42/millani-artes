@@ -229,3 +229,14 @@ P-REV gpt-6-sol/medium read-only conferiu os cinco critérios e diff/fontes: sem
 Entrega 6073273db0efa1efea553d26a30e0c7877fc0783 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37050459499 completed/success no SHA exato; job110982285577/todos os steps verdes.
 Checks locais E3: inventário/links/JSON/gates/dependência/workflow16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+13items/sete docs/oito paths/diff/log staged/busca heurística (não Gitleaks). Aplicabilidade/gate/review E2, sem P0/P1/P2 e sem E4. Resultado não aplicável limitado ao inventário visível; nenhuma dispensa/controle relaxado.
 Passes=true após CI da entrega; gate final exige CI do registro no SHA final e nota refs/notes/evidence antes de GOV-005. Segunda execução leve prevista; nota evita terceiro commit/CI. Um delegado, nenhum escalonamento/retry; coverage/smoke NA, tokens/custo por agente não registrado.
+
+## 2026-10-02 — GOV-005 — Aplicação da política multiagente
+
+Base8c7e7bc/CI37050797951/nota revalidados, GOV-001db11682/CI37044352140/nota conferida. Turno anterior foi progresso: GOV-004 publicado e fechado, CI final e nota confirmados. RECON E3: primeiro todo desbloqueado GOV-005; oito itens passes=true; oito rotas/doze personas (catálogo, não disponibilidade); referências existentes e baseline mapa16fontes108arquivos/checker13items verdes.
+RED E2: spec/handoff do commit2548603 afirmam ausência de CI e próximoDOC-002; work item ausente no índice. Política/personas/templates já satisfazem o contrato e ficam preservados. Seis registros reservados; sem alterar produto/ADR/threshold/script/pipeline/tooling ou modelo do líder.
+P-INT único escritor/executor/committer; P-REV solicitado6sol/medium read-only/fork sem histórico após diff, uma pergunta/contrato limitado. Checks/review/CI finais pendentes; passes=false. Uso/custo/economia não registrado. Handoff planning/handoffs/GOV-005.md; próximo GOV-006 após gate final.
+
+## 2026-10-03 — GOV-005 — Checks e review verdes
+
+Workflow completo E3 do Integrador: mapa16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+14items/sete docs. Um link local/JSON/dependência/seis paths/diff/log Git staged append-only verdes; blobs de política/personas/tokens preservados; busca heurística sem padrões detectados, não Gitleaks. Coverage/smoke NA.
+P-REV solicitado gpt-6-sol/medium read-only/fork sem histórico após diff, contrato limitado: sem P0/P1/P2 nos cinco critérios; saída E2 usada, gates finais pendentes à época, sem executar checks/scans/CI/escrita. Configuração efetiva não exposta; E3 somente pelos checks do Integrador. Um delegado, nenhum escalonamento/retry, uso/custo/economia medida não registrado. CI da entrega pendente; passes=false; próximo GOV-006 após gate final.
