@@ -240,3 +240,9 @@ P-INT único escritor/executor/committer; P-REV solicitado6sol/medium read-only/
 
 Workflow completo E3 do Integrador: mapa16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+14items/sete docs. Um link local/JSON/dependência/seis paths/diff/log Git staged append-only verdes; blobs de política/personas/tokens preservados; busca heurística sem padrões detectados, não Gitleaks. Coverage/smoke NA.
 P-REV solicitado gpt-6-sol/medium read-only/fork sem histórico após diff, contrato limitado: sem P0/P1/P2 nos cinco critérios; saída E2 usada, gates finais pendentes à época, sem executar checks/scans/CI/escrita. Configuração efetiva não exposta; E3 somente pelos checks do Integrador. Um delegado, nenhum escalonamento/retry, uso/custo/economia medida não registrado. CI da entrega pendente; passes=false; próximo GOV-006 após gate final.
+
+## 2026-10-03 — GOV-005 — CI da entrega e fechamento
+
+Entrega dd507ce98e098aada7aedbca5e0b4d42b34b81f9 publicada. CI E3: https://github.com/millennium42/millani-artes/actions/runs/37091866998 completed/success no SHA exato; job111113718667/todos os steps verdes.
+Checks E3 do Integrador: workflow16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+14items/sete docs, links/JSON/dependência/seis paths/diff/log Git staged append-only/busca heurística (não Gitleaks); blobs de política/personas/tokens preservados. Política/contrato/review E2 sem P0/P1/P2; um delegado com configuração solicitada e retorno limitado, efetiva/uso/custo não registrado, sem economia medida.
+Passes=true após CI da entrega; gate final exige CI do registro no SHA final e nota refs/notes/evidence antes de GOV-006. Segunda execução leve prevista; nota evita terceiro commit/CI. Nenhum escalonamento/retry; coverage/smoke NA. Política/produto/ADR/threshold/script/pipeline/modelo do líder sem alteração.
