@@ -5,17 +5,17 @@ Base documental: DOC-005, revisão de produto no SHA `0bca4a5`. São **13 grupos
 | ID | Grupo do escopo | Comportamento já definido / fonte |
 |---|---|---|
 | MVP-01 | contas | Saldo inicial fora de receita; saldo posterior derivado de movimentos ([negócio](../product/BUSINESS_RULES.md), INV-FIN-001/002). [Rastreabilidade planejada TRC-001](REQUIREMENTS_MATRIX.md#mvp-01--contas-rastreabilidade-planejada), produto E0/testes ainda não registrados. |
-| MVP-02 | categorias | Criar, renomear e desativar preservando referência histórica ([negócio](../product/BUSINESS_RULES.md)). |
-| MVP-03 | entradas | Movimento de entrada com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). |
-| MVP-04 | saídas | Movimento de saída com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). |
-| MVP-05 | transferências | Alterar contas sem alterar receita, despesa ou resultado ([negócio](../product/BUSINESS_RULES.md), INV-FIN-003). |
-| MVP-06 | recorrências | Fixa/variável, estados previstos e pagamento com saída única ([negócio](../product/BUSINESS_RULES.md), INV-REC-001). |
+| MVP-02 | categorias | Criar, renomear e desativar preservando referência histórica ([negócio](../product/BUSINESS_RULES.md)). [Rastreabilidade financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada), produtoE0/testes não registrados. |
+| MVP-03 | entradas | Movimento de entrada com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). [Rastreabilidade financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada), produtoE0/testes não registrados. |
+| MVP-04 | saídas | Movimento de saída com contexto Casa/Fábrica ([negócio](../product/BUSINESS_RULES.md), [glossário](../product/GLOSSARY.md)). [Rastreabilidade financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada), produtoE0/testes não registrados. |
+| MVP-05 | transferências | Alterar contas sem alterar receita, despesa ou resultado ([negócio](../product/BUSINESS_RULES.md), INV-FIN-003). [Rastreabilidade financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada), produtoE0/testes não registrados. |
+| MVP-06 | recorrências | Fixa/variável, estados previstos e pagamento com saída única ([negócio](../product/BUSINESS_RULES.md), INV-REC-001). [Rastreabilidade financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada), produtoE0/testes não registrados. |
 | MVP-07 | produtos | Template ativo; alteração não muda o item de venda congelado ([negócio](../product/BUSINESS_RULES.md), INV-SAL-005). |
 | MVP-08 | vendas | Vários itens/pagamentos, item livre sem cadastro; pendência exige cliente/vencimento e não aumenta saldo ([negócio](../product/BUSINESS_RULES.md), INV-SAL-001/002/003/006). |
 | MVP-09 | clientes mínimos | Cadastro mínimo; cliente identificado quando a venda fica pendente ([jornadas](../product/USER_JOURNEYS.md), [negócio](../product/BUSINESS_RULES.md), INV-SAL-002). |
 | MVP-10 | recebimentos | Parcial/total na conta escolhida, sem exceder o devido sem operação explícita ([jornadas](../product/USER_JOURNEYS.md), [negócio](../product/BUSINESS_RULES.md), INV-FIN-004 e INV-SAL-004). |
 | MVP-11 | devoluções/reembolsos | Respeitar quantidade restante; reduzir dívida ou reembolsar dinheiro em uma conta escolhida ([negócio](../product/BUSINESS_RULES.md), INV-RET-001 e INV-FIN-005). |
-| MVP-12 | dashboard | Projetar a fonte de verdade sem agregados editáveis ([negócio](../product/BUSINESS_RULES.md)). |
+| MVP-12 | dashboard | Projetar a fonte de verdade sem agregados editáveis ([negócio](../product/BUSINESS_RULES.md)). [Parcela financeira planejada TRC-002](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--financeiro-rastreabilidade-planejada); parcela comercial aguardaTRC-003, produtoE0. |
 | MVP-13 | backup/restore local criptografado | Backup manual/automático e restore validado, íntegro, preservando banco atual em falha ([jornadas](../product/USER_JOURNEYS.md), [segurança](../security/BACKUP_SECURITY.md), INV-BKP-001/002). |
 
 ## Conjuntos que não devem ser somados
