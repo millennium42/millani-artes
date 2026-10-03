@@ -32,6 +32,8 @@ rtk proxy pwsh -NoProfile -File scripts/test-evidence-states.ps1
 rtk proxy pwsh -NoProfile -File scripts/check-evidence-states.ps1
 rtk proxy pwsh -NoProfile -File scripts/test-work-items.ps1
 rtk proxy pwsh -NoProfile -File scripts/check-work-items.ps1
+rtk proxy pwsh -NoProfile -File scripts/test-progress-log.ps1
+rtk proxy pwsh -NoProfile -File scripts/check-progress-log.ps1 -BaseRef HEAD -TargetRef INDEX
 ```
 
-Os checks validam o mapa contra a árvore Git, seus casos negativos, a exclusão de artefatos locais/sensíveis e o schema/declarações dos work items. Schema válido não comprova fatos, aceite humano ou CI; consulte os registros. Build, testes de produto e instalação serão definidos nas tarefas `INF-*` e `REL-*` do roadmap.
+Os checks validam o mapa contra a árvore Git, seus casos negativos, a exclusão de artefatos locais/sensíveis, o schema/declarações dos work items e o progress log append-only. Para o log, adicione suas mudanças ao índice antes de comparar com HEAD; para commits, informe a base e o alvo explicitamente. A comparação usa os bytes dos blobs Git e falha se base/histórico/arquivo não estiverem disponíveis; CI usa push.before ou PR.base.sha contra HEAD do checkout. Schema/log válido não comprova fatos, aceite humano ou CI; consulte os registros. Build, testes de produto e instalação serão definidos nas tarefas `INF-*` e `REL-*` do roadmap.

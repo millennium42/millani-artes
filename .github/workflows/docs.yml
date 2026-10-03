@@ -12,6 +12,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Validate project map against checkout
         shell: pwsh
         run: |
@@ -25,6 +27,13 @@ jobs:
           ./scripts/check-evidence-states.ps1
           ./scripts/test-work-items.ps1
           ./scripts/check-work-items.ps1
+      - name: Validate append-only progress log
+        shell: pwsh
+        env:
+          MILLANI_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          ./scripts/test-progress-log.ps1
+          ./scripts/check-progress-log.ps1 -BaseRef $env:MILLANI_BASE_SHA -TargetRef HEAD
       - name: Require canonical documentation
         shell: pwsh
         run: |
