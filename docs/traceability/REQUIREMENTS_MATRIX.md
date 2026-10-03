@@ -34,7 +34,7 @@ Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md).
 | requisito financeiro rastreado (documental) | MVP-02..06/parcela financeira12/fontes/matrizes | TRC-002 | adequação/review E2; links/IDs/scope/workflow/audit E3 verdes | nove vínculos/quatro invariantes/66executores; umP2 corrigido/delta sem novos achados; produtoE0; CI entrega37135550698 success no SHAac7a44d/oito steps; passestrue documental/reserva ativa até CI final-nota/liberação |
 | requisito comercial rastreado (documental) | MVP07..11/parcela comercial12/fontes/matrizes | TRC-003 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 11vínculos/9invariantes/78executores planejados; umP2 pagamentos iniciais corrigido/delta sem novos achados; produtoE0; CI entrega37137398462 success no SHA839469c/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 
-| requisito backup rastreado (documental) | MVP13/fontes/matrizes | TRC-004 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 8vínculos/2invariantes/25executores planejados; review sem P0/P1/P2 nos critérios1–3; produtoE0/passestrufalse/CI pendente/reserva ativa |
+| requisito backup rastreado (documental) | MVP13/fontes/matrizes | TRC-004 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 8vínculos/2invariantes/25executores planejados; review sem P0/P1/P2 nos critérios1–3; produtoE0; CI entrega37156189271 success no SHAed2f8bc/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 
 ## MVP-01 — Contas: rastreabilidade planejada
 
