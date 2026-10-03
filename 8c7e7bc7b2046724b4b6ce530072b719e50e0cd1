@@ -1,0 +1,12 @@
+GOV-004 | fechado | E3 documental
+SHA final 8c7e7bc7b2046724b4b6ce530072b719e50e0cd1
+CI Documentation https://github.com/millennium42/millani-artes/actions/runs/37050797951 completed/success no SHA exato; job110983401349/todos os steps verdes.
+Entrega 6073273db0efa1efea553d26a30e0c7877fc0783 CI37050459499/job110982285577 success.
+P-INT único escritor/executor/committer. P-REV gpt-6-sol/medium read-only E2 sem P0/P1/P2 nos cinco critérios; saída usada, nenhum check delegado.
+Aplicabilidade/gate E2: inventário visível só continha template vazio; nenhuma dispensa proposta/aprovada. Gate humano não aplicável a esse resultado, sem E4. Achado futuro exige proposta concreta e aceite humano explícito; não usar esta revisão como waiver.
+RELEASE_READINESS corrigido de exceção expirada para temporária aprovada e vigente; EXCEPTION_TEMPLATE vincula aprovação a revisão/escopo/expiração e preserva autoridade/gates superiores.
+Checks locais E3: inventário/links/JSON/gates/dependência/workflow16fontes108arquivos/fixtures/ignore28-4/evidência25fixtures+13items/sete docs/oito paths/diff/log Git staged append-only.
+Fechamento:6registros/2links locais+2CI, sem mudar template/release/scripts/pipeline revisados. Busca heurística proporcional sem padrões de segredo/path privado detectados, não Gitleaks.
+Sem scanner/instalação/ADR/threshold ou controle dispensado. Coverage/smoke de produto NA; aplicativo/instalador ainda ausentes.
+Duas execuções leves de CI, sem rerun; recibo em notes evita terceiro commit/CI. Um delegado, nenhum escalonamento. Duas interrupções locais antes da nota: SHA em memória ausente (HEAD recapturado) e consulta de nota inexistente retornou exit1. Workflow sem reexecução; nenhum novo CI.
+Uso/custo por agente não registrado. Sem bloqueio. Próximo ID GOV-005. META em andamento.
