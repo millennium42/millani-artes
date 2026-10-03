@@ -18,11 +18,13 @@ jobs:
           ./scripts/test-project-map.ps1
           ./scripts/check-project-map.ps1
           ./scripts/test-gitignore.ps1
-      - name: Validate evidence states in work items
+      - name: Validate work item schema and evidence states
         shell: pwsh
         run: |
           ./scripts/test-evidence-states.ps1
           ./scripts/check-evidence-states.ps1
+          ./scripts/test-work-items.ps1
+          ./scripts/check-work-items.ps1
       - name: Require canonical documentation
         shell: pwsh
         run: |

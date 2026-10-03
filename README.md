@@ -28,6 +28,10 @@ Com PowerShell 7, Git e RTK disponíveis, execute na raiz do checkout:
 rtk proxy pwsh -NoProfile -File scripts/test-project-map.ps1
 rtk proxy pwsh -NoProfile -File scripts/check-project-map.ps1
 rtk proxy pwsh -NoProfile -File scripts/test-gitignore.ps1
+rtk proxy pwsh -NoProfile -File scripts/test-evidence-states.ps1
+rtk proxy pwsh -NoProfile -File scripts/check-evidence-states.ps1
+rtk proxy pwsh -NoProfile -File scripts/test-work-items.ps1
+rtk proxy pwsh -NoProfile -File scripts/check-work-items.ps1
 ```
 
-Os checks validam o mapa contra a árvore Git, seus casos negativos e a exclusão de artefatos locais/sensíveis. Build, testes de produto e instalação serão definidos nas tarefas `INF-*` e `REL-*` do roadmap.
+Os checks validam o mapa contra a árvore Git, seus casos negativos, a exclusão de artefatos locais/sensíveis e o schema/declarações dos work items. Schema válido não comprova fatos, aceite humano ou CI; consulte os registros. Build, testes de produto e instalação serão definidos nas tarefas `INF-*` e `REL-*` do roadmap.

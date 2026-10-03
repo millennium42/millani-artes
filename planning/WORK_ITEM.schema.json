@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Millani Artes — work item concreto ou coleção",
+  "oneOf": [
+    { "$ref": "#/definitions/workItem" },
+    { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/workItem" } }
+  ],
+  "definitions": {
+    "description": { "type": "string", "pattern": "\\S" },
+    "id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]*-[0-9]{3}(?![\\s\\S])" },
+    "workItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "specPath", "status", "dependencies", "acceptanceCriteria", "checks", "agentPlan", "evidence", "humanGateRequired", "passes", "notes"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "title": { "$ref": "#/definitions/description" },
+        "specPath": { "type": "string", "pattern": "^planning/specs/[A-Z][A-Z0-9]*-[0-9]{3}\\.md(?![\\s\\S])" },
+        "status": { "enum": ["todo", "in_progress", "blocked", "done"] },
+        "dependencies": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/id" } },
+        "acceptanceCriteria": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/description" } },
+        "checks": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/description" } },
+        "agentPlan": { "$ref": "#/definitions/description" },
+        "evidence": { "enum": ["E0", "E1", "E2", "E3", "E4"] },
+        "humanGateRequired": { "type": "boolean" },
+        "passes": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "if": { "properties": { "passes": { "const": true } }, "required": ["passes"] },
+      "then": { "properties": { "status": { "const": "done" }, "evidence": { "enum": ["E3", "E4"] } } }
+    }
+  }
+}
