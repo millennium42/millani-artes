@@ -1,0 +1,19 @@
+TRC-003 | done/passestru documental | E3 checks/git/CI; E2 adequação/review; E0 produto.
+SHA final e81897cdd2b9475aa9c53875c72da6c66a20d262; CI https://github.com/millennium42/millani-artes/actions/runs/37137575872 completed/success no SHA exato; run37137575872/job111245120120/oito steps verdes/attempt1.
+Entrega 839469ca9954da2d6572972954d01c1722db4985; CI https://github.com/millennium42/millani-artes/actions/runs/37137398462 completed/success no SHA exato/run37137398462/job111244604271/oito steps verdes/attempt1.
+Reserva TRC-003: dono P-INT (/root), base1bcb7a889d85eb0909e35c921fb95ce7aacb8cf2, branch codex/trc-003-sales-traceability, write exclusivo desde SPEC. Oito paths exatos:
+docs/traceability/REQUIREMENTS_MATRIX.md
+docs/traceability/INVARIANT_TEST_MATRIX.md
+docs/traceability/ESSENTIAL_REQUIREMENTS.md
+planning/specs/TRC-003.md
+planning/handoffs/TRC-003.md
+planning/work-items/BOOTSTRAP-INDEX.json
+planning/ROADMAP.md
+planning/PROGRESS_LOG.md
+Estado: reserva liberada somente após CI final verde no SHA acima e publicação deste recibo em refs/notes/evidence. Passestrue foi registrado após CI entrega, sem liberar antes dos gates finais. Conflitos iniciais não registrados; checkout/index limpos no RECON, outro escritor não observado; sem exclusão externa/lock OS comprovado. Alteração de scope/conflito/interrupção exige reconciliação.
+Root E3: workflow16fontes131files; ignore28ignorados/4fontes-lockfiles preservados; evidência25fixtures26items; schema72fixtures26items; log26fixtures/prefixoGitbase65.738bytes/entrega68.385bytes/7docs. Audit8paths/25registros antigos intactos/245IDsroadmap/78executores/11vínculos comerciais/9invariantes estruturais; 195links locais31fragments2externos; contagem13grupos17invariantes7jornadas9bullets-negócio8segurança; JSON/dependência/blobs/diff/heurística verdes. Contas/financeiro antigos intactos; planos comerciais/inventário/invariantes iguais à entrega no fechamento.
+P-REV solicitado gpt-6-sol medium/read-only/fork sem histórico/tentativa1; umP2 corrigido: pagamentos parciais iniciais500+1000 numa venda3000, dívida1500, contas escolhidas, cliente-vencimento/atomicidade planejada. Mesmo revisor conferiu delta sem novos P0/P1/P2; retorno usado, sem checks/CI do delegado. Root solicitadogpt-6.1-sol ultra; efetivos/input/output/reasoning/cache/custo/duração por tarefa-agente não registrados. Um delegado/um retorno complementar/sem escalonamento. Uma chamada PowerShell legado rejeitada antes dos checks, corrigida para pwsh7.6.5/um retry de orquestração; workflow completo verde/nenhum checker falhou; uma consulta diff truncada, revisão restrita depois.
+Segurança proporcional: exemplos sintéticos/sem cliente real; heurísticaE3 não é Gitleaks, scanner não executado. Sem nova dependência/parser/teste espelho/job.
+Produto/testes financeiros E0; cobertura/smoke NA, testes/comandos/saídas financeiras não registrados. Thresholds futuros global90/90/90/85 e críticos95/95/95/90 preservados. SQLite/rollback/UI/exe/setup.exe não implementados/não provados. CoordenaçãoSAL-RCV/desconto/arredondamento/quantidade/casos mistos/idem/cancelamento aguardam specs; sem regra inventada. Datas clockUTC2026-10-03 16:14:29/Windows/PowerShell7.6.5 executados no RECON.
+Economia: duas execuções Documentation/umjob/oito steps/attempt1, sem rerun/job novo; refs/notes/evidence evita terceiro commit/run. Custo/economia monetária não registrados.
+Meta geral: get_goal consultado após push do fechamento retornou paused; estado atual pausado no aplicativo, registros de andamento anteriores à consulta. Trabalho já publicado encerrado com recibo; meta financeira/setup.exe não alcançada; nenhum próximo item iniciado. Próxima tarefa técnica TRC-004 após liberação; retomada da meta controlada pelo usuário.
