@@ -23,7 +23,7 @@ Base documental: DOC-005, revisão de produto no SHA `0bca4a5`. São **13 grupos
 - [INVARIANTS](../product/INVARIANTS.md): **17 IDs**; regras atravessam os grupos. [Índice explícito e testes globais planejadosTRC-005](INVARIANT_TEST_MATRIX.md#operações-compostas--testes-globais-planejados), produtoE0/testes não registrados; detalhes repetem referências sem somar IDs.
 - [USER_JOURNEYS](../product/USER_JOURNEYS.md): **7 jornadas**; uma jornada pode usar vários grupos.
 - [BUSINESS_RULES](../product/BUSINESS_RULES.md): **9 bullets**; um bullet pode conter várias regras.
-- [SECURITY_REQUIREMENTS](../security/SECURITY_REQUIREMENTS.md): **8 IDs**; controles transversais, não capacidades adicionais.
+- [SECURITY_REQUIREMENTS](../security/SECURITY_REQUIREMENTS.md): **8 IDs**; controles transversais, não capacidades adicionais. [Rastreabilidade planejadaTRC-006](SECURITY_TRACEABILITY.md), produtoE0/scans não registrados; IDs de requisito não equivalem às tarefasSEC-*.
 - [Matriz](REQUIREMENTS_MATRIX.md): oito linhas-síntese de produto agrupam capacidades; o detalhe MVP-01 remete a testes ainda planejados; linhas DOC-* são evidência documental. A decomposição requisito → invariante → teste será feita nos TRC-* do [roadmap](../../planning/ROADMAP.md).
 
 ## Restrições essenciais da entrega

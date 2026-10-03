@@ -35,6 +35,7 @@ Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md).
 | requisito comercial rastreado (documental) | MVP07..11/parcela comercial12/fontes/matrizes | TRC-003 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 11vínculos/9invariantes/78executores planejados; umP2 pagamentos iniciais corrigido/delta sem novos achados; produtoE0; CI entrega37137398462 success no SHA839469c/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 | requisito backup rastreado (documental) | MVP13/fontes/matrizes | TRC-004 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 8vínculos/2invariantes/25executores planejados; review sem P0/P1/P2 nos critérios1–3; produtoE0; CI entrega37156189271 success no SHAed2f8bc/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 | invariantes rastreados (documental) | 17IDs canônicos/matriz/global/fontes | TRC-005 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 17IDs/8famílias/78executores planejados; doisP2corrigidos/delta sem novos achados; produtoE0; CI entrega37157269288 success no SHA832efeb/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
+| segurança rastreada (documental) | 8requisitosSEC/fontes/matriz/namespace | TRC-006 | adequação/reviewE2 sem P0/P1/P2; links/IDs/scope/workflow/auditE3 aprovados | 8controles planejados/produtoE0; passesfalse/CI entrega-final-nota pendentes |
 
 ## MVP-01 — Contas: rastreabilidade planejada
 
