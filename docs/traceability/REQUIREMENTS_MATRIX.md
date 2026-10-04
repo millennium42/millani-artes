@@ -37,6 +37,7 @@ Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md).
 | invariantes rastreados (documental) | 17IDs canônicos/matriz/global/fontes | TRC-005 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 17IDs/8famílias/78executores planejados; doisP2corrigidos/delta sem novos achados; produtoE0; CI entrega37157269288 success no SHA832efeb/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 | segurança rastreada (documental) | 8requisitosSEC/fontes/matriz/namespace | TRC-006 | adequação/reviewE2 sem P0/P1/P2; links/IDs/scope/workflow/auditE3 aprovados | 8controles planejados/produtoE0; done/passestru após CI entrega/reserva ativa até CI final-nota |
 | dependências canônicas alinhadas (documental) | roadmap245IDs/índice30items/4legados | PLN-006 | comparação/auditE3 aprovado; adequação/reviewE2 sem achados | executores todo/E0/gates preservados; done/passestru após CI entrega/reserva ativa até CI final-nota |
+| runtimes fixados (infraestrutura) | .node-version/rust-toolchain/registro/reprodução | INF-001 | hashes/versões/host/seleção local E3; workflow/audit E3 verdes; reviewE2 umP2 corrigido/verificado pelo líder | runtimeE3/passesfalse; produtoE0/CI documental apenas |
 
 ## MVP-01 — Contas: rastreabilidade planejada
 

@@ -12,6 +12,7 @@
 | Rastreabilidade | `docs/traceability/` | requisito → work item → teste e evidência |
 | Governança | `governance/` | IA, evidência, exceções e ferramentas |
 | Planejamento | `planning/` | roadmap, specs, work items, handoffs e histórico |
+| Runtimes | `.node-version`, `rust-toolchain.toml` | pins dev Windows; reprodução e evidência em operação |
 | Automação | `.github/workflows/` | checks remotos |
 | Checks locais | `scripts/` | validação reproduzível do mapa |
 
