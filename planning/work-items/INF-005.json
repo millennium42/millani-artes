@@ -1,0 +1,25 @@
+{
+  "id": "INF-005",
+  "title": "configurar Biome",
+  "specPath": "planning/specs/INF-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-004"
+  ],
+  "acceptanceCriteria": [
+    "Biome2.5.15/devpin/registro preregistrado/lock-ci-integrity/versionCLI reproduzíveis",
+    "formatter-linter recommended/warningsgate/gitignore-allowlist sem formatar docs-lock-Rust",
+    "checks/probes negativos reais removidos/fonte sóformatada/buildstrict-Rust-audits-documentação verdes",
+    "review-registros-commits-CI final-notapub/liberação antesINF006"
+  ],
+  "checks": [
+    "npm install pin --ignore-scripts/npmci --ignore-scripts/Biomeversion/format:check/lint/probes",
+    "npm build strict; Rustfmt-clippy-test-audit/npm audit high",
+    "Documentation existente/mapa-schema-evidência-logprefix/scope-allowlist-lock-resolution-links/review"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer/base4416b35/codex/inf-005-biome/17paths +probe temporário e caches na spec, ativa atéCI final-notapub. P-REV5.6Solmedium executado/read-only/perfilreutilizado-missãoSHApróprio/tentativa1/até3achados/contextomínimo/continuidade; retornoE2 semachados usado/rootconfirmou baseline-executou checks; efetivos-uso-custo não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 install2.5.15/devpin-ignore-scripts/npmci27pacotes/79lockentries anteriores intactas+9Biome=88registrycoerentes; CLI2.5.15/format-lint7files0nofixes/probe8ºarquivoformat-noDebuggerexit1 esperado/removido; comandosread-onlybytespreservados. tsc-buildstrict/fmt-clippy-test0/audits exit0/npm0vulnCargo0vuln2avisosforaWindows247nodes. UI/Vite-tsconfig/Cargo/manifestsdepsanteriores intactos. ReviewE2 semachados/Documentation9checks/audit12paths34items29done/245roadmap/prefixo108408/153links/9PSblocos/verbose7files-exclusões/probeausente verdes; commits-CI entrega-final-notapub próprios pendentes; coverage-Vitest-finanças-release não comprovados."
+}

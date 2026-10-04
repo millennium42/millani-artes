@@ -115,3 +115,20 @@ rtk proxy npm run build
 E3 em 2026-10-04: showConfig inclui todas as três fontes próprias atuais (App.tsx, main.tsx, vite.config.ts). Probe temporária em src com parâmetro sem tipo e string=null produziu TS7006/TS2322; npm run build falhou exit1 antes de iniciar Vite. Probe temporária na configuração Vite produziu TS7006/exit1. Ambas foram removidas/restauradas em finally; configVite/locks permanecem iguais ao baseline. Typecheck e build reais depois passaram, Vite16módulos/151ms. Não confundir falhas negativas esperadas com build final quebrado.
 
 Probes verificam o compilador/pipeline, não coverage de produto. Não há teste espelho/harness permanente nem novo pacote; lint/test/coverage e script typecheck próprios seguem INF005..009. Rustfmt/clippy/test(0)/audits também passaram; dois avisos Cargo fora do grafo Windows mantidos, semignore. Evidência, comandos e limites no [handoff](../../planning/handoffs/INF-004.md). UI inalterada preserva o smoke INF002, sem nova aprovação financeira/release.
+
+## Formatter/linter — INF-005
+
+Biome2.5.15 é devDependency fixa; npm ci --ignore-scripts reproduz wrapper e binário opcional Windows do lock. Não usar npx com versão flutuante. A configuração usa schema local do pacote instalado, recommended lint, warnings como erro, formatter2espaços/LF e vcs/gitignore. Includes cobre src, vite.config.ts, tsconfig.json, package.json e biome.json; docs/locks/Rust/artefatos ficam fora dessa ferramenta. Rust conserva seus próprios checks.
+
+```powershell
+rtk proxy npm ci --ignore-scripts --no-fund --no-audit
+rtk proxy npm run format:check
+rtk proxy npm run lint
+rtk proxy npm run build
+```
+
+Para aplicar formatação dentro do escopo: rtk proxy npm run format. Esse comando escreve; format:check/lint só verificam. Nenhum assist/refactor/plugin adicional configurado; linter recomendado não foi reduzido.
+
+E3 em2026-10-04: CLI2.5.15/install-ignore-scripts/npmci27pacotes; formatter/linter7arquivos/nenhuma correção necessária. Probe temporária com formato divergente/debugger produziu exit1 nos dois checks, incluindo lint/suspicious/noDebugger; removida emfinally. Checks positivos/build strict depois passaram sem alterar fonte/configs/locks durante comandos read-only. 79entradas npm anteriores preservadas; 9novasBiome/88registry ao todo, pin2.5.15/fontes-integrity verificadas. Novo lock SHA256722d67e9765baf435e3440c47db94d141dd7980a789327c4d42e57e6c0440f4d.
+
+Audits npm0vuln/Cargo0vuln classificadas+2avisos foraWindows247nodes mantidos semignore; fmt/clippy/test0 passaram. Tooling não prova coverage/Vitest/máquina limpa/finanças/release. [Registro](../../governance/TOOL_REGISTER.md), [configuração oficial](https://biomejs.dev/reference/configuration/) e [handoff](../../planning/handoffs/INF-005.md) guardam escopo/limites; CI atual continua somenteDocumentation.
