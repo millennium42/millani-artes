@@ -2,7 +2,7 @@
   "id": "INF-004",
   "title": "ativar TypeScript strict",
   "specPath": "planning/specs/INF-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único escritor/checks/committer; base6e6e911/branchcodex/inf-004-typescript-strict/8paths +2probes temporários e caches na spec, ativa atéCI final-notapub. P-REV5.6Sol medium executado/read-only/forknone/tentativa1/até3achados/contexto delimitado/continuidade; revisor reutilizado INF003 missão-SHA novo/E2 semachados usado/rootconfirmou baseline-executou checks; uso-custo efetivos não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3: strict/noEmit preservados/include src+vite.config/showConfig3fontes; probes srcTS7006/2322/compiler-npmBuild exit1 esperado/ViteConfigTS7006 exit1; probes removidas-restore byteexato. tsc/build positivos exit0/Vite16módulos151ms; fmt/clippy/test0/audits exit0/npm0vulnCargo0vuln2avisosforaWindows247nós. Locks/configVite/manifests/UI preservados. ReviewE2 semachados/Documentation9checks/audit8paths33items28done/245roadmap/prefixo105730/148links/8PSblocos/probeausente verdes; commits/CI entrega-final-notapub pendentes; cobertura/máquina limpa/finanças/release não comprovados."
+  "passes": true,
+  "notes": "E3: strict/noEmit preservados/include src+vite.config/showConfig3fontes; probes srcTS7006/2322/compiler-npmBuild exit1 esperado/ViteConfigTS7006 exit1; probes removidas-restore byteexato. tsc/build positivos exit0/Vite16módulos151ms; fmt/clippy/test0/audits exit0/npm0vulnCargo0vuln2avisosforaWindows247nós. Locks/configVite/manifests/UI preservados. ReviewE2 semachados/Documentation9checks/audit8paths33items28done/245roadmap/prefixo105730/148links/8PSblocos/probeausente verdes; Entrega c23e5835f3d2ba941764eef650509167a7ba2141/CI37243910100 completed-success SHAexato/attempt1/job111557902571/umjob8steps; done/passestrue apósCI entrega; CI do fechamento no SHA final-notapub/liberação obrigatórios antesINF005; cobertura/máquina limpa/finanças/release não comprovados."
 }
