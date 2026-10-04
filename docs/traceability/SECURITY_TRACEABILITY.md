@@ -4,7 +4,7 @@ TRC-006 liga os oito requisitosSEC001..008 de [SECURITY_REQUIREMENTS](../securit
 
 ## IDs de requisito e de executor
 
-SEC-* na primeira coluna identifica requisito do catálogo. SEC-* na coluna executores identifica tarefa no [roadmap](../../planning/ROADMAP.md), que tem intenções diferentes: requisitoSEC002=SQL/constraints, tarefaSEC002=CSP; requisitoSEC007=gates de scans, tarefaSEC007=Gitleaks no CI. Não inferir mapping por número. BKP/DB/FIN/SAL/RCV/RET/REC/UI/INF/ARC-* são outros executores concretos quando o controle cruza camadas; suas dependências/gates continuam pendentes. LegadosFIN001/BKP001 ficam paraPLN006, sem canonicalizar/liberar. Não inventar novo controle ou funcionalidade.
+SEC-* na primeira coluna identifica requisito do catálogo. SEC-* na coluna executores identifica tarefa no [roadmap](../../planning/ROADMAP.md), que tem intenções diferentes: requisitoSEC002=SQL/constraints, tarefaSEC002=CSP; requisitoSEC007=gates de scans, tarefaSEC007=Gitleaks no CI. Não inferir mapping por número. BKP/DB/FIN/SAL/RCV/RET/REC/UI/INF/ARC-* são outros executores concretos quando o controle cruza camadas; suas dependências/gates continuam pendentes. PLN-006 alinhou FIN-001←ARC-002 e BKP-001←SEC-003 ao roadmap; ambos continuam todo/E0/passesfalse, deps futuras pendentes e gate humanoBKP-001 preservado. Correção documental não libera execução/permissões. Não inventar novo controle ou funcionalidade.
 
 ## Oráculos e evidência necessária
 

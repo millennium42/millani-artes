@@ -36,6 +36,7 @@ Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md).
 | requisito backup rastreado (documental) | MVP13/fontes/matrizes | TRC-004 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 8vínculos/2invariantes/25executores planejados; review sem P0/P1/P2 nos critérios1–3; produtoE0; CI entrega37156189271 success no SHAed2f8bc/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 | invariantes rastreados (documental) | 17IDs canônicos/matriz/global/fontes | TRC-005 | adequação/reviewE2; links/IDs/scope/workflow/auditE3 verdes | 17IDs/8famílias/78executores planejados; doisP2corrigidos/delta sem novos achados; produtoE0; CI entrega37157269288 success no SHA832efeb/oito steps; passestrue/reserva ativa até CI final-nota/liberação |
 | segurança rastreada (documental) | 8requisitosSEC/fontes/matriz/namespace | TRC-006 | adequação/reviewE2 sem P0/P1/P2; links/IDs/scope/workflow/auditE3 aprovados | 8controles planejados/produtoE0; done/passestru após CI entrega/reserva ativa até CI final-nota |
+| dependências canônicas alinhadas (documental) | roadmap245IDs/índice30items/4legados | PLN-006 | comparação/auditE3 aprovado; adequação/reviewE2 sem achados | executores todo/E0/gates preservados; passesfalse/CI entrega-final-nota pendentes |
 
 ## MVP-01 — Contas: rastreabilidade planejada
 
@@ -54,7 +55,7 @@ Gates futuros: [teste por camada](../quality/TEST_STRATEGY.md), [coverage](../qu
 
 Execução futura deve registrar path de teste real, comando/ambiente/versão, saída/coverage, SHA exato e run/URL de CI; interpretar cenário como requisito novo exige fonte/decisão de produto. Nenhuma conta real, segredo ou dado de cliente é exemplo.
 
-Dependências: o [roadmap](../../planning/ROADMAP.md) é a fonte canônica dos IDs. A entrada legada FIN-001 no BOOTSTRAP-INDEX depende DB-001, enquanto o roadmap declara ARC-002; divergência registrada, sem alteração/desbloqueio nesta tarefa. PLN-006 e a spec de FIN-001 devem reconciliar fontes antes de execução. Nome/uniquidade/limites/parsing/representação de saldo inicial não definidos aqui; fatura/taxas de cartão e integrações bancárias permanecem fora do [SCOPE](../product/SCOPE.md).
+Dependências: o [roadmap](../../planning/ROADMAP.md) é a fonte canônica dos IDs. [PLN-006](../../planning/specs/PLN-006.md) alinhou a entrada legada FIN-001 no BOOTSTRAP-INDEX de DB-001 para ARC-002, conforme roadmap. Correção documental: FIN-001 permanece todo/E0/passesfalse; dependências/gates e spec completa são exigidos antes da execução. Nome/uniquidade/limites/parsing/representação de saldo inicial não definidos aqui; fatura/taxas de cartão e integrações bancárias permanecem fora do [SCOPE](../product/SCOPE.md).
 
 ## MVP-02 a MVP-06 — Financeiro: rastreabilidade planejada
 
@@ -74,7 +75,7 @@ Abrange categorias, entradas, saídas, transferências, recorrências e projeç�
 
 Provas seguem [estratégia](../quality/TEST_STRATEGY.md), [coverage](../quality/COVERAGE_POLICY.md) global90/90/90/85 e críticos95/95/95/90 (saldo/transferência/recorrência/transação quando Vitest existir), [smoke de produção](../quality/SMOKE_TEST_POLICY.md). Unit/mock não provam SQLite; fixtures de banco vazio/upgrade/rollback e smoke real precisam de execução registrada no SHA executor. Limitações Rust seguem política existente, sem reduzir threshold.
 
-Detalhes ainda não registrados: limites/uniquidade/categoria obrigatória/inativa, parsing monetário, fuso/corte de vencimento, chave/semântica de idempotência/concorrência. Specs dos executores definirão contratos sem derivá-los da UI; FIN-001 legado/roadmap divergentes continuam para reconciliaçãoPLN-006, sem alteração de dependência aqui. Dados exemplificativos são sintéticos. Recebimento/reembolso/venda pendente e backup permanecem interfaces futuras TRC-003/TRC-004/TRC-005, sem prova de produto nesta revisão.
+Detalhes ainda não registrados: limites/uniquidade/categoria obrigatória/inativa, parsing monetário, fuso/corte de vencimento, chave/semântica de idempotência/concorrência. Specs dos executores definirão contratos sem derivá-los da UI; FIN-001 foi alinhado ao roadmap por PLN-006 (ARC-002); execução/spec e gates futuros permanecem pendentes. Dados exemplificativos são sintéticos. Recebimento/reembolso/venda pendente e backup permanecem interfaces futuras TRC-003/TRC-004/TRC-005, sem prova de produto nesta revisão.
 
 ## MVP-07 a MVP-11 — Comercial: rastreabilidade planejada
 
@@ -100,7 +101,7 @@ Exemplos são independentes/sintéticos, sem dado de cliente. Desconto/arredonda
 
 ## MVP-13 — Backup/restore: rastreabilidade planejada
 
-TRC-004 detalha um grupo existente, sem aumentar contagens. Fontes: [escopo](../product/SCOPE.md), [jornada7](../product/USER_JOURNEYS.md), [INV-BKP-001/002](../product/INVARIANTS.md), [arquitetura](../architecture/BACKUP_ARCHITECTURE.md), [ADR015](../architecture/adr/ADR-015-validated-encrypted-backups.md), [ADR016](../architecture/adr/ADR-016-key-management.md), [segurança](../security/BACKUP_SECURITY.md), [operação](../operations/BACKUP_RESTORE.md), [ameaças](../security/THREAT_MODEL.md). **Planejado/E0 produto**: código/testes/paths/comandos/saídas/coverage/CI de backup/restore não registrados; checksE3 documentais não provam crypto/SQLite/restore. BKP-* abaixo são executores futuros no [roadmap](../../planning/ROADMAP.md), sem liberar suas dependências/gates. BKP001 legado index←SEC004 versus roadmap←SEC003 fica paraPLN006; os controlesSEC-* de SECURITY_REQUIREMENTS são requisitos, não equivalências automáticas com IDs de tarefasSEC-*.
+TRC-004 detalha um grupo existente, sem aumentar contagens. Fontes: [escopo](../product/SCOPE.md), [jornada7](../product/USER_JOURNEYS.md), [INV-BKP-001/002](../product/INVARIANTS.md), [arquitetura](../architecture/BACKUP_ARCHITECTURE.md), [ADR015](../architecture/adr/ADR-015-validated-encrypted-backups.md), [ADR016](../architecture/adr/ADR-016-key-management.md), [segurança](../security/BACKUP_SECURITY.md), [operação](../operations/BACKUP_RESTORE.md), [ameaças](../security/THREAT_MODEL.md). **Planejado/E0 produto**: código/testes/paths/comandos/saídas/coverage/CI de backup/restore não registrados; checksE3 documentais não provam crypto/SQLite/restore. BKP-* abaixo são executores futuros no [roadmap](../../planning/ROADMAP.md), sem liberar suas dependências/gates. PLN-006 alinhou BKP-001 no índice de SEC-004 para SEC-003; tarefa continua todo/E0/passesfalse, com gate humano obrigatório preservado; os controlesSEC-* de SECURITY_REQUIREMENTS são requisitos, não equivalências automáticas com IDs de tarefasSEC-*.
 
 | vínculo | fonte/controle | executores concretos | cenário/oráculo futuro | prova ainda necessária |
 |---|---|---|---|---|
