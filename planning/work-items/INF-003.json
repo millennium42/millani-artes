@@ -1,0 +1,25 @@
+{
+  "id": "INF-003",
+  "title": "commitar lockfiles",
+  "specPath": "planning/specs/INF-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002"
+  ],
+  "acceptanceCriteria": [
+    "locks rastreados/coerentes/fontes-integridade verificadas e preservados pelo gitignore",
+    "npm ci sem scripts/build e Cargo metadata --locked Windows passam sem alterar hashes",
+    "Rust fmt/clippy/test/audit e npm audit reais com limites e avisos registrados",
+    "review-documentação-checks-commits-CI final-nota publicada/liberação antesINF004"
+  ],
+  "checks": [
+    "npm ci --ignore-scripts --no-fund --no-audit; npm run build; npm audit --audit-level=high",
+    "cargo metadata --locked Windows; fmt; clippy --locked -D warnings; test --locked; cargo-audit",
+    "workflow Documentation existente; scope/hashes/manifests/locks/logprefix/diff; review independente"
+  ],
+  "agentPlan": "P-INT(/root) único escritor/checks/committer; base04d5b17/codex/inf-003-lockfiles/7paths e escopos caches na spec, reserva ativa até CI final-nota publicada. P-REV5.6Sol medium executado/read-only/forknone/contexto delimitado/até3achados; motivo continuidade de review limitado; retorno E2 sem achados usado/root confirmou baseline-scope e executou checks; efetivos-custo não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local: 79 entradas npm HTTPS/SHA512 e416Cargo/checksums/root-pins coerentes; locks rastreados/nãoignorados/blobs-hashes antes-depois iguais. npmci semscripts25pacotes/build strictTS-Vite16módulos; metadata --locked/custom-protocol247nósWindows; fmt/clippy/test0tests/audits exit0. npm0vuln; Cargo0vuln/2avisos RUSTSEC0370/0429 foraWindows, semignore. ReviewE2 semachados/Documentation local e audit scope32items27done/245roadmap/prefixo102791/147links/7PSblocos verdes; commits/CI entrega-final/nota publicados pendentes; build comcaches não prova máquina limpa/coverage/release."
+}

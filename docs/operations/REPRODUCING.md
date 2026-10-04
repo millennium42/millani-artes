@@ -78,3 +78,26 @@ Gates nativos nesta máquina (2026-10-04): fmt/clippy/test(0 testes)/cargo-audit
 
 
 Aceite humano E4 (2026-10-04): usuária confirmou "a janela apareceu certinha e eu fechei ela" em resposta à inspeção do aplicativo de produção. O líder executou o binário identificado por SHAef5c6ad800a09a5e4b51b332d7dc0490510345448dcab794ad3d1510c6eda78c e observou encerramento0. Aceite cobre aparência/conteúdo esperado e fechamento do bootstrap; método AltF4 e redimensionamento específico não relatados, sem alegar screenshot/visão nativa do líder. Sem controles financeiros nesta UI. Não é aceite de funcionalidades financeiras nem release/setup.exe.
+
+## Lockfiles — INF-003
+
+Os locks já foram commitados em INF-002, conforme DEPENDENCY_SECURITY. Não usar npm install ou cargo update para reproduzir a resolução aprovada. Ative Node/Rust conforme INF-001; a partir da raiz do checkout:
+
+```powershell
+$millaniLocks = @('package-lock.json', 'src-tauri/Cargo.lock')
+$millaniBefore = @(Get-FileHash -LiteralPath $millaniLocks -Algorithm SHA256)
+rtk proxy npm ci --ignore-scripts --no-fund --no-audit
+if ($LASTEXITCODE -ne 0) { throw 'npm ci falhou.' }
+rtk proxy npm run build
+if ($LASTEXITCODE -ne 0) { throw 'Build frontend falhou.' }
+rtk proxy cargo metadata --locked --format-version 1 --manifest-path src-tauri/Cargo.toml --filter-platform x86_64-pc-windows-msvc --features tauri/custom-protocol | Out-Null
+if ($LASTEXITCODE -ne 0) { throw 'Resolução Cargo falhou.' }
+$millaniAfter = @(Get-FileHash -LiteralPath $millaniLocks -Algorithm SHA256)
+for ($millaniIndex = 0; $millaniIndex -lt $millaniBefore.Count; $millaniIndex++) {
+    if ($millaniBefore[$millaniIndex].Path -ne $millaniAfter[$millaniIndex].Path -or $millaniBefore[$millaniIndex].Hash -ne $millaniAfter[$millaniIndex].Hash) { throw 'Lockfile alterado.' }
+}
+```
+
+E3 local em 2026-10-04: manifests/roots/pins coerentes; 79 entradas npm HTTPS registry.npmjs.org com SHA512 e 416 entradas Cargo crates.io com checksums SHA256. Ambos rastreados e não ignorados. npm ci sem scripts instalou 25 pacotes nesta plataforma; strict tsc/Vite8.3.2 passou. Cargo metadata --locked/custom-protocol resolveu 247 nós Windows. Hashes antes/depois iguais aos blobs Git desta revisão, no [handoff](../../planning/handoffs/INF-003.md).
+
+fmt/clippy/test(0 testes)/audits também passaram. npm audit: zero vulnerabilidades. Cargo audit: zero vulnerabilidades classificadas e dois avisos mantidos, RUSTSEC-2024-0370/proc-macro-error1.0.4 e RUSTSEC-2024-0429/glib0.18.5; ambos ausentes do grafo Windows executado. Nenhum ignore ou aprovação de outro sistema. Bases/detalhes no handoff; atualizar scanner/bases em nova reprodução. Caches locais usados: não é prova de máquina limpa INF-011, coverage, finanças ou release. Sem mudança de UI, smoke/aceite INF-002 preservado.
