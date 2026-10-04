@@ -2,7 +2,7 @@
   "id": "INF-003",
   "title": "commitar lockfiles",
   "specPath": "planning/specs/INF-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT(/root) único escritor/checks/committer; base04d5b17/codex/inf-003-lockfiles/7paths e escopos caches na spec, reserva ativa até CI final-nota publicada. P-REV5.6Sol medium executado/read-only/forknone/contexto delimitado/até3achados; motivo continuidade de review limitado; retorno E2 sem achados usado/root confirmou baseline-scope e executou checks; efetivos-custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local: 79 entradas npm HTTPS/SHA512 e416Cargo/checksums/root-pins coerentes; locks rastreados/nãoignorados/blobs-hashes antes-depois iguais. npmci semscripts25pacotes/build strictTS-Vite16módulos; metadata --locked/custom-protocol247nósWindows; fmt/clippy/test0tests/audits exit0. npm0vuln; Cargo0vuln/2avisos RUSTSEC0370/0429 foraWindows, semignore. ReviewE2 semachados/Documentation local e audit scope32items27done/245roadmap/prefixo102791/147links/7PSblocos verdes; commits/CI entrega-final/nota publicados pendentes; build comcaches não prova máquina limpa/coverage/release."
+  "passes": true,
+  "notes": "E3 locks jáversionados/coerência-fontes-integridade/hashes Git antes-depois iguais/npmci semscripts-build/metadatamsvc247nodes/fmt-clippy-test0/audits0vuln2avisosforawindows; E2 P-REV5.6Solmedium semachados. Documentation local/audit7paths/32items/245roadmap/prefixo102791/147links/7PSblocos verdes. Entrega61c61bfdd62745ded0f7c6219cac4feaba53c0ed/CI37242789186 success exatoSHA/job111554657825/attempt1/umjob8steps. Done/passestrue após CI entrega; CI do fechamento no SHA final/nota publicada/liberação ainda obrigatórios antesINF004. Source/manifests/locks/workflow intactos; coverage/máquina limpa/finanças/release não comprovados; uso-custo não registrado."
 }
