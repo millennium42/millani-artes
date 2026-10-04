@@ -8,7 +8,7 @@ Aplicativo desktop, local-first e offline-first para a gestão financeira pessoa
 2. Escolha somente o primeiro work item `todo` com todas as dependências fechadas, handoff e CI comprovados.
 3. Crie a spec a partir do [template](planning/SPEC_TEMPLATE.md); siga o ciclo e registre os checks, evidência e [handoff](planning/handoffs/).
 
-O produto ainda não foi implementado. Esta revisão é exclusivamente o bootstrap documental.
+O scaffold Tauri/React está em verificação na [INF-002](planning/handoffs/INF-002.md). As funcionalidades financeiras e o instalador ainda não foram implementados.
 
 ## Fonte canônica
 
@@ -18,7 +18,7 @@ As [regras de produto](docs/product/), os [ADRs aceitos](docs/architecture/adr/)
 
 - [Repositório público](https://github.com/millennium42/millani-artes) com documentação, templates, roadmap e work items versionados.
 - [CI de documentação](https://github.com/millennium42/millani-artes/actions/workflows/docs.yml) já executado remotamente. Para afirmar verde, confira o run e o SHA exatos registrados no handoff e nas notas Git de evidência.
-- Ainda não há dependências de produto, banco, UI, executável ou instalador para usar. O CI atual valida o bootstrap documental.
+- Há scaffold mínimo e dependências de build; o estado de execução fica no handoff INF-002. Banco, funcionalidades financeiras e instalador ainda pendentes. O CI atual valida documentos/registro.
 
 ## Checks locais do bootstrap
 
@@ -37,3 +37,7 @@ rtk proxy pwsh -NoProfile -File scripts/check-progress-log.ps1 -BaseRef HEAD -Ta
 ```
 
 Os checks validam o mapa contra a árvore Git, seus casos negativos, a exclusão de artefatos locais/sensíveis, o schema/declarações dos work items e o progress log append-only. Para o log, adicione suas mudanças ao índice antes de comparar com HEAD; para commits, informe a base e o alvo explicitamente. A comparação usa os bytes dos blobs Git e falha se base/histórico/arquivo não estiverem disponíveis; CI usa push.before ou PR.base.sha contra HEAD do checkout. Schema/log válido não comprova fatos, aceite humano ou CI; consulte os registros. Build, testes de produto e instalação serão definidos nas tarefas `INF-*` e `REL-*` do roadmap.
+
+## Executar o scaffold
+
+Siga [reprodução](docs/operations/REPRODUCING.md) para ativar Node/Rust e conferir os pré-requisitos Windows. Com os lockfiles presentes: `rtk proxy npm ci --ignore-scripts`, `rtk proxy npm run build` e `rtk proxy npm run tauri -- build --debug --no-bundle`. Para desenvolvimento local: `rtk proxy npm run tauri -- dev`. O scaffold não contém operações financeiras; build nativo/smoke estão pendentes até MSVC/SDK disponíveis.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Millani Artes",
+  "version": "0.1.0",
+  "identifier": "io.github.millennium42.millaniartes",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Millani Artes",
+        "width": 1024,
+        "height": 720
+      }
+    ],
+    "security": {
+      "capabilities": [],
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src ipc: http://ipc.localhost; img-src 'self' data:; style-src 'self'; script-src 'self'",
+      "devCsp": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src 'self' ipc: http://ipc.localhost ws://127.0.0.1:1420; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": false,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.png", "icons/icon.ico"]
+  }
+}

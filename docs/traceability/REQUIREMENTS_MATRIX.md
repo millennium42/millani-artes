@@ -38,6 +38,7 @@ Contagem do escopo e fontes: [inventário essencial](ESSENTIAL_REQUIREMENTS.md).
 | segurança rastreada (documental) | 8requisitosSEC/fontes/matriz/namespace | TRC-006 | adequação/reviewE2 sem P0/P1/P2; links/IDs/scope/workflow/auditE3 aprovados | 8controles planejados/produtoE0; done/passestru após CI entrega/reserva ativa até CI final-nota |
 | dependências canônicas alinhadas (documental) | roadmap245IDs/índice30items/4legados | PLN-006 | comparação/auditE3 aprovado; adequação/reviewE2 sem achados | executores todo/E0/gates preservados; done/passestru após CI entrega/reserva ativa até CI final-nota |
 | runtimes fixados (infraestrutura) | .node-version/rust-toolchain/registro/reprodução | INF-001 | hashes/versões/host/seleção local E3; workflow/audit E3 verdes; reviewE2 umP2 corrigido/verificado pelo líder | runtimeE3/passestru após CI entrega37177439261; produtoE0/CI documental/reserva até CI final-nota |
+| scaffold desktop mínimo (infraestrutura) | ADR001002/manifests/config/locks/fontes | INF-002 | frontend build-render/fmt/npm-Cargo audits/metadata E3 parcial; review E2 sem P0/P1/P2; CI parcial pendente | passes=false/MSVC-SDK-clippy-test-buildWindows-smoke nativo pendentes; sem regra financeira/setup.exe; reserva ativa/INF003 não iniciado |
 
 ## MVP-01 — Contas: rastreabilidade planejada
 

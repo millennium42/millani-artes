@@ -1,0 +1,28 @@
+{
+  "id": "INF-002",
+  "title": "criar Tauri mínimo",
+  "specPath": "planning/specs/INF-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-001"
+  ],
+  "acceptanceCriteria": [
+    "scaffold Tauri2/ReactTSVite mínimo com lockfiles coerentes, sem regra financeira",
+    "prequisitos/frontend-build/typecheck/Rustfmt-clippy-test-audit-buildWindows/smoke reais ou passesfalse",
+    "segurança proporcional/review/checks/registros/gates preservados",
+    "commits/CI no SHA final-notapub-liberação antesINF003"
+  ],
+  "checks": [
+    "workflow Documentation existente",
+    "npm build/tsc/audit high-critical",
+    "cargo fmt/clippy -Dwarnings/test/audit/buildWindows/smoke inicial",
+    "audit manifests-config-lockfiles-scope-links-deps-blobs-logGitprefix-diff/heurística proporcional",
+    "review E2 independente",
+    "CI Documentation no SHA final"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer; INF002/base6bed951d8ca1188a72501a1693fa8fb68e7160ec/27paths e escopos dev-sistema na spec/reserva ativa até fechamento real. P-MAP6Luna low e P-REV6Sol medium/tentativa1/read-only/forknone/perguntas distintas, saídas usadas; inventário root reproduzido e review E2 sem P0/P1/P2. Dois delegados/sem escalonamento/uso-custo não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 parcial: scaffold mínimo/locks/frontend strict-build-render/fmt/npm audit zero/cargo-audit zero vuln e dois avisos fora da árvore ativa Windows (metadata247nodes); WebView2 presente. MSVC/SDK não detectados/processo sem elevação; configuração JSON e bootstrap Microsoft verificado para ação humana pendente. Clippy/test/buildWindows/smoke nativo NÃO executados; passes=false/INF003 não iniciado. Licenças/hash/signature/manifesto VS descartado/retries/limites na spec e handoff. Review E2 sem achados e checks documentais pós-diff aprovados; CI parcial pendente; reserva ativa/uso-custo não registrado."
+}
