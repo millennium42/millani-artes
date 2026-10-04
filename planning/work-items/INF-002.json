@@ -2,7 +2,7 @@
   "id": "INF-002",
   "title": "criar Tauri mínimo",
   "specPath": "planning/specs/INF-002.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-001"
   ],
@@ -23,6 +23,6 @@
   "agentPlan": "P-INT único escritor/checks/committer; INF002/base6bed951/HEAD775478d/27paths + escopos dev-sistema/perfilWebView2 na spec/reserva ativa até CI final-notapub. Fase inicial P-MAP6Luna low e P-REV6Sol medium/tentativa1/read-only/forknone/perguntas distintas/retornos usados, root reproduziu inventário. Retomada autorizada P-OPS6Sol medium/read-only/forknone/review do novo gist/E2 usado para método oficial. Três delegados históricos/um ativo por fase da retomada/sem escalonamento/uso-custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": true,
-  "passes": false,
-  "notes": "E3 scaffold/locks/frontend strict-build/MSVC14.44.35207/SDK26100/fmt-clippy-test(0tests)-audit(0vuln/2avisos fora do Windows247nodes com custom-protocol)-buildprodução/binário8557056bytes SHAef5c6ad8 e NativeExitCode0. E4 humana confirmou janela certinha/fechamento. Source/config/locks idênticos à entrega775478d com CI37206061776 verde; review E2 sem achados de source e dois P2 documentais corrigidos. Entrega dos resultados e CI no SHA publicado ainda pendentes. Depois, commit de fechamento/CI exatoSHA-notapub-liberação ficam no recibo refs/notes/evidence, obrigatório antesINF003; reserva ativa até verificação/pushnota. Sem regra financeira/setup.exe/coverage produto; métricas por item/custo não registrado."
+  "passes": true,
+  "notes": "E3 scaffold/locks/frontend/MSVC-SDK/fmt-clippy-test(0tests)-audit(0vuln/2avisos fora do Windows247nodes custom-protocol)-buildprodução/nativeExit0; E4 humana confirmou janela/fechamento. Deliveryfb8faee/CI37241434563 success exatoSHA/job111550773869; done/passestru após CI da entrega. Source/config/locks preservados de775478d; review E2 source semachados/doisP2 e umP1 documental corrigidos e conferidos. CI no SHA deste fechamento e recibo refs/notes/evidence publicados obrigatórios antesINF003/liberação; reserva ativa até recibo. Sem regra financeira/setup.exe/coverageproduto; métricas por item/custo não registrado."
 }
