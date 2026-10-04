@@ -2,7 +2,7 @@
   "id": "INF-005",
   "title": "configurar Biome",
   "specPath": "planning/specs/INF-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-004"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único escritor/checks/committer/base4416b35/codex/inf-005-biome/17paths +probe temporário e caches na spec, ativa atéCI final-notapub. P-REV5.6Solmedium executado/read-only/perfilreutilizado-missãoSHApróprio/tentativa1/até3achados/contextomínimo/continuidade; retornoE2 semachados usado/rootconfirmou baseline-executou checks; efetivos-uso-custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 install2.5.15/devpin-ignore-scripts/npmci27pacotes/79lockentries anteriores intactas+9Biome=88registrycoerentes; CLI2.5.15/format-lint7files0nofixes/probe8ºarquivoformat-noDebuggerexit1 esperado/removido; comandosread-onlybytespreservados. tsc-buildstrict/fmt-clippy-test0/audits exit0/npm0vulnCargo0vuln2avisosforaWindows247nodes. UI/Vite-tsconfig/Cargo/manifestsdepsanteriores intactos. ReviewE2 semachados/Documentation9checks/audit12paths34items29done/245roadmap/prefixo108408/153links/9PSblocos/verbose7files-exclusões/probeausente verdes; commits-CI entrega-final-notapub próprios pendentes; coverage-Vitest-finanças-release não comprovados."
+  "passes": true,
+  "notes": "E3 install2.5.15/devpin-ignore-scripts/npmci27pacotes/79lockentries anteriores intactas+9Biome=88registrycoerentes; CLI2.5.15/format-lint7files0nofixes/probe8ºarquivoformat-noDebuggerexit1 esperado/removido; comandosread-onlybytespreservados. tsc-buildstrict/fmt-clippy-test0/audits exit0/npm0vulnCargo0vuln2avisosforaWindows247nodes. UI/Vite-tsconfig/Cargo/manifestsdepsanteriores intactos. ReviewE2 semachados/Documentation9checks/audit12paths34items29done/245roadmap/prefixo108408/153links/9PSblocos/verbose7files-exclusões/probeausente verdes; entrega c63fcad0108dd120e6ac902cf293c73785a55aca/CI37245206424 completed-success SHAexato/attempt1/job111561618037/umjob8steps; done-passestrue apósCI entrega; CI no SHA do fechamento-notapub/liberação obrigatórios antesINF006; coverage-Vitest-finanças-release não comprovados."
 }
