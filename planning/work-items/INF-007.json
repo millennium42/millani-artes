@@ -1,0 +1,25 @@
+{
+  "id": "INF-007",
+  "title": "configurar coverage",
+  "specPath": "planning/specs/INF-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-006"
+  ],
+  "acceptanceCriteria": [
+    "coverage local/reporters text-json-summary-lcov-html/semdepsnovas/fonte-locks intactos",
+    "gates globais90-90-90-85 e mecanismo crítico per-file95-95-95-90 provados porprobes sintéticas; inventário crítico atual vazio declarado",
+    "suite real3tests/reportsApp-main100%/probes-gate sintético removidos/Biome-strict-build-Rust-audits-Documentation verdes",
+    "review/docs/registros/commits/CI-final-nota-ref-liberação antesINF008"
+  ],
+  "checks": [
+    "npm run coverage/probes global-aggregate/perFile/red-green/reports-lcov-html-summary",
+    "format:check/lint/tsc/build/Rustfmt-clippy-test-audit/npm audit",
+    "Documentation9checks/mapa/schema-evidence-logprefix/scope-lock-links/review"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer basebc4a7e0/codex/inf-007-coverage/10paths+3probes e caches espec/reservaativa atéCIfinal-nota/ref; P-QA6Lunalowread-only classificaçãoE2 semcriticalpaths usado; P-REV5.6Solmediumcontinuidade/read-onlyapósdiff/tentativa1/E2umP2textconsole corrigido/rootverificado/pergunta distinta; efetivos/custo não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 coveragecommand/reporterstext-summary-lcov-html/semdepinstallnovo; global90-90-90-85/inventáriocríticoTS0. Probesglobaggregatepass/perFile95-95-95-90 fail4métricas bad93.75lines/93.1statements/92.85functions/50branches; depois100%pass/removidos/restoredcfg/globtemporárioausente. Finalreal3tests2files100%(4lines/5statements/1function/2branches), LCOV2fontescountscoerentes/HTML5010bytes22files ignored; fonte-testes-locks-pins intactos. Biome/strict/build/Rustfmt-clippy-test0/npm-Cargoaudits0vuln+2warnings foraWindows247nodes verdes. ReviewE2umP2textconsole corrigido/rootverificado/Documentation9checks/audit10scope/36items31done/27sources179files/245rows/prefix115365/157links/11PSblocos verdes; commits-CI-nota pendentes; passesfalse/reservaativa; finanças/CIupload/Rustcoverage/setup nãoaprovados."
+}
