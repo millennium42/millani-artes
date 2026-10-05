@@ -2,7 +2,7 @@
   "id": "INF-006",
   "title": "configurar Vitest",
   "specPath": "planning/specs/INF-006.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-004"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único escritor/checks/committer base d6df89d/codex/inf-006-vitest/17paths+probe e caches na spec/ativa atéCI final-nota publicada; P-QA6Lunalow read-only desenho3testes E2 aceito; P-REV5.6Solmedium apósdiff/read-only/tentativa1/E2 semachados usado/rootconfirmou baseline/executou gates/contextos distintos; efetivos/uso/custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 install/ci pins5.0.3/CLI/88resoluções intactas+32novas/120registry; 3testes AppSSR/bootstrapcom-semroot/V8App-main100%(4lines/5statements/1function/2branches), gate90-90-90-85; assertionprobe exit1/removida e Appisolado exit1threshold/main0, suitefinal0; strict6files/Biome10/build16modules/Rustfmt-clippy-test0/audits0vuln+2warnings foraWindows247nodes. Produto-source/Cargo intactos. ReviewE2 semachados/Documentation9checks/map27-176/35items30done/245rows/prefix111171/157links/10PSblocos/audit17scope verdes; commits-CI-nota pendentes; passesfalse/reservaativa; INF007 não iniciado."
+  "passes": true,
+  "notes": "E3 install/ci pins5.0.3/CLI/88resoluções intactas+32novas/120registry; 3testes AppSSR/bootstrapcom-semroot/V8App-main100%(4lines/5statements/1function/2branches), gate90-90-90-85; assertionprobe exit1/removida e Appisolado exit1threshold/main0, suitefinal0; strict6files/Biome10/build16modules/Rustfmt-clippy-test0/audits0vuln+2warnings foraWindows247nodes. Produto-source/Cargo intactos. ReviewE2 semachados/Documentation9checks/map27-176/35items30done/245rows/prefix111171/157links/10PSblocos/audit17scope verdes; entrega 6889b80e1f4bd880ac69082b03b32f2699005271/CI37247106290 completed-success SHAexato/attempt1/job111567039443/umjob8steps; done-passestrue apósCIentrega; CI finalSHAfechamento-nota publicada/liberação antesINF007 obrigatórios; reservaativa; INF007 não iniciado."
 }
