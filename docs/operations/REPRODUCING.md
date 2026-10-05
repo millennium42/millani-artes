@@ -163,3 +163,14 @@ O global90/90/90/85 inclui todo srcTS/TSX não importado e exclui sótestes. [Po
 
 E3 em2026-10-04 local: comando coverage ausente/Missingscript antes; probesbad-good sintéticas globalpass98.91statements/99.03branches/98.46functions/99.41lines enquanto bad93.1/50/92.85/93.75. Glob crítico agregado95/95/95/90 também passou; perFile:true falhouexit1 nas4métricas, identificando arquivo ruim. Após cobrir todos caminhos/funções, passou100%. Probes/glob sintético removidos emfinally, configrestaurada; não sãofinanças fictícias persistentes.
 Final real:3tests2files/100%App-main, lines4/4/statements5/5/functions1/1/branches2/2. LCOVduasfontesLF4-LH4/FNF1-FNH1/BRF2-BRH2; HTML5010bytes/22arquivos totais de reports locais. CódigoUI/testes/locks/pins intactos. format-lint/strict/build16módulos134ms/Rustfmt-clippy-test0/audits passaram; Cargo dois avisos fora247nodesWindows mantidos semignore. Não comprova domínioRust/finanças/SQLite/UIreal/cleanmachine/setup.exe. [Handoff](../../planning/handoffs/INF-007.md) e [referência oficial](https://vitest.dev/config/coverage.html) guardam limites.
+
+
+## Comando typecheck — INF-008
+
+Com Node ativado e as dependências do lock instaladas:
+```powershell
+rtk proxy npm run typecheck
+```
+O script chama tsc --noEmit, usando TypeScript7.0.2 e tsconfig.json já existentes. Inclui as seis fontes próprias atuais: App/main, seus dois testes e as configurações Vite/Vitest. Strict, noEmit e noUnused permanecem habilitados. O comando verifica tipos sem executar Vite ou gerar JS, mapas e declarações. Build conserva o pipeline tsc --noEmit seguido de Vite.
+E3 local em2026-10-04: positivo exit0; probe temporária com number atribuído a string produziu TS2322/exit1 pelo npm script. Removida emfinally; positivo final0, três arquivos dist com hashes inalterados durante typecheck e nenhum emit emsrc/configs. Não é bug do produto nem teste financeiro.
+Formatter/linter10arquivos, build16módulos, testes+coverage3testes e gatesRust/audits passaram. CoverageApp-main100%(4linhas/5statements/1função/2branches) não representa finanças/Rust/UIreal. Os dois avisosCargo foraWindows continuam semignore. Nenhuma nova dependência/instalação/workflow; qualityINF009 ainda não iniciado. [NoEmit oficial](https://www.typescriptlang.org/tsconfig/noEmit.html) e [handoff](../../planning/handoffs/INF-008.md).

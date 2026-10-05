@@ -12,7 +12,8 @@
     "format:check": "biome format .",
     "lint": "biome lint --error-on-warnings .",
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "19.3.0",
