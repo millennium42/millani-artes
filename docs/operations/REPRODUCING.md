@@ -286,3 +286,17 @@ Consulte [versões executadas](EXECUTED_VERSIONS.md) para o snapshot de 2026-10-
 [Política/procedimento](../quality/COVERAGE_POLICY.md#artefato-ci--inf-013) define formatos, condição e download. A mudança acrescenta guard/upload ao único job; não repete npm run quality ou testes. Comandos locais de quality e os runtimes/pins acima permanecem iguais. Guard extraído do workflow real foi executado com reports frescos e negativos de ausência/vazio, restaurando bytes;20fixtures do seletor passaram com cleanup.
 
 Allowlist evita enviar outros arquivos de coverage/ ou caches/perfis; reports locais contêm paths do checkout e não são enviados pelo líder. O artifact remoto contém paths técnicos do runner/fontes públicas, acessível autenticado em1dia. SHA/run/artifact/digest/zip/métricas só são declarados depois da inspeção no [handoff](../../planning/handoffs/INF-013.md). Sem novo nativebuild/smoke/setup.exe/alteração financeira.
+
+## Build Tauri no CI — INF-014
+
+O mesmo seletor INF-010 passa a controlar três etapas nativas no único job Windows: preparar o pin Rust, compilar produção e verificar o executável. Diff só documental pula as oito etapas de frontend/nativo; source, teste, configuração e paths desconhecidos disparam. O timeout do job é 15 minutos. Não há novo job, cache Rust/target, instalação Visual Studio/SDK ou upload do executável; coverage INF-013 continua o único artifact, por um dia.
+
+Rustup lê rust-toolchain.toml e instala a versão exata com profile minimal, rustfmt/clippy e target x64 MSVC; seleção ativa deve coincidir com o arquivo. MSVC/SDK vêm da imagem Windows hospedada e descoberta da toolchain. A imagem flutua, e as versões Microsoft específicas usadas não são introspectadas por este build. Os logs registram Rust/Cargo/Node e ImageOS/ImageVersion quando disponíveis. Com runtimes ativados na sessão e dependências do lock instaladas:
+
+```powershell
+rtk proxy npm run tauri -- build --no-bundle -- --locked
+```
+
+Tauri executa beforeBuildCommand/build frontend uma vez. O workflow compara hashes dos dois locks antes/depois e exige inputs de produto sem diff. Depois confere MZ/PE32+ AMD64, bytes/SHA256 e fingerprint compilado de tauri com custom-protocol, emitindo NATIVE_EVIDENCE JSON sanitizado. Fingerprint comprova feature compilada, sem prova de protocolo em runtime nem vínculo criptográfico ao EXE. Checkout CI sem cache de target evita fingerprint herdado; o build local deste item reutilizou caches e não substitui o build isolado INF-011.
+
+E3 local em 2026-10-05: blocos reais Prepare/Build/Verify executados, Rust1.99.0 x64 por arquivo; build39.629s com frontend16módulos, exe8.557.056bytes/SHA25630326dff2185b815251554b3d453f210ba8b31acf8f59ac3723cfc5ab5aa54f5. Positivo e quatro negativos (exe ausente, MZ inválido, machine incorreta, custom-protocol ausente) passaram; bytes/fingerprints restaurados em finally. Quality3testes/100%App-main, Rustfmt/clippy/test0 e audits passaram. CI remoto/JSON no SHA de entrega e fechamento são requisitos pendentes; [handoff](../../planning/handoffs/INF-014.md) registra a evidência. Finanças, runtime, instalador e release permanecem pendentes.

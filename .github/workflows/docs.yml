@@ -16,7 +16,7 @@ permissions:
 jobs:
   validate:
     runs-on: windows-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -104,3 +104,67 @@ jobs:
           retention-days: 1
           compression-level: 6
           include-hidden-files: false
+
+      - name: Prepare pinned Rust
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $pin = [regex]::Match([IO.File]::ReadAllText('rust-toolchain.toml'), '(?m)^\s*channel\s*=\s*"(\d+\.\d+\.\d+)"').Groups[1].Value
+          if (-not $pin) { throw 'Pinned Rust version missing.' }
+          rustup toolchain install $pin --profile minimal --component rustfmt --component clippy --target x86_64-pc-windows-msvc
+          if ($LASTEXITCODE -ne 0) { throw 'Rust toolchain installation failed.' }
+          $active = (rustup show active-toolchain).Trim()
+          if ($LASTEXITCODE -ne 0 -or -not $active.StartsWith("$pin-x86_64-pc-windows-msvc ") -or $active -notmatch 'rust-toolchain.toml') { throw 'Unexpected Rust toolchain selection.' }
+          rustc -vV
+          if ($LASTEXITCODE -ne 0) { throw 'Rust compiler query failed.' }
+          cargo --version
+          if ($LASTEXITCODE -ne 0) { throw 'Cargo query failed.' }
+
+      - name: Build Tauri production
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $locks = @('package-lock.json','src-tauri/Cargo.lock')
+          $before = @(Get-FileHash -LiteralPath $locks -Algorithm SHA256)
+          npm run tauri -- build --no-bundle -- --locked
+          if ($LASTEXITCODE -ne 0) { throw 'Tauri build failed.' }
+          $after = @(Get-FileHash -LiteralPath $locks -Algorithm SHA256)
+          for ($i = 0; $i -lt $before.Count; $i++) {
+            if ($before[$i].Path -ne $after[$i].Path -or $before[$i].Hash -ne $after[$i].Hash) { throw 'Lockfile changed during build.' }
+          }
+          git diff --exit-code -- src src-tauri package.json package-lock.json .node-version rust-toolchain.toml tsconfig.json vite.config.ts vitest.config.ts biome.json index.html
+          if ($LASTEXITCODE -ne 0) { throw 'Product inputs changed during build.' }
+
+      - name: Verify Tauri executable
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $exe = 'src-tauri/target/release/millani-artes.exe'
+          if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) { throw 'Tauri executable missing.' }
+          $bytes = [IO.File]::ReadAllBytes((Join-Path (Get-Location).Path $exe))
+          if ($bytes.Length -lt 64 -or $bytes[0] -ne 0x4d -or $bytes[1] -ne 0x5a) { throw 'Invalid Windows executable.' }
+          $offset = [long][BitConverter]::ToUInt32($bytes, 0x3c)
+          if ($offset + 26 -gt $bytes.LongLength -or [BitConverter]::ToUInt32($bytes, $offset) -ne 0x4550 -or [BitConverter]::ToUInt16($bytes, $offset + 4) -ne 0x8664 -or [BitConverter]::ToUInt16($bytes, $offset + 24) -ne 0x20b) { throw 'Expected PE32+ AMD64 executable.' }
+          $fingerprints = @(Get-ChildItem -Path 'src-tauri/target/release/.fingerprint/tauri-*/lib-tauri.json' | ForEach-Object {
+            [IO.File]::ReadAllText($_.FullName) | ConvertFrom-Json
+          } | Where-Object { $_.features -match '"custom-protocol"' })
+          if (-not $fingerprints.Count) { throw 'Compiled custom-protocol fingerprint missing.' }
+          $evidence = @{
+            sourceSha = $env:GITHUB_SHA
+            bytes = $bytes.LongLength
+            sha256 = (Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash.ToLowerInvariant()
+            machine = 'AMD64'
+            pe = 'PE32+'
+            customProtocol = $true
+            rustc = (rustc --version).Trim()
+            cargo = (cargo --version).Trim()
+            node = (node --version).Trim()
+            imageOS = $env:ImageOS
+            imageVersion = $env:ImageVersion
+            npmLock = (Get-FileHash -LiteralPath 'package-lock.json' -Algorithm SHA256).Hash.ToLowerInvariant()
+            cargoLock = (Get-FileHash -LiteralPath 'src-tauri/Cargo.lock' -Algorithm SHA256).Hash.ToLowerInvariant()
+          }
+          "NATIVE_EVIDENCE $($evidence | ConvertTo-Json -Compress)"

@@ -1,0 +1,26 @@
+{
+  "id": "INF-014",
+  "title": "build Tauri no CI",
+  "specPath": "planning/specs/INF-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-010",
+    "INF-011"
+  ],
+  "acceptanceCriteria": [
+    "nativeWindowscondicional nojobexistente/Rustpinreal/locked-no-bundle-semfrontendduplicado",
+    "exePEAMD64/PE32+/customprotocolcompiled/hashbytes/locks invariantes",
+    "gateslocais/negativosPEfingerprint/review/docs/CIentregaNATIVE_EVIDENCEreal",
+    "CIfinal8skips/zeroartifact e nota/ref públicas/liberação"
+  ],
+  "checks": [
+    "quality/Rustfmt-clippy-test-audits/nativebuildlocal/PEfeaturespositivonegativos-restauração",
+    "seletor20/novedocs/scope/schema/links/parserPS/logappend-only",
+    "CIexactSHA/nativeprooflogs/Rustpin/PE/hashlocks e CIfinalskipped"
+  ],
+  "agentPlan": "P-INT único escritor/executor/committer; reserva9paths ATIVA. P-OPS gpt-6-luna low RECON E2 usado/procedimento reproduzido, upload opcional descartado; P-REV gpt-6-sol medium review módulo E2 sem P0/P1/P2. Dois delegados/tentativas1/sem escalada; efetivos/tokens/cache/custo/retries evitados não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Build local39.629s/PE32+AMD64/hash/bytes/custom-protocol compiled, quatro negativos/restauração; quality3tests/100%bootstrap/Rustfmt-clippy-test0/audits passed. Docs9/selector20/links421/parserPS17/scope9/logappend-only passaram; CI exactSHA/logproof pendentes. Semnovo job/cache/uploadexe/installer; Microsoft versions usadas não introspectadas/runtime não provado/meta ativa."
+}
