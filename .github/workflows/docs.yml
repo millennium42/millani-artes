@@ -79,3 +79,28 @@ jobs:
         if: steps.frontend.outputs.required == 'true'
         shell: pwsh
         run: npm run quality
+
+      - name: Validate coverage reports
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: |
+          $reports = @('coverage/coverage-summary.json','coverage/lcov.info','coverage/lcov-report/index.html')
+          foreach ($report in $reports) {
+            if (-not (Test-Path -LiteralPath $report -PathType Leaf) -or (Get-Item -LiteralPath $report).Length -eq 0) {
+              throw 'Missing or empty coverage report.'
+            }
+          }
+
+      - name: Upload frontend coverage
+        if: steps.frontend.outputs.required == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: frontend-coverage-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            coverage/coverage-summary.json
+            coverage/lcov.info
+            coverage/lcov-report/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 6
+          include-hidden-files: false

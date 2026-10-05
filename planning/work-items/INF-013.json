@@ -1,0 +1,26 @@
+{
+  "id": "INF-013",
+  "title": "publicar coverage no CI",
+  "specPath": "planning/specs/INF-013.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-007",
+    "INF-010"
+  ],
+  "acceptanceCriteria": [
+    "upload condicional após quality;3formats exigidos/retention1dia",
+    "actionfixedSHA preregistrada/semnovo job/permissão/dependência deproduto",
+    "gateslocais/guard negativos/review/docs/artefato remoto verificado",
+    "CIfinal docs-only/zeroartifact e nota/ref públicas/liberação"
+  ],
+  "checks": [
+    "quality/buildfrontend/Rustfmt-clippy-test-audits/reportsfrescos/guard4negativos/seletor20",
+    "novechecksdocumentais/links/parser/scope/schema/logappend-only",
+    "CIentrega quality/upload/zip-digest-retention e CIfinalskipped/zeroartifact"
+  ],
+  "agentPlan": "P-INT único writer/checks/committer;10paths ATIVA na spec. P-QA6Lunalow solicitado/read-only/E2 limites/inventário usado; P-REV6Solmedium E2 concluído/semachados/read-only apósdiff/pergunta distinta. Efetivos/tokens/cache/custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local: quality/buildfrontend/fmt-clippy-test0/audits0classificadas+2avisos foraWindows semignore;3testes100%bootstrap/0Rust. Guard positivo+4negativos/restauração, allowlist12files56487bytes/heurística0, seletor20/cleanup, inputs/thresholds intactos. ReviewE2 semachados/9docs418links16PS/scope-prefix verdes;CI entrega-artifactproof/CI final/note-ref-liberação pendentes;passesfalse/reserva10pathsATIVA/metaativa."
+}

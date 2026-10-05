@@ -9,7 +9,7 @@ Se Rust contiver domínio, medir cobertura de linhas e habilitar branches se o t
 
 O inventário TS desta revisão contém App.tsx/main.tsx de bootstrap, testes e configs; não contém cálculo de saldo, transferência, venda, recebimento, devolução, reembolso, recorrência, transação ou backup/restore. Logo há zero arquivos críticos atuais, sem aplicar o limite crítico ao bootstrap. main.rs também contém apenas inicialização Tauri, sem domínio para medir coverageRust.
 
-vitest.config.ts aplica o global90/90/90/85 a todo src TS/TSX, inclusive não importado, excluindo somente testes. npm run coverage emite texto no console e grava json-summary, LCOV e HTML em coverage/; npm test conserva coverage habilitada. Relatórios são locais/ignorados, não são aprovacao financeira, e uploadCI segue INF013.
+vitest.config.ts aplica o global90/90/90/85 a todo src TS/TSX, inclusive não importado, excluindo somente testes. npm run coverage emite texto no console e grava json-summary, LCOV e HTML em coverage/; npm test conserva coverage habilitada. Relatórios locais continuam ignorados no Git e não são aprovação financeira; publicação condicional no CI segue o procedimento INF013 abaixo.
 
 Cada work item que introduzir lógica crítica deve, antes de passes=true:
 - identificar os paths reais pela função de negócio/implementação observada, incluindo infraestrutura de backup/restore quando aplicável;
@@ -20,3 +20,13 @@ Cada work item que introduzir lógica crítica deve, antes de passes=true:
 ARCHITECTURE/MODULE_BOUNDARIES define responsabilidades, sem fixar diretórios TS; ARC001 e implementações posteriores definirão paths. Não pré-cadastrar caminhos fictícios. Quando surgir arquivo crítico, a ausência do gate porarquivo é pendência daquele item, não exceção implícita. Limiares acima permanecem canônicos.
 
 O mecanismo nativo Vitest5.0.3 foi exercitado com arquivos sintéticos temporários: média global/glob≥95 não rejeita um arquivo mal coberto; perFile:true identifica/rejeita esse arquivo abaixo95/95/95/90, e cobertura completa passa. Esses probes e seu glob não persistem; não afirmam implantação financeira. [Reprodução](../operations/REPRODUCING.md) e [handoff](../../planning/handoffs/INF-007.md).
+
+## Artefato CI — INF-013
+
+O job Documentation publica frontend-coverage-<run_id>-<run_attempt> somente quando o seletor exige frontend e quality passou. O guard exige coverage-summary.json, lcov.info e lcov-report/index.html não vazios; ausência/vazio falha. Upload allowlist: summary, LCOV e árvore HTML com assets, sem coverage JSON completo/cache/perfis/dados reais. Vitest roda uma vez pelo quality; clean:true permanece, sem reports reaproveitados de cache. Falha de quality impede upload e não guarda relatório de falha. Thresholds globais e porarquivo crítico acima permanecem canônicos.
+
+Action oficial fixada por SHA no registro, retenção1dia/compressão6/hiddenfilesfalse, mesmo job/permissões existentes. Diff documental pula Node/instalação/quality/guard/upload; mudança relevante ou execução manual exige frontend. Não há serviço externo, comentário em PR, badges ou site de coverage.
+
+No run GitHub, abra Artifacts e baixe o ZIP com login; abrir lcov-report/index.html localmente ou usar lcov.info/coverage-summary.json. Retenção curta significa baixar em1dia; conteúdo/hash/métricas observados ficam no [handoff INF-013](../../planning/handoffs/INF-013.md) e nota Git. Esses reports mostram fontes já públicas e caminhos técnicos do runner, somente fixtures sintéticas; não publicar logs/backup/financeiro real/chaves. Retenção não é economia monetária medida.
+
+Configuração e gates locais não comprovam publicação; somente artifact do run/SHA exato inspecionado permite E3 de upload. Estado/prova e limites no handoff; Rust/financeiro/instalador continuam pendentes.

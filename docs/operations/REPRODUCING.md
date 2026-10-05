@@ -280,3 +280,9 @@ Depois de reter resumo sanitizado, retornar ao workspace e remover só a raiz te
 ## Catálogo de versões — INF-012
 
 Consulte [versões executadas](EXECUTED_VERSIONS.md) para o snapshot de 2026-10-05: seleção explícita dos executáveis, respostas/exits/tempos, pacotes diretos instalados/resolvidos e comparação aos pins/locks. Gates locais quality/build frontend/fmt/clippy/test/audits passaram; consultas de disponibilidade MSVC/SDK/WebView2 têm escopo próprio. Build nativo isolado INF-011 e aceite visual INF-002 são históricos, com fontes iguais, sem novo smoke ou build de produção. Catálogo não comprova finanças, instalador ou determinismo bit a bit. Estado de review/CI/publicação no [handoff INF-012](../../planning/handoffs/INF-012.md).
+
+## Reports publicados no CI — INF-013
+
+[Política/procedimento](../quality/COVERAGE_POLICY.md#artefato-ci--inf-013) define formatos, condição e download. A mudança acrescenta guard/upload ao único job; não repete npm run quality ou testes. Comandos locais de quality e os runtimes/pins acima permanecem iguais. Guard extraído do workflow real foi executado com reports frescos e negativos de ausência/vazio, restaurando bytes;20fixtures do seletor passaram com cleanup.
+
+Allowlist evita enviar outros arquivos de coverage/ ou caches/perfis; reports locais contêm paths do checkout e não são enviados pelo líder. O artifact remoto contém paths técnicos do runner/fontes públicas, acessível autenticado em1dia. SHA/run/artifact/digest/zip/métricas só são declarados depois da inspeção no [handoff](../../planning/handoffs/INF-013.md). Sem novo nativebuild/smoke/setup.exe/alteração financeira.
