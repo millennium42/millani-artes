@@ -1,0 +1,25 @@
+{
+  "id": "INF-010",
+  "title": "configurar CI Windows",
+  "specPath": "planning/specs/INF-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-009"
+  ],
+  "acceptanceCriteria": [
+    "um job Windows com quality condicional, main/PR/manual, SHA-actions/node/lock fixos",
+    "seletor conservador/fail-closed com fixtures Git, documentação sempre, cache npm sem artifacts",
+    "checks locais/review/docs verdes; entrega frontend executado/fechamento frontend skipped no CI exato",
+    "nota-ref/publicação/liberação antes INF-011; não aprova release"
+  ],
+  "checks": [
+    "fixtures seletor/parser PowerShell/inspeção workflow",
+    "quality/build/Rust fmt-clippy-test-audit/npm audit/Documentation",
+    "CI entrega+final jobs/steps/SHA exatos e paths preservados"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer,14paths/fixtures na spec/reservaATIVA. P-QA6Luna low solicitado/read-only/E2 classificação usada parcialmente, CSS conservador true. P-REV5.6Sol medium solicitado/continuidade/read-only após diff/pergunta distinta. Efetivos/uso/custo por item-agente não registrado. Retorno P-REV E2 sem achados recebido; erro final de limite de uso registrado, sem retry.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local: seletor20fixtures/fail-closed/manual/zero/rename source→docs.md/CSS/desconhecido/cleanup; .gitattributes forçaLF/checkout-index autocrlf=true10files passou, pinNode conteúdo24.21.0 intacto. Quality/build/Rustfmt-clippy-test(0Rusttests)/audits verdes; App-main100%3tests4lines; Cargo2avisos fora247nodesWindows semignore. Um job existente/cinco etapas novas/três condicionais, semmatrix/buildremoto/upload; sources/configs/package/locks/pins intactos. Actions SHA/licença principal/manifests preregistrados. Review E2 sem achados recebido antes de erro final de limite de uso; nove checks documentais E3 verdes (39items/191files/129849bytes/22blocosPS). CI entrega(frontend success)/final(frontend skip)/nota-ref pendentes; passes=false/reserva14pathsATIVA. Uso/custo por item-agente não registrado."
+}

@@ -18,7 +18,7 @@ As [regras de produto](docs/product/), os [ADRs aceitos](docs/architecture/adr/)
 
 - [Repositório público](https://github.com/millennium42/millani-artes) com documentação, templates, roadmap e work items versionados.
 - [CI de documentação](https://github.com/millennium42/millani-artes/actions/workflows/docs.yml) já executado remotamente. Para afirmar verde, confira o run e o SHA exatos registrados no handoff e nas notas Git de evidência.
-- Há scaffold mínimo e dependências de build; o estado de execução fica no handoff INF-002. Banco, funcionalidades financeiras e instalador ainda pendentes. O CI atual valida documentos/registro.
+- Há scaffold mínimo e dependências de build; o estado de execução fica no handoff INF-002. Banco, funcionalidades financeiras e instalador ainda pendentes. O workflow valida documentos/registro e executa a qualidade do frontend em alterações relevantes; comandos, execuções e limites no [handoff INF-010](planning/handoffs/INF-010.md).
 
 ## Checks locais do bootstrap
 

@@ -2,7 +2,13 @@ name: Documentation
 
 on:
   push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: windows-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -10,10 +16,12 @@ permissions:
 jobs:
   validate:
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Validate project map against checkout
         shell: pwsh
         run: |
@@ -30,7 +38,7 @@ jobs:
       - name: Validate append-only progress log
         shell: pwsh
         env:
-          MILLANI_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          MILLANI_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before || github.sha }}
         run: |
           ./scripts/test-progress-log.ps1
           ./scripts/check-progress-log.ps1 -BaseRef $env:MILLANI_BASE_SHA -TargetRef HEAD
@@ -40,3 +48,34 @@ jobs:
           $required = @('README.md','AGENTS.md','00-MAPA-DO-PROJETO.md','governance/AI_DEVELOPMENT_RULES.md','docs/product/INVARIANTS.md','docs/security/THREAT_MODEL.md','planning/ROADMAP.md')
           $missing = $required | Where-Object { -not (Test-Path $_) }
           if ($missing) { throw "Missing canonical documentation: $($missing -join ', ')" }
+
+      - name: Test frontend check selection
+        shell: pwsh
+        run: ./scripts/test-frontend-check-state.ps1
+      - name: Select frontend checks
+        id: frontend
+        shell: pwsh
+        env:
+          MILLANI_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before || github.sha }}
+          MILLANI_MANUAL: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          $force = $env:MILLANI_MANUAL -eq 'true'
+          $required = ./scripts/get-frontend-check-state.ps1 -BaseRef $env:MILLANI_BASE_SHA -TargetRef HEAD -Force:$force
+          if ($required -cnotin @('true', 'false')) { throw 'Invalid check selection.' }
+          "required=$required" >> $env:GITHUB_OUTPUT
+      - name: Set up pinned Node
+        if: steps.frontend.outputs.required == 'true'
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: package-lock.json
+          package-manager-cache: false
+      - name: Install locked frontend dependencies
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check frontend quality
+        if: steps.frontend.outputs.required == 'true'
+        shell: pwsh
+        run: npm run quality

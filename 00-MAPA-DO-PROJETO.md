@@ -3,7 +3,7 @@
 | Área | Fonte | Autoridade |
 |---|---|---|
 | Entrada | `README.md`, `AGENTS.md`, `00-MAPA-DO-PROJETO.md`, `CONTRIBUTING.md` | início, regras, navegação e contribuição |
-| Política pública | `SECURITY.md`, `.gitignore` | reporte de segurança e exclusão de artefatos locais/sensíveis |
+| Política pública | `SECURITY.md`, `.gitignore`, `.gitattributes` | reporte de segurança e exclusão de artefatos locais/sensíveis |
 | Produto | `docs/product/` | regras, escopo, jornadas e invariantes |
 | Arquitetura | `docs/architecture/` | limites, dados, transações, backups e ADRs |
 | Qualidade | `docs/quality/` | testes, cobertura, smoke, inspeção e release |

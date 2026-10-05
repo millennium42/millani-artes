@@ -186,3 +186,16 @@ rtk proxy npm run quality
 A sequência é format:check → lint → typecheck → coverage, usando os scripts existentes e && para parar na primeira falha. Ela valida o formato sem reescrever arquivos; coverage executa os testes Vitest uma vez e aplica os thresholds existentes. Não precisa executar npm test e npm run coverage novamente para duplicar a mesma verificação. Build, checks Rust e audits continuam separados; este comando valida o frontend atual.
 
 Probes temporárias confirmaram falha no primeiro gate (formato), no typecheck (TS2322) e no último gate (coverage abaixo de 90% em linhas/statements/funções apesar dos três testes passarem). Depois de removidas em finally, quality passou com três testes/dois arquivos/App-main 100% (quatro linhas). Nas falhas de formato/tipo, o relatório anterior permaneceu intacto; format:check não reescreveu a probe. Dist não mudou durante quality e não houve emit/Vite. [Spec](../../planning/specs/INF-009.md) e [handoff](../../planning/handoffs/INF-009.md) registram comandos, resultados e limites; esse resultado não é aceite financeiro ou do instalador.
+
+## CI Windows com qualidade condicional — INF-010
+
+O único job do workflow Documentation continua validando documentos e registros. Em push main e PR, compara commits; diff vazio ou só documentos canônicos/registros de planejamento pula Node, npm ci e quality. Todo path não documental ou desconhecido executa quality; source/CSS/locks/configs/gitignore/workflow/gitattributes disparam. Falha de Git/base/target bloqueia, sem assumir que pode pular. Execução manual força quality; initialzero considera toda árvore.
+
+```powershell
+rtk proxy pwsh -NoProfile -File scripts/test-frontend-check-state.ps1
+```
+
+São20fixtures Git sintéticas em artifacts/inf010-selector-fixtures, com cleanup do diretório absoluto verificado. O teste inclui rename de source para Markdown, remoção, entradas desconhecidas e base/target inválidos. Não usa dados reais.
+Setup-node e checkout ficam fixos por SHA, Node vem de .node-version e cache npm usa package-lock.json. npm ci --ignore-scripts --no-audit --no-fund precede npm run quality; coverage executa Vitest uma vez. Sem matrix/buildTauri/upload/scans remotos nesta tarefa; trabalhos posteriores mantêm seus gates. .gitattributes preserva LF dos arquivos formatados no checkout Windows; probe com autocrlf=true exportou10files iguais aos blobs.
+
+[Spec](../../planning/specs/INF-010.md)/[handoff](../../planning/handoffs/INF-010.md) registram runs/SHA/steps quando executados; configuração ou seleção isolada não prova CI verde, finanças ou release. Nenhum segredo ou dado financeiro no cache/fixture.
