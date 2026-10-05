@@ -2,7 +2,7 @@
   "id": "INF-007",
   "title": "configurar coverage",
   "specPath": "planning/specs/INF-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-006"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único escritor/checks/committer basebc4a7e0/codex/inf-007-coverage/10paths+3probes e caches espec/reservaativa atéCIfinal-nota/ref; P-QA6Lunalowread-only classificaçãoE2 semcriticalpaths usado; P-REV5.6Solmediumcontinuidade/read-onlyapósdiff/tentativa1/E2umP2textconsole corrigido/rootverificado/pergunta distinta; efetivos/custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 coveragecommand/reporterstext-summary-lcov-html/semdepinstallnovo; global90-90-90-85/inventáriocríticoTS0. Probesglobaggregatepass/perFile95-95-95-90 fail4métricas bad93.75lines/93.1statements/92.85functions/50branches; depois100%pass/removidos/restoredcfg/globtemporárioausente. Finalreal3tests2files100%(4lines/5statements/1function/2branches), LCOV2fontescountscoerentes/HTML5010bytes22files ignored; fonte-testes-locks-pins intactos. Biome/strict/build/Rustfmt-clippy-test0/npm-Cargoaudits0vuln+2warnings foraWindows247nodes verdes. ReviewE2umP2textconsole corrigido/rootverificado/Documentation9checks/audit10scope/36items31done/27sources179files/245rows/prefix115365/157links/11PSblocos verdes; commits-CI-nota pendentes; passesfalse/reservaativa; finanças/CIupload/Rustcoverage/setup nãoaprovados."
+  "passes": true,
+  "notes": "E3 coveragecommand/reporterstext-summary-lcov-html/semdepinstallnovo; global90-90-90-85/inventáriocríticoTS0. Probesglobaggregatepass/perFile95-95-95-90 fail4métricas bad93.75lines/93.1statements/92.85functions/50branches; depois100%pass/removidos/restoredcfg/globtemporárioausente. Finalreal3tests2files100%(4lines/5statements/1function/2branches), LCOV2fontescountscoerentes/HTML5010bytes22files ignored; fonte-testes-locks-pins intactos. Biome/strict/build/Rustfmt-clippy-test0/npm-Cargoaudits0vuln+2warnings foraWindows247nodes verdes. ReviewE2umP2textconsole corrigido/rootverificado/Documentation9checks/audit10scope/36items31done/27sources179files/245rows/prefix115365/157links/11PSblocos verdes; entrega4e5efeca679f117a7f260148caf305d1d0a7f86c/CI37248725654completed-success SHAexato/attempt1/job111571760098/umjob8steps; donepassestrue apósCIentrega; CIfinalSHAfechamento-nota/ref/liberação antesINF008 obrigatórios/reservaativa; finanças/CIupload/Rustcoverage/setup nãoaprovados."
 }
