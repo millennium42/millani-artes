@@ -2,7 +2,7 @@
   "id": "INF-014",
   "title": "build Tauri no CI",
   "specPath": "planning/specs/INF-014.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-010",
     "INF-011"
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único escritor/executor/committer; reserva9paths ATIVA. P-OPS gpt-6-luna low RECON E2 usado/procedimento reproduzido, upload opcional descartado; P-REV gpt-6-sol medium review módulo E2 sem P0/P1/P2. Dois delegados/tentativas1/sem escalada; efetivos/tokens/cache/custo/retries evitados não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Build local39.629s/PE32+AMD64/hash/bytes/custom-protocol compiled, quatro negativos/restauração; quality3tests/100%bootstrap/Rustfmt-clippy-test0/audits passed. Docs9/selector20/links421/parserPS17/scope9/logappend-only passaram; CI exactSHA/logproof pendentes. Semnovo job/cache/uploadexe/installer; Microsoft versions usadas não introspectadas/runtime não provado/meta ativa."
+  "passes": true,
+  "notes": "E3 local: Rustprepare/native39.629s/PE32+AMD64/custom-protocol/quatro negativos-restauração; quality3tests/100%bootstrap/Rustfmt-clippy-test0/audits/docs9/selector20/scope9. P-REV E2 sem achados. CI entrega37315900046/job111782443465/SHAfae44697fbd7e693154852d29e7d5827dbf01c06 success19steps; native265s e JSON real autenticado conferido. Cargo.lock remotoCRLF/canonicalLF iguais ao Git, invariantes before-after; semruntime/finanças/installer. FechamentoCIexato/oitoskips/zeroartifact/nota40-ref-liberação pendentes; reservaATIVA/metaativa/INF015nãoiniciado."
 }
