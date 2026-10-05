@@ -199,3 +199,80 @@ São20fixtures Git sintéticas em artifacts/inf010-selector-fixtures, com cleanu
 Setup-node e checkout ficam fixos por SHA, Node vem de .node-version e cache npm usa package-lock.json. npm ci --ignore-scripts --no-audit --no-fund precede npm run quality; coverage executa Vitest uma vez. Sem matrix/buildTauri/upload/scans remotos nesta tarefa; trabalhos posteriores mantêm seus gates. .gitattributes preserva LF dos arquivos formatados no checkout Windows; probe com autocrlf=true exportou10files iguais aos blobs.
 
 [Spec](../../planning/specs/INF-010.md)/[handoff](../../planning/handoffs/INF-010.md) registram runs/SHA/steps quando executados; configuração ou seleção isolada não prova CI verde, finanças ou release. Nenhum segredo ou dado financeiro no cache/fixture.
+
+## Build limpo com caches isolados — INF-011
+
+E3 no SHA87f996255ddf7d9d9ebc3f7743d9fdbb44439ee4: clone público/caches novos/target vazio antes do build, dependências pelos locks e produção Tauri --locked --no-bundle. Executável PEWindowsx64/8.574.976bytes/SHA2566ab2a29b01b183f0dcbad54d085e31a2eb5932a10a0d6f052c8adcb9871520f1; gates/tempos/hashes/avisos em [handoff](../../planning/handoffs/INF-011.md). Compiladores jáinstalados são pré-requisitos; as menções anteriores a máquina limpa eram objetivos não comprovados. Esta prova não declara OS recém-instalado/VM/determinismo bit a bit/instalação limpa do setup.exe (REL002).
+
+Use sessão dedicada com pins acima e ambiente Developer x64. O líder ativou VsDevCmd.bat -no_logo -arch=x64 -host_arch=x64 -winsdk=10.0.26100.0, confirmou cl19.44.35229/SDK26100/vswhere-utf8 e passou variáveis somente ao filho. Pythonstdlib orquestrou comandos; os blocos PowerShell são procedimento equivalente, parseados e revisados E2, não executados como script inteiro.
+
+Na raiz do projeto, escolher diretório novo, sem sobrescrever. Clone core.autocrlf=false preserva Cargo.lock LF; .gitattributes conserva LFfrontend. Verificar HEAD/tree/index limpos e ausências antes de instalar; um clone futuro pode requerer fetch do SHA testado:
+```powershell
+$millaniWorkspace = (Get-Location).Path
+$millaniCleanRoot = [IO.Path]::GetFullPath((Join-Path $millaniWorkspace 'artifacts/inf011-clean-build'))
+if (-not $millaniCleanRoot.StartsWith($millaniWorkspace + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $millaniCleanRoot)) { throw 'Raiz existente ou fora do workspace.' }
+$null = New-Item -ItemType Directory -Path $millaniCleanRoot
+$millaniSource = Join-Path $millaniCleanRoot 'source'
+$millaniRef = '87f996255ddf7d9d9ebc3f7743d9fdbb44439ee4'
+rtk proxy git clone --config core.autocrlf=false --depth 1 --single-branch --branch main https://github.com/millennium42/millani-artes.git $millaniSource
+if ($LASTEXITCODE -ne 0) { throw 'Clone falhou.' }
+rtk proxy git -C $millaniSource fetch --depth 1 origin $millaniRef
+if ($LASTEXITCODE -ne 0) { throw 'Fetch falhou.' }
+rtk proxy git -C $millaniSource checkout --detach $millaniRef
+if ($LASTEXITCODE -ne 0) { throw 'Checkout falhou.' }
+$millaniActualRef = (rtk proxy git -C $millaniSource rev-parse HEAD).Trim()
+if ($LASTEXITCODE -ne 0 -or $millaniActualRef -ne $millaniRef) { throw 'Snapshot diferente.' }
+$millaniNpmCache = Join-Path $millaniCleanRoot 'npm-cache'
+$millaniCargoHome = Join-Path $millaniCleanRoot 'cargo-home'
+$millaniCargoTarget = Join-Path $millaniCleanRoot 'cargo-target'
+$null = New-Item -ItemType Directory -Path $millaniNpmCache,$millaniCargoHome,$millaniCargoTarget
+foreach ($millaniOutput in @('node_modules','dist','coverage','.vitest','src-tauri/target','src-tauri/gen')) {
+    if (Test-Path -LiteralPath (Join-Path $millaniSource $millaniOutput)) { throw 'Output anterior presente.' }
+}
+$env:NPM_CONFIG_CACHE = $millaniNpmCache
+$env:NPM_CONFIG_USERCONFIG = Join-Path $millaniNpmCache 'user.npmrc'
+$env:NPM_CONFIG_GLOBALCONFIG = Join-Path $millaniNpmCache 'global.npmrc'
+$env:CARGO_HOME = $millaniCargoHome
+$env:CARGO_TARGET_DIR = $millaniCargoTarget
+foreach ($millaniOption in @('RUSTC_WRAPPER','RUSTC_WORKSPACE_WRAPPER','RUSTFLAGS','CARGO_ENCODED_RUSTFLAGS','RUSTUP_TOOLCHAIN','CARGO_BUILD_TARGET','CARGO_BUILD_TARGET_DIR')) {
+    [Environment]::SetEnvironmentVariable($millaniOption, $null, 'Process')
+}
+Set-Location -LiteralPath $millaniSource
+$millaniStatus = @(rtk proxy git status --porcelain)
+if ($LASTEXITCODE -ne 0 -or $millaniStatus.Count) { throw 'Snapshot sujo antes dos checks.' }
+$millaniLocks = @('package-lock.json','src-tauri/Cargo.lock')
+$millaniBefore = @(Get-FileHash -LiteralPath $millaniLocks -Algorithm SHA256)
+```
+Executar sequencialmente, interrompendo na primeira falha; qualidade já executa testes/coverage uma vez e Tauri já faz buildfrontend. Não executar clippy/test antes do primeiro nativebuild, para provar targetvazio:
+```powershell
+rtk proxy npm ci --ignore-scripts --no-audit --no-fund
+if ($LASTEXITCODE -ne 0) { throw 'npm ci falhou.' }
+rtk proxy npm run quality
+if ($LASTEXITCODE -ne 0) { throw 'Quality falhou.' }
+rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check
+if ($LASTEXITCODE -ne 0) { throw 'Rustfmt falhou.' }
+if (@(Get-ChildItem -LiteralPath $millaniCargoTarget -Force).Count) { throw 'Target não vazio antes do build.' }
+rtk proxy npm run tauri -- build --no-bundle -- --locked
+if ($LASTEXITCODE -ne 0) { throw 'Build falhou.' }
+rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
+if ($LASTEXITCODE -ne 0) { throw 'Clippy falhou.' }
+rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml
+if ($LASTEXITCODE -ne 0) { throw 'Rust test falhou.' }
+rtk proxy npm audit --audit-level=high
+if ($LASTEXITCODE -ne 0) { throw 'npm audit falhou.' }
+$millaniAudit = Join-Path $env:LOCALAPPDATA 'MillaniArtesDev/toolchains/cargo-audit-0.22.2-win-x64/cargo-audit-x86_64-pc-windows-msvc-v0.22.2/cargo-audit.exe'
+rtk proxy $millaniAudit audit --file src-tauri/Cargo.lock
+if ($LASTEXITCODE -ne 0) { throw 'Cargo audit falhou.' }
+$millaniAfter = @(Get-FileHash -LiteralPath $millaniLocks -Algorithm SHA256)
+for ($millaniIndex = 0; $millaniIndex -lt $millaniBefore.Count; $millaniIndex++) {
+    if ($millaniBefore[$millaniIndex].Hash -ne $millaniAfter[$millaniIndex].Hash) { throw 'Lock alterado.' }
+}
+$millaniExe = Join-Path $millaniCargoTarget 'release/millani-artes.exe'
+Get-Item -LiteralPath $millaniExe | Select-Object Length
+Get-FileHash -LiteralPath $millaniExe -Algorithm SHA256
+$millaniStatus = @(rtk proxy git status --porcelain)
+if ($LASTEXITCODE -ne 0 -or $millaniStatus.Count) { throw 'Fonte ou lock alterado após os checks.' }
+```
+Registrar versões/exits/tempos/locks, SHAexe/PEWindows/custom-protocol/dist e status vazio; não aceitar fonte/lock modificado. Para os dois avisos Cargo, executar metadata --locked/--filter-platform x86_64-pc-windows-msvc/--features tauri/custom-protocol e comparar packages aos resolve.nodes; o líder verificou ausência glib/proc-macro-error em247nodes, semignore. Audit é snapshot, não garantia futura.
+
+Depois de reter resumo sanitizado, retornar ao workspace e remover só a raiz temporária absoluta exata, após validar contenção/ausência de reparsepoints externos, usando Remove-Item -LiteralPath. Logs/caches/reports/exe não vão ao Git; fechar sessão dedicada descarta env local. FonteUI igual preserva aceite históricoINF002 sem ampliar E4. Sem finanças/instalador/release; INF012/INF015/REL002 têm seus próprios gates.

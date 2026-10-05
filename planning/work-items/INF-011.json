@@ -1,0 +1,26 @@
+{
+  "id": "INF-011",
+  "title": "provar build limpo",
+  "specPath": "planning/specs/INF-011.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002",
+    "INF-003"
+  ],
+  "acceptanceCriteria": [
+    "clone público no SHA exato e outputs/caches npm-Cargo-target inicialmente ausentes/novos",
+    "npm ci pelos locks/quality/Rust gates/build produção Tauri --no-bundle -- --locked executados com artefato real",
+    "hashes/locks/source/status iguais e resultados sanitizados/cleanup, sem alegar OS limpo ou instalação setup.exe",
+    "review/docs/CI entrega-final/note-ref/publicação/liberação antes INF012"
+  ],
+  "checks": [
+    "versões/MSVC-SDK/config efetiva/isolamento/ausência inicial/identidade Git",
+    "npm ci/quality/audit e Cargo fmt/clippy/test/audit/metadata/tauri produção",
+    "Documentação/scope/links/append-only/CI SHAexato/note-ref"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer, sete paths permanentes/raiz temporária exatos na spec, ATIVA até CI final-noteref-liberação. P-OPS6Luna low/read-only/E2 inventário usado; P-REV6Sol medium/read-only apósdiff/E2 umP2ROADMAP corrigido pelo root; nenhumoutroachado. Efetivos/tokens/custo poritem-agente não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 build isolado87f9962/clonetree191/cache npm-CargoTarget novos/targetvazio antes, gates TS/Rust/audits/nativeproductionlocked0. Exe8574976bytes/PEAMD64/SHA2566ab2a29b01b183f0dcbad54d085e31a2eb5932a10a0d6f052c8adcb9871520f1; locks/source/pins/statusclean preservados. Coverage100%3testsbootstrap/Rust0tests/Cargo2warningsforaWindows247nodes semignore. Resultados/retries operacionais no handoff; Cleanup0/path absoluto/zero reparsepoints/raiz ausente; documentaçãoE3/16PSblocos/162links/scope7 verdes; ReviewE2/P2ROADMAPestado corrigido; CI entrega-final/note-ref pendentes, passesfalse/reserva7pathsATIVA. NãoOSnovo/VM/instalação/setup.exe/finanças; E4histórico não se amplia."
+}
