@@ -1,0 +1,22 @@
+INF-007 | CONCLUÍDA | E3 execução local/remota, E2 revisão | 2026-10-04 America/Sao_Paulo / 2026-10-05 UTC
+SHA final: 5ddbfc5e242cdfb37cb2daa5bc9c468a6d6fd7c8
+Branch codex/inf-007-coverage; main público https://github.com/millennium42/millani-artes
+Entrega4e5efeca679f117a7f260148caf305d1d0a7f86c; CI37248725654 completed/success SHA exato/attempt1/job111571760098/umjob8steps.
+CI FINAL: https://github.com/millennium42/millani-artes/actions/runs/37248915292 completed/success SHA final exato/attempt1/job111572317469/umjob8steps.
+Done/passestrue apósCIentrega+checks/docs/review-correção/commit; CIfechamento exato confirmado. 10paths naentrega, 6records fechamento; runtime/config/locks/fonte/política iguais entre entrega/fechamento.
+
+E3 P-INT/root Windows Node24.21.0/npm11.19.0/TS7.0.2/Vite8.3.2/Biome2.5.15/Rust1.99.0:
+- ReusoVitest/providerV85.0.3, nenhuma dependência/instalação/lockchange. coverage=vitest run --coverage; global90/90/90/85/include todo srcTS-TSX/excluisótests/sem autoUpdate. textconsole/json-summary-LCOV-HTML no coverage ignorado/cleantrue/dir dentro workspace.
+- Inventário críticoTS atual0; sourceApp/main bootstrap, sem domínioRust. Arquitetura não fixa pathsTS; COVERAGE_POLICY obriga cada futuro itemcrítico a registrarpathsreais/thresholdsperFile95/95/95/90/testesinvariantes-matriz/evidência antespassestrue. Aplicação financeira concreta permanece futura, semdirs presumidos.
+- REDcomandoausente exit1/Missing script. Probes temporárias good/bad globalpass99.41lines/98.91statements/98.46functions/99.03branches apesarbad93.75/93.1/92.85/50. Glob crítico agregado95/95/95/90pass0; perFiletruefail1nas4métricas combadfilename mesmo4tests pass; cobertura completa65functions/170lines/184statements/104branches100%pass0. Finallyremove3probes/glob sintético e restaura bytescfg permanente.
+- Finalcoverage3tests2files100%App-main:4lines/5statements/1function/2branches. JSONsummarytotal+2fonts; LCOV2fontesApp-main/LF4LH4/FNF1FNH1/BRF2BRH2; HTML5010bytes/22filesreportignored. Não é finanças/Rustcoverage/integração/WebView/cleanmachine/release.
+- formatcheck/lint10files0; tsc0; build16Vitemodules0; Cargo fmt/clippy warningserro/test0(0tests). SourceUI/testes/CSS/Vite/strict-Biome/pins/locks anteriores intactos.
+- Npm audit0vuln/Cargoaudit0vulnclassificadas+2warnings RUSTSEC2024-0370(proc-macro-error1.0.4/unmaintained) e2024-0429(glib0.18.5/unsound), fora247nodesWindowscustomprotocol, semignore. AdvisoryDB1290/ef6173cbc5c50ec8166f9a5b28f07834144373ee.
+- LockSHA256npm bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284; Cargo d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca.
+- Documentation9checks/map27fontes179files/36items32done/ignore28-4/fixtures25-72-26/7docs/11PSblocos parseados. Logprefixoriginal115365bytes/entrega118384 preservados. Audit10scope/35oldobjects/245roadmaprows-deps/157links/thresholdspolicyoriginalprefix/heurísticaselecionada0/diffcheck/probes-globausentes; heurística nãoGitleaks/completa.
+
+P-QA gpt-6-luna low solicitado/read-only/continuidade/tentativa1/E2classificação usada, semcriticalpaths/dirsfixados. P-REV gpt-5.6-sol medium solicitado/read-only/continuidade/tentativa1/E2umP2textconsole vsarquivo, corrigido pelo root emoperação/política/handoff e confirmado artefatos; nenhumP0/P1/outroP2. Baseline950b8ed0cfb7e70d11d4794f60d99fad44f4b49a23bed36741bbd6fe8ac98c94 íntegro pré-correção; rootexecutouE3. Dois escopos distintos, semescala/retryreview/runtime; rgWindowsglobargumento e leitura delegado roadmappath corrigidos antesqualquermutação indevida.
+Modelo-esforço efetivos/input-output-reasoning/cache/custo/duração poritem-agente não registrado; semalegar economia medida. Somente2runsDocumentation existentes/semrerun-jobnovo-buildremoto; esta nota não cria terceirocommit/run.
+Limites: scanner snapshot/licenças-proveniência-telemetria completas não registradas/adoçãoINF006 reutilizada; relatórios source/paths técnicosignored/não financeiro. E4bootstrapINF002 preservado semnovo aceite UIfinanceira. Meta Windowslocal financeira/setup.exe ATIVA.
+ReservaINF007/P-INT/basebc4a7e0/10paths+3probes-caches(spec): LIBERADA apósCIfinalconfirmado eesta nota publicada/ref remota conferida no pós-gate do líder. Nenhumoutroescritor/conflitoobservado/lockOS não comprovado.
+PróximoINF-008←INF-004, primeiro desbloqueado245IDs/deps, ainda não iniciado.
