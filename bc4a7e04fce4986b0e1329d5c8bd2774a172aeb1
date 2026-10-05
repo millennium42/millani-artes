@@ -1,0 +1,21 @@
+INF-006 | CONCLUÍDA | E3 local/remoto, revisão E2 | 2026-10-04 America/Sao_Paulo / 2026-10-05 UTC
+SHA final: bc4a7e04fce4986b0e1329d5c8bd2774a172aeb1
+Branch: codex/inf-006-vitest; publicado publicmain https://github.com/millennium42/millani-artes
+Entrega: 6889b80e1f4bd880ac69082b03b32f2699005271; CI37247106290 completed/success SHA exato/attempt1/job111567039443/umjob8steps.
+CI FINAL: https://github.com/millennium42/millani-artes/actions/runs/37247330680 completed/success SHA final exato/attempt1/job111567687301/umjob8steps verdes.
+Done/passestrue apósCI entrega/gates/commit/review/docs; CI noSHA fechamento confirmada. Código/config/testes/locks idênticos entre entrega/fechamento. 17paths naentrega, 6records nofechamento.
+
+E3 root Windows/Node24.21.0/npm11.19.0/TS7.0.2/Vite8.3.2/Biome2.5.15/Rust1.99.0:
+- Vitest/provider V8 5.0.3 preregistro/devpins/ignore-scripts/HTTPS-SHA512; directtarballs hashes/licenses lidas antesexec. install32added/npmci59installed;88oldlockentries intactas+32novas=120registry, novas semhasInstallScript/metadata31MIT+1Apache. CLI5.0.3.
+- package-lock SHA256bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284; Cargo.lockd7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca/sourceApp-main-CSS-Vite preservados.
+- npmtest3tests2files/Node: App SSRreal e mainrootcom-semroot/ReactDOM-documentmocks/reset-cleanup. V8App-main100%lines4/4/statements5/5/functions1/1/branches2/2; providerdefault/global90-90-90-85/sem autoUpdate. CríticaTSausente/política95-95-95-90 mantida.
+- REDtestausenteexit1/Missingscript; probeassertionmarcaerradaexit1/AssertionError1failed/removidafinally; Appisolado1testpass masgateexit1/lines25-statements20-branches0/mainnãoimportado0. Finalsuítecompleta0, probeausente.
+- format:check/lint10files0, tsc6files0, build16Vitemodules0; Cargo fmt/clippy warningsgate/test0(0tests). Npm audit0vuln/Cargoaudit0vulnclassificadas+2warnings RUSTSEC2024-0370 e2024-0429 foraWindows247nodes/customprotocol, semignore. Base1290/ef6173cbc5c50ec8166f9a5b28f07834144373ee.
+- Documentation9checks/map27fontes176files/35items31done/ignore28-4/fixtures25-72-26/7canonicaldocs. Logprefix original111171bytes e entrega114266bytes preservados.
+- Scope17reservados/34objetosanteriores/245roadmaprows-deps/157localLinks/10PSsnippetsparse/selectedsecretpatterns0/diffcheck/5artefatosignored. Heurística nãoGitleaks/nemscancompleto.
+P-QA gpt-6-luna low solicitado/read-only/tentativa1/desenho3testsE2 usado; P-REV gpt-5.6-sol medium solicitado/read-only/continuidade/tentativa1/E2 semachadosP0-P1-P2 no baseline63277f1ab40cd62cebeb1bddd1a3609f3620db3383a1fcf8566cbb959ba0affc; rootconfirmou e executouE3. Doisescoposdistintos/sem escala, rootúnicoescritor/checks/committer. Modelo-esforçoefetivos/input-output-reasoning-cache/custo/duração poritem-agente não registrado; semalegar economia.
+Uma falhaJS anterior àexec corrigida chr96/duasURLsweb recusadas fallback oficial/schema nome errado corrigido rgfiles; semretry install/runtime/gates. Negativosesperados nãofalha produto.
+Limites: SSR/mocks não provam WebView/eventos/estilos/acessibilidade jornada/SQLite/finanças/cleanmachine/coverageRust/release. Hash/metadata/scanssnapshot nãoauditoria malware/legalcompleto/assinaturas-proveniência/telemetria; estes não registrados. E4bootstrapINF002 preservado sem ampliar. MetaWindowslocal financeira/setup.exe ATIVA.
+Economia operacional: somente2runsDocumentation existentes entrega-fechamento/semrerun-jobnovo-buildremoto; nota não cria terceirocommit/run.
+Reserva INF006/P-INT/base d6df89d/17paths+probe/caches(spec): LIBERADA apósCI final confirmado e esta nota publicada com refs remotas verificadas no pós-gate do líder. Nenhumoutroescritor/conflitoobservado/lockOS nãocomprovado.
+Próximo INF-007←INF-006, primeirodesbloqueado nos245IDs/deps, ainda não iniciado.
