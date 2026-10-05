@@ -31,3 +31,6 @@ Desktop.ini
 
 # Schemas gerados localmente pelo build Tauri
 src-tauri/gen/
+
+# Reports e artefatos Vitest
+.vitest/

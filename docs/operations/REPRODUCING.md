@@ -132,3 +132,19 @@ Para aplicar formatação dentro do escopo: rtk proxy npm run format. Esse coman
 E3 em2026-10-04: CLI2.5.15/install-ignore-scripts/npmci27pacotes; formatter/linter7arquivos/nenhuma correção necessária. Probe temporária com formato divergente/debugger produziu exit1 nos dois checks, incluindo lint/suspicious/noDebugger; removida emfinally. Checks positivos/build strict depois passaram sem alterar fonte/configs/locks durante comandos read-only. 79entradas npm anteriores preservadas; 9novasBiome/88registry ao todo, pin2.5.15/fontes-integrity verificadas. Novo lock SHA256722d67e9765baf435e3440c47db94d141dd7980a789327c4d42e57e6c0440f4d.
 
 Audits npm0vuln/Cargo0vuln classificadas+2avisos foraWindows247nodes mantidos semignore; fmt/clippy/test0 passaram. Tooling não prova coverage/Vitest/máquina limpa/finanças/release. [Registro](../../governance/TOOL_REGISTER.md), [configuração oficial](https://biomejs.dev/reference/configuration/) e [handoff](../../planning/handoffs/INF-005.md) guardam escopo/limites; CI atual continua somenteDocumentation.
+
+
+## Testes do scaffold — INF-006
+
+Vitest5.0.3 e provider V8 da mesma versão são devDependencies fixas. Node24.21.0/Vite8.3.2 existentes, sem instalação global/npx/DOM adicional. Com Node ativado:
+```powershell
+rtk proxy npm ci --ignore-scripts --no-fund --no-audit
+rtk proxy npm test
+rtk proxy npm run format:check
+rtk proxy npm run lint
+rtk proxy npm run build
+```
+npm test executa vitest run, sem watch, em Node e com coverage V8 habilitada. Para testes locais filtrados, o gate continua avaliando todo src TS/TSX: executar apenas App.test.tsx deve falhar enquanto main não estiver coberto. Não desabilitar/reduzir coverage para apresentar aprovação. Texto/json-summary em coverage/ e artefatos .vitest/ são ignorados; não publicar paths locais nem dados privados como relatório de produto.
+vitest.config.ts inclui fonte não importada e exclui somente testes. Gate global90 lines/statements/functions e85 branches; autoUpdate não habilitado. Os arquivos financeiros/backup críticos ainda não existem, e quando existirem exigirão95/95/95/90 porglob/per-file conforme política. INF007 terá ciclo próprio; esta adoção não declara concluída sua configuração específica.
+Os três testes verificam App real por SSR e bootstrap com/semroot, usando mocks só em document/ReactDOMclient e cleanup/reset porcaso. Não provam WebView/DOM real, eventos, estilos, integração ou acessibilidade da jornada. Strict cobre seis fontes próprias (App/main/doistestes/Vite/Vitest); Biome cobre10arquivos. App/main/CSS/Vite/Rust anteriores intactos.
+E3 local2026-10-04: npmci59pacotes/lock preservado, Vitest5.0.3; suíte3testes/2files verde e100% App/main (lines4/4, statements5/5, functions1/1, branches2/2). Probe temporária com marca incorreta falhou AssertionError/exit1 e foi removida; App isolado passou teste e falhou gate lines25/statements20/branches0, mainincluído0. Depois suíte completa/build strict/format/lint/Rustfmt-clippy-test0/audits verdes. Cargo mantém dois avisos foraWindows247nodes semignore. Sem máquina limpa/coverageRust/finanças/release comprovados. [Registro](../../governance/TOOL_REGISTER.md), [config](../../vitest.config.ts), [handoff](../../planning/handoffs/INF-006.md) e [coverage oficial](https://vitest.dev/config/coverage.html).

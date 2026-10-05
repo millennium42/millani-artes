@@ -13,7 +13,7 @@
 | Governança | `governance/` | IA, evidência, exceções e ferramentas |
 | Planejamento | `planning/` | roadmap, specs, work items, handoffs e histórico |
 | Runtimes | `.node-version`, `rust-toolchain.toml` | pins dev Windows; reprodução e evidência em operação |
-| Frontend | `package.json`, `package-lock.json`, `tsconfig.json`, `biome.json`, `vite.config.ts`, `index.html`, `src/` | scaffold React/TypeScript/Vite; sem regra financeira |
+| Frontend | `package.json`, `package-lock.json`, `tsconfig.json`, `biome.json`, `vite.config.ts`, `vitest.config.ts`, `index.html`, `src/` | scaffold React/TypeScript/Vite; sem regra financeira |
 | Core desktop | `src-tauri/` | scaffold Tauri Windows e lockfile Rust |
 | Automação | `.github/workflows/` | checks remotos |
 | Checks locais | `scripts/` | validação reproduzível do mapa |
