@@ -4,6 +4,8 @@ Fonte canônica de IDs. Formato: `ID — intenção observável ← dependência
 
 `DOC-001` tem evidência local histórica. `DOC-002` fechado em `263e8db`; `DOC-003` em `00ba4f2`; `DOC-004` em `0bca4a5`; `DOC-005` em `d60e8f7`; `GOV-001` em `db11682`; `GOV-002` em `b0cc139`; `GOV-003` em `cc43154`; `GOV-004` em `8c7e7bc`; `GOV-005` em `999b420` com CI 37092061099 verde, evidência final em `refs/notes/evidence`. `GOV-006` fechado em `13333ad` com CI37093457937 verde, décimo recibo/revisão de alocação em `refs/notes/evidence`. `GOV-007` fechado em `75b7fcb` com CI37094308358 verde e nota `refs/notes/evidence`. `GOV-008` fechado em `e49f349` com CI37094921664 verde e nota `refs/notes/evidence`. `GOV-009` fechado em `69c2236` com CI37095660870 verde e nota `refs/notes/evidence`. `PLN-001` fechado em `e0bd668` com CI37096490952 verde e nota `refs/notes/evidence`; template preservado. `PLN-002` fechado em `b65c361` com CI37097624217 verde e nota `refs/notes/evidence`. `PLN-003` fechado em `4bc2d66` com CI37098337691 verde e nota `refs/notes/evidence`. `PLN-004` fechado em `0560d72` com CI37099570659 verde e nota `refs/notes/evidence`. `PLN-005` fechado em `0c8fc12` com CI37100652290 verde e nota `refs/notes/evidence` publicada/liberação. `TRC-001` fechado em `692bd36` com CI37133989599 verde/nota publicada/liberação. `TRC-002` fechado em `1bcb7a8` com CI37135745415 verde/nota publicada-liberação. `TRC-003` fechado em `e81897c` com CI37137575872 verde/nota publicada-liberação. `TRC-004` fechado em `d815183` com CI37156295362 verde/nota publicada-liberação. `TRC-005` fechado em `575af01` com CI37157531585 verde/nota publicada-liberação. `TRC-006` fechado em `c07e71a` com CI37159051022 verde/nota publicada-liberação. `PLN-006` fechado em `032628d` com CI37175540259 verde/nota publicada-liberação. INF-001 final6bed951/CI37177579406/nota publicada-reserva liberada; runtimes locais E3. INF-002 done/passestrue após gates locais/visualE4 e CI entrega37241434563 no SHAfb8faee; reserva até CI final-notapub/liberação. INF-002 CI final37241566670 no SHA04d5b17 success/nota publicada/reserva liberada. INF-003 done/passestrue após reprodução local/review e CI entrega37242789186 no SHA61c61bf; reserva até CI final-nota publicada/liberação. INF-003 CI final37243031187 no SHA6e6e911 success/nota publicada/reserva liberada. INF-004 done/passestrue após compiler/build/probes/review e CI entrega37243910100 no SHAc23e583; reserva até CI final-nota publicada/liberação. INF-004 CI final37244081876 no SHA4416b35 success/nota publicada/reserva liberada. INF-005 done/passestrue após install-ci-pin/format-lint-probes/review e CI entrega37245206424 no SHAc63fcad; reserva até CI final-notapub/liberação. INF-005 CI final37245343129 no SHAd6df89d success/nota publicada/reserva liberada. INF-006 done/passestrue após suíte/probes/coverage/gates/review e CI entrega37247106290 noSHA6889b80; reserva atéCI final-nota publicada/liberação. INF-006 CI final37247330680 noSHAbc4a7e0 success/nota publicada/reserva liberada. INF-007 done/passestrue apóscoverage-reports/probes/gates/review-correção eCIentrega37248725654 noSHA4e5efec; reserva atéCIfinal-nota/ref-liberação. INF-007 CI final37248915292 noSHA5ddbfc5 success/nota publicada/reserva liberada. INF-008 CI final 37250250061 no SHA b9db95e success/nota pública/ref verificada/reserva liberada. INF-009 CI final37251558957 noSHA639db7e success/nota pública/ref verificada/reserva liberada. INF-010 CI final37301128915 noSHA87f9962 success/frontend skipped/nota pública-ref verificada/reserva liberada. INF-011 CI final37305834951 noSHAab3f751 success/nota pública-ref verificada/reserva liberada. INF-012 done/passestrue após catálogo/queries/gates locais/review e CI entrega37309073885-SHAe0f7145; CI final/note-ref/liberação pendentes. INF-013 done/passestrue após gates/review/CI entrega37311827221-SHA7e61fa7/artifact11346536176 ZIP-digest/coverage verificados; CI final/note-ref/liberação pendentes. INF-014 done/passestrue após gates/review e CI entrega37315900046-SHAfae4469/JSON nativo real conferido; CI final/nota-ref/liberação pendentes. INF-015 done/passestrue após clone limpo/guard/checks/cleanup/review e CI entrega37320497876-SHAb390985 success8skips0artifact; CI final/nota-ref/liberação pendentes. Demais todo. Próximo SEC-001 após liberação INF015.
 
+SEC-001 in_progress/passesfalse: seleção explícita/RED-resolver/probeWebView2 real local/3Rustpassed/controle permitido-restauração/gates E3; review/docs/CI pendentes. Cinco linhas ARC/UI restauradas ao grafo canônico ab4e0c09 após regressão textual INF015;245IDs únicos/deps conferidos. Próximo após fechamento SEC-002.
+
 ## B0 — Governança e planejamento
 
 - DOC-002 — validar mapa contra árvore real ← —
@@ -67,11 +69,11 @@ Fonte canônica de IDs. Formato: `ID — intenção observável ← dependência
 
 ## B2 — Arquitetura e migrations
 
-- SEC-001 — criar camadas domínio/aplicação/infra/UI ← INF-002
-- ARC-002 — definir Result/erro de domínio ← SEC-001
-- ARC-003 — injetar relógio/UUID ← SEC-001
+- ARC-001 — criar camadas domínio/aplicação/infra/UI ← INF-002
+- ARC-002 — definir Result/erro de domínio ← ARC-001
+- ARC-003 — injetar relógio/UUID ← ARC-001
 - ARC-004 — definir fronteira de transação ← ARC-002
-- ARC-005 — bloquear SQL em componente ← SEC-001
+- ARC-005 — bloquear SQL em componente ← ARC-001
 - DB-001 — criar harness SQLite temporário ← INF-006
 - DB-002 — abrir banco vazio ← DB-001
 - DB-003 — definir executor de migration ← DB-002
@@ -221,7 +223,7 @@ Fonte canônica de IDs. Formato: `ID — intenção observável ← dependência
 
 ## B7 — UI, backup, smoke e instalador
 
-- UI-001 — shell acessível ← INF-002, SEC-001
+- UI-001 — shell acessível ← INF-002, ARC-001
 - UI-002 — foco e teclado do shell ← UI-001
 - UI-003 — configuração inicial de contas ← UI-001, FIN-008
 - UI-004 — cadastro de categoria ← UI-001, CAT-004

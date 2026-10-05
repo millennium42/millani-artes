@@ -5,3 +5,6 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("Não foi possível iniciar Millani Artes.");
 }
+
+#[cfg(test)]
+mod security_tests;

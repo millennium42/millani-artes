@@ -713,3 +713,23 @@ Aprendizado: Gitstatus vazio inclui tracked/índice/untrackednãoignorado, mas o
 ## INF-015 | CORRECT da seleção seguinte | 2026-10-05
 
 A assert de próximoARC001 após montar os registros de fechamento falhou antesstage/commit. Reconsulta determinística dos245IDs/deps com40done mostrou SEC-001 (capabilities deny-by-default←INF002) como primeiro todo desbloqueado; ARC001 era previsão indevida. Corrigidos spec/handoff/workitem/roadmap para SEC001 antes commitfinal; histórico append-only preserva previsão anterior e esta correção. Nenhum workitemseguinte foi iniciado, nenhum CI/build/review rerun; só metadata final requerida será verificada. INF015done após CI entrega jáverde; CI final/nota41-ref/Gitclean/liberação pendentes, reservaATIVA/metaativa.
+
+## 2026-10-05 — SEC-001 SPEC/RECON
+
+P-INT único escritor, base79ecd49/11paths ATIVA; spec/workitem/handoff criados. PredecessorCI37321328513 exactSHA success/8skips/zeroartifact e41notas. Seleção vazia Tauri implica arquivos automáticos; testes comportamentais e WebView2 real previstos. Corrigir cinco linhas do grafo alteradas indevidamente emINF015; 245linhas/244IDs únicos antes, alegação anterior de preservação inválida nesse ponto. P-SEC gpt-6-luna low E2 usado; custo/tokens/cache poritem não registrado. CSP separado; meta ativa.
+
+## 2026-10-05 — SEC-001 RED/BUILD/TEST/SECURITY
+
+E3 RED seletor exit101/12.096s, inline explicit main sem comandos; grafo245IDs-deps restaurado/canônico. Quality3tests100%/nativebuild29.084s/PEAMD64/customprotocol; fmt/clippy/audits passed, npm0/Cargo0classificadas+2avisosforaWindows247nodes semignore. Probe inicialrun0 semassert descartado/run_return corrigido; controles revelaram payload value incorreto, corrigido conforme código pinned. Controle final grants set_title/emit exit101/5.774s/título-evento alterados; configrestauradafinally. Finalfmt0.177s/clippy7.384s/test7.906s3passed0ignored/WebView2real5flags true/cleanup196entries0reparse0process/perfil ausente/locks invariantes. Nada de grant/plugin/customcmd no produto; endpoint cfgtest. Registros detalhados spec/handoff, custo/tokens poritem NR. Review/docs/CI pendentes; reservaATIVA/metaativa.
+
+## 2026-10-05 — SEC-001 CORRECT schema/gate
+
+Schema detectou duplicateSEC001: índice legado já tinha itemtodo/humanGateRequiredtrue. Reserva ampliada anteseditar para12paths incluindo BOOTSTRAPINDEX; migrado só esse objeto ao arquivo próprio/29outros preservados,44IDs únicos/40done. Gatehumanotrue preservado; false inicial foi erro de leitura do registro e não vale como dispensa. Aceite explícito de config/escopo apóschecks/review pendente, E4INF002 nãoampliado. Passesfalse/reservaATIVA/metaativa; nenhuma dependência posterior iniciada.
+
+## 2026-10-05 — SEC-001 REVIEW/CORRECT P2/contagem
+
+P-REV6Solmedium E2 apontou guard só externo no probe. Corrigido código com absoluto/perfil exato/reparse emancestrais; fixturejunction real negada/sentinela intacta/cleanup não recursivo/fixtureausente. Finalfmt0.164s/clippy1.835s/test8.274s4passed0ignored/native5flags true/cleanup196entries0reparse0process/locks iguais. Contagem authority correta36=6cmds×3labels×2origens, não72 como entries anteriores declaravam; schema72fixtures é contagem distinta preservada. Docs9/seletor20/rootmetadata437links/43otheritems iguais/12paths executados; re-review correção/gatehumano/CI pendentes. ReservaATIVA/metaativa.
+
+## 2026-10-05 — SEC-001 VERIFY/CI previsto
+
+P-REV6Solmedium re-reviewE2 sem P0/P1/P2 apósguard; rootrechecks4docs211files44items/166978prefix e437links/parser1/heurística/12paths/43outrositems iguais/29indextextos preservados/245IDsgrafo/fixturesausentes passaram. QuatroRusttests reais finais, frontend3tests100%, build/audits jáprovados semmudança posterior de produto/deps. Passesfalse/gatehumano legado true pendente; commit/CIentrega próximos, nenhuma tarefa posterior. Doisdelegados/semescala; métricasmonetárias/peritemtokens-cache NR.

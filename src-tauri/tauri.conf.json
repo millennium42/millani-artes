@@ -19,14 +19,29 @@
       }
     ],
     "security": {
-      "capabilities": [],
+      "capabilities": [
+        {
+          "identifier": "main-local-deny",
+          "description": "SEC-001 / ADR-021: local scaffold; no IPC commands required. Tests: src/security_tests.rs.",
+          "local": true,
+          "windows": [
+            "main"
+          ],
+          "permissions": []
+        }
+      ],
       "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src ipc: http://ipc.localhost; img-src 'self' data:; style-src 'self'; script-src 'self'",
       "devCsp": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src 'self' ipc: http://ipc.localhost ws://127.0.0.1:1420; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
     }
   },
   "bundle": {
     "active": false,
-    "targets": ["nsis"],
-    "icon": ["icons/icon.png", "icons/icon.ico"]
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ]
   }
 }

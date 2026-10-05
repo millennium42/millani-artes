@@ -1,0 +1,24 @@
+{
+  "id": "SEC-001",
+  "title": "capabilities deny-by-default",
+  "specPath": "planning/specs/SEC-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002"
+  ],
+  "acceptanceCriteria": [
+    "capability main explícita sem comandos; extra não selecionada excluída e autoridade real nega acessos",
+    "WebView2 real preserva React local/título/eventos com dois comandos IPC negados",
+    "grafo restaurado245IDs-deps; gates/review/CI exactSHA/nota pública/liberação"
+  ],
+  "checks": [
+    "cargo fmt/clippy/test/audit; quality/coverage/nativebuildlocked",
+    "RED seletor/authority/probe nativo Windows positivo-negativos",
+    "mapa/schema/evidência/log/links/escopo/grafo/review/CI condicional"
+  ],
+  "agentPlan": "P-INT único escritor/executor/committer;12paths ATIVA spec. P-SEC gpt-6-luna low readonly E2 inventário usado. P-REV gpt-6-sol medium readonly E2 P2guard corrigido/re-review semP0/P1/P2. Doisdelegados/semescala; efetivos/tokens/cache/custo/retriesevitados não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": true,
+  "passes": false,
+  "notes": "E3 RED seletor/inline extra excluída/authority36negações/probeWebView2 real3Rustpassed0ignored/controlegrantexit101-restauração/quality3tests100%/nativePE/audits+avisosforaWindows247nodes/grafo245IDsrestaurado. Docs/review/CI entrega-final/nota-ref-liberação pendentes; passesfalse/reservaATIVA/metaativa/CSPseparado. Gatehumano legado true preservado; aceite config/escopo pendente. SEC001 movido do índice/29outros preservados. P2guard próprio corrigido/junctionreal negada/final4Rustpassed0ignored/fixtureausente; contagem36=6x3x2. Re-review/gatehumano/CI pendentes. ReviewP2corrigido/re-reviewE2semachados/rootverify4checks437links/parser1/43outros iguais. Gatehumano legado/CI entrega-final/nota-ref-liberação pendentes."
+}
