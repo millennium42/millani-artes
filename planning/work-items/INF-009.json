@@ -1,0 +1,27 @@
+{
+  "id": "INF-009",
+  "title": "criar quality script",
+  "specPath": "planning/specs/INF-009.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-005",
+    "INF-006",
+    "INF-008"
+  ],
+  "acceptanceCriteria": [
+    "quality agrega format:check/lint/typecheck/coverage, uma execução Vitest, fail-fast/nonzero",
+    "probes formatter/typecheck/coverage negativas removidas; quality final verde",
+    "scripts/pins/locks/configs/fontes/testes anteriores preservados, sem novas dependências",
+    "gates/review/docs/commits/CI exatos/nota-ref/liberação antes INF-010"
+  ],
+  "checks": [
+    "npm run quality: positivo, probes de formato/tipo/coverage, final",
+    "build/Rust fmt-clippy-test-audit/npm audit",
+    "Documentation/schema/evidence/map/logprefix/scope/review"
+  ],
+  "agentPlan": "P-INT único escritor/checks/committer, base b9db95e/codex/inf-009-quality/oito paths+duas probes da spec, reserva ATIVA até CI final/nota/ref. P-REV gpt-5.6-sol medium solicitado/continuidade/read-only/tentativa 1 após diff, E2 sem achados usado; líder confirmou baseline e executou gates E3. Nenhum QA extra para agregação determinística. Efetivos/uso/custo por item-agente não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3: quality agrega format:check/lint/typecheck/coverage, uma execução Vitest por chamada completa. Positivo 0; probes de formato (só primeira etapa) e tipo (TS2322, coverage não executada) nonzero, relatório preservado; função não testada faz quality falhar por coverage 80/83.33/50/100 mesmo com três testes passando. Probes removidas em finally; quality final 0/três testes/dois arquivos/App-main 100% (4 linhas/5 statements/1 função/2 branches). Build/Rust fmt-clippy-test (zero testes Rust)/audits passaram; Cargo tem dois avisos fora do grafo Windows 247, sem ignore. Uma correção local CRLF→LF no package antes da execução final; sem dependências/instalações/fontes/configs/locks novas. Review/documentais/commits/CI pendentes; passes=false/reserva ativa; meta financeira/setup.exe não concluída. Review E2 sem achados; nove checks documentais verdes/mapa27-185/38items33done/prefixo123254/13blocosPS; audit oito paths/oito arquivos JSON antigos contendo37items/245rows/158links/probes ausentes. Uma expectativa local de contagem foi corrigida, sem alteração de registros antigos. Só anotações após os gates; commits/CI/nota/ref pendentes."
+}

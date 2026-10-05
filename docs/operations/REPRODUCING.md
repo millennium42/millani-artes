@@ -174,3 +174,15 @@ rtk proxy npm run typecheck
 O script chama tsc --noEmit, usando TypeScript7.0.2 e tsconfig.json já existentes. Inclui as seis fontes próprias atuais: App/main, seus dois testes e as configurações Vite/Vitest. Strict, noEmit e noUnused permanecem habilitados. O comando verifica tipos sem executar Vite ou gerar JS, mapas e declarações. Build conserva o pipeline tsc --noEmit seguido de Vite.
 E3 local em2026-10-04: positivo exit0; probe temporária com number atribuído a string produziu TS2322/exit1 pelo npm script. Removida emfinally; positivo final0, três arquivos dist com hashes inalterados durante typecheck e nenhum emit emsrc/configs. Não é bug do produto nem teste financeiro.
 Formatter/linter10arquivos, build16módulos, testes+coverage3testes e gatesRust/audits passaram. CoverageApp-main100%(4linhas/5statements/1função/2branches) não representa finanças/Rust/UIreal. Os dois avisosCargo foraWindows continuam semignore. Nenhuma nova dependência/instalação/workflow; qualityINF009 ainda não iniciado. [NoEmit oficial](https://www.typescriptlang.org/tsconfig/noEmit.html) e [handoff](../../planning/handoffs/INF-008.md).
+
+## Comando agregado de qualidade — INF-009
+
+Depois de ativar os runtimes acima, execute na raiz:
+
+```powershell
+rtk proxy npm run quality
+```
+
+A sequência é format:check → lint → typecheck → coverage, usando os scripts existentes e && para parar na primeira falha. Ela valida o formato sem reescrever arquivos; coverage executa os testes Vitest uma vez e aplica os thresholds existentes. Não precisa executar npm test e npm run coverage novamente para duplicar a mesma verificação. Build, checks Rust e audits continuam separados; este comando valida o frontend atual.
+
+Probes temporárias confirmaram falha no primeiro gate (formato), no typecheck (TS2322) e no último gate (coverage abaixo de 90% em linhas/statements/funções apesar dos três testes passarem). Depois de removidas em finally, quality passou com três testes/dois arquivos/App-main 100% (quatro linhas). Nas falhas de formato/tipo, o relatório anterior permaneceu intacto; format:check não reescreveu a probe. Dist não mudou durante quality e não houve emit/Vite. [Spec](../../planning/specs/INF-009.md) e [handoff](../../planning/handoffs/INF-009.md) registram comandos, resultados e limites; esse resultado não é aceite financeiro ou do instalador.
