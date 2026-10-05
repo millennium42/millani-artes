@@ -2,7 +2,7 @@
   "id": "INF-015",
   "title": "provar checkout limpo",
   "specPath": "planning/specs/INF-015.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-012"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT único escritor/executor/committer;7paths ATIVA spec. P-QA gpt-6-luna low readonly E2 usado/distinção e cleanup; P-REV gpt-6-sol medium readonly E2 sem P0/P1/P2 no diff capturado. Dois delegados/tentativa1/sem escala; efetivos/tokens/cache/custo/retriesevitados não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 cloneab4e0c0/204hashes HEAD-index-status invariantes; guard4negativos-restauração,8gates e docs9/seletor20, outputs ignorados registrados/cleanupreal2129entries/0reparse. Cachetarget original reutilizado, nativebuild não repetido; source/workflow/pins/locks intocados. Metadata4checks/425links/19PS/scope7/logprefix161084 e reviewE2 semachados passed; CI entrega-final/nota41-ref-liberação pendentes/metaativa."
+  "passes": true,
+  "notes": "E3 cloneab4e0c0/204hashes HEAD-index-status invariantes/guard4negativos-restauração/8gates/docs9-seletor20/ignorados registrados/cleanup2129entries0reparse. Cachetarget reutilizado, sem novo nativebuild; product/workflow/pins/locks intocados. Metadata4checks425links19PS/scope7/logprefix161084/reviewE2 semachados/commitb39098532468b111ce2ea7ea312497fb478302c7/CI37320497876-job111798035346 success18steps10success8skips0artifact exactSHA. Promoção após estes gates; CI final/nota41-ref-liberação pendentes. ReservaATIVA/metaativa/próximoSEC001 não iniciado."
 }
