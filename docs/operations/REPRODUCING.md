@@ -276,3 +276,7 @@ if ($LASTEXITCODE -ne 0 -or $millaniStatus.Count) { throw 'Fonte ou lock alterad
 Registrar versões/exits/tempos/locks, SHAexe/PEWindows/custom-protocol/dist e status vazio; não aceitar fonte/lock modificado. Para os dois avisos Cargo, executar metadata --locked/--filter-platform x86_64-pc-windows-msvc/--features tauri/custom-protocol e comparar packages aos resolve.nodes; o líder verificou ausência glib/proc-macro-error em247nodes, semignore. Audit é snapshot, não garantia futura.
 
 Depois de reter resumo sanitizado, retornar ao workspace e remover só a raiz temporária absoluta exata, após validar contenção/ausência de reparsepoints externos, usando Remove-Item -LiteralPath. Logs/caches/reports/exe não vão ao Git; fechar sessão dedicada descarta env local. FonteUI igual preserva aceite históricoINF002 sem ampliar E4. Sem finanças/instalador/release; INF012/INF015/REL002 têm seus próprios gates.
+
+## Catálogo de versões — INF-012
+
+Consulte [versões executadas](EXECUTED_VERSIONS.md) para o snapshot de 2026-10-05: seleção explícita dos executáveis, respostas/exits/tempos, pacotes diretos instalados/resolvidos e comparação aos pins/locks. Gates locais quality/build frontend/fmt/clippy/test/audits passaram; consultas de disponibilidade MSVC/SDK/WebView2 têm escopo próprio. Build nativo isolado INF-011 e aceite visual INF-002 são históricos, com fontes iguais, sem novo smoke ou build de produção. Catálogo não comprova finanças, instalador ou determinismo bit a bit. Estado de review/CI/publicação no [handoff INF-012](../../planning/handoffs/INF-012.md).
