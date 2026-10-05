@@ -1,0 +1,198 @@
+{
+  "id": "SEC-001",
+  "status": "done",
+  "passes": true,
+  "goalStatus": "active",
+  "sha": "6cb18fcc31480b377895cc595093dd53da3c986e",
+  "branch": "codex/sec-001-deny-capabilities",
+  "delivery": {
+    "sha": "2e6edffb682b35357f8a802b6ef408d2b7e88e30",
+    "ci": {
+      "id": 37347356818,
+      "name": "Documentation",
+      "head_sha": "2e6edffb682b35357f8a802b6ef408d2b7e88e30",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/37347356818",
+      "job_id": 111889184081,
+      "steps": {
+        "Set up job": "success",
+        "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262": "success",
+        "Validate project map against checkout": "success",
+        "Validate work item schema and evidence states": "success",
+        "Validate append-only progress log": "success",
+        "Require canonical documentation": "success",
+        "Test frontend check selection": "success",
+        "Select frontend checks": "success",
+        "Set up pinned Node": "success",
+        "Install locked frontend dependencies": "success",
+        "Check frontend quality": "success",
+        "Validate coverage reports": "success",
+        "Upload frontend coverage": "success",
+        "Prepare pinned Rust": "success",
+        "Build Tauri production": "success",
+        "Verify Tauri executable": "success",
+        "Post Set up pinned Node": "success",
+        "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262": "success",
+        "Complete job": "success"
+      },
+      "success_count": 19,
+      "skip_count": 0,
+      "artifacts": [
+        {
+          "id": 11360264731,
+          "name": "frontend-coverage-37347356818-1",
+          "size_in_bytes": 19172,
+          "expired": false,
+          "created_at": "2026-10-05T17:18:37Z",
+          "expires_at": "2026-10-06T17:18:36Z",
+          "digest": "sha256:2df599375d61de0a89d8f167a2a2fcc88e342d597b2ce5202ee8816c58e57417",
+          "workflow_run": {
+            "id": 37347356818,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "2e6edffb682b35357f8a802b6ef408d2b7e88e30"
+          }
+        }
+      ]
+    },
+    "native": {
+      "ci_id": 37347356818,
+      "job_id": 111889184081,
+      "native": {
+        "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+        "imageVersion": "20260925.250.1",
+        "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+        "customProtocol": true,
+        "sourceSha": "2e6edffb682b35357f8a802b6ef408d2b7e88e30",
+        "sha256": "eac18f9c1029d652eae35f6e9b611a982d825d5df4a9bad9929c07cd940fd253",
+        "machine": "AMD64",
+        "node": "v24.21.0",
+        "bytes": 8563200,
+        "pe": "PE32+",
+        "imageOS": "win25-vs2026",
+        "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+        "cargoLock": "74c1fd05f356bf1d46013b9ce6c5bc09284bea0868f72d56fb52ebde9c3e2093"
+      },
+      "native_steps_seconds": {
+        "Prepare pinned Rust": 12,
+        "Build Tauri production": 201,
+        "Verify Tauri executable": 1
+      },
+      "lock_byte_forms": {
+        "package-lock.json": "LF",
+        "src-tauri/Cargo.lock": "CRLF"
+      },
+      "canonical_locks": {
+        "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+        "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca"
+      },
+      "beforeBuildCommand_count": 1,
+      "authenticated_logs_memory_only": true,
+      "redirect_without_authorization": true,
+      "saved_logs_tokens": false
+    }
+  },
+  "ci": {
+    "id": 37348676054,
+    "name": "Documentation",
+    "head_sha": "6cb18fcc31480b377895cc595093dd53da3c986e",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "html_url": "https://github.com/millennium42/millani-artes/actions/runs/37348676054",
+    "job_id": 111893707490,
+    "steps": {
+      "Set up job": "success",
+      "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262": "success",
+      "Validate project map against checkout": "success",
+      "Validate work item schema and evidence states": "success",
+      "Validate append-only progress log": "success",
+      "Require canonical documentation": "success",
+      "Test frontend check selection": "success",
+      "Select frontend checks": "success",
+      "Set up pinned Node": "skipped",
+      "Install locked frontend dependencies": "skipped",
+      "Check frontend quality": "skipped",
+      "Validate coverage reports": "skipped",
+      "Upload frontend coverage": "skipped",
+      "Prepare pinned Rust": "skipped",
+      "Build Tauri production": "skipped",
+      "Verify Tauri executable": "skipped",
+      "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262": "success",
+      "Complete job": "success"
+    },
+    "success_count": 10,
+    "skip_count": 8,
+    "artifacts": []
+  },
+  "evidence": {
+    "implementation": "E3",
+    "humanAcceptance": {
+      "level": "E4",
+      "date": "2026-10-05",
+      "answer": "Aceito essa configuração",
+      "sha": "2e6edffb682b35357f8a802b6ef408d2b7e88e30",
+      "scope": "configuração main-local-deny / main local / sem permissões IPC; limites descritos na pergunta; E4 não ampliado a CSP/plugins/backup/customcmd/finanças/setup.exe"
+    },
+    "scope": "Seleção explícita main-local-deny sem permissões IPC; seletor/authority36negações e WebView2 real com assets produção. Não segurança total/CSP/finanças/backup/setup.exe."
+  },
+  "checks": {
+    "rust": "fmt/clippy all-targets e cargo test --features tauri/custom-protocol --include-ignored: 4passed0ignored",
+    "native": "5flags true; controlegrants101/títuloeventoalterados/restauracaobytes; junction negada/sentinela intacta/cleanup não recursivo",
+    "frontend": "quality3tests2files/App-main100%bootstrap",
+    "audit": "npm0/120metadata, Cargo0classificadas/417deps+2avisosforaWindows247nodes semignore; RustSec1290 ef6173cbc",
+    "documents": "docs9/schema44/mapa211/evidence/log/seletor20/437links/parser1/heurística/43otheritems iguais/grafo245 canônico"
+  },
+  "review": {
+    "persona": "P-REV",
+    "requestedModel": "gpt-6-sol",
+    "requestedEffort": "medium",
+    "evidence": "E2",
+    "result": "P2guard corrigido/re-review semP0/P1/P2"
+  },
+  "agents": {
+    "count": 2,
+    "security": "P-SEC/gpt-6-luna/low readonly E2 inventário usado",
+    "review": "P-REV/gpt-6-sol/medium readonly E2/re-reviewP2",
+    "writer": "P-INT único writer/executor/committer",
+    "escalations": 0,
+    "modelEffortEffective": "não registrado",
+    "tokensPerItemAgent": "não registrado",
+    "cacheCost": "não registrado"
+  },
+  "reservation": {
+    "state": "LIBERADA após publicação desta nota e confirmação de refs/Gitclean",
+    "owner": "P-INT",
+    "base": "79ecd49f3538c8c06c6aabffc67066b05448d562",
+    "paths": [
+      "src-tauri/tauri.conf.json",
+      "src-tauri/src/main.rs",
+      "src-tauri/src/security_tests.rs",
+      "docs/security/TAURI_CAPABILITIES_POLICY.md",
+      "docs/security/SECURITY_TEST_MATRIX.md",
+      "docs/traceability/REQUIREMENTS_MATRIX.md",
+      "planning/specs/SEC-001.md",
+      "planning/handoffs/SEC-001.md",
+      "planning/work-items/SEC-001.json",
+      "planning/ROADMAP.md",
+      "planning/PROGRESS_LOG.md",
+      "planning/work-items/BOOTSTRAP-INDEX.json"
+    ],
+    "conditions": "CI final exactSHA verde, nota pública, main/notes refs iguais e Gitclean; root confirma depois do push"
+  },
+  "notes": {
+    "before": 41,
+    "afterExpected": 42,
+    "preserve": "41 notas anteriores/objetos inalterados"
+  },
+  "nextId": "SEC-002",
+  "nextDependency": "INF-002",
+  "nextStarted": false,
+  "limitations": "App financeiro/SQLite/instalador/setup.exe ainda não implementados; Rustcoverage/OSV/Gitleaks pleno/MSVC-SDK específicos usados não registrados. CI produto não executou probe native ignored/auditsRust; provas locais separadas. E4 somente configuração2e6edff. CSP/customcmd/plugins/paths futuros exigem próprios gates.",
+  "learnings": "Validar grafo canônico completo, ler índice/gate legado antes criararquivo, count36=6x3x2, run_return/asserts+marcador/payloadvalue/control efeitos, guard reparse dentro de reprodução.",
+  "observedAtUtc": "2026-10-05T17:32:48.313569+00:00",
+  "progressLogBytes": 171216
+}
