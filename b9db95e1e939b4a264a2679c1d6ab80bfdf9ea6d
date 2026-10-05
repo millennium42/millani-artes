@@ -1,0 +1,25 @@
+INF-008 | CONCLUÍDA | E3 execução local/remota, E2 revisão | 2026-10-04 America/Sao_Paulo / 2026-10-05 UTC
+SHA final: b9db95e1e939b4a264a2679c1d6ab80bfdf9ea6d
+Branch: codex/inf-008-typecheck; main público: https://github.com/millennium42/millani-artes
+Entrega: 1afe6001cfeb30d188c3cdcd3049ebbded63ffff
+CI entrega: https://github.com/millennium42/millani-artes/actions/runs/37250020507
+completed/success no SHA exato, attempt 1, job 111575593661, um job/oito steps success.
+CI FINAL: https://github.com/millennium42/millani-artes/actions/runs/37250250061
+completed/success no SHA final exato, attempt 1, job 111576251506, um job/oito steps success.
+
+P-INT/root, E3:
+- Adição única: npm run typecheck = tsc --noEmit. Sem nova dependência/instalação/config/fonte/lock. Build anterior tsc --noEmit && vite build preservado.
+- RED comando ausente exit 1. Positivo exit 0; probe string=number gerou TS2322/exit 1; removida em finally, positivo final 0. Sem emissão JS/map/declarations ou Vite; hashes dos três arquivos dist iguais durante o alias. showConfig: seis fontes existentes, strict/noEmit/flags intactos.
+- Format:check/lint: dez arquivos; build: dezesseis módulos; coverage: três testes em dois arquivos, App/main 100% (4 linhas, 5 statements, 1 função, 2 branches). Uma execução Vitest cobre teste e coverage. Zero testes Rust; fmt/clippy/test passaram.
+- npm audit: zero vulnerabilidades. cargo-audit 0.22.2: zero vulnerabilidades classificadas, dois avisos RUSTSEC-2024-0370 (proc-macro-error 1.0.4) e RUSTSEC-2024-0429 (glib 0.18.5); ambos ausentes no grafo Windows/custom-protocol de 247 nós. Nenhum ignore. AdvisoryDB 1290/ef6173cbc5c50ec8166f9a5b28f07834144373ee.
+- Locks SHA256: npm bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284; Cargo d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca.
+- Nove checks documentais passaram: mapa 27 fontes/182 arquivos; 37 items, 33 done no fechamento; fixtures evidence/schema/log 25/72/26, ignore 28/4, sete docs canônicos, doze blocos PowerShell parseados. Prefixos de log 119494 bytes na base e 122021 na entrega preservados; blob final 123254 bytes.
+- Escopo: oito paths na entrega, seis registros no fechamento. Trinta e seis objetos anteriores e 245 linhas/dependências do roadmap preservados; 156 links locais verificados. Config/fontes/locks/pins/scripts anteriores intactos; probe ausente. Diff check passou; heurística selecionada sem achados, sem alegar Gitleaks ou scan completo.
+
+P-REV gpt-5.6-sol medium solicitado, continuidade/read-only/tentativa 1, E2 sem achados P0/P1/P2. Baseline edd2938ed80a4c067236e81166fa467a6fc18dae888658f3acab9d9609137992 confirmado pelo líder; gates reproduzidos E3. Nenhum QA extra para um alias determinístico; sem escala/retry de review/runtime. Uma expectativa local do nome de CI foi corrigida para Documentation; nenhum rerun remoto.
+Modelo/esforço efetivos, tokens de entrada/saída/reasoning/cache, custo e duração por item-agente: não registrado. Apenas dois runs Documentation existentes; nenhum novo job/build remoto/upload de coverage. Git note evita terceiro commit/CI.
+
+Done/passes=true após CI da entrega, checks/docs/review/commit; CI final do fechamento confirmado.
+Limites: cobertura só do bootstrap, sem finanças/SQLite/coverage Rust/UI financeira/clean machine/setup.exe. Regra de coverage crítica futura preservada. E4 histórico de INF-002 preservado; nenhum novo aceite humano neste item. Meta principal Windows local-first financeira/setup.exe ATIVA.
+Reserva INF-008/P-INT/base 5ddbfc5, oito paths permanentes e probe/caches da spec: LIBERADA após CI final confirmado e esta nota publicada com refs remotas conferidas no pós-gate do líder. Nenhum outro escritor/conflito observado; lock OS não comprovado.
+Próximo: INF-009 ← INF-005, INF-006, INF-008; primeiro desbloqueado nos 245 IDs/deps, ainda não iniciado.
