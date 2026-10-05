@@ -2,7 +2,7 @@
   "id": "INF-008",
   "title": "criar typecheck",
   "specPath": "planning/specs/INF-008.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-004"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INTúnicoescritor/checks/committer/base5ddbfc5/codex/inf-008-typecheck/8paths+probe/caches espec/reservaATIVA atéCIfinal-nota/ref. P-REV5.6Solmediumcontinuidade/read-onlyapósdiff/tentativa1/E2semachados usado/rootconfirmou baseline/executou gates; nenhumQAextra para1linha determinística; efetivos/uso/custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3: typecheck tsc--noEmit positivo0, probeTS2322exit1/removida e final0; nenhumemit/Vite e três hashesdist iguais, seisfontesstrict/configs intactas. Format-lint10files/build16modules/coverage3tests2files100%App-main/Rustfmt-clippy-test0/audits0vuln+2avisos foraWindows247 verdes. Semdep-install/config/source-test/lock novos; apenas alias. ReviewE2semachados/Documentation9checks/audit8scope/37items32done/27sources182files/245rows/prefix119494/156links/12PSblocos verdes; commits-CI-nota pendentes; passesfalse/reservaativa, semaprovação financeira/setup."
+  "passes": true,
+  "notes": "E3: typecheck=tsc --noEmit passou; probe TS2322 saiu com 1, foi removida e o comando passou novamente. Sem emit/Vite; três hashes dist preservados; seis fontes strict existentes. Format/lint/build/coverage (3 testes, App/main 100%: 4 linhas)/Rust fmt-clippy-test (0 testes Rust)/audits verdes. Cargo tem dois avisos ausentes no grafo Windows de 247 nós, sem ignore. Sem novas dependências, instalações, fontes, configs ou locks. Review E2 sem achados e nove checks documentais verdes. Entrega 1afe6001cfeb30d188c3cdcd3049ebbded63ffff, CI 37250020507 completed/success no SHA exato, attempt 1, job 111575593661, um job/oito steps success. Done/passes=true após CI da entrega. Reserva ativa até CI final do fechamento, nota/ref públicas e liberação; nenhum próximo item iniciado. Uma consulta de CI exigiu correção local da expectativa do nome Documentation, sem rerun remoto. Efetivos/tokens/cache/custo por item-agente não registrado. Não comprova finanças ou instalador."
 }
