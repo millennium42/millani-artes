@@ -2,7 +2,7 @@
   "id": "INF-013",
   "title": "publicar coverage no CI",
   "specPath": "planning/specs/INF-013.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-007",
     "INF-010"
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único writer/checks/committer;10paths ATIVA na spec. P-QA6Lunalow solicitado/read-only/E2 limites/inventário usado; P-REV6Solmedium E2 concluído/semachados/read-only apósdiff/pergunta distinta. Efetivos/tokens/cache/custo não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local: quality/buildfrontend/fmt-clippy-test0/audits0classificadas+2avisos foraWindows semignore;3testes100%bootstrap/0Rust. Guard positivo+4negativos/restauração, allowlist12files56487bytes/heurística0, seletor20/cleanup, inputs/thresholds intactos. ReviewE2 semachados/9docs418links16PS/scope-prefix verdes;CI entrega-artifactproof/CI final/note-ref-liberação pendentes;passesfalse/reserva10pathsATIVA/metaativa."
+  "passes": true,
+  "notes": "E3 local:7gates0/3testes100%bootstrap/0Rust/audits0classificadas2avisos;guard4negativos/restauração/seletor20/novechecksdocs418links16PS/scope/prefix. ReviewE2semachados. Entrega7e61fa78381e6cc289da9c06fb0f9a0909ef0ac2/CI37311827221/job111768827917 success exactSHA/attempt1/1job16success,quality-guard-upload reais. Artifact11346536176/frontend-coverage-37311827221-1/ZIP19173bytes12files/digestSHA256a6930e46e790470db557af179b0aa102b1e7b6c87d53934d30cc43c7bfa92041 igualAPI/coverage100%/retention86399s/expires2026-10-06T12:47:00Z, download emmemória seguro. Done/passestrue;CIfinalzeroartifact/note-ref/liberação pendentes/reserva10pathsATIVA/metaativa/INF014nãoiniciado."
 }
