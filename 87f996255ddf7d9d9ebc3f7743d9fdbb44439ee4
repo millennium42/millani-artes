@@ -1,0 +1,29 @@
+INF-010 | CONCLUÍDA | E3 local/CI Windows; E2 revisão | 2026-10-05 America/Sao_Paulo
+SHA final: 87f996255ddf7d9d9ebc3f7743d9fdbb44439ee4
+Branch codex/inf-010-windows-ci; main público https://github.com/millennium42/millani-artes
+Entrega: 68e0175ba85d6080ae9ac1b46a23b1d471dd7625
+CI entrega https://github.com/millennium42/millani-artes/actions/runs/37300721240
+completed/success no SHA exato, attempt1, job111732527147, um job/14steps success. As três etapas Set up pinned Node/Install locked frontend dependencies/Check frontend quality executadas/success.
+CI FINAL https://github.com/millennium42/millani-artes/actions/runs/37301128915
+completed/success no SHA final exato, attempt1, job111733840344, um job/13steps:10success e3skipped. As mesmas três etapas frontend skipped; docs/mapa/schema/evidência/log/fixtures seletor/seleção e checkout passaram.
+Done/passes=true após gates/CI da entrega; CI final confirmado. 14paths na entrega; seis registros no fechamento, nenhum workflow/script/gitattributes/fonte/config/pin/lock alterado no fechamento. Seletor real entre entrega e fechamento retornou false localmente; resultado remoto confirma integração.
+
+P-INT/root E3 Windows/Node24.21.0/npm11.19.0/Rust1.99.0 e pins existentes:
+- Um workflow Documentation/jobvalidate/windows-latest; push sómain/PRcomum/manual, contentsread, timeout10min, cancel-in-progress por workflow/ref/PR. CheckoutSHA11d5960a326750d5838078e36cf38b85af677262/persist-credentialsfalse/fetch-depth0; setup-nodev6SHA249970729cb0ef3589644e2896645e5dc5ba9c38 preregistrado com licença/manifests principais, sem auditoria completa dos bundles.
+- Docs sempre; seletor PowerShell/Git whitelist documental conservadora, --no-renames, resolvecommits/fail-closed, zero lê árvore/manualforce valida target. Workflow/inputs desconhecidos/CSS/src/locks/pins/config/ignore true. npm ci --ignore-scripts --no-audit --no-fund e npm run quality condicionais; cache só npm/lock, sem upload, matrix, segundo workflow/job ou buildTauri remoto.
+- RED seletor ausente exit64;20fixtures Git reais pass/cleanup em duas execuções, segunda rename decisivo src→docs/renamed.md, além de docs/vazio/CSS/lock/node/ignore/config/workflow/seletor/desconhecido/delete/manual/zero/refs inválidas.
+- .gitattributes LF para TS/TSX/CSS/JSON/HTML/.node-version; checkout-index autocrlf=true exportou dez arquivos formatados LF/bytes iguais aos blobs sem tocar originais, probe removida.
+- Quality0/8.00s, formato/lint dez arquivos, typecheck, Vitestuma vez710ms,3testes/2files/App-main100% lines4/4-statements5/5-functions1/1-branches2/2. Build0/1.42s/16módulos591ms.
+- Cargo fmt0/2.69s, clippy locked/all-targets/-Dwarnings0/12.72s, test locked0/5.17s/zero testes Rust.
+- npm audit0/9.17s/zero em todasclasses/120entradas. cargo-audit0.22.2 audit0/3.41s/zero vulnerabilidades classificadas, avisosRUSTSEC-2024-0370 proc-macro-error1.0.4 unmaintained e2024-0429 glib0.18.5 unsound, ambos ausentes no grafo Windows/custom-protocol247nodes, metadata0/0.36s; semignore. AdvisoryDB1290/ef6173cbc5c50ec8166f9a5b28f07834144373ee.
+- LockSHA256 npm bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284; Cargo d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca. Fontes/configs/package/pins/locks intactos.
+- Nove checks documentais verdes; mapa28fontes/191arquivos,39items/35done no fechamento, ignore28/4, fixtures25/72/26, sete docs presentes, dois scripts e22blocosPS (14reprodução/8workflow) parseados. Prefixos129849base/133144entrega preservados; blobfinal134885bytes. GitHub aceitou/executou YAML real; parser YAML local não instalado.
+- Nove arquivos JSON antigos contendo38items preservados contra base;245linhas/deps roadmap/177links locais verificados; fixture/probe ausentes, diffcheck limpo, heurística selecionada de segredos sem achados (não Gitleaks/scan completo). Na retomada o handle anterior estava indisponível; apenas tail documental/parsing pendente executado, sem repetir runtime.
+
+Delegação:
+P-QA gpt-6-luna low solicitado/read-only/tentativa1/E2 inventário usado parcialmente; recomendação CSSskip descartada por src/**Biomescope. P-REV gpt-5.6-sol medium solicitado/continuidade/read-only/tentativa1/E2 sem achados P0/P1/P2, MESSAGE recebido antes do erro final de limite de uso; retorno aproveitado, sem retry/revisão duplicada/alegação de finalização do delegado. Baseline6c1f031d039ec78877ac0d2fe3d2e3c0a78a4c0c0c8dc31911a0225c20c87728 confirmado igual pelo líder. Dois delegados com perguntas distintas, sem escala.
+Correções locais: namespace concorrência, fallback manual, rename fixture decisivo, asserção CRLFpinNode, templateJS pré-execução; na retomada erro de serialização de helper antes de executar comandos, corrigido. Metadados efetivos/input-output-reasoning/cache/custo/duração por item-agente: não registrado; não alegar economia monetária medida.
+Somente dois runs do workflow existente, sem rerun; nota Git evita terceiro commit/CI. Remoto valida gates do bootstrap, sem inferir contagens de cobertura a partir de logs não lidos.
+Limites: coverage sóbootstrap; Rust0testes/coverage não registrado; finanças/SQLite/cleanmachine/setup.exe pendentes; thresholds globais90/90/90/85 e críticos futuros95/95/95/90 preservados. E4 históricoINF002/janela confirmada e fechada não se amplia. Meta principal financeiraWindowslocal-first/setup.exe ATIVA.
+Reserva INF-010/P-INT/base639db7e/14paths permanentes e fixtures/probe/caches exatos da spec: LIBERADA após CI final confirmado e esta nota publicada com refs remotas verificadas no pós-gate do líder. Nenhum conflito/outro escritor observado; lock OS não comprovado.
+Próximo INF-011 ← INF-002,INF-003, primeiro desbloqueado nos245 IDs/deps, ainda não iniciado.
