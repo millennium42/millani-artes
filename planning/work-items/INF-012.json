@@ -2,7 +2,7 @@
   "id": "INF-012",
   "title": "registrar versões executadas",
   "specPath": "planning/specs/INF-012.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-011"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único writer/checks/committer; oito paths exatos na spec/reservaATIVA. P-OPS6Lunalow continuidade/read-only/E2 parcialmente usado; P-REV6Solmedium continuidade/read-only apósdiff concluído/sem achados/pergunta distinta. Efetivos/tokens/cache/custo poritem-agente não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Catálogo/queries e gates locais executados: versões/pins/locks coerentes, metadata Windows 247 nós, quality 3 testes/100% bootstrap, Rust 0 testes, audits sem vulnerabilidades classificadas e 2 avisos fora do grafo sem ignore. Review E2 sem achados, nove checks documentais e links/parser/scope verdes após correção de link do log. CI entrega-final/note-ref/liberação pendentes; passes=false. Inputs nativos INF-011 intactos; meta financeira/setup.exe ativa."
+  "passes": true,
+  "notes": "E3: catálogo e26 consultas/7gates locais/versões-pins-locks coerentes;3testesfrontend100%bootstrap/0Rust;audits0classificadas+2avisos foraWindows247nodes semignore. ReviewE2 semachados e correção delinkroot;9checksdocumentais/412links/17PS/scope/prefixlog verdes. Entregae0f714514874c255a10bb554cbe85cd783a17f1a/CI37309073885/job111759756327 success/attempt1/exactSHA,1job13steps10success3frontendskipped. Done/passestrue apósessesgates;CI final/note-ref/liberação pendentes, reserva8pathsATIVA. Metafinanceira/setup.exeativa;INF013nãoiniciado."
 }
