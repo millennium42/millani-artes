@@ -2,7 +2,7 @@
   "id": "INF-010",
   "title": "configurar CI Windows",
   "specPath": "planning/specs/INF-010.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-009"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único escritor/checks/committer,14paths/fixtures na spec/reservaATIVA. P-QA6Luna low solicitado/read-only/E2 classificação usada parcialmente, CSS conservador true. P-REV5.6Sol medium solicitado/continuidade/read-only após diff/pergunta distinta. Efetivos/uso/custo por item-agente não registrado. Retorno P-REV E2 sem achados recebido; erro final de limite de uso registrado, sem retry.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local: seletor20fixtures/fail-closed/manual/zero/rename source→docs.md/CSS/desconhecido/cleanup; .gitattributes forçaLF/checkout-index autocrlf=true10files passou, pinNode conteúdo24.21.0 intacto. Quality/build/Rustfmt-clippy-test(0Rusttests)/audits verdes; App-main100%3tests4lines; Cargo2avisos fora247nodesWindows semignore. Um job existente/cinco etapas novas/três condicionais, semmatrix/buildremoto/upload; sources/configs/package/locks/pins intactos. Actions SHA/licença principal/manifests preregistrados. Review E2 sem achados recebido antes de erro final de limite de uso; nove checks documentais E3 verdes (39items/191files/129849bytes/22blocosPS). CI entrega(frontend success)/final(frontend skip)/nota-ref pendentes; passes=false/reserva14pathsATIVA. Uso/custo por item-agente não registrado."
+  "passes": true,
+  "notes": "E3 local: seletor20fixtures/fail-closed/manual/zero/rename source→docs.md/CSS/desconhecido/cleanup; .gitattributes forçaLF/checkout-index autocrlf=true10files passou, pinNode conteúdo24.21.0 intacto. Quality/build/Rustfmt-clippy-test(0Rusttests)/audits verdes; App-main100%3tests4lines; Cargo2avisos fora247nodesWindows semignore. Um job existente/cinco etapas novas/três condicionais, semmatrix/buildremoto/upload; sources/configs/package/locks/pins intactos. Actions SHA/licença principal/manifests preregistrados. Review E2 sem achados recebido antes de erro final de limite de uso; nove checks documentais E3 verdes (39items/191files/129849bytes/22blocosPS). CI da entrega executou frontend; CI final(frontend skip)/nota-ref pendentes; passes=true após entrega/reserva14pathsATIVA até gate final. Uso/custo por item-agente não registrado. Entrega68e0175ba85d6080ae9ac1b46a23b1d471dd7625/CI37300721240/job111732527147/attempt1/umjob14steps success, frontend executado. Promoção após gates; CI final(frontend skipped)/nota-ref/liberação pendentes, reserva14pathsATIVA até publicação final. Só seis registros de fechamento mudaram; próximoINF011 sem início."
 }
