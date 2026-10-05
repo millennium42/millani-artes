@@ -2,7 +2,7 @@
   "id": "SEC-001",
   "title": "capabilities deny-by-default",
   "specPath": "planning/specs/SEC-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002"
   ],
@@ -17,8 +17,8 @@
     "mapa/schema/evidência/log/links/escopo/grafo/review/CI condicional"
   ],
   "agentPlan": "P-INT único escritor/executor/committer;12paths ATIVA spec. P-SEC gpt-6-luna low readonly E2 inventário usado. P-REV gpt-6-sol medium readonly E2 P2guard corrigido/re-review semP0/P1/P2. Doisdelegados/semescala; efetivos/tokens/cache/custo/retriesevitados não registrado.",
-  "evidence": "E3",
+  "evidence": "E4",
   "humanGateRequired": true,
-  "passes": false,
-  "notes": "E3 RED seletor/inline extra excluída/authority36negações/probeWebView2 real3Rustpassed0ignored/controlegrantexit101-restauração/quality3tests100%/nativePE/audits+avisosforaWindows247nodes/grafo245IDsrestaurado. Docs/review/CI entrega-final/nota-ref-liberação pendentes; passesfalse/reservaATIVA/metaativa/CSPseparado. Gatehumano legado true preservado; aceite config/escopo pendente. SEC001 movido do índice/29outros preservados. P2guard próprio corrigido/junctionreal negada/final4Rustpassed0ignored/fixtureausente; contagem36=6x3x2. Re-review/gatehumano/CI pendentes. ReviewP2corrigido/re-reviewE2semachados/rootverify4checks437links/parser1/43outros iguais. Gatehumano legado/CI entrega-final/nota-ref-liberação pendentes."
+  "passes": true,
+  "notes": "E3 configseleção explícita/extraexcluída/authority36negações/4Rustpassed0ignored/probeWebView2real5flagstrue/controlegrantexit101-restauração/junctionnegada/quality3tests100%/nativePE/audits+2avisosforaWindows247nodes/locks iguais/grafo245restaurado/reviewP2corrigido e re-reviewE2 semachados/rootverify/docs. Entrega2e6edffb682b35357f8a802b6ef408d2b7e88e30/CI37347356818-job111889184081 success19steps1coverageartifact/nativeJSONsourceSHA-PEcustomprotocol conferido. E4 humano2026-10-05 Aceito essa configuração no SHA2e6edff, gate legado true cumprido só configuração/limites. Done/passestrue após estes gates; CI final/nota42-ref-liberação pendentes/reservaATIVA/metaativa/SEC002nãoiniciado."
 }

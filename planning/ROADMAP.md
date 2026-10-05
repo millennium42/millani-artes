@@ -274,3 +274,5 @@ SEC-001 in_progress/passesfalse: seleção explícita/RED-resolver/probeWebView2
 - REL-008 — revisar P0/P1/P2 ← REL-006, REL-007
 - REL-009 — CI remoto no SHA ← REL-008
 - REL-010 — handoff/release ← REL-003, REL-004, REL-005, REL-009
+
+SEC-001 done/passestrue/E4 configuração aceita2026-10-05 após4Rusttests/WebView2-guardjunction/review-correção/gates/docs e CI entrega37347356818-SHA2e6edff success19steps/native201s/1coverageartifact. CI final/nota42-ref-liberação pendentes; grafo245IDs-deps canônico restaurado. PróximoSEC-002 apósliberação; nenhuma tarefa posterior iniciada/metaativa.
