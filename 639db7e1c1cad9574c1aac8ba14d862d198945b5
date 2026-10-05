@@ -1,0 +1,26 @@
+INF-009 | CONCLUÍDA | E3 local/CI documental; E2 revisão | 2026-10-04 America/Sao_Paulo / 2026-10-05 UTC
+SHA final: 639db7e1c1cad9574c1aac8ba14d862d198945b5
+Branch codex/inf-009-quality; main público https://github.com/millennium42/millani-artes
+Entrega b7cfb7100a48e17f6aa6d7da713d0ca4cd65b871
+CI entrega https://github.com/millennium42/millani-artes/actions/runs/37251301302
+completed/success no SHA exato, attempt 1, job 111579314794, um job/oito steps success.
+CI FINAL https://github.com/millennium42/millani-artes/actions/runs/37251558957
+completed/success no SHA final exato, attempt 1, job 111580069956, um job/oito steps success.
+Done/passes=true após CI da entrega/checks/review/docs/commit; fechamento teve CI exato confirmado. Oito paths na entrega; seis registros no fechamento, sem mudança de alias/runtime/configs/locks.
+
+P-INT/root E3 Windows, Node 24.21.0/npm 11.19.0; pins existentes TypeScript 7.0.2/Biome 2.5.15/Vitest-V8 5.0.3/Vite 8.3.2/Rust 1.99.0:
+- Script quality = npm run format:check && npm run lint && npm run typecheck && npm run coverage. Uma execução Vitest via coverage; sem duplicar npm test, nova dependência/instalação ou alteração de scripts anteriores. Formatter sem escrita; build/Rust/audits separados.
+- RED alias ausente/exit 1; baseline format/lint/typecheck verdes. Positivo quality 0/2.92s; quatro etapas.
+- Probe de formato: exit 1/0.72s só primeira etapa, arquivo não reescrito. Probe formatada string=number: TS2322/exit 1/1.73s após três etapas, sem coverage. Hashes do relatório anterior preservados nas duas falhas.
+- Função exportada sem teste: quatro etapas, três testes passam, quality exit 1/2.89s por coverage lines80%/statements83.33%/functions50% (global90), branches100%. Probes removidas em finally, nenhum teste espelho permanente.
+- Final quality 0/2.86s, quatro etapas, Vitest uma vez/três testes/dois arquivos/App-main100% (lines4/4, statements5/5, functions1/1, branches2/2). Dez arquivos format/lint. Sem emissão JS/map/declarations da fonte ou vite build durante quality; hashes dos três arquivos dist preservados.
+- Build separado exit0/0.76s/dezesseis módulos/126ms. Cargo fmt0/0.17s, clippy locked/all-targets/warnings-erro0/1.12s, test locked0/2.19s/zero testes Rust.
+- npm audit0/1.22s/zero vulnerabilidades em todas as classes. cargo-audit0.22.2 audit0/2.64s/zero vulnerabilidades classificadas e avisos RUSTSEC-2024-0370 proc-macro-error1.0.4 unmaintained, RUSTSEC-2024-0429 glib0.18.5 unsound. Ambos ausentes no grafo Windows/custom-protocol de247 nós, metadata0/0.36s; sem ignore. AdvisoryDB1290/ef6173cbc5c50ec8166f9a5b28f07834144373ee.
+- Locks SHA256 npm bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284; Cargo d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca. Fonte/testes/configs/pins/locks anteriores com bytes intactos.
+- Nove checks documentais: mapa27 fontes/185 arquivos,38 items/34done no fechamento; ignore28/4, fixtures25/72/26, sete docs canônicos e treze blocos PowerShell parseados. Prefixos123254 base e128467 entrega preservados; blob final129849 bytes. Oito arquivos JSON antigos contendo37 items preservados;245 linhas/dependências do roadmap e158 links locais verificados. Probes ausentes/diff check limpo; heurística de segredo selecionada sem achados, não Gitleaks/scan completo.
+
+P-REV gpt-5.6-sol medium solicitado, continuidade/read-only/tentativa1/E2 sem achados P0/P1/P2, saída usada. Baseline ba446f920bca1bc01e020d024a35355a45b8fa894f37467a0b7bf53ee65cb808 confirmado íntegro pelo líder; gates reproduzidos E3. Nenhum QA extra para agregação determinística. Correções locais: CRLF no package, expectativa de quantidade de arquivos JSON, EOF do log e expectativa textual do roadmap no fechamento; reconciliadas antes de publicar. Sem escala/retry de review ou CI.
+Modelo/esforço efetivos/input-output-reasoning/cache/custo/duração por item-agente: não registrado. Somente dois runs Documentation existentes, nenhum novo job/build remoto/upload/rerun. Nota Git evita terceiro commit/CI.
+Limites: cobertura só do bootstrap, zero testes/coverage Rust, sem finanças/SQLite/UI financeira/clean machine/setup.exe. Coverage global90/90/90/85 e regra crítica futura95/95/95/90 por arquivo preservados. E4 histórico INF-002 não se amplia. Meta principal Windows local-first financeira/setup.exe ATIVA.
+Reserva INF-009/P-INT/baseb9db95e/oito paths permanentes e duas probes/caches da spec: LIBERADA após CI final confirmado e esta nota publicada com refs remotas verificadas no pós-gate do líder. Nenhum outro escritor/conflito observado; lock OS não comprovado.
+Próximo INF-010 ← INF-009, primeiro desbloqueado nos245 IDs/deps, ainda não iniciado.
