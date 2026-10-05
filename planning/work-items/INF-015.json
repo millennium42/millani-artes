@@ -1,0 +1,24 @@
+{
+  "id": "INF-015",
+  "title": "provar checkout limpo",
+  "specPath": "planning/specs/INF-015.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-012"
+  ],
+  "acceptanceCriteria": [
+    "clone público no SHA exato limpo antes/depois de gates com hashes204files/locks invariantes",
+    "guard real positivo e negativos tracked-staged-untracked/restauração/outputs ignorados registrados",
+    "cleanup absoluto guardado/review/docs/CI entrega-final oito skips-zeroartifact/nota41-ref-liberação"
+  ],
+  "checks": [
+    "npmci/quality/frontendbuild/Rustfmt-clippy-test/audits/nove docs/seletor20 no clone",
+    "HEAD/status/hashes/locks/guard3negativos/outputs ignorados/cleanup/rootinputs intactos",
+    "metadata/schema/links/parser/scope/logappend-only/review/CI exactSHA/notapublica"
+  ],
+  "agentPlan": "P-INT único escritor/executor/committer;7paths ATIVA spec. P-QA gpt-6-luna low readonly E2 usado/distinção e cleanup; P-REV gpt-6-sol medium readonly E2 sem P0/P1/P2 no diff capturado. Dois delegados/tentativa1/sem escala; efetivos/tokens/cache/custo/retriesevitados não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 cloneab4e0c0/204hashes HEAD-index-status invariantes; guard4negativos-restauração,8gates e docs9/seletor20, outputs ignorados registrados/cleanupreal2129entries/0reparse. Cachetarget original reutilizado, nativebuild não repetido; source/workflow/pins/locks intocados. Metadata4checks/425links/19PS/scope7/logprefix161084 e reviewE2 semachados passed; CI entrega-final/nota41-ref-liberação pendentes/metaativa."
+}

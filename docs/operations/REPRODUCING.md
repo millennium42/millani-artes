@@ -302,3 +302,42 @@ Tauri executa beforeBuildCommand/build frontend uma vez. O workflow compara hash
 E3 local em 2026-10-05: blocos reais Prepare/Build/Verify executados, Rust1.99.0 x64 por arquivo; build39.629s com frontend16módulos, exe8.557.056bytes/SHA25630326dff2185b815251554b3d453f210ba8b31acf8f59ac3723cfc5ab5aa54f5. Positivo e quatro negativos (exe ausente, MZ inválido, machine incorreta, custom-protocol ausente) passaram; bytes/fingerprints restaurados em finally. Quality3testes/100%App-main, Rustfmt/clippy/test0 e audits passaram. CI entrega37315900046 no SHAfae44697fbd7e693154852d29e7d5827dbf01c06 passou com JSON real conferido; [handoff](../../planning/handoffs/INF-014.md) registra hash/bytes/versões e limites. CI final/recibo de liberação ainda pendentes. Finanças, runtime, instalador e release permanecem pendentes.
 
 No runner ImageOS win25-vs2026/ImageVersion20260925.250.1, Rust/Cargo1.99.0 e Node24.21.0 foram executados. Build nativo265s e beforeBuildCommand uma vez; exe8.560.128bytes, diferente do local (não se promete reprodução bit a bit). package-lock.json é LF pelo atributo; Cargo.lock foi CRLF no checkout Windows. Seu hash de bytes remoto74c1fd05f356bf1d46013b9ce6c5bc09284bea0868f72d56fb52ebde9c3e2093 corresponde exatamente ao blob Git LF convertido para CRLF; hash canônico LF d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca. Cada lock conservou seus bytes antes/depois do build. A primeira comparação local-remoto assumiu LF e foi corrigida no verificador de logs, sem editar locks/workflow nem repetir CI. Logs/credenciais foram usados só em memória; nenhum log completo/token/exe foi publicado pelo líder.
+
+## Checkout limpo após checks — INF-015
+
+O guard abaixo exige SHA exato e status Git vazio, incluindo arquivos novos não ignorados. Executar antes/depois dos checks num clone público temporário, com MILLANI_SOURCE/MILLANI_SHA definidos apenas na sessão. Outputs ignorados continuam existindo: comparar mapa de hashes de arquivos rastreados antes/depois e registrar diretórios gerados separadamente. Não executar cleanup sobre o checkout principal.
+
+```powershell
+function Assert-MillaniCleanCheckout {
+    param([string]$Source, [string]$ExpectedSha)
+    $actual = @(rtk proxy git -C $Source rev-parse HEAD)
+    if ($LASTEXITCODE -ne 0 -or $actual.Count -ne 1 -or $actual[0].Trim() -cne $ExpectedSha) { throw 'Unexpected checkout SHA.' }
+    $state = @(rtk proxy git -C $Source status --porcelain=v1 --untracked-files=all)
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect checkout.' }
+    if ($state.Count) { throw 'Checkout has tracked, staged or nonignored untracked changes.' }
+}
+Assert-MillaniCleanCheckout -Source $env:MILLANI_SOURCE -ExpectedSha $env:MILLANI_SHA
+```
+
+Procedimento: raiz artifacts/inf015-clean-checkout nova/absoluta/validada sem reparsepoints; git clone --config core.autocrlf=false --depth 1 --single-branch --branch main da URL pública, fetch do SHA exato se necessário e checkoutdetached. Exigir ausência node_modules/dist/coverage/.vitest/src-tauri/target/src-tauri/gen e Git limpo antes npmci. Usar os runtimes INF012 existentes, PATH somente filho, npmci --ignore-scripts --no-audit --no-fund; quality/buildfrontend/fmt/clippy/test/audits e checksdocumentais, guard no fim. CARGO_TARGET_DIR original src-tauri/target reutiliza compilados, sem copiar fonte/perfil; não é prova de caches/target vazios (INF011). Build nativo/installer/smoke não são repetidos. Preservar bytes rastreados e locks, exercitar negativos temporários tracked/staged/untracked com restauraçãofinally. Reter resumo sanitizado, recusar reparsepoints em toda árvore e remover só a raiz exata por Remove-Item -LiteralPath em PowerShell, validar ausência. [Spec](../../planning/specs/INF-015.md)/[handoff](../../planning/handoffs/INF-015.md) registram execução e limites; procedimento executado pelo líder neste item, conforme registro abaixo.
+
+E3 em2026-10-05 no SHAab4e0c09cfcafe6c19be370b6cb42eec464b2bf1: clone público204files/HEADcorreto/status inicial e final vazios. Seis outputs ausentes inicialmente; apósgates presentes node_modules/dist/coverage/src-tauri/gen, todos ignorados; targetRust reutilizado fora do clone no checkout principal, .vitest/target internos ausentes. Os204 hashes individuais permaneceram iguais (digest do mapa ordenado a9419e9cd6ee24b4154527005eb365ad47079783d3316ee29ff8937e3a03822b); locks/pins iguais. Guard real positivo e quatro negativos exit1 (tracked/staged/untrackednãoignorado/SHAerrado), restauraçãofinally e positivo final. Gates8incluindo npmci passaram; novechecksdocumentais e seletor20/cleanup passaram. Cópia temporária removida após prova; cachetarget existente foi mantido. Nenhuma recompilação de produção/smoke/instalador.
+
+Para cleanup, voltar à raiz do checkout principal e usar somente a raiz temporária exata criada neste procedimento. O bloco real abaixo foi executado, verificando2129entries/zeroreparsepoint antes remoção; recusa ancestrais/entradas reparse e destino fora do workspace. Não trocar o literal pela raiz de um checkout de trabalho.
+
+```powershell
+$ErrorActionPreference='Stop'
+$millaniWorkspace=[IO.Path]::GetFullPath((Get-Location).Path)
+$millaniExpected=[IO.Path]::GetFullPath((Join-Path $millaniWorkspace 'artifacts/inf015-clean-checkout'))
+$millaniTarget=(Resolve-Path -LiteralPath $millaniExpected).ProviderPath
+if ($millaniTarget -cne $millaniExpected -or -not $millaniTarget.StartsWith($millaniWorkspace+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)) { throw 'Cleanup target refused.' }
+foreach($millaniAncestor in @($millaniWorkspace,(Join-Path $millaniWorkspace 'artifacts'))) {
+    if ((Get-Item -LiteralPath $millaniAncestor -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw 'Reparse ancestor refused.' }
+}
+$millaniEntries=@(Get-Item -LiteralPath $millaniTarget -Force)+@(Get-ChildItem -LiteralPath $millaniTarget -Recurse -Force)
+if (@($millaniEntries | Where-Object { $_.Attributes -band [IO.FileAttributes]::ReparsePoint }).Count) { throw 'Reparse entry refused.' }
+Remove-Item -LiteralPath $millaniTarget -Recurse -Force
+if (Test-Path -LiteralPath $millaniExpected) { throw 'Cleanup incomplete.' }
+@{cleanup='removed';entries_checked=$millaniEntries.Count;reparse_points=0;absolute_guard=$true}|ConvertTo-Json -Compress```
+
+Comandos npm/Cargo e runtimes são os existentes nas seções acima; o líder selecionou executáveis explícitos e PATH/CARGO_TARGET_DIR somente no processo filho. Os blocos guard/cleanup reais foram executados; a orquestração completa foi Pythonstdlib, sem helper persistido. Sem inferir que todos os exemplos PowerShell anteriores tenham sido executados como um script único. Coverage é scaffold, não finanças/Rust/UIreal; [handoff INF-015](../../planning/handoffs/INF-015.md) guarda pins/hashes/tempos/avisos/review/CI. CI só documental ainda pendente no SHA da entrega.
