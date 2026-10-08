@@ -1,0 +1,25 @@
+SEC-004 | CONCLUÍDA (inventário documental) | E3 documental | META ATIVA
+Entrega: 7f0ff510b488e5537b48ca21a418c26b0468d9cd
+Fechamento: f581ba91d395a497b83f27cbcd00bc409fe5d0f1
+CI entrega: https://github.com/millennium42/millani-artes/actions/runs/37714626133 | job 113108176894 | attempt1 / 10success / 8skipped / zeroartefatos
+CI final: https://github.com/millennium42/millani-artes/actions/runs/37714821230 | job 113108794385 | attempt1 / 10success / 8skipped / zeroartefatos
+Root conferiu SHA exato/main/1job/18steps em ambos; seletores locais false nos commits reais. Skips exatos Node/install/quality/coverage-validation/upload/Rust/build/PE. Descoberta inicial final por filtro head_sha não localizou run; endpoint específico do workflow localizou37714821230, conferido pelo handle/SHA. Sem reiniciar/rerun/manual dispatch/nova action/job/cache/dependência ou compilação remota.
+
+Inventário na docs/security/TAURI_CAPABILITIES_POLICY.md: blob Git LF SHA256c6e1ec75e6aaac03e63df3183072ad711cf7966d8bdd464b8ab87be42d6679ba, igual na entrega e fechamento.
+Necessários ao scaffold: zero plugins. Root parse stdlib manifests/locks/config e inspeção Builder: direta Rust tauri/buildtauri-build,417packagesCargoLock/121packagesnpmLock; zero plugins declarados/registrados/grants; core/build/CLI e dependência transitiva distintos de plugin/registro/permissão. E3 apenas inventário documental da árvore atual, não prova de controle operacional.
+MVP obrigatório mantido: SQLite no repositório/core, IO Rust com validação/escopo, dialog candidato condicionado ao fluxo real/alternativa/acessibilidade, emissorlog condicionado à allowlist, crypto/chave aguardam POC ADR015/016, nenhum store financeiro paralelo. Superfícies shell/http/updater/opener/autostart e outras sem necessidade aprovada não ativadas. Escolha futura exige ADR/tool register/pins-locks/capability mínima e fluxo real permitido-negado; SEC005 implementará bloqueio sem ADR. Nada instalado/registrado/concedido aqui.
+Fontes primárias auxiliares lidas: https://v2.tauri.app/plugin/dialog/ ; https://v2.tauri.app/plugin/sql/ ; https://v2.tauri.app/plugin/file-system/ . Decisões do projeto e fontes de produto/ADRs mantêm autoridade.
+
+Root checks locais E3: Windowsx64/pwsh7.6.5/Git2.55.0.windows.3/RTK0.48.0 via RTKproxy.
+Cinco checks exit0: mapa1.219s28fontes221files; schema0.910s47items; evidence0.817s47items; log1.280s178018prefix; gitignore2.168s28ignorados4fontes-locks.
+Metadata entrega8paths/46préviosiguais245tuplas completas/216links locais/heurística segredos0/diffcheck0/47items43done221files. Rechecks quatro validators antes de entrega e fechamento passaram. Fechamento7paths/46préviosiguais245tuplas/196links desses7registros/47items44done221files/log183066bytes com prefixo entrega181152 e base178018 preservados; diff staged SHA25634f3b3cad9e19a008b12240f58db88aff21e6f9015de7a5ff5996d55a92c75e1. Captura truncada inicial descartada, baseline recuperado compacto; dois nomes documentais de busca corrigidos antes de uso.
+Produto/Rust/TS/manifests/pins/locks/workflow/ADRs/governança intactos. RED runtime/coverage-produto/Rust-TS/audits/nativebuild/smoke NA diff documental, não repetidos; limiares preservados. Regex de segredo é heurística, sem scanner pleno alegado. CI/schema/declaration checks não provam runtime/gates humanos.
+
+P-MAP gpt-6-luna low/read-onlyE2/tentativa1 inventário usado, consultaRTKrg, sem tests/build/rede/checks.
+P-REV gpt-5.6-sol medium/read-onlyE2/tentativa1: sem achados materiais no diff capturado5d7d62df00bad878c78111fb427628113a166442935c18c794f1fc6785461997; atende spec/MVP sem antecipar adoção ou segurança runtime. RTKgitdiffcached/rg usados; sem mutação/testes/build/rede/checks.
+Root P-INT único writer/checkexecutor/committer; doisdelegados/sem escala. Tokens/input-output-reasoning/cache/custo/modelos efetivos/retries evitados poritem: não registrado. Sem alegação de economia monetária medida.
+
+Limites: inventário não fecha gateSEC005 nem requisitos globaisSEC001/008, que continuam parciais; requisitoSEC004 trata arquivo externo e executorSEC004 trata plugins. Zero plugin não prova ACL de código Rust/comando custom; picker não valida arquivo e backup/crypto/chave exigem próprias provas. E4 não reivindicado/gate humano específico desta lista não registrado/aceiteSEC001 da configuração2e6edff não ampliado. Banco/finanças/backup/instalador setup.exe/release permanecem pendentes.
+
+Reserva8paths: LIBERADA após CI final verde/publicação desta45ªnota preservando44/publicrefs main-notesevidence correspondentes/Gitlimpo. Nota é recibo de fechamento e evita commit recursivo.
+Estado47items44done/221files/245tuplas/log183066; próximo SEC-005 ← SEC-004, não iniciado neste ciclo. META permanece ATIVA.
