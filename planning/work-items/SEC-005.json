@@ -1,0 +1,24 @@
+{
+  "id": "SEC-005",
+  "title": "bloquear plugin sem ADR",
+  "specPath": "planning/specs/SEC-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SEC-004"
+  ],
+  "acceptanceCriteria": [
+    "check TOML/JSON/registro identifica pacote-config-grant-registro suportado e bloqueia sem ADR específico",
+    "fixtures RED/verde exercitam associação permitida e falhas fechadas; CI mesmojob bloqueia antesbuild",
+    "47prévios245tuplas/log183066preservados;review/docs/CIexactSHA/nota46/liberação"
+  ],
+  "checks": [
+    "python scripts/test-tauri-plugins.py; python scripts/check_tauri_plugins.py",
+    "validatorsdocs/links/escopo/grafo/log/heurísticasegredos/diff",
+    "CI entrega/final SHAexato sem novo job/action/cache"
+  ],
+  "agentPlan": "P-INT único writer/checkexecutor/committer13paths ATIVA;P-SEC6Lunalow readonlyE2 usado;P-REV5.6Solmedium readonlyE2 semachados;2delegadosmáximo/telemetriaNR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Root RED válido0.416s/exit1 stub aceita pluginsemADR;34fixtures2CLIcases2.800s/checkreal0.156s exit0/zero pluginsADR;alias-target TOMLcorrigido/negativos exigemcódigo certo/fixturesremovidos. Gateestático≠runtime;metadata/review/CI/nota46liberação pendentes/passfalse/reserva13ATIVA/metaativa. 5docschecks13paths47prévios245tuplas238links/sourceintacto;reviewE2 semachados/tentativa1;commitCI entrega-final/nota46-liberação pendentes."
+}

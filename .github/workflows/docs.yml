@@ -35,6 +35,10 @@ jobs:
           ./scripts/check-evidence-states.ps1
           ./scripts/test-work-items.ps1
           ./scripts/check-work-items.ps1
+          python -B scripts/test-tauri-plugins.py
+          if ($LASTEXITCODE -ne 0) { throw 'Plugin ADR fixtures failed.' }
+          python -B scripts/check_tauri_plugins.py
+          if ($LASTEXITCODE -ne 0) { throw 'Plugin ADR gate failed.' }
       - name: Validate append-only progress log
         shell: pwsh
         env:
