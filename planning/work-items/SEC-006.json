@@ -2,7 +2,7 @@
   "id": "SEC-006",
   "title": "instalar Gitleaks",
   "specPath": "planning/specs/SEC-006.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-003"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT único writer/checkexecutor/committer10pathsATIVA;P-SEC6Lunalow readonlyE2 usado;P-REV5.6SolmediumE2 semachados/tentativa1/checkdiff indevido não usadoE3;2delegados/sem escala/telemetriaNR.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Instalação portátil8.30.1/ZIPhash-license-PEAMD64-exehash E3;clean0,fakegithub-pat1,invalid126/RTKproxy/redaction100/fixturesremovidos/cacheignored. Não scan global/gate remotoSEC007/E4. Checksdocs/meta/review/diffscan/CI/nota47-liberação pendentes/passfalse/reserva10ATIVA/metaativa. 5validatorsdocs verdes/10paths48prévios245tuplas256links21PSblocks;diffscanGitleaks0achados;reviewE2semP0P1P2. Commit/CIentrega-final/nota47-liberação pendentes."
+  "passes": true,
+  "notes": "Instalação portátil8.30.1/ZIPhash-license-PEAMD64-exehash E3;clean0,fakegithub-pat1,invalid126/RTKproxy/redaction100/fixturesremovidos/cacheignored. Não scan global/gate remotoSEC007/E4. Checksdocs/meta/review/diffscan/CI/nota47-liberação pendentes/passfalse/reserva10ATIVA/metaativa. 5validatorsdocs verdes/10paths48prévios245tuplas256links21PSblocks;diffscanGitleaks0achados;reviewE2semP0P1P2. Commit/CIentrega-final/nota47-liberação pendentes. Entregad54eee5a5d09bf67eb5af3ef8420b0fc3266d750/CI37719495570/job113123628518/attempt1/10success8skip0artifact,donepassestrueE3local;49items46done/48prévios245tuplas. CI final/nota47preserva46/refsGitclean/liberação ainda pendentes,reserva10ATIVA/metaativa/SEC007nãoiniciado."
 }
