@@ -1,0 +1,25 @@
+SEC-008 | CONCLUÍDA (instalação local OSV-Scanner) | E3 | META ATIVA
+Entrega: c6b4a27bae6ca31e17e80eacd984c5f07163d1d2 / https://github.com/millennium42/millani-artes/actions/runs/37774382975 / job113301471481 / attempt1.
+Fechamento: 38b7fb6d6c284d048c3f34f0fdb1095d60d45070 / https://github.com/millennium42/millani-artes/actions/runs/37774732381 / job113302626563 / attempt1.
+Root conferiu API/main/SHAexato/uma job/19etapas11success8skip/zeroartifacts nos dois. Etapa obrigatória Scan Git history for secrets success antesbuild. Seletor real false nas duas bases; oito etapas Node/install/quality/coverageguard/upload/Rust/build/PE puladas. Nenhum novo job/action/cache/upload, OSVremoto, CI negativo, rerun manual ou reinício por descoberta ausente. A primeira consulta do fechamento não encontrou o run; mesmaSHA reconsultada. ghapi indisponível; GitCredentialManager reutilizado só em memória para API HTTPS GitHub,sem redirect autenticado/log bruto/credencial publicada.
+
+Root instalou distribuição oficial portátil fixa2.6.0 WindowsAMD64/PE32+, sourcecommite840a6e8adb14b7777c78e26cfbf6e2abc1d1fc6/release388118691. Cache ignorado artifacts/tools/osv-scanner/2.6.0, exatamente3arquivos regulares:
+exe58692096bytes/SHA256e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6;
+LICENSE11358bytes/SHA256cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30/Apache-2.0 principal lida;
+checksum554bytes/SHA25629f6fbc8bdd02d977df4b0987705d046233c36b70469a7021c623e8c155c9ddc/linhaexe e API concordantes.
+Origem fixa/hash/tamanho/PE/license antes escrever/executar, preregistro antes adoção. Authenticode NotSigned/sem signatário/timestamp; commitGitHubVerified E2 não assinaexe. SLSA disponível mas verification não executada; hash do mesmo fornecedor não autentica independentemente código. NOTICE raiz ausente na árvore fixa; licenças transitivas/telemetria não medidas. Scanner não é redistribuído no app.
+
+RED instalaçãoausente exit1/OSV_NOT_INSTALLED; download3arquivos2.323s. Probes CLI reais emcwdpróprio:version0/2.6.0/0.887s;help0/0.142s;scan-source-help0/0.137s somente ajuda;invalid127/0.137s. Ambiente subprocesso GIT_/OSV_/GITLEAKS_/GH_TOKEN/GITHUB_TOKEN removido;sem PATH persistente/admin/service/hook/Go/winget/Docker. Nenhum scan de dependências, OSVquery, DBoffline, fix/update/MCP invocado; trâfego da CLI não medido. Não alegar zero vulnerabilidades ou gateOSV.
+P2 documental versão/hashes:mockCLI9.9.9/exit0 aceito pelo guard antigo;assert esperado RED1/1.731s. Corrigido versão exata observada e Assert-Sec008Cache antes/depois. Root6casos9.038s:documented-positive0,mock-wrong-version1,post-probe-license-mutation1,extra-file1,tampered-license1,junction1. Mock/fronteiras não substituem CLIreal. Original3hashes preservados/cópias negativas próprias/cleanup absoluto-contido-ancestrais-árvore guardado; junction própria removida semrecursão após identidade/alvo antes limpar árvore. Cacheoriginal nunca adulterado/exe inválido nunca executado;proberoot ausente.
+
+Root4validadoresdoc verdes no índice final, gitignore28artefatos4fontes passou antes;10paths/50JSONprévios intactos245tuplas/51items48done240files271links/heurística0. Log215607bytes preservando base208642 e entrega213920. Produto/Rust/TS/manifests/pins/locks/grants/thresholds/workflow/seletor intactos. Coverage/build deproduto não reexecutados por diff documental; ausência de scanOSV é escopo explícito SEC009.
+Gitleaks8.30.1 somente diff staged/defaults/ignorevazio/allowinline ignorado/reportem memória redacted100:
+entrega0achados/0.447s/hash4adb72f5e9421b59f32a88a4eac22a2a2e638a7709e2f9eff4f2f3384b95fb05;
+fechamento0achados/0.444s/hashff905870aa5faf01a39d647b4ac78df95c5c168a62f97272f08e158fd6011c6e.
+Não equivale a ausência geral de segredos ou scan vulnerabilidade.
+
+Multiagente2delegados readonly/sem escala: P-SEC gpt-6-luna low oráculoE2 usado/saída excedeu120palavras;P-REV gpt-5.6-sol medium P2usado/re-reviewsemP0P1P2/E2. Sem testes/checks/build/scanner/rede/escrita pelos delegados. RootP-INT6.1-sol ultra por instrução humana,único writer/executor/committer. Tokens/cache/custo/duraçãomodelos/retriesevitados poritem:não registrado;economia monetária não medida. Aprendizado:exit0 não prova versão;integridade antes e depois/negativos próprios/cleanup seguro.
+
+SEC008 done/passestrue/E3 somente instalação;requisito globalSEC007 parcial/gateOSVSEC009 e demais executores pendentes. Aceite humano SEC001 preservado/nenhum novoE4. Finanças/SQLite/backup/setup.exe/release ainda pendentes/METAATIVA.
+Reserva10paths LIBERADA após CI final verde/publicação desta49ªnota preservando48objetos anteriores/publicrefs main-notesevidence correspondentes/Gitlimpo;esta nota é recibo final e evita commit recursivo.
+Próximo SEC-009 OSV no CI <- SEC-008, INF-010 confirmado pela ordem/dependências do roadmap; não iniciado neste ciclo.
