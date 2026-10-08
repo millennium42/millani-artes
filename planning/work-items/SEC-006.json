@@ -1,0 +1,24 @@
+{
+  "id": "SEC-006",
+  "title": "instalar Gitleaks",
+  "specPath": "planning/specs/SEC-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-003"
+  ],
+  "acceptanceCriteria": [
+    "distribuição portátil oficial Windows x64, versão/hash/licença registrados e CLI executada",
+    "probes sintéticos clean/leak/erro verificam códigos e redaction sem segredo no Git",
+    "48prévios245tuplas/log191952 preservados;review/checksdocs/CIexactSHA/nota47/liberação"
+  ],
+  "checks": [
+    "gitleaks version e probes stdin/dir com redact100/defaultconfig",
+    "mapa/schema/evidence/log/gitignore/metadados/links/diff/security proporcionais",
+    "CI documental existing sem nativebuild/novo job"
+  ],
+  "agentPlan": "P-INT único writer/checkexecutor/committer10pathsATIVA;P-SEC6Lunalow readonlyE2 usado;P-REV5.6SolmediumE2 semachados/tentativa1/checkdiff indevido não usadoE3;2delegados/sem escala/telemetriaNR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Instalação portátil8.30.1/ZIPhash-license-PEAMD64-exehash E3;clean0,fakegithub-pat1,invalid126/RTKproxy/redaction100/fixturesremovidos/cacheignored. Não scan global/gate remotoSEC007/E4. Checksdocs/meta/review/diffscan/CI/nota47-liberação pendentes/passfalse/reserva10ATIVA/metaativa. 5validatorsdocs verdes/10paths48prévios245tuplas256links21PSblocks;diffscanGitleaks0achados;reviewE2semP0P1P2. Commit/CIentrega-final/nota47-liberação pendentes."
+}

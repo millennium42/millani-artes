@@ -341,3 +341,6 @@ if (Test-Path -LiteralPath $millaniExpected) { throw 'Cleanup incomplete.' }
 @{cleanup='removed';entries_checked=$millaniEntries.Count;reparse_points=0;absolute_guard=$true}|ConvertTo-Json -Compress```
 
 Comandos npm/Cargo e runtimes são os existentes nas seções acima; o líder selecionou executáveis explícitos e PATH/CARGO_TARGET_DIR somente no processo filho. Os blocos guard/cleanup reais foram executados; a orquestração completa foi Pythonstdlib, sem helper persistido. Sem inferir que todos os exemplos PowerShell anteriores tenham sido executados como um script único. Coverage é scaffold, não finanças/Rust/UIreal; [handoff INF-015](../../planning/handoffs/INF-015.md) guarda pins/hashes/tempos/avisos/review/CI. CI documental de entrega37320497876 no SHAb39098532468b111ce2ea7ea312497fb478302c7 passou, com oito etapas frontend/nativas puladas e zeroartifact; fechamento no SHA final/recibo de liberação ainda pendentes.
+
+## Gitleaks local — SEC-006
+Instalação portátil e probes locais em [GITLEAKS](GITLEAKS.md); origem fixa/integridade/licença no registro. Gate remoto de scanner pertence a SEC007; nenhum build de produto novo requerido por esta documentação.
