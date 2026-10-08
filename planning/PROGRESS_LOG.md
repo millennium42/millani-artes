@@ -1079,3 +1079,5 @@ SEC-014 | RED/BUILD | P-INT6.1-solultra | E3local | baselinefull5passed0ignored/
 SEC-014 | VERIFYlocal | P-INT6.1-solultra | E3 | fixturefinalTauriBuild/faultInjectedIo/RED8.718ssemraw/4filhos6Rust0ignored/fmtclippyauditquality/SEC0050/perfilcontrolledcleanup/maingroup6cd3c771-test18d15831 | reviewsecuritydiffCIpending/11ATIVA/METAativa | proximoSEC-014
 
 SEC-014 | REVIEW/CORRECT/VERIFY | P-INT6.1-solultra | E3local | P2injeção não confirmada corrigido/AtomicBool+guard102/5filhos6Rust0ignored/fmtclippy/test10.625s/main6cd3c771-test16a7beba | re-reviewCIpending/11ATIVA/METAativa | proximoSEC-014
+
+SEC-014 | CI/LEARN | P-INT6.1-solultra | E3 | entrega55b481af4d394aa624d384b6d38887bbdf898a04/CI37857821138/job113586157869/attempt1/23success/5filhos6Rustlocal/P2corrigido/re-reviewE2semachados/auditsbuildquality | passestrue/reserva11ATIVAatéCIfinalnota55/METAativa | proximoSEC-014

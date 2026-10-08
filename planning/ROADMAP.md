@@ -370,3 +370,5 @@ SEC-013 executor done/passestrue/E3,entrega a8e02cf7/[CI37851893560](https://git
 SEC014 VERIFYlocal:fixture final semplugin/erroIo injetado na fronteira real/buildTauri real/4filhos/6Rustpassed0ignored,fmtclippyauditquality green; falha de biblioteca natural não simulada. Review/CIpending/passfalse/11ATIVA/METAativa/SEC015nãoiniciado.
 
 SEC014 P2corrigido: cinco filhos/quatroprivacidade+guard102, seisRust0ignored/fmtclippy/E3local; re-review/CIpending/passfalse/11ATIVA/METAativa/SEC015nãoiniciado.
+
+SEC014 executor done/passestrue/E3,entrega55b481af4d394aa624d384b6d38887bbdf898a04/CI37857821138/23success/cincofilhosseisRustlocal/re-reviewE2semachados; [spec](specs/SEC-014.md#ci--learn--entrega-validada). Fechamento9docs/11ATIVAatéCIfinalnota55refsGitclean/METAativa/SEC015nãoiniciado.

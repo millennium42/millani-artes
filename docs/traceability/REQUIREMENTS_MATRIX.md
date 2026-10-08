@@ -149,9 +149,9 @@ Executor SEC-002 done/passestrue/E3:5Rust/CSP5enforce-HTTP0/CSSReact/REDnullHTTP
 
 ## Política de logs — SEC-003
 
-[Requisito SEC-003](../security/SECURITY_REQUIREMENTS.md)/ADR020 → [política](../security/LOGGING_POLICY.md) → executor documental [SEC-003](../../planning/specs/SEC-003.md)/[handoff](../../planning/handoffs/SEC-003.md). Allowlist/enum técnico, proibidos pessoais-finanças-segredos/path/SQL/erro bruto, fallback/injeção/sinks definidos; audit_eventSQLite continua atômico DB013/014. SEC014/015/BKP testam caminhos reais de sucesso/erro/falha de backup/marcadores ausentes e diagnóstico seguro preservado; código/prova operacional E0, sem promoção por revisão ou CI documental. StartupRust expect bruto é lacuna conhecida.
+[Requisito SEC-003](../security/SECURITY_REQUIREMENTS.md)/ADR020 → [política](../security/LOGGING_POLICY.md) → executor documental [SEC-003](../../planning/specs/SEC-003.md)/[handoff](../../planning/handoffs/SEC-003.md). Allowlist/enum técnico, proibidos pessoais-finanças-segredos/path/SQL/erro bruto, fallback/injeção/sinks definidos; audit_eventSQLite continua atômico DB013/014. SEC014/015/BKP testam caminhos reais de sucesso/erro/falha de backup/marcadores ausentes e diagnóstico seguro preservado; SEC014 comprova E3 parcial da fronteira startup/hook Rust, substituindo expect bruto por catálogo estático; veja o executor e seus limites abaixo. Dados financeiros/backup/demais emissores permanecem E0; revisão/CI documental não os promovem.
 
-Executor documentalSEC003 done/passestrue após revisãoE2/checksdocsE3/commit e CI37712913326-SHA539e674 success10success8skipped0artifact;CIfinal/nota44/liberação pendentes. RequisitoSEC003 operacional continuaE0 até SEC014/015/BKP/caminhosreais/startupError; audit_eventDB013014 inalterado.
+Executor documentalSEC003 done/passestrue após revisãoE2/checksdocsE3/commit e CI37712913326-SHA539e674 success10success8skipped0artifact;CIfinal/nota44/liberação pendentes. RequisitoSEC003 operacional parcialE3 somente startup/hook SEC014; SEC015/BKP/demais caminhos reais continuam E0; audit_eventDB013014 inalterado.
 
 ## Inventário de plugins — SEC-004
 
@@ -251,3 +251,5 @@ Executor done/passes:true/E3, SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[CI378
 SEC014 VERIFYlocal final:buildTaurireal/faultInjectionErrorIo compartilhada com main/4filhos/6Rustpassed0ignored/hookstderrstatic+closedpipe/fmtclippy/auditqualitygreen; nenhuma simulação de falha natural da biblioteca/nenhum pluginadotado. [Spec](../../planning/specs/SEC-014.md#verify-final-local) registra RED final8.718s,sourcehashes/limites/cleanupcontrolado. ReviewCIpending/passesfalse/11ATIVA/METAativa.
 
 SEC014 VERIFY final apósP2: cinco filhos (quatro privacidade + guard before-injection102), confirmação AtomicBool após build real impede falso positivo; seis Rusttests/zeroignored/fmtclippy green. [Prova e hashes finais](../../planning/specs/SEC-014.md#verify--correção-p2-executada). E3local/re-reviewCIpending/11ATIVA; fronteira Err com faultinjection, não falha natural da biblioteca; METAativa.
+
+SEC014 executor done/passestrue/E3 após entrega55b481af4d394aa624d384b6d38887bbdf898a04/[CI37857821138](https://github.com/millennium42/millani-artes/actions/runs/37857821138)/attempt1/23success. Cincofilhos/seisRustlocal/P2corrigido/re-reviewsemachados; [prova/limites](../../planning/specs/SEC-014.md#ci--learn--entrega-validada). Fechamento9docs/reserva11ATIVAatéCIfinalnota55refsGitclean; SEC003global parcial/METAativa/SEC015nãoiniciado.

@@ -2,7 +2,7 @@
   "id": "SEC-014",
   "title": "testar redaction de telefone",
   "specPath": "planning/specs/SEC-014.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-003"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra único writer/checks/committer11ATIVA; P-SEC6-lunalow E2 oráculo usado; P-REV5.6-solmedium encontrou P2 corrigido pelo root, re-review focal E2 semachados;tokenscusto NR.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocalfinal:REDphoneleak8.718ssemraw;5filhos(quatroprivacidade+guard102)/TauriBuildreal/faultInjectedErrorIo/AtomicBool confirma injeção/panic/sinkstderrfechado/6Rustpassed0ignored/fmtclippy/audit4170vulns2excepted/quality100%4linhas/SEC0050. Main6cd3c771/test16a7beba;inputsE4preserved. P2corrigido/re-reviewE2semachados/securitydiff0/CIpending/passfalse/11ATIVA; METAativa/SEC015nãoiniciado."
+  "passes": true,
+  "notes": "VERIFYlocalfinal:REDphoneleak8.718ssemraw;5filhos(quatroprivacidade+guard102)/TauriBuildreal/faultInjectedErrorIo/AtomicBool confirma injeção/panic/sinkstderrfechado/6Rustpassed0ignored/fmtclippy/audit4170vulns2excepted/quality100%4linhas/SEC0050. Main6cd3c771/test16a7beba;inputsE4preserved. P2corrigido/re-reviewE2semachados/securitydiff0/CIpending/passfalse/11ATIVA; METAativa/SEC015nãoiniciado. Entrega55b481af4d394aa624d384b6d38887bbdf898a04/CI37857821138/job113586157869/attempt1/23success/logscoverage-SHA-verificados. DoneE3; fechamento9docs/11ATIVAatéCIfinalnota55-preserva54/refsGitclean. CI não executa Rustsuite; globalSEC003parcial/METAativa/SEC015nãoiniciado."
 }
