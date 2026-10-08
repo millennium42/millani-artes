@@ -9,6 +9,6 @@ Assets: histórico e saldos, telefones, SQLite, backups, chaves, configuração 
 | path traversal/sobrescrita | paths controlados, allowlist, operações atômicas |
 | capability excessiva | deny-by-default e revisão por capability |
 | XSS/remoto | CSP, sem conteúdo remoto sem ADR |
-| segredo/log sensível | Gitleaks, redaction e política de logs |
+| segredo/log sensível | Gitleaks e redaction futuros; [política de logs](LOGGING_POLICY.md) define allowlist/fallback, sem alegar enforcement |
 | dependência vulnerável | npm/cargo/OSV gates e atualização rastreada |
 | duplicação financeira | casos de uso canônicos, transação e testes de idempotência |

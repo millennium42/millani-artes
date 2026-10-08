@@ -1,0 +1,24 @@
+{
+  "id": "SEC-003",
+  "title": "política de logs sanitizados",
+  "specPath": "planning/specs/SEC-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "GOV-002"
+  ],
+  "acceptanceCriteria": [
+    "allowlist de campos/valores diagnósticos e proibidos pessoais-finanças-segredos definidos",
+    "fallback/injeção/sinks/audit_event distinto e testes reais SEC014/015/BKP definidos",
+    "links/gates/review/docs/CI exactSHA/nota44-liberação preservam45items245tuplas"
+  ],
+  "checks": [
+    "mapa/schema/evidência/log/links/diff/escopo/grafo/segredoheurística",
+    "review semântico contra contrato e fontes; sem claim de redaction runtime",
+    "CI documental condicional sem frontend/build/artifact e nota pública"
+  ],
+  "agentPlan": "P-INT único escritor/checkexecutor/committer;11paths ATIVA spec. P-TRC6Lunalow readonlyE2 fontes usadas apósfollow-up1/primeira saída descartada; P-REV5.6Solmedium readonlyE2 semP0P1P2/tentativa1;2delegados/sem escala/telemetria não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PolíticaE2 semachadosP0P1P2/checks documentaisE3:5validators/28fontes218files46items42done/175082logprefix/45anterioresiguais245tuplas/202links1JSONexample/heurísticasegredos0/sourceintacto. REDruntime/Rust-TS-build-coverage-audits NA diffdocs. EnforcementSEC003global/SEC014015BKP/startupRustexpect E0/pendentes. Commit/CIentrega-final/nota44-liberação pendentes;passesfalse/reservaATIVA/metaativa."
+}
