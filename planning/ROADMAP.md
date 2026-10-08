@@ -344,3 +344,5 @@ passes:true refere-se ao executor/CIentrega observado; LIBERADA ainda exige CI n
 ## SEC-011 — gate Cargo / aceite próprio
 
 SEC-011 in_progress/E3+E4/passfalse/reserva13ATIVA. GateCargo47cases/6CLIreais, audit417deps/0vulnsclassificadas/2excepted; scope/prazo aprovados semampliação e reviewfocalE2 semachados. [Spec](specs/SEC-011.md)/[handoff](handoffs/SEC-011.md) registram checks e literalE4. CIentrega/fechamentoexactSHA/nota52-liberação pendentes; SEC012nãoiniciado, METAsetup.exe pendente.
+
+SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2excepted, entrega3af54a6/CI37824390707 verde21steps. E4scope/prazo/hashes intactos; OSV537/3excepted/Gitleaks114commits0; cobertura100% apenasfrontendscaffold4linhas. Reviewsemachados/checks green/53itemsprévios245tuplas/prefixo245790preservados. passestrue=executor; liberação13 dependeCIfinal/nota52 preserva51. CargoCISEC012pendente; METAsetupfinanceiro pendente. Detalhes na spec/handoffSEC011.

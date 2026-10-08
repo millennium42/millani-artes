@@ -187,3 +187,5 @@ ReutilizaCLI0.22.2 portátil INF002/15310848bytes/SHA0157f5ce1ce9fd4fb0a1f7c79af
 ## SEC-011 — gate Cargo / aceite próprio
 
 SEC-011 reutiliza ferramenta portátil járegistrada; gate localimplementado/47cases/6CLIreais/auditreal417deps0vulnsclassificadas2warnings comE4 próprio até23Oct00UTC. Nenhumdownload/dependency/toolupgrade. [Spec](../planning/specs/SEC-011.md)/[handoff](../planning/handoffs/SEC-011.md) registramconfigpinada/origem/inputs/literalhumano/limites/review/checks. AprovaçãoOSV separada preservada. IntegraçãoauditCIéSEC012; executorpassesfalse atéCIexactSHA.
+
+SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2excepted, entrega3af54a6/CI37824390707 verde21steps. E4scope/prazo/hashes intactos; OSV537/3excepted/Gitleaks114commits0; cobertura100% apenasfrontendscaffold4linhas. Reviewsemachados/checks green/53itemsprévios245tuplas/prefixo245790preservados. passestrue=executor; liberação13 dependeCIfinal/nota52 preserva51. CargoCISEC012pendente; METAsetupfinanceiro pendente. Detalhes na spec/handoffSEC011.

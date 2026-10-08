@@ -32,3 +32,7 @@ As fixtures usam banco Git sintético local, --no-fetch e --no-yanked somente no
 Revisão corrigiu P1 de aceite textual livre; RED reproduziu a aceitação indevida e 46 casos passaram após a correção. Segunda revisão focal P-REV 5.6-sol medium, E2: sem achados. Proposta pública 0e99e4c recebeu E4 própria com scope e prazo inalterados. Revisão focal da ativação P-REV 5.6-sol medium, E2: sem achados. CI de entrega ainda pendente; integração dos audits ao CI pertence ao SEC-012. Coverage Python percentual, telemetria e licenças transitivas: não registrado.
 
 Scratch e fixtures ficam em artifacts/sec011-check e artifacts/sec011-tests, com proteção contra symlink/junction e limpeza somente dos caminhos próprios. Banco global e runtime não são removidos nem publicados no aplicativo.
+
+## Entrega validada
+
+[Commit 3af54a6](https://github.com/millennium42/millani-artes/commit/3af54a6dbcc6ca8d44bce9b4632a10aa97254458) / [CI 37824390707](https://github.com/millennium42/millani-artes/actions/runs/37824390707): 21 etapas verdes, build Windows verificado e coverage frontend do scaffold 100% (apenas quatro linhas). O gate Cargo local no mesmo SHA passou com 417 dependências, zero vulnerabilidades classificadas e os dois warnings aprovados, 2.595s. Os 47 casos locais passaram; checker/testes Cargo ainda não rodam no CI, integração prevista no SEC-012. Fechamento documental e recibo externo de liberação permanecem necessários. Nenhum código executável foi alterado depois dessas verificações.
