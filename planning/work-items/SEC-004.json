@@ -2,7 +2,7 @@
   "id": "SEC-004",
   "title": "listar plugins necessários",
   "specPath": "planning/specs/SEC-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-001"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT único writer/checkexecutor/committer;8paths ATIVA. P-MAP6Lunalow readonlyE2 inventário usado/tentativa1;P-REV5.6Solmedium readonlyE2 sem achados materiais/tentativa1.2delegados/sem escala/telemetria poritem não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Inventário documentalrootstdparse417Rust121npmpackages/zero plugins-registros-grants.5validators exit0/mapa221/schema-evidence47/log178018prefix/gitignore28-4/8paths46préviosiguais245tuplas216links/heurística0/sourceintacto. Review/CI entrega-final/nota45-liberação pendentes, passesfalse/reservaATIVA;runtime globalparcial/metaativa. ReviewE2 semachadosmateriais/2delegados/sem escala; entrega pronta com passesfalse atéCI, reservaATIVA."
+  "passes": true,
+  "notes": "Inventário documental/zero plugins-registros-grants/417Rust121npmLockPackages;5checksroot/mapa221/schema47/evidence/log178018prefix/gitignore28-4/46préviosiguais245tuplas216links/heurística0/sourceintacto/reviewE2 semachadosmateriais. Entrega7f0ff510b488e5537b48ca21a418c26b0468d9cd/CI37714626133-job113108176894 successattempt1/10success8skipped0artifact/seletorfalse. Donepassestruesóexecutor documental;gateSEC005/runtimeglobalpendentes. FechamentoCI/nota45-ref/liberação pendentes/reserva8ATIVA/metaativa/SEC005nãoiniciado."
 }

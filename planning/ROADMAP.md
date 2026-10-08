@@ -290,3 +290,5 @@ SEC-003 entrega pronta/E3documental: políticaE2/review5.6Solmedium semP0P1P2/5v
 SEC-003 tarefa de política done/passestrue/E3documental após review/checks e CI entrega37712913326-SHA539e674 success10success8skips0artifact;CIfinal/nota44-ref/liberação pendentes.46items43done/245tuplas/sourceproduto intactos;enforcementSEC003global E0/SEC014015BKP futuros. PróximoSEC004 apósliberação/nãoiniciado/metaativa.
 
 SEC-004: inventário documental em andamento na política Tauri; lista atual vazia e escolhas do MVP mapeadas aos executores, sem adoção/grant. Spec/item/handoff reservam8paths; checks documentais/review sem achados materiais aprovados; CI/nota45-liberação pendentes/passfalse. Nenhuma tarefa posterior iniciada; metaativa.
+
+SEC004 done/passestrue/E3 documental, CIentrega37714626133-SHA7f0ff510b488e5537b48ca21a418c26b0468d9cd verde10success8skipped0artifact;47items44done221files245tuplas. Reserva8ATIVA atéCIfinal/nota45-ref-Gitclean/liberação;próximoSEC005←SEC004 não iniciado/metaativa.
