@@ -288,3 +288,5 @@ SEC-003 in_progress/passesfalse: política de logs/allowlist/fallback/sinks/audi
 SEC-003 entrega pronta/E3documental: políticaE2/review5.6Solmedium semP0P1P2/5validators/218files46items42done/45anteriores245tuplas preservados. Sourceproduto intacto/enforcementE0,commit-CIentrega-final-nota44-liberação pendentes/passfalse/metaativa.
 
 SEC-003 tarefa de política done/passestrue/E3documental após review/checks e CI entrega37712913326-SHA539e674 success10success8skips0artifact;CIfinal/nota44-ref/liberação pendentes.46items43done/245tuplas/sourceproduto intactos;enforcementSEC003global E0/SEC014015BKP futuros. PróximoSEC004 apósliberação/nãoiniciado/metaativa.
+
+SEC-004: inventário documental em andamento na política Tauri; lista atual vazia e escolhas do MVP mapeadas aos executores, sem adoção/grant. Spec/item/handoff reservam8paths; checks documentais/review sem achados materiais aprovados; CI/nota45-liberação pendentes/passfalse. Nenhuma tarefa posterior iniciada; metaativa.

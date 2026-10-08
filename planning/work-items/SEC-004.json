@@ -1,0 +1,24 @@
+{
+  "id": "SEC-004",
+  "title": "listar plugins necessários",
+  "specPath": "planning/specs/SEC-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SEC-001"
+  ],
+  "acceptanceCriteria": [
+    "inventário instalado/registrado/autorizado distingue core e plugins; scaffold requer zero plugins",
+    "MVP SQL/IO/dialog/log/crypto/funções externas tem decisão mínima e executores futuros sem adoção/gate runtime",
+    "8paths46itens245tuplas/log178018prefix preservados;review/docs/CI exactSHA/nota45/liberação"
+  ],
+  "checks": [
+    "inventário manifests-locks-config stdlib/Builder inspecionado pelo root",
+    "mapa/schema/evidence/log/gitignore/links/diff/escopo/preservação/grafo/heurística",
+    "review e CI documental existente com8skips0artefatos"
+  ],
+  "agentPlan": "P-INT único writer/checkexecutor/committer;8paths ATIVA. P-MAP6Lunalow readonlyE2 inventário usado/tentativa1;P-REV5.6Solmedium readonlyE2 sem achados materiais/tentativa1.2delegados/sem escala/telemetria poritem não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Inventário documentalrootstdparse417Rust121npmpackages/zero plugins-registros-grants.5validators exit0/mapa221/schema-evidence47/log178018prefix/gitignore28-4/8paths46préviosiguais245tuplas216links/heurística0/sourceintacto. Review/CI entrega-final/nota45-liberação pendentes, passesfalse/reservaATIVA;runtime globalparcial/metaativa. ReviewE2 semachadosmateriais/2delegados/sem escala; entrega pronta com passesfalse atéCI, reservaATIVA."
+}
