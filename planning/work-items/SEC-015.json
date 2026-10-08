@@ -2,7 +2,7 @@
   "id": "SEC-015",
   "title": "testar redaction de dados financeiros",
   "specPath": "planning/specs/SEC-015.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-003"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra único writer/executor11ATIVA; P-SEC6-lunalow E2 oráculo usado; P-REV5.6-solmedium E2 reviewfontesdiffab5a6c92semachados (primeiro briefing-only descartado). Rootreproduziu;tokenscusto/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "REDsensibilidadeexpect10.625ssemraw/mainrestauradobytes;5finance5phone7Rust0ignored/fmtclippyaudit4170vulns2excepted/TauriBuildreal/errorIo injection/guard102/hook/sinkclosed. Main6cd3c771unchanged/test1e71a92a; financial business/SQLite/backup/all-emitter não provados. ReviewE2semachados/scan0/validators/quality3tests100%4lines/CIpending/passfalse/11ATIVA/METAativa/ARC001nãoiniciado."
+  "passes": true,
+  "notes": "Entrega96c06e66e53f8c9776d51576bf7f467102487ad2/CI37860308161/job113594170582/attempt1/23success/logscoverageSHA-verificados. REDsensibilidade10.625s/mainrestauradobytes/mainunchanged6cd3c771/test1e71a92a;5finance5phone7Rustlocal0ignored/fmtclippyaudit/quality3tests100%4linhas/reviewE2fontessemachados/scan0/inputsE4intactos. Não prova fluxosfinanceiros/SQLite/backup/all-emitter reais; CI não executaRustsuite. DoneE3; fechamento9docs/reserva11ATIVAatéCIfinalnota56-preserva55/refsGitclean/METAativa/ARC001nãoiniciado."
 }

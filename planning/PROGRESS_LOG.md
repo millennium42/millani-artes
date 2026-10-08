@@ -1087,3 +1087,5 @@ SEC-015 | SPEC/RECON | P-INT6.1-solultra | E2 | primeiroready/baseca8c32e/CIverd
 SEC-015 | RED/BUILD/TEST | P-INT6.1-solultra | E3local | REDsensibilidade10.625ssemraw/mainrestauradofinally/mainunchanged/5finance5phone7Rust0ignored/fmtclippyaudit4172excepted/testhash1e71a92a | reviewsecurityCIpending/11ATIVA/METAativa | proximoSEC-015
 
 SEC-015 | SECURITY/REVIEW/VERIFY | P-INT6.1-solultra | E3local | quality3tests100%4lines/SEC0050/metadata10paths57anteriores245tuplas/scan0/review5.6solmediumE2fontesdiffsemachados/7Rust5finance5phone | CIpending/11ATIVA/METAativa | proximoSEC-015
+
+SEC-015 | CI/LEARN | P-INT6.1-solultra | E3 | entrega96c06e66e53f8c9776d51576bf7f467102487ad2/CI37860308161/job113594170582/attempt1/23success/5finance5phone7Rustlocal/productionunchanged/reviewE2semachados/auditsqualitybuild | passestrue/reserva11ATIVAatéCIfinalnota56/METAativa | proximoSEC-015

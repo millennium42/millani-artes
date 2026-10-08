@@ -376,3 +376,5 @@ SEC014 executor done/passestrue/E3,entrega55b481af4d394aa624d384b6d38887bbdf898a
 ## SEC-015 — testar redaction de dados financeiros
 
 [Spec](specs/SEC-015.md)/[handoff](handoffs/SEC-015.md),E3local/REDsensibilidade10.625s/5finance+5phone/7Rust0ignored/fmtclippyaudit; mainprodutivo unchanged/catalogo reutilizado. ReviewCIpending/passfalse/reserva11ATIVA; requisitoSEC003parcial/METAativa/ARC001nãoiniciado.
+
+SEC015 executor done/passestrue/E3,entrega96c06e66e53f8c9776d51576bf7f467102487ad2/CI37860308161/23success/5finance5phone7Rustlocal/reviewE2fontessemachados; [spec](specs/SEC-015.md#ci--learn--entrega-validada). Fechamento9docs/reserva11ATIVAatéCIfinalnota56refsGitclean/METAativa/ARC001nãoiniciado.
