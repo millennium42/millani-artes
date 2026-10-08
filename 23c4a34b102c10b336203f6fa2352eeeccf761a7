@@ -1,0 +1,273 @@
+{
+  "workItem": "SEC-011",
+  "state": "LIBERADA",
+  "evidence": "E3 + own E4",
+  "finalSHA": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+  "publicRepository": "https://github.com/millennium42/millani-artes",
+  "humanDecision": "execução temporaria aprovada, siga com a meta em modo economia de tokens",
+  "decisionReference": "Codex user reply to SEC-011 proposal 0e99e4c4be0472e1c2bf31099677f91ca40c7177",
+  "approvedScopeSHA256": "5bbcd9f74bb6d831b11ecd337df33cb487e05637d6daa247ced096f7a081cca8",
+  "approvalRecordSHA256": "a0698660be04e9229117f2a4e7a628f5822cd73e5d251af4b1dc47e41557bd27",
+  "expiryUTC": "2026-10-23T00:00:00Z",
+  "expiryBrasilia": "2026-10-22T21:00:00-03:00",
+  "exceptionScope": "Cargo0.22.2 Windowsx86_64 exactCargoLock+manifest; glib0.18.5 unsound RUSTSEC2024-0429 +proc-macro-error1.0.4 unmaintained RUSTSEC2024-0370; no renewals/no other findings",
+  "receipt": {
+    "delivery": {
+      "delivery": {
+        "id": 37824390707,
+        "sha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/37824390707",
+        "attempt": 1,
+        "job": 113473330461,
+        "finishedSteps": 21,
+        "activeStep": null,
+        "steps": 21,
+        "success": 21,
+        "skipped": 0,
+        "artifacts": 1,
+        "gitleaksStepSuccess": true,
+        "osvStepSuccess": true
+      },
+      "logs": {
+        "run": 37824390707,
+        "job": 113473330461,
+        "sha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+        "osv": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 417
+          },
+          "packages": 537,
+          "seconds": 1.27,
+          "sourceSha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "osvTests": {
+          "cases": 39,
+          "seconds": 2.927,
+          "fixtureRemoved": true,
+          "cacheOriginalPreserved": true
+        },
+        "gitleaks": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 114,
+          "findings": 0,
+          "seconds": 0.772,
+          "sourceSha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+          "version": "8.30.1"
+        },
+        "logsReadInMemory": true,
+        "native": {
+          "machine": "AMD64",
+          "cargoLock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+          "sha256": "c77723dc72a129a2eb50517b1478f244ae0dcfc00f2ec425857c324deb9a3704",
+          "sourceSha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+          "imageVersion": "20260925.250.1",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "imageOS": "win25-vs2026",
+          "bytes": 8563200,
+          "node": "v24.21.0",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "customProtocol": true,
+          "pe": "PE32+"
+        }
+      },
+      "coverage": {
+        "run": 37824390707,
+        "sha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+        "artifact": 11571046299,
+        "name": "frontend-coverage-37824390707-1",
+        "retentionSeconds": 86399,
+        "coverage": {
+          "lines": {
+            "total": 4,
+            "covered": 4,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 5,
+            "covered": 5,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 1,
+            "covered": 1,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "thresholds": {
+          "lines": 90,
+          "statements": 90,
+          "functions": 90,
+          "branches": 85
+        },
+        "readInMemory": true,
+        "newUpload": false
+      },
+      "audit": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1295,
+          "last-commit": "550efd3d587a29b2e2c2b21b17a440da4fede999",
+          "last-updated": "2026-10-08T16:47:14+02:00"
+        },
+        "dependencies": 417,
+        "elapsedSeconds": 2.595,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+          "src-tauri/Cargo.toml": "b8849431f49cc9dffcc28ad7766a73cf1050e889cae262a89d990c54a5038e40"
+        },
+        "sourceSha": "3af54a6dbcc6ca8d44bce9b4632a10aa97254458",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      },
+      "tests": {
+        "cases": 47,
+        "realCLI": 6,
+        "status": "pass",
+        "seconds": 7.544,
+        "fixtureRemoved": true
+      }
+    },
+    "finalCI": {
+      "id": 37825788367,
+      "sha": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/37825788367",
+      "attempt": 1,
+      "job": 113478176647,
+      "finishedSteps": 20,
+      "activeStep": null,
+      "steps": 20,
+      "success": 12,
+      "skipped": 8,
+      "artifacts": 0,
+      "gitleaksStepSuccess": true,
+      "osvStepSuccess": true
+    },
+    "finalLogs": {
+      "run": 37825788367,
+      "job": 113478176647,
+      "sha": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+      "osv": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 417
+        },
+        "packages": 537,
+        "seconds": 1.202,
+        "sourceSha": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "osvTests": {
+        "cases": 39,
+        "seconds": 3.213,
+        "fixtureRemoved": true,
+        "cacheOriginalPreserved": true
+      },
+      "gitleaks": {
+        "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+        "commits": 115,
+        "findings": 0,
+        "seconds": 0.712,
+        "sourceSha": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+        "version": "8.30.1"
+      },
+      "logsReadInMemory": true
+    },
+    "finalMeta": {
+      "finalSHA": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+      "gitClean": true,
+      "sourceUnchangedSinceDelivery": true,
+      "closingDocs": 9,
+      "scope": 13,
+      "previous53ItemsPreserved": true,
+      "roadmap245RowsPreserved": true,
+      "historicalLogPrefixesPreserved": true,
+      "items": 54,
+      "done": 51,
+      "tracked": 261,
+      "rootsAbsent": true,
+      "previous51NotesPreserved": true,
+      "logBytes": 252783
+    },
+    "deliveryDiff": {
+      "exit": 0,
+      "findings": 0,
+      "seconds": 0.497,
+      "diffSHA256": "2275707a1c1891cc89681f7b274ed177e715c99733a1688d51dd8a130c72ba87",
+      "probeRemoved": true,
+      "scope": "staged diff only"
+    },
+    "closingDiff": {
+      "exit": 0,
+      "findings": 0,
+      "seconds": 0.478,
+      "diffSHA256": "407a91423a47ceb987dd0f5fd7e6a0b0d0f21b3926000f02fdff7725c1603e19",
+      "probeRemoved": true,
+      "scope": "staged diff only"
+    }
+  },
+  "limitations": "Cargo checker/tests local only; CIintegration SEC012pending. Offlinefixture annotates2Gitmetadatafields from ownGit; realonline separate. Humanorigin checkedchat/review, not cryptographic script authentication. Pythoncoveragepercentage/PGP/telemetry/transitivelicenses NR. Frontendcoverage100percent refers to4line scaffold only. Full financialSQLitebackupsetup.exe goal not achieved.",
+  "routing": {
+    "root": "P-INT6.1-solultra perhumanMETA",
+    "oracle": "P-QA6-lunalow priorreadonly reused",
+    "review": "P-REV5.6-solmedium focalreadonly reused",
+    "delegates": 2,
+    "escalations": 0,
+    "tokensCostCacheModelLatencyAvoidedRetries": "não registrado"
+  },
+  "ciEconomy": "one existing21step native delivery run +one existing20step docs closing run,0newjobs/actions/workflows/uploads/reruns/PR; artifact existingcoverage1day; notes noCI",
+  "release": {
+    "paths": 13,
+    "previousNotesPreserved": 51,
+    "noteNumber": 52,
+    "sourceUnchangedSinceDelivery": true,
+    "gitCleanBeforeNote": true,
+    "ownScratchFixturesAbsent": true,
+    "items": 54,
+    "done": 51,
+    "tracked": 261,
+    "roadmapRows": 245
+  },
+  "nextCandidate": "SEC-012 after this release; not started",
+  "recordedUTC": "2026-10-08T18:42:09.855213+00:00"
+}
