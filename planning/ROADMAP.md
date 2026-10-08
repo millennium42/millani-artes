@@ -280,3 +280,5 @@ SEC-001 done/passestrue/E4 configuração aceita2026-10-05 após4Rusttests/WebVi
 SEC-002 in_progress/passesfalse: CSP existente será provada no probe WebView2 real com5vetores cross-origin/controle CSPnull/CSS local;10paths ATIVA, sem novo job/dependência. Próximo após fechamento calculado pelo grafo.
 
 SEC-002 entrega pronta/E3/passesfalse:5Rustpassed0ignored/CSP5enforce-HTTP0-TCPpreconnect1/ReactCSS local/controle null5HTTP/configintacta/gates10docs/reviewE2 semP0P1P2;commit/CI entrega-final/nota43-liberação pendentes/metaativa.
+
+SEC-002 done/passestrue/E3 após5Rust/CSP-runtime/fontesparsed/gates10docs/review e CI entrega37711001108-SHAb307c2c success19steps/native170s/1coverageartifact. Fechamento CI/nota43-ref/liberação pendentes;45items42done/245tuplas intactas. PróximoSEC-003 após liberação; não iniciado/metaativa.

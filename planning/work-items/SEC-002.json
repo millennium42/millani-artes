@@ -2,7 +2,7 @@
   "id": "SEC-002",
   "title": "CSP sem remoto",
   "specPath": "planning/specs/SEC-002.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT único escritor/checkexecutor/committer;10paths ATIVA spec; P-QA6Lunalow readonlyE2 oráculo usado, P-REV6Solmedium readonlyE2 semP0P1P2/tentativa1;2delegados/semescala; tokens/cache/custo/modelos efetivos não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local REDcspnull5HTTP-falha/restauração,5Rustpassed0ignored/CSP5enforce/HTTP0-TCPpreconnect1/ReactCSSACL/junction;fmtclippyqualitybuild/audits0classificados+2foraWindows247nodes/locks invariantes;10docschecks/map214items45/grafo245/44anterioresiguais/log171216/188links/heurística0. P-REV6SolmediumE2 semP0P1P2. Commit/CIentrega-final/nota43-liberação pendentes;passesfalse/metaativa/reservaATIVA."
+  "passes": true,
+  "notes": "E3 local5Rustpassed0ignored/CSP5enforce/HTTP0-TCPpreconnect1/ReactCSSACL-junction/REDnull5HTTP-falha-restauração/configproduto intactos/gates/audits0classificados+2foraWindows247nodes/locks/reviewE2 semP0P1P2/10docschecks/metadados44anteriores245tuplas preservados. Entregab307c2c2a167188ec42066b0313d67600a2a1a31/CI37711001108-job113096649087 success19steps1coverageartifact/nativeJSONPE-customprotocol-locks conferido. Done/passestrue após gates/commit/CIentrega;CI final/43nota-ref/liberação pendentes/reservaATIVA/metaativa/SEC003nãoiniciado;requisito globalSEC008 parcial."
 }
