@@ -1,0 +1,29 @@
+{
+  "approved": false,
+  "approvalRecord": null,
+  "target": "x86_64-pc-windows-msvc",
+  "expiresBeforeUTC": "2026-10-23",
+  "inputSHA256": {
+    "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+    "src-tauri/Cargo.toml": "b8849431f49cc9dffcc28ad7766a73cf1050e889cae262a89d990c54a5038e40"
+  },
+  "exceptions": [
+    {
+      "ecosystem": "crates.io",
+      "name": "glib",
+      "version": "0.18.5",
+      "ids": [
+        "GHSA-wrw7-89jp-8q8g",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    {
+      "ecosystem": "crates.io",
+      "name": "proc-macro-error",
+      "version": "1.0.4",
+      "ids": [
+        "RUSTSEC-2024-0370"
+      ]
+    }
+  ]
+}

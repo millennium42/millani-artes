@@ -61,6 +61,14 @@ jobs:
           python -B scripts/check_gitleaks.py
           if ($LASTEXITCODE -ne 0) { throw 'Gitleaks scan failed.' }
 
+      - name: Scan lockfiles for vulnerabilities
+        shell: pwsh
+        run: |
+          python -B scripts/test-osv.py
+          if ($LASTEXITCODE -ne 0) { throw 'OSV guard checks failed.' }
+          python -B scripts/check_osv.py
+          if ($LASTEXITCODE -ne 0) { throw 'OSV dependency scan failed.' }
+
       - name: Test frontend check selection
         shell: pwsh
         run: ./scripts/test-frontend-check-state.ps1
