@@ -1069,3 +1069,5 @@ SEC-013 | SPEC/RECON | P-INT6.1-solultra | E2 | reserva11ATIVA/baseca3ec51/branc
 SEC-013 | RED/BUILD | P-INT6.1-solultra | E3local | REDguardausenteexit1/2.031s;15casos12CLI3PSgreen4.312s;fixturesremoved/configoriginalVCSfalseisolado/aliasdetectadolimitescomputedFunction | reviewCIpending/11ATIVA/METAativa | proximoSEC-013
 
 SEC-013 | VERIFY | P-INT6.1-solultra | E3local | 15SAST/3quality/42integração/validators/securitydiff0/review5.6solmediumE2semachados/preservação55items27JSON245tuplas/log256613/E4 | CIpendente/11ATIVA/METAativa | proximoSEC-013
+
+SEC-013 | CI/LEARN | P-INT6.1-solultra | E3 | entregaa8e02cf7/CI37851893560/job113566555574/attempt1/23success/SAST15/quality/audits/native/coverage4linhas/reviewE2semachados | passestrue/reserva11ATIVAatéfinalnota54/METAativa | proximoSEC-013

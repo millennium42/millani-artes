@@ -239,3 +239,7 @@ Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millan
 ## SEC-013 — VERIFY local
 
 15casos/12CLI/3PowerShell,negativoPython-O,quality3testes/100%4linhas,42integração green; reviewP-REV5.6-solmediumE2 semP0/P1/P2, oráculoP-SEC6-lunalow usado e reproduzido root. Validators/securitydiffzero/preservação55prévios27JSON/245tuplas/log256613/inputE4 verdes. [Spec](../../planning/specs/SEC-013.md)/[handoff](../../planning/handoffs/SEC-013.md) limitam prova; CI entrega/final pending/11ATIVA/passfalse, METAativa.
+
+## SEC-013 — entrega validada
+
+Executor done/passes:true/E3, SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[CI37851893560](https://github.com/millennium42/millani-artes/actions/runs/37851893560)/attempt1:15SAST/12CLI/3PS,qualidade/audits/build green. [Spec/limites](../../planning/specs/SEC-013.md#executor--learn--entrega-validada): padrãofrontend não provaRustSQLrestore/finanças/globalSEC007continua parcial. Reserva11ATIVA atéCIfinal/nota54/refsGitclean;METAativa/SEC014nãoiniciado.

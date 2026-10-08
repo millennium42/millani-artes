@@ -43,3 +43,7 @@ Inferência técnica: ferramentas adicionais podem ser úteis quando houver entr
 Não é análise de fluxo/taint completa, prova de ausência de XSS, CSP/runtime/IPC, Rust, SQL/SQLite, dinheiro, transações, backup ou restore. Computed eval e Function são limites observados, não padrões autorizados para produto. Clippy existente não substitui SAST de segurança. Cobertura de testes do scaffold100%/4linhas não mede cobertura de vulnerabilidades nem do harness Python.
 
 Reavaliar ferramenta/ruleset e fixtures quando SEC-014/015 introduzirem sanitização e quando DB-001/BKP-001 ou novos comandos IPC criarem superfícies reais. Cada tarefa mantém testes de invariantes/segurança próprios; este item não libera requisitos globais, E4 ou release. Exceções OSV/Cargo preservadas até2026-10-23T00UTC(22/10 21hBrasília); fora desse escopo/prazo, bloqueio permanece.
+
+## Entrega observada
+
+E3 no SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[CI37851893560](https://github.com/millennium42/millani-artes/actions/runs/37851893560):15casos/12CLI/3PS2.547s,configSHA267bcfe6fb64f38c9e3b050adfbb002c143a99b2ce7f9203396cceb77abee1ae/scratchremoved,quality/audits/buildPEAMD64 passaram. Root leu logs/coverage emmemória;100% limita-se4linhasdo scaffold. ReviewE2 semP0P1P2; [spec](../../planning/specs/SEC-013.md#executor--learn--entrega-validada) contém evidências/limites. Nenhuma alternativa instalada, custo/tokens não registrado. FechamentoCI/nota54/liberação ainda pendentes; não amplia escopo de segurança/E4/META.
