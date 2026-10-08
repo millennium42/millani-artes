@@ -10,9 +10,9 @@ O checker confere tamanho, hash e versão do binário, lê o Cargo.lock completo
 
 A [CLI 0.22.2](https://github.com/rustsec/rustsec/blob/cargo-audit%2Fv0.22.2/cargo-audit/src/commands/audit.rs) nega warnings explicitamente. A [política de dependências](../security/DEPENDENCY_SECURITY.md) exige correção ou exceção humana temporária.
 
-## Proposta desativada
+## Exceção humana vigente
 
-A [configuração](../security/CARGO_WINDOWS_EXCEPTION.json) e o [registro próprio](../security/CARGO_WINDOWS_APPROVAL.json) continuam com approved=false e decisão nula. Escopo:
+A [configuração](../security/CARGO_WINDOWS_EXCEPTION.json) e o [registro próprio](../security/CARGO_WINDOWS_APPROVAL.json) registram approved=true e a decisão humana recebida em 2026-10-08. Escopo:
 
 - glib 0.18.5: unsound / RUSTSEC-2024-0429;
 - proc-macro-error 1.0.4: unmaintained / RUSTSEC-2024-0370;
@@ -21,14 +21,14 @@ A [configuração](../security/CARGO_WINDOWS_EXCEPTION.json) e o [registro próp
 
 ScopeSHA256: 5bbcd9f74bb6d831b11ecd337df33cb487e05637d6daa247ced096f7a081cca8. Somente estes warnings podem ser dispensados; vulnerabilidades, outros warnings ou inputs diferentes continuam bloqueados. A aprovação OSV SEC-009 não ativa esta proposta.
 
-O registro ativo exige a frase literal “Aprovo a exceção SEC-011 no escopo e prazo apresentados” e referência no formato “Codex user reply to SEC-011 proposal <SHA de 40 caracteres>”. O Integrador registra somente a resposta humana realmente recebida à proposta publicada. O checker valida frase, formato, scopehash e conteúdo do registro; a origem humana é evidência do chat e do histórico de revisão, sem autenticação criptográfica por este script. Texto sintético, recusa e referência de fixture são rejeitados em produção.
+O registro ativo exige a mensagem humana literal “execução temporaria aprovada, siga com a meta em modo economia de tokens” e referência no formato “Codex user reply to SEC-011 proposal <SHA de 40 caracteres>”. O Integrador registra somente a resposta humana realmente recebida à proposta publicada. O checker valida frase, formato, scopehash e conteúdo do registro; a origem humana é evidência do chat e do histórico de revisão, sem autenticação criptográfica por este script. Texto sintético, recusa e referência de fixture são rejeitados em produção.
 
 ## Evidência e limites
 
-Root: 46 casos, seis execuções reais da CLI, 6.679s, fixtures removidas. O scan online encontrou zero vulnerabilidades classificadas e dois warnings em 417 dependências; o gate real bloqueou com CARGO_WARNINGS_UNAPPROVED. Banco: 1295 advisories, commit 550efd3d587a29b2e2c2b21b17a440da4fede999, atualizado em 2026-10-08T16:47:14+02:00. Metadata Windows locked/offline/custom-protocol, Rust 1.99.0: 247 nós e ambas as dependências ausentes; hashes preservados. Isto não prova segurança geral das dependências.
+Root após E4: 47 casos, seis execuções reais da CLI, 7.544s, fixtures removidas. Gate local: exit0, 417 dependências, zero vulnerabilidades classificadas, dois warnings excetuados, 2.598s. O teste adicional rejeita a frase apenas sugerida na pergunta, que não foi digitada pelo usuário. Execução sobre o working diff; audit no commit de entrega e CI permanecem necessários. Histórico antes do aceite: O scan online encontrou zero vulnerabilidades classificadas e dois warnings em 417 dependências; o gate real bloqueou com CARGO_WARNINGS_UNAPPROVED. Banco: 1295 advisories, commit 550efd3d587a29b2e2c2b21b17a440da4fede999, atualizado em 2026-10-08T16:47:14+02:00. Metadata Windows locked/offline/custom-protocol, Rust 1.99.0: 247 nós e ambas as dependências ausentes; hashes preservados. Isto não prova segurança geral das dependências.
 
 As fixtures usam banco Git sintético local, --no-fetch e --no-yanked somente nos testes. A CLI offline omite commit/data do banco; o driver anota apenas estes dois campos usando o Git da própria fixture. O corpo dos achados vem da CLI real. A atualização online e consulta de yanked são verificadas pelo scan real separado. A aprovação sintética positiva exige patch explícito de constantes no harness; após removê-lo, o mesmo registro é rejeitado. Nenhum modo de teste existe no checker.
 
-Revisão corrigiu P1 de aceite textual livre; RED reproduziu a aceitação indevida e 46 casos passaram após a correção. Segunda revisão focal P-REV 5.6-sol medium, E2: sem achados. Proposta revisada para publicação no ramo público; gate humano próprio pendente. CI novo não foi executado; integração dos audits ao CI pertence ao SEC-012. Coverage Python percentual, telemetria e licenças transitivas: não registrado.
+Revisão corrigiu P1 de aceite textual livre; RED reproduziu a aceitação indevida e 46 casos passaram após a correção. Segunda revisão focal P-REV 5.6-sol medium, E2: sem achados. Proposta pública 0e99e4c recebeu E4 própria com scope e prazo inalterados. Revisão focal da ativação P-REV 5.6-sol medium, E2: sem achados. CI de entrega ainda pendente; integração dos audits ao CI pertence ao SEC-012. Coverage Python percentual, telemetria e licenças transitivas: não registrado.
 
 Scratch e fixtures ficam em artifacts/sec011-check e artifacts/sec011-tests, com proteção contra symlink/junction e limpeza somente dos caminhos próprios. Banco global e runtime não são removidos nem publicados no aplicativo.

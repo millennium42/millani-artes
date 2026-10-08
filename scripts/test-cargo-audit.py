@@ -180,6 +180,8 @@ def main():
             reference = "Codex user reply to SEC-011 proposal " + "1" * 40
             approve(config, "Rejeito a exceção SEC-011", reference)
             case("rejection-denied", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+            approve(config, "Aprovo a exceção SEC-011 no escopo e prazo apresentados", reference)
+            case("suggested-but-unreceived-decision-denied", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
             approve(config, gate.APPROVAL_TEXT)
             case("fixture-reference-denied", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
             # Fixture approval is available only through this explicit test patch.
