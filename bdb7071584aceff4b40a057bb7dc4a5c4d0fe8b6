@@ -1,0 +1,25 @@
+SEC-003 | CONCLUÍDA (política documental) | E3 documental | META ATIVA
+Entrega: 539e67423e318809e7973698353c18dce39897fa
+Fechamento atual: bdb7071584aceff4b40a057bb7dc4a5c4d0fe8b6
+CI entrega: https://github.com/millennium42/millani-artes/actions/runs/37712913326 | job 113102712537 | attempt 1 / 10 success / 8 skipped / zero artefatos
+CI final: https://github.com/millennium42/millani-artes/actions/runs/37713333781 | job 113104064536 | attempt 1 / 10 success / 8 skipped / zero artefatos
+Os dois runs foram conferidos no SHA exato, branch main, uma job existente. Os seletores nos commits reais retornaram false. Os oito skips correspondem a Node/install/quality/coverage-validation/upload/Rust/build/PE; sem compilação frontend/native, novo job/action/cache/dependência, manual dispatch ou rerun.
+
+Política docs/security/LOGGING_POLICY.md: E2, revisada; SHA256 do blob Git LF 2606ff99efe6ae79f40d198b4644a40ce2e2579917b3391237ba5398b7e857eb.
+Registros diagnósticos construídos por allowlist de campos e valores técnicos, sem mensagem livre; erros mapeados para código estático, validação de limites/CRLF/controles, fallback sem Debug/Display/stack brutos. Dados pessoais, financeiros, credenciais e conteúdo/contexto de banco-backup são proibidos. Todos os emissores/sinks são abrangidos; hash ou máscara parcial não autoriza exceção. Exemplo JSON é sintético, não captura de runtime. Persistência/upload/telemetria não foram ativados. Audit_event SQLite permanece distinto, na mesma transação financeira; falha de diagnóstico não altera negócio nem substitui auditoria.
+Fonte primária auxiliar: https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html ; a allowlist estrita é decisão do projeto.
+
+Root E3 documental executado: Windows x64 / pwsh 7.6.5 / Git 2.55.0.windows.3 / RTK 0.48.0.
+check-project-map exit0/1.234s/28 fontes/218 arquivos; check-work-items exit0/0.906s/46 itens; check-evidence-states exit0/0.844s/46 itens; check-progress-log exit0/1.266s/prefixo base175082 bytes preservado; test-gitignore exit0/2.234s/28 ignorados/4 fontes-locks.
+Metadata/diff/escopo: 11 paths entrega / 7 fechamento; 45 itens prévios e 245 tuplas completas ID-título-dependências preservados; 202 links locais / 1 exemplo JSON parsed / heurística de segredos0 / git diff check0. Log final178018 bytes, prefixo entrega176966 e base175082 preservados. Rechecks documentais antes de cada commit passaram. SHA256 diff staged de fechamento 2e56963ead069589ef9e64c48445468a1123a4b8e221869a903efe47a602872f.
+Produto/source/manifests/locks/pins/workflow/governança/produto/arquitetura intactos. Sem novo teste de palavras-chave. RED comportamental, Rust/TS, cobertura-produto, audits, nativebuild e smoke não foram repetidos neste diff documental; provas SEC-002 anteriores preservadas, sem promovê-las à sanitização.
+
+Review P-REV gpt-5.6-sol medium/read-only/E2/tentativa1: sem P0/P1/P2; uma leitura falhou por quoting e foi substituída por rg, sem mutação ou execução de checks.
+P-TRC gpt-6-luna low/read-only/E2: primeira saída sem missão descartada, follow-up1 acionável usado, sem escala. Dois delegados novos com contratos limitados; root P-INT único escritor/executor/committer.
+Verificação de visibilidade: gh indisponível no PATH; tentativa de leitura descartada antes de qualquer mutação, substituída pela API pública GitHub com stdlib HTTP, sem instalação de CLI.
+Telemetria por item/input-output-reasoning/cache/custo/modelos efetivos/retries evitados: não registrado. Nenhuma economia monetária medida é alegada.
+
+Limites: requisito SEC-003 global / sanitização real E0, pendentes. Startup Rust .expect pode incluir Tauri Error Debug bruto e não tem garantia de sanitização. SEC-014/SEC-015/BKP deverão testar marcadores sintéticos ausentes nos caminhos reais de sucesso/erro/fallback/sinks frontend-core/backup/terceiros, preservando código/operação e estado correto do banco. Validators, review e exemplo não provam runtime. Auditoria financeira/SQLite, backup e setup.exe ainda não implementados. Não há gate humano novo registrado para a política; E4 não reivindicado nem aceite SEC-001 ampliado.
+
+Reserva11paths: LIBERADA após CI final verde, publicação desta44ªnota preservando as43 anteriores, confirmação dos refs públicos main/notes-evidence e Git limpo. Esta nota é o recibo final, evitando novo commit recursivo.
+Estado:46itens43done/218arquivos/245tuplas; próximo SEC-004 ← SEC-001, não iniciado neste ciclo. META permanece ATIVA; aplicativo financeiro, SQLite, backup, instalador setup.exe e release pendentes.
