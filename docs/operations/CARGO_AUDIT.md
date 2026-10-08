@@ -36,3 +36,7 @@ Scratch e fixtures ficam em artifacts/sec011-check e artifacts/sec011-tests, com
 ## Entrega validada
 
 [Commit 3af54a6](https://github.com/millennium42/millani-artes/commit/3af54a6dbcc6ca8d44bce9b4632a10aa97254458) / [CI 37824390707](https://github.com/millennium42/millani-artes/actions/runs/37824390707): 21 etapas verdes, build Windows verificado e coverage frontend do scaffold 100% (apenas quatro linhas). O gate Cargo local no mesmo SHA passou com 417 dependências, zero vulnerabilidades classificadas e os dois warnings aprovados, 2.595s. Os 47 casos locais passaram; checker/testes Cargo ainda não rodam no CI, integração prevista no SEC-012. Fechamento documental e recibo externo de liberação permanecem necessários. Nenhum código executável foi alterado depois dessas verificações.
+
+## Integração SEC-012
+
+O workflow passa a preparar o mesmo runtime 0.22.2 e banco oficial e a executar seus 47 casos/gate antes do build, inclusive em diff documental. [Operação integrada](CI_AUDITS.md) documenta bootstrap, provas offline e limites; CI exactSHA ainda pendente neste estado. Checker, hashes dos inputs, aceite próprio e prazo preservados.

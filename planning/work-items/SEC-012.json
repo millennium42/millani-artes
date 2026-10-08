@@ -1,0 +1,26 @@
+{
+  "id": "SEC-012",
+  "title": "audits no CI",
+  "specPath": "planning/specs/SEC-012.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SEC-010",
+    "SEC-011",
+    "INF-010"
+  ],
+  "acceptanceCriteria": [
+    "Audits obrigatórios antes de instalação/upload/build no job existente",
+    "Bootstrap fixo e falha fechada comprovados por fixtures offline e gates reais",
+    "Review/docs/preservação/CI exactSHA e recibo final de liberação"
+  ],
+  "checks": [
+    "python -B scripts/test-ci-audits.py",
+    "40 casos npm/47 Cargo e audits online; validators/docs/diff security",
+    "CI entrega e final exactSHA, sem jobs/uploads/reruns novos"
+  ],
+  "agentPlan": "P-INT6.1-solultra único writer/checks/committer14pathsATIVA (spec); P-QA6-lunalow oráculoE2 usado/reproduzido; P-REV5.6-solmedium E2 review e delta cache semP0P1P2;2delegados0escalonamentos/tokens-custo-cache NR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3local:42integration/14PowerShell17.475s,40npm/47Cargo e scansonline120npmzero/417Cargo0vulns2excepted green;validators/preservação/reviewE2+deltacache semachados. Executáveis finais inalterados desdechecks/review; securityfinal/CIentrega-fechamento/nota53 pendentes/passfalse/reserva14ATIVA. E4/inputs preservados; SEC013nãoiniciado."
+}

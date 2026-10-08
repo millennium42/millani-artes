@@ -223,3 +223,7 @@ passes:true refere-se ao executor/CIentrega observado; LIBERADA ainda exige CI n
 SEC-007→SEC-011←INF-002: [gate/spec](../../planning/specs/SEC-011.md) →47cases/6CLIreais/auditreal417deps0vulnsclassificadas2excepted → E3+E4 Cargo próprio, scope/prazo/hashes intactos, recorda0698660. [Handoff](../../planning/handoffs/SEC-011.md) registra aceiteliteral/reviewsemachados/checks/preservação e próximoCIexactSHA. passesfalse/reserva13ATIVA; auditoriaCIremota aindaSEC012.
 
 SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2excepted, entrega3af54a6/CI37824390707 verde21steps. E4scope/prazo/hashes intactos; OSV537/3excepted/Gitleaks114commits0; cobertura100% apenasfrontendscaffold4linhas. Reviewsemachados/checks green/53itemsprévios245tuplas/prefixo245790preservados. passestrue=executor; liberação13 dependeCIfinal/nota52 preserva51. CargoCISEC012pendente; METAsetupfinanceiro pendente. Detalhes na spec/handoffSEC011.
+
+## SEC-012 — audits npm/Cargo no CI
+
+SEC-012←SEC-010,SEC-011,INF-010 liberados: [spec](../../planning/specs/SEC-012.md) →workflow obrigatório/42casos locais/14PowerShell reais/bootstraps offline →[handoff](../../planning/handoffs/SEC-012.md). E3 local, gates reais/review/CI exactSHA ainda pendentes, passes:false/reserva14ATIVA. Requisito global de segurança permanece parcial até SAST e demais gates; META financeira/setup.exe ativa.

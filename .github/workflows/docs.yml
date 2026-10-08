@@ -84,13 +84,30 @@ jobs:
           if ($required -cnotin @('true', 'false')) { throw 'Invalid check selection.' }
           "required=$required" >> $env:GITHUB_OUTPUT
       - name: Set up pinned Node
-        if: steps.frontend.outputs.required == 'true'
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: ${{ steps.frontend.outputs.required == 'true' && 'npm' || '' }}
           cache-dependency-path: package-lock.json
           package-manager-cache: false
+      - name: Audit npm dependencies
+        shell: pwsh
+        run: |
+          python -B scripts/test-npm-audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'npm audit fixtures failed.' }
+          python -B scripts/check_npm_audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'npm audit gate failed.' }
+      - name: Audit Cargo dependencies
+        shell: pwsh
+        run: |
+          python -B scripts/prepare_cargo_audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'Cargo audit preparation failed.' }
+          python -B scripts/test-ci-audits.py
+          if ($LASTEXITCODE -ne 0) { throw 'CI audit fixtures failed.' }
+          python -B scripts/test-cargo-audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'Cargo audit fixtures failed.' }
+          python -B scripts/check_cargo_audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'Cargo audit gate failed.' }
       - name: Install locked frontend dependencies
         if: steps.frontend.outputs.required == 'true'
         shell: pwsh
