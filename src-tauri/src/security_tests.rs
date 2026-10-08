@@ -67,12 +67,54 @@ fn compiled_authority_denies_ungranted_commands_and_origins() {
     }
 }
 
+#[test]
+fn csp_sources_stay_local_in_production_and_development() {
+    let context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    let security = &context.config().app.security;
+    for (dev, csp) in [
+        (
+            false,
+            security.csp.clone().expect("Production CSP required"),
+        ),
+        (
+            true,
+            security.dev_csp.clone().expect("Development CSP required"),
+        ),
+    ] {
+        let directives: std::collections::HashMap<
+            String,
+            tauri::utils::config::CspDirectiveSources,
+        > = csp.into();
+        assert!(
+            directives.contains_key("default-src"),
+            "Fallback policy required"
+        );
+        for (directive, sources) in directives {
+            let sources: Vec<String> = sources.into();
+            for source in sources {
+                let allowed = matches!(source.as_str(), "'self'" | "'none'")
+                    || (directive == "img-src" && source == "data:")
+                    || (directive == "connect-src"
+                        && matches!(source.as_str(), "ipc:" | "http://ipc.localhost"))
+                    || (dev && directive == "connect-src" && source == "ws://127.0.0.1:1420")
+                    || (dev && directive == "style-src" && source == "'unsafe-inline'");
+                assert!(
+                    allowed,
+                    "Unexpected CSP source: dev={dev} {directive} {source}"
+                );
+            }
+        }
+    }
+}
+
 #[cfg(windows)]
 mod native {
+    use std::io::{Read, Write};
+    use std::net::TcpListener;
     use std::os::windows::fs::MetadataExt;
     use std::path::Path;
     use std::sync::{
-        atomic::{AtomicBool, Ordering},
+        atomic::{AtomicBool, AtomicUsize, Ordering},
         mpsc, Arc,
     };
     use std::time::Duration;
@@ -149,6 +191,7 @@ mod native {
         event_denied: bool,
         title_unchanged: bool,
         event_unchanged: bool,
+        csp_checks: Vec<String>,
     }
 
     struct Probe {
@@ -165,6 +208,7 @@ mod native {
         brand_loaded: bool,
         title_denied: bool,
         event_denied: bool,
+        csp_checks: Vec<String>,
     ) {
         state
             .sender
@@ -174,6 +218,7 @@ mod native {
                 event_denied,
                 title_unchanged: window.title().unwrap() == state.initial_title,
                 event_unchanged: !state.event_seen.load(Ordering::SeqCst),
+                csp_checks,
             })
             .unwrap();
     }
@@ -181,6 +226,7 @@ mod native {
     #[test]
     #[ignore = "Windows/WebView2, built frontend and tauri/custom-protocol required"]
     fn local_page_works_and_denied_ipc_has_no_effect() {
+        assert!(!tauri::is_dev(), "Production CSP requires custom-protocol");
         let profile = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -189,6 +235,47 @@ mod native {
             Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap(),
             &profile,
         );
+        // Controlled cross-origin sink; no external host or new HTTP dependency.
+        let sink = TcpListener::bind("127.0.0.1:0").unwrap();
+        let remote = format!("http://{}", sink.local_addr().unwrap());
+        sink.set_nonblocking(true).unwrap();
+        let requests = Arc::new(AtomicUsize::new(0));
+        let observed_requests = requests.clone();
+        let stop = Arc::new(AtomicBool::new(false));
+        let stop_sink = stop.clone();
+        let sink_thread = std::thread::spawn(move || {
+            let mut connections = 0;
+            while !stop_sink.load(Ordering::SeqCst) {
+                match sink.accept() {
+                    Ok((mut stream, _)) => {
+                        connections += 1;
+                        stream.set_nonblocking(false).unwrap();
+                        stream
+                            .set_read_timeout(Some(Duration::from_secs(1)))
+                            .unwrap();
+                        // WebView2 may preconnect without sending an HTTP request.
+                        match stream.read(&mut [0; 1024]) {
+                            Ok(0) => {}
+                            Ok(_) => {
+                                observed_requests.fetch_add(1, Ordering::SeqCst);
+                                stream.write_all(b"HTTP/1.1 200 OK\r\nContent-Length: 0\r\nAccess-Control-Allow-Origin: *\r\nConnection: close\r\n\r\n").unwrap();
+                            }
+                            Err(error)
+                                if matches!(
+                                    error.kind(),
+                                    std::io::ErrorKind::TimedOut | std::io::ErrorKind::WouldBlock
+                                ) => {}
+                            Err(error) => panic!("Cannot read CSP sink: {error}"),
+                        }
+                    }
+                    Err(error) if error.kind() == std::io::ErrorKind::WouldBlock => {
+                        std::thread::sleep(Duration::from_millis(10))
+                    }
+                    Err(error) => panic!("CSP sink failed: {error}"),
+                }
+            }
+            connections
+        });
         let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
         let windows = std::mem::take(&mut context.config_mut().app.windows);
         assert_eq!(windows.len(), 1);
@@ -226,6 +313,27 @@ mod native {
                         .eval(
                             r#"(async () => {
                               await new Promise(resolve => setTimeout(resolve, 100));
+                              const remote = "__REMOTE__";
+                              const blocked = new Set();
+                              let complete;
+                              const violations = new Promise(resolve => { complete = resolve; });
+                              document.addEventListener("securitypolicyviolation", event => {
+                                if (event.disposition === "enforce" &&
+                                    (event.blockedURI === remote || event.blockedURI.startsWith(remote + "/"))) {
+                                  blocked.add(event.effectiveDirective.replace(/-elem$/, ""));
+                                  if (blocked.size === 5) complete();
+                                }
+                              });
+                              const localStyle = getComputedStyle(document.documentElement).backgroundColor
+                                === "rgb(246, 244, 240)";
+                              for (const tag of ["script", "link", "img", "iframe"]) {
+                                const element = document.createElement(tag);
+                                if (tag === "link") { element.rel = "stylesheet"; element.href = remote + "/style"; }
+                                else element.src = remote + "/" + tag;
+                                document.body.append(element);
+                              }
+                              fetch(remote + "/connect").catch(() => {});
+                              await Promise.race([violations, new Promise(resolve => setTimeout(resolve, 2000))]);
                               const invoke = window.__TAURI_INTERNALS__.invoke;
                               const denied = async (command, args) => {
                                 try { await invoke(command, args); return false; }
@@ -238,9 +346,10 @@ mod native {
                               await new Promise(resolve => setTimeout(resolve, 100));
                               await invoke("security_probe_report", {
                                 brandLoaded: document.querySelector("h1")?.textContent === "Millani Artes",
-                                titleDenied, eventDenied
+                                titleDenied, eventDenied,
+                                cspChecks: [...blocked, ...(localStyle ? ["local-style"] : [])]
                               });
-                            })();"#,
+                            })();"#.replace("__REMOTE__", &remote),
                         )
                         .unwrap();
                 }
@@ -254,7 +363,28 @@ mod native {
             outcome
         });
         assert_eq!(app.run_return(|_, _| {}), 0);
-        let outcome = result.join().unwrap().expect("Native IPC probe timed out");
+        let result = result.join().unwrap();
+        stop.store(true, Ordering::SeqCst);
+        let remote_connections = sink_thread.join().unwrap();
+        let mut outcome = result.expect("Native security probe timed out");
+        outcome.csp_checks.sort();
+        let remote_requests = requests.load(Ordering::SeqCst);
+        println!(
+            "SEC002_CSP: checks={:?} remote_requests={remote_requests} remote_connections={remote_connections}",
+            outcome.csp_checks
+        );
+        assert_eq!(
+            outcome.csp_checks,
+            [
+                "connect-src",
+                "frame-src",
+                "img-src",
+                "local-style",
+                "script-src",
+                "style-src"
+            ]
+        );
+        assert_eq!(remote_requests, 0, "CSP must stop requests before the sink");
         assert!(
             outcome.brand_loaded
                 && outcome.title_denied
