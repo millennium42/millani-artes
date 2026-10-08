@@ -1,0 +1,24 @@
+{
+  "id": "SEC-008",
+  "title": "instalar OSV-Scanner",
+  "specPath": "planning/specs/SEC-008.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-003"
+  ],
+  "acceptanceCriteria": [
+    "distribuição oficial WindowsAMD64 versão2.6.0/hash/PE/licença e CLI local executados",
+    "ausênciaRED/version-help-erro observados, sem confundir instalação com scan/gateOSV",
+    "50prévios245tuplas/log208642 preservados;review/docs/CIexato/nota49-liberação"
+  ],
+  "checks": [
+    "integridade/tamanho/PE/licença/Authenticode/version/help/scanhelp/invalid-invocation",
+    "validatorsdocs/metadata/links/ignore/log/diff/security proporcionais",
+    "CI documental existente sem nova integraçãoOSV/build/upload"
+  ],
+  "agentPlan": "P-INT6.1-sol ultra por decisão humana, único escritor/executor/committer10pathsATIVA;P-SEC6Luna low readonlyE2oráculo usado/saída excedeu120palavras;P-REV5.6Solmedium readonlyE2 usado/P2corrigido/re-reviewsemP0P1P2;máximo2delegados/telemetria não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "RED instalação ausente1;download3arquivos2.323s/SHA-size-PE-licenseApache2 antes execução.4probes version0/help0/sourcehelp0/invalid127/hashpreservado/NotSigned/probes removidos. Somente instalação,sem scanOSV/CIgate/E4. Docs/review/diffsecurity/CIentrega-final/nota49preserva48/liberação pendentes/passfalse/reserva10ATIVA/METAativa/SEC009nãoiniciado. DocumentaçãoPS2blocos executados/4casos4.959s:positivo/extra/tampered-license/junction,negativos1/cleanupconcluído/cache originalpreservado. P2documental REDmock-version1/1.731s;guardexatoversão+hashesapósprobes;6casos/9.038s verdes/cache3hashpreservados/cleanupconcluído/re-reviewpendente. Re-reviewE2semachados/root5checks verdes/diffGitleaks0achados0.463s;commitCIentrega-final/nota49-liberação ainda pendentes."
+}

@@ -305,3 +305,5 @@ SEC007 re-review E2 semP0P1P2 após corrigirP2cache;root16checks/149commits0acha
 
 SEC007 executor done/passestrue/E3:16checks/root,reviewP2corrigido/re-reviewsemachados,entrega2597cf4047b870ee30e9bca8f029f9884269c6cf/[CI37768499862](https://github.com/millennium42/millani-artes/actions/runs/37768499862) success20etapas/1coverageartifact. Gate7 obrigatório/103commits públicos disponíveis/0achados;local pré-entrega149inclui notas. Requisito globalSEC007 continua parcial, sem E4 novo. CI final/nota48preserva47/refsGitclean/liberação pendentes/reserva12ATIVA/METAativa/SEC008nãoiniciado.
 50items47done236files245tuplas;49prévios inalterados.
+
+SEC008 emandamento/E3instalaçãoCLI4probes/OSV2.6.0/hash-license-PE/sem scan;review/CI/nota49-liberação pendentes,reserva10ATIVA/METAativa/SEC009nãoiniciado.51items47done240files245tuplas previstas/50prévios intactos.

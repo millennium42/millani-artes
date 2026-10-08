@@ -62,3 +62,8 @@ SEC007 CORRECT: P2 de cache extra reproduzido (RED8.977s) e corrigido antes exec
 SEC007 re-review E2 semP0P1P2 após corrigirP2cache;root16checks/149commits0achados/4docsvalidators verdes;12paths49prévios245tuplas preservados. Entrega/CIexato ainda pendentes;passesfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado.
 
 SEC007 executor done/passestrue/E3:16checks/root,reviewP2corrigido/re-reviewsemachados,entrega2597cf4047b870ee30e9bca8f029f9884269c6cf/[CI37768499862](https://github.com/millennium42/millani-artes/actions/runs/37768499862) success20etapas/1coverageartifact. Gate7 obrigatório/103commits públicos disponíveis/0achados;local pré-entrega149inclui notas. Requisito globalSEC007 continua parcial, sem E4 novo. CI final/nota48preserva47/refsGitclean/liberação pendentes/reserva12ATIVA/METAativa/SEC008nãoiniciado.
+
+## SEC-008 — instalação local de OSV-Scanner
+Executor [SEC008](../../planning/specs/SEC-008.md)/[handoff](../../planning/handoffs/SEC-008.md) E3 local parcial:OSV2.6.0/WindowsAMD64/hash-checksum-licenseApache2-PE/version-help-erro conferidos;4probes somente CLI, sem scan de dependências. Requisito globalSEC007 continua parcial;gateOSV éSEC009, não instalação. NotSigned/SLSA não verificado/telemetria não medida;semE4novo. Review/docs/diffsecurity/CIexato/nota49-liberação pendentes;passesfalse/reserva10ATIVA/METAativa.
+
+SEC008 guard documental corrigido:versão exata/hashes antes-depois;6casos reais+mockexplícito verificados pelo root/P2resolvido/re-reviewE2semachados. CLI original e3hashes íntegros,semscanOSV. CIentrega-final/nota49-liberação pendentes;passesfalse/reserva10ATIVA.

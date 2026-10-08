@@ -344,3 +344,7 @@ Comandos npm/Cargo e runtimes são os existentes nas seções acima; o líder se
 
 ## Gitleaks local — SEC-006
 Instalação portátil e probes locais em [GITLEAKS](GITLEAKS.md); origem fixa/integridade/licença no registro. Gate remoto de scanner pertence a SEC007; nenhum build de produto novo requerido por esta documentação.
+
+## OSV-Scanner — ferramenta local
+
+[OSV-Scanner2.6.0 portátil](OSV_SCANNER.md) instalado/cache ignorado/Apache2/hash-PE-CLI conferidos. Não requer administrador/PATH/Go/winget/Docker. Instalação SEC008 não executou scan de dependências nem gateOSV;CI seráSEC009. Procedimento registra versão/origem/license/probes/NotSigned/SLSA não verificado/remoção dedicada e limites. Produto/pins/locks/thresholds intactos;entregaCI/review/liberação ainda pendentes.
