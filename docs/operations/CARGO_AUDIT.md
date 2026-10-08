@@ -40,3 +40,7 @@ Scratch e fixtures ficam em artifacts/sec011-check e artifacts/sec011-tests, com
 ## Integração SEC-012
 
 O workflow passa a preparar o mesmo runtime 0.22.2 e banco oficial e a executar seus 47 casos/gate antes do build, inclusive em diff documental. [Operação integrada](CI_AUDITS.md) documenta bootstrap, provas offline e limites; CI exactSHA ainda pendente neste estado. Checker, hashes dos inputs, aceite próprio e prazo preservados.
+
+## CI SEC-012 observado
+
+[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) noSHA680e8d2922f8149959df53c62e9b80390651e5c0/attempt1 passou23etapas. Gates reais npm120depszero eCargo417deps0vulns2excepted,40/47/42casos incluindo14PowerShell ebootstrapfrio verdadeiro. Falha inicialRTK local foi reproduzida e corrigida comcmd/git nativos, casos preservados. Reserva16ATIVA atéCIfinal/nota53; não háclaim de domíniofinanceiro/setup.exe. Histórico anterior mantém estado observado àépoca; estado vigente/details no handoffSEC012.

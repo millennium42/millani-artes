@@ -227,3 +227,7 @@ SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2ex
 ## SEC-012 — audits npm/Cargo no CI
 
 SEC-012←SEC-010,SEC-011,INF-010 liberados: [spec](../../planning/specs/SEC-012.md) →workflow obrigatório/42casos locais/14PowerShell reais/bootstraps offline →[handoff](../../planning/handoffs/SEC-012.md). E3 local, gates reais/review/CI exactSHA ainda pendentes, passes:false/reserva14ATIVA. Requisito global de segurança permanece parcial até SAST e demais gates; META financeira/setup.exe ativa.
+
+## SEC-012 — entrega corrigida validada
+
+Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millani-artes/commit/680e8d2922f8149959df53c62e9b80390651e5c0)/[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) success23steps/1coverageartifact. Remoto:40npm+47Cargo+42integração/14PowerShell; scan120npmzero/417Cargo0vulns2excepted, OSV537/3excepted, Gitleaks117/0. E4/prazo/inputs/thresholds preservados; coverage100% sóscaffoldfrontend4linhas. FalhainicialRTK ausente reproduzida/corrigida semalterarcasos/instalarferramenta; re-reviewE2semachados. Reserva16ATIVA atéCIfinal/nota53;55items52done267files/245tuplas. Detalhes na spec/handoffSEC012, METAativa/SEC013nãoiniciado.

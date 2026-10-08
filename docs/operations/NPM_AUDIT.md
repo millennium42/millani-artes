@@ -28,3 +28,7 @@ passes:true refere-se ao executor/CIentrega observado; LIBERADA ainda exige CI n
 ## Integração SEC-012
 
 O gate e seus 40 casos passam a ser obrigatórios no workflow existente antes da instalação e do build, inclusive em diff documental; Node fixo é preparado sem condição. [Operação integrada](CI_AUDITS.md) descreve propagação de erros e limites; CI exactSHA ainda pendente neste estado. Checker, lockfiles e política high/critical preservados.
+
+## CI SEC-012 observado
+
+[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) noSHA680e8d2922f8149959df53c62e9b80390651e5c0/attempt1 passou23etapas. Gates reais npm120depszero eCargo417deps0vulns2excepted,40/47/42casos incluindo14PowerShell ebootstrapfrio verdadeiro. Falha inicialRTK local foi reproduzida e corrigida comcmd/git nativos, casos preservados. Reserva16ATIVA atéCIfinal/nota53; não háclaim de domíniofinanceiro/setup.exe. Histórico anterior mantém estado observado àépoca; estado vigente/details no handoffSEC012.

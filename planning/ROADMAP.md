@@ -350,3 +350,7 @@ SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2ex
 ## SEC-012 — audits no CI
 
 SPEC/RECON E2, passes:false, reserva14 ATIVA conforme [spec](specs/SEC-012.md)/[handoff](handoffs/SEC-012.md). Dependências liberadas e CI baseline revalidados; integração sem job/upload/rerun novo. SEC-013 não iniciado; META ativa.
+
+## SEC-012 — entrega corrigida validada
+
+Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millani-artes/commit/680e8d2922f8149959df53c62e9b80390651e5c0)/[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) success23steps/1coverageartifact. Remoto:40npm+47Cargo+42integração/14PowerShell; scan120npmzero/417Cargo0vulns2excepted, OSV537/3excepted, Gitleaks117/0. E4/prazo/inputs/thresholds preservados; coverage100% sóscaffoldfrontend4linhas. FalhainicialRTK ausente reproduzida/corrigida semalterarcasos/instalarferramenta; re-reviewE2semachados. Reserva16ATIVA atéCIfinal/nota53;55items52done267files/245tuplas. Detalhes na spec/handoffSEC012, METAativa/SEC013nãoiniciado.

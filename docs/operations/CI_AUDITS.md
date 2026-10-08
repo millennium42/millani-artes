@@ -35,3 +35,7 @@ Estado/checks/review/CI e recibo de liberação: [spec](../../planning/specs/SEC
 ## Correção de portabilidade
 
 CI inicial37830906943/e982e82 falhou noRTK ausente antes do build. Root reproduziu WinError2 removendo RTK do PATH; após remover três prefixos locais, o mesmo ambiente semRTK passou40npm/47Cargo/42integração (10.144s/8.269s/20.063s). Casos e gates mantidos, nenhum RTK instalado no runner. CI corrigido ainda pendente; execução inicial falha será preservada no recibo.
+
+## CI SEC-012 observado
+
+[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) noSHA680e8d2922f8149959df53c62e9b80390651e5c0/attempt1 passou23etapas. Gates reais npm120depszero eCargo417deps0vulns2excepted,40/47/42casos incluindo14PowerShell ebootstrapfrio verdadeiro. Falha inicialRTK local foi reproduzida e corrigida comcmd/git nativos, casos preservados. Reserva16ATIVA atéCIfinal/nota53; não háclaim de domíniofinanceiro/setup.exe. Histórico anterior mantém estado observado àépoca; estado vigente/details no handoffSEC012.

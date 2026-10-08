@@ -2,7 +2,7 @@
   "id": "SEC-012",
   "title": "audits no CI",
   "specPath": "planning/specs/SEC-012.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-010",
     "SEC-011",
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT6.1-solultra único writer/checks/committer16pathsATIVA (spec); P-QA6-lunalow oráculoE2 usado/reproduzido; P-REV5.6-solmedium E2 review e delta cache semP0P1P2;2delegados0escalonamentos/tokens-custo-cache NR.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "CORRECT verificado: CIinicial37830906943/e982e82 falhouRTK ausente antesbuild; REDsemRTK reproduzido,3prefixosremovidos/casosintactos;40npm/47Cargo/42integration green/envsemRTK; re-reviewP-REV5.6-solmediumE2 semP0P1P2. Executáveis finais inalterados apóschecks/review; validators/security/CIcorrigido-fechamento/nota53 pending/passfalse/reserva16ATIVA;E4/inputs unchanged/METAativa."
+  "passes": true,
+  "notes": "Executor E3: correctedSHA680e8d2922f8149959df53c62e9b80390651e5c0/CI37832138829/job113499890040/attempt1/success23steps, remote40npm47Cargo42integração/14PowerShell; npm120zero/Cargo4170vulns2excepted/E4fixo/OSV5373excepted/Gitleaks117zero/nativePEAMD64/coverage100% sóscaffold4linhas. InitialCI37830906943/e982e82 failureRTK reproduced/corrected3prefixos nativos/semcasechange,re-reviewE2semachados.55items52done267files54prévios26JSON245tuplas/prefixo252783preservados. passestrue=executor;reserva16ATIVA atéCIfinalexactSHA/nota53preserva52/publicrefsGitclean/cleanup/liberação. METAativa/SEC013nãoiniciado/tokenscustoNR."
 }

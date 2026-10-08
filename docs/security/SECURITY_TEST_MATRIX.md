@@ -110,3 +110,7 @@ SEC-011 executor/E3+E4: 47casos/6CLIreais/gateCargo417deps0vulnsclassificadas2ex
 ## SEC-012 — interrupção do build pelos audits
 
 [Spec](../../planning/specs/SEC-012.md) →42casos locais/14PowerShell reais, mutações de bypass e bootstrap frio/quente/negativos offline. Erros interrompem antes do marcador de build; runtime/cache/banco reparse/divergentes bloqueiam. Gates npm40/Cargo47 preservados, execução online e CI exactSHA pendentes. E4 anterior/prazo preservados; coverage Python NR. Segurança global/SAST ainda parcial.
+
+## SEC-012 — entrega corrigida validada
+
+Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millani-artes/commit/680e8d2922f8149959df53c62e9b80390651e5c0)/[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) success23steps/1coverageartifact. Remoto:40npm+47Cargo+42integração/14PowerShell; scan120npmzero/417Cargo0vulns2excepted, OSV537/3excepted, Gitleaks117/0. E4/prazo/inputs/thresholds preservados; coverage100% sóscaffoldfrontend4linhas. FalhainicialRTK ausente reproduzida/corrigida semalterarcasos/instalarferramenta; re-reviewE2semachados. Reserva16ATIVA atéCIfinal/nota53;55items52done267files/245tuplas. Detalhes na spec/handoffSEC012, METAativa/SEC013nãoiniciado.

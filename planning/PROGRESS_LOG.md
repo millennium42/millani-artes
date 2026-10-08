@@ -1060,3 +1060,6 @@ Decisão recebida literalmente no chat após pergunta específica da proposta p�
 
 ### SEC-012 | VERIFY correção | E3 local
 - Re-reviewmesmoP-REV5.6-solmediumE2 semP0P1P2 baselinef7c9ca63; root40/47/42green semRTK. Nenhumaescritaexecutável apóschecks/review; validators/security/CIcorrigido-fechamento/nota53 pending/passfalse/reserva16ATIVA. CIinicialfalho preservado/semrerun/2delegados0escalonamentos/tokenscustoNR;nextSEC013nãoiniciado/METAativa.
+
+### SEC-012 | executor / LEARN | E3
+- Entregacorrigida680e8d2/CI37832138829/attempt1 green23steps,sourceSHA/logs/coverageverificados rootemmemória:40npm47Cargo42integração14PowerShell,scan120npmzero/417Cargo0vulns2excepted/OSV5373excepted/Gitleaks117zero/nativeAMD64;coverage100%sóscaffold4linhas. FalhainicialRTK CI37830906943 preservada/REDsemRTK/corrigida3prefixosnativos/casosmantidos/re-reviewE2semachados.55items52done267files/54anteriores26JSON245tuplas/prefixo252783preservados. passestrue=executor/reserva16ATIVA atéCIfinal/nota53preserva52/publicrefsGitclean/cleanup/liberação,fechamento11docsfonteunchanged. CIinicialfalho+correção+fechamento/semrerun/job/action/PRnovo;2delegados0escalonamentostokenscustoNR. METAativa,nextSEC013nãoiniciado;detalhes naspec/handoff.
