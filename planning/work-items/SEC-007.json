@@ -2,7 +2,7 @@
   "id": "SEC-007",
   "title": "Gitleaks no CI",
   "specPath": "planning/specs/SEC-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-006",
     "INF-010"
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT6.1-sol ultra por decisão humana, único writer/executor/committer12pathsATIVA;P-QA6Lunalow readonlyE2oráculo usado/saída acima120palavras;P-REV5.6SolmediumE2P2cache reproduzido/corrigido/re-reviewE2semP0P1P2/saída usada;2delegados/sem escala/telemetria não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "RED válido1.390s após corrigir cleanup Gitreadonly;15cases9.072s/7GitCLI+8fronteiras;scan149commits0achados1.599s. Etapa obrigatória única no CI antesbuild; review/docs/diffsecurity/CIentrega-final/nota48-liberação pendentes/passfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado. P2cacheextra RED8.977s corrigido;16cases9.135s/149commits0achados1.494s;re-review/novo diffscan/CIexato pendentes. Re-reviewE2 semP0P1P2,4docsvalidators/meta12paths49prévios245tuplas232links/cachehashpreservado;commit/CIexato ainda pendentes/passfalse."
+  "passes": true,
+  "notes": "RED válido1.390s após corrigir cleanup Gitreadonly;15cases9.072s/7GitCLI+8fronteiras;scan149commits0achados1.599s. Etapa obrigatória única no CI antesbuild; review/docs/diffsecurity/CIentrega-final/nota48-liberação pendentes/passfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado. P2cacheextra RED8.977s corrigido;16cases9.135s/149commits0achados1.494s;re-review/novo diffscan/CIexato pendentes. Re-reviewE2 semP0P1P2,4docsvalidators/meta12paths49prévios245tuplas232links/cachehashpreservado;commit/CIexato ainda pendentes/passfalse. Entrega2597cf4047b870ee30e9bca8f029f9884269c6cf/CI37768499862-job113281923771-attempt1 success20steps/1coverageartifact,gate7success16cases/103commits0achados0.778s/nativeJSONSHA-pins-locks-PEcustomProtocol verificado. DonepassestrueE3 somente Gitleaks;globalSEC007parcial/METAativa. CI final/nota48preserva47/refsGitclean/liberação pendentes,reserva12ATIVA/SEC008nãoiniciado."
 }
