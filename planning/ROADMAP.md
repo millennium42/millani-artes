@@ -328,3 +328,9 @@ SEC-009: checkout dos dois inputs Cargo com LF explícito, mesmos hashes/aceite/
 
 
 SEC-009 executor done/passes:true/E4 limitado ao aceite e E3 ao gate OSV: 39 casos/inventário537/3registros aprovados/0outros; CI entrega corrigida37791933046/SHA1f16a6a3bfde511522fef8fcf5824cc8fd1b7668/21etapas verdes/nativePEAMD64. ExceçãoWindows expira23/10/2026 00hUTC, mesmosinputs/hash/IDs; globalSEC007 parcial e demaisgates pendentes. Coverage frontend atual100%, wrapperPython percentualnão registrado. FechamentoCI final/nota50/liberação15 pendentes; META final não concluída.
+
+## SEC-010 — execução local npm audit
+
+[Spec](specs/SEC-010.md)/[handoff](handoffs/SEC-010.md): reserva11ATIVA; E3 root38casos/4CLIreaisloopback/7.439s e auditonline120dependências/zero reportadas/1.967s; highcritical/erro/relatório parcial bloqueiam. Sem instalar/atualizar dependências ou modificar locks/manifests/workflow; integraçãoCIaudits permaneceSEC012. Review/checks/CIexato/nota51-liberação pendentes, passes:false; METAfinal pendente. Próximo candidatoSEC011 só após liberação; não iniciado.
+
+SEC010 VERIFY: root40casos/4npmCLIreaisloopback/7.799s, auditonline120dependências/0reportadas/1.967s, hashesinputs preservados. DoisP2review reproduzidos/corrigidos; re-reviewP-REV5.6-solmedium E2semachados. Root docs/map/schema/evidence/log/ignore261links/diffsecurity verdes;52items anteriores(em24JSONfiles)/245tuplas/prefixo234620bytes preservados. Produto/manifests/locks/pins/thresholds/workflow/seletor intactos;253tracked/53items49done previstos naentrega. P-QA6-lunalow oráculo+P-REV5.6-solmedium revisão,2delegadosreadonly/perguntasdistintas/0escalonamentos; tokens/custo/cache/latênciamodellos/retriesevitados não registrado. Integração auditCI permaneceSEC012. EntregaCIexactSHA/fechamentoCIexactSHA/nota51-liberação ainda pendentes;passesfalse/reserva11ATIVA/METAfinalpendente.

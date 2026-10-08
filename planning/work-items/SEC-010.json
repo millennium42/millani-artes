@@ -1,0 +1,24 @@
+{
+  "id": "SEC-010",
+  "title": "npm audit high/critical",
+  "specPath": "planning/specs/SEC-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-003"
+  ],
+  "acceptanceCriteria": [
+    "Audit npm real com runtime fixo/lock preservado/limiar high-critical e falha fechada",
+    "Fixtures de limiar e integração CLI real loopback; review/checks/docs/preservação52JSON245tuplas",
+    "Entrega pública e CI verde no SHA da entrega; integração remota do audit permanece SEC012"
+  ],
+  "checks": [
+    "npm audit package-lock-only ignore-scripts audit-levelhigh JSON",
+    "test-npm-audit.py; docs/map/schema/evidence/log/links/diffsecurity",
+    "CIexistenteexactSHA; sem alterardependências/workflow/thresholds"
+  ],
+  "agentPlan": "P-INT6.1-solultra porMETA/únicowriter-checks-committer/11pathsATIVA; P-QA6-lunalow oráculoE2usado e P-REV5.6-solmedium review2P2corrigidos/re-reviewsemachados, readonly. Root40casosE3;2delegados/0escala. Tokens/custo/cache/duraçãomodelos/retriesevitados não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SEC010 VERIFY: root40casos/4npmCLIreaisloopback/7.799s, auditonline120dependências/0reportadas/1.967s, hashesinputs preservados. DoisP2review reproduzidos/corrigidos; re-reviewP-REV5.6-solmedium E2semachados. Root docs/map/schema/evidence/log/ignore261links/diffsecurity verdes;52items anteriores(em24JSONfiles)/245tuplas/prefixo234620bytes preservados. Produto/manifests/locks/pins/thresholds/workflow/seletor intactos;253tracked/53items49done previstos naentrega. P-QA6-lunalow oráculo+P-REV5.6-solmedium revisão,2delegadosreadonly/perguntasdistintas/0escalonamentos; tokens/custo/cache/latênciamodellos/retriesevitados não registrado. Integração auditCI permaneceSEC012. EntregaCIexactSHA/fechamentoCIexactSHA/nota51-liberação ainda pendentes;passesfalse/reserva11ATIVA/METAfinalpendente."
+}
