@@ -2,7 +2,7 @@
   "id": "SEC-005",
   "title": "bloquear plugin sem ADR",
   "specPath": "planning/specs/SEC-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SEC-004"
   ],
@@ -16,9 +16,9 @@
     "validatorsdocs/links/escopo/grafo/log/heurísticasegredos/diff",
     "CI entrega/final SHAexato sem novo job/action/cache"
   ],
-  "agentPlan": "P-INT único writer/checkexecutor/committer13paths ATIVA;P-SEC6Lunalow readonlyE2 usado;P-REV5.6Solmedium readonlyE2 semachados;2delegadosmáximo/telemetriaNR.",
+  "agentPlan": "P-INT único writer/checkexecutor/committer;13paths ATIVA até CI final/nota46-refs-Gitclean. P-SEC gpt-6-luna low readonlyE2 usado; P-REV gpt-5.6-sol medium readonlyE2 re-review sem achados; dois delegados/telemetria por item não registrada.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Root RED válido0.416s/exit1 stub aceita pluginsemADR;34fixtures2CLIcases2.800s/checkreal0.156s exit0/zero pluginsADR;alias-target TOMLcorrigido/negativos exigemcódigo certo/fixturesremovidos. Gateestático≠runtime;metadata/review/CI/nota46liberação pendentes/passfalse/reserva13ATIVA/metaativa. 5docschecks13paths47prévios245tuplas238links/sourceintacto;reviewE2 semachados/tentativa1;commitCI entrega-final/nota46-liberação pendentes. CORRECTrootP2 aliasdisfarçado: RED5.159s/37fixtures2CLIcases7.293s/check0.241s verdes;reviewcorreção+novoCI pendentes;37ea6c7-CI37716254559 não valida código corrigido. Re-reviewcorreçãoE2 semachados, novoCI corrigido obrigatório/passesfalse."
+  "passes": true,
+  "notes": "Gate estático E3: RED válido0.416s, RED alias5.159s;37fixtures+2CLIcases7.293s/checkreal0.241s verdes/Python3.12.10/zero plugins-ADR-grants.5validatorsdocs/meta47prévios245tuplas/re-review correçãoE2 semachados.Entrega corrigida 8f35b78e5ba6dc0b9545791bb6758fcc491356c1,CI37717088022/job113115933493/attempt1/19success/1coverageartifact.CI anterior37716254559 success não valida correção;duas compilações remotas, sem rerun manual/job/cache novo.48items45done227files;reserva13ATIVA atéCI final/nota46 preserva45/refsGitclean;fechamento7docs/8skips0artifact previsto.Metaativa/SEC006nãoiniciado/runtime-E4 não ampliados;telemetria poritem não registrada."
 }
