@@ -56,7 +56,11 @@ def check(root):
                         require(isinstance(declaration, (str, dict)), "CARGO_DEPENDENCY_INVALID")
                         add(alias)
                         if isinstance(declaration, dict):
-                            add(declaration.get("package", alias))
+                            identity = declaration.get("package", alias)
+                            require(isinstance(identity, str), "CARGO_PACKAGE_INVALID")
+                            if plugin_package(alias):
+                                detected.add(identity)
+                            add(identity)
                 elif isinstance(value, dict):
                     cargo_tables(value)
 
@@ -77,13 +81,22 @@ def check(root):
                 require(isinstance(version, str), "NPM_DEPENDENCY_INVALID")
                 if version.startswith("npm:"):
                     identity = version[4:]
-                    add(("@" + identity.split("@")[1]) if identity.startswith("@") else identity.split("@")[0])
+                    identity = ("@" + identity.split("@")[1]) if identity.startswith("@") else identity.split("@")[0]
+                    if plugin_package(name):
+                        detected.add(identity)
+                    add(identity)
         lock = read_json(root / "package-lock.json")
         require(isinstance(lock.get("packages"), dict), "NPM_LOCK_INVALID")
         for location, package in lock["packages"].items():
             require(isinstance(package, dict), "NPM_LOCK_PACKAGE_INVALID")
-            add(location.rsplit("node_modules/", 1)[-1])
-            add(package.get("name"))
+            identity = location.rsplit("node_modules/", 1)[-1]
+            add(identity)
+            actual = package.get("name")
+            if actual is not None:
+                require(isinstance(actual, str), "NPM_LOCK_NAME_INVALID")
+                if plugin_package(identity):
+                    detected.add(actual)
+                add(actual)
 
         def capability(value):
             require(isinstance(value, dict), "CAPABILITY_INVALID")

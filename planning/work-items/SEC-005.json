@@ -20,5 +20,5 @@
   "evidence": "E3",
   "humanGateRequired": false,
   "passes": false,
-  "notes": "Root RED válido0.416s/exit1 stub aceita pluginsemADR;34fixtures2CLIcases2.800s/checkreal0.156s exit0/zero pluginsADR;alias-target TOMLcorrigido/negativos exigemcódigo certo/fixturesremovidos. Gateestático≠runtime;metadata/review/CI/nota46liberação pendentes/passfalse/reserva13ATIVA/metaativa. 5docschecks13paths47prévios245tuplas238links/sourceintacto;reviewE2 semachados/tentativa1;commitCI entrega-final/nota46-liberação pendentes."
+  "notes": "Root RED válido0.416s/exit1 stub aceita pluginsemADR;34fixtures2CLIcases2.800s/checkreal0.156s exit0/zero pluginsADR;alias-target TOMLcorrigido/negativos exigemcódigo certo/fixturesremovidos. Gateestático≠runtime;metadata/review/CI/nota46liberação pendentes/passfalse/reserva13ATIVA/metaativa. 5docschecks13paths47prévios245tuplas238links/sourceintacto;reviewE2 semachados/tentativa1;commitCI entrega-final/nota46-liberação pendentes. CORRECTrootP2 aliasdisfarçado: RED5.159s/37fixtures2CLIcases7.293s/check0.241s verdes;reviewcorreção+novoCI pendentes;37ea6c7-CI37716254559 não valida código corrigido. Re-reviewcorreçãoE2 semachados, novoCI corrigido obrigatório/passesfalse."
 }

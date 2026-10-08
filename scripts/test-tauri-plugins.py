@@ -62,6 +62,11 @@ case("workspace-root", {"Cargo.toml": '[workspace.dependencies]\ntauri-plugin-di
 case("capability-file", {"src-tauri/capabilities/additional.json": '{"permissions":["dialog:allow-open"]}'})
 case("bad-identity", {"docs/security/TAURI_PLUGIN_REGISTER.json": json.dumps({"":"docs/architecture/adr/ADR-023-dialog.md"}), ADR: "# ADR-023\nStatus: accepted\nPlugin-package: \n"})
 
+case("disguised-cargo-alias", {**approved, "src-tauri/Cargo.toml": '[dependencies]\ntauri-plugin-dialog={package="unapproved-package", version="2"}\n'})
+case("disguised-npm-alias", {**approved, "package.json": '{"dependencies":{"@tauri-apps/plugin-dialog":"npm:unapproved-package@2"}}', "docs/security/TAURI_PLUGIN_REGISTER.json": json.dumps({"tauri-plugin-dialog": ADR, "@tauri-apps/plugin-dialog": ADR})})
+
+case("disguised-lock-name", {**approved, "package-lock.json": '{"packages":{"node_modules/@tauri-apps/plugin-dialog":{"name":"unapproved-package","version":"2"}}}', "docs/security/TAURI_PLUGIN_REGISTER.json": json.dumps({"tauri-plugin-dialog": ADR, "@tauri-apps/plugin-dialog": ADR})})
+
 def guard(path, parent):
     if not path.is_relative_to(parent) or path == parent:
         raise RuntimeError("Fixture target invalid")
@@ -90,7 +95,7 @@ def main():
                 check(fixture)
             except GateError as error:
                 assert not allowed, label
-                if label in {"unapproved", "alias-target", "build", "dev", "rust-transitive", "npm-direct", "npm-alias", "npm-thirdparty", "npm-transitive", "config", "grant", "registration", "workspace-root", "capability-file"}:
+                if label in {"unapproved", "alias-target", "build", "dev", "rust-transitive", "npm-direct", "npm-alias", "npm-thirdparty", "npm-transitive", "config", "grant", "registration", "workspace-root", "capability-file", "disguised-cargo-alias", "disguised-npm-alias", "disguised-lock-name"}:
                     assert str(error) == "PLUGIN_WITHOUT_SPECIFIC_ADR", (label, str(error))
             else:
                 assert allowed, label
