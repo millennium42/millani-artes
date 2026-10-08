@@ -170,3 +170,10 @@ Executor [SEC006](../../planning/specs/SEC-006.md)/[handoff](../../planning/hand
 InstalaçãoSEC006 E3 local: versão8.30.1/hash-origem-licença/PE/probes clean0,github-pat1,invalid126 e redaction100 verificados;zero plugin/grant novo. Scannerhistórico/gateCISEC007/segurança global não comprovados;review/CI documental/nota47-liberação pendentes.
 
 Executor SEC006 done/passestrue/E3 instalação portátil Gitleaks8.30.1, hash/licença/PE/version/probes locais e scan do diff, review/checksroot/entregad54eee5a5d09bf67eb5af3ef8420b0fc3266d750/[CI37719495570](https://github.com/millennium42/millani-artes/actions/runs/37719495570) success10success8skip0artifact. Gate de scanner remotoSEC007 e segurança global continuam pendentes, sem E4 novo. Reserva10ATIVA atéCI final/nota47preserva46/publicrefs-Gitlimpo/liberação. PróximoSEC007 não iniciado/META ATIVA.
+
+## SEC-007 — Gitleaks no CI
+Executor [SEC007](../../planning/specs/SEC-007.md)/[handoff](../../planning/handoffs/SEC-007.md) E3 local parcial:15checks/RED válido/149commits disponíveis zeroachados; pin8.30.1/integridade/configdefault/redaction/failclosed, uma etapa obrigatória antesbuild na job existente. Review/checks/scan diff/CIexactSHA/nota48-liberação pendentes;passesfalse/reserva12ATIVA/METAativa. RequisitoSEC007 de scanners permanece parcial (OSV/npm/cargo/SAST/outros executores), SEC003 logs/chaves/runtime não provado; sem ampliar E4.
+
+SEC007 CORRECT: P2 de cache extra reproduzido (RED8.977s) e corrigido antes execução. Cache aceita exatamente os três arquivos obrigatórios e, opcionalmente, somente o ZIP oficial validado de SEC006.16casos passaram/9.135s;scan149commits zeroachados/1.494s. Re-review/checks/diffscan/CI exato pendentes;passesfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado.
+
+SEC007 re-review E2 semP0P1P2 após corrigirP2cache;root16checks/149commits0achados/4docsvalidators verdes;12paths49prévios245tuplas preservados. Entrega/CIexato ainda pendentes;passesfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado.

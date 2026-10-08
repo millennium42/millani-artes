@@ -1,6 +1,6 @@
 # Gitleaks local — SEC-006
 
-Gitleaks é uma ferramenta local de detecção de segredos. Esta instalação prepara SEC-007, que adicionará o gate ao CI. O [registro](../../governance/TOOL_REGISTER.md), a [spec](../../planning/specs/SEC-006.md) e o [handoff](../../planning/handoffs/SEC-006.md) delimitam a evidência.
+Gitleaks é uma ferramenta local de detecção de segredos. A instalação SEC-006 fornece o executável usado pelo gate SEC-007 abaixo. O [registro](../../governance/TOOL_REGISTER.md), a [spec](../../planning/specs/SEC-006.md) e o [handoff](../../planning/handoffs/SEC-006.md) delimitam a evidência.
 
 ## Distribuição fixa e integridade
 [Release oficial v8.30.1](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1), commit `83d9cd684c87d95d656c1458ef04895a7f1cbd8e`, [licença MIT](https://github.com/gitleaks/gitleaks/blob/83d9cd684c87d95d656c1458ef04895a7f1cbd8e/LICENSE). [ZIP Windows x64](https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_windows_x64.zip) de 8.438.883 bytes e [checksums](https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_checksums.txt) conferidos com o digest da API oficial.
@@ -49,3 +49,21 @@ A execução não foi scan global do histórico nem gate remoto. SEC-007 precisa
 
 ## Remoção
 Fechar processos que usem o binário. Validar que o caminho absoluto é exatamente o cache deste projeto, contido em artifacts/tools/gitleaks, e sem reparsepoints; então remover somente esse diretório dedicado. Não usar curinga ou remover artifacts inteiro. Sem serviço/PATH persistente a desfazer; licenças devem acompanhar eventual redistribuição. Nenhuma remoção do cache foi executada nesta tarefa.
+
+## SEC-007 — gate do histórico Git
+[Spec](../../planning/specs/SEC-007.md) e [handoff](../../planning/handoffs/SEC-007.md):15 checks locais passaram e149 commits disponíveis varridos com zeroachados no SHA42bcfc648467f6ba835e5250fc279204b0a6a4f0. Requisito globalSEC007 continua parcial: demais scanners/auditorias ainda possuem executores próprios; logs/chaves/runtime/finanças não comprovados por este scanner.
+Wrapper Windows/Python≥3.12 fixa8.30.1 e os digests acima, baixa somente se cache ausente, valida ZIP antes gravar/executar e recusa cache adulterado. Cache criado pelo wrapper contém três arquivos extraídos; ZIP da instalação SEC006 pode permanecer. SHA256/NotSigned/mesmo fornecedor não autenticam independentemente o código. Sem setupaction/cachejob/cloudscanner extra.
+Na raiz, com assertions habilitadas:
+
+```powershell
+rtk proxy python -B scripts/test-gitleaks.py
+if ($LASTEXITCODE -ne 0) { throw 'Gitleaks guard checks failed.' }
+rtk proxy python -B scripts/check_gitleaks.py
+if ($LASTEXITCODE -ne 0) { throw 'Gitleaks scan failed.' }
+```
+
+A etapa obrigatória no CI existente executa ambos antes do build, checkout fetch-depth0. Scan git --all dos refs disponíveis, defaults explícitos, inline allow desativado, .gitleaksignore na raiz recusado, envGIT_/GITLEAKS_ removido; shallow/empty/nonGit/report inválido/erro bloqueiam. Report JSON em memória redacted100, saída pública só códigos/contagens/versão/hash/SHA/tempo. Não adicionar ignore/allowlist/baseline para ocultar achados. O teste cria e remove somente artifacts/sec007-tests; gate usa artifacts/sec007-check, ambos precisam estar ausentes e sem junction/symlink nos ancestrais. Cleanup verifica contenção/árvore; Git readonly usa chmod limitado à fixture. Se recusar preexistência, verificar conteúdo e ownership antes intervenção, não apagar artifacts inteiro.
+
+Os15 casos distinguem7 integrações Git-gate de8 fronteiras sintéticas/CLI real; download fresco será exercitado pelo runner sem cache. Primeiro RED demonstrou falha do stub permissivo; tentativa com cleanup incompleto descartada e corrigida. Histórico local149commits zeroachados, sem garantia de detectar todo segredo ou objetos/refs inacessíveis. Rawreport/token/fixtures não são publicados. Revisão e CI exato pendentes, passesfalse/reserva12ATIVA; segurança global permanece parcial.
+
+SEC007 CORRECT: P2 de cache extra reproduzido (RED8.977s) e corrigido antes execução. Cache aceita exatamente os três arquivos obrigatórios e, opcionalmente, somente o ZIP oficial validado de SEC006.16casos passaram/9.135s;scan149commits zeroachados/1.494s. Re-review/checks/diffscan/CI exato pendentes;passesfalse/reserva12ATIVA/METAativa/SEC008nãoiniciado.

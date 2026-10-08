@@ -53,6 +53,14 @@ jobs:
           $missing = $required | Where-Object { -not (Test-Path $_) }
           if ($missing) { throw "Missing canonical documentation: $($missing -join ', ')" }
 
+      - name: Scan Git history for secrets
+        shell: pwsh
+        run: |
+          python -B scripts/test-gitleaks.py
+          if ($LASTEXITCODE -ne 0) { throw 'Gitleaks guard checks failed.' }
+          python -B scripts/check_gitleaks.py
+          if ($LASTEXITCODE -ne 0) { throw 'Gitleaks scan failed.' }
+
       - name: Test frontend check selection
         shell: pwsh
         run: ./scripts/test-frontend-check-state.ps1
