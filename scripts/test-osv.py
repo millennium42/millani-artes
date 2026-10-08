@@ -168,6 +168,18 @@ def main():
             assert not missing_cache.exists()
 
         config = json.loads(gate.EXCEPTIONS.read_bytes())
+        checkout = FIXTURES / "checkout"
+        checkout.mkdir()
+
+        def windows_checkout():
+            r = gate.invoke(["git", "-C", str(gate.ROOT), "-c", "core.autocrlf=true", "checkout-index",
+                             "--prefix=" + checkout.as_posix() + "/", "--", *config["inputSHA256"]])
+            assert r.returncode == 0, "Isolated Git checkout failed."
+            for name, digest in config["inputSHA256"].items():
+                gate.safe_path(checkout / name)
+                assert hashlib.sha256((checkout / name).read_bytes()).hexdigest() == digest
+
+        case("windows-checkout-preserves-approved-byte-hashes", windows_checkout)
         proposal = deepcopy(config)
         proposal["approved"] = True
         exception_fixture = FIXTURES / "proposal.json"
