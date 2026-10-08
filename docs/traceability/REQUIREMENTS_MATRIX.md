@@ -243,3 +243,11 @@ Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millan
 ## SEC-013 — entrega validada
 
 Executor done/passes:true/E3, SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[CI37851893560](https://github.com/millennium42/millani-artes/actions/runs/37851893560)/attempt1:15SAST/12CLI/3PS,qualidade/audits/build green. [Spec/limites](../../planning/specs/SEC-013.md#executor--learn--entrega-validada): padrãofrontend não provaRustSQLrestore/finanças/globalSEC007continua parcial. Reserva11ATIVA atéCIfinal/nota54/refsGitclean;METAativa/SEC014nãoiniciado.
+
+## SEC-014 — telefone na fronteira real
+
+[Spec](../../planning/specs/SEC-014.md) →[main](../../src-tauri/src/main.rs)/[tests](../../src-tauri/src/startup_tests.rs) →[handoff](../../planning/handoffs/SEC-014.md). RED verdadeiroSTARTUP_PHONE_LEAK_DETECTED exit101/12.031s, sem publicar buffers. BUILD4filhos reais green9.922s(tempoincluicompilação):sucesso0/erroTauri1/panic101/stderrfechado1; catálogo JSON estático e hook antesbuilder, sem regex/plugin/dependência produtiva. E3local parcial/CI-review pendentes/11ATIVA/passesfalse; SEC003global ainda parcial/finançasbackupsFfIfuturosE0. METAativa/SEC015nãoiniciado.
+
+SEC014 VERIFYlocal final:buildTaurireal/faultInjectionErrorIo compartilhada com main/4filhos/6Rustpassed0ignored/hookstderrstatic+closedpipe/fmtclippy/auditqualitygreen; nenhuma simulação de falha natural da biblioteca/nenhum pluginadotado. [Spec](../../planning/specs/SEC-014.md#verify-final-local) registra RED final8.718s,sourcehashes/limites/cleanupcontrolado. ReviewCIpending/passesfalse/11ATIVA/METAativa.
+
+SEC014 VERIFY final apósP2: cinco filhos (quatro privacidade + guard before-injection102), confirmação AtomicBool após build real impede falso positivo; seis Rusttests/zeroignored/fmtclippy green. [Prova e hashes finais](../../planning/specs/SEC-014.md#verify--correção-p2-executada). E3local/re-reviewCIpending/11ATIVA; fronteira Err com faultinjection, não falha natural da biblioteca; METAativa.

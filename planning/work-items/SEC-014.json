@@ -1,0 +1,24 @@
+{
+  "id": "SEC-014",
+  "title": "testar redaction de telefone",
+  "specPath": "planning/specs/SEC-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SEC-003"
+  ],
+  "acceptanceCriteria": [
+    "Telefone ausente nos sinks reais de startup/hook Rust; diagnóstico estático útil e falha preservados",
+    "RED real/quatro casos de privacidade + guard before-injection/timeout/closed sink/regressões e gates Rust/segurança/review",
+    "Docs/preservação/CI exactSHA e nota55-liberação"
+  ],
+  "checks": [
+    "cargo fmt/clippy/test custom-protocol --include-ignored/audit",
+    "5childphonecases/defaultregressions/validators/securitydiff/review",
+    "CI entrega/final exactSHA existente,semnova infraestrutura"
+  ],
+  "agentPlan": "P-INT6.1-solultra único writer/checks/committer11ATIVA; P-SEC6-lunalow E2 oráculo usado; P-REV5.6-solmedium encontrou P2 corrigido pelo root, re-review focal E2 semachados;tokenscusto NR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFYlocalfinal:REDphoneleak8.718ssemraw;5filhos(quatroprivacidade+guard102)/TauriBuildreal/faultInjectedErrorIo/AtomicBool confirma injeção/panic/sinkstderrfechado/6Rustpassed0ignored/fmtclippy/audit4170vulns2excepted/quality100%4linhas/SEC0050. Main6cd3c771/test16a7beba;inputsE4preserved. P2corrigido/re-reviewE2semachados/securitydiff0/CIpending/passfalse/11ATIVA; METAativa/SEC015nãoiniciado."
+}

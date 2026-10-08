@@ -1071,3 +1071,11 @@ SEC-013 | RED/BUILD | P-INT6.1-solultra | E3local | REDguardausenteexit1/2.031s;
 SEC-013 | VERIFY | P-INT6.1-solultra | E3local | 15SAST/3quality/42integração/validators/securitydiff0/review5.6solmediumE2semachados/preservação55items27JSON245tuplas/log256613/E4 | CIpendente/11ATIVA/METAativa | proximoSEC-013
 
 SEC-013 | CI/LEARN | P-INT6.1-solultra | E3 | entregaa8e02cf7/CI37851893560/job113566555574/attempt1/23success/SAST15/quality/audits/native/coverage4linhas/reviewE2semachados | passestrue/reserva11ATIVAatéfinalnota54/METAativa | proximoSEC-013
+
+SEC-014 | SPEC/RECON | P-INT6.1-solultra | E2 | primeiroready/base37a79f9/CIverde/SEC003liberada/reserva11ATIVA/phone4filhosreais/hookRustcatalogoestatico | baselinefullREDtestreviewCIpending/METAativa | proximoSEC-014
+
+SEC-014 | RED/BUILD | P-INT6.1-solultra | E3local | baselinefull5passed0ignored/REDphoneleakexit10112.031ssemraw/BUILD4filhosgreen9.922s/catalogohook/sinkfechadopreserva1/handlesencerrados | fullRustchecksreviewCIpending/11ATIVA/METAativa | proximoSEC-014
+
+SEC-014 | VERIFYlocal | P-INT6.1-solultra | E3 | fixturefinalTauriBuild/faultInjectedIo/RED8.718ssemraw/4filhos6Rust0ignored/fmtclippyauditquality/SEC0050/perfilcontrolledcleanup/maingroup6cd3c771-test18d15831 | reviewsecuritydiffCIpending/11ATIVA/METAativa | proximoSEC-014
+
+SEC-014 | REVIEW/CORRECT/VERIFY | P-INT6.1-solultra | E3local | P2injeção não confirmada corrigido/AtomicBool+guard102/5filhos6Rust0ignored/fmtclippy/test10.625s/main6cd3c771-test16a7beba | re-reviewCIpending/11ATIVA/METAativa | proximoSEC-014

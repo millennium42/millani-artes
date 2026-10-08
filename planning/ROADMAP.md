@@ -362,3 +362,11 @@ SPEC/RED/BUILD,E3local/CIpendente,passesfalse,reserva11ATIVA: [spec](specs/SEC-0
 SEC-013 VERIFY E3local/reviewE2 semachados,15fixtures/quality/42integração/validators green; CI entrega/final/nota54-liberação ainda pending/passfalse/11ATIVA. Nenhuma etapa/job/tool novo, SAST limitado/METAativa/SEC014nãoiniciado.
 
 SEC-013 executor done/passestrue/E3,entrega a8e02cf7/[CI37851893560](https://github.com/millennium42/millani-artes/actions/runs/37851893560)/23success/15SAST/quality/audits/build; [spec](specs/SEC-013.md#executor--learn--entrega-validada). SASTlimitado/SEC007parcial;fechamento9docs/11ATIVA atéCIfinal/nota54-liberação/METAativa/SEC014nãoiniciado.
+
+## SEC-014 — testar redaction de telefone
+
+[Spec](specs/SEC-014.md)/[handoff](handoffs/SEC-014.md),E3local/4filhos reais/REDvazamento comprovado/catalogohook; fullRustchecks-review-CIpending/passfalse/reserva11ATIVA. Escopo startup/hookRust parcial, semnovo logger/job/plugin produtivo; METAativa/SEC015nãoiniciado.
+
+SEC014 VERIFYlocal:fixture final semplugin/erroIo injetado na fronteira real/buildTauri real/4filhos/6Rustpassed0ignored,fmtclippyauditquality green; falha de biblioteca natural não simulada. Review/CIpending/passfalse/11ATIVA/METAativa/SEC015nãoiniciado.
+
+SEC014 P2corrigido: cinco filhos/quatroprivacidade+guard102, seisRust0ignored/fmtclippy/E3local; re-review/CIpending/passfalse/11ATIVA/METAativa/SEC015nãoiniciado.
