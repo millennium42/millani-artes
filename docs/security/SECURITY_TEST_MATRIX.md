@@ -33,3 +33,5 @@ SEC-002 bootstrap done/passestrue/E3 após5Rust/CSP-runtime-positive-negative/fo
 ## SEC-003 — política; enforcement pendente
 
 [Política](LOGGING_POLICY.md) define campos diagnósticos permitidos, classes proibidas, fontes não confiáveis/fallback, destinos, audit_event distinto e oráculos SEC014/015/BKP. [Spec](../../planning/specs/SEC-003.md)/[handoff](../../planning/handoffs/SEC-003.md) registram política/reviewE2 e checks documentaisE3 quando executados; não são redaction de runtime. StartupRust ainda usa expect com erroTauri bruto; inexistência de logger ou probes cfg(test) não prova sanitização. Linha globalSEC003 mantém enforcementE0 até código/testes do caminho real, inclusive erro de backup/diagnóstico útil preservado.
+
+SEC-003 tarefa de política done/passestrue após revisãoE2/validatorsdocsE3/metadata/sourceintacto/commit e CI37712913326-SHA539e674 success10success8skipped0artifact. Requisito globalSEC003/enforcementreal continuamE0;CIfinal/nota44-liberação pendentes. Não confundir campos permitidos escritos com sanitizador/captura de sinks executados.

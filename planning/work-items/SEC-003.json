@@ -2,7 +2,7 @@
   "id": "SEC-003",
   "title": "política de logs sanitizados",
   "specPath": "planning/specs/SEC-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "GOV-002"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT único escritor/checkexecutor/committer;11paths ATIVA spec. P-TRC6Lunalow readonlyE2 fontes usadas apósfollow-up1/primeira saída descartada; P-REV5.6Solmedium readonlyE2 semP0P1P2/tentativa1;2delegados/sem escala/telemetria não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "PolíticaE2 semachadosP0P1P2/checks documentaisE3:5validators/28fontes218files46items42done/175082logprefix/45anterioresiguais245tuplas/202links1JSONexample/heurísticasegredos0/sourceintacto. REDruntime/Rust-TS-build-coverage-audits NA diffdocs. EnforcementSEC003global/SEC014015BKP/startupRustexpect E0/pendentes. Commit/CIentrega-final/nota44-liberação pendentes;passesfalse/reservaATIVA/metaativa."
+  "passes": true,
+  "notes": "PolíticaE2/review5.6Solmedium semP0P1P2/checks documentaisE3:5validators/28fontes218files46items/175082logprefix/45anterioresiguais245tuplas/202links1JSONexample/heurísticasegredos0/sourceintacto;semkeywordtest novo. Entrega539e67423e318809e7973698353c18dce39897fa/CI37712913326-job113102712537 successattempt1/10success8skipped0artifact/seletorfalse. Donepassestrue sótarefa política documental;enforcementSEC003global/startupRustexpect/SEC014015BKP E0/pendentes. CI final/nota44-ref-liberação pendentes/reservaATIVA/metaativa/SEC004nãoiniciado."
 }

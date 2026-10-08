@@ -286,3 +286,5 @@ SEC-002 done/passestrue/E3 após5Rust/CSP-runtime/fontesparsed/gates10docs/revie
 SEC-003 in_progress/passesfalse: política de logs/allowlist/fallback/sinks/audit_event distinta e enforcementsSEC014/015/BKP futuros;11paths ATIVA/checks-review-CI pendentes. Fonteproduto intacta, startupRust expect semgarantia de sanitização;metaativa/próxima nãoiniciada.
 
 SEC-003 entrega pronta/E3documental: políticaE2/review5.6Solmedium semP0P1P2/5validators/218files46items42done/45anteriores245tuplas preservados. Sourceproduto intacto/enforcementE0,commit-CIentrega-final-nota44-liberação pendentes/passfalse/metaativa.
+
+SEC-003 tarefa de política done/passestrue/E3documental após review/checks e CI entrega37712913326-SHA539e674 success10success8skips0artifact;CIfinal/nota44-ref/liberação pendentes.46items43done/245tuplas/sourceproduto intactos;enforcementSEC003global E0/SEC014015BKP futuros. PróximoSEC004 apósliberação/nãoiniciado/metaativa.

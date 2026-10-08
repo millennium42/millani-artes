@@ -150,3 +150,5 @@ Executor SEC-002 done/passestrue/E3:5Rust/CSP5enforce-HTTP0/CSSReact/REDnullHTTP
 ## Política de logs — SEC-003
 
 [Requisito SEC-003](../security/SECURITY_REQUIREMENTS.md)/ADR020 → [política](../security/LOGGING_POLICY.md) → executor documental [SEC-003](../../planning/specs/SEC-003.md)/[handoff](../../planning/handoffs/SEC-003.md). Allowlist/enum técnico, proibidos pessoais-finanças-segredos/path/SQL/erro bruto, fallback/injeção/sinks definidos; audit_eventSQLite continua atômico DB013/014. SEC014/015/BKP testam caminhos reais de sucesso/erro/falha de backup/marcadores ausentes e diagnóstico seguro preservado; código/prova operacional E0, sem promoção por revisão ou CI documental. StartupRust expect bruto é lacuna conhecida.
+
+Executor documentalSEC003 done/passestrue após revisãoE2/checksdocsE3/commit e CI37712913326-SHA539e674 success10success8skipped0artifact;CIfinal/nota44/liberação pendentes. RequisitoSEC003 operacional continuaE0 até SEC014/015/BKP/caminhosreais/startupError; audit_eventDB013014 inalterado.
