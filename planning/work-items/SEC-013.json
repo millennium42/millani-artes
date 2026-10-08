@@ -1,0 +1,24 @@
+{
+  "id": "SEC-013",
+  "title": "avaliar SAST útil",
+  "specPath": "planning/specs/SEC-013.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002"
+  ],
+  "acceptanceCriteria": [
+    "Avaliação útil/limitada do Biome instalado, comparações E2 sem instalar alternativas",
+    "Fixtures reais detectam padrões, limpos e erros; falha bloqueia qualidade antes build",
+    "Review/docs/preservação/CI exactSHA e nota de liberação"
+  ],
+  "checks": [
+    "python -B scripts/test-sast.py",
+    "npm run quality; validators; diff security",
+    "CI entrega/final exactSHA no job existente"
+  ],
+  "agentPlan": "P-INT6.1-solultra único writer/checks/committer11pathsATIVA; P-SEC6-lunalow oráculoE2 usado/reproduzido; P-REV5.6-solmediumE2 semP0P1P2;2delegados0escalonamentos/tokens-custo-cache-modelos efetivos NR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFYlocal:E3/15casos12lintCLI3PS/quality3tests/scaffold100%4linhas/42integração/validators/diffscan0/reviewE2semP0P1P2;55prévios27JSON/56items52done272files245tuplas/logprefix256613/53notes/inputE4preserved. CI entrega/final pending/passfalse/11ATIVA; SASTfrontendlimitado/METAativa/SEC014nãoiniciado."
+}

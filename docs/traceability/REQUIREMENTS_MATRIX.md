@@ -231,3 +231,11 @@ SEC-012←SEC-010,SEC-011,INF-010 liberados: [spec](../../planning/specs/SEC-012
 ## SEC-012 — entrega corrigida validada
 
 Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millani-artes/commit/680e8d2922f8149959df53c62e9b80390651e5c0)/[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) success23steps/1coverageartifact. Remoto:40npm+47Cargo+42integração/14PowerShell; scan120npmzero/417Cargo0vulns2excepted, OSV537/3excepted, Gitleaks117/0. E4/prazo/inputs/thresholds preservados; coverage100% sóscaffoldfrontend4linhas. FalhainicialRTK ausente reproduzida/corrigida semalterarcasos/instalarferramenta; re-reviewE2semachados. Reserva16ATIVA atéCIfinal/nota53;55items52done267files/245tuplas. Detalhes na spec/handoffSEC012, METAativa/SEC013nãoiniciado.
+
+## SEC-013 — avaliação local de SAST
+
+[Spec](../../planning/specs/SEC-013.md) →[avaliação](../../docs/security/SAST_EVALUATION.md) →[harness real](../../scripts/test-sast.py):15casos/12lintCLIs/3PowerShell; HTML perigoso/eval direto e alias detectados, limpos verdes, parse/config/exclusão falham, retornos0/1/2 comprovam interrupção. Biome2.5.15 instalado/config atual, overrideVCS somente fixture. E3 local não é CI verde; review/CI ainda pendentes,passesfalse/reserva11ATIVA. SAST limitado ao frontend/padrões testados; requisitoSEC007 continua parcial/RustSQLrestoreE0, METAativa/SEC014nãoiniciado. Semnova ferramenta/job/upload/threshold/aceiteE4.
+
+## SEC-013 — VERIFY local
+
+15casos/12CLI/3PowerShell,negativoPython-O,quality3testes/100%4linhas,42integração green; reviewP-REV5.6-solmediumE2 semP0/P1/P2, oráculoP-SEC6-lunalow usado e reproduzido root. Validators/securitydiffzero/preservação55prévios27JSON/245tuplas/log256613/inputE4 verdes. [Spec](../../planning/specs/SEC-013.md)/[handoff](../../planning/handoffs/SEC-013.md) limitam prova; CI entrega/final pending/11ATIVA/passfalse, METAativa.

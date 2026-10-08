@@ -115,7 +115,10 @@ jobs:
       - name: Check frontend quality
         if: steps.frontend.outputs.required == 'true'
         shell: pwsh
-        run: npm run quality
+        run: |
+          python -B scripts/test-sast.py
+          if ($LASTEXITCODE -ne 0) { throw 'SAST fixtures failed.' }
+          npm run quality
 
       - name: Validate coverage reports
         if: steps.frontend.outputs.required == 'true'

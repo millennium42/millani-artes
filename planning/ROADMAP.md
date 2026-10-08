@@ -354,3 +354,9 @@ SPEC/RECON E2, passes:false, reserva14 ATIVA conforme [spec](specs/SEC-012.md)/[
 ## SEC-012 — entrega corrigida validada
 
 Executor E3/passes:true: [entrega680e8d2](https://github.com/millennium42/millani-artes/commit/680e8d2922f8149959df53c62e9b80390651e5c0)/[CI37832138829](https://github.com/millennium42/millani-artes/actions/runs/37832138829) success23steps/1coverageartifact. Remoto:40npm+47Cargo+42integração/14PowerShell; scan120npmzero/417Cargo0vulns2excepted, OSV537/3excepted, Gitleaks117/0. E4/prazo/inputs/thresholds preservados; coverage100% sóscaffoldfrontend4linhas. FalhainicialRTK ausente reproduzida/corrigida semalterarcasos/instalarferramenta; re-reviewE2semachados. Reserva16ATIVA atéCIfinal/nota53;55items52done267files/245tuplas. Detalhes na spec/handoffSEC012, METAativa/SEC013nãoiniciado.
+
+## SEC-013 — avaliar SAST útil
+
+SPEC/RED/BUILD,E3local/CIpendente,passesfalse,reserva11ATIVA: [spec](specs/SEC-013.md)/[avaliação](../docs/security/SAST_EVALUATION.md)/[handoff](handoffs/SEC-013.md). ReutilizarBiome2.5.15/15fixtures reais, sem nova ferramenta/job/action/upload. Segurança de padrões frontend limitada; METAfinanceira/setup.exe ativa. SEC-014 não iniciado.
+
+SEC-013 VERIFY E3local/reviewE2 semachados,15fixtures/quality/42integração/validators green; CI entrega/final/nota54-liberação ainda pending/passfalse/11ATIVA. Nenhuma etapa/job/tool novo, SAST limitado/METAativa/SEC014nãoiniciado.

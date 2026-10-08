@@ -1063,3 +1063,9 @@ Decisão recebida literalmente no chat após pergunta específica da proposta p�
 
 ### SEC-012 | executor / LEARN | E3
 - Entregacorrigida680e8d2/CI37832138829/attempt1 green23steps,sourceSHA/logs/coverageverificados rootemmemória:40npm47Cargo42integração14PowerShell,scan120npmzero/417Cargo0vulns2excepted/OSV5373excepted/Gitleaks117zero/nativeAMD64;coverage100%sóscaffold4linhas. FalhainicialRTK CI37830906943 preservada/REDsemRTK/corrigida3prefixosnativos/casosmantidos/re-reviewE2semachados.55items52done267files/54anteriores26JSON245tuplas/prefixo252783preservados. passestrue=executor/reserva16ATIVA atéCIfinal/nota53preserva52/publicrefsGitclean/cleanup/liberação,fechamento11docsfonteunchanged. CIinicialfalho+correção+fechamento/semrerun/job/action/PRnovo;2delegados0escalonamentostokenscustoNR. METAativa,nextSEC013nãoiniciado;detalhes naspec/handoff.
+
+SEC-013 | SPEC/RECON | P-INT6.1-solultra | E2 | reserva11ATIVA/baseca3ec51/branchcodex/sec-013-useful-sast; INF002CIrevalidado/qualitybaselinegreen; reutilizarBiome2.5.15/fixturesoffline/semnovaCI | SASTlimitado/E4prazoinalterado/METAativa | proximo SEC-013
+
+SEC-013 | RED/BUILD | P-INT6.1-solultra | E3local | REDguardausenteexit1/2.031s;15casos12CLI3PSgreen4.312s;fixturesremoved/configoriginalVCSfalseisolado/aliasdetectadolimitescomputedFunction | reviewCIpending/11ATIVA/METAativa | proximoSEC-013
+
+SEC-013 | VERIFY | P-INT6.1-solultra | E3local | 15SAST/3quality/42integração/validators/securitydiff0/review5.6solmediumE2semachados/preservação55items27JSON245tuplas/log256613/E4 | CIpendente/11ATIVA/METAativa | proximoSEC-013
