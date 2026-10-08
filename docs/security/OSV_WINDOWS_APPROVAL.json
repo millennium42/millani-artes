@@ -1,5 +1,5 @@
 {
-  "approvedScopeSHA256": null,
-  "humanDecision": null,
-  "decisionReference": null
+  "approvedScopeSHA256": "cb8a47f5d84b722cdd1f6274c7807112132bc6e008acdd073972ddeb1b8b6921",
+  "humanDecision": "Aprovo a exceção SEC-009 no escopo e prazo apresentados",
+  "decisionReference": "codex://threads/01a0f90d-8b06-77e0-91ed-7db2aeaac85e"
 }

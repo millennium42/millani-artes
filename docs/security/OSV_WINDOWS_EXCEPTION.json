@@ -1,6 +1,6 @@
 {
-  "approved": false,
-  "approvalRecord": null,
+  "approved": true,
+  "approvalRecord": "sha256:d9e4cb4821fcfbbd7630d361b1eef8bb5092c11520000ba9d796380660188152",
   "target": "x86_64-pc-windows-msvc",
   "expiresBeforeUTC": "2026-10-23",
   "inputSHA256": {
