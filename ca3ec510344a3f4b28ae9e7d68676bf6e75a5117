@@ -1,0 +1,526 @@
+{
+  "workItem": "SEC-012",
+  "state": "LIBERADA",
+  "evidence": "E3",
+  "finalSHA": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+  "publicRepository": "https://github.com/millennium42/millani-artes",
+  "receipt": {
+    "delivery": {
+      "deliveryCI": {
+        "id": 37832138829,
+        "sha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/37832138829",
+        "attempt": 1,
+        "job": 113499890040,
+        "finishedSteps": 23,
+        "activeStep": null,
+        "steps": 23,
+        "success": 23,
+        "artifacts": 1,
+        "mandatoryAuditsSuccess": true
+      },
+      "logs": {
+        "run": 37832138829,
+        "job": 113499890040,
+        "sha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+        "osv": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 417
+          },
+          "packages": 537,
+          "seconds": 1.165,
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "osvTests": {
+          "cases": 39,
+          "seconds": 3.117,
+          "fixtureRemoved": true,
+          "cacheOriginalPreserved": true
+        },
+        "gitleaks": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 117,
+          "findings": 0,
+          "seconds": 0.79,
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+          "version": "8.30.1"
+        },
+        "logsReadInMemory": true,
+        "native": {
+          "imageVersion": "20260925.250.1",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "imageOS": "win25-vs2026",
+          "cargoLock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+          "pe": "PE32+",
+          "sha256": "d18380f84b620ed69020a602164f0fda025a71abccae321f2566964e212023b0",
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+          "customProtocol": true,
+          "node": "v24.21.0",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "machine": "AMD64",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "bytes": 8563200
+        },
+        "npmRemoteCacheRestored": true,
+        "auditPrepare": {
+          "version": "0.22.2",
+          "zipSHA256": "0a7316540862c13d954f648917ceacca593747baed6eec180fafa590be2710ab",
+          "installed": true,
+          "dbCloned": true,
+          "databaseCommit": "550efd3d587a29b2e2c2b21b17a440da4fede999",
+          "licenseFiles": 2,
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0"
+        },
+        "ciAuditTests": {
+          "cases": 42,
+          "powershell": 14,
+          "bootstrap": "cold/warm/offline",
+          "status": "pass",
+          "fixtureRemoved": true,
+          "seconds": 10.147
+        },
+        "npm": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.966,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "npmTests": {
+          "cases": 40,
+          "status": "pass",
+          "realCLI": 4,
+          "elapsedSeconds": 7.528
+        },
+        "cargo": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1295,
+            "last-commit": "550efd3d587a29b2e2c2b21b17a440da4fede999",
+            "last-updated": "2026-10-08T16:47:14+02:00"
+          },
+          "dependencies": 417,
+          "elapsedSeconds": 14.351,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+            "src-tauri/Cargo.toml": "b8849431f49cc9dffcc28ad7766a73cf1050e889cae262a89d990c54a5038e40"
+          },
+          "sourceSha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "cargoTests": {
+          "cases": 47,
+          "realCLI": 6,
+          "status": "pass",
+          "seconds": 3.017,
+          "fixtureRemoved": true
+        }
+      },
+      "coverage": {
+        "run": 37832138829,
+        "sha": "680e8d2922f8149959df53c62e9b80390651e5c0",
+        "artifact": 11573847474,
+        "name": "frontend-coverage-37832138829-1",
+        "retentionSeconds": 86400,
+        "coverage": {
+          "lines": {
+            "total": 4,
+            "covered": 4,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 5,
+            "covered": 5,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 1,
+            "covered": 1,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "thresholds": {
+          "lines": 90,
+          "statements": 90,
+          "functions": 90,
+          "branches": 85
+        },
+        "readInMemory": true,
+        "newUpload": false
+      },
+      "initialFailure": {
+        "sha": "e982e82635f5b9bc417aae08012ad7e001614b3c",
+        "run": 37830906943,
+        "job": 113495682543,
+        "attempt": 1,
+        "failedStep": "Audit npm dependencies",
+        "cause": "RTK unavailable in runner; three internal prefixes removed; native tools prove same fixture invariants",
+        "buildSkipped": true
+      },
+      "firstDiffScan": {
+        "chunk_id": "d4bd00",
+        "wall_time_seconds": 1.9748014,
+        "exit_code": 0,
+        "original_token_count": 45,
+        "output": "{\"exit\": 0, \"findings\": 0, \"seconds\": 0.645, \"diffSHA256\": \"2536bcb7db390f1e8763cf011710bc0ca0f64861836f2ca65fe202a563296c8f\", \"probeRemoved\": true, \"scope\": \"staged diff only\"}\r\n"
+      },
+      "correctedDiffScan": {
+        "chunk_id": "1b508a",
+        "wall_time_seconds": 1.8161422,
+        "exit_code": 0,
+        "original_token_count": 45,
+        "output": "{\"exit\": 0, \"findings\": 0, \"seconds\": 0.595, \"diffSHA256\": \"13dd5e21d9150a1e0f5b394bf0c5ed8e0b2c6902e63ba43099181edd6a728665\", \"probeRemoved\": true, \"scope\": \"staged diff only\"}\r\n"
+      },
+      "metadata": {
+        "scope": 16,
+        "previousItemsPreserved": 54,
+        "previousJsonFiles": 26,
+        "items": 55,
+        "done": 51,
+        "roadmapRows": 245,
+        "localLinks": 284,
+        "tracked": 267,
+        "diffSHA256": "13dd5e21d9150a1e0f5b394bf0c5ed8e0b2c6902e63ba43099181edd6a728665",
+        "logBytes": 255824,
+        "prefixBytes": 252783,
+        "rootsAbsent": true,
+        "pythonAST": "pass",
+        "inputsE4Unchanged": true
+      }
+    },
+    "finalCI": {
+      "id": 37833607156,
+      "sha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/37833607156",
+      "attempt": 1,
+      "job": 113504952815,
+      "finishedSteps": 23,
+      "activeStep": null,
+      "steps": 23,
+      "success": 16,
+      "skipped": 7,
+      "artifacts": 0,
+      "mandatoryAuditsSuccess": true
+    },
+    "finalLogs": {
+      "run": 37833607156,
+      "job": 113504952815,
+      "sha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+      "osv": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 417
+        },
+        "packages": 537,
+        "seconds": 1.476,
+        "sourceSha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "osvTests": {
+        "cases": 39,
+        "seconds": 3.875,
+        "fixtureRemoved": true,
+        "cacheOriginalPreserved": true
+      },
+      "gitleaks": {
+        "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+        "commits": 118,
+        "findings": 0,
+        "seconds": 0.782,
+        "sourceSha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "version": "8.30.1"
+      },
+      "logsReadInMemory": true,
+      "npmRemoteCacheRestored": false,
+      "auditPrepare": {
+        "version": "0.22.2",
+        "zipSHA256": "0a7316540862c13d954f648917ceacca593747baed6eec180fafa590be2710ab",
+        "installed": true,
+        "dbCloned": true,
+        "databaseCommit": "550efd3d587a29b2e2c2b21b17a440da4fede999",
+        "licenseFiles": 2,
+        "sourceSha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117"
+      },
+      "ciAuditTests": {
+        "cases": 42,
+        "powershell": 14,
+        "bootstrap": "cold/warm/offline",
+        "status": "pass",
+        "fixtureRemoved": true,
+        "seconds": 10.436
+      },
+      "npm": {
+        "auditLevel": "high",
+        "dependencies": 120,
+        "elapsedSeconds": 0.875,
+        "inputSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+        },
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "sourceSha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "vulnerabilities": {
+          "critical": 0,
+          "high": 0,
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "total": 0
+        }
+      },
+      "npmTests": {
+        "cases": 40,
+        "status": "pass",
+        "realCLI": 4,
+        "elapsedSeconds": 7.494
+      },
+      "cargo": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1295,
+          "last-commit": "550efd3d587a29b2e2c2b21b17a440da4fede999",
+          "last-updated": "2026-10-08T16:47:14+02:00"
+        },
+        "dependencies": 417,
+        "elapsedSeconds": 26.155,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d7bbb4532172d16c991a533620b7a2e4ad181612d53fc753af1f35f41fd57bca",
+          "src-tauri/Cargo.toml": "b8849431f49cc9dffcc28ad7766a73cf1050e889cae262a89d990c54a5038e40"
+        },
+        "sourceSha": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      },
+      "cargoTests": {
+        "cases": 47,
+        "realCLI": 6,
+        "status": "pass",
+        "seconds": 2.973,
+        "fixtureRemoved": true
+      }
+    },
+    "finalSourceProof": {
+      "finalSHA": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+      "deliverySHA": "680e8d2922f8149959df53c62e9b80390651e5c0",
+      "closingDocs": 11,
+      "sourceHashes": {
+        ".github/workflows/docs.yml": "ad98b0cf69b6a6b5fce69806fb329a53f63ee77f202f284c56eebc365df327ba",
+        "scripts/prepare_cargo_audit.py": "9b9ca822bef85f6ff64712772e87d7122fa2defbc817de1794afd6e30b26f573",
+        "scripts/test-ci-audits.py": "e0a8eaf0fbb759c5f4a1a4a96214a546e82fac7abc19788f5be92c03d4478a2f",
+        "scripts/test-npm-audit.py": "ae4b496762ff80615c9cf546ef453eb6aa541ed3dc360f99aeab5d867447ad1c",
+        "scripts/test-cargo-audit.py": "95d343d50a02163d0a16505fe9336ac9468dcdaaba178b32adf70f8b52884124",
+        "scripts/check_npm_audit.py": "390cedb77981c47e2f09298e471fcf7305c1e3055c4d89b6cb0712cf57be3026",
+        "scripts/check_cargo_audit.py": "7a9cd83c98f6c8e252253bb63cb0e5dba0d10248b85983ea43030def3aa3d4ca",
+        "scripts/get-frontend-check-state.ps1": "cb8853161f2303a2bb8948df5b764929018ab2a3e801268bcd0eaa916508d349",
+        "docs/security/OSV_WINDOWS_EXCEPTION.json": "002bd897c2567c5a16286adeca2e92bb95baa1a785bc56cdb2bfaea3dd296b08",
+        "docs/security/OSV_WINDOWS_APPROVAL.json": "d9e4cb4821fcfbbd7630d361b1eef8bb5092c11520000ba9d796380660188152",
+        "docs/security/CARGO_WINDOWS_EXCEPTION.json": "57ab67375edfd0a56d70f654cb4fa1449428ccb37886aeb950d0b370c11b3d20",
+        "docs/security/CARGO_WINDOWS_APPROVAL.json": "a0698660be04e9229117f2a4e7a628f5822cd73e5d251af4b1dc47e41557bd27"
+      },
+      "sourcesE4SameAsGreenDelivery": true,
+      "ownFixturesAbsent": true,
+      "clean": true
+    },
+    "closingMetadata": {
+      "scope": 11,
+      "reservation": 16,
+      "previousItemsPreserved": 54,
+      "previousJsonFiles": 26,
+      "items": 55,
+      "done": 52,
+      "roadmapRows": 245,
+      "localLinks": 284,
+      "tracked": 267,
+      "diffSHA256": "dca1a5ba2617a417a8f1d14ec32421966907ed71940158383e9527e1f5131f6f",
+      "logBytes": 256613,
+      "prefixBytes": 255824,
+      "rootsAbsent": true,
+      "sourceHashes": {
+        ".github/workflows/docs.yml": "ad98b0cf69b6a6b5fce69806fb329a53f63ee77f202f284c56eebc365df327ba",
+        "scripts/prepare_cargo_audit.py": "9b9ca822bef85f6ff64712772e87d7122fa2defbc817de1794afd6e30b26f573",
+        "scripts/test-ci-audits.py": "e0a8eaf0fbb759c5f4a1a4a96214a546e82fac7abc19788f5be92c03d4478a2f",
+        "scripts/test-npm-audit.py": "ae4b496762ff80615c9cf546ef453eb6aa541ed3dc360f99aeab5d867447ad1c",
+        "scripts/test-cargo-audit.py": "95d343d50a02163d0a16505fe9336ac9468dcdaaba178b32adf70f8b52884124",
+        "scripts/check_npm_audit.py": "390cedb77981c47e2f09298e471fcf7305c1e3055c4d89b6cb0712cf57be3026",
+        "scripts/check_cargo_audit.py": "7a9cd83c98f6c8e252253bb63cb0e5dba0d10248b85983ea43030def3aa3d4ca",
+        "scripts/get-frontend-check-state.ps1": "cb8853161f2303a2bb8948df5b764929018ab2a3e801268bcd0eaa916508d349",
+        "docs/security/OSV_WINDOWS_EXCEPTION.json": "002bd897c2567c5a16286adeca2e92bb95baa1a785bc56cdb2bfaea3dd296b08",
+        "docs/security/OSV_WINDOWS_APPROVAL.json": "d9e4cb4821fcfbbd7630d361b1eef8bb5092c11520000ba9d796380660188152",
+        "docs/security/CARGO_WINDOWS_EXCEPTION.json": "57ab67375edfd0a56d70f654cb4fa1449428ccb37886aeb950d0b370c11b3d20",
+        "docs/security/CARGO_WINDOWS_APPROVAL.json": "a0698660be04e9229117f2a4e7a628f5822cd73e5d251af4b1dc47e41557bd27"
+      },
+      "executablesE4SameAsDelivery": true
+    },
+    "closingDiffScan": {
+      "exit": 0,
+      "findings": 0,
+      "seconds": 0.582,
+      "diffSHA256": "dca1a5ba2617a417a8f1d14ec32421966907ed71940158383e9527e1f5131f6f",
+      "probeRemoved": true,
+      "scope": "staged diff only"
+    },
+    "publicRefsBeforeNote": {
+      "public": true,
+      "main": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+      "branch": "ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+      "notes": "53c3a1203c3fa25a1a74580a7ecf1284f75d430d",
+      "distinctNormalPushes": 3,
+      "reruns": 0,
+      "initialFailedBeforeBuildPreserved": true,
+      "deliveryAndFinalGreen": true,
+      "clean": true
+    }
+  },
+  "exceptions": {
+    "cargo": {
+      "scopeSHA256": "5bbcd9f74bb6d831b11ecd337df33cb487e05637d6daa247ced096f7a081cca8",
+      "recordSHA256": "a0698660be04e9229117f2a4e7a628f5822cd73e5d251af4b1dc47e41557bd27"
+    },
+    "osv": {
+      "scopeSHA256": "cb8a47f5d84b722cdd1f6274c7807112132bc6e008acdd073972ddeb1b8b6921",
+      "recordSHA256": "d9e4cb4821fcfbbd7630d361b1eef8bb5092c11520000ba9d796380660188152"
+    },
+    "expiryUTC": "2026-10-23T00:00:00Z",
+    "expiryBrasilia": "2026-10-22 21:00:00",
+    "unchanged": true,
+    "autoRenewal": false,
+    "newHumanApproval": false
+  },
+  "routing": {
+    "root": {
+      "persona": "P-INT",
+      "requestedModel": "gpt-6.1-sol",
+      "requestedEffort": "ultra",
+      "reason": "META humana"
+    },
+    "delegates": [
+      {
+        "persona": "P-QA",
+        "requestedModel": "gpt-6-luna",
+        "requestedEffort": "low",
+        "mode": "read-only",
+        "used": "oráculo de ordem/bypass/exits de PowerShell, reproduzido por root"
+      },
+      {
+        "persona": "P-REV",
+        "requestedModel": "gpt-5.6-sol",
+        "requestedEffort": "medium",
+        "mode": "read-only",
+        "used": "review focal; delta cache e portabilidade reavaliados, sem P0/P1/P2 remanescente"
+      }
+    ],
+    "delegateCount": 2,
+    "escalations": 0,
+    "effectiveModelsEfforts": "não registrado",
+    "tokensCostCacheLatencyRetriesAvoided": "não registrado",
+    "verification": "Root executou; CI/logs/sourceSHA exatos verificados; opinião delegada E2"
+  },
+  "ciEconomy": {
+    "normalPushes": 3,
+    "initialFailure": 37830906943,
+    "correctedDelivery": 37832138829,
+    "closing": 37833607156,
+    "reruns": 0,
+    "newWorkflowsJobsActionsUploadsCaches": 0,
+    "nativeBuildRuns": 1,
+    "closingNativeFrontendSkipped": 7,
+    "closingArtifacts": 0,
+    "closingNpmCacheRestored": false,
+    "actualFinancialSavings": "não registrado"
+  },
+  "release": {
+    "owner": "P-INT /root",
+    "base": "23c4a34b102c10b336203f6fa2352eeeccf761a7",
+    "branch": "codex/sec-012-audits-ci",
+    "mode": "read/write",
+    "paths": [
+      ".github/workflows/docs.yml",
+      "scripts/prepare_cargo_audit.py",
+      "scripts/test-ci-audits.py",
+      "docs/operations/CI_AUDITS.md",
+      "docs/operations/NPM_AUDIT.md",
+      "docs/operations/CARGO_AUDIT.md",
+      "governance/TOOL_REGISTER.md",
+      "docs/security/SECURITY_TEST_MATRIX.md",
+      "docs/traceability/REQUIREMENTS_MATRIX.md",
+      "planning/specs/SEC-012.md",
+      "planning/handoffs/SEC-012.md",
+      "planning/work-items/SEC-012.json",
+      "planning/ROADMAP.md",
+      "planning/PROGRESS_LOG.md",
+      "scripts/test-npm-audit.py",
+      "scripts/test-cargo-audit.py"
+    ],
+    "state": "LIBERADA após CI final/nota pública/refs/Git limpo",
+    "conflicts": "nenhum observado",
+    "priorNotesPreserved": 52,
+    "totalNotes": 53,
+    "ownScratchFixturesAbsent": true
+  },
+  "limitations": "META financeira/SQLite/backup/setup.exe/release permanece ativa. Coverage 100% apenas scaffold frontend 4 linhas; percentual Python não registrado; Rust fmt/clippy/test não reexecutados porque fonte Rust não mudou. Prova estrutural não é parser YAML completo; engine real e scans online passaram no CI dos SHAs registrados. Fixture Cargo offline anota apenas dois campos Git observados; autoria E4 é conferência humana anterior, não autenticação pelo script. Exceções temporárias continuam delimitadas; prazo/novos achados/inputs divergentes bloqueiam.",
+  "nextCandidate": "SEC-013 — avaliar SAST útil ← INF-002",
+  "nextStarted": false,
+  "recordedUTC": "2026-10-08T19:45:26.270374+00:00"
+}
