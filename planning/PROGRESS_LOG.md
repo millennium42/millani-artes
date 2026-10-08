@@ -1081,3 +1081,9 @@ SEC-014 | VERIFYlocal | P-INT6.1-solultra | E3 | fixturefinalTauriBuild/faultInj
 SEC-014 | REVIEW/CORRECT/VERIFY | P-INT6.1-solultra | E3local | P2injeção não confirmada corrigido/AtomicBool+guard102/5filhos6Rust0ignored/fmtclippy/test10.625s/main6cd3c771-test16a7beba | re-reviewCIpending/11ATIVA/METAativa | proximoSEC-014
 
 SEC-014 | CI/LEARN | P-INT6.1-solultra | E3 | entrega55b481af4d394aa624d384b6d38887bbdf898a04/CI37857821138/job113586157869/attempt1/23success/5filhos6Rustlocal/P2corrigido/re-reviewE2semachados/auditsbuildquality | passestrue/reserva11ATIVAatéCIfinalnota55/METAativa | proximoSEC-014
+
+SEC-015 | SPEC/RECON | P-INT6.1-solultra | E2 | primeiroready/baseca8c32e/CIverde/SEC003liberada/reserva11ATIVA/baseline6Rust0ignored/fmtclippy/financefixture prevista | REDtestreviewCIpending/METAativa | proximoSEC-015
+
+SEC-015 | RED/BUILD/TEST | P-INT6.1-solultra | E3local | REDsensibilidade10.625ssemraw/mainrestauradofinally/mainunchanged/5finance5phone7Rust0ignored/fmtclippyaudit4172excepted/testhash1e71a92a | reviewsecurityCIpending/11ATIVA/METAativa | proximoSEC-015
+
+SEC-015 | SECURITY/REVIEW/VERIFY | P-INT6.1-solultra | E3local | quality3tests100%4lines/SEC0050/metadata10paths57anteriores245tuplas/scan0/review5.6solmediumE2fontesdiffsemachados/7Rust5finance5phone | CIpending/11ATIVA/METAativa | proximoSEC-015

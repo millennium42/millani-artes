@@ -6,8 +6,11 @@ use std::{
     time::{Duration, Instant},
 };
 
-const TEST_NAME: &str = "startup_tests::phone_is_absent_from_startup_diagnostics";
-const FIXTURE: &str = "PHONE_SENTINEL_014 unknown={\"nested\":{\"phone\":\"+55 (11) 90000-0000\"}}\r\n(11) 90000-0000; 11900000000; １１９００００００００";
+const PHONE_TEST_NAME: &str = "startup_tests::phone_is_absent_from_startup_diagnostics";
+const PHONE_FIXTURE: &str = "PHONE_SENTINEL_014 unknown={\"nested\":{\"phone\":\"+55 (11) 90000-0000\"}}\r\n(11) 90000-0000; 11900000000; １１９００００００００";
+const FINANCIAL_TEST_NAME: &str =
+    "startup_tests::financial_data_is_absent_from_startup_diagnostics";
+const FINANCIAL_FIXTURE: &str = "FINANCE_SENTINEL_015 balanceCents=-765432109 priceCents=1234567 quantity=23 zeroCents=0 account=CONTA_SINTETICA_015 category=CATEGORIA_SINTETICA_015 context=Fábrica/Casa customerId=CLIENTE_SINTETICO_015 saleId=VENDA_SINTETICA_015 movementId=MOVIMENTO_SINTETICO_015 unknown={\"nested\":{\"totalCents\":987654321,\"display\":\"R$ 9.876.543,21\",\"aggregate\":\"-7.654.321,09\",\"decimal\":\"9876543.21\"}}\r\n＄１２３４５６７";
 const STARTUP: &[u8] =
     b"{\"level\":\"error\",\"operation\":\"startup\",\"code\":\"TAURI_STARTUP_FAILED\"}\n";
 const PANIC: &[u8] =
@@ -23,7 +26,7 @@ fn read_pipe(pipe: impl Read + Send + 'static) -> thread::JoinHandle<Vec<u8>> {
     })
 }
 
-fn child(case: &str) -> ! {
+fn child(case: &str, fixture: &'static str) -> ! {
     std::io::stdin()
         .read_exact(&mut [0])
         .expect("STARTUP_BARRIER_FAILED");
@@ -31,7 +34,7 @@ fn child(case: &str) -> ! {
     let outcome = std::panic::catch_unwind(|| {
         super::run_startup(|| {
             if case == "panic" {
-                std::panic::panic_any(FIXTURE);
+                std::panic::panic_any(fixture);
             }
             if case == "before-injection" {
                 return Err(tauri::Error::Io(std::io::Error::other(
@@ -45,7 +48,7 @@ fn child(case: &str) -> ! {
                 Ok(())
             } else {
                 injected.store(true, Ordering::Relaxed);
-                Err(tauri::Error::Io(std::io::Error::other(FIXTURE)))
+                Err(tauri::Error::Io(std::io::Error::other(fixture)))
             }
         })
     });
@@ -60,17 +63,17 @@ fn child(case: &str) -> ! {
     });
 }
 
-#[test]
-fn phone_is_absent_from_startup_diagnostics() {
+// ponytail: startup/hook coverage; add probes when financial/backup emitters exist.
+fn check_diagnostics(test_name: &str, fixture: &'static str, markers: &[&str], leak_code: &str) {
     let args: Vec<_> = std::env::args().collect();
-    let exact = args.windows(2).any(|pair| pair == ["--exact", TEST_NAME]);
+    let exact = args.windows(2).any(|pair| pair == ["--exact", test_name]);
     if exact {
-        if let Ok(case) = std::env::var("MILLANI_SEC014_CASE") {
+        if let Ok(case) = std::env::var("MILLANI_STARTUP_CASE") {
             assert!(
                 ["ok", "error", "panic", "closed", "before-injection"].contains(&case.as_str()),
                 "STARTUP_CASE_INVALID"
             );
-            child(&case);
+            child(&case, fixture);
         }
     }
     for (case, status, expected) in [
@@ -84,12 +87,12 @@ fn phone_is_absent_from_startup_diagnostics() {
             .args([
                 "--quiet",
                 "--exact",
-                TEST_NAME,
+                test_name,
                 "--nocapture",
                 "--color",
                 "never",
             ])
-            .env("MILLANI_SEC014_CASE", case)
+            .env("MILLANI_STARTUP_CASE", case)
             .env("RUST_BACKTRACE", "full")
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
@@ -133,18 +136,11 @@ fn phone_is_absent_from_startup_diagnostics() {
             out.len() <= 16_384 && err.len() <= 16_384,
             "STARTUP_OUTPUT_TOO_LARGE"
         );
-        for marker in [
-            "PHONE_SENTINEL_014",
-            "+55 (11) 90000-0000",
-            "(11) 90000-0000",
-            "11900000000",
-            "１１９００００００００",
-            "0000",
-        ] {
+        for &marker in markers {
             assert!(
                 !String::from_utf8_lossy(&out).contains(marker)
                     && !String::from_utf8_lossy(&err).contains(marker),
-                "STARTUP_PHONE_LEAK_DETECTED"
+                "{leak_code}"
             );
         }
         assert!(
@@ -154,5 +150,51 @@ fn phone_is_absent_from_startup_diagnostics() {
         assert!(exit.code() == Some(status), "STARTUP_EXIT_MISMATCH");
         assert!(err == expected, "STARTUP_DIAGNOSTIC_NOT_STATIC");
     }
+}
+
+#[test]
+fn phone_is_absent_from_startup_diagnostics() {
+    check_diagnostics(
+        PHONE_TEST_NAME,
+        PHONE_FIXTURE,
+        &[
+            "PHONE_SENTINEL_014",
+            "+55 (11) 90000-0000",
+            "(11) 90000-0000",
+            "11900000000",
+            "１１９００００００００",
+            "0000",
+        ],
+        "STARTUP_PHONE_LEAK_DETECTED",
+    );
     println!("PHONE_REDACTION_EVIDENCE {{\"cases\":5,\"realTauriBuild\":true,\"faultInjectedIo\":true,\"earlyFailureRejected\":true,\"panicHook\":true,\"closedStderr\":true,\"rawOutputPublished\":false,\"childrenTerminated\":true}}");
+}
+
+#[test]
+fn financial_data_is_absent_from_startup_diagnostics() {
+    check_diagnostics(
+        FINANCIAL_TEST_NAME,
+        FINANCIAL_FIXTURE,
+        &[
+            "FINANCE_SENTINEL_015",
+            "765432109",
+            "1234567",
+            "23",
+            "0",
+            "CONTA_SINTETICA_015",
+            "CATEGORIA_SINTETICA_015",
+            "Fábrica",
+            "Casa",
+            "CLIENTE_SINTETICO_015",
+            "VENDA_SINTETICA_015",
+            "MOVIMENTO_SINTETICO_015",
+            "987654321",
+            "9.876.543,21",
+            "7.654.321,09",
+            "9876543.21",
+            "１２３４５６７",
+        ],
+        "STARTUP_FINANCIAL_LEAK_DETECTED",
+    );
+    println!("FINANCIAL_REDACTION_EVIDENCE {{\"cases\":5,\"realTauriBuild\":true,\"faultInjectedIo\":true,\"earlyFailureRejected\":true,\"panicHook\":true,\"closedStderr\":true,\"rawOutputPublished\":false,\"childrenTerminated\":true,\"productionChanged\":false}}");
 }

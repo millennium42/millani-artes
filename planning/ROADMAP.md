@@ -372,3 +372,7 @@ SEC014 VERIFYlocal:fixture final semplugin/erroIo injetado na fronteira real/bui
 SEC014 P2corrigido: cinco filhos/quatroprivacidade+guard102, seisRust0ignored/fmtclippy/E3local; re-review/CIpending/passfalse/11ATIVA/METAativa/SEC015nãoiniciado.
 
 SEC014 executor done/passestrue/E3,entrega55b481af4d394aa624d384b6d38887bbdf898a04/CI37857821138/23success/cincofilhosseisRustlocal/re-reviewE2semachados; [spec](specs/SEC-014.md#ci--learn--entrega-validada). Fechamento9docs/11ATIVAatéCIfinalnota55refsGitclean/METAativa/SEC015nãoiniciado.
+
+## SEC-015 — testar redaction de dados financeiros
+
+[Spec](specs/SEC-015.md)/[handoff](handoffs/SEC-015.md),E3local/REDsensibilidade10.625s/5finance+5phone/7Rust0ignored/fmtclippyaudit; mainprodutivo unchanged/catalogo reutilizado. ReviewCIpending/passfalse/reserva11ATIVA; requisitoSEC003parcial/METAativa/ARC001nãoiniciado.
