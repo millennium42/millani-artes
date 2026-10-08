@@ -104,7 +104,7 @@ def main():
     exe = gate.scanner()
 
     def git(*args):
-        result = subprocess.run(["rtk", "proxy", "git", "-c", "user.name=Millani Fixture",
+        result = subprocess.run(["git", "-c", "user.name=Millani Fixture",
             "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgSign=false",
             "-c", "core.hooksPath=NUL", *args], cwd=db, capture_output=True, timeout=30)
         assert result.returncode == 0, args
@@ -228,7 +228,7 @@ def main():
             target, link = FIXTURES / "target", FIXTURES / "link"
             target.mkdir()
             (target / "sentinel").write_text("preserve", encoding="utf-8")
-            result = subprocess.run(["rtk", "proxy", "cmd", "/c", "mklink", "/J", str(link), str(target)], capture_output=True)
+            result = subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(target)], capture_output=True)
             assert result.returncode == 0 and link.is_junction()
             try:
                 case("real-junction", lambda: gate.inputs(link), "CARGO_REPARSE_DENIED")

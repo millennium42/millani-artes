@@ -31,3 +31,7 @@ O parser da prova não valida toda a linguagem YAML nem simula a engine GitHub. 
 Aceites OSV e Cargo anteriores permanecem separados, com mesmos inputs, escopos e prazo de 2026-10-23T00UTC (22/10 às 21h Brasília), sem renovação. Expiração, inputs divergentes e outros achados bloqueiam. Isso não conclui o aplicativo financeiro nem o instalador.
 
 Estado/checks/review/CI e recibo de liberação: [spec](../../planning/specs/SEC-012.md) e [handoff](../../planning/handoffs/SEC-012.md).
+
+## Correção de portabilidade
+
+CI inicial37830906943/e982e82 falhou noRTK ausente antes do build. Root reproduziu WinError2 removendo RTK do PATH; após remover três prefixos locais, o mesmo ambiente semRTK passou40npm/47Cargo/42integração (10.144s/8.269s/20.063s). Casos e gates mantidos, nenhum RTK instalado no runner. CI corrigido ainda pendente; execução inicial falha será preservada no recibo.

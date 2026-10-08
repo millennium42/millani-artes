@@ -1051,3 +1051,12 @@ Decisão recebida literalmente no chat após pergunta específica da proposta p�
 
 ### SEC-012 | VERIFY final | E3 local
 - Ajustecache42casos14PowerShell17.475s green/fixturesremoved; re-reviewmesmoP-REV5.6-solmediumE2 semP0P1P2 baseline32e86d71. Fontes finais nãoalteradas apóschecks; validators/securityfinal/CIentrega-fechamento/nota53 pending/passfalse/reserva14ATIVA.2delegados0escalonamentos/tokens-custoNR;nextSEC013nãoiniciado/METAativa.
+
+### SEC-012 | CORRECT/reserva ampliada | E3 remoto
+- CI37830906943/e982e826/attempt1 falhou Auditnpm/WinError2/rtklocal ausente,testnpm218; logsrootmemória13success9skip/semnpmreport/build. Reserva16ATIVA atualizada ANTESedição, acrescidos test-npm-audit.py/test-cargo-audit.py; remover3prefixosRTK somente, rootúnicowriter/conflitonenhum. RED/retestsemRTK/reviewdelta/CIcorrigido pending/passfalse, CIinicialfalho+entregacorrigida+fechamento/semrerun. Falha passouRECON/review;E4/pins/gates intactos;nextSEC013nãoiniciado/METAativa.
+
+### SEC-012 | TEST correção de portabilidade | E3 local
+- DriverUTF8 corrigido/nãocontadoRED; REDreal semRTK exit1/rtkFileNotFound em8.621s. Somente3prefixosRTK removidos dos2harnesses;mesmoenvsemRTK40npm10.144s/47Cargo8.269s/42integração20.063s green/fixturesremoved. Re-reviewdelta/validators/securityCIcorrigido pending/passfalse/reserva16ATIVA,gate/inputs/E4 unchanged. SemRTKinstall/rerun;nextSEC013nãoiniciado/METAativa.
+
+### SEC-012 | VERIFY correção | E3 local
+- Re-reviewmesmoP-REV5.6-solmediumE2 semP0P1P2 baselinef7c9ca63; root40/47/42green semRTK. Nenhumaescritaexecutável apóschecks/review; validators/security/CIcorrigido-fechamento/nota53 pending/passfalse/reserva16ATIVA. CIinicialfalho preservado/semrerun/2delegados0escalonamentos/tokenscustoNR;nextSEC013nãoiniciado/METAativa.

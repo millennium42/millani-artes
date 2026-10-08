@@ -215,7 +215,7 @@ def main():
         target, link = FIXTURES / "target", FIXTURES / "link"
         target.mkdir()
         (target / "sentinel").write_text("preserve", encoding="utf-8")
-        result = subprocess.run(["rtk", "proxy", "cmd", "/c", "mklink", "/J", str(link), str(target)], capture_output=True)
+        result = subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(target)], capture_output=True)
         assert result.returncode == 0 and link.is_junction()
         try:
             case("real-junction-input", lambda: gate.inputs(link), "NPM_REPARSE_DENIED")
