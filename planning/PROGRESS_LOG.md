@@ -1096,3 +1096,5 @@ ARC-001 | E3local parcial | base685d10d/SEC015 CI37861133255-nota56 e INF002 CI3
 
 
 ARC-001 | VERIFY | E3local+reviewE2 | fmtclippy/full7Rust0ignored7.985s/quality3tests100%4lines/audit417deps2excepted/std-only6controles/plugin0/validators/Gitleaksdiff709a487b0findings | P-REV5.6-solmedium fonteslidas semP0P1P2; 58items30JSON anteriores/245tuplas/log259911/56notas/inputsE4 preservados; root único writer,2delegados0escalonamentos/tokenscustoNR | entregaCI/fechamentoCI/nota57 pendentes/passfalse/22ATIVA/METAativa | próximoARC002 não iniciado.
+
+ARC-001 | CI/LEARN entrega | E3 | SHAe94eec776213725f72239c8d07aff2a293f6f632/CI37863336200/job113604065663/attempt1/23success/buildPE32+AMD64/custom-protocol/SAST15/quality3tests100%4lines/auditsnpm120zeroCargo4172exceptedOSV5373exceptedGitleaks0 | root7Rustlocal0ignored/std-only6controles/inputsE4preservados/reviewE2semachados; done/passestru; fechamento11docs/reserva22ATIVA atéCIfinalnota57/refsGitclean | METAfinanceiraSQLitebackupsetup.exe ativa, domínio semregra | próximoARC002 não iniciado. Modeloscusto/tokens NR,2delegados0escalonamentos/semnovaCI.

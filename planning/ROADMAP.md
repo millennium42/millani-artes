@@ -383,3 +383,5 @@ SEC015 executor done/passestrue/E3,entrega96c06e66e53f8c9776d51576bf7f467102487a
 ## ARC-001 — camadas do bootstrap
 [Spec](specs/ARC-001.md)/[handoff](handoffs/ARC-001.md): composição main → application/infra e tela src/ui; domínio somente raiz compilada. E3local std-only/6controles/quality/build/audit; review/CI pendentes/passes:false/reserva22ATIVA. ARC002/repositórios/SQLite/finanças/setup.exe não iniciados; META ativa.
 
+
+ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/millani-artes/commit/e94eec776213725f72239c8d07aff2a293f6f632)/[CI37863336200](https://github.com/millennium42/millani-artes/actions/runs/37863336200) success23steps/buildWindows, std-only6controles e7Rust locais/reviewE2fontes semachados. Domínio sem regra; finanças/SQLite/backup/setup.exe pendentes/METAativa. Reserva22ATIVA atéCI final/nota57, fechamento11docs; detalhe na spec/handoffARC001. ARC002 não iniciado.

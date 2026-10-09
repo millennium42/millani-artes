@@ -2,7 +2,7 @@
   "id": "ARC-001",
   "title": "criar camadas domínio/aplicação/infra/UI",
   "specPath": "planning/specs/ARC-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra único writer/executor22ATIVA; P-TRC6-lunalow E2 escopo usado; P-REV5.6-solmedium E2 fontes/diff709a487b semP0P1P2. Root reproduziu.2delegados0escalonamentos; tokens/custo/modelos efetivos/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY E3local/std-only6controles/quality3tests100%4lines/build/fmtclippy/full7Rust0ignored/audit417deps2excepted/plugin0/validators/Gitleaks0/reviewfontesE2semachados. UI/catálogo/inputsE4 preservados; domínio semregra. EntregaCI/fechamentoCI/nota57 pendentes/passfalse/22ATIVA/METAativa/ARC002nãoiniciado."
+  "passes": true,
+  "notes": "Entregae94eec776213725f72239c8d07aff2a293f6f632/CI37863336200/job113604065663/attempt1/23success/logscoverageSHA-verificados. Main/application/infra/UI separados/domainraizsemregra; std-only6controles/7Rustlocal0ignored/quality3tests100%4lines/reviewE2fontessemachados/scan0/inputsE4intactos. CI compila produção, nãoexecutaRustsuite. DoneE3; fechamento11docs/reserva22ATIVAatéCIfinalnota57-preserva56/refsGitclean/METAativa/ARC002nãoiniciado."
 }
