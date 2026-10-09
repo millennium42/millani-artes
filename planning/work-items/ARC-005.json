@@ -2,7 +2,7 @@
   "id": "ARC-005",
   "title": "bloquear SQL em componente",
   "specPath": "planning/specs/ARC-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-001"
   ],
@@ -12,13 +12,14 @@
     "Docs/matrizes/log/handoff/CI entrega-final exactSHA/nota61 pública preserva60/liberação14"
   ],
   "checks": [
-    "scripts/test-sast.py com Biome2.5.15 real e guard PowerShell0/1/2",
-    "npm run quality; validators/links/preservação/Gitleaks stageddiff",
-    "workflow existente/review E2/CI exactSHA/nota61"
+    "RED SQL CLI0/oráculo pluginerror recusou; GREEN root45casos42CLI3PS8.141s/copiasbyte/configpluginfail/guard0-1-2/cleanup",
+    "npm quality format/lint/typecheck/coverage3tests100%4lines4.134s;4validators/diffcheck809links/preservação62items34JSON245tuplas17invariantes60notas/prefixo266920/28fonteshashes;Gitleaks diff129e95d6zero0.498s",
+    "ReviewE2 P-SEC6-lunalow/P-REV5.6-solmedium semP0P1P2; CI37974060505/job113967721406/c5872e2026291512fd9eb879e3562200d72b7dd7/attempt1/23success/45SAST/audits/buildPEAMD64/1coverageartifact logs root; regraLF430bytes→CRLF440bytes digestCI correspondente",
+    "Fechamento11docs/28fontes/prefixo268083/CI exactSHA final/nota61 preserva60/publicrefsGitclean/liberação14 pendentes"
   ],
   "agentPlan": "P-INT6.1-solultra por META único writer/executor14ATIVA; P-SEC6-lunalow inventário3achadosE2 usado; P-REV5.6-solmedium read-only contra spec/diff semP0P1P2 E2 usado.2delegados0escalonamentos; efetivos/tokens/cache/custo/duração do modelo/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "RED real SQL CLI0/oráculo falhou1.488s; GREEN45casos42CLI3PS8.141s e quality3tests100%4lines4.134s. Biome2.5.15/noRestrictedImports/noCommonJs/Grit existentes, filtro **/src/** provado; configuração/plugin invalid fail/cleanup. Limites SQLfragmentos/escapes/UI-string prefix/sem SQLiteSQLi/finanças. P-SEC6-lunalow E2 usado; SECURITY/review/validators/CI/nota61 pending/passfalse/reserva14ATIVA. Locks/E4/prazo/workflow/thresholds/Rust intactos; DB001 não iniciado/META ativa. SECURITY/review/VERIFY root4validators809links/63itens302files/245tuplas17invariantes/preservação60notas62itens34JSON/prefixo266920; Gitleaks diff e3debd77zero0.515s; review E2 semachados. Entrega/CI/nota61 pendentes."
+  "passes": true,
+  "notes": "Executor done/passestrue/E3 após CI entrega37974060505 exactSHAc5872e2/tentativa1 e rootlogs:45SAST42CLI3PS5.438s,3frontend100%scaffold/buildWindows/audits40npm47Cargo42integração39OSV,2Cargo3OSVexcepted/prazoE4 intacto. GuardSQLprefix/import/CommonJS/IPC literal, sem SQLiteSQLi/finanças; fragmentos/escapes/UItextprefix limites observados. RegraLF e4f5…/CI947f… CRLF digest exato por transformação provada. Sem workflow/dependência/grant/threshold novo; Rust local não repetido. ReviewE2semachados/2delegados0escalonamentos/tokenscusto não registrado. Reserva14ATIVA atéCIfinalnota61/liberação/refsGitclean;fechamento11docs28fontes intactas. METAativa/DB001 não iniciado."
 }

@@ -406,3 +406,6 @@ ARC-004 executor documental done/E3: entrega9414698f/[CI37968888746](https://git
 ## ARC-005 — bloquear SQL no frontend
 
 [Spec](specs/ARC-005.md)/[handoff](handoffs/ARC-005.md): lint Biome existente + Grit local + restrição de imports/CommonJS;45casos reais42CLI3PS e quality3tests100% do scaffold. RED SQL deixou passar CLI0 antes da regra; GREEN8.141s. Sem dependência/workflow novo, sem SQLite ou finanças. Executor in_progress/passfalse/reserva14ATIVA; review/CI/nota61 pendentes. Próximo candidato DB001 após fechamento; não iniciado/META ativa.
+
+
+ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505),23success/45SAST/3frontend100%scaffold/buildWindows/audits/reviewE2semachados. Fechamento11docs preserva28fontes/reserva14ATIVA atéCIfinalnota61/refsGitclean; limites de padrões não são prova SQLite/SQLi/finanças. PróximoDB001←INF006 só após liberação, não iniciado/META ativa.

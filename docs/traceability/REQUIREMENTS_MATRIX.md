@@ -291,3 +291,6 @@ ARC-004 executor documental done/E3 após entrega9414698f/[CI37968888746](https:
 ## ARC-005 — UI sem SQL: prova parcial executada
 
 [ADR-017](../architecture/adr/ADR-017-domain-separated-from-ui.md) →[fronteiras](../architecture/MODULE_BOUNDARIES.md#guard-de-sql-no-frontend--arc-005) →[config/regra](../../scripts/no-ui-sql.grit) →[harness](../../scripts/test-sast.py) →[spec/handoff](../../planning/handoffs/ARC-005.md). E3 local45casos/42CLI/3PS: bloqueio de prefixos SQL/imports/require/IPC literal no frontend e guard de falha. Não transfere SQL à UI nem prova ausência formal de SQL, consultas parametrizadas, atomicidade, dinheiro ou persistência. SEC002/INV-FIN006007 globais continuam E0; requisitoSEC007 parcial. Review/CI/nota61/liberação14 pendentes/META ativa; DB001 não iniciado.
+
+
+ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.

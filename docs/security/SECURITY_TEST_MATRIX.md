@@ -165,3 +165,6 @@ ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.c
 ## ARC-005 — separação de SQL no frontend
 
 [Spec](../../planning/specs/ARC-005.md) →[config/regra](../../scripts/no-ui-sql.grit) →[harness real](../../scripts/test-sast.py): E3 local,45casos/42CLI/3PS incluindo15casos anteriores e falhas de plugin/configuração. SQL reconhecível, imports de drivers, require e comandos SQL IPC literais recusados em src/. Comentário/JSX textual limpos passam; fragmentos/escapes e texto JS com palavra SQL inicial são limites registrados. Não comprova bindings/constraints/SQLite nem muda o requisitoSEC002 de SQLi para verde. SEC007 continua parcial. Quality100%/4linhas do scaffold; review/CI/nota61/liberação14 pendentes, E4 temporários e prazo intactos.
+
+
+ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.
