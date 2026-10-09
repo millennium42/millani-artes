@@ -277,3 +277,6 @@ ARC002 VERIFYlocal:3domain+7native10Rust0ignored/std-only5negativos/coverage3lin
 
 ## ARC-003 — relógio e UUID
 RoadmapARC003/ADR017018 →[spec](../../planning/specs/ARC-003.md) →[portas](../../src-tauri/src/domain/ports.rs) →[testes](../../src-tauri/src/domain/ports_tests.rs): substituição temporal/pré-epoch,16bytes/sequência/dyn, falha sem substituto →13Rust/std-only5negativos/coverage limitada →[handoff](../../planning/handoffs/ARC-003.md). E3local da injeção, sem gerar UUID real/vencimento/backup automático. REC006/BKP007 ainda pendentes; review/CI/nota59/passfalse/reserva14ATIVA/METAativa.
+
+
+ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.

@@ -12,3 +12,6 @@ ARC002 usa [biblioteca Rust pura](../../src-tauri/src/lib.rs) para exportar o [c
 
 
 ARC-003 publica [portas puras](../../src-tauri/src/domain/ports.rs) na biblioteca existente: Clock/SystemTime e UuidGenerator/16bytes/falha associada. [Testes](../../src-tauri/src/domain/ports_tests.rs) substituem fornecedores por dyn. Sem adapter OS/default/persistência/caso financeiro; versões/unicidade/falhas do adapter futuro requerem prova própria. [Handoff](../../planning/handoffs/ARC-003.md) registra execução e limites.
+
+
+ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.

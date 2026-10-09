@@ -392,3 +392,6 @@ ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/
 
 ## ARC-003 — portas injetáveis
 [Spec](specs/ARC-003.md)/[handoff](handoffs/ARC-003.md): Clock/SystemTime e UuidGenerator/16bytes/falha opaca, sem adapter/default. E3local3testsnovos+10regressões=13Rust0ignored/std-only5negativos/coverage3linhas100%controle0%/traits0executáveis. Review/securitydiff/CI/nota59 pendentes/passfalse/reserva14ATIVA; finanças/UUID real/vencimento/backup/META pendentes, ARC004 não iniciado.
+
+
+ARC-003 executor done/E3/passestrue: entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801)/23success, root13Rust0ignored/5negativos/reviewE2semachados. Fechamento11docs/27fontes preservadas/reserva14ATIVA até CI final/nota59/publicrefsGitclean. Próximo candidato ARC004 somente após liberação, não iniciado; META ativa.

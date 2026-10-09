@@ -2,7 +2,7 @@
   "id": "ARC-003",
   "title": "injetar relógio/UUID",
   "specPath": "planning/specs/ARC-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-001"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra porMETA único writer/executor14ATIVA; P-TRC6-lunalow E2 oráculo usado; P-REV5.6-solmedium read-only fontes/diffbdcbd49f contra spec semP0P1P2.2delegados0escalonamentos/root reproduz E3; tokenscusto/modelos efetivos/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocalE3/RED E0432/13Rust0ignored/fmtclippyauditquality/plugin0/std-only6tests5negativos/coverageDomainError3linhas100%controle0%/traits0executáveis/validators61items295files/scan0/reviewE2fontessemachados. Perfil próprio deixado pelo baseline causou falha intermediária; cleanup exclusivo0processos/contenção/semreparse/reteste13green sem alterar harness.60prévios32JSON245tuplas58notas/inputsE4 preservados. Portas sem adapters/geração real/finanças. CIentrega-final/nota59-liberação pendentes/passfalse/14ATIVA/METAativa/ARC004nãoiniciado."
+  "passes": true,
+  "notes": "Executor done/E3: entrega6eafaa408b56871c53e483b99edc55118db5707b/CI37963747801/job113932792568/attempt1/23success/logsartefato verificados root. RED E0432/13Rust0ignored/fmtclippyauditquality/plugin0/std-only6tests5negativos/coverageDomainError3linhas100%controle0%/traits0executáveis/validators61items295files/Gitleaks0/reviewE2fontessemachados. Perfil próprio do baseline limpo0processos/contenção/semreparse/reteste13green sem mudar harness; DNS contornado por requisição/TLS sem alteração global. CI não executa Rustsuite/coverageRust.60prévios32JSON245tuplas58notas/inputsE4 preservados. Fechamento11docs/27fontes intactas/reserva14ATIVA atéCIfinalnota59 preserva58/publicrefsGitclean/cleanup. Sem adapters/geração real/finanças/METAativa/ARC004nãoiniciado;tokenscusto não registrado."
 }

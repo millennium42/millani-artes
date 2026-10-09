@@ -158,3 +158,6 @@ Executor E3/entrega93362971/CI37865774054: root10Rust/5compilernegatives, plugin
 
 ## ARC-003 — fornecedores injetáveis
 [Portas](../../src-tauri/src/domain/ports.rs) →[testes](../../src-tauri/src/domain/ports_tests.rs) substituição/16bytes/sequência/falha opaca →std-only6tests/5negativos(String/UUID15bytes/Tauri/infra/SQLite) →[spec/handoff](../../planning/handoffs/ARC-003.md). Sem IO/unsafe/plugin/IPC/log/default novo.13Rust regrediram CSP6/IPCdenied/phone5/finance5/junction após cleanup do próprio perfil do baseline. IDs/erro de adapters futuros continuam proibidos em logs; erro opaco não é sanitizado. Plugin0, scan/review/CI pendentes/inputE4prazo intactos; segurança global parcial.
+
+
+ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.

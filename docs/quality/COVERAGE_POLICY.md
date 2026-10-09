@@ -40,3 +40,6 @@ Stockrustc1.99.0 suporta -Cinstrument-coverage; llvm-tools-preview pin1.99 usaLL
 
 ## Portas abstratas — ARC-003
 [Traits](../../src-tauri/src/domain/ports.rs) têm zero linhas executáveis/defaults, sem percentual fictício. LLVM local existente mediu domain/mod.rs3/3linhas1/1função5/5regiões100%; controle5tests semDisplay0% rejeita90, perfil novo6tests100% aceita. [Três testes de injeção](../../src-tauri/src/domain/ports_tests.rs) provam tempo/sequência/falha, sem medir geração real. Branchcounter0/limite stableARC002 mantido, nenhum hack/threshold reduzido. [Spec](../../planning/specs/ARC-003.md): sem cobertura globalRust/financeiro/adapters registrada.
+
+
+ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.

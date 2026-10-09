@@ -393,3 +393,6 @@ Controle em diretório/perfil novo separado executa mesmoexe --skip domain::test
 ## Portas injetáveis — ARC-003
 Runtimes/MSVC/LLVM existentes; [spec](../../planning/specs/ARC-003.md) registra fmt/clippycustomprotocol/full13Rustincludeignored/audit/npmquality/std-only e coverage local limitada. [Fakes](../../src-tauri/src/domain/ports_tests.rs) substituem tempo/UUID, sem relógio global/aleatoriedade. Nenhum novo tool/dependência/pin/workflow.
 O harness cria artifacts/sec001-webview-profile e exige ausência inicial. Após processos/threads terminais, confirmar0WebView com esse perfil, destino dentro de artifacts e nenhum reparse no destino/ancestrais/filhos; remover só perfil próprio da execução. Este ciclo corrigiu preparação entre baseline e reteste com esse cleanup, sem tocar perfil real da usuária nem o harness.
+
+
+ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
