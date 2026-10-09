@@ -17,6 +17,9 @@ if sys.flags.optimize:
 ROOT = npm.ROOT
 RULE_HTML = "lint/security/noDangerouslySetInnerHtml"
 RULE_EVAL = "lint/security/noGlobalEval"
+RULE_SQL = "plugin"
+RULE_IMPORT = "lint/style/noRestrictedImports"
+SQL_MESSAGE = "SQL_UI_DENIED: use a Rust use case."
 QUALITY_PREFIX = """          python -B scripts/test-sast.py
           if ($LASTEXITCODE -ne 0) { throw 'SAST fixtures failed.' }
           npm run quality
@@ -27,11 +30,13 @@ def main():
     started = time.monotonic()
     node, _ = npm.runtime()
     cli = ROOT / "node_modules/@biomejs/biome/bin/biome"
-    for path in (cli, ROOT / "biome.json", ROOT / "package.json"):
+    rule = ROOT / "scripts/no-ui-sql.grit"
+    for path in (cli, ROOT / "biome.json", ROOT / "package.json", rule):
         npm.safe_path(path)
         assert path.is_file(), "SAST_INPUT_MISSING"
     config_blob = (ROOT / "biome.json").read_bytes()
     manifest_blob = (ROOT / "package.json").read_bytes()
+    rule_blob = rule.read_bytes()
     manifest = npm.read_json(manifest_blob)
     assert manifest["devDependencies"]["@biomejs/biome"] == "2.5.15", "SAST_PIN_CHANGED"
     version = npm.invoke([str(node), str(cli), "--version"])
@@ -47,8 +52,12 @@ def main():
     try:
         (scratch / "biome.json").write_bytes(config_blob)
         (scratch / "package.json").write_bytes(manifest_blob)
+        (scratch / "scripts").mkdir()
+        rule_copy = scratch / "scripts/no-ui-sql.grit"
+        rule_copy.write_bytes(rule_blob)
         (scratch / "src").mkdir()
-        # ponytail: pattern checks only; re-evaluate SAST when Rust/SQL/restore inputs exist.
+        (scratch / "src/ui").mkdir()
+        # shortcut: SQL prefixes and imports, not value flow; extend fixtures when frontend helpers evolve.
         cases = [
             ("jsx.tsx", 'export const App = () => <div dangerouslySetInnerHTML={{ __html: "fixture" }} />;\n', RULE_HTML),
             ("create.ts", 'import React from "react";\nexport const App = React.createElement("div", { dangerouslySetInnerHTML: { __html: "fixture" } });\n', RULE_HTML),
@@ -60,6 +69,34 @@ def main():
             ("computed.ts", 'const key = "eval";\nexport const value = window[key]("fixture");\n', None),
             ("constructor.ts", 'export const value = new Function("return 1")();\n', None),
             ("parse.ts", 'export const value = ;\n', "parse"),
+            ("ui/sql-read.tsx", 'export const App = () => <p>{"SELECT * FROM fixture"}</p>;\n', RULE_SQL),
+            ("main.tsx", "export const query = 'insert into fixture values (1)';\n", RULE_SQL),
+            ("sql-helper.ts", 'export const query = "UPDATE fixture SET amount = 1";\n', RULE_SQL),
+            ("sql-delete.ts", 'export const query = "DELETE FROM fixture";\n', RULE_SQL),
+            ("sql-schema.ts", 'export const query = "CREATE TABLE fixture (id INTEGER)";\n', RULE_SQL),
+            ("sql-pragma.ts", 'export const query = "PRAGMA foreign_keys = ON";\n', RULE_SQL),
+            ("sql-with.ts", 'export const query = "WITH fixture AS (SELECT 1) SELECT * FROM fixture";\n', RULE_SQL),
+            ("sql-template.ts", 'export const query = `select *\nfrom fixture`;\n', RULE_SQL),
+            ("sql-interpolation.ts", 'export const query = (id: number) => `SELECT * FROM fixture WHERE id = ${id}`;\n', RULE_SQL),
+            ("sql-transaction.ts", 'export const query = "BEGIN IMMEDIATE";\n', RULE_SQL),
+            ("sql-explain.ts", 'export const query = "EXPLAIN SELECT 1";\n', RULE_SQL),
+            ("sql-savepoint.ts", 'export const query = "SAVEPOINT fixture";\n', RULE_SQL),
+            ("ui/sql-clean.tsx", 'export const App = () => <p>Select an account</p>;\n', None),
+            ("sql-comment.ts", '// SELECT * FROM fixture\nexport const selection = "Account selected";\n', None),
+            ("sql-fragments.ts", 'export const query = "SEL" + "ECT * FROM fixture";\n', None),
+            ("sql-escape.ts", 'export const query = "\\x53ELECT * FROM fixture";\n', None),
+            ("sql-prefix-text.ts", 'export const label = "Select an account";\n', RULE_SQL),
+            ("sql-import.ts", 'import Database from "@tauri-apps/plugin-sql";\nexport const driver = Database;\n', RULE_IMPORT),
+            ("sql-dynamic.ts", 'export const driver = import("@tauri-apps/plugin-sql");\n', RULE_IMPORT),
+            ("sql-require.ts", 'export const driver = require("better-sqlite3");\n', "lint/style/noCommonJs"),
+            ("sql-reexport.ts", 'export { default } from "sql.js";\n', RULE_IMPORT),
+            ("sql-subpath.ts", 'export const driver = import("sql.js/dist/sql-wasm.js");\n', RULE_IMPORT),
+            ("sql-node.ts", 'export const driver = import("node:sqlite");\n', RULE_IMPORT),
+            ("sql-libsql.ts", 'export const driver = import("@libsql/client");\n', RULE_IMPORT),
+            ("sql-sqlite3.ts", 'export const driver = import("sqlite3");\n', RULE_IMPORT),
+            ("sql-wasm.ts", 'export const driver = import("@sqlite.org/sqlite-wasm");\n', RULE_IMPORT),
+            ("sql-tauri-subpath.ts", 'export const driver = import("@tauri-apps/plugin-sql/fixture");\n', RULE_IMPORT),
+            ("sql-ipc.ts", 'import { invoke } from "@tauri-apps/api/core";\nexport const read = () => invoke("plugin:sql|select");\n', RULE_SQL),
         ]
 
         def lint(path):
@@ -81,6 +118,8 @@ def main():
                 assert result.returncode != 0 and summary["errors"] == 1, name
                 assert len(diagnostics) == 1 and diagnostics[0]["category"] == category, name
                 assert diagnostics[0]["severity"] == "error", name
+                if category == RULE_SQL:
+                    assert diagnostics[0]["message"] == SQL_MESSAGE, name
             else:
                 assert result.returncode == 0 and summary["errors"] == 0, name
                 assert not diagnostics, name
@@ -95,6 +134,13 @@ def main():
         report = npm.read_json(result.stdout)
         assert report["summary"]["unchanged"] == 0, "SAST_SCOPE_CHANGED"
         count += 1
+        rule_copy.unlink()
+        assert lint(scratch / "src/ui/sql-read.tsx").returncode != 0, "SAST_MISSING_PLUGIN_PASSED"
+        count += 1
+        rule_copy.write_text("invalid GritQL", encoding="utf-8")
+        assert lint(scratch / "src/ui/sql-read.tsx").returncode != 0, "SAST_INVALID_PLUGIN_PASSED"
+        count += 1
+        rule_copy.write_bytes(rule_blob)
         (scratch / "biome.json").write_text("{", encoding="utf-8")
         assert lint(scratch / "src" / "escaped.tsx").returncode != 0, "SAST_INVALID_CONFIG_PASSED"
         count += 1
@@ -126,9 +172,12 @@ def main():
     sha = npm.invoke(["git", "rev-parse", "HEAD"])
     assert sha.returncode == 0, "SAST_SOURCE_SHA_FAILED"
     evidence = {"sourceSha": sha.stdout.decode().strip(), "biome": "2.5.15", "cases": count,
-                "biomeCli": 12, "powershell": 3, "configSha256": hashlib.sha256(config_blob).hexdigest(),
+                "biomeCli": len(cases) + 4, "powershell": 3,
+                "configSha256": hashlib.sha256(config_blob).hexdigest(),
+                "sqlRuleSha256": hashlib.sha256(rule_blob).hexdigest(),
                 "fixtureVcsDisabledOnly": True, "scratchRemoved": True,
-                "limitations": ["computed eval property", "Function constructor", "Rust/SQL/restore"],
+                "limitations": ["computed eval property", "Function constructor", "SQL fragments/escapes",
+                                "SQL-prefix UI strings rejected", "Rust/backend SQL/restore"],
                 "elapsedSeconds": round(time.monotonic() - started, 3)}
     print("SAST_EVIDENCE " + json.dumps(evidence, separators=(",", ":")))
 

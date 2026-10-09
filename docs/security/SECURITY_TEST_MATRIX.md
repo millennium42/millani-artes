@@ -161,3 +161,7 @@ Executor E3/entrega93362971/CI37865774054: root10Rust/5compilernegatives, plugin
 
 
 ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
+
+## ARC-005 — separação de SQL no frontend
+
+[Spec](../../planning/specs/ARC-005.md) →[config/regra](../../scripts/no-ui-sql.grit) →[harness real](../../scripts/test-sast.py): E3 local,45casos/42CLI/3PS incluindo15casos anteriores e falhas de plugin/configuração. SQL reconhecível, imports de drivers, require e comandos SQL IPC literais recusados em src/. Comentário/JSX textual limpos passam; fragmentos/escapes e texto JS com palavra SQL inicial são limites registrados. Não comprova bindings/constraints/SQLite nem muda o requisitoSEC002 de SQLi para verde. SEC007 continua parcial. Quality100%/4linhas do scaffold; review/CI/nota61/liberação14 pendentes, E4 temporários e prazo intactos.

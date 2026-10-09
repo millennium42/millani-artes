@@ -47,3 +47,11 @@ Reavaliar ferramenta/ruleset e fixtures quando SEC-014/015 introduzirem sanitiza
 ## Entrega observada
 
 E3 no SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[CI37851893560](https://github.com/millennium42/millani-artes/actions/runs/37851893560):15casos/12CLI/3PS2.547s,configSHA267bcfe6fb64f38c9e3b050adfbb002c143a99b2ce7f9203396cceb77abee1ae/scratchremoved,quality/audits/buildPEAMD64 passaram. Root leu logs/coverage emmemória;100% limita-se4linhasdo scaffold. ReviewE2 semP0P1P2; [spec](../../planning/specs/SEC-013.md#executor--learn--entrega-validada) contém evidências/limites. Nenhuma alternativa instalada, custo/tokens não registrado. FechamentoCI/nota54/liberação ainda pendentes; não amplia escopo de segurança/E4/META.
+
+## Extensão arquitetural — ARC-005
+
+[Spec](../../planning/specs/ARC-005.md) amplia o mesmo [harness](../../scripts/test-sast.py), sem instalar scanner/dependência nem criar job. Biome2.5.15 continua o pin: noRestrictedImports bloqueia drivers/imports/subpaths, noCommonJs rejeita require, e [Grit local](../../scripts/no-ui-sql.grit) gera plugin/error com mensagem SQL_UI_DENIED em strings/templates SQL e comandos plugin:sql|.
+
+RED real: configuração anterior deixou SELECT passar (CLI0); o oráculo recusou a fixture. BUILD local:45casos/42CLI/3PowerShell,8.141s, configSHA84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a e regraSHAe4f5d30e564f95a4540dacf8819bd7328bf7081dac3cfaf8919ec5fe9702bc6e. Preservados15casos anteriores; novos casos verificam SQL em UI/entrypoint/helper, strings/templates/interpolação, drivers e subpaths, require, IPC literal, arquivo limpo, plugin ausente/inválido e cleanup. CLI real, um arquivo analisado por caso elegível, zero modificações, erro/category/message estritos e sem executar fixtures.
+
+Limites observados: concatenação SEL + ECT e escape JavaScript do S passam; Select an account como string JS é recusado conservadoramente, mas JSX textual é permitido. Prefixos, não parser SQL/taint: valores construídos, ofuscados ou prefixados por comentários não têm garantia. SQLite/SQLi/backend/restore permanecem sem prova deste guard. Coverage100% do scaffold não cobre o harness/regra. Review/CI exactSHA/nota61 pendentes; controles globais de segurança continuam parciais.

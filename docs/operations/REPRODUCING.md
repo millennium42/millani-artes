@@ -396,3 +396,9 @@ O harness cria artifacts/sec001-webview-profile e exige ausência inicial. Após
 
 
 ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
+
+## ARC-005 — reproduzir o guard SQL
+
+Com Node24.21.0/npm11.19.0 já instalados e selecionados no processo conforme pins, executar rtk proxy python -B scripts/test-sast.py e rtk npm run quality. Python sem otimização: asserts são oráculos. O harness copia biome.json, package.json e scripts/no-ui-sql.grit byte a byte para scratch próprio em artifacts; invoca Biome2.5.15 real, nunca executa os fontes das fixtures e remove apenas sua árvore contida/semreparse.
+
+E3 local45casos/42CLI/3PS; quality3testes100% do scaffold. Configuração/plugin ausente/inválido, zero arquivos analisados e guard PowerShell0/1/2 têm controles negativos. Filtro do plugin **/src/** provado com fixture aninhada; src/** isolado deixou SQL passar no RECON. O produto mantém VCS/ignore; somente fixtures desabilitam VCS. Sem novo tool/job/workflow/upload, MSVC/SDK/grants/locks ou configuração global alterados. [Spec](../../planning/specs/ARC-005.md) registra hashes e limites; review/CI/nota61 pendentes.

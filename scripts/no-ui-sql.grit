@@ -1,0 +1,10 @@
+engine biome(1.0)
+language js(typescript,jsx)
+
+or {
+  JsStringLiteralExpression() as $sql,
+  JsTemplateChunkElement() as $sql
+} where {
+  $sql <: r"(?is)[\"']?\s*(?:(?:select|insert|update|delete|replace|create|alter|drop|pragma|with|begin|commit|rollback|savepoint|release|end|attach|detach|vacuum|reindex|analyze|explain)\b|plugin:sql\|).*",
+  register_diagnostic(span = $sql, message = "SQL_UI_DENIED: use a Rust use case.")
+}

@@ -31,3 +31,9 @@ Executor E3 validado na entrega93362971/[CI37865774054](https://github.com/mille
 
 
 ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
+
+## Guard de SQL no frontend — ARC-005
+
+[Configuração](../../biome.json), [regra local](../../scripts/no-ui-sql.grit) e [fixtures](../../scripts/test-sast.py) reutilizam Biome2.5.15. O lint rejeita imports de drivers reconhecidos, require (CommonJS), strings/templates com prefixos SQL e comandos literais plugin:sql| no frontend. Isso inclui componentes, entrypoint, helpers e testes sob src/. A regra Grit usa **/src/**: o filtro src/** não ativou o plugin no probe com o pin instalado; a fixture aninhada evita aceitar esse falso verde.
+
+[Spec](../../planning/specs/ARC-005.md) registra RED/GREEN, padrões e limites. Não é análise de fluxo: SQL fragmentado/escapado passa nos controles conhecidos; texto JS iniciado por palavra SQL é rejeitado conservadoramente, enquanto comentário e JSX textual são permitidos. O gate não autoriza os contornos nem prova consultas parametrizadas, SQLite ou invariantes financeiras. Testes reais de repositórios continuam no plano DB. E3 local; review/CI/nota61 e liberação14 pendentes.

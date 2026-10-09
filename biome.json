@@ -24,9 +24,42 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "preset": "recommended"
+      "preset": "recommended",
+      "style": {
+        "noCommonJs": "error",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "patterns": [
+              {
+                "group": [
+                  "@tauri-apps/plugin-sql",
+                  "@tauri-apps/plugin-sql/**",
+                  "better-sqlite3",
+                  "better-sqlite3/**",
+                  "sqlite3",
+                  "sqlite3/**",
+                  "sql.js",
+                  "sql.js/**",
+                  "@sqlite.org/sqlite-wasm",
+                  "@sqlite.org/sqlite-wasm/**",
+                  "@libsql/**",
+                  "node:sqlite"
+                ],
+                "message": "SQL_UI_IMPORT_DENIED: use a Rust use case."
+              }
+            ]
+          }
+        }
+      }
     }
   },
+  "plugins": [
+    {
+      "path": "./scripts/no-ui-sql.grit",
+      "includes": ["**/src/**"]
+    }
+  ],
   "assist": {
     "enabled": false
   }

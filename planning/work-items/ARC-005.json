@@ -1,0 +1,24 @@
+{
+  "id": "ARC-005",
+  "title": "bloquear SQL em componente",
+  "specPath": "planning/specs/ARC-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-001"
+  ],
+  "acceptanceCriteria": [
+    "Lint real rejeita SQL reconhecível e imports diretos de driver no frontend src/",
+    "RED/GREEN fixtures positivas/negativas/config/escopo/guard e quality/coverage/security/review sem alterar produto financeiro",
+    "Docs/matrizes/log/handoff/CI entrega-final exactSHA/nota61 pública preserva60/liberação14"
+  ],
+  "checks": [
+    "scripts/test-sast.py com Biome2.5.15 real e guard PowerShell0/1/2",
+    "npm run quality; validators/links/preservação/Gitleaks stageddiff",
+    "workflow existente/review E2/CI exactSHA/nota61"
+  ],
+  "agentPlan": "P-INT6.1-solultra por META único writer/executor14ATIVA; P-SEC6-lunalow inventário3achadosE2 usado; P-REV5.6-solmedium read-only contra spec/diff semP0P1P2 E2 usado.2delegados0escalonamentos; efetivos/tokens/cache/custo/duração do modelo/APIretries não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "RED real SQL CLI0/oráculo falhou1.488s; GREEN45casos42CLI3PS8.141s e quality3tests100%4lines4.134s. Biome2.5.15/noRestrictedImports/noCommonJs/Grit existentes, filtro **/src/** provado; configuração/plugin invalid fail/cleanup. Limites SQLfragmentos/escapes/UI-string prefix/sem SQLiteSQLi/finanças. P-SEC6-lunalow E2 usado; SECURITY/review/validators/CI/nota61 pending/passfalse/reserva14ATIVA. Locks/E4/prazo/workflow/thresholds/Rust intactos; DB001 não iniciado/META ativa. SECURITY/review/VERIFY root4validators809links/63itens302files/245tuplas17invariantes/preservação60notas62itens34JSON/prefixo266920; Gitleaks diff e3debd77zero0.515s; review E2 semachados. Entrega/CI/nota61 pendentes."
+}

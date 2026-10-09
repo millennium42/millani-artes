@@ -402,3 +402,7 @@ ARC-003 executor done/E3/passestrue: entrega6eafaa40/[CI37963747801](https://git
 [Spec](specs/ARC-004.md)/[handoff](handoffs/ARC-004.md): caso de uso possui unidade de validação do estado, gravações e auditoria; sucesso somente após commit. Definição documental E2, sem executor/API SQLite ou prova financeira. Base8d951d2/CI anterior e nota59 LIBERADA revalidados; checks/security/review/CI pendentes/passfalse/reserva10ATIVA. Próximo candidato ARC-005 somente após fechamento; META ativa.
 
 ARC-004 executor documental done/E3: entrega9414698f/[CI37968888746](https://github.com/millennium42/millani-artes/actions/runs/37968888746),16success/7skip/0artifacts; reviewE2 semP0P1P2/validators e Gitleaks0. Contrato E2/INV-FIN006007 produtoE0. Fechamento6docs preserva27fontes/reserva10ATIVA atéCIfinalnota60/refsGitclean. PróximoARC005 não iniciado; META ativa.
+
+## ARC-005 — bloquear SQL no frontend
+
+[Spec](specs/ARC-005.md)/[handoff](handoffs/ARC-005.md): lint Biome existente + Grit local + restrição de imports/CommonJS;45casos reais42CLI3PS e quality3tests100% do scaffold. RED SQL deixou passar CLI0 antes da regra; GREEN8.141s. Sem dependência/workflow novo, sem SQLite ou finanças. Executor in_progress/passfalse/reserva14ATIVA; review/CI/nota61 pendentes. Próximo candidato DB001 após fechamento; não iniciado/META ativa.
