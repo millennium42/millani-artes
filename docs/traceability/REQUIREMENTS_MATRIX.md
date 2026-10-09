@@ -273,3 +273,7 @@ ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/
 ADR017/fronteiras/políticalogs →[spec](../../planning/specs/ARC-002.md) →[biblioteca](../../src-tauri/src/lib.rs)/[DomainErrorResult](../../src-tauri/src/domain/mod.rs) →3testesResultOk/?/DisplayDebugstatic/noSource +5compilernegatives/coverage3linhas100%controle0% →[handoff](../../planning/handoffs/ARC-002.md). Executor done/E3/passestrue, entrega93362971/CI37865774054, security/review verificados. Sem produtor/validação financeira/transação/SQL/mapperUI; não fechar invariantes pelo tipo. Reserva17ATIVA até CI final/nota58; METAativa.
 
 ARC002 VERIFYlocal:3domain+7native10Rust0ignored/std-only5negativos/coverage3linhas100%controle0%/branchstockstableindisponível/auditquality/plugin0/validators/Gitleaks0; reviewE2semachadoscontrato, securitypendente histórico resolvido pelos gates root. Fontehashpreservada, sem validação financeira; entregaCI/nota58-liberação pendentes/passfalse/17ATIVA/METAativa.
+
+
+## ARC-003 — relógio e UUID
+RoadmapARC003/ADR017018 →[spec](../../planning/specs/ARC-003.md) →[portas](../../src-tauri/src/domain/ports.rs) →[testes](../../src-tauri/src/domain/ports_tests.rs): substituição temporal/pré-epoch,16bytes/sequência/dyn, falha sem substituto →13Rust/std-only5negativos/coverage limitada →[handoff](../../planning/handoffs/ARC-003.md). E3local da injeção, sem gerar UUID real/vencimento/backup automático. REC006/BKP007 ainda pendentes; review/CI/nota59/passfalse/reserva14ATIVA/METAativa.

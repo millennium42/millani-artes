@@ -1,5 +1,7 @@
 //! Pure business rules belong here; financial rules are not implemented yet.
 
+pub mod ports;
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -17,3 +19,6 @@ impl std::error::Error for DomainError {}
 
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+mod ports_tests;

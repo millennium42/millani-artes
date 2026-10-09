@@ -388,3 +388,7 @@ ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/
 
 ## ARC-002 — Result/erro estático
 [Spec](specs/ARC-002.md)/[handoff](handoffs/ARC-002.md): bibliotecaRustdomainResult e InvalidInput fechado sempayload,3domain+7regressões/coverage3linhas100%controle0%/5compilernegatives. Executor done/E3/passestrue, security/review e entrega93362971/CI37865774054 verificados. Branchcounterstableindisponível documentado. Reserva17ATIVA até CI final/nota58; FIN/DB/transação/META pendentes, ARC003 não iniciado.
+
+
+## ARC-003 — portas injetáveis
+[Spec](specs/ARC-003.md)/[handoff](handoffs/ARC-003.md): Clock/SystemTime e UuidGenerator/16bytes/falha opaca, sem adapter/default. E3local3testsnovos+10regressões=13Rust0ignored/std-only5negativos/coverage3linhas100%controle0%/traits0executáveis. Review/securitydiff/CI/nota59 pendentes/passfalse/reserva14ATIVA; finanças/UUID real/vencimento/backup/META pendentes, ARC004 não iniciado.

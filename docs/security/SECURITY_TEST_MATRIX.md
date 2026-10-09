@@ -154,3 +154,7 @@ ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/
 
 Executor E3/entrega93362971/CI37865774054: root10Rust/5compilernegatives, plugin0, Gitleaks0, reviewE2 sem achados de contrato. CI compila produção/audita/scaneia, sem executar Rustsuite; fechamento documental/reserva17 até nota58 no [handoff](../../planning/handoffs/ARC-002.md).
 [DomainError/Result](../../src-tauri/src/domain/mod.rs) →[unitários](../../src-tauri/src/domain/tests.rs) + compilernegativesE0618(payloadtexto)/E0277(From<String>) +std-only semTauri/infra/SQLite →[spec](../../planning/specs/ARC-002.md)/[handoff](../../planning/handoffs/ARC-002.md). Biblioteca pública Rust não é IPC. Bootstrap/hook/catalogo/CSP/grants/UI intactos,7regressões native/5phone5finance passaram. Estado globalSEC003/SEC007 e invariantes financeiras continuam parciais; nenhum dado real usado.
+
+
+## ARC-003 — fornecedores injetáveis
+[Portas](../../src-tauri/src/domain/ports.rs) →[testes](../../src-tauri/src/domain/ports_tests.rs) substituição/16bytes/sequência/falha opaca →std-only6tests/5negativos(String/UUID15bytes/Tauri/infra/SQLite) →[spec/handoff](../../planning/handoffs/ARC-003.md). Sem IO/unsafe/plugin/IPC/log/default novo.13Rust regrediram CSP6/IPCdenied/phone5/finance5/junction após cleanup do próprio perfil do baseline. IDs/erro de adapters futuros continuam proibidos em logs; erro opaco não é sanitizado. Plugin0, scan/review/CI pendentes/inputE4prazo intactos; segurança global parcial.
