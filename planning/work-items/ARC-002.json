@@ -2,7 +2,7 @@
   "id": "ARC-002",
   "title": "definir Result/erro de domínio",
   "specPath": "planning/specs/ARC-002.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-001"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra único writer/executor17ATIVA; P-TRC6-lunalow E2 contrato usado; P-REV5.6-solmedium E2 fontesdiffcba03b6a semP0P1P2 contrato/alertasecuritydocs atualizado pelos gates root.2delegados0escalonamentos; tokenscusto/modelos efetivos/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY E3local/RED E0432/3domain+7native10Rust0ignored/fmtclippyauditquality/std-only5negative/coverage3linhas100%controle0%/LLVM23.1.1local/branchesstockindisponível/plugin0/validators/Gitleaks0/reviewE2fontessemachados.59prévios31JSON245tuplas57notas/inputsE4 preservados. Semprodutorfinanceiro/CIentrega-finalnota58pending/passfalse/17ATIVA/METAativa/ARC003nãoiniciado."
+  "passes": true,
+  "notes": "Executor done/E3: entrega93362971d17765d6613c5e3e035e222f7be54236/CI37865774054/job113612024093/attempt1/23success, logs/coverage/build/audits/scans verificados root. RED E0432/3domain+7native10Rust0ignored/fmtclippyauditquality/std-only5negative/coverage3linhas100%controle0%/LLVM23.1.1local/branchesstockindisponível/plugin0/validators/Gitleaks0/reviewE2fontessemachados. CI não executa Rustsuite/coverageRust.59prévios31JSON245tuplas57notas/inputsE4 preservados. Fechamento13docs/25fontes intactas; reserva17ATIVA até CI final/nota58 preserva57/publicrefs/Gitlimpo/cleanup. Semprodutorfinanceiro/METAativa/ARC003nãoiniciado; tokenscusto não registrado."
 }

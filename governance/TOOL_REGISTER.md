@@ -206,6 +206,8 @@ SEC-013 reutilização validada:E3/SHAa8e02cf7c4938855007dab4a4f3e10f087e335f2/[
 
 
 ## LLVM coverage local — ARC-002 (prerregistro)
+
+Estado atual: adoção local executada e verificada nos registros posteriores abaixo; entrega93362971/CI37865774054 validada. Prerregistro histórico; LLVM não foi instalado no CI. Fechamento no [handoff](../planning/handoffs/ARC-002.md), sem novo tool/dependência/pin.
 Adotar somente llvm-tools-preview da toolchainRust1.99.0-x86_64-pc-windows-msvc existente, gerido pelo rustup e download/verificação de integridade do canal oficial. [Documentação oficial rustc](https://doc.rust-lang.org/rustc/instrument-coverage.html) recomenda componente compatível com LLVM do compilador. Medir com rustc -Cinstrument-coverage, llvm-profdata merge e llvm-cov export; sem cargo-llvm-cov/rustfilt/nightly/dependência no Cargo/npm, sem instalar em CI ou mudar pin/rust-toolchain.toml. Executar só3testes puros da biblioteca/fonte real, perfis próprios ignorados, relatório em memória/sumário público sanitizado; remover perfis após processos terminais.
 Necessidade: COVERAGE_POLICY exige medição quando surge domínio Rust. Eficácia prevista: perfil completo deve cobrir Display; controle omitindo esse teste deve baixar linhas, sem inferir statements/branches/globais. Branches: verificar capacidade efetiva stockstable; não usar RUSTC_BOOTSTRAP nem reduzir threshold. Versões/hashes dos binários/LLVMcompatibilidade e resultados ainda não registrados, instalação não executada. Remoção local: rtk proxy rustup component remove llvm-tools-preview --toolchain 1.99.0-x86_64-pc-windows-msvc; não remove o compiler/runtime de produção. [Spec](../planning/specs/ARC-002.md) delimita adoção; nenhum novo gate humano.
 
