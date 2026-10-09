@@ -1089,3 +1089,10 @@ SEC-015 | RED/BUILD/TEST | P-INT6.1-solultra | E3local | REDsensibilidade10.625s
 SEC-015 | SECURITY/REVIEW/VERIFY | P-INT6.1-solultra | E3local | quality3tests100%4lines/SEC0050/metadata10paths57anteriores245tuplas/scan0/review5.6solmediumE2fontesdiffsemachados/7Rust5finance5phone | CIpending/11ATIVA/METAativa | proximoSEC-015
 
 SEC-015 | CI/LEARN | P-INT6.1-solultra | E3 | entrega96c06e66e53f8c9776d51576bf7f467102487ad2/CI37860308161/job113594170582/attempt1/23success/5finance5phone7Rustlocal/productionunchanged/reviewE2semachados/auditsqualitybuild | passestrue/reserva11ATIVAatéCIfinalnota56/METAativa | proximoSEC-015
+
+
+## ARC-001 — SPEC/RECON/RED/BUILD/TEST local
+ARC-001 | E3local parcial | base685d10d/SEC015 CI37861133255-nota56 e INF002 CI37241566670 revalidados | reserva22ATIVA/único P-INTwriter6.1-solultra; P-TRC6-lunalow oráculoE2 usado | RED E0583/0.219s; GREEN std-only1.516s/erroopaco-panic/6imports rejeitados; UI quality3tests100%4lines3.766s/build1.187s; Cargo417deps0vulnsclassificadas2excepted3.954s | Rustfinal/security/review/CI/nota57 pendentes, passesfalse; domínio semregras/SQLite/finanças/backup/setup.exe pendentes/METAativa | próximoARC002 não iniciado. RTKspace/formatter/observaçãoaudit corrigidos conforme spec; tokens/custo não registrado.
+
+
+ARC-001 | VERIFY | E3local+reviewE2 | fmtclippy/full7Rust0ignored7.985s/quality3tests100%4lines/audit417deps2excepted/std-only6controles/plugin0/validators/Gitleaksdiff709a487b0findings | P-REV5.6-solmedium fonteslidas semP0P1P2; 58items30JSON anteriores/245tuplas/log259911/56notas/inputsE4 preservados; root único writer,2delegados0escalonamentos/tokenscustoNR | entregaCI/fechamentoCI/nota57 pendentes/passfalse/22ATIVA/METAativa | próximoARC002 não iniciado.

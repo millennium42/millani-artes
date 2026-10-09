@@ -1,0 +1,24 @@
+{
+  "id": "ARC-001",
+  "title": "criar camadas domínio/aplicação/infra/UI",
+  "specPath": "planning/specs/ARC-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002"
+  ],
+  "acceptanceCriteria": [
+    "Main compõe camadas reais application/infrastructure/UI e raiz pura de domínio sem regra financeira",
+    "Probe std isolado RED/GREEN e controles negativos; callers/regressões/quality/Rustgates/security/review",
+    "Docs/matrizes/log/handoff/CI exactSHA/nota57 preserva56/liberação22"
+  ],
+  "checks": [
+    "rustc std-only; npm quality/build; fmt/clippy/test custom-protocol --include-ignored/audit",
+    "plugin0/Gitleaks/validators/preservação/review independente",
+    "CI entrega/final existentes exactSHA"
+  ],
+  "agentPlan": "P-INT6.1-solultra único writer/executor22ATIVA; P-TRC6-lunalow E2 escopo usado; P-REV5.6-solmedium E2 fontes/diff709a487b semP0P1P2. Root reproduziu.2delegados0escalonamentos; tokens/custo/modelos efetivos/APIretries não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY E3local/std-only6controles/quality3tests100%4lines/build/fmtclippy/full7Rust0ignored/audit417deps2excepted/plugin0/validators/Gitleaks0/reviewfontesE2semachados. UI/catálogo/inputsE4 preservados; domínio semregra. EntregaCI/fechamentoCI/nota57 pendentes/passfalse/22ATIVA/METAativa/ARC002nãoiniciado."
+}

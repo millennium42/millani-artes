@@ -32,25 +32,28 @@ fn child(case: &str, fixture: &'static str) -> ! {
         .expect("STARTUP_BARRIER_FAILED");
     let injected = AtomicBool::new(false);
     let outcome = std::panic::catch_unwind(|| {
-        super::run_startup(|| {
-            if case == "panic" {
-                std::panic::panic_any(fixture);
-            }
-            if case == "before-injection" {
-                return Err(tauri::Error::Io(std::io::Error::other(
-                    "CONTROLLED_BEFORE_INJECTION",
-                )));
-            }
-            let mut context = tauri::generate_context!();
-            context.config_mut().app.windows.clear();
-            let _app = tauri::Builder::default().any_thread().build(context)?;
-            if case == "ok" {
-                Ok(())
-            } else {
-                injected.store(true, Ordering::Relaxed);
-                Err(tauri::Error::Io(std::io::Error::other(fixture)))
-            }
-        })
+        super::application::run_startup(
+            || {
+                if case == "panic" {
+                    std::panic::panic_any(fixture);
+                }
+                if case == "before-injection" {
+                    return Err(tauri::Error::Io(std::io::Error::other(
+                        "CONTROLLED_BEFORE_INJECTION",
+                    )));
+                }
+                let mut context = tauri::generate_context!();
+                context.config_mut().app.windows.clear();
+                let _app = tauri::Builder::default().any_thread().build(context)?;
+                if case == "ok" {
+                    Ok(())
+                } else {
+                    injected.store(true, Ordering::Relaxed);
+                    Err(tauri::Error::Io(std::io::Error::other(fixture)))
+                }
+            },
+            super::infrastructure::emit_failure,
+        )
     });
     if ["error", "closed", "before-injection"].contains(&case) && !injected.load(Ordering::Relaxed)
     {
@@ -196,5 +199,5 @@ fn financial_data_is_absent_from_startup_diagnostics() {
         ],
         "STARTUP_FINANCIAL_LEAK_DETECTED",
     );
-    println!("FINANCIAL_REDACTION_EVIDENCE {{\"cases\":5,\"realTauriBuild\":true,\"faultInjectedIo\":true,\"earlyFailureRejected\":true,\"panicHook\":true,\"closedStderr\":true,\"rawOutputPublished\":false,\"childrenTerminated\":true,\"productionChanged\":false}}");
+    println!("FINANCIAL_REDACTION_EVIDENCE {{\"cases\":5,\"realTauriBuild\":true,\"faultInjectedIo\":true,\"earlyFailureRejected\":true,\"panicHook\":true,\"closedStderr\":true,\"rawOutputPublished\":false,\"childrenTerminated\":true}}");
 }

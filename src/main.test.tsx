@@ -35,7 +35,7 @@ test("monta App em StrictMode no root encontrado", async () => {
   vi.stubGlobal("document", { getElementById });
 
   await import("./main");
-  const { default: App } = await import("./App");
+  const { default: App } = await import("./ui/App");
 
   expect(getElementById).toHaveBeenCalledExactlyOnceWith("root");
   expect(createRoot).toHaveBeenCalledExactlyOnceWith(root);
