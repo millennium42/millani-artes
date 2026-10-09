@@ -280,3 +280,8 @@ RoadmapARC003/ADR017018 →[spec](../../planning/specs/ARC-003.md) →[portas](.
 
 
 ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
+
+
+## ARC-004 — fronteira transacional definida
+
+INV-FIN-006/007 → [modelo e falhas](../architecture/TRANSACTION_MODEL.md) → DB-011/012/013/014 e consumidores previstos na [matriz de invariantes](INVARIANT_TEST_MATRIX.md). [Spec](../../planning/specs/ARC-004.md)/[handoff](../../planning/handoffs/ARC-004.md): contrato E2; checks documentais, segurança, review e CI pendentes. Atomicidade SQLite, rollback e auditoria financeira continuam produto E0. Sem executor/API antecipada ou alteração de thresholds.

@@ -1,0 +1,24 @@
+{
+  "id": "ARC-004",
+  "title": "definir fronteira de transação",
+  "specPath": "planning/specs/ARC-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "Caso de uso possui uma unidade: validação do estado, escritas e auditoria no mesmo contexto; sucesso após commit",
+    "Falhas e limites de rollback, erro sanitizado, idempotência e restore definidos sem antecipar executor SQLite",
+    "Matrizes preservam produto E0; validators, segurança, review, CI exato e nota60/liberação10"
+  ],
+  "checks": [
+    "check-project-map.ps1/check-work-items.ps1/check-evidence-states.ps1/check-progress-log.ps1",
+    "links/catálogo17/grafo245/preservação de fontes e registros/Gitleaks staged diff",
+    "review E2; workflow existente/CI entrega-final exactSHA/nota60 preserva59"
+  ],
+  "agentPlan": "P-INT6.1-solultra porMETA único writer/executor10ATIVA; P-TRC6-lunalow fontes E2 usadas; P-REV5.6-solmedium read-only após diff.2delegados/0escalonamentos; efetivos/tokens/cache/custo/APIretries não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY documental E3: validators62itens298files/log265230/links785/catálogo17/grafo245/prévios61itens33JSON59notas27fontes intactos/Gitleaksdiffdc3e0892zero0.491s. P-REV5.6-solmedium E2 fontes/diff semP0P1P2; P-TRC6-lunalow usado. Sem código novo/teste de produto/Rust/frontend/coverage novo; atomicidade E0. CI entrega-final/nota60-liberação pendentes/passfalse/10ATIVA/METAativa/ARC005nãoiniciado."
+}

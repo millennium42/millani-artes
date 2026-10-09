@@ -10,6 +10,8 @@
 
 Cada operação canônica de escrita — lançamento, transferência, finalizar venda, receber, pagar recorrência, devolver, reembolsar e restaurar — terá um único caso de uso.
 
+O [modelo transacional](TRANSACTION_MODEL.md#fronteira-da-unidade--arc-004) define a propriedade da unidade financeira: caso de uso coordena validação do estado, repositórios no mesmo contexto, gravações, auditoria e resultado após commit. Repositórios não confirmam etapas independentemente; a infraestrutura implementará a transação em DB-011. Restore possui seu protocolo de arquivo e não presume proteção por rollback SQL. ARC-004 define este contrato documental, sem executor ou prova de atomicidade.
+
 ## Estrutura atual — ARC-001
 
 [Main](../../src-tauri/src/main.rs) compõe [application](../../src-tauri/src/application/mod.rs) e [infrastructure](../../src-tauri/src/infrastructure/mod.rs). Application orquestra apenas inicialização/hook com erro opaco e callback técnico; infrastructure contém Tauri e o catálogo estático de stderr. [Domain](../../src-tauri/src/domain/mod.rs) é uma raiz compilada sem regras implementadas. [UI](../../src/ui/App.tsx) contém a tela existente, ligada pelo entrypoint React.

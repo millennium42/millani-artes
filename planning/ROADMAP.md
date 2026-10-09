@@ -395,3 +395,8 @@ ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/
 
 
 ARC-003 executor done/E3/passestrue: entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801)/23success, root13Rust0ignored/5negativos/reviewE2semachados. Fechamento11docs/27fontes preservadas/reserva14ATIVA até CI final/nota59/publicrefsGitclean. Próximo candidato ARC004 somente após liberação, não iniciado; META ativa.
+
+
+## ARC-004 — fronteira de transação
+
+[Spec](specs/ARC-004.md)/[handoff](handoffs/ARC-004.md): caso de uso possui unidade de validação do estado, gravações e auditoria; sucesso somente após commit. Definição documental E2, sem executor/API SQLite ou prova financeira. Base8d951d2/CI anterior e nota59 LIBERADA revalidados; checks/security/review/CI pendentes/passfalse/reserva10ATIVA. Próximo candidato ARC-005 somente após fechamento; META ativa.
