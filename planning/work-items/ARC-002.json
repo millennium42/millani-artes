@@ -1,0 +1,24 @@
+{
+  "id": "ARC-002",
+  "title": "definir Result/erro de domínio",
+  "specPath": "planning/specs/ARC-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-001"
+  ],
+  "acceptanceCriteria": [
+    "Result<T> tipado e DomainError fechado sem payload/formatação livre; biblioteca pura utilizável sem consumidor fictício",
+    "RED/GREEN3domain-tests/controles negativos/coverageRustlocal/fmtclippy/full10Rust/audit/quality/security/review",
+    "Docs/matrizes/log/handoff/CI exactSHA/nota58 preserva57/liberação17"
+  ],
+  "checks": [
+    "rustc --test/std-only/type negatives/instrument-coverage com LLVM oficial",
+    "fmt/clippy --locked --all-targets --features tauri/custom-protocol -Dwarnings/test --include-ignored/audit; npm quality",
+    "plugin0/Gitleaks/validators/review/CI entrega-final existentes"
+  ],
+  "agentPlan": "P-INT6.1-solultra único writer/executor17ATIVA; P-TRC6-lunalow E2 contrato usado; P-REV5.6-solmedium E2 fontesdiffcba03b6a semP0P1P2 contrato/alertasecuritydocs atualizado pelos gates root.2delegados0escalonamentos; tokenscusto/modelos efetivos/APIretries não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY E3local/RED E0432/3domain+7native10Rust0ignored/fmtclippyauditquality/std-only5negative/coverage3linhas100%controle0%/LLVM23.1.1local/branchesstockindisponível/plugin0/validators/Gitleaks0/reviewE2fontessemachados.59prévios31JSON245tuplas57notas/inputsE4 preservados. Semprodutorfinanceiro/CIentrega-finalnota58pending/passfalse/17ATIVA/METAativa/ARC003nãoiniciado."
+}

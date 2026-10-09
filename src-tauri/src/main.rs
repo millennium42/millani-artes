@@ -3,7 +3,6 @@
 use std::process::ExitCode;
 
 mod application;
-mod domain;
 mod infrastructure;
 
 fn main() -> ExitCode {

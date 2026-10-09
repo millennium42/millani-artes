@@ -149,3 +149,6 @@ SEC015 executor done/passestrue/E3 após entrega96c06e66e53f8c9776d51576bf7f4671
 
 
 ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/millani-artes/commit/e94eec776213725f72239c8d07aff2a293f6f632)/[CI37863336200](https://github.com/millennium42/millani-artes/actions/runs/37863336200) success23steps/buildWindows, std-only6controles e7Rust locais/reviewE2fontes semachados. Domínio sem regra; finanças/SQLite/backup/setup.exe pendentes/METAativa. Reserva22ATIVA atéCI final/nota57, fechamento11docs; detalhe na spec/handoffARC001. ARC002 não iniciado.
+
+## ARC-002 — superfície fechada do erro de domínio
+[DomainError/Result](../../src-tauri/src/domain/mod.rs) →[unitários](../../src-tauri/src/domain/tests.rs) + compilernegativesE0618(payloadtexto)/E0277(From<String>) +std-only semTauri/infra/SQLite →[spec](../../planning/specs/ARC-002.md)/[handoff](../../planning/handoffs/ARC-002.md). Biblioteca pública Rust não é IPC. Bootstrap/hook/catalogo/CSP/grants/UI intactos,7regressões native/5phone5finance passaram. Estado globalSEC003/SEC007 e invariantes financeiras continuam parciais; nenhum dado real usado.

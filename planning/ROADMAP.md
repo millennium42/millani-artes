@@ -385,3 +385,6 @@ SEC015 executor done/passestrue/E3,entrega96c06e66e53f8c9776d51576bf7f467102487a
 
 
 ARC-001 executor done/E3/passes:true: [entrega](https://github.com/millennium42/millani-artes/commit/e94eec776213725f72239c8d07aff2a293f6f632)/[CI37863336200](https://github.com/millennium42/millani-artes/actions/runs/37863336200) success23steps/buildWindows, std-only6controles e7Rust locais/reviewE2fontes semachados. Domínio sem regra; finanças/SQLite/backup/setup.exe pendentes/METAativa. Reserva22ATIVA atéCI final/nota57, fechamento11docs; detalhe na spec/handoffARC001. ARC002 não iniciado.
+
+## ARC-002 — Result/erro estático
+[Spec](specs/ARC-002.md)/[handoff](handoffs/ARC-002.md): bibliotecaRustdomainResult e InvalidInput fechado sempayload,3domain+7regressões/coverage3linhas100%controle0%/5compilernegatives/E3local. Branchcounterstableindisponível documentado. Review/security/CI/nota58 pendentes/passfalse/reserva17ATIVA; não implementar FIN/DB/transação/ARC003/METAativa.
