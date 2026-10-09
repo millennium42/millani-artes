@@ -2,7 +2,7 @@
   "id": "ARC-004",
   "title": "definir fronteira de transação",
   "specPath": "planning/specs/ARC-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-002"
   ],
@@ -19,6 +19,6 @@
   "agentPlan": "P-INT6.1-solultra porMETA único writer/executor10ATIVA; P-TRC6-lunalow fontes E2 usadas; P-REV5.6-solmedium read-only após diff.2delegados/0escalonamentos; efetivos/tokens/cache/custo/APIretries não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY documental E3: validators62itens298files/log265230/links785/catálogo17/grafo245/prévios61itens33JSON59notas27fontes intactos/Gitleaksdiffdc3e0892zero0.491s. P-REV5.6-solmedium E2 fontes/diff semP0P1P2; P-TRC6-lunalow usado. Sem código novo/teste de produto/Rust/frontend/coverage novo; atomicidade E0. CI entrega-final/nota60-liberação pendentes/passfalse/10ATIVA/METAativa/ARC005nãoiniciado."
+  "passes": true,
+  "notes": "Executor documental done/E3 após entrega9414698f6107fa4af0fe1425abade341016b8e1d/CI37968888746/job113950135699/attempt1/success16+skip7/0artifacts; APIlogs conferidos root. Validators62itens298files/17catálogo245tuplas/prévios61itens33JSON59notas27fontes intactos/Gitleaks0/reviewE2semP0P1P2. Contrato E2, INV-FIN006007 produtoE0; sem executor/API ou testes SQLite/Rust/frontend/coverage novos. AuditsCI40npm47Cargo42integração39OSV/npm120zeroCargo4172exceptedOSV5373excepted/Gitleakszero/inputsE4prazo preservados. Fechamento6docs/reserva10ATIVA atéCIfinalnota60/publicrefsGitclean/cleanup;METAativa/ARC005nãoiniciado;2delegados0escalonamentos/tokenscusto não registrado."
 }

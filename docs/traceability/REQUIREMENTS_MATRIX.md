@@ -285,3 +285,5 @@ ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.c
 ## ARC-004 — fronteira transacional definida
 
 INV-FIN-006/007 → [modelo e falhas](../architecture/TRANSACTION_MODEL.md) → DB-011/012/013/014 e consumidores previstos na [matriz de invariantes](INVARIANT_TEST_MATRIX.md). [Spec](../../planning/specs/ARC-004.md)/[handoff](../../planning/handoffs/ARC-004.md): contrato E2; checks documentais, segurança, review e CI pendentes. Atomicidade SQLite, rollback e auditoria financeira continuam produto E0. Sem executor/API antecipada ou alteração de thresholds.
+
+ARC-004 executor documental done/E3 após entrega9414698f/[CI37968888746](https://github.com/millennium42/millani-artes/actions/runs/37968888746),16success/7skip/0artifacts; checks estruturais/segurança e reviewE2 sem achados. Contrato E2, atomicidade SQLite/rollback/audit_event financeiro E0. [Handoff](../../planning/handoffs/ARC-004.md) mantém reserva10 até CI final/nota60; DB-011..014 e consumidores seguem pendentes.
