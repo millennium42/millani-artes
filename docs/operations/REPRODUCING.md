@@ -405,3 +405,7 @@ E3 local45casos/42CLI/3PS; quality3testes100% do scaffold. Configuração/plugin
 
 
 ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.
+
+## DB-001 — teste SQLite real isolado
+
+Com toolchain Rust pinada 1.99.0 e ambiente MSVC x64, executar `cargo fmt --manifest-path src-tauri/Cargo.toml --check`, `cargo clippy --locked --all-targets --features tauri/custom-protocol -- -D warnings`, `cargo test --locked --manifest-path src-tauri/Cargo.toml` e `cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture`. O último comando é a etapa adicionada ao bloco Build Tauri existente; não inicia WebView. Em execução local root observou fmt/clippy, 14 testes Rust e teste release dedicado passando, SQLite 3.53.2. Os scans crus audit/OSV já foram executados sem ignore; atuais gates oficiais devem continuar retornando `SCOPE_CHANGED` até decisão E4. A revisão E2 não substitui revisão final nem CI no SHA final. [Spec/handoff](../../planning/specs/DB-001.md) registram limites e situação.

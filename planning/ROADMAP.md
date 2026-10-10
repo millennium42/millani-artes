@@ -409,3 +409,7 @@ ARC-004 executor documental done/E3: entrega9414698f/[CI37968888746](https://git
 
 
 ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505),23success/45SAST/3frontend100%scaffold/buildWindows/audits/reviewE2semachados. Fechamento11docs preserva28fontes/reserva14ATIVA atéCIfinalnota61/refsGitclean; limites de padrões não são prova SQLite/SQLi/finanças. PróximoDB001←INF006 só após liberação, não iniciado/META ativa.
+
+## DB-001 — criar harness SQLite temporário
+
+[Spec](specs/DB-001.md)/[handoff](handoffs/DB-001.md): rusqlite 0.40.2 dev-only, `bundled`, SQLite em memória real; RED no stub e GREEN E3 local. Root confirmou fmt/clippy, 14 testes Rust e teste release dedicado (SQLite 3.53.2), scans crus (2 warnings Cargo, 0 vuln Cargo, 3 findings OSV somente em duas coordenadas antigas; 5 novas sem findings; removidos 0), gates oficiais `SCOPE_CHANGED`, e review E2 sem P0/P1/P2. Proposta E4 dos escopos Cargo `04e69804dd2e7772f766998773152330ef05eedce95a19192f7555613899e829` e OSV `ea0e2c2fbc7095b07d6d8ab063c8291563f7d72aee43203598ac891709224860` ainda sem aprovação; expiração atual 2026-10-23 00:00 UTC. Estado `in_progress`/E3 local/`passes=false`/gate humano; revisão final, decisão E4 e CI no SHA final não registrados. Os scanners não cobrem o código C SQLite bundled; o harness não prova finanças, SQLi global, arquivo ou backup. DB-002 não iniciado; reserva ativa.
