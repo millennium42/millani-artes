@@ -1,0 +1,39 @@
+# DB-001 — evidência de entrega e encerramento
+
+Fonte: commit [`487ef2fe440a2cd2918b49d44839e148ad783c08`](https://github.com/millennium42/millani-artes/commit/487ef2fe440a2cd2918b49d44839e148ad783c08). A CI Documentation [run 38096624763](https://github.com/millennium42/millani-artes/actions/runs/38096624763), job 114343733317, executou no `main` após push, attempt 1, com resultado `completed/success`: 16 etapas passaram, 7 foram ignoradas e nenhum artifact foi produzido. Entre as etapas ignoradas estavam preparação Rust, build Tauri, verificação do executável e instalação/qualidade/cobertura/upload do frontend; portanto esta execução não comprova esses gates.
+
+O CI final reportou Cargo: 422 pacotes, 0 vulnerabilidades e 2 exceções aprovadas (RUSTSEC-2024-0370 e RUSTSEC-2024-0429), 14.108 s; OSV: 542 pacotes (120 npm e 422 Cargo), 3 exceções aprovadas e 0 não excepcionados, 1.198 s; npm: 120 pacotes, 0 vulnerabilidades; Gitleaks: 137 commits, 0 findings, binário SHA-256 `17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c`. Os inputs e a validade dos aceites permaneceram inalterados. O diff staged final, antes do commit, foi verificado por Gitleaks: 37.685 bytes, SHA-256 `ecca738e101e61dce98c80577ed12cc15ec7ddda2681834718b5dd913703a6f1`, 0 findings, 0.405 s. Os quatro validators finais passaram: mapa 308 arquivos/28 fontes, schema 63, evidence 63 e preservação do prefixo histórico de 273.424 bytes.
+
+Os scopes E4 limitados permanecem vinculados às records aprovadas:
+
+- Cargo scope `04e69804dd2e7772f766998773152330ef05eedce95a19192f7555613899e829`; approval record SHA-256 `810ce451dc7adc3c06f02b1a18e9fe29dfb248575565a5b16047fc3d45a1f9b4`.
+- OSV scope `ea0e2c2fbc7095b07d6d8ab063c8291563f7d72aee43203598ac891709224860`; approval record SHA-256 `54b30e87a37ab519bf5e0e8977757ca90a00e92428c49bd1718bedf70ff37d6f`.
+
+Alvo `x86_64-pc-windows-msvc`; expiração `2026-10-23T00:00:00Z` (22/10/2026 às 21h em São Paulo), sem extensão. Os findings aprovados continuam findings, não uma alegação de zero vulnerabilidades. A entrega anterior [`315fd0feabdb3bc55223441154a9bbdc615c2fd2`](https://github.com/millennium42/millani-artes/commit/315fd0feabdb3bc55223441154a9bbdc615c2fd2), com [CI 38095838774](https://github.com/millennium42/millani-artes/actions/runs/38095838774), comprovou o teste release de SQLite 3.53.2 (1 passou, 0 falharam/ignorados), build nativo PE AMD64/custom protocol (8.536.064 bytes, SHA-256 `9584f3450a9cd4744c9147a409464c02f14cecd115766c042a5e93999f285a88`). Separadamente, root executou localmente 14 testes Rust, fmt e clippy; P-REV fez review independente E2 sem P0/P1/P2. Isso não comprova instalador final. O teste usa SQLite em memória; não prova banco em arquivo, transações do produto, backup/restore ou invariantes financeiras. A cobertura reportada limita-se ao scaffold de frontend; auditoria por coordenadas não cobre o código C bundled do SQLite nem comprova segurança global contra SQL injection.
+
+DB-001 executor concluído (`done`, E3, `passes=true`); `humanGateRequired=true`. Root declara a reserva dos 20 paths LIBERADA quando o append desta nota e seu push forem confirmados nas refs públicas; CI final já confirmado. Antes dessa confirmação a reserva continua ativa.
+
+DB-002 ainda não foi iniciado. META financeira/SQLite do produto, backup/restore e setup/release continuam incompletos. Roteamento: código Luna medium, trabalho braçal Luna low, review 5.6-sol-medium; tokens e custo não registrados.
+
+Paths da reserva:
+
+- `planning/specs/DB-001.md`
+- `planning/work-items/DB-001.json`
+- `planning/handoffs/DB-001.md`
+- `docs/architecture/adr/ADR-023-sqlite-test-harness.md`
+- `governance/TOOL_REGISTER.md`
+- `planning/work-items/BOOTSTRAP-INDEX.json (preservar todos os outros objetos e bytes)`
+- `planning/ROADMAP.md`
+- `planning/PROGRESS_LOG.md (append-only)`
+- `docs/traceability/REQUIREMENTS_MATRIX.md`
+- `docs/operations/REPRODUCING.md`
+- `docs/quality/TEST_STRATEGY.md`
+- `docs/security/CARGO_WINDOWS_EXCEPTION.json`
+- `docs/security/CARGO_WINDOWS_APPROVAL.json`
+- `docs/security/OSV_WINDOWS_EXCEPTION.json`
+- `docs/security/OSV_WINDOWS_APPROVAL.json`
+- `src-tauri/Cargo.toml`
+- `src-tauri/Cargo.lock`
+- `src-tauri/tests/common/mod.rs`
+- `src-tauri/tests/sqlite_harness.rs`
+- `.github/workflows/docs.yml`
