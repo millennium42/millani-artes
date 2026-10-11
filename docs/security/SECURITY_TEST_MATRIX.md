@@ -168,3 +168,6 @@ ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.c
 
 
 ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.
+## DB-002 — abertura de arquivo no core
+
+RED/GREEN local E3 cobriu arquivo real, round-trip, rejeições e preservação de sentinela; review E2 sem P0/P1/P2. E4 recebida para scopes Cargo/OSV; materialização dos records, revalidação e CI pendentes. A prova não estabelece escolha segura de diretório, containment, startup, permissões, locks entre processos, finanças ou backup. [Spec/handoff](../../planning/specs/DB-002.md) registram o limite da API.
