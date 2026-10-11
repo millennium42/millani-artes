@@ -416,4 +416,4 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-002 — abrir banco SQLite vazio em arquivo
 
-[Spec](specs/DB-002.md)/[handoff](handoffs/DB-002.md)/[ADR-024](../docs/architecture/adr/ADR-024-sqlite-file-opening.md): abertura SQLite em arquivo no core; GREEN E3 local e review E2 sem achados. E4 humana autorizou os scopes Cargo/OSV; materialização dos records, revalidação e CI pendentes. `in_progress`/E3/`passes=false`; limites de startup, containment e domínio financeiro permanecem. O baseline/CI anterior fechou DB-001, não DB-002.
+[Spec](specs/DB-002.md)/[handoff](handoffs/DB-002.md)/[ADR-024](../docs/architecture/adr/ADR-024-sqlite-file-opening.md): abertura SQLite em arquivo no core; GREEN E3 local, review E2 sem achados e gates Cargo/OSV pós-aceite aprovados. CI DB-002 pendente. `in_progress`/E3/`passes=false`; startup, containment e domínio financeiro permanecem fora do contrato. O CI anterior fecha DB-001, não este diff.

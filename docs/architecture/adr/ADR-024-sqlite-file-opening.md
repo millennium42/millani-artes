@@ -16,7 +16,7 @@ O core exige path absoluto e não vazio, diretório pai existente e controlado p
 
 O core cria ou abre arquivo no path fornecido e não escolhe o local. UI/IPC, app-data, startup, containment, permissões, migrations, FK, transações, backup/restore e schema permanecem fora deste ADR. Essa API isolada não prova segurança global do caminho nem invariantes financeiras.
 
-A promoção muda `Cargo.toml`, mas não adiciona/remove pacotes ou versões e não altera `Cargo.lock`. Cargo Audit e OSV vinculam ambos manifest e lock; os scans crus encontraram somente as coordenadas históricas e o bloqueio por hash foi pré-aceite. E4 humana recebida no reply `call_94GXADvsRNfAUdlUAJn07ohk` para os scopes Cargo `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098` e OSV `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`, Windows MSVC, findings existentes e prazo original até 22/10/2026 21h São Paulo. Os quatro records autorizados, revalidação dos gates e CI permanecem pendentes; os snapshots ignored `approved=false` continuam inalterados. Scanners de coordenadas Rust não cobrem o C bundled do SQLite.
+A promoção alterou `Cargo.toml`, sem adicionar/remover pacotes ou versões; `Cargo.lock` permaneceu byte idêntico. Cargo Audit/OSV vinculam ambos os inputs. Após E4 no reply `call_94GXADvsRNfAUdlUAJn07ohk`, records vinculados foram atualizados e gates pós-aceite passaram: Cargo 422/0 vulnerabilidades/2 avisos aprovados; OSV 542/3 exceções/0 não excepcionados. CI DB-002 permanece pendente; os snapshots ignored `approved=false` seguem inalterados. Scanners de coordenadas Rust não cobrem C SQLite bundled.
 
 ## Referências
 

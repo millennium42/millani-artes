@@ -1,11 +1,11 @@
 {
   "approved": true,
-  "approvalRecord": "sha256:54b30e87a37ab519bf5e0e8977757ca90a00e92428c49bd1718bedf70ff37d6f",
+  "approvalRecord": "sha256:2ed8a60be608727075788bf8ae32506d787f753bf204bf23c175925f1aaeceee",
   "target": "x86_64-pc-windows-msvc",
   "expiresBeforeUTC": "2026-10-23",
   "inputSHA256": {
     "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
-    "src-tauri/Cargo.toml": "7f273184d84611b434752e68bf65c225010289a94960895d7bbef2f09f6b82d0"
+    "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
   },
   "exceptions": [
     {
