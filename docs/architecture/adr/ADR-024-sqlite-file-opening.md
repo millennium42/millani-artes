@@ -16,7 +16,7 @@ O core exige path absoluto e não vazio, diretório pai existente e controlado p
 
 O core cria ou abre arquivo no path fornecido e não escolhe o local. UI/IPC, app-data, startup, containment, permissões, migrations, FK, transações, backup/restore e schema permanecem fora deste ADR. Essa API isolada não prova segurança global do caminho nem invariantes financeiras.
 
-A promoção alterou `Cargo.toml`, sem adicionar/remover pacotes ou versões; `Cargo.lock` permaneceu byte idêntico. Cargo Audit/OSV vinculam ambos os inputs. Após E4 no reply `call_94GXADvsRNfAUdlUAJn07ohk`, records vinculados foram atualizados e gates pós-aceite passaram: Cargo 422/0 vulnerabilidades/2 avisos aprovados; OSV 542/3 exceções/0 não excepcionados. CI DB-002 permanece pendente; os snapshots ignored `approved=false` seguem inalterados. Scanners de coordenadas Rust não cobrem C SQLite bundled.
+A promoção alterou `Cargo.toml`, sem adicionar/remover pacotes ou versões; `Cargo.lock` permaneceu byte idêntico. Cargo Audit/OSV vinculam ambos os inputs. Após E4 no reply `call_94GXADvsRNfAUdlUAJn07ohk`, records vinculados foram atualizados e gates pós-aceite passaram: Cargo 422/0 vulnerabilidades/2 avisos aprovados; OSV 542/3 exceções/0 não excepcionados. CI 38103942047/job114365371778 validou a entrega pública `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` com 23/23 etapas; main/branch confirmadas. Snapshots ignored `approved=false` permanecem inalterados. Scanners de coordenadas Rust não cobrem C SQLite bundled.
 
 ## Referências
 
