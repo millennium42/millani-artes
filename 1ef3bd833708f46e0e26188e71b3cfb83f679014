@@ -1,0 +1,49 @@
+# DB-002 — abertura SQLite em arquivo: nota de evidência
+
+## Entrega e estado
+
+Executor DB-002 concluído, E3, `passes=true`, `humanGateRequired=true`. A implementação pública está no SHA `b38892374b80aac4b0324f6958d7eb92b4ff7d9b`, confirmado em main e branch. CI `38103942047`/job `114365371778` (push, attempt 1) terminou com 23/23 etapas; o harness release passou 3/0/0 e a suíte Rust local passou 16 testes. Evidência nativa: PE32+ AMD64, custom protocol ativo, EXE de 8.536.064 bytes, SHA-256 `239845efab4113ddc29850c28a750a314ed375fb275dd4a7cdf6c3595a8e8cfc`, source SHA igual ao da entrega. Artifact `frontend-coverage-38103942047-1`, ID `11688184649`, 21.873 bytes, retido.
+
+CI final do fechamento documental: SHA `1ef3bd833708f46e0e26188e71b3cfb83f679014`, main/push attempt 1, run `38104862341`/job `114368093002`, completed/success, 16 success, 7 skips e zero artifacts. Os skips foram install/quality/coverage/upload frontend e prepare Rust/build Tauri/verify EXE. Não inferir que esses checks rodaram nesse workflow; a evidência de release e implementação é a CI anterior acima.
+
+## Segurança e verificações
+
+E4 no reply `call_94GXADvsRNfAUdlUAJn07ohk`, literal “execução temporaria aprovada, siga com a meta em modo economia de tokens”, autorizou Cargo scope `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098` e OSV scope `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`, alvo Windows MSVC e expiração `2026-10-23T00:00Z`; os records vinculados preservam as versões anteriores no histórico Git. Findings aprovados permanecem os existentes: `glib 0.18.5` (`GHSA-wrw7-89jp-8q8g`, `RUSTSEC-2024-0429`) e `proc-macro-error 1.0.4` (`RUSTSEC-2024-0370`). Nenhuma nova versão/pacote ou advisory foi introduzido.
+
+No SHA final, Gitleaks cobriu 141 commits/0 findings; Cargo 422 dependências/0 vulnerabilidades/2 avisos aprovados; OSV 542 pacotes/3 exceções/0 restantes; npm 120/0. A implementação também teve SAST 45 casos (42 CLI/3 PowerShell), com limites para TypeScript. Os dois últimos snapshots staged foram `e75ef2bb8a10db9fa4e41c2d48a5dff0e7bf80b641c82dd4a8470ab5f2201f93`/36.079 bytes e `8f9df911f066cc475fc432b19c6493c0163621ed4552c848f41bcc3be1509d42`/5.967 bytes; ambos sem findings. Quatro validators documentais passaram: mapa 313 arquivos/28 fontes e 64 work items/evidence. O validator preservou 278.693 bytes históricos do log.
+
+Corrigenda histórica: foi retirada a alegação de ausência de repetição de testes/fixtures; houve retries locais pós-E4, já registrados, e a CI da implementação. Foram executadas duas CIs documentais automáticas: `38104721441` no commit `e3c19f3` e a CI final acima; não houve dispatch ou rerun manual nem novo teste Rust local decorrente da correção. Guard local comparou inicialmente line endings CRLF/LF de EXCEPTION; a correção normalizou somente EOL nessa comparação, manteve bytes de APPROVAL exatos e o scan real passou. Os snapshots Gitleaks são evidência dos diffs examinados, não varredura histórica além do escopo indicado.
+
+## Limites e encerramento
+
+A API abre arquivos reais, mas não escolhe path, inicia o app, oferece UI/IPC/default app-data, containment global, permissões, migrations, FK, transações, backup/restore, instalador ou regras financeiras. Cobertura Rust global não registrada; os 100% reportados no `App.tsx` se limitam ao scaffold frontend existente. Scanners Rust por coordenadas não cobrem código C SQLite bundled. DB-003 não iniciado; meta financeira e setup do produto incompletos.
+
+Root declara os 25 paths LIBERADOS quando append/push desta nota e preservação das 62 notas anteriores em refs/notes/evidence forem confirmados nas refs públicas; até então a reserva continua ativa. Paths da reserva conforme spec:
+
+1. `planning/specs/DB-002.md`
+2. `planning/work-items/DB-002.json`
+3. `planning/handoffs/DB-002.md`
+4. `artifacts/db002-security-proposal.json`
+5. `artifacts/db002-security-proposal.md`
+6. `src-tauri/Cargo.toml`
+7. `src-tauri/Cargo.lock` (condicional à resolução; permaneceu inalterado)
+8. `src-tauri/src/lib.rs`
+9. `src-tauri/src/infrastructure/database.rs`
+10. `src-tauri/tests/common/mod.rs`
+11. `src-tauri/tests/sqlite_harness.rs`
+12. `.github/workflows/docs.yml`
+13. `docs/architecture/adr/ADR-024-sqlite-file-opening.md`
+14. `governance/TOOL_REGISTER.md`
+15. `planning/ROADMAP.md`
+16. `planning/PROGRESS_LOG.md`
+17. `docs/traceability/REQUIREMENTS_MATRIX.md`
+18. `docs/operations/REPRODUCING.md`
+19. `docs/quality/TEST_STRATEGY.md`
+20. `docs/security/SECURITY_TEST_MATRIX.md`
+21. `docs/security/CARGO_WINDOWS_EXCEPTION.json`
+22. `docs/security/CARGO_WINDOWS_APPROVAL.json`
+23. `docs/security/OSV_WINDOWS_EXCEPTION.json`
+24. `docs/security/OSV_WINDOWS_APPROVAL.json`
+25. `artifacts/db002-final-note.md`
+
+Roteamento: Luna medium para código, Luna low para trabalho braçal, 5.6-sol medium para revisão. Custo/tokens por ciclo não registrado; economia não medida.
