@@ -1,0 +1,27 @@
+{
+  "id": "DB-003",
+  "title": "executar migrations SQLite transacionalmente",
+  "specPath": "planning/specs/DB-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-002"
+  ],
+  "acceptanceCriteria": [
+    "API database::execute_migration(Connection, &'static str) consome a conexão e só a devolve após commit bem-sucedido; em qualquer erro, a conexão é descartada e não reutilizável",
+    "SQL vazio é no-op válido; DDL em arquivo vazio e upgrade em arquivo real preservam dado sintético O'Brien parametrizado após reabertura",
+    "falha após DDL+DML reverte integralmente; outer transaction causa BeginFailed; commit BUSY com reader separado e timeout zero causa CommitFailed, e reabrir mostra estado anterior",
+    "BeginFailed/ApplyFailed/CommitFailed/RollbackFailed são estáticos, sem payload/source, SQL/path em Display/Debug ou logs; rollback de apply é explícito",
+    "reutiliza TempDirectory/harness existentes e não adiciona dependência, unsafe, feature, ferramenta ou workflow; não introduz versionamento/tracking/replay/ordem"
+  ],
+  "checks": [
+    "revisar ownership, transação e tratamento de erro contra rusqlite Transaction e SQLite transactions",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --check e cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets --features tauri/custom-protocol -- -D warnings",
+    "executar suíte Rust e sqlite_harness em debug e release; registrar SQLite e verificar estado em arquivos reabertos",
+    "executar gates de segurança aplicáveis nos inputs aprovados, review independente, validators documentais e CI no SHA final"
+  ],
+  "agentPlan": "P-INT root executou E3 e integra; P-DAT/P-INT Luna medium escreveu código em 2 turnos e corrigiu 3 drops inúteis após clippy; P-OPS Luna low atualiza documentos serialmente; P-REV 5.6-sol medium revisão read-only incremental. Reserva serial conforme paths exatos em planning/specs/DB-003.md; nota final somente após CI final.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local root: RED compilou e 1 teste falhou no stub (ApplyFailed); debug harness 9/9, Rust total 22/22 e release harness 9/9, SQLite 3.53.2; fmt e clippy passaram após remover 3 drops inúteis. Cargo 422/0 vulnerabilidades/2 avisos aprovados; OSV 542 dependências/3 exceções/0 restantes, inputs e records existentes imutáveis. Review incremental 5.6-sol-medium E2 sem P0/P1/P2. Fontes database.rs SHA-256 7b94936e896ef3a3ea25505af18608942c22e785a707a7085f44366554bc276f e sqlite_harness.rs SHA-256 3b1c218111d55ab39ded31a45768547946ec6564e54b892ba60b1a1ccf0e322f; Rust/Cargo 1.99, Windows MSVC x64. CI, publicação e validators finais pendentes. Coverage Rust global não registrada; scanners Cargo/OSV não cobrem C SQLite. Contrato não cobre I/O físico, perda abrupta ou SQL externo; DB-004 não iniciado. Custo/tokens não registrados."
+}

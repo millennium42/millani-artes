@@ -417,3 +417,7 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 ## DB-002 — abrir banco SQLite vazio em arquivo
 
 [Spec](specs/DB-002.md)/[handoff](handoffs/DB-002.md)/[ADR-024](../docs/architecture/adr/ADR-024-sqlite-file-opening.md): abertura SQLite em arquivo no core; GREEN E3 local, review E2 sem achados e gates Cargo/OSV pós-aceite aprovados. Entrega `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` validada por CI 38103942047, 23/23; main/branch confirmadas. Executor `done`/E3/`passes=true`; CI do fechamento documental, nota final e liberação ainda pendentes. `humanGateRequired=true`; startup, containment e domínio financeiro seguem fora do contrato.
+
+## DB-003 — executar migrations SQLite transacionalmente
+
+[Spec](specs/DB-003.md)/[handoff](handoffs/DB-003.md): E3 local root; RED compilou e falhou um teste do stub; debug harness 9/9, suíte Rust 22/22, release harness 9/9 (SQLite 3.53.2), fmt/clippy e gates Cargo/OSV passaram. Review incremental E2 sem P0/P1/P2. Fontes e hashes constam na spec/handoff. `in_progress`/`passes=false`/`humanGateRequired=false`; CI final, validators, publicação e nota pendentes. Próximo DB-004 somente após fechamento e liberação explícita; não iniciado.

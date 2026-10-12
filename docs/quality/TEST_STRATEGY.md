@@ -12,3 +12,7 @@ Para a [fronteira transacional](../architecture/TRANSACTION_MODEL.md), testes un
 ## DB-002 — arquivo SQLite local
 
 Testes de arquivo real cobrem criação, reabertura, round-trip e rejeições com sentinelas. E3 local: 16 testes Rust, release harness 3/3, fmt/clippy; review E2 sem achados. Gates pós-aceite Cargo/OSV passaram; tentativas concorrentes de fixtures/gates colidiram em scratch e retries locais em série passaram. Coverage Rust global não registrada. CI 38103942047 validou a entrega pública (23/23); CI do fechamento documental pendente. Testes não provam startup, containment, migrations, finanças ou backup/restore. Veja [spec/handoff](../../planning/specs/DB-002.md).
+
+## DB-003 — executor transacional de migrations
+
+O harness de arquivo real cobre DDL em banco vazio, upgrade com `O'Brien` parametrizado e reabertura, SQL vazio, rollback DDL+DML, início negado por transação externa, commit `BUSY` com reader/timeout zero e erros opacos. E3 local root: debug harness 9/9, suíte Rust 22/22, release harness 9/9, SQLite 3.53.2; fmt/clippy passaram após correção. Review E2 sem P0/P1/P2. CI final pendente; coverage Rust global não registrada. Veja [spec/handoff](../../planning/specs/DB-003.md) e [handoff](../../planning/handoffs/DB-003.md).

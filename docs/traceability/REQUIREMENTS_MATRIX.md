@@ -301,3 +301,7 @@ ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium4
 ## DB-002 — abertura SQLite em arquivo
 
 [Spec](../../planning/specs/DB-002.md)/[handoff](../../planning/handoffs/DB-002.md)/[ADR-024](../architecture/adr/ADR-024-sqlite-file-opening.md): RED/GREEN local E3, fmt/clippy, 16 testes Rust, release harness 3/3, review E2 sem achados e gates Cargo/OSV pós-aceite aprovados. CI da entrega pública `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` passou 23/23; executor `done`/E3/`passes=true`. CI do fechamento documental pendente. Startup, containment, finanças, backup e instalador não provados.
+
+## DB-003 — executor transacional de migrations
+
+[Spec](../../planning/specs/DB-003.md)/[handoff](../../planning/handoffs/DB-003.md): `execute_migration` com SQL interno estático; E3 local root comprovou banco vazio/upgrade, preservação de `O'Brien` após reopen, no-op vazio, rollback, falhas de begin/commit e erros opacos. Debug harness 9/9, suíte Rust 22/22, release harness 9/9, SQLite 3.53.2; fmt/clippy e gates Cargo/OSV passaram; review E2 sem P0/P1/P2. Fontes: `database.rs` SHA-256 `7b94936e896ef3a3ea25505af18608942c22e785a707a7085f44366554bc276f`, `sqlite_harness.rs` SHA-256 `3b1c218111d55ab39ded31a45768547946ec6564e54b892ba60b1a1ccf0e322f`; Rust/Cargo 1.99, Windows MSVC x64. Status `in_progress`/`passes=false`; CI/publicação pendentes. Não prova validação de SQL externo, fault injection de I/O ou cobertura Rust global.
