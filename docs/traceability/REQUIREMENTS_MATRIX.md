@@ -308,4 +308,9 @@ ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium4
 
 ## DB-004 — ledger e migração versionada
 
-[Spec](../../planning/specs/DB-004.md)/[handoff](../../planning/handoffs/DB-004.md): E3 local em SQLite de arquivo, 29 testes Rust, release harness 16/16 e review incremental E2 sem P0/P1/P2 após correção de dois P2. `main.schema_migration` e erros do getter seguem contrato; scripts são SQL trusted. Executor `done`/E3/`passes=true`; CI entrega 38201472821/job114655611728 passou 23/23 no SHA e384d0546cd1292efc448eec2e773a253818f97e. Fechamento documental/nota 65 pendentes. Sem autenticação de ledger, sandbox, fault injection física ou coverage Rust global.
+[Spec](../../planning/specs/DB-004.md)/[handoff](../../planning/handoffs/DB-004.md): E3 local em SQLite de arquivo, 29 testes Rust, release harness 16/16 e review incremental E2 sem P0/P1/P2 após correção de dois P2. `main.schema_migration` e erros do getter seguem contrato; scripts são SQL trusted. Executor `done`/E3/`passes=true`; CI entrega 38201472821 passou 23/23; CI final 38299901151/job114980000210 no SHA 94e37d38f5df375ffb9492e3f80d272f2f44b331 passou 16 success/7 skipped/0 artifact. Nota 65 publicada em refs eafc15283e4eb5e6906002a04ef229cf903474ff; root confirmou preservação das 64 notas anteriores e refs finais e liberou a reserva. Sem autenticação de ledger, sandbox, fault injection física ou coverage Rust global.
+
+
+## DB-005 — provar migration versionada vazia em arquivo
+
+[Spec](../../planning/specs/DB-005.md)/[handoff](../../planning/handoffs/DB-005.md): E3 local root em dois testes de arquivo real; RED controlado 0 versus 1, GREEN com API versionada e segundo teste de constraints. Rust 31/31 (6 lib/7 bin/18 harness), release 18/18, SQLite 3.53.2, fmt/clippy; review E2 sem P0/P1/P2. Prova somente bootstrap de harness com SQL vazio; não migration de produto/startup. CI entrega e fechamento pendentes; `in_progress`/E3/`passes=false`, DB-006 não iniciado.

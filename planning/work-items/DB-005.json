@@ -1,0 +1,30 @@
+{
+  "id": "DB-005",
+  "title": "provar migration versionada vazia em SQLite de arquivo",
+  "specPath": "planning/specs/DB-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-004"
+  ],
+  "acceptanceCriteria": [
+    "Em arquivo SQLite físico sem objetos de usuário, schema_version retorna 0 e execute_versioned_migration(Connection, 1, SQL vazio) cria apenas main.schema_migration e registra [1].",
+    "Ledger único tem uma linha version INTEGER visível com pk=1/notnull=1/hidden=0 e CHECK persistido version > 0; a operação termina em autocommit.",
+    "Fechar/reabrir mantém shape, versão [1] e PRAGMA main.integrity_check=ok; segundo arquivo permanece vazio/versão 0 até sua aplicação independente e ambos reabrem isolados com [1].",
+    "O segundo teste rejeita 1 duplicado por chave primária e 0/-1 por CHECK, valida extended code quando disponível (senão ConstraintViolation), autocommit, nenhuma linha extra e [1] após reabrir.",
+    "Adicionar exatamente dois testes no harness existente; manter os 16 testes prévios sem mudança observável e reutilizar TempDirectory; RED falha runtime 0 versus 1 com execute_migration vazio; GREEN corrige somente caller e adiciona teste, sem stub/bug artificial/código de produção.",
+    "Sem nova API/produção/migration de produto/tabela financeira/dependência/alteração de manifest-lock-workflow-records de segurança; não testar NULL nem alegar startup/finanças/backup/global Rust coverage/fault injection."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente 5.6-sol-medium, Gitleaks do diff, validators documentais e CI de entrega/fechamento no SHA publicado exato"
+  ],
+  "agentPlan": "P-INT root integra, executa E3 e comita; Luna autorizada para trabalho braçal: P-DAT/P-INT Luna medium no código de teste e P-OPS Luna low nos documentos; P-REV 5.6-sol medium review read-only. Escrita serial em checkout compartilhado; reserva exata e condição de liberação em planning/specs/DB-005.md. Custo/tokens não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local root: RED controlado compilou 30.43s e falhou em runtime no oráculo 0 vs 1 (0 passed/1 failed/16 filtered), caller temporariamente execute_migration vazio; nenhum defeito de produção/stub. GREEN corrigiu somente caller para API versionada e adicionou segundo teste; oráculo independente da contagem de colunas reforçado. fmt 5.196s, clippy 11.211s, Rust 31/31 (6 lib/7 bin/18 harness), release harness 18/18 em 58.417s, SQLite 3.53.2; 16 casos anteriores preservados. Review 5.6-sol-medium final E2 sem P0/P1/P2. Harness SHA256 af9fc58cddf0962f22bd3aaff38010e574edec9c26155d065bb1044f1c34c145; database.rs inalterado SHA256 242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7; 11 hashes estáveis. Gitleaks all refs 210/0; Cargo 422/0 classvuln/2 avisos aprovados, OSV 542/3 exceções/0 restantes, Cargo advisory DB1307 commit 57dcc0f2192e025138907a495c1ac9a7e1e3e123 atualizado 12 Oct. E4/records herdados intactos, sem novo aceite. Limpeza temporária root confirmada (WebView 0, fixture guard ausente, SQLite temp 0). Scans staged/validators finais e CI de entrega pendentes; `in_progress`/E3/`passes=false`, DB-006 não iniciado. Sem coverage Rust global, audit C SQLite, fault injection ou garantia de concorrência global; tokens/custo NR."
+}

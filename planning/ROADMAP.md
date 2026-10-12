@@ -424,4 +424,8 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-004 — registrar e selecionar versões de schema SQLite
 
-[Spec](specs/DB-004.md)/[handoff](handoffs/DB-004.md): E3 local (29 testes Rust; release harness 16/16, SQLite 3.53.2, fmt/clippy), dois P2 corrigidos e review incremental E2 sem P0/P1/P2. Executor `done`/E3/`passes=true`/`humanGateRequired=false`; CI entrega 38201472821/job114655611728, 23/23, no SHA e384d0546cd1292efc448eec2e773a253818f97e. Fechamento documental/nota 65/liberação dos 12 paths pendentes; DB-005 não iniciado.
+[Spec](specs/DB-004.md)/[handoff](handoffs/DB-004.md): executor `done`/E3/`passes=true`/`humanGateRequired=false`; 29 testes Rust, release harness 16/16, review E2 sem achados. CI final 38299901151/job114980000210 no SHA 94e37d38f5df375ffb9492e3f80d272f2f44b331 passou 16 success/7 skipped/0 artifact. Nota 65 publicada; 64 notas e refs preservados e reserva liberada.
+
+## DB-005 — testar migration versionada vazia
+
+[Spec](specs/DB-005.md)/[handoff](handoffs/DB-005.md): E3 local root, RED controlado 0 vs 1 sem falha de produção; GREEN com dois testes. Rust 31/31 (6 lib/7 bin/18 harness), release harness 18/18 (SQLite 3.53.2), fmt/clippy; review final E2 sem P0/P1/P2. Dois arquivos isolados, aplicação versionada com SQL vazio, ledger/constraints/reabertura/integrity_check. Controle é só do harness, não migrations de produto/startup. E3/`in_progress`/`passes=false`; staged scan, validators, CI final e nota 66 pendentes; DB-006 não iniciado.

@@ -14,6 +14,48 @@ fn schema_object_count(connection: &Connection) -> rusqlite::Result<i64> {
     connection.query_row("SELECT count(*) FROM sqlite_schema", [], |row| row.get(0))
 }
 
+fn assert_empty_migration_ledger(connection: &Connection) {
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_object_count(connection).unwrap(), 1);
+    assert_eq!(schema_version(connection, 1).unwrap(), 1);
+    let ledger_sql: String = connection
+        .query_row(
+            "SELECT sql FROM main.sqlite_schema WHERE type = 'table' AND name = 'schema_migration'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert!(ledger_sql.contains("CHECK (version > 0)"));
+    let mut statement = connection
+        .prepare("PRAGMA main.table_xinfo('schema_migration')")
+        .unwrap();
+    let columns: Vec<(String, String, i64, i64, i64)> = statement
+        .query_map([], |row| {
+            Ok((
+                row.get(1)?,
+                row.get(2)?,
+                row.get(3)?,
+                row.get(5)?,
+                row.get(6)?,
+            ))
+        })
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap();
+    assert_eq!(columns, vec![("version".into(), "INTEGER".into(), 1, 1, 0)]);
+    let versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(versions, [1]);
+}
+
 fn seed_version_one(connection: Connection) -> Connection {
     execute_versioned_migration(
         connection,
@@ -389,6 +431,81 @@ fn versioned_migrations_record_and_read_versions_after_reopen() {
         .unwrap();
     assert_eq!(value, "O'Brien");
     assert_eq!(marker, "upgrade");
+}
+
+#[test]
+fn empty_versioned_migration_starts_on_independent_files() {
+    let directory = common::TempDirectory::new();
+    let first_path = directory.path().join("empty-migration-first.sqlite");
+    let second_path = directory.path().join("empty-migration-second.sqlite");
+    let first = open_database(&first_path).expect("FIRST_DATABASE_OPEN_FAILED");
+    let second = open_database(&second_path).expect("SECOND_DATABASE_OPEN_FAILED");
+    assert!(first_path.is_file());
+    assert!(second_path.is_file());
+    assert_eq!(schema_object_count(&first).unwrap(), 0);
+    assert_eq!(schema_version(&first, 1).unwrap(), 0);
+    assert_eq!(schema_object_count(&second).unwrap(), 0);
+    assert_eq!(schema_version(&second, 1).unwrap(), 0);
+
+    let first = execute_versioned_migration(first, 1, "").expect("FIRST_MIGRATION_FAILED");
+    assert_empty_migration_ledger(&first);
+    drop(first);
+
+    assert_eq!(schema_object_count(&second).unwrap(), 0);
+    assert_eq!(schema_version(&second, 1).unwrap(), 0);
+    let second = execute_versioned_migration(second, 1, "").expect("SECOND_MIGRATION_FAILED");
+    assert_empty_migration_ledger(&second);
+    drop(second);
+
+    for path in [&first_path, &second_path] {
+        let reopened = open_database(path).expect("DATABASE_REOPEN_FAILED");
+        assert_empty_migration_ledger(&reopened);
+        let integrity: String = reopened
+            .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
+            .unwrap();
+        assert_eq!(integrity, "ok");
+    }
+}
+
+#[test]
+fn empty_versioned_migration_rejects_invalid_ledger_rows() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("empty-migration-constraints.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    assert!(path.is_file());
+    assert_eq!(schema_object_count(&connection).unwrap(), 0);
+    assert_eq!(schema_version(&connection, 1).unwrap(), 0);
+    let connection = execute_versioned_migration(connection, 1, "").expect("MIGRATION_FAILED");
+    assert_empty_migration_ledger(&connection);
+
+    for (version, expected_code) in [
+        (1, rusqlite::ffi::SQLITE_CONSTRAINT_PRIMARYKEY),
+        (0, rusqlite::ffi::SQLITE_CONSTRAINT_CHECK),
+        (-1, rusqlite::ffi::SQLITE_CONSTRAINT_CHECK),
+    ] {
+        let error = connection
+            .execute(
+                "INSERT INTO main.schema_migration(version) VALUES (?1)",
+                [version],
+            )
+            .expect_err("INVALID_LEDGER_VERSION_ACCEPTED");
+        match error {
+            rusqlite::Error::SqliteFailure(error, _) => {
+                assert_eq!(error.code, rusqlite::ErrorCode::ConstraintViolation);
+                assert_eq!(error.extended_code, expected_code);
+            }
+            other => panic!("UNEXPECTED_SQLITE_ERROR: {other:?}"),
+        }
+        assert_empty_migration_ledger(&connection);
+    }
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_empty_migration_ledger(&reopened);
+    let integrity: String = reopened
+        .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(integrity, "ok");
 }
 
 #[test]
