@@ -1,0 +1,30 @@
+{
+  "id": "DB-008",
+  "title": "registrar evidência de rollback de migrations SQLite",
+  "specPath": "planning/specs/DB-008.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-003"
+  ],
+  "acceptanceCriteria": [
+    "Os cinco testes nomeados em DB-008 passam quando reexecutados e suas falhas/resultados e estados persistidos após reabertura são registrados.",
+    "Os casos cobrem rollback após erro DDL+DML (ApplyFailed), commit busy com reader real (CommitFailed), begin bloqueado por transação externa (BeginFailed), falha SQL versionada (ApplyFailed, ledger anterior) e trigger antes do insert do ledger (ApplyFailed, versão 1 preservada).",
+    "Nenhuma alteração de Rust/SQL fixture/dependências/manifests/locks/security records/workflow; sem testes duplicados, stub ou RED artificial.",
+    "Root reexecuta fmt/clippy/full Rust/release harness e Cargo/OSV, com review, scan diferencial, validators e CI remota no SHA exato.",
+    "Concluir done/E3/passes=true após entrega E3/CI e docs; liberar reserva só após CI documental, nota69 pública e confirmação root de 68 notas/refs.",
+    "Não alegar RollbackFailed induzido, falha física de rollback, power-loss/crash, auth/concurrency global, migração de produto, startup, backup/restore/setup ou coverage Rust global."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Confirmar os cinco nomes/casos, review 5.6-sol-medium, Gitleaks diferencial, validators e CI final no SHA exato."
+  ],
+  "agentPlan": "P-INT root integra, reexecuta E3 e comita; P-DAT/P-QA Luna medium para RECON, P-TRC/P-OPS Luna low docs, P-REV 5.6-sol medium adversarial. Escrita serial; reserva exata em planning/specs/DB-008.md. Nenhum path Rust reservado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "DB-008 é verificação documental; sem código novo. Root confirmou os cinco casos nomeados PASS no stdout em debug e release. fmt4.614s/clippy7.611s; Rust33/33 (6lib/7bin/20harness,0ignored)17.849s; release20/20 em50.009s SQLite3.53.2. Review5.6-sol-medium E2 sem P0/P1/P2; fixtures existentes suficientes. Cargo audit v0.22.2 422 deps/0 vuln class/2 avisos/3.673s advisory1307 commit57dcc0f2192e025138907a495c1ac9a7e1e3e123; OSV v2.6.0 542 pacotes/3 aprovados/0 fora/2.393s; E4 scopes herdados iguais. 12 guard hashes estáveis, harness SHA14962afcfacaa0788bb5c93c7eb4bc69bb4c9663b9f062a7aa47118ddc372bc5; nenhum diff Rust/fixtures/manifest/lock/records/workflow. Gitleaks diferencial, validators, CI entrega/final e nota69 ainda pendentes; passes false. DB-003 única dependência fechada; DB-007 fechado contextual no SHA323e336b53c74147c4b70bdec44391dfad29fe72/CI38320496225/job115047171038 16success/7skip/0artifact; nota68 refs f9786502025de68b33275fff766f0428cc862bd1,67 notas preservadas/reserva11 liberada. E4 scopes Cargo d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098/OSV9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318, Windows MSVC/glib0.18.5/proc-macro-error1.0.4, expira2026-10-23T00:00Z. Sem prova de falha física rollback/power-loss/crash/global recovery/finance/startup/backup/restore/setup/old engine/Rust coverage/DB012. DB-009 não iniciar; retries/custo/tokens NR."
+}
