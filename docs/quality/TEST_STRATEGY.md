@@ -37,6 +37,6 @@ Um teste de integração e fixture confiável criam snapshot sintético em dois 
 [Spec](../../planning/specs/DB-007.md)/[handoff](../../planning/handoffs/DB-007.md): RED controlado ledger `[1]` vs `[1,2]`; GREEN caller versionado. Root E3 Rust33/33, release20/20 SQLite3.53.2, 19 antigos preservados; review sem P0/P1/P2. CI entrega e documental passaram; executor `done`/E3/`passes=true`. DB-007 fechado: CI final 38320496225/job115047171038 no SHA 323e336b53c74147c4b70bdec44391dfad29fe72, 16 success/7 skipped/0 artifacts; nota68 pública refs f9786502025de68b33275fff766f0428cc862bd1, 67 notas preservadas e reserva11 liberada.
 
 
-## DB-008 — evidência de rollback (em execução)
+## DB-008 — evidência de rollback
 
-[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental, sem diff Rust. Cinco casos existentes foram confirmados PASS no stdout da suíte debug e release; fmt/clippy e Cargo/OSV passaram, review E2 sem P0/P1/P2. `in_progress`/E3/`passes=false`; Gitleaks diferencial, validators, CI entrega/final e nota69 pendentes. Sem prova de falha física de rollback ou recuperação genérica.
+[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; CI final/nota69/liberação10 paths pendentes/ACTIVE. Sem prova de falha física de rollback.
