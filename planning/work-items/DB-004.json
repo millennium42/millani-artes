@@ -1,0 +1,28 @@
+{
+  "id": "DB-004",
+  "title": "registrar e selecionar versões de schema SQLite",
+  "specPath": "planning/specs/DB-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-003"
+  ],
+  "acceptanceCriteria": [
+    "schema_version valida em main.sqlite_schema e PRAGMA main.table_xinfo uma única coluna version declarada INTEGER, pk=1, notnull=1 e hidden=0; ledger ausente ou vazio retorna 0 somente sem outros objetos de usuário em main; valores são ordenados, positivos, contíguos, u32 e até supported_version",
+    "execute_versioned_migration aceita somente current+1 e faz leitura, criação do ledger, SQL e insert parametrizado na mesma transação",
+    "falhas de SQL e insert real do ledger revertem schema, dados e versão; APIs execute_* só retornam conexão após commit e consomem/fecham em erro; erro de schema_version mantém handle com chamador, que interrompe uso dependente de schema compatível",
+    "seis erros MigrationError têm Display/Debug estáticos, source=None, sem payload/path/SQL e sem log",
+    "testes de arquivo real cobrem versões 1/2, reopen, O'Brien, metadados e versões inválidas, rollback e trigger RAISE(ABORT); APIs e nove testes de DB-003 permanecem sem mudança observável",
+    "sem dependência, feature, unsafe, timestamp, hash/checksum de migration, tracking adicional ou workflow novo"
+  ],
+  "checks": [
+    "revisar contrato e APIs contra rusqlite Transaction, schema_migration e transações SQLite",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check e cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets --features tauri/custom-protocol -- -D warnings",
+    "executar suíte Rust e sqlite_harness em debug e release; registrar SQLite e validar estado em arquivos reabertos",
+    "executar gates de segurança aplicáveis nos inputs existentes, review independente, validators documentais e CI no SHA final"
+  ],
+  "agentPlan": "P-INT root integra e executa E3; P-DAT/P-INT Luna medium faz recon/build de código; P-OPS Luna low mantém documentação serial; P-REV 5.6-sol medium revisão read-only. Escrita serial e reserva conforme paths exatos em planning/specs/DB-004.md; artifacts/db004-final-note.md somente após CI final.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Contrato escolhido pelo root. E3 local: RED compilou 22.75s e 1 falha InvalidSchemaState no stub (0 passou/9 filtrados); fmt 4.176s, clippy 6.639s, suíte Rust 29/29 (6 lib/7 bin/16 harness), release harness 16/16 em 60.379s, SQLite 3.53.2. Nove casos DB-003 preservados. Review 5.6-sol-medium encontrou dois P2 (filtro de trigger homônimo/checagem tardia de supported_version); corrigidos por Luna medium e review incremental sem P0/P1/P2. Fontes database.rs SHA-256 242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7 e sqlite_harness.rs SHA-256 2a9d446f0c96e6df9d707528116162d294357e47662ea579e3637a764597a002. Nove hashes protegidos estáveis; sem dep/feature/unsafe/workflow. Cargo 422/0 vulnerabilidades classificadas/2 avisos aprovados; OSV 542/3 exceções/0 restantes, scopes E4 herdados sem novo aceite. Temp/profile probes limpos conforme registro root. Scans/validators finais e CI entrega pendentes; status in_progress/E3/passes=false/humanGateRequired=false. SQL trusted/static sem sandbox; getter emprestado mantém handle após erro, execute_* consome; sem checksum, garantia de concorrência, cobertura Rust global, fault injection física ou audit coverage do C SQLite. DB-005/006/007/009 e financeiro/backup/startup/UI/setup fora ou pendentes. Custo/tokens não registrados."
+}

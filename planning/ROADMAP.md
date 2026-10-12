@@ -420,4 +420,8 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-003 — executar migrations SQLite transacionalmente
 
-[Spec](specs/DB-003.md)/[handoff](handoffs/DB-003.md): entrega `04725381191395b7807105833169a1adae9638b5`; E3 local, review E2 sem P0/P1/P2 e CI 38197556421/job114643531438 main/push attempt1, 23/23 success/0 skip. Release harness 9/9 (SQLite 3.53.2), fmt/clippy e gates Cargo/OSV passaram. Executor `done`/E3/`passes=true`/`humanGateRequired=false`. CI do fechamento documental, nota 64 e liberação explícita da reserva pendentes. DB-004 não iniciado; aguarda fechamento e liberação.
+[Spec](specs/DB-003.md)/[handoff](handoffs/DB-003.md): entrega `04725381191395b7807105833169a1adae9638b5`; E3 local, review E2 sem P0/P1/P2 e CI 38197556421 passou 23/23. CI final documental 38198511557 também passou. Executor `done`/E3/`passes=true`/`humanGateRequired=false`; nota 64 publicada e reserva liberada antes de DB-004.
+
+## DB-004 — registrar e selecionar versões de schema SQLite
+
+[Spec](specs/DB-004.md)/[handoff](handoffs/DB-004.md): E3 local, 29 testes Rust, release harness 16/16 (SQLite 3.53.2), fmt/clippy; dois achados P2 corrigidos e review incremental E2 sem P0/P1/P2. `in_progress`/E3/`passes=false`/`humanGateRequired=false`; scans/validators staged e CI de entrega pendentes. DB-005 ainda não iniciado.

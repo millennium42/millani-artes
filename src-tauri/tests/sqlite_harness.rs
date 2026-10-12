@@ -6,11 +6,31 @@ use std::fs;
 use std::path::Path;
 
 use millani_artes::database::{
-    execute_migration, open_database, DatabaseOpenError, MigrationError,
+    execute_migration, execute_versioned_migration, open_database, schema_version,
+    DatabaseOpenError, MigrationError,
 };
 
 fn schema_object_count(connection: &Connection) -> rusqlite::Result<i64> {
     connection.query_row("SELECT count(*) FROM sqlite_schema", [], |row| row.get(0))
+}
+
+fn seed_version_one(connection: Connection) -> Connection {
+    execute_versioned_migration(
+        connection,
+        1,
+        "CREATE TABLE versioned_fixture (value TEXT NOT NULL)",
+    )
+    .expect("VERSION_ONE_MIGRATION_FAILED")
+}
+
+fn assert_invalid_ledger(path: &Path, setup_sql: &str, supported_version: u32) {
+    let connection = open_database(path).expect("DATABASE_OPEN_FAILED");
+    connection.execute_batch(setup_sql).unwrap();
+    assert_eq!(
+        schema_version(&connection, supported_version),
+        Err(MigrationError::InvalidSchemaState)
+    );
+    assert!(connection.is_autocommit());
 }
 
 #[test]
@@ -296,12 +316,374 @@ fn migration_errors_have_static_sanitized_presentations() {
             "migration rollback failed",
             "RollbackFailed",
         ),
+        (
+            MigrationError::InvalidVersion,
+            "migration version is invalid",
+            "InvalidVersion",
+        ),
+        (
+            MigrationError::InvalidSchemaState,
+            "database schema state is invalid",
+            "InvalidSchemaState",
+        ),
     ];
     for (error, display, debug) in cases {
         assert_eq!(error.to_string(), display);
         assert_eq!(format!("{error:?}"), debug);
         assert!(error.source().is_none());
     }
+}
+
+#[test]
+fn versioned_migrations_record_and_read_versions_after_reopen() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("versioned-migration.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    assert_eq!(
+        schema_version(&connection, 2).expect("INITIAL_SCHEMA_VERSION_READ_FAILED"),
+        0
+    );
+    assert_eq!(schema_object_count(&connection).unwrap(), 0);
+
+    let connection = execute_versioned_migration(
+        connection,
+        1,
+        "CREATE TABLE versioned_fixture (value TEXT NOT NULL)",
+    )
+    .expect("VERSION_ONE_MIGRATION_FAILED");
+    assert_eq!(schema_version(&connection, 2).unwrap(), 1);
+
+    let connection = execute_versioned_migration(
+        connection,
+        2,
+        "ALTER TABLE versioned_fixture ADD COLUMN upgrade_marker TEXT NOT NULL DEFAULT 'upgrade'",
+    )
+    .expect("VERSION_TWO_MIGRATION_FAILED");
+    connection
+        .execute(
+            "INSERT INTO versioned_fixture (value) VALUES (?1)",
+            ["O'Brien"],
+        )
+        .unwrap();
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    let versions: Vec<i64> = {
+        let mut statement = reopened
+            .prepare("SELECT version FROM schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(versions, [1, 2]);
+    let (value, marker): (String, String) = reopened
+        .query_row(
+            "SELECT value, upgrade_marker FROM versioned_fixture",
+            [],
+            |row| Ok((row.get(0)?, row.get(1)?)),
+        )
+        .unwrap();
+    assert_eq!(value, "O'Brien");
+    assert_eq!(marker, "upgrade");
+}
+
+#[test]
+fn schema_version_accepts_only_empty_database_or_empty_ledger() {
+    let directory = common::TempDirectory::new();
+    let empty_path = directory.path().join("schema-empty.sqlite");
+    let empty = open_database(&empty_path).expect("DATABASE_OPEN_FAILED");
+    assert_eq!(schema_version(&empty, 0).unwrap(), 0);
+    assert_eq!(schema_object_count(&empty).unwrap(), 0);
+    drop(empty);
+
+    let ledger_path = directory.path().join("empty-ledger.sqlite");
+    let ledger = open_database(&ledger_path).expect("DATABASE_OPEN_FAILED");
+    ledger
+        .execute_batch("CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL)")
+        .unwrap();
+    assert_eq!(schema_version(&ledger, 0).unwrap(), 0);
+}
+
+#[test]
+fn versioned_migrations_reject_invalid_requests_without_changing_file() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("invalid-versions.sqlite");
+    let empty = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    assert_eq!(
+        execute_versioned_migration(empty, 0, "CREATE TABLE should_not_exist (value TEXT)")
+            .expect_err("ZERO_VERSION_ACCEPTED"),
+        MigrationError::InvalidVersion
+    );
+    let empty = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_object_count(&empty).unwrap(), 0);
+    assert_eq!(
+        execute_versioned_migration(empty, 2, "CREATE TABLE should_not_exist (value TEXT)")
+            .expect_err("GAP_VERSION_ACCEPTED"),
+        MigrationError::InvalidVersion
+    );
+    let empty = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_object_count(&empty).unwrap(), 0);
+
+    let version_one = seed_version_one(empty);
+    version_one
+        .execute("INSERT INTO versioned_fixture VALUES ('before')", [])
+        .unwrap();
+    drop(version_one);
+    let replay = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(
+        execute_versioned_migration(replay, 1, "INSERT INTO versioned_fixture VALUES ('replay')",)
+            .expect_err("REPLAYED_VERSION_ACCEPTED"),
+        MigrationError::InvalidVersion
+    );
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 1).unwrap(), 1);
+    let value: String = reopened
+        .query_row("SELECT value FROM versioned_fixture", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(value, "before");
+
+    let future_path = directory.path().join("unsupported-future.sqlite");
+    let future = open_database(&future_path).expect("DATABASE_OPEN_FAILED");
+    future
+        .execute_batch(
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (1), (2)",
+        )
+        .unwrap();
+    assert_eq!(
+        execute_versioned_migration(future, 1, "SELECT 1")
+            .expect_err("UNSUPPORTED_FUTURE_SCHEMA_ACCEPTED"),
+        MigrationError::InvalidSchemaState
+    );
+    let future_reopened = open_database(&future_path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&future_reopened, 2).unwrap(), 2);
+}
+
+#[test]
+fn schema_version_rejects_malformed_ledger_fixtures() {
+    let directory = common::TempDirectory::new();
+    let cases = [
+        (
+            "missing-ledger-with-object",
+            "CREATE TABLE app_fixture (value TEXT)",
+            10,
+        ),
+        (
+            "empty-ledger-with-object",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); CREATE TABLE app_fixture (value TEXT)",
+            10,
+        ),
+        (
+            "empty-ledger-with-homonym-trigger",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); CREATE TRIGGER schema_migration AFTER INSERT ON schema_migration BEGIN SELECT 1; END",
+            10,
+        ),
+        (
+            "empty-ledger-with-sqlitex-user-object",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); CREATE TABLE sqliteX_shadow (value TEXT)",
+            10,
+        ),
+        (
+            "ledger-view",
+            "CREATE VIEW schema_migration AS SELECT 1 AS version",
+            10,
+        ),
+        (
+            "wrong-shape",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL, extra TEXT)",
+            10,
+        ),
+        (
+            "missing-version-column",
+            "CREATE TABLE schema_migration (other INTEGER)",
+            10,
+        ),
+        (
+            "generated-extra-column",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL, extra TEXT GENERATED ALWAYS AS (version) VIRTUAL)",
+            10,
+        ),
+        (
+            "wrong-declared-type",
+            "CREATE TABLE schema_migration (version TEXT PRIMARY KEY NOT NULL)",
+            10,
+        ),
+        (
+            "text-value",
+            "CREATE TABLE schema_migration (version TEXT NOT NULL); INSERT INTO schema_migration VALUES ('one')",
+            10,
+        ),
+        (
+            "float-value",
+            "CREATE TABLE schema_migration (version REAL NOT NULL); INSERT INTO schema_migration VALUES (1.5)",
+            10,
+        ),
+        (
+            "negative-value",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (-1)",
+            10,
+        ),
+        (
+            "duplicate-values",
+            "CREATE TABLE schema_migration (version INTEGER NOT NULL); INSERT INTO schema_migration VALUES (1), (1)",
+            10,
+        ),
+        (
+            "gap-values",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (1), (3)",
+            10,
+        ),
+        (
+            "overflow-value",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (4294967296)",
+            4294967295,
+        ),
+        (
+            "unsupported-future-version",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (1), (2)",
+            1,
+        ),
+        (
+            "nonempty-ledger-with-zero-supported-version",
+            "CREATE TABLE schema_migration (version INTEGER PRIMARY KEY NOT NULL); INSERT INTO schema_migration VALUES (1)",
+            0,
+        ),
+    ];
+    for (name, setup_sql, supported_version) in cases {
+        assert_invalid_ledger(
+            &directory.path().join(format!("{name}.sqlite")),
+            setup_sql,
+            supported_version,
+        );
+    }
+}
+
+#[test]
+fn versioned_migration_sql_failure_rolls_back_schema_data_and_ledger() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("versioned-sql-failure.sqlite");
+    let connection = seed_version_one(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    connection
+        .execute("INSERT INTO versioned_fixture VALUES ('before')", [])
+        .unwrap();
+    drop(connection);
+
+    let connection = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(
+        execute_versioned_migration(
+            connection,
+            2,
+            "CREATE TABLE transient_fixture (value TEXT); INSERT INTO versioned_fixture VALUES ('during'); INSERT INTO missing_fixture VALUES ('fail');",
+        )
+        .expect_err("FAILING_SQL_MIGRATION_SUCCEEDED"),
+        MigrationError::ApplyFailed
+    );
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 1);
+    let transient_count: i64 = reopened
+        .query_row(
+            "SELECT count(*) FROM main.sqlite_schema WHERE name = 'transient_fixture'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(transient_count, 0);
+    let values: Vec<String> = {
+        let mut statement = reopened
+            .prepare("SELECT value FROM versioned_fixture ORDER BY rowid")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(values, ["before"]);
+}
+
+#[test]
+fn versioned_migration_ledger_trigger_failure_rolls_back_schema_data_and_version() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("versioned-ledger-failure.sqlite");
+    let connection = seed_version_one(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    connection
+        .execute("INSERT INTO versioned_fixture VALUES ('before')", [])
+        .unwrap();
+    connection
+        .execute_batch("CREATE TRIGGER fail_version_two BEFORE INSERT ON schema_migration WHEN NEW.version = 2 BEGIN SELECT RAISE(ABORT, 'synthetic'); END")
+        .unwrap();
+    drop(connection);
+
+    let connection = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(
+        execute_versioned_migration(
+            connection,
+            2,
+            "CREATE TABLE transient_fixture (value TEXT); INSERT INTO versioned_fixture VALUES ('during')",
+        )
+        .expect_err("FAILING_LEDGER_INSERT_SUCCEEDED"),
+        MigrationError::ApplyFailed
+    );
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 1);
+    let transient_count: i64 = reopened
+        .query_row(
+            "SELECT count(*) FROM main.sqlite_schema WHERE name = 'transient_fixture'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(transient_count, 0);
+    let values: Vec<String> = {
+        let mut statement = reopened
+            .prepare("SELECT value FROM versioned_fixture ORDER BY rowid")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(values, ["before"]);
+}
+
+#[test]
+fn versioned_migrations_use_main_ledger_when_temp_table_shadows_it() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("temp-shadow.sqlite");
+    let connection = seed_version_one(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    connection
+        .execute_batch("CREATE TEMP TABLE schema_migration (version INTEGER); INSERT INTO temp.schema_migration VALUES (99)")
+        .unwrap();
+    assert_eq!(schema_version(&connection, 1).unwrap(), 1);
+
+    let connection = execute_versioned_migration(
+        connection,
+        2,
+        "ALTER TABLE main.versioned_fixture ADD COLUMN upgrade_marker TEXT NOT NULL DEFAULT 'upgrade'",
+    )
+    .expect("VERSION_TWO_MIGRATION_FAILED");
+    assert_eq!(schema_version(&connection, 2).unwrap(), 2);
+    let temp_version: i64 = connection
+        .query_row("SELECT version FROM temp.schema_migration", [], |row| {
+            row.get(0)
+        })
+        .unwrap();
+    assert_eq!(temp_version, 99);
+    let main_versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(main_versions, [1, 2]);
 }
 
 #[test]

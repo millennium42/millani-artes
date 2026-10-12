@@ -15,4 +15,8 @@ Testes de arquivo real cobrem criação, reabertura, round-trip e rejeições co
 
 ## DB-003 — executor transacional de migrations
 
-O harness de arquivo real cobre DDL em banco vazio, upgrade com `O'Brien` parametrizado e reabertura, SQL vazio, rollback DDL+DML, início negado por transação externa, commit `BUSY` com reader/timeout zero e erros opacos. E3 local root: debug harness 9/9, suíte Rust 22/22, release harness 9/9, SQLite 3.53.2; fmt/clippy passaram após correção. Review E2 sem P0/P1/P2. CI de entrega 38197556421 passou 23/23, sem skips; CI do fechamento documental pendente. Coverage Rust global não registrada. Veja [spec/handoff](../../planning/specs/DB-003.md) e [handoff](../../planning/handoffs/DB-003.md).
+O harness de arquivo real cobre DDL em banco vazio, upgrade com `O'Brien` parametrizado e reabertura, SQL vazio, rollback DDL+DML, início negado por transação externa, commit `BUSY` com reader/timeout zero e erros opacos. E3 local root: debug harness 9/9, suíte Rust 22/22, release harness 9/9, SQLite 3.53.2; fmt/clippy passaram após correção. Review E2 sem P0/P1/P2. CI de entrega 38197556421 passou 23/23 e CI final documental 38198511557 passou 23/23. Coverage Rust global não registrada. Veja [spec/handoff](../../planning/specs/DB-003.md) e [handoff](../../planning/handoffs/DB-003.md).
+
+## DB-004 — ledger e execução versionada
+
+Arquivo SQLite real cobre schema vazio e ledger vazio, versões 1/2 e reabertura com `O'Brien`, metadados/versões inválidos sem mudanças, rollback após falha SQL e falha real no insert do ledger. E3 local root: Rust 29/29 (6 lib/7 bin/16 harness), release harness 16/16, SQLite 3.53.2, fmt/clippy aprovados. Os nove casos de DB-003 foram preservados. Review E2 corrigiu dois P2; revisão incremental sem P0/P1/P2. CI entrega, scans e validators finais pendentes; coverage Rust global não registrada. [Spec](../../planning/specs/DB-004.md) e [handoff](../../planning/handoffs/DB-004.md).
