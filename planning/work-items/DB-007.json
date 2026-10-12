@@ -1,0 +1,30 @@
+{
+  "id": "DB-007",
+  "title": "provar upgrade versionado do snapshot SQLite",
+  "specPath": "planning/specs/DB-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-006"
+  ],
+  "acceptanceCriteria": [
+    "Exatamente um teste novo usa um arquivo TempDirectory, materializa o snapshot v1 imutável por include_str! e helper DB-006; os 19 testes anteriores permanecem sem mudança observável.",
+    "A migration SQL estática de upgrade executa por execute_versioned_migration target 2 e retorna em autocommit.",
+    "schema_version(&conn,2)==2, ledger [1,2], duas tabelas, table_xinfo completo e os valores/default/sentinelas esperados são verificados.",
+    "Fechar/reabrir preserva schema, shape, dados, ledger [1,2], versão pública 2 e main.integrity_check='ok'.",
+    "RED caller não versionado compila e falha em runtime com ledger [1] contra [1,2] esperados; GREEN muda só o caller. Sem stub/defeito de produção.",
+    "Sem alterações em produção, fixture DB-006, dependências/manifests/locks/workflow/security records; sem alegações de migrations financeiras, startup, backup/restore, setup, compatibilidade antiga ou coverage Rust global."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente 5.6-sol-medium, Gitleaks diferencial, validators documentais e CI final no SHA exato; confirmação root das notes/refs."
+  ],
+  "agentPlan": "P-INT root integra, executa E3 e comita; P-DAT/P-QA Luna medium em código; P-TRC/P-OPS Luna low nos docs; P-REV 5.6-sol medium revisão adversarial. Um escritor por vez; reserva exata em planning/specs/DB-007.md.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Base dd60e198c7ae93bebc41ac873442e5be8193a748, branch codex/db-007-upgrade-test. Única dependência DB-006 fechado: CI final38308867688/job115009442508, 16 success/7 skipped/0 artifacts; nota67 refs69f8ea41a260c442944713b9cff6552f39cbd4a2; preservadas66 notas e reserva12 liberada. RED 10.229s: 0 passados/1 falho/19 filtrados, ledger[1] vs [1,2] com caller controlado não versionado. GREEN só troca caller por API versionada e formatação equivalente; 19 testes anteriores preservaram linhas. Root: fmt3.949s/clippy6.19s primeira tentativa, Rust33/33 (6lib/7bin/20harness,0ignored) em15.113s, release20/20 em42.451s/SQLite3.53.2. Review5.6-sol-medium E2 sem P0/P1/P2. Hashes estáveis prod242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7, fixture4113981419067b458a06c34d3faeb4e564e3bb1d7f06151363c6241a5ac7b15c, harness14962afcfacaa0788bb5c93c7eb4bc69bb4c9663b9f062a7aa47118ddc372bc5; 12 frozen. Cargo audit v0.22.2 422 deps/0 vuln-class/2 warnings/3.747s/advisory1307 commit57dcc0f2192e025138907a495c1ac9a7e1e3e123. OSV v2.6.0 542 packages (120npm/422Cargo)/3 approved/0 outside/2.853s; unchanged inherited E4 scopes/expiry. Gitleaks, validators and delivery/documentary CI remain pending. Three delegates; zero escalations, no additional fmt/clippy failures; retry/cost/tokens NR. DB-008 not started. Limits: synthetic upgrade only; no financial/product/startup/backup/restore/setup/old-engine/global coverage/auth/concurrency/physical fault/rollback proof; C SQLite audit excluded."
+}
