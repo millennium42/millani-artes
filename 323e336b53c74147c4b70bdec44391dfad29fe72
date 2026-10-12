@@ -1,0 +1,33 @@
+# DB-007 — nota final 68
+
+## Resultado
+
+DB-007 concluiu um teste de upgrade versionado em um arquivo SQLite físico. A fixture v1 de DB-006 permaneceu imutável; a operação aplicou SQL sintético estático pela API versionada target 2, registrou `[1,2]`, preservou colunas e dados originais, adicionou `upgrade_marker` com default e confirmou reabertura/integridade. Isso não é migration financeira nem prova de runtime de produto.
+
+RED controlado compilou em 10,229 s: 0 passados/1 falho/19 filtrados, ledger `[1]` versus `[1,2]` esperado, usando caller não versionado somente como controle. GREEN trocou apenas o caller para `execute_versioned_migration` target 2, com formatação equivalente. Os 19 testes anteriores preservaram todas as linhas. E3 local: fmt 3,949 s; clippy 6,19 s na primeira tentativa; Rust 33/33 (6 lib, 7 bin, 20 harness) em 15,113 s; release 20/20 em 42,451 s, SQLite 3.53.2. Review adversarial 5.6-sol medium E2 sem P0/P1/P2.
+
+Estado do executor: `done`/E3/`passes=true`/`humanGateRequired=false`.
+
+## Entrega e CI documental
+
+CI de entrega no SHA `c8aa265d62059cfd58606600a5dd8e31567045f3`: run `38319310251`, job `115043330197`, push/attempt1, 23/23 etapas, 0 skips; release 20/20. Binário PE32+ AMD64, `customProtocol=true`, 8.536.064 bytes, SHA-256 `438b403e1fe9130c1fc43d083112f31dae2dcf77731c90ffe1497f6de48f7f54`, source SHA exato; imageOS `win25-vs2026`, imageVersion `20260925.250.1`, Rust/Cargo 1.99, Node 24.21/npm 11.19. Artefato frontend `frontend-coverage-38319310251-1`, id `11778250763`, 21.875 bytes, não expirado na leitura.
+
+CI documental final no SHA exato `323e336b53c74147c4b70bdec44391dfad29fe72`: run `38320496225`, job `115047171038`, push/attempt1, COMPLETED/SUCCESS, 16 etapas sucesso/7 ignoradas/0 artefatos. Marcadores: Gitleaks 151 commits/0; Cargo 422 deps/0 vulnerabilidades classificadas/2 avisos aprovados; OSV 542 pacotes/3 achados aprovados/0 fora; npm 120/0. Advisory DB contém 1307 advisories, commit `57dcc0f2192e025138907a495c1ac9a7e1e3e123`.
+
+Scan de entrega: 10 paths/36.740 bytes, SHA-256 `b7e937e2a4e18368173926caf21b822fc38905254fccfc205d52e16f7474f278`, zero findings. Scan documental final: 9 docs/26.839 bytes, SHA-256 `f18193c329c5802f993c7e66d62bb6cf9976565c898089516189c5e88527dd2c`, zero findings/12 hashes estáveis. Validators: 329 arquivos/28 fontes/69 JSON+evidence; prefixo histórico do log preservado: 291.618 bytes, SHA-256 `09863f0f6fad17b440754e20e6d29ab26ea3a90de76798b7df87f08f853bc3d0`.
+
+Hashes frozen: harness `14962afcfacaa0788bb5c93c7eb4bc69bb4c9663b9f062a7aa47118ddc372bc5`; fixture v1 `4113981419067b458a06c34d3faeb4e564e3bb1d7f06151363c6241a5ac7b15c`. Doze hashes estáveis, incluindo produção, manifests, locks, workflow e records E4.
+
+## Segurança e limites
+
+Quatro records E4 herdados, sem nova aceitação: Cargo scope `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`; OSV scope `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`; alvo `x86_64-pc-windows-msvc`, somente glib 0.18.5/proc-macro-error 1.0.4, expiração 2026-10-23 00:00 UTC (22-10-2026 21h São Paulo). Auditoria C SQLite excluída.
+
+Esta etapa não comprova migrations financeiras, startup, backup/restore, setup.exe, compatibilidade com engine antigo, rollback DB-008, cobertura Rust global, autenticação/concorrência global nem fault injection física. Cobertura frontend 100% é apenas scaffold (3 testes); SAST 45 casos (42 CLI/3 PowerShell), sem Rust/backend SQL/restore. DB-008 não iniciado; meta de produto inacabada.
+
+## Reserva e continuidade
+
+Os 11 paths reservados: `planning/specs/DB-007.md`; `planning/work-items/DB-007.json`; `planning/handoffs/DB-007.md`; `src-tauri/tests/sqlite_harness.rs`; `docs/operations/MIGRATIONS.md`; `docs/quality/TEST_STRATEGY.md`; `docs/security/SECURITY_TEST_MATRIX.md`; `docs/traceability/REQUIREMENTS_MATRIX.md`; `planning/ROADMAP.md`; `planning/PROGRESS_LOG.md` (append-only); `artifacts/db007-final-note.md` (esta nota).
+
+O root declara LIBERADA a reserva dos 11 paths somente quando esta nota 68 estiver publicada, todos os 67 blobs/notas anteriores preservados e refs remotos finais de main/branch/notes confirmados. A publicação e a confirmação ainda cabem ao root; não se declara concluída aqui.
+
+Roteamento: 3 delegados — Luna nível médio para código, Luna nível baixo para docs e 5.6-sol nível médio para review; 0 escalonamentos/falhas fmt-clippy. Retries evitados e custo/tokens não registrados.
