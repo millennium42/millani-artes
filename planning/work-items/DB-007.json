@@ -2,7 +2,7 @@
   "id": "DB-007",
   "title": "provar upgrade versionado do snapshot SQLite",
   "specPath": "planning/specs/DB-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-006"
   ],
@@ -25,6 +25,6 @@
   "agentPlan": "P-INT root integra, executa E3 e comita; P-DAT/P-QA Luna medium em código; P-TRC/P-OPS Luna low nos docs; P-REV 5.6-sol medium revisão adversarial. Um escritor por vez; reserva exata em planning/specs/DB-007.md.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Base dd60e198c7ae93bebc41ac873442e5be8193a748, branch codex/db-007-upgrade-test. Única dependência DB-006 fechado: CI final38308867688/job115009442508, 16 success/7 skipped/0 artifacts; nota67 refs69f8ea41a260c442944713b9cff6552f39cbd4a2; preservadas66 notas e reserva12 liberada. RED 10.229s: 0 passados/1 falho/19 filtrados, ledger[1] vs [1,2] com caller controlado não versionado. GREEN só troca caller por API versionada e formatação equivalente; 19 testes anteriores preservaram linhas. Root: fmt3.949s/clippy6.19s primeira tentativa, Rust33/33 (6lib/7bin/20harness,0ignored) em15.113s, release20/20 em42.451s/SQLite3.53.2. Review5.6-sol-medium E2 sem P0/P1/P2. Hashes estáveis prod242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7, fixture4113981419067b458a06c34d3faeb4e564e3bb1d7f06151363c6241a5ac7b15c, harness14962afcfacaa0788bb5c93c7eb4bc69bb4c9663b9f062a7aa47118ddc372bc5; 12 frozen. Cargo audit v0.22.2 422 deps/0 vuln-class/2 warnings/3.747s/advisory1307 commit57dcc0f2192e025138907a495c1ac9a7e1e3e123. OSV v2.6.0 542 packages (120npm/422Cargo)/3 approved/0 outside/2.853s; unchanged inherited E4 scopes/expiry. Gitleaks, validators and delivery/documentary CI remain pending. Three delegates; zero escalations, no additional fmt/clippy failures; retry/cost/tokens NR. DB-008 not started. Limits: synthetic upgrade only; no financial/product/startup/backup/restore/setup/old-engine/global coverage/auth/concurrency/physical fault/rollback proof; C SQLite audit excluded."
+  "passes": true,
+  "notes": "Executor done/E3/passes=true/humanGateRequired=false. RED10.229s: 0 passados/1 falho/19 filtrados, ledger[1] vs[1,2]; GREEN somente caller versionado target2 e formatação. fmt3.949s/clippy6.19s primeira tentativa; Rust33/33 (6lib/7bin/20harness,0ignored) em15.113s; release20/20 em42.451s/SQLite3.53.2; 19 antigos preservados linha a linha. Review5.6-sol-medium E2 sem P0/P1/P2. Hashes prod242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7, fixture4113981419067b458a06c34d3faeb4e564e3bb1d7f06151363c6241a5ac7b15c, harness14962afcfacaa0788bb5c93c7eb4bc69bb4c9663b9f062a7aa47118ddc372bc5; 12 estáveis. Cargo422/0 classvuln/2 aprovados, advisory1307 commit57dcc0f2192e025138907a495c1ac9a7e1e3e123; OSV542/3 excetuados/0 fora; scopes E4 herdados. CI entrega SHA c8aa265d62059cfd58606600a5dd8e31567045f3 run38319310251/job115043330197 push attempt1 success23/23/0skip, release20/20. Nativo PE32+AMD64/customProtocol true/8536064B/SHA438b403e1fe9130c1fc43d083112f31dae2dcf77731c90ffe1497f6de48f7f54, source SHA igual. Gitleaks150/0, npm120/0, SAST45 (42CLI/3PS limites). Frontend2files/3tests scaffold100%; artifact11778250763/21875B/expiredfalse. Validators329/28/69; staged10paths/36740B/SHA b7e937e2a4e18368173926caf21b822fc38905254fccfc205d52e16f7474f278/0 findings/12 hashes estáveis. CI documental final/nota68/publicação/preservação67 notas+refs/liberação11 ainda pendentes/ACTIVE; DB-008 não iniciado. 3 delegados, 0 escalonamentos/falhas fmt-clippy; retries/custo/tokens NR."
 }

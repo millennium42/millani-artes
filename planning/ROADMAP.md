@@ -438,4 +438,4 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-007 — upgrade versionado do snapshot
 
-[Spec](specs/DB-007.md)/[handoff](handoffs/DB-007.md): RED controlado/ GREEN caller versionado; root E3 Rust33/33, release20/20, 19 anteriores preservados; review sem P0/P1/P2. Cargo/OSV passaram; Gitleaks, validators e CI pendentes. `in_progress`/E3/`passes=false`; teste sintético, sem prova financeira/startup/backup/setup.
+[Spec](specs/DB-007.md)/[handoff](handoffs/DB-007.md): RED controlado ledger `[1]` contra `[1,2]`; GREEN apenas caller versionado. Root E3: Rust33/33, release20/20 (SQLite3.53.2), 19 testes anteriores preservados; review E2 sem P0/P1/P2. Cargo/OSV e CI entrega passaram; executor `done`/E3/`passes=true`/`humanGateRequired=false`. CI documental/nota68/preservação67 notas+refs/liberação11 paths pendentes/ACTIVE. Prova somente upgrade sintético de teste.
