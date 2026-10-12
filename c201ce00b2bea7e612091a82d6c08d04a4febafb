@@ -1,0 +1,29 @@
+# DB-003 — nota final de evidência
+
+## Resultado
+
+Executor DB-003 concluído: `done` / E3 / `passes=true` / `humanGateRequired=false`. A implementação aplica SQL interno estático em uma transação SQLite; somente devolve a conexão após commit confirmado e descarta a conexão consumida em erro. Seleção e tracking de versão pertencem a DB-004, ainda não iniciado.
+
+Entrega de código: commit `04725381191395b7807105833169a1adae9638b5`, validado pelo CI 38197556421/job114643531438 (main, push, attempt 1; 23/23 sucesso, 0 skips). Release real de `sqlite_harness`: 9/9, SQLite 3.53.2. Binário PE32+ AMD64/customProtocol=true, 8.536.064 bytes, SHA-256 `7488a9a3aad0eeadcac4af9c016f7d71f7bbb14207889f03ec2000c83d11c81b`, source SHA igual à entrega. A suíte Rust local teve 22/22; RED compilou e apresentou uma falha `ApplyFailed` no stub. Clippy inicialmente encontrou três `drop(error)` inúteis; após removê-los, fmt e clippy passaram. Review incremental independente 5.6-sol-medium E2, sem P0/P1/P2.
+
+CI final do fechamento documental: commit `c201ce00b2bea7e612091a82d6c08d04a4febafb`, main e branch pública iguais; run 38198511557/job114646455371 (main, push, attempt 1), completed/success, 16 sucesso e 7 skips, zero artifacts. Os skips foram etapas de frontend e de preparação/build/verificação do binário Rust; o CI final não repetiu esses checks. O CI da entrega de código acima cobre o binário e o harness release.
+
+Hashes finais das fontes congeladas: `database.rs` SHA-256 `7b94936e896ef3a3ea25505af18608942c22e785a707a7085f44366554bc276f`; `sqlite_harness.rs` SHA-256 `3b1c218111d55ab39ded31a45768547946ec6564e54b892ba60b1a1ccf0e322f`.
+
+## Segurança e integridade dos registros
+
+Scans no source final: Gitleaks 143 commits/0 findings; Cargo 422 dependências/0 vulnerabilidades classificadas/2 avisos aprovados; OSV 542 dependências/3 exceções/0 restantes; npm 120/0. As aprovações existentes permaneceram inalteradas, sem novo aceite: Cargo scope `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`; OSV scope `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`. Target Windows MSVC; expiração `2026-10-23T00:00Z` (2026-10-22 21:00 America/Sao_Paulo), sem extensão. Manifest, locks, quatro records de segurança e workflow foram preservados sem alteração.
+
+Validators documentais passaram (316 arquivos, 28 fontes, 65 itens/evidence). Gitleaks do diff staged pré-commit: 19.039 bytes, 0 findings, SHA-256 `3c0b398e66351d32283528211610a683ea5e8f53fea3d02d8195f3a3bd1441dc`; 280.771 bytes do prefixo histórico do log foram preservados. A referência `54da5364053e2fb0fd75848efb66f6c2dd6491e7` é o conjunto histórico das 63 notas anteriores; todas devem permanecer preservadas.
+
+## Escopo e limites
+
+Os testes exercitam apenas SQL confiável, interno, compilado e revisado. Não há sandbox ou validação de SQL externo; não foi executada fault injection de I/O e não se promete rollback físico após falhas de hardware. A conexão consumida é descartada, mas recuperação/integridade após corrupção ou falha física fica fora do contrato. Os audits de dependências não cobrem o código C bundled do SQLite. Coverage Rust global não registrada. O artefato de coverage CI é somente scaffold frontend, não mede o backend. SAST cobre 42 casos CLI e 3 PowerShell; não prova backend Rust, SQL ou restore. Setup/instalador, finanças e backup permanecem incompletos.
+
+## Reserva e handoff
+
+Root declara os 12 paths LIBERADOS quando append/push desta nota e preservação das 63 notas anteriores forem confirmados nas refs públicas; até então reserva ativa. Não iniciar DB-004 antes da liberação.
+
+Paths reservados: `planning/specs/DB-003.md`, `planning/work-items/DB-003.json`, `planning/handoffs/DB-003.md`, `src-tauri/src/infrastructure/database.rs`, `src-tauri/tests/sqlite_harness.rs`, `docs/operations/MIGRATIONS.md`, `docs/quality/TEST_STRATEGY.md`, `docs/security/SECURITY_TEST_MATRIX.md`, `docs/traceability/REQUIREMENTS_MATRIX.md`, `planning/ROADMAP.md`, `planning/PROGRESS_LOG.md`, `artifacts/db003-final-note.md`.
+
+Routing: Luna medium implementou código; Luna low documentação; 5.6-sol-medium fez review. Tokens/custo por ciclo e economia não registrados, sem medição.
