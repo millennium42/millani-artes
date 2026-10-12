@@ -416,7 +416,7 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-002 — abrir banco SQLite vazio em arquivo
 
-[Spec](specs/DB-002.md)/[handoff](handoffs/DB-002.md)/[ADR-024](../docs/architecture/adr/ADR-024-sqlite-file-opening.md): abertura SQLite em arquivo no core; GREEN E3 local, review E2 sem achados e gates Cargo/OSV pós-aceite aprovados. Entrega `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` validada por CI 38103942047, 23/23; main/branch confirmadas. Executor `done`/E3/`passes=true`; CI do fechamento documental, nota final e liberação ainda pendentes. `humanGateRequired=true`; startup, containment e domínio financeiro seguem fora do contrato.
+[Spec](specs/DB-002.md)/[handoff](handoffs/DB-002.md)/[ADR-024](../docs/architecture/adr/ADR-024-sqlite-file-opening.md): abertura SQLite em arquivo no core; GREEN E3 local, review E2 sem achados e gates Cargo/OSV pós-aceite aprovados. Entrega `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` validada por CI 38103942047, 23/23; main/branch confirmadas. Executor `done`/E3/`passes=true`; DB-002 fechado: CI38104862341/job114368093002 16/7/0 e nota63 pública. `humanGateRequired=true`; startup, containment e domínio financeiro seguem fora do contrato.
 
 ## DB-003 — executar migrations SQLite transacionalmente
 
@@ -443,4 +443,9 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-008 — evidência de rollback
 
-[Spec](specs/DB-008.md)/[handoff](handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; CI final/nota69/liberação10 paths pendentes/ACTIVE. Sem prova de falha física de rollback.
+[Spec](specs/DB-008.md)/[handoff](handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; DB-008 fechado: CI final38322839469/job115054651101 no SHA dfbe60893150c222b17987518f65a161d3e7ef77, 16/7/0; nota69 refs054bfc0f6bce94a795158a89ded50d20d71bd989, 68 notas preservadas/reserva10 liberada. Sem prova de falha física de rollback.
+
+
+## DB-009 — ativar foreign keys ao abrir
+
+[Spec](specs/DB-009.md)/[handoff](handoffs/DB-009.md): baseline observado ON; controle OFF falhou fechado em RED controlado, sem bug preexistente. Root E3 fmt/clippy, Rust34/34, release21/21 SQLite3.53.2; review E2 sem P0/P1/P2; Cargo/OSV passaram. Executor `in_progress`/E3/`passes=false`; Gitleaks staged, validators e CI entrega pendentes.

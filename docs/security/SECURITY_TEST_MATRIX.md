@@ -170,7 +170,7 @@ ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.c
 ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.
 ## DB-002 — abertura de arquivo no core
 
-RED/GREEN local E3 cobriu arquivo real, round-trip, rejeições e preservação de sentinela; review E2 sem P0/P1/P2. E4 materializada nos records; gates Cargo/OSV pós-aceite passaram. Houve colisão scratch em duas tentativas concorrentes; retries locais em série passaram. CI 38103942047 validou a entrega pública (23/23); CI do fechamento documental pendente. A prova não estabelece escolha segura de diretório, containment, startup, permissões, locks entre processos, finanças ou backup. [Spec/handoff](../../planning/specs/DB-002.md) detalham evidência e limites.
+RED/GREEN local E3 cobriu arquivo real, round-trip, rejeições e preservação de sentinela; review E2 sem P0/P1/P2. E4 materializada nos records; gates Cargo/OSV pós-aceite passaram. Houve colisão scratch em duas tentativas concorrentes; retries locais em série passaram. CI 38103942047 validou a entrega pública (23/23); DB-002 fechado: CI documental 38104862341/job114368093002 no SHA 1ef3bd833708f46e0e26188e71b3cfb83f679014 passou 16/7/0; nota63 pública. A prova não estabelece escolha segura de diretório, containment, startup, permissões, locks entre processos, finanças ou backup. [Spec/handoff](../../planning/specs/DB-002.md) detalham evidência e limites.
 
 ## DB-003 — executor transacional de migrations
 
@@ -198,4 +198,9 @@ SQL checked-in trusted, estático e sintético exercitado por `execute_migration
 
 ## DB-008 — evidência de rollback
 
-[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; CI final/nota69/liberação10 paths pendentes/ACTIVE. Sem prova de falha física de rollback.
+[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; DB-008 fechado: CI final38322839469/job115054651101 no SHA dfbe60893150c222b17987518f65a161d3e7ef77, 16/7/0; nota69 refs054bfc0f6bce94a795158a89ded50d20d71bd989, 68 notas preservadas/reserva10 liberada. Sem prova de falha física de rollback.
+
+
+## DB-009 — ativar foreign keys ao abrir
+
+[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline observado ON; controle OFF falhou fechado em RED controlado, sem bug preexistente. Root E3 fmt/clippy, Rust34/34, release21/21 SQLite3.53.2; review E2 sem P0/P1/P2; Cargo/OSV passaram. Executor `in_progress`/E3/`passes=false`; Gitleaks staged, validators e CI entrega pendentes.

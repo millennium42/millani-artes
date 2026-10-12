@@ -24,4 +24,9 @@ DB-006 materializa uma fixture SQL trusted e sintética em arquivos SQLite de te
 
 ## DB-008 — evidência de rollback
 
-[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; CI final/nota69/liberação10 paths pendentes/ACTIVE. Sem prova de falha física de rollback.
+[Spec](../../planning/specs/DB-008.md)/[handoff](../../planning/handoffs/DB-008.md): tarefa documental sem código; cinco fixtures existentes PASS em stdout debug/release. Root fmt/clippy/Rust33/33/release20/20; review E2 sem achados. CI documental entrega 38322109825/job115052349852 no SHA 08a214888bf581d40e74a143bfdfdc48dea0878a passou 16 success/7 skipped/0 artifact (docs apenas). Executor `done`/E3/`passes=true`; DB-008 fechado: CI final38322839469/job115054651101 no SHA dfbe60893150c222b17987518f65a161d3e7ef77, 16/7/0; nota69 refs054bfc0f6bce94a795158a89ded50d20d71bd989, 68 notas preservadas/reserva10 liberada. Sem prova de falha física de rollback.
+
+
+## DB-009 — ativar foreign keys ao abrir
+
+[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline observado ON; controle OFF falhou fechado em RED controlado, sem bug preexistente. Root E3 fmt/clippy, Rust34/34, release21/21 SQLite3.53.2; review E2 sem P0/P1/P2; Cargo/OSV passaram. Executor `in_progress`/E3/`passes=false`; Gitleaks staged, validators e CI entrega pendentes.

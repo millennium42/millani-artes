@@ -61,6 +61,15 @@ pub fn open_database(path: &Path) -> Result<Connection, DatabaseOpenError> {
             row.get::<_, i64>(0)
         })
         .map_err(|_| DatabaseOpenError::OpenFailed)?;
+    connection
+        .pragma_update(None, "foreign_keys", true)
+        .map_err(|_| DatabaseOpenError::OpenFailed)?;
+    let foreign_keys: i64 = connection
+        .pragma_query_value(None, "foreign_keys", |row| row.get(0))
+        .map_err(|_| DatabaseOpenError::OpenFailed)?;
+    if foreign_keys != 1 {
+        return Err(DatabaseOpenError::OpenFailed);
+    }
     Ok(connection)
 }
 

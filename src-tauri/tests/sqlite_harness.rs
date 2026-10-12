@@ -1148,3 +1148,49 @@ fn assert_open_error(path: &Path, expected: DatabaseOpenError) {
     assert_eq!(format!("{error:?}"), debug);
     assert!(error.source().is_none());
 }
+
+#[test]
+fn database_open_enables_foreign_keys_on_each_connection() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("foreign-keys.sqlite");
+    let other_path = directory.path().join("foreign-keys-other.sqlite");
+    let first = open_database(&path).expect("FIRST_DATABASE_OPEN_FAILED");
+    let second = open_database(&path).expect("SECOND_DATABASE_OPEN_FAILED");
+    assert!(first.is_autocommit());
+    assert!(second.is_autocommit());
+    let first_foreign_keys: i64 = first
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    let second_foreign_keys: i64 = second
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(first_foreign_keys, 1);
+    assert_eq!(second_foreign_keys, 1);
+
+    second.pragma_update(None, "foreign_keys", false).unwrap();
+    let second_foreign_keys: i64 = second
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    let first_foreign_keys: i64 = first
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(second_foreign_keys, 0);
+    assert_eq!(first_foreign_keys, 1);
+
+    let other = open_database(&other_path).expect("OTHER_DATABASE_OPEN_FAILED");
+    assert!(other.is_autocommit());
+    let other_foreign_keys: i64 = other
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(other_foreign_keys, 1);
+    drop(second);
+    drop(first);
+    drop(other);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    let reopened_foreign_keys: i64 = reopened
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(reopened_foreign_keys, 1);
+}
