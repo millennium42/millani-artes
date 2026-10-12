@@ -1,0 +1,23 @@
+# DB-004 — nota final 65
+
+## Resultado
+
+Executor `done`, evidência E3, `passes=true`, `humanGateRequired=false`. O ledger `main.schema_migration` é validado estruturalmente e as migrations só avançam para a próxima versão suportada, com SQL e registro na mesma transação. Os testes exercitam SQLite em arquivo, reabertura e rollback; não autenticam o ledger nem aceitam SQL externo.
+
+Implementação local root: `cargo fmt --check`, clippy e suíte Rust completa passaram; 29 testes Rust (6 lib, 7 bin, 16 harness), release harness 16/16 em SQLite 3.53.2. A execução RED compilou e falhou conforme esperado no stub. Revisão independente 5.6-sol-medium encontrou dois P2, corrigidos; revisão incremental não encontrou P0/P1/P2. Fontes congeladas: `database.rs` SHA-256 `242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7`; `sqlite_harness.rs` SHA-256 `2a9d446f0c96e6df9d707528116162d294357e47662ea579e3637a764597a002`.
+
+## CI e gates
+
+CI de entrega: SHA `e384d0546cd1292efc448eec2e773a253818f97e`, run `38201472821`, job `114655611728`, main/push/attempt 1, completed/success, 23/23, sem skips. O release harness passou 16/16. Artefato nativo PE32+ AMD64, `customProtocol=true`, 8.536.064 bytes, SHA-256 `68a27b7beae09ac57f4c241cc941328aef2e210b07a911d3ee8016ee47800c68`; source SHA coincide com a entrega. Ambiente Windows `25-VS2026`, image `20260925.250.1`, Rust/Cargo 1.99.0.
+
+CI de fechamento documental: SHA `94e37d38f5df375ffb9492e3f80d272f2f44b331`, run `38299901151`, job `114980000210`, main/push/attempt 1, completed/success, 16 success, 7 skipped, nenhum artifact e nenhum build novo. No SHA final: Gitleaks 145 commits/0 findings; OSV 542 pacotes/3 exceções/0 não excepcionados; npm 120/0; Cargo 422/0 vulnerabilidades classificadas/2 avisos aprovados. Advisory DB 1307 (`57dcc0f2192e025138907a495c1ac9a7e1e3e123`, atualizado em 12 Oct 2026). Manifest, lockfiles, inputs e quatro records de segurança permaneceram inalterados: dois records de aprovação e dois de exceção, não quatro aceites humanos. Hash do escopo Cargo `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`; hash do escopo OSV `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`. Aplicam-se somente a glib 0.18.5 e proc-macro-error 1.0.4 no alvo `x86_64-pc-windows-msvc`, com expiração 2026-10-23 00:00 UTC (22 Oct, 21h São Paulo); não cobrem auditoria do C SQLite.
+
+A verificação final staged abrangeu os nove paths documentais: 34.825 bytes, SHA-256 `bffaf236c9490cfd84d81c2c8979b579aa14b33e95f5dc8ad0623f00081ed9dd`, zero findings e 11 hashes estáveis. O validador reportou mapa com 319 arquivos/28 fontes/66 JSON. O prefixo histórico append-only de 283.530 bytes foi preservado; esse tamanho identifica o prefixo, não o arquivo final completo.
+
+## Limites e liberação
+
+Sem audit do código C SQLite, medição de cobertura Rust global ou fault injection física. A cobertura frontend de 100% é apenas do scaffold; não demonstra cobertura do produto. Sem garantia de autenticação do ledger, sandbox de SQL, concorrência global, recuperação de falha física, segurança financeira ou backup/restore. DB-005 não iniciado; implementação financeira, backup e `setup.exe` permanecem pendentes. Tokens/custo não registrados.
+
+Os 12 paths reservados foram: `planning/specs/DB-004.md`; `planning/work-items/DB-004.json`; `planning/handoffs/DB-004.md`; `src-tauri/src/infrastructure/database.rs`; `src-tauri/tests/sqlite_harness.rs`; `docs/operations/MIGRATIONS.md`; `docs/quality/TEST_STRATEGY.md`; `docs/security/SECURITY_TEST_MATRIX.md`; `docs/traceability/REQUIREMENTS_MATRIX.md`; `planning/ROADMAP.md`; `planning/PROGRESS_LOG.md`; `artifacts/db004-final-note.md`.
+
+O root declara LIBERADA a reserva dos 12 paths quando a publicação desta nota 65, preservação de TODAS 64 notas e refs remotos (HEAD/branch/notes) finais forem confirmadas. DB-005 só começa após essa condição. Roteamento: root integrou E3; Luna medium executou código; Luna low manteve documentação; 5.6-sol-medium revisou.
