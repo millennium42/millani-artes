@@ -420,4 +420,4 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-003 — executar migrations SQLite transacionalmente
 
-[Spec](specs/DB-003.md)/[handoff](handoffs/DB-003.md): E3 local root; RED compilou e falhou um teste do stub; debug harness 9/9, suíte Rust 22/22, release harness 9/9 (SQLite 3.53.2), fmt/clippy e gates Cargo/OSV passaram. Review incremental E2 sem P0/P1/P2. Fontes e hashes constam na spec/handoff. `in_progress`/`passes=false`/`humanGateRequired=false`; CI final, validators, publicação e nota pendentes. Próximo DB-004 somente após fechamento e liberação explícita; não iniciado.
+[Spec](specs/DB-003.md)/[handoff](handoffs/DB-003.md): entrega `04725381191395b7807105833169a1adae9638b5`; E3 local, review E2 sem P0/P1/P2 e CI 38197556421/job114643531438 main/push attempt1, 23/23 success/0 skip. Release harness 9/9 (SQLite 3.53.2), fmt/clippy e gates Cargo/OSV passaram. Executor `done`/E3/`passes=true`/`humanGateRequired=false`. CI do fechamento documental, nota 64 e liberação explícita da reserva pendentes. DB-004 não iniciado; aguarda fechamento e liberação.

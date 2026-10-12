@@ -2,7 +2,7 @@
   "id": "DB-003",
   "title": "executar migrations SQLite transacionalmente",
   "specPath": "planning/specs/DB-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-002"
   ],
@@ -22,6 +22,6 @@
   "agentPlan": "P-INT root executou E3 e integra; P-DAT/P-INT Luna medium escreveu código em 2 turnos e corrigiu 3 drops inúteis após clippy; P-OPS Luna low atualiza documentos serialmente; P-REV 5.6-sol medium revisão read-only incremental. Reserva serial conforme paths exatos em planning/specs/DB-003.md; nota final somente após CI final.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local root: RED compilou e 1 teste falhou no stub (ApplyFailed); debug harness 9/9, Rust total 22/22 e release harness 9/9, SQLite 3.53.2; fmt e clippy passaram após remover 3 drops inúteis. Cargo 422/0 vulnerabilidades/2 avisos aprovados; OSV 542 dependências/3 exceções/0 restantes, inputs e records existentes imutáveis. Review incremental 5.6-sol-medium E2 sem P0/P1/P2. Fontes database.rs SHA-256 7b94936e896ef3a3ea25505af18608942c22e785a707a7085f44366554bc276f e sqlite_harness.rs SHA-256 3b1c218111d55ab39ded31a45768547946ec6564e54b892ba60b1a1ccf0e322f; Rust/Cargo 1.99, Windows MSVC x64. CI, publicação e validators finais pendentes. Coverage Rust global não registrada; scanners Cargo/OSV não cobrem C SQLite. Contrato não cobre I/O físico, perda abrupta ou SQL externo; DB-004 não iniciado. Custo/tokens não registrados."
+  "passes": true,
+  "notes": "E3 local root e CI entrega confirmada: SHA 04725381191395b7807105833169a1adae9638b5; run 38197556421/job114643531438 main/push attempt1 success 23/23/0 skip. RED compilou e 1 teste falhou no stub; debug harness 9/9, Rust total 22/22 e release harness 9/9, SQLite 3.53.2; fmt/clippy passaram após corrigir três drops inúteis. Review incremental 5.6-sol-medium E2 sem P0/P1/P2. Cargo 422/0 vulnerabilidades classificadas/2 avisos aprovados; OSV 542/3 exceções/0 restantes; npm 120/0; Gitleaks 142 commits/0; SAST 45 (42 CLI/3 PS), limites documentados. Validators entrega 316 arquivos/28 fontes/65 work items+evidence; staged Gitleaks pré-commit 41607 bytes/0 findings, SHA-256 bbc669e73b22b6138cc8a1ccb69b3ecbeacafebd497cd92da89dbc429d3c40ad. Binário PE32+ AMD64/customProtocol true, 8536064 bytes, SHA-256 7488a9a3aad0eeadcac4af9c016f7d71f7bbb14207889f03ec2000c83d11c81b, source SHA igual. Artifact frontend-coverage-38197556421-1 retido (21871 bytes), cobertura somente scaffold frontend. Manifest/locks/quatro records/workflow inalterados. CI do fechamento documental, nota64 e liberação reserva12 pendentes. SQL trusted/interno, precondições do caller; sem certeza de rollback físico, sem version tracking (DB-004), setup incompleto. Coverage Rust global/custo/tokens/economia não registrados."
 }

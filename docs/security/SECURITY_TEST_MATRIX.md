@@ -174,4 +174,4 @@ RED/GREEN local E3 cobriu arquivo real, round-trip, rejeições e preservação 
 
 ## DB-003 — executor transacional de migrations
 
-E3 local: falha inicial do stub (`ApplyFailed`), harness debug/release 9/9, suíte Rust 22/22, fmt/clippy e gates Cargo/OSV passaram; SQLite 3.53.2. Review incremental E2 sem P0/P1/P2. Erros opacos e descarte da conexão foram cobertos; não há alegação de SQL externo sanitizado, fault injection de I/O, C SQLite coberto pelos audits ou segurança global. CI final pendente. Veja [spec/handoff](../../planning/specs/DB-003.md).
+E3 local: falha inicial do stub (`ApplyFailed`), harness debug/release 9/9, suíte Rust 22/22, fmt/clippy e gates Cargo/OSV passaram; SQLite 3.53.2. Review incremental E2 sem P0/P1/P2. CI entrega 38197556421 passou 23/23 sem skips. Erros opacos e descarte da conexão foram cobertos; não há alegação de SQL externo sanitizado, fault injection de I/O, C SQLite coberto pelos audits ou segurança global. CI do fechamento documental pendente. Veja [spec/handoff](../../planning/specs/DB-003.md).
