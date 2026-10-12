@@ -308,4 +308,4 @@ ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium4
 
 ## DB-004 — ledger e migração versionada
 
-[Spec](../../planning/specs/DB-004.md)/[handoff](../../planning/handoffs/DB-004.md): E3 local em SQLite de arquivo, 29 testes Rust, release harness 16/16 e review incremental E2 sem P0/P1/P2 após correção de dois P2. `main.schema_migration` e erros do getter seguem contrato; scripts são SQL trusted. Status `in_progress`/`passes=false`; scans/validators finais e CI de entrega pendentes. Sem autenticação de ledger, sandbox, fault injection física ou coverage Rust global.
+[Spec](../../planning/specs/DB-004.md)/[handoff](../../planning/handoffs/DB-004.md): E3 local em SQLite de arquivo, 29 testes Rust, release harness 16/16 e review incremental E2 sem P0/P1/P2 após correção de dois P2. `main.schema_migration` e erros do getter seguem contrato; scripts são SQL trusted. Executor `done`/E3/`passes=true`; CI entrega 38201472821/job114655611728 passou 23/23 no SHA e384d0546cd1292efc448eec2e773a253818f97e. Fechamento documental/nota 65 pendentes. Sem autenticação de ledger, sandbox, fault injection física ou coverage Rust global.

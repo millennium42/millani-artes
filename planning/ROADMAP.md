@@ -424,4 +424,4 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-004 — registrar e selecionar versões de schema SQLite
 
-[Spec](specs/DB-004.md)/[handoff](handoffs/DB-004.md): E3 local, 29 testes Rust, release harness 16/16 (SQLite 3.53.2), fmt/clippy; dois achados P2 corrigidos e review incremental E2 sem P0/P1/P2. `in_progress`/E3/`passes=false`/`humanGateRequired=false`; scans/validators staged e CI de entrega pendentes. DB-005 ainda não iniciado.
+[Spec](specs/DB-004.md)/[handoff](handoffs/DB-004.md): E3 local (29 testes Rust; release harness 16/16, SQLite 3.53.2, fmt/clippy), dois P2 corrigidos e review incremental E2 sem P0/P1/P2. Executor `done`/E3/`passes=true`/`humanGateRequired=false`; CI entrega 38201472821/job114655611728, 23/23, no SHA e384d0546cd1292efc448eec2e773a253818f97e. Fechamento documental/nota 65/liberação dos 12 paths pendentes; DB-005 não iniciado.
