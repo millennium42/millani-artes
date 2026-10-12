@@ -1,0 +1,30 @@
+{
+  "id": "DB-006",
+  "title": "materializar snapshot lógico SQLite para teste de upgrade",
+  "specPath": "planning/specs/DB-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-004"
+  ],
+  "acceptanceCriteria": [
+    "Um único teste novo cria dois arquivos físicos com TempDirectory e confirma inicialmente zero objetos de usuário e schema_version(&connection, 1) == 0 em ambos.",
+    "A fixture SQL estática checked-in carregada com include_str! e execute_migration materializa apenas main.schema_migration e main.upgrade_fixture, ledger [1], shape/DDL acordados, duas linhas sentinela exatas e retorna em autocommit.",
+    "Primeiro arquivo fechado/reaberto mantém shape, sentinelas, schema_version(&connection, 1) == 1, ledger [1] e main.integrity_check=ok; o segundo permanece vazio até sua aplicação própria.",
+    "Após aplicação independente e reabertura, o segundo arquivo tem snapshot íntegro igual e isolado do primeiro.",
+    "RED usa fixture comentada vazia e falha no oráculo de runtime sem stub/defeito de produção; GREEN preenche apenas fixture com DDL/sentinelas. Exatamente um teste novo; 18 casos anteriores preservados.",
+    "Sem alteração de produção/API versionada/dependências/manifests/locks/workflow/security records e sem alegações de migrations financeiras, runtime/startup, backup/restore, setup, compatibilidade de engine ou cobertura Rust global."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Revisão independente 5.6-sol-medium, Gitleaks diferencial, validators documentais e CI final remota no SHA exato; confirmar preservação de notes/refs."
+  ],
+  "agentPlan": "P-INT root integra, executa E3 e comita; Luna autorizada para trabalho braçal P-DAT/P-INT nível médio no teste/fixture e P-OPS nível baixo na documentação; P-REV 5.6-sol nível médio faz review read-only. Escrita serial no checkout compartilhado; reserva exata em planning/specs/DB-006.md. Root é o único integrador.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Entrega local E3 concluída; CI de entrega ainda pendente. RED 8.05s: fixture comment-only compilou e falhou no oráculo (0/1 vs 0/2 tabelas, 18 filtrados). GREEN preencheu DDL/sentinelas; um teste novo, rustfmt e alias local SnapshotColumn sem alterar oráculo. fmt2.992s/clippy4.673s; Rust32/32 (6 lib/7 bin/19 harness, 0 ignorados); release19/19 em29.702s/SQLite3.53.2; 18 testes prévios preservados. Review 5.6-sol-medium E2 sem P0/P1/P2. Hashes frozen: database.rs 242d439a2e32fb7e7f6ce12ba7f2d66fccb78ee8eab9884bd86181ffe6ab72a7; harness add57f8ffefd50538f5e70720b5457a73d2866b7426b8ab16d6ce283f72d0d2f; fixture 4113981419067b458a06c34d3faeb4e564e3bb1d7f06151363c6241a5ac7b15c; 12 hashes estáveis. Segurança root: Cargo422/0 vulnerabilidades classificadas/2 avisos aprovados, advisory count1307 commit57dcc0f2192e025138907a495c1ac9a7e1e3e123; OSV542 pacotes/3 achados excetuados/0 fora. Scopes E4 herdados, sem mudança, Windows MSVC/glib0.18.5 e proc-macro-error1.0.4, expiração 2026-10-23T00:00Z; auditoria C SQLite excluída. DB-005 é contexto fechado (nota66 refs0c75692168c5c220c364733567b5dc28a01a5739, CI documental38304515870/job114995197572, 16 success/7 skipped/0 artifacts, 65 notas/refs preservadas, reserva11 liberada), não dependência adicional. DB-006 só fica done/passes true após E3 e CI de entrega no SHA exato com registros atualizados; fechamento documental/not67/reserva12 após CI final SHA exato e preservação de notas/refs pelo root. Sem coverage Rust global, fault injection, auth/concurrency globais, finance/startup/backup/restore/setup. DB-007 futuro; custo/tokens NR."
+}

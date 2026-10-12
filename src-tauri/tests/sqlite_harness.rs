@@ -56,6 +56,118 @@ fn assert_empty_migration_ledger(connection: &Connection) {
     assert_eq!(versions, [1]);
 }
 
+fn assert_db006_upgrade_snapshot(connection: &Connection) {
+    type SnapshotColumn = (i64, String, String, i64, Option<String>, i64, i64);
+
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_object_count(connection).unwrap(), 2);
+    assert_eq!(schema_version(connection, 1).unwrap(), 1);
+    let objects: Vec<String> = {
+        let mut statement = connection
+            .prepare(
+                "SELECT name FROM main.sqlite_schema WHERE name NOT GLOB 'sqlite_*' ORDER BY name",
+            )
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(objects, ["schema_migration", "upgrade_fixture"]);
+    let ledger_sql: String = connection
+        .query_row(
+            "SELECT sql FROM main.sqlite_schema WHERE type = 'table' AND name = 'schema_migration'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert!(ledger_sql.contains("CHECK (version > 0)"));
+    let ledger_versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(ledger_versions, [1]);
+
+    let ledger_columns: Vec<SnapshotColumn> = {
+        let mut statement = connection
+            .prepare("PRAGMA main.table_xinfo('schema_migration')")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        ledger_columns,
+        [(0, "version".into(), "INTEGER".into(), 1, None, 1, 0)]
+    );
+
+    let fixture_columns: Vec<SnapshotColumn> = {
+        let mut statement = connection
+            .prepare("PRAGMA main.table_xinfo('upgrade_fixture')")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        fixture_columns,
+        [
+            (0, "id".into(), "INTEGER".into(), 1, None, 1, 0),
+            (1, "value".into(), "TEXT".into(), 1, None, 0, 0),
+        ]
+    );
+
+    let rows: Vec<(i64, String)> = {
+        let mut statement = connection
+            .prepare("SELECT id, value FROM main.upgrade_fixture ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        rows,
+        [(1, "O'Brien".into()), (2, "synthetic-before".into())]
+    );
+    let integrity: String = connection
+        .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(integrity, "ok");
+}
+
 fn seed_version_one(connection: Connection) -> Connection {
     execute_versioned_migration(
         connection,
@@ -506,6 +618,42 @@ fn empty_versioned_migration_rejects_invalid_ledger_rows() {
         .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
         .unwrap();
     assert_eq!(integrity, "ok");
+}
+
+#[test]
+fn db006_materializes_and_reopens_isolated_upgrade_snapshots() {
+    let directory = common::TempDirectory::new();
+    let first_path = directory.path().join("db006-first.sqlite");
+    let second_path = directory.path().join("db006-second.sqlite");
+    let first = open_database(&first_path).expect("FIRST_DATABASE_OPEN_FAILED");
+    let second = open_database(&second_path).expect("SECOND_DATABASE_OPEN_FAILED");
+    assert!(first_path.is_file());
+    assert!(second_path.is_file());
+    assert_eq!(schema_object_count(&first).unwrap(), 0);
+    assert_eq!(schema_version(&first, 1).unwrap(), 0);
+    assert_eq!(schema_object_count(&second).unwrap(), 0);
+    assert_eq!(schema_version(&second, 1).unwrap(), 0);
+
+    let first = execute_migration(first, include_str!("fixtures/db006-upgrade-v1.sql"))
+        .expect("FIRST_SNAPSHOT_MATERIALIZATION_FAILED");
+    assert_db006_upgrade_snapshot(&first);
+    drop(first);
+
+    assert_eq!(schema_object_count(&second).unwrap(), 0);
+    assert_eq!(schema_version(&second, 1).unwrap(), 0);
+    let first = open_database(&first_path).expect("FIRST_DATABASE_REOPEN_FAILED");
+    assert_db006_upgrade_snapshot(&first);
+    drop(first);
+
+    let second = execute_migration(second, include_str!("fixtures/db006-upgrade-v1.sql"))
+        .expect("SECOND_SNAPSHOT_MATERIALIZATION_FAILED");
+    assert_db006_upgrade_snapshot(&second);
+    drop(second);
+
+    for path in [&first_path, &second_path] {
+        let reopened = open_database(path).expect("DATABASE_REOPEN_FAILED");
+        assert_db006_upgrade_snapshot(&reopened);
+    }
 }
 
 #[test]
