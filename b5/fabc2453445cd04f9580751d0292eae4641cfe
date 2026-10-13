@@ -1,0 +1,33 @@
+# FIN-002 — recibo final do executor
+
+## Contrato e limite
+
+Account.validate_name valida somente self.name.trim().is_empty(): retorna DomainError::InvalidInput para vazio ou whitespace, e Ok(()) nos demais casos, sem alterar name ou id. Não define tipo, saldo, limites, normalização, unicidade, persistência nem UI. Os campos públicos permitem bypass; FIN-008 deverá impor a validação no consumidor. A evidência não prova cadastro persistido, invariantes financeiras, cobertura Rust global ou release setup.exe.
+
+## Evidência local e revisão
+
+RED confirmou método ausente. O root executou fmt, clippy, suíte debug com 58 testes ordinários e 2 doctests sem falha, audit Cargo e OSV, e cobertura LLVM direta do módulo: perfil full 8/8 linhas, 2/2 funções, 11/11 regiões; controle 3/8 linhas (37,5%), rejeitado no gate de 90%. Branch coverage exige nightly e não foi medida. O smoke WebView2 ignored foi executado localmente. O fix no security_tests substituiu o wrapper RTK por PowerShell direto; teste isolado passou 6, 1 ignored, 0 falhas com RTK ausente. Fixture e perfis temporários foram removidos após guardas de contenção/reparse. Revisão independente E2 sem P0/P1/P2.
+
+Hashes das fontes e relatórios, comandos e limitações estão no handoff FIN-002. A implementação e o fix foram revisados e entregues; a suite remota não mediu coverage Rust.
+
+## CI de entrega
+
+No SHA 395a5352405c4465dfd5644a8caab2f70ffdff1c, CI 38483459997/job115591336901, tentativa 1, push main, passou 23 etapas, zero skipped, seis sourceSha markers exatos. Release executou 57 testes ordinários e 2 doctests, sem falhas e com 1 ignored: 3 testes account_name e o smoke de junction passaram; SQLite 41/41 em 5,23 s, doctests 2/2 em 0,07 s e binário 6/6 em 0,63 s. O teste ignored é o smoke WebView2. Scans: Gitleaks 169 commits, zero findings; npm 120 dependências, zero vulnerabilidades; Cargo 422 pacotes, zero vulnerabilidades e 2 avisos aprovados; OSV 542 pacotes, 3 exceções e zero fora; SAST 45 casos (42 Biome e 3 PowerShell), sem cobertura do backend Rust. Exceções Cargo/OSV expiram em 2026-10-23T00:00:00Z; inputs e locks permaneceram inalterados.
+
+Falha histórica preservada: CI 38482025966 no SHA 20d24f8 falhou porque o runner não tinha RTK. O teste foi corrigido para usar pwsh nativo, mantendo guards, sentinel, fixture e cleanup; nova execução decorreu do push normal, sem rerun manual e sem job novo.
+
+## CI documental final
+
+No SHA final b5fabc2453445cd04f9580751d0292eae4641cfe, CI 38484804248/job115595754675, tentativa 1, push main, terminou com 16 success, 7 skipped e zero artifacts; quatro sourceSha markers exatos. Scans finais: Gitleaks 170 commits, zero findings em 0,778 s; npm 120/0 em 0,851 s; Cargo 422 pacotes, zero vulnerabilidades e 2 avisos aprovados em 22,691 s; OSV 542, 3 exceções e zero fora em 1,124 s. A CI final pulou build/teste frontend e SAST; não alegar que repetiu testes Rust. Exceções expiram em 2026-10-23T00:00:00Z e os inputs permaneceram os mesmos.
+
+Entre o SHA de entrega 395a5352405c4465dfd5644a8caab2f70ffdff1c e o SHA final b5fabc2453445cd04f9580751d0292eae4641cfe, o root confirmou ausência de mudanças em código/configuração. O binário Windows produzido na entrega era PE32+ AMD64 com custom protocol, 8.536.064 bytes, SHA-256 f27e6d2a41111a3147c0e9388b28110a9a9bb615308edf568ad4b4eebe95aeea; não é setup.exe nem artefato retido. O artifact retido foi apenas coverage frontend scaffold: 21.874 bytes, digest 0bf91d3eb83facc5235f892da2c64fafcf0c389418e41cc1913b6e1bc460f47b, expiração 2026-10-14T23:20:45Z; cobre 2 arquivos, 3 testes e 100%, sem representar finanças.
+
+## Estado e liberação condicionada
+
+O executor FIN-002 está done, E3, passes true, gate humano não requerido. A META do produto não está concluída: roadmap tem 245 IDs, 76 executores done e 169 restantes; FIN-003 ainda não iniciado. Consumidores financeiros, invariantes globais, Rust global e setup.exe permanecem sem comprovação por este item.
+
+O root confirmou checkout limpo na branch codex/fin-002-account-name e referências remotas main/branch em b5fabc2453445cd04f9580751d0292eae4641cfe. A nota anterior FIN-001 está publicada na ref a0c10350e8db65e24a5f1c4b9331e276e8e0178a, com 76 tuplas anteriores. Validators finais: 4 PASS, 357 files, 28 sources, 77 items; prefixo do progress log de 319.462 bytes preservado; diff check passou. Gitleaks staged final: 9 paths, 23.126 bytes, SHA-256 d6d8d346630d5c706f8ec2ee229a5c93ce176858214352588bb9911e755ce366, zero findings em 0,519 s. Fixtures temporárias e caches registrados foram confirmados ausentes.
+
+A liberação ACTIVE25 permanece condicionada a o root publicar esta nota como nota77, preservar as 76 tuplas anteriores (IDs de commits, modos e blobs; fanout canônico Git permitido sem alterar vínculos), confirmar as três refs e checkout limpo, e registrar a liberação. A publicação/verificação final ainda não foi executada; nenhum hash ou ref desta nota é alegado. FIN-003 só poderá começar após liberação explícita.
+
+Roteamento registrado: P-DOM gpt-6-luna medium para código, P-TRC gpt-6-luna low para documentação, P-REV gpt-6-sol medium para revisão independente e focal; root integrou, executou checks e committou. Efetivos do cliente e custo não registrados.
