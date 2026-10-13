@@ -1,0 +1,27 @@
+# DB-013 — nota final de evidência
+
+## Resultado
+
+Executor `done` / E3 / `passes=true` / `humanGateRequired=false`. CI de entrega no SHA `63ef7f6004f3e697f365f34f681c499726f2f867`: run `38429912850`, job `115409068907`, attempt 1, main push, SUCCESS, 23 success/0 skipped; seis markers `sourceSha`. CI final documental no SHA `02f155fe6cab4e1bd57fc18bfc4fa43206944fe0`: run `38432302344`, job `115417324942`, attempt 1, main push, SUCCESS, 16 success/7 skipped/0 artifacts; quatro markers `sourceSha`.
+
+## Evidência e integridade
+
+Root executou fmt, clippy, testes focais 5/5, suíte Rust 49/49 (6 lib, 7 bin, 36 harness), release harness 36/36, SQLite 3.53.2. RED stub falhou como esperado; exige-se `Ok(1)`, e `RAISE(IGNORE)` verifica inserção ignorada. Migration SQL v2 foi aplicada no RED e é imutável. CI de entrega confirmou remote release harness 36/36, cinco `db013_*` PASS, zero falhas/ignorados, 3.18s.
+
+Hashes testados; migration SQL imutável: `database.rs` `ec036e186432eadd94cef4f461eb0a36d91035aed7a1d5d05a061760382a32ea`; harness `35c16c528081626463dcc81ce9970bd0495fdd8c202b8a8e171a5ea3504552cf`; migration `3fe9d4c02f21cdcaca4954791d561176fe8ffd917528dfd11af222d5127c0f3e`. Prefixos anteriores de produção (11.075 bytes) e harness (31 testes, 63.175 bytes) permaneceram intactos. Progress log append-only preserva prefixo base `4c40dd29ac16278ce8037ef3852697015c9a4a7c` de 311.678 bytes e prefixo de entrega SHA `63ef7f6` de 313.235 bytes. 13 hashes protegidos/testados estáveis.
+
+Validators locais de entrega: 4 PASS, 348 arquivos/28 fontes/75 itens. Gitleaks staged de entrega: 14 paths/54.131 bytes, SHA-256 `0aa9620e23fec82af2bceb9c8cda84025a98ae64e99755320afd4e02303c6adb`, zero findings/0.822s. CI: Gitleaks 162 commits/zero findings/0.912s; npm 120/zero vulnerabilidades; Cargo 422/zero vulnerabilidades/2 avisos aprovados; OSV 542/3 excetuados/0 fora. SAST 45 verificações (42 Biome/3 PowerShell), sem análise backend Rust. Fechamento documental: validators 4 PASS/348 arquivos/28 fontes/75 itens; Gitleaks staged 10 paths/26.437 bytes, SHA-256 `b659cf76063bf3548864ed521c8073a3755c3aef09e01de113b7b17960657f84`, zero findings/0.785s. Review independente Sol 6 medium, E2, sem P0/P1/P2. Não houve nova execução de testes/build/SAST/frontend no fechamento documental.
+
+## Segurança e limites
+
+Scopes E4 herdados sem alteração: Cargo `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`; OSV `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`; alvo `x86_64-pc-windows-msvc`; expiração `2026-10-23T00:00:00Z` (22/10/2026, 21h em São Paulo). Cobrem somente `glib 0.18.5` (unsound) e `proc-macro-error 1.0.4` (unmaintained). C SQLite segue excluído. Um advisory Kuva não pertencente ao Cargo.lock foi preservado sem publicar nem executar seu corpo, 3.791 bytes, SHA-256 `8c06508ae9bcde47fd24d1c02372a6c08faf88437672474ed1224bbd58d7472e`; cache oficial limpo, sem bypass. Artefato de quarentena DB-011 permaneceu intacto.
+
+## Reserva e pendências
+
+Reserva ACTIVE de 16 paths, owner P-INT/root:
+
+`planning/specs/DB-013.md`; `planning/work-items/DB-013.json`; `planning/handoffs/DB-013.md`; `docs/architecture/DATA_MODEL.md`; `docs/architecture/TRANSACTION_MODEL.md`; `docs/operations/MIGRATIONS.md`; `docs/quality/TEST_STRATEGY.md`; `docs/security/SECURITY_TEST_MATRIX.md`; `docs/traceability/REQUIREMENTS_MATRIX.md`; `planning/ROADMAP.md`; `planning/PROGRESS_LOG.md`; `src-tauri/src/infrastructure/database.rs`; `src-tauri/tests/sqlite_harness.rs`; `src-tauri/migrations/002-audit-event.sql`; `artifacts/db013-final-note.md`; `artifacts/db013-quarantined-cargo-advisory-8c06508ae9bc.md`.
+
+Liberação condicional: root ainda deve publicar a nota74 preservando as 73 notas anteriores, seus modos e blobs e confirmar as 3 refs remotas e Git limpo. Esses atos externos permanecem pendentes; esta nota não declara seu próprio hash, ref ou blob.
+
+Roster cumulativo3: Luna 6 medium (código), Luna 6 low (documentação), Sol 6 medium (review); zero escalonamentos. Custo, tokens, cache e retries evitados: não registrado. META permanece em andamento; DB-014 não iniciado. Limites: sem composição financeira, inicialização/startup, cobertura Rust global, SAST backend ou `setup.exe` comprovados.
