@@ -350,4 +350,4 @@ E3: cinco testes físicos `db012_*` passaram em debug/release e na CI de entrega
 
 ## DB-013 — evento técnico de auditoria
 
-Infraestrutura de audit_event: migration versionada v2, append pela transação emprestada, validação de campos/tags e sanitização. E3 local: cinco testes focais, Rust49/49, release36/36, Cargo/OSV PASS; review E2 sem P0/P1/P2. Não fecha invariantes financeiras nem composição transacional; DB-014 e consumidores permanecem necessários. CI de entrega pendente. Consulte [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md).
+Infraestrutura audit_event: migration v2, append transacional e validação/sanitização. Executor E3/passes=true após CI `38429912850` no SHA `63ef7f6004f3e697f365f34f681c499726f2f867`; review E2 sem achados impeditivos. Atomicidade financeira não provada; DB-014 e consumidores necessários. Fechamento documental pendente; [spec](../../planning/specs/DB-013.md), [handoff](../../planning/handoffs/DB-013.md).

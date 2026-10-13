@@ -465,4 +465,4 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-013 — evento técnico de auditoria (E3 local; entrega pendente)
 
-RED stub falhou 0/1 (31 filtrados, Cargo101/9.451s); cinco focais 5/5, Rust49/49, release36/36, fmt/clippy e Cargo/OSV passaram. Migration v2 aplicada em RED e congelada; inserção ignorada requer `Ok(1)` e tem prova física. Review Sol6 medium E2 sem P0/P1/P2. Hashes, prefixos preservados, evidência e limites estão na [spec](specs/DB-013.md). Executor segue `in_progress`/E3/`passes=false`; CI entrega/fechamento e nota74 pendentes. Reserva16 ACTIVE; DB-014 não iniciado.
+Executor `done`/E3/`passes=true` após CI entrega `38429912850` no SHA `63ef7f6004f3e697f365f34f681c499726f2f867` (23/0 skipped, release36/36, cinco db013_* PASS). Review E2 sem achados impeditivos. Migration v2 imutável; detalhes/limites na [spec](specs/DB-013.md). CI documental, nota74, Git limpo/liberação ACTIVE16 pendentes; DB-014 não iniciado.

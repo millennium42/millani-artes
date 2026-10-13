@@ -6,7 +6,7 @@ Teste mockado não prova integração. Toda regra de `INVARIANTS.md` terá ao me
 
 Para a [fronteira transacional](../architecture/TRANSACTION_MODEL.md), testes unitários de orquestração não bastam. DB-011/012/014 usarão banco temporário real para verificar sucesso completo, rejeição da validação, falha entre gravações, falha de auditoria, commit e cancelamento; conferir estado completo e audit_event, não apenas retorno do método. Cada consumidor repetirá as falhas relevantes às suas invariantes. Pânico, erro de cancelamento e estado incerto exigem prova do comportamento do executor; não presumir cancelamento por mock ou por Drop. ARC-004 é definição documental: seus validators não executam transação e não fecham INV-FIN-006/007.
 
-DB-013 executou cinco testes SQLite focais (5/5) e release harness (36/36), com Rust49/49 e SQLite3.53.2. O RED stub falhou como esperado; a API exige `Ok(1)`, e trigger `RAISE(IGNORE)` verifica fisicamente a rejeição de zero linhas inseridas. Isso prova persistência e constraints do evento isolado; DB-014 deve provar falha atômica junto às escritas financeiras. CI ainda pendente; consulte [handoff](../../planning/handoffs/DB-013.md).
+DB-013 executou cinco focais, release harness36/36 e CI de entrega no SHA final; SQLite3.53.2. A API exige `Ok(1)`, e `RAISE(IGNORE)` verifica rejeição de zero inserções. Prova persistência/constraints isoladas; DB-014 deve provar atomicidade junto às escritas financeiras. CI documental/nota74 pendentes; [handoff](../../planning/handoffs/DB-013.md).
 
 ## DB-001 — harness SQLite em memória
 

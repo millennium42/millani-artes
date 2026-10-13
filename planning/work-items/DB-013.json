@@ -2,7 +2,7 @@
   "id": "DB-013",
   "title": "adicionar evento técnico de auditoria SQLite",
   "specPath": "planning/specs/DB-013.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-011"
   ],
@@ -11,7 +11,7 @@
     "API append_audit_event recebe Transaction emprestada, valida UUID opaco não nulo, timestamp Unix ms não negativo e tags estáticas; não faz commit nem registra payload sensível.",
     "SQL e Rust impõem campos obrigatórios, tipos/tamanhos, tag ASCII sem NUL, duplicatas rejeitadas e bloqueio de UPDATE/DELETE; erros não revelam payload do driver.",
     "Cinco testes SQLite físicos cobrem inicialização/upgrade, persistência, entradas inválidas/duplicata, constraints/mutações SQL e sanitização de erro.",
-    "Checks, segurança, review E2, CI no SHA final, nota pública preservando blobs/refs e liberação da reserva registrados antes de passes=true; DB-014 não iniciado."
+    "Checks locais, segurança, review E2 e CI de entrega no SHA exato registrados; executor done/E3/passes=true. CI documental final, nota74 preservando notas/modos/blobs/refs, Git limpo e liberação da reserva são gates de fechamento posteriores. DB-014 não iniciado."
   ],
   "checks": [
     "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT/root owner de reserva, checks e commits; P-TRC/P-OPS Luna 6 low, escrita documental serial; P-DAT/P-QA Luna 6 medium, código/harness; P-REV Sol 6 medium, review E2 independente. Paths exatos constam no handoff.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local: RED stub falhou 0/1, 31 filtered, Cargo101/9.451s. Correção exige Ok(1); RAISE(IGNORE) coberto fisicamente. Migration aplicada em RED e imutável. fmt3.768s/clippy6.539s; focal5/5 11.805s; Rust49/49 (6 lib+7 bin+36 harness) 17.467s; release36/36 51.384s; SQLite3.53.2; sem falha/ignored final. Cargo422/0 vulnerabilidades/2 warnings excetuados, 3.211s; OSV542 (120 npm+422 Cargo)/3 excetuados/0 fora, 2.855s. Review Sol6 medium E2 read-only sem P0/P1/P2. Hashes finais database ec036e186432eadd94cef4f461eb0a36d91035aed7a1d5d05a061760382a32ea, harness35c16c528081626463dcc81ce9970bd0495fdd8c202b8a8e171a5ea3504552cf, SQL3fe9d4c02f21cdcaca4954791d561176fe8ffd917528dfd11af222d5127c0f3e. Prefixos fonte11075B e harness antigo31 testes/63175B preservados. Progress log append-only: prefixo base4c40 311678B/SHA256 052dad59265933d5627247de9e3a20043e32df5ead0b7baf34860596901b84b8. Gate RUSTSEC CARGO_DATABASE_DIRTY resolvido por preservação do advisory Kuva no artefato reservado, sem bypass; Cargo audit retry PASS. Reserva ACTIVE16. CI entrega/fechamento e nota74 pendentes; status in_progress/E3/passesfalse. Inventário esperado 348 files/28 sources/75 items, validators pendentes. Roster cumulativo3: Luna6 medium código, Luna6 low docs, Sol6 medium review; escalação0; tokens/custo/cache/retries evitados não registrado."
+  "passes": true,
+  "notes": "Executor fechado E3: CI main push attempt1 no SHA exato 63ef7f6004f3e697f365f34f681c499726f2f867, run38429912850/job115409068907 SUCCESS, 23 sucesso/0 skipped, seis markers sourceSha; remoto release harness36/36, cinco db013_* PASS, 0 failed/ignored, 3.18s, SQLite3.53.2. Gitleaks162/0/0.912s; npm120/0; Cargo422/0 vulnerabilidades/2 warnings aprovados (DB6aed84668c23d7f535077a9fe918bf1fa0f6a5bc); OSV542/3 excetuados/0 fora; SAST45=42 Biome+3 PS, sem análise Rust backend. Binário PE32+ AMD64 customProtocol=true, 8536064B/SHA-256 1be66efd477ca0a346b464592af31ee776d61c86f82a090a9ff9c6ea74d2705a, não instalador nem artifact retido. Único artifact remoto coverage frontend id11830910410, 21872B, expira2026-10-14T16:24:26Z; scaffold2 arquivos/3 testes/100%. Validators locais4 PASS/348 files/28 fontes/75 items. Gitleaks staged14 paths/54131B/SHA-256 0aa9620e23fec82af2bceb9c8cda84025a98ae64e99755320afd4e02303c6adb/0 findings/0.822s; 13 guardas estáveis. Review E2 sem P0/P1/P2. Final documentation CI, nota74 preservando 73 modos/blobs e 3 refs, Git limpo e liberação de reserva ACTIVE16 pendentes. E4 herdado inalterado; Rust coverage global/C SQLite/Rust SAST permanecem não verificados. DB-014 não iniciado; META em andamento."
 }
