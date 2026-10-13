@@ -1,0 +1,30 @@
+{
+  "id": "DB-010",
+  "title": "provar enforcement de foreign keys em arquivo",
+  "specPath": "planning/specs/DB-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-009"
+  ],
+  "acceptanceCriteria": [
+    "Um teste novo foreign_keys_reject_invalid_references_in_file usa TempDirectory/open_database, schema parent/child sintético e mantém 21 testes prévios intactos.",
+    "INSERT órfão, UPDATE para parent ausente e DELETE do parent referenciado falham como SqliteFailure/ConstraintViolation com extended code SQLITE_CONSTRAINT_FOREIGNKEY (787).",
+    "Após cada erro, dados válidos permanecem e PRAGMA foreign_key_check é vazio; close/reopen via API repete estado e enforcement.",
+    "RED controlado OFF só no novo teste aceita o primeiro INSERT indevidamente; remover OFF antes de GREEN/commit. Teste final usa apenas configuração open_database; DB-009 permanece inalterado.",
+    "Sem alterações de produção/schema financeiro/UI/dependências/workflow/security records/helpers ou fixtures externas; sem prova além do schema sintético.",
+    "Root executa fmt/clippy/full Rust/release/Cargo/OSV, review, security diff, validators e CI exato; só então marcar done/E3/passes=true."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente 5.6-sol-medium, Gitleaks diferencial, validators e CI de entrega/fechamento no SHA exato."
+  ],
+  "agentPlan": "P-INT root integra, executa E3 e comita; P-DAT/P-QA Luna medium código; P-TRC/P-OPS Luna low documentação; P-REV 5.6-sol medium review. Escrita serial e reserva exata na spec DB-010.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Base 17f5397efc996091bfb4271a5169d4eede4249fe, branch codex/db-010-foreign-key-enforcement. Root executou E3 na variante final: harness SHA-256 30a7cbe47104967f767ba5d1c52cf06807f33c211f3689fdad03ea66456647c5; produção SHA-256 51a7a8662cd444e9e4a3f3fb6f673725ee86e35ff22620e87d46a73399f9947e intacta. 21 testes anteriores byte-prefix intactos + 1 novo; 11 guards frozen + harness = 12 estáveis. RED controlado 12.073s, wrapper exit 1, 0 passed/1 failed/21 filtered, INVALID_REFERENCE_ACCEPTED:1 com OFF no teste; OFF removido antes de GREEN e teste final não chama pragma_update. Um teste verifica seis DMLs inválidos (3 antes + 3 após reopen), SqliteFailure/ConstraintViolation/extended 787, estado completo intacto e foreign_key_check vazio após cada erro. fmt final PASS 3.667s depois de corrigir quatro chamadas rustfmt; clippy PASS 5.875s; Rust 35/35 (6 lib+7 bin+22 harness), 0 falhas/ignored/filtered, 16.199s; release harness 22/22, 39.92s, SQLite 3.53.2; teste PASS debug/release. Review independente 5.6-sol medium E2 no harness SHA b71560c0b185630a6391beefa2401bc9870e317fd1da76b52cf8c7dc639935c4 concluído antes de CORRECT, sem P0/P1/P2. Root inspecionou a variante final após rustfmt e confirmou DMLs/oráculos idênticos; não houve nova análise independente 5.6 do hash final. Cargo audit 0.22.2 exit 0: 422 deps/0 vulnerabilidades classificadas/2 avisos aprovados, 3.477s, advisory count 1307 commit 57dcc0f2192e025138907a495c1ac9a7e1e3e123. OSV 2.6.0 exit 0: 542 pacotes/3 findings excetuados/0 fora do escopo, 1.991s. Inputs/records/target/prazo E4 inalterados, sem novo aceite; C SQLite excluído. Perfil de teste e guard fixture ausentes após limpeza, 0 WebView owned/0 SQL temp. Estado in_progress/E3/passes=false/humanGateRequired=false até CI final. Gitleaks staged, 4 validators, commit/CI, CI final/nota71 e preservação de 70 refs/liberação dos 11 paths pendentes. Não iniciar DB-011; custo/tokens/retries evitados NR."
+}

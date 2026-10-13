@@ -1194,3 +1194,98 @@ fn database_open_enables_foreign_keys_on_each_connection() {
         .unwrap();
     assert_eq!(reopened_foreign_keys, 1);
 }
+
+#[test]
+fn foreign_keys_reject_invalid_references_in_file() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("foreign-key-enforcement.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    assert!(path.is_file());
+    assert!(connection.is_autocommit());
+    let foreign_keys: i64 = connection
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(foreign_keys, 1);
+    connection
+        .execute_batch(
+            "CREATE TABLE parent (id INTEGER PRIMARY KEY); CREATE TABLE child (id INTEGER PRIMARY KEY, parent_id INTEGER NOT NULL REFERENCES parent(id));",
+        )
+        .unwrap();
+    connection
+        .execute("INSERT INTO parent(id) VALUES (?1)", [1])
+        .unwrap();
+    connection
+        .execute("INSERT INTO child(id, parent_id) VALUES (?1, ?2)", [1, 1])
+        .unwrap();
+
+    let assert_valid_state = |connection: &rusqlite::Connection| {
+        let parents: Vec<i64> = {
+            let mut statement = connection
+                .prepare("SELECT id FROM parent ORDER BY id")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(parents, [1]);
+        let children: Vec<(i64, i64)> = {
+            let mut statement = connection
+                .prepare("SELECT id, parent_id FROM child ORDER BY id")
+                .unwrap();
+            statement
+                .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(children, [(1, 1)]);
+        let mut statement = connection.prepare("PRAGMA foreign_key_check").unwrap();
+        assert!(statement.query([]).unwrap().next().unwrap().is_none());
+    };
+    let assert_foreign_key_violation = |result: rusqlite::Result<usize>| {
+        let error = result.expect_err("INVALID_REFERENCE_ACCEPTED");
+        match error {
+            rusqlite::Error::SqliteFailure(error, _) => {
+                assert_eq!(error.code, rusqlite::ErrorCode::ConstraintViolation);
+                assert_eq!(
+                    error.extended_code,
+                    rusqlite::ffi::SQLITE_CONSTRAINT_FOREIGNKEY
+                );
+            }
+            other => panic!("UNEXPECTED_SQLITE_ERROR: {other:?}"),
+        }
+    };
+
+    assert_valid_state(&connection);
+    assert_foreign_key_violation(
+        connection.execute("INSERT INTO child(id, parent_id) VALUES (?1, ?2)", [2, 99]),
+    );
+    assert_valid_state(&connection);
+    assert_foreign_key_violation(
+        connection.execute("UPDATE child SET parent_id = ?1 WHERE id = ?2", [99, 1]),
+    );
+    assert_valid_state(&connection);
+    assert_foreign_key_violation(connection.execute("DELETE FROM parent WHERE id = ?1", [1]));
+    assert_valid_state(&connection);
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    let foreign_keys: i64 = reopened
+        .query_row("PRAGMA foreign_keys", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(foreign_keys, 1);
+    assert_valid_state(&reopened);
+    assert_foreign_key_violation(
+        reopened.execute("INSERT INTO child(id, parent_id) VALUES (?1, ?2)", [2, 99]),
+    );
+    assert_valid_state(&reopened);
+    assert_foreign_key_violation(
+        reopened.execute("UPDATE child SET parent_id = ?1 WHERE id = ?2", [99, 1]),
+    );
+    assert_valid_state(&reopened);
+    assert_foreign_key_violation(reopened.execute("DELETE FROM parent WHERE id = ?1", [1]));
+    assert_valid_state(&reopened);
+}

@@ -448,4 +448,9 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 
 ## DB-009 — ativar foreign keys ao abrir
 
-[Spec](specs/DB-009.md)/[handoff](handoffs/DB-009.md): baseline ON; controle OFF fail-closed; E3 local 34/34 Rust, release21/21, review E2 sem achados. CI entrega 38324569231/job115060146427 no SHA 4646f9dd1bbfc2f38813ce86beac9f2a7f2ea578 passou 23/23; scan/validators passaram. Executor `done`/E3/`passes=true`; CI documental final/nota70/liberação12 pendentes/ACTIVE.
+[Spec](specs/DB-009.md)/[handoff](handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
+
+
+## DB-010 — provar enforcement de foreign keys (em execução)
+
+[Spec](specs/DB-010.md)/[handoff](handoffs/DB-010.md): E3 local na variante final do teste em arquivo sintético comprovou seis rejeições INSERT/UPDATE/DELETE antes e após reopen (extended code 787), estado intacto e `foreign_key_check` vazio; 21 casos anteriores byte-prefix intactos. fmt/clippy e Rust 35/35 passaram; release harness 22/22 em SQLite 3.53.2. Review independente 5.6-sol medium E2 sem P0/P1/P2 antes de CORRECT; root inspecionou a variante final após rustfmt e confirmou DMLs/oráculos idênticos, sem nova análise independente do hash final. Gitleaks staged, validators, commit, CI, nota71 e preservação/liberação dos refs pendentes. Estado `in_progress`/E3/`passes=false`; DB-011 não iniciado.

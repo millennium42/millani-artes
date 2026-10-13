@@ -203,4 +203,9 @@ SQL checked-in trusted, estático e sintético exercitado por `execute_migration
 
 ## DB-009 — ativar foreign keys ao abrir
 
-[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON; controle OFF fail-closed; E3 local 34/34 Rust, release21/21, review E2 sem achados. CI entrega 38324569231/job115060146427 no SHA 4646f9dd1bbfc2f38813ce86beac9f2a7f2ea578 passou 23/23; scan/validators passaram. Executor `done`/E3/`passes=true`; CI documental final/nota70/liberação12 pendentes/ACTIVE.
+[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
+
+
+## DB-010 — provar enforcement de foreign keys (em execução)
+
+[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): E3 local em schema parent/child sintético rejeitou seis DMLs inválidos com extended code 787, preservou dados e deixou `foreign_key_check` vazio após cada tentativa/reopen. RED OFF foi controlado no teste novo e removido antes do GREEN; teste final usa configuração `open_database`. Review independente 5.6-sol medium E2 antes de CORRECT sem P0/P1/P2; root inspecionou a variante final após rustfmt e confirmou DMLs/oráculos idênticos, sem nova análise independente do hash final. Gitleaks staged, validators e CI pendentes. Evidência parcial SEC-002, limitada a este schema; não comprova integridade global nem cobertura Rust global.

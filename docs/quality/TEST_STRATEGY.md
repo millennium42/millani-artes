@@ -44,4 +44,9 @@ Um teste de integração e fixture confiável criam snapshot sintético em dois 
 
 ## DB-009 — ativar foreign keys ao abrir
 
-[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON; controle OFF fail-closed; E3 local 34/34 Rust, release21/21, review E2 sem achados. CI entrega 38324569231/job115060146427 no SHA 4646f9dd1bbfc2f38813ce86beac9f2a7f2ea578 passou 23/23; scan/validators passaram. Executor `done`/E3/`passes=true`; CI documental final/nota70/liberação12 pendentes/ACTIVE.
+[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
+
+
+## DB-010 — provar enforcement de foreign keys (em execução)
+
+[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): um teste de arquivo sintético, com `TempDirectory`/`open_database`, cobre INSERT órfão, UPDATE para parent ausente e DELETE referenciado antes e após reopen. E3 root: seis rejeições com `SqliteFailure`/`ConstraintViolation`/extended code 787, dados válidos intactos e `foreign_key_check` vazio após cada tentativa; 21 testes prévios byte-prefix intactos. fmt/clippy passaram, Rust 35/35 e release harness 22/22 em SQLite 3.53.2. Review independente 5.6-sol medium E2 antes de CORRECT, sem P0/P1/P2; root inspecionou a variante final e confirmou DMLs/oráculos idênticos após rustfmt, sem nova análise independente do hash final. Gitleaks, validators e CI pendentes. Limite: schema sintético, sem cobertura global de schemas ou processos.
