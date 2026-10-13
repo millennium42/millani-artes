@@ -44,4 +44,4 @@ Um teste de integração e fixture confiável criam snapshot sintético em dois 
 
 ## DB-009 — ativar foreign keys ao abrir
 
-[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline observado ON; controle OFF falhou fechado em RED controlado, sem bug preexistente. Root E3 fmt/clippy, Rust34/34, release21/21 SQLite3.53.2; review E2 sem P0/P1/P2; Cargo/OSV passaram. Executor `in_progress`/E3/`passes=false`; Gitleaks staged, validators e CI entrega pendentes.
+[Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON; controle OFF fail-closed; E3 local 34/34 Rust, release21/21, review E2 sem achados. CI entrega 38324569231/job115060146427 no SHA 4646f9dd1bbfc2f38813ce86beac9f2a7f2ea578 passou 23/23; scan/validators passaram. Executor `done`/E3/`passes=true`; CI documental final/nota70/liberação12 pendentes/ACTIVE.
