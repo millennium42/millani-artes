@@ -1,4 +1,4 @@
-use super::{DomainError, Result};
+use super::{AccountType, DomainError, Result};
 
 #[test]
 fn successful_result_preserves_value() {
@@ -34,7 +34,11 @@ fn account_preserves_opaque_id_and_owned_unicode_name() {
 
     let id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255];
     let name = String::from("Ateliê Millani 🧵");
-    let account = Account { id, name };
+    let account = Account {
+        id,
+        name,
+        account_type: AccountType::BankPix,
+    };
 
     assert_eq!(account.id, id);
     assert_eq!(account.name.as_bytes(), "Ateliê Millani 🧵".as_bytes());
@@ -47,6 +51,7 @@ fn account_name_rejects_empty() {
     let account = Account {
         id: [0; 16],
         name: String::new(),
+        account_type: AccountType::BankPix,
     };
 
     assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
@@ -67,6 +72,7 @@ fn account_name_rejects_unicode_whitespace() {
         let account = Account {
             id: [0; 16],
             name: name.to_owned(),
+            account_type: AccountType::BankPix,
         };
 
         assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
@@ -79,10 +85,35 @@ fn account_name_accepts_unicode_without_mutation() {
 
     let id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255];
     let name = String::from("  Ateliê Millani 🧵  ");
-    let account = Account { id, name };
+    let account = Account {
+        id,
+        name,
+        account_type: AccountType::BankPix,
+    };
 
     account.validate_name().unwrap();
 
     assert_eq!(account.id, id);
     assert_eq!(account.name.as_bytes(), "  Ateliê Millani 🧵  ".as_bytes());
+}
+
+#[test]
+fn account_preserves_each_account_type() {
+    use super::Account;
+
+    for account_type in [
+        AccountType::Cash,
+        AccountType::BankPix,
+        AccountType::Card,
+        AccountType::Other,
+    ] {
+        let expected = std::mem::discriminant(&account_type);
+        let account = Account {
+            id: [0; 16],
+            name: String::from("SYNTHETIC_ACCOUNT"),
+            account_type,
+        };
+
+        assert_eq!(std::mem::discriminant(&account.account_type), expected);
+    }
 }

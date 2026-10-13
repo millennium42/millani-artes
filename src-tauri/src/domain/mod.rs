@@ -2,6 +2,13 @@
 
 pub mod ports;
 
+pub enum AccountType {
+    Cash,
+    BankPix,
+    Card,
+    Other,
+}
+
 /// Account identity metadata; financial fields belong to later tasks.
 ///
 /// ```compile_fail
@@ -16,6 +23,7 @@ pub mod ports;
 pub struct Account {
     pub id: [u8; 16],
     pub name: String,
+    pub account_type: AccountType,
 }
 
 impl Account {

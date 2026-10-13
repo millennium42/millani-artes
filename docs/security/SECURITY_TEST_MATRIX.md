@@ -234,3 +234,6 @@ E3 local: vazio e whitespace Unicode rejeitados com DomainError::InvalidInput; n
 E3 local: substituído wrapper RTK por pwsh direto, sem mudar guardas de path, sentinel ou deny cleanup. Binário executado com PATH restrito sem RTK: 6 passed/1 ignored/0 failed; junction real PASS e fixture removida. CI anterior falhou porque runner não tem RTK; nova entrega automática ainda pendente. Não inferir sucesso CI nem alterar teste/threshold.
 
 Entrega CI FIN-002 38483459997: junction smoke PASS; release suite 57 ordinários+2 doctests, 0 failed/1 ignored. Scans remotos Gitleaks169/0, Cargo422/0 vulnerabilidades/2 avisos aprovados, OSV542/3 exceções/0 fora, SAST45 com limites apenas frontend/PowerShell e sem cobertura Rust. Exceções E4 expiram 2026-10-23T00Z. Falha anterior de wrapper RTK preservada como histórico, correção pwsh exercitada. CI documental final e liberação pendentes.
+
+## FIN-003 — tipo puro de conta
+E3 local: AccountType com quatro variantes sem conversores/serialização, teste preserva variantes; sem I/O, SQL, IPC ou dados sensíveis. Cargo audit422/0 vulnerabilidades/2 avisos E4 aprovados; OSV542/3 exceções/0 fora, expiry2026-10-23T00Z, inputs intactos. Review E2 sem P0/P1/P2. Nenhuma validação de fatura/taxas/cartão ou regra financeira inferida; CI e Gitleaks staged pendentes.

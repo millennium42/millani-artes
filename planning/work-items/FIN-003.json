@@ -1,0 +1,25 @@
+{
+  "id": "FIN-003",
+  "title": "definir tipo de conta",
+  "specPath": "planning/specs/FIN-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-001"
+  ],
+  "acceptanceCriteria": [
+    "AccountType público contém Cash, BankPix, Card e Other sem derive/default/tag numérica/conversor",
+    "Account.account_type armazena variante escolhida preservando id, name e validate_name",
+    "teste account_preserves_each_account_type cobre as quatro variantes por discriminant, sem mapping numérico",
+    "sem constructor/getter/serde/saldo/schema/usecase/IPC/UI/contexto novo ou dependência; checks, review, docs e CI final aprovados"
+  ],
+  "checks": [
+    "RED antes de enum/campo, atualizar quatro literais e adicionar teste de preservação das variantes",
+    "fmt, clippy, suíte Rust, audit, OSV, Gitleaks e coverage LLVM local full/controle conforme gates existentes",
+    "review independente, validators, CI remoto exato e nota78/liberação pelo integrador"
+  ],
+  "agentPlan": "P-INT/root integra, executa checks e commita; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium review E2 concluída sem P0/P1/P2. Escrita serial autorizada; 0 escaladas. Modelo efetivo root e custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY E3 local sobre working state na base b5fabc, sem SHA commit. cargo test padrão --nocapture:58 ordinários+2 doctests, 0 falhas/1 ignored; não usou include-ignored. Review E2 sem achados. Validators4 PASS: mapa360 files/28 sources, schema/evidence78, progress prefix320188B preservado, diffcheck PASS. Gitleaks staged é scan histórico pré-delta:12 paths/27917B/SHA f6e4b74e476ae274952382a7c5df6465054e1b9839448d6193e601f738971a16/0 findings; repetir após docs pendente. CI e gates finais pendentes; passesfalse. Reserva ACTIVE23."
+}
