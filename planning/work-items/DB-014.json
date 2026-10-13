@@ -1,0 +1,29 @@
+{
+  "id": "DB-014",
+  "title": "provar auditoria e operação na mesma transação SQLite",
+  "specPath": "planning/specs/DB-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-013"
+  ],
+  "acceptanceCriteria": [
+    "Cinco testes físicos provam commit conjunto e rollback diante de falha de auditoria, operação, COMMIT e panic unwind.",
+    "Após reopen, cada falha preserva snapshot lógico completo, sentinelas e integridade; observador não vê escritas parciais antes do commit.",
+    "RED temporário demonstra que o teste focal detecta confirmação indevida após erro de auditoria; produção retorna exatamente ao baseline antes dos testes finais.",
+    "Executar checks Rust e segurança, review E2 e CI de entrega no SHA exato; registrar evidência sem afirmar invariantes financeiras ou recuperação global.",
+    "Atualizar spec, matrizes, roadmap, handoff e progress log append-only; publicar nota 75 preservando história, verificar Git limpo e liberar reserva."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente, Gitleaks diferencial, validators e CI remota no SHA exato."
+  ],
+  "agentPlan": "P-INT/root integra, executa E3 e commita; conforme instrução humana “toda parte braçal deve ser da luna”, Luna executa implementação e redação serial. P-TRC/P-OPS Luna6 low docs, P-DAT/P-QA Luna6 medium código, P-REV Sol6 medium review. Reserva ACTIVE13 e gates no handoff.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "DB-013 fechado na base 02f155fe6cab4e1bd57fc18bfc4fa43206944fe0: CI final38432302344/job115417324942 SUCCESS16/7/0 artifacts; nota74 preserva73. E3 local concluída; síntese/hashes/checks em handoff. CI entrega, validators, nota75, Git limpo e liberação ACTIVE13 pendentes. INV-FIN-006/007 permanecem E0; FIN-001 e consumidores não iniciados; Rust coverage global/backend SAST/C SQLite/setup não provados. Telemetria de tokens/custo/cache/retries NR."
+}

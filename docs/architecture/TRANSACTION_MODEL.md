@@ -37,3 +37,6 @@ DB-012 adicionou cinco provas SQLite físicas: rejeição sem escrita, erro de c
 
 
 DB-013 implementa append de evento na transação emprestada; testes locais e CI de entrega no SHA final passaram, incluindo rejeição de inserção ignorada. Não prova que escrita financeira e evento sejam atômicos juntos; DB-014 permanece responsável. CI documental e nota74 pendentes; ver [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md).
+
+
+DB-014 | E3 local: cinco testes SQLite físicos passaram e a produção foi restaurada ao baseline; auditoria e operação são atômicas nos cenários exercitados. CI de entrega pendente. Ver [handoff](../../planning/handoffs/DB-014.md).

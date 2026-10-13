@@ -60,3 +60,8 @@ Quatro testes físicos verificam sucesso e resultado pós-commit, visibilidade e
 ## DB-012 — rollback genérico
 
 Cinco testes físicos `db012_*` passaram em debug/release. Root confirmou fmt/clippy, Rust44/44 e release31/31 (SQLite3.53.2); harness SHA-256 `7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4`. RED mutado detectou snapshot alterado após callback errar; fonte de produção foi restaurada ao hash DB-011. Exit86 verificou hot journal DELETE e recuperação no reopen. Review E2 sem P0/P1/P2, sem conferir hash/testes/scans. CI entrega `38400843616` e harness remoto31/31 confirmados; validators PASS. Gitleaks final de entrega 11 paths/45.749B/0 findings. CI documental final e nota73 pendentes. Ver [spec](../../planning/specs/DB-012.md) e [handoff](../../planning/handoffs/DB-012.md).
+
+
+## DB-014 — auditoria na unidade
+
+E3 local: cinco casos físicos passaram em debug/release, inclusive erro de audit/SQL, COMMIT deferred e panic unwind; RED detectou commit indevido. CI entrega pendente; detalhes no [handoff](../../planning/handoffs/DB-014.md).

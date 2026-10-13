@@ -351,3 +351,6 @@ E3: cinco testes físicos `db012_*` passaram em debug/release e na CI de entrega
 ## DB-013 — evento técnico de auditoria
 
 Infraestrutura audit_event: migration v2, append transacional e validação/sanitização. Executor E3/passes=true após CI `38429912850` no SHA `63ef7f6004f3e697f365f34f681c499726f2f867`; review E2 sem achados impeditivos. Atomicidade financeira não provada; DB-014 e consumidores necessários. Fechamento documental pendente; [spec](../../planning/specs/DB-013.md), [handoff](../../planning/handoffs/DB-013.md).
+
+
+DB-014: evidência E3 de atomicidade técnica no harness SQLite; requisitos de produto INV-FIN-006/007 continuam sem prova, consumidores não iniciados. CI entrega pendente. [Handoff](../../planning/handoffs/DB-014.md).

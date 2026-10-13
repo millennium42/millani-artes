@@ -2140,3 +2140,302 @@ fn db013_audit_errors_hide_driver_payload() {
         0
     );
 }
+
+type Db014AuditRow = (Vec<u8>, i64, String, String, Vec<u8>);
+
+#[derive(Debug, PartialEq, Eq)]
+struct Db014Snapshot {
+    database: Db012Snapshot,
+    ledger: Vec<i64>,
+    probe: Vec<(i64, String)>,
+    audit: Vec<Db014AuditRow>,
+}
+
+fn db014_snapshot(connection: &Connection) -> Db014Snapshot {
+    Db014Snapshot {
+        database: db012_snapshot(connection),
+        ledger: {
+            let mut statement = connection
+                .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        },
+        probe: {
+            let mut statement = connection
+                .prepare("SELECT id, value FROM main.db014_probe ORDER BY id")
+                .unwrap();
+            statement
+                .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        },
+        audit: {
+            let mut statement = connection.prepare(
+                "SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event ORDER BY event_id",
+            ).unwrap();
+            statement
+                .query_map([], |row| {
+                    Ok((
+                        row.get(0)?,
+                        row.get(1)?,
+                        row.get(2)?,
+                        row.get(3)?,
+                        row.get(4)?,
+                    ))
+                })
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        },
+    }
+}
+
+fn db014_seed(connection: Connection) -> (Connection, Db014Snapshot) {
+    let connection = db013_migrate_v2(connection);
+    let original = db012_seed_baseline(&connection);
+    assert_eq!(original.integrity, "ok");
+    assert_eq!(original.foreign_key_violation, None);
+    connection.execute_batch(
+        "CREATE TABLE db014_probe (id INTEGER PRIMARY KEY, value TEXT NOT NULL); INSERT INTO db014_probe VALUES (1, 'sentinel');",
+    ).expect("DB014_FIXTURE_SETUP_FAILED");
+    let sentinel = db013_event([21; 16], 100, "sale_create", "sale", [22; 16]);
+    let (connection, ()) = millani_artes::database::execute_write_transaction(connection, |tx| {
+        millani_artes::database::append_audit_event(tx, &sentinel)
+    })
+    .expect("DB014_SENTINEL_AUDIT_SETUP_FAILED");
+    let snapshot = db014_snapshot(&connection);
+    (connection, snapshot)
+}
+
+#[test]
+fn db014_audit_failure_rolls_back_operation() {
+    use millani_artes::database::{
+        append_audit_event, execute_write_transaction, AuditEventError, TransactionError,
+    };
+
+    let directory = common::TempDirectory::new();
+    for (case, event, ignore) in [
+        (
+            "duplicate",
+            db013_event([21; 16], 101, "sale_create", "sale", [23; 16]),
+            false,
+        ),
+        (
+            "invalid",
+            db013_event([0; 16], 101, "sale_create", "sale", [23; 16]),
+            false,
+        ),
+        (
+            "ignore",
+            db013_event([24; 16], 101, "sale_create", "sale", [23; 16]),
+            true,
+        ),
+    ] {
+        let case_path = directory.path().join(format!("db014-audit-{case}.sqlite"));
+        let (connection, _) = db014_seed(open_database(&case_path).expect("DATABASE_OPEN_FAILED"));
+        if ignore {
+            connection.execute_batch("CREATE TRIGGER db014_ignore_audit BEFORE INSERT ON audit_event BEGIN SELECT RAISE(IGNORE); END;")
+                .expect("IGNORE_TRIGGER_SETUP_FAILED");
+        }
+        let baseline = db014_snapshot(&connection);
+        let result = execute_write_transaction(connection, |transaction| {
+            transaction
+                .execute(
+                    "UPDATE main.db014_probe SET value = 'changed' WHERE id = 1",
+                    [],
+                )
+                .expect("PROBE_UPDATE_FAILED");
+            transaction
+                .execute(
+                    "INSERT INTO main.db014_probe VALUES (2, 'new-operation')",
+                    [],
+                )
+                .expect("PROBE_INSERT_FAILED");
+            append_audit_event(transaction, &event)
+        });
+        let expected_error = if case == "invalid" {
+            AuditEventError::InvalidEvent
+        } else {
+            AuditEventError::InsertFailed
+        };
+        assert!(
+            matches!(result, Err(TransactionError::OperationFailed(error)) if error == expected_error)
+        );
+
+        let reopened = open_database(&case_path).expect("DATABASE_REOPEN_FAILED");
+        assert!(reopened.is_autocommit());
+        assert_eq!(
+            reopened
+                .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+                .unwrap(),
+            1
+        );
+        assert_eq!(db014_snapshot(&reopened), baseline);
+    }
+}
+
+#[test]
+fn db014_operation_and_audit_commit_together() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction, AuditEventError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db014-success.sqlite");
+    let (connection, baseline) = db014_seed(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let observer = open_database(&path).expect("OBSERVER_OPEN_FAILED");
+    let event = db013_event([24; 16], 101, "sale_create", "sale", [23; 16]);
+    let (connection, committed_value) = execute_write_transaction(connection, |transaction| {
+        transaction
+            .execute(
+                "UPDATE main.db014_probe SET value = 'changed' WHERE id = 1",
+                [],
+            )
+            .expect("PROBE_UPDATE_FAILED");
+        transaction
+            .execute(
+                "INSERT INTO main.db014_probe VALUES (2, 'new-operation')",
+                [],
+            )
+            .expect("PROBE_INSERT_FAILED");
+        append_audit_event(transaction, &event)?;
+        assert!(!transaction.is_autocommit());
+        assert_eq!(
+            observer
+                .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+                .unwrap(),
+            1
+        );
+        assert_eq!(db014_snapshot(&observer), baseline);
+        Ok::<_, AuditEventError>(77)
+    })
+    .expect("DB014_SUCCESS_TRANSACTION_FAILED");
+    assert_eq!(committed_value, 77);
+    assert!(connection.is_autocommit());
+    drop(observer);
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    let mut expected = baseline;
+    expected.probe = vec![(1, "changed".into()), (2, "new-operation".into())];
+    expected.audit.push((
+        [24; 16].to_vec(),
+        101,
+        "sale_create".into(),
+        "sale".into(),
+        [23; 16].to_vec(),
+    ));
+    assert_eq!(db014_snapshot(&reopened), expected);
+}
+
+#[test]
+fn db014_operation_failure_rolls_back_audit() {
+    use millani_artes::database::{
+        append_audit_event, execute_write_transaction, TransactionError,
+    };
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db014-operation-failure.sqlite");
+    let (connection, baseline) = db014_seed(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let event = db013_event([24; 16], 101, "sale_create", "sale", [23; 16]);
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction
+            .execute(
+                "UPDATE main.db014_probe SET value = 'changed' WHERE id = 1",
+                [],
+            )
+            .expect("PROBE_UPDATE_FAILED");
+        append_audit_event(transaction, &event).expect("AUDIT_APPEND_FAILED");
+        transaction.execute("INSERT INTO main.db014_probe VALUES (1, 'duplicate')", [])?;
+        Ok::<(), rusqlite::Error>(())
+    });
+    assert!(matches!(result, Err(TransactionError::OperationFailed(_))));
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(db014_snapshot(&reopened), baseline);
+}
+
+#[test]
+fn db014_commit_failure_rolls_back_operation_and_audit() {
+    use millani_artes::database::{
+        append_audit_event, execute_write_transaction, TransactionError,
+    };
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db014-commit-failure.sqlite");
+    let (connection, baseline) = db014_seed(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let event = db013_event([24; 16], 101, "sale_create", "sale", [23; 16]);
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction
+            .execute(
+                "UPDATE main.db014_probe SET value = 'changed' WHERE id = 1",
+                [],
+            )
+            .expect("PROBE_UPDATE_FAILED");
+        append_audit_event(transaction, &event).expect("AUDIT_APPEND_FAILED");
+        transaction.execute("INSERT INTO main.db012_child VALUES (2, 999, 'orphan')", [])?;
+        Ok::<_, rusqlite::Error>(())
+    });
+    assert!(matches!(result, Err(TransactionError::CommitFailed)));
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(db014_snapshot(&reopened), baseline);
+}
+
+#[test]
+fn db014_panic_unwind_rolls_back_operation_and_audit() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction};
+    use std::panic::{catch_unwind, AssertUnwindSafe};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db014-panic.sqlite");
+    let (connection, baseline) = db014_seed(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let event = db013_event([24; 16], 101, "sale_create", "sale", [23; 16]);
+    let audit_appended = std::cell::Cell::new(false);
+    let panic = catch_unwind(AssertUnwindSafe(|| {
+        let _ = execute_write_transaction(connection, |transaction| -> rusqlite::Result<()> {
+            transaction
+                .execute(
+                    "UPDATE main.db014_probe SET value = 'changed' WHERE id = 1",
+                    [],
+                )
+                .expect("PROBE_UPDATE_FAILED");
+            append_audit_event(transaction, &event).expect("AUDIT_APPEND_FAILED");
+            audit_appended.set(true);
+            panic!("DB014_SYNTHETIC_UNWIND");
+        });
+    }));
+    assert!(panic.is_err());
+    assert!(audit_appended.get());
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA foreign_keys", [], |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(db014_snapshot(&reopened), baseline);
+}
