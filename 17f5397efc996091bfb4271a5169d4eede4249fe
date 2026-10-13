@@ -1,0 +1,31 @@
+# DB-009 — nota final 70
+
+## Contrato e execução
+
+`open_database` configura `foreign_keys` ON fora de transação, lê o valor como `i64` e retorna a conexão somente com readback 1. Falhas de update/readback ou valor diferente falham fechado como `OpenFailed` estático, descartando o handle interno.
+
+O baseline antes da alteração passou (1/0/0; 20 filtrados, 11,687 s): o driver já iniciava ON por `SQLITE_DEFAULT_FOREIGN_KEYS=1`. O controle temporário OFF falhou fechado via readback `OpenFailed` (RED 0 passados/1 falho/20 filtrados, 10,976 s); não era defeito preexistente e ON foi restaurado antes do GREEN. Um bloco de 9 linhas e um teste novo foram adicionados; os 20 testes anteriores permaneceram intactos. O teste novo passou em debug e release.
+
+E3 local: fmt 5,162 s, clippy 8,381 s; Rust 34/34 (6 lib, 7 bin, 21 harness, 0 falhas/ignorados/filtrados) em 20,726 s; release 21/21 em 49,459 s, SQLite 3.53.2. Review 5.6-sol medium E2 sem P0/P1/P2. Hashes finais: `database.rs` SHA-256 `51a7a8662cd444e9e4a3f3fb6f673725ee86e35ff22620e87d46a73399f9947e`; harness SHA-256 `63081302254559c67b87a67dbc1f739bc26d07b93b7534d676d2919e63ff2175`.
+
+## CI e scans
+
+CI de entrega no SHA `4646f9dd1bbfc2f38813ce86beac9f2a7f2ea578`: run `38324569231`, job `115060146427`, main/push/attempt 1, 23 success/0 skipped. Release harness 21/21. Executável Windows verificado PE32+ AMD64, `customProtocol=true`, 8.536.064 bytes, SHA-256 `01a376626487c6c2e11aa990635dfc1791cded01bb400c6c409a26b09094c20f`, source SHA correspondente. Artefato frontend `frontend-coverage-38324569231-1`, id `11780530852`, 21.877 bytes, `expired=false` na leitura. Vitest 2 arquivos/3 testes; App 100% representa somente scaffold.
+
+CI documental final no SHA exato `17f5397efc996091bfb4271a5169d4eede4249fe`: run `38325659041`, job `115063600279`, main/push/attempt 1, COMPLETED/SUCCESS, 16 success/7 skipped/0 artifacts. Marcadores nesse SHA: Gitleaks 155 commits/0; Cargo 422 deps/0 vulnerabilidades classificadas/2 avisos aprovados; OSV 542 pacotes/3 excetuados/0 fora; npm 120/0. Advisory DB tem 1307 advisories, commit `57dcc0f2192e025138907a495c1ac9a7e1e3e123`. SAST da CI de entrega: 45 casos (42 CLI/3 PowerShell), com limites frontend; Rust/backend SQL/restore excluídos. A CI documental final não reexecutou Rust, executável Windows, frontend ou SAST.
+
+Scan staged final: 9 docs, 31.836 bytes, SHA-256 `462c57f39980b81eaa82b6e5540366e3b3463ac5705afbd7fbc96791c5459573`, zero findings, Gitleaks 8.30.1, 12 guards. Validators: 335 arquivos/28 fontes/71 JSON+evidence. Prefixo histórico anterior ao fechamento preservado: 296.744 bytes, SHA-256 `fb88583fb9ce171829761b4c4cfaf8a71a7dbac014dc4a0894e8dbdce7ce8464`.
+
+## Segurança e limites
+
+E4 herdados, sem nova aceitação: Cargo scope `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`; OSV scope `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`; alvo `x86_64-pc-windows-msvc`, somente glib 0.18.5 (RUSTSEC-2024-0429/GHSA-wrw7-89jp-8q8g) e proc-macro-error 1.0.4 (RUSTSEC-2024-0370), expiração 2026-10-23 00:00 UTC (22-10-2026 21h São Paulo). Auditoria C SQLite excluída.
+
+Executor `done`/E3/`passes=true`/`humanGateRequired=false`. Esta etapa não comprova rejeição de FKs inválidas (DB-010), startup, finanças, backup/restore, setup ou cobertura Rust global. DB-010 não iniciado; meta do produto em andamento.
+
+## Reserva e continuidade
+
+Os 12 paths reservados: `planning/specs/DB-009.md`; `planning/work-items/DB-009.json`; `planning/handoffs/DB-009.md`; `docs/operations/MIGRATIONS.md`; `docs/quality/TEST_STRATEGY.md`; `docs/security/SECURITY_TEST_MATRIX.md`; `docs/traceability/REQUIREMENTS_MATRIX.md`; `planning/ROADMAP.md`; `planning/PROGRESS_LOG.md` (append-only); `src-tauri/src/infrastructure/database.rs`; `src-tauri/tests/sqlite_harness.rs`; `artifacts/db009-final-note.md` (esta nota).
+
+O root declara LIBERADA a reserva somente após publicar esta nota 70, preservar os 69 modos/blobs/notas anteriores e confirmar refs remotos finais de main/branch/notes. Essa confirmação ainda está pendente; não é declarada aqui.
+
+Roteamento: 3 delegados — Luna medium para código, Luna low para docs e 5.6-sol medium para review; 0 escalonamentos. Custos, tokens e retries não registrados.
