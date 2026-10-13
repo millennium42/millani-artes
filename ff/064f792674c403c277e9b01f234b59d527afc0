@@ -1,0 +1,21 @@
+# FIN-001 — recibo final
+
+## Escopo e evidência do executor
+
+FIN-001 define Account com id: [u8; 16] opaco e name: String próprio. Não define nem implementa validação de nome, tipo de conta ou saldo inicial. A evidência de código cobre apenas esse contrato; a integração financeira permanece E0. Regras financeiras globais, setup.exe e release não foram verificados por este item.
+
+Evidência local histórica E3: cargo fmt e Clippy aprovados; 55 testes ordinários e 2 doctests aprovados; módulo de domínio release 7/7; cobertura LLVM direta 3/3 linhas executáveis full e controle 0/3. Hashes vinculados: módulo 26674326a9545e94c038cbd3f4a371ddbf73920769e92c0e0c8e9ce098011aff; testes 30291d9d09210b5538ab96d583384c5fea1c88aa19750164954cfa9f181930bd.
+
+A entrega 31af12adcf8bebe617539d9e5dde286a64674deb teve CI 38444911363, job 115460653591, sucesso 23/23 e harness SQLite 41/41. Nos logs, o harness foi observado em 5,18 s. Não foram repetidos nesta etapa os testes de domínio/doctests, coverage ou build.
+
+## Fechamento documental
+
+No SHA ff064f792674c403c277e9b01f234b59d527afc0, o CI final 38446686075, job 115466799912, push main, tentativa 1, terminou com 16 etapas de sucesso, 7 ignoradas e 0 artefatos. Logs reportam Gitleaks: 167 commits, 0 achados, 0,696 s; npm: 120 dependências, 0 vulnerabilidades; Cargo: 422 pacotes, 0 vulnerabilidades e 2 avisos aprovados; OSV: 542 pacotes, 3 exceções e 0 achados fora delas. Exceções expiram em 2026-10-23T00:00:00Z. Esses gates não substituem a evidência local de domínio.
+
+O reconhecimento do integrador registrou checkout limpo em codex/fin-001-account, HEAD igual a branch remota e main remoto; main local ainda 6bed951 e validação dos hashes/ausência de diff desde a entrega. A nota de evidência local/remota anterior é 9e89f3c7eac3231003dd406db10d412aa2602c5f, com 75 tuplas preservadas. DB-014 foi revalidado: fechamento 0bb34d69ccb72e13fb23f43891ef92452675b380, CI 38439996294 sucesso, nota 75 existente.
+
+## Estado e próximo passo
+
+A reserva ACTIVE21 fica condicionada à publicação desta nota como nota 76, preservando as 75 tuplas, modos e blobs anteriores, três refs remotas e checkout Git limpo. Essas verificações/publicação ainda não foram executadas; hash desta nota não registrado. FIN-002 só pode começar após a liberação efetiva de FIN-001. O roadmap contém 245 IDs; 75 executores constam como done e 170 ainda não estão fechados. Uso e custo do agente não registrados.
+
+Roster histórico: Luna6 medium código; Luna6 low documentos; Sol6 medium revisão E2 sem achados. Continuação: P-TRC gpt-6-luna low inventário/recibo solicitado, P-DOM gpt-6-luna medium RECON somente leitura para FIN-002; modelos efetivos e modelo/esforço root não registrados. Root corrigiu escapes do recibo após falha no controle determinístico; sem alterar fontes. Custo, tokens e cache não registrados.
