@@ -223,4 +223,4 @@ Cinco casos físicos `db012_*` passaram debug/release e na CI de entrega `384008
 SQLite físico verifica metadados, tags, inválidos, duplicata, constraints, mutações, erro sanitizado e inserção ignorada. CI entrega passou: Gitleaks162/0, npm120/0, Cargo422/0 vulnerabilidades, OSV542/3 excetuados/0 fora, SAST45 (limites no handoff). Review E2 sem achados impeditivos. Não protege processo hostil do arquivo, audita payload ou prova atomicidade financeira. CI documental/nota74 pendentes; [spec](../../planning/specs/DB-013.md).
 
 
-DB-014 E3: cenários SQLite temporários exercitaram atomicidade, erros sanitizados e integridade; nenhuma auditoria parcial visível. Evidência limitada ao harness, sem prova de ameaça de host/arquivo ou invariantes financeiras; CI entrega pendente. [Handoff](../../planning/handoffs/DB-014.md).
+DB-014 E3: cenários SQLite temporários exercitaram atomicidade, erros sanitizados e integridade; nenhuma auditoria parcial visível. Evidência limitada ao harness, sem prova de ameaça de host/arquivo ou invariantes financeiras; CI entrega `38438041786` passou; fechamento documental pendente. [Handoff](../../planning/handoffs/DB-014.md).

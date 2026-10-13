@@ -470,4 +470,4 @@ Executor `done`/E3/`passes=true` após CI entrega `38429912850` no SHA `63ef7f60
 
 ## DB-014 — auditoria na mesma transação (E3 local; CI entrega pendente)
 
-Cinco testes SQLite físicos passaram; RED detectou persistência indevida após erro de audit, produção restaurada byte a byte ao baseline. Hashes, comandos, review e limites no [handoff](handoffs/DB-014.md). Estado in_progress/E3/passes:false até CI entrega; nota75, preservação, Git limpo e liberação ACTIVE13 ainda pendentes. INV-FIN-006/007 seguem E0.
+Cinco testes SQLite físicos passaram; RED detectou persistência indevida após erro de audit, produção restaurada byte a byte ao baseline. Hashes, comandos, review e limites no [handoff](handoffs/DB-014.md). Executor done/E3/passes:true após CI `38438041786` no SHA `af1c5aabbefa785b8d26b7351cddf538ad68769b` (23/0, harness41/41). Nota75/preservação, Git limpo e liberação ACTIVE13 ainda pendentes. INV-FIN-006/007 seguem E0.

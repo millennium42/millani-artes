@@ -2,7 +2,7 @@
   "id": "DB-014",
   "title": "provar auditoria e operação na mesma transação SQLite",
   "specPath": "planning/specs/DB-014.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-013"
   ],
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT/root integra, executa E3 e commita; conforme instrução humana “toda parte braçal deve ser da luna”, Luna executa implementação e redação serial. P-TRC/P-OPS Luna6 low docs, P-DAT/P-QA Luna6 medium código, P-REV Sol6 medium review. Reserva ACTIVE13 e gates no handoff.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "DB-013 fechado na base 02f155fe6cab4e1bd57fc18bfc4fa43206944fe0: CI final38432302344/job115417324942 SUCCESS16/7/0 artifacts; nota74 preserva73. E3 local concluída; síntese/hashes/checks em handoff. CI entrega, validators, nota75, Git limpo e liberação ACTIVE13 pendentes. INV-FIN-006/007 permanecem E0; FIN-001 e consumidores não iniciados; Rust coverage global/backend SAST/C SQLite/setup não provados. Telemetria de tokens/custo/cache/retries NR."
+  "passes": true,
+  "notes": "Entrega fechada E3 no SHA af1c5aabbefa785b8d26b7351cddf538ad68769b, CI38438041786/job115437079892 attempt1 main push SUCCESS23/0, seis sourceSha markers; harness remoto41/41, cinco db014_* PASS. Evidência completa, segurança, limites e gates residuais no handoff/progress. INV-FIN-006/007 permanecem E0; FIN-001/consumidores não iniciados. Fechamento documental CI, nota75 preservando74 modos/blobs/3 refs, Git limpo e liberação ACTIVE13 pendentes."
 }

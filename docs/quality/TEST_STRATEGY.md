@@ -64,4 +64,4 @@ Cinco testes físicos `db012_*` passaram em debug/release. Root confirmou fmt/cl
 
 ## DB-014 — auditoria na unidade
 
-E3 local: cinco casos físicos passaram em debug/release, inclusive erro de audit/SQL, COMMIT deferred e panic unwind; RED detectou commit indevido. CI entrega pendente; detalhes no [handoff](../../planning/handoffs/DB-014.md).
+E3 local: cinco casos físicos passaram em debug/release, inclusive erro de audit/SQL, COMMIT deferred e panic unwind; RED detectou commit indevido. CI entrega `38438041786` passou; gates documentais pendem. [Handoff](../../planning/handoffs/DB-014.md).
