@@ -2,7 +2,7 @@
   "id": "DB-012",
   "title": "verificar rollback genérico SQLite",
   "specPath": "planning/specs/DB-012.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-011"
   ],
@@ -11,7 +11,7 @@
     "RED focal demonstra sensibilidade: trocar rollback por commit apenas para o caso de erro do callback faz o teste detectar snapshot alterado após o callback retornar erro, mesmo se API ainda retorna OperationFailed; fonte original SHA-256 fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe é restaurada byte a byte antes dos checks finais.",
     "Os 26 testes anteriores do harness permanecem byte-prefix intactos; nenhuma alteração de produção final, dependências, workflow, schema, migrations, flags de produção ou caminhos fora da reserva; testes podem configurar suas flags SQLite locais.",
     "Documentar que rollback real falho ou sem gatilho estável/prova física limita a conclusão: conexão descartada, sem promessa de restauração ou retry. Exit 86 não prova power loss, panic-abort, WAL nem recovery global.",
-    "Root fecha E3, review E2, segurança, validators e CI no SHA exato; nota73 preserva 72 notas/blobs anteriores e refs remotas antes de liberar reserva."
+    "Executor fecha E3, review E2, segurança, validators e CI de entrega no SHA exato; CI final e nota73 preservando 72 notas/blobs/modos/3 refs, Git limpo e liberação da reserva são gates documentais posteriores."
   ],
   "checks": [
     "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT/root owner da reserva, checks e commits. Escrita documental serial por P-TRC/P-OPS Luna 6 low nos 10 paths documentais reservados; P-DAT/P-QA Luna 6 medium nos dois paths Rust; P-REV Sol 6 medium review E2 independente. Uma delegação read-only de recon já ocorreu; máximo de dois ativos além de root.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "DB-011 fechado e dependência determinística: 73 records, 341 files, 28 sources, main/branch/notes confirmadas; CI 38397098609/job 115294988829 SUCCESS 16/7/0, nota72 preserva 71 e reserva15 liberada. DB-012: RED sensível confirmou snapshot alterado apesar de OperationFailed ao trocar rollback por commit; fonte restaurada SHA-256 fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe sem diff final. Harness final 7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4; prefixo 26 testes/52478B preservado. fmt2.244s, clippy3.968s, Rust44/44, release31/31 SQLite3.53.2; cinco db012_* PASS debug/release. Exit86: hot journal DELETE físico >512B/magic válido; reopen recuperou snapshot/integrity/FK, removeu journal e nova unidade confirmou. Cargo422/0 vuln/2 warnings aprovados; OSV542/3 excetuados/0 fora. Review P-REV Sol6 medium E2 sem P0/P1/P2, diff executor/TempDirectory read-only, sem verificar hash/testes/scans. Validators4 PASS/344 files/28 sources/74 items. Gitleaks intermediário staged11 paths/44017B/SHA256 e4266fcd99650a69d94889435e078640bebb6fd336fbb1f2a0509286fdfa8d44/0/0/0.422s; scan final pendente. Executor in_progress/E3/passes=false até CI entrega. CI, nota73 e liberação13 pendentes. E4 herdados inalterados; C SQLite excluído, sem novo gate. Cleanup sem perfil/fixture/scriptcache, ownedWV0/SQLtemp0; 10+2 guards estáveis. Três delegados cumulativos/0 escalonamentos; custo NR. Reserva13 ACTIVE; owner root. DB-013 não iniciar."
+  "passes": true,
+  "notes": "Executor done/E3/passes=true/humanGate=false após CI entrega: SHA03042f6f980ae90f4c74ad989d3dc6c6c7a19a01 run38400843616/job115307765311 main push attempt1 SUCCESS23/0skip; remoto harness31/31, cinco db012_* PASS/3.36s SQLite3.53.2; seis markers sourceSha. Scans remotos Gitleaks160/0, npm120/0, Cargo422/0vuln/2 warnings aprovados (DB1309 commit64a0302dc836df15a10ac27ebdcdf8f9b4ce845a), OSV542/3 excetuados/0 fora, SAST45 (42Biome/3PS, limites anotados). Root local E3 e E2 review sem P0/P1/P2 registrados acima. Gitleaks staged entrega11 paths/45749B/hash417ed9d6ffeb436257d4673d49c9dd5ef332e59df8500d6439ebd4de839694b8/0/0.447s. Binário 8.536.064B SHA331c1dce1d8d6a2bbbe834159071b662252b05a4d0ce145b0894f35036da1a81 não é setup/artifact retido; coverage11815136220 21873B digestdc842b73555ac2429dc9b427d0fb6e0a645af2fb855133894a8578493f376cf4, não expirado à consulta, 2 arquivos/3 testes/100% scaffold. Fontes produção/harness permanecem SHA fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe e 7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4; 26 anteriores/52478B intactos. 4 validators/344 files/28 sources/74 records PASS; guards12 estáveis. Progress prefix no SHA entrega 03042f6, 310516B/SHA9205e162ea63699d925774b131eb80e10236bc43fe0a37d7317720bb2894d0c3 preservado. E4 herdado até 2026-10-23T00:00Z, C SQLite excluído, Rust coverage NR. Fechamento documental pendente: CI final, nota73 preservando 72 modos/blobs/3 refs e Git limpo antes de liberar reserva13. Meta DB-013 não iniciada."
 }
