@@ -2,7 +2,7 @@
 
 pub mod ports;
 
-/// Unvalidated account identity metadata; validation and financial fields belong to later tasks.
+/// Account identity metadata; financial fields belong to later tasks.
 ///
 /// ```compile_fail
 /// fn require_debug<T: std::fmt::Debug>() {}
@@ -16,6 +16,16 @@ pub mod ports;
 pub struct Account {
     pub id: [u8; 16],
     pub name: String,
+}
+
+impl Account {
+    pub fn validate_name(&self) -> Result<()> {
+        if self.name.trim().is_empty() {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;

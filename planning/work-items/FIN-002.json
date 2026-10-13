@@ -1,0 +1,23 @@
+{
+  "id": "FIN-002",
+  "title": "validar nome de conta",
+  "specPath": "planning/specs/FIN-002.md",
+  "status": "in_progress",
+  "dependencies": ["FIN-001"],
+  "acceptanceCriteria": [
+    "Account.validate_name retorna DomainError::InvalidInput se trim().is_empty(), caso contrário Ok(()) sem alterar name ou id",
+    "testes cobrem vazio, whitespace Unicode (tab, newline, NBSP e em space) e nome Unicode válido preservando espaços e ID",
+    "sem tipo/saldo/persistência/UI/constructor/getter/limite/normalização/unicidade ou dependência nova",
+    "fmt, clippy, testes Rust, audit e cobertura direta do módulo passam; review, documentos e CI final no SHA comprovados"
+  ],
+  "checks": [
+    "RED dos testes antes da implementação; depois fmt, clippy e cargo test pelo integrador",
+    "cargo audit e cobertura LLVM direta de domain/mod.rs: full e controle negativo no gate de 90% de linhas; sem alegação de cobertura Rust global",
+    "review independente, validação documental, CI remoto no SHA final, nota77 e preservação de evidências pelo integrador"
+  ],
+  "agentPlan": "P-INT/root único integrador, executor de checks e committer. P-DOM Luna6 medium contrato/implementação em série; P-TRC Luna6 low documentação; P-REV Sol6 medium revisão independente futura. Redação delegada serial autorizada por decisão humana. Modelos/esforços efetivos, root efetivo e custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY local E3 pelo root, vinculado ao estado de trabalho sobre base ff064f792674c403c277e9b01f234b59d527afc0, sem alegar SHA de commit da implementação. Fontes físicas: domain/mod.rs SHA-256 59c87b8328ae95d2a19251a165e3d2765914f8b36c3dfcdaf61cee15e8181881; domain/tests.rs b60937f9a13f8f890a5383a5287e306e7009c1ad7da752276bdcbbb16746f3bf; workflow/docs.yml 87e7fc7e62a658c1dc7e201126252b7758a40849972a3def53fae7a3f981fae0. Diff 3 code paths/3285 bytes/SHA-256 4e2cef0b23e5bdbe7774005f04c70c8b6d97bc746f982c49e59136caee3fe7a1; 13 guard paths e dependências intactos. RED Cargo101/wrapper1/E0599: métodos ausentes. Ambiente Windows x86_64-pc-windows-msvc, rustc/cargo1.99.0, LLVM23.1.1, Python3.12; execução 2026-10-13T23:03Z. Comandos: rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check; rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings; rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored; rtk proxy python -B scripts/check_cargo_audit.py; rtk proxy python -B scripts/check_osv.py. Fmt PASS2.148s após correção layout loop; clippy18.29s; suíte debug58 ordinários (10 lib,7 bin,41 SQLite)+2 doctests,0 falhas/ignorados,compile10.32s, smoke ignored WebView2 local incluso. Cargo audit422/0 vulns/2 aprovados/4.643s; OSV542/3 exceções/0 fora/2.754s, expiry2026-10-23T00Z, inputs intactos. LLVM full8/8 linhas,2/2 funções,11/11 regiões; control3/8=37.5% rejeitado gate90. Reports b25bf05d1d88dc5547add9f19df1f0e65cf173d2eb3ac5343b874c0974f03f9f e bb8e169052280c3842cde642a4a17dd51dbd7756273c77f3087ba774f35e6891; branch probe estável rejeitado (nightly), counters não medidos. Cleanup E3 confirmou processos WebView próprios0 e ausência de artifacts/sec001-webview-profile e artifacts/fin002-coverage após validar contenção/reparse. Validators E3 PASS: mapa357 files/28 sources, schema77 items, evidence77, progress-log prefix HEAD317859B preserved, git diff --cached --check PASS. Review root read-only E2 sem P0/P1/P2 em 3 paths, diff hash registrado. Gitleaks staged e CI entrega/final pendentes; manter in_progress/E3/passes:false/humanGateRequired:false. Coverage local só módulo; sem cálculo financeiro/global Rust. Reserva ACTIVE23; FIN-003 aguarda fechamento/liberação. Uso/custo não registrados."
+}

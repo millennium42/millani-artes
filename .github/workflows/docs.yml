@@ -176,8 +176,8 @@ jobs:
           }
           git diff --exit-code -- src src-tauri package.json package-lock.json .node-version rust-toolchain.toml tsconfig.json vite.config.ts vitest.config.ts biome.json index.html
           if ($LASTEXITCODE -ne 0) { throw 'Product inputs changed during build.' }
-          cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture
-          if ($LASTEXITCODE -ne 0) { throw 'SQLite harness failed.' }
+          cargo test --release --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --nocapture
+          if ($LASTEXITCODE -ne 0) { throw 'Rust test suite failed.' }
 
       - name: Verify Tauri executable
         if: steps.frontend.outputs.required == 'true'

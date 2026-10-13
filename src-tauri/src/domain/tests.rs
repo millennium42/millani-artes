@@ -39,3 +39,50 @@ fn account_preserves_opaque_id_and_owned_unicode_name() {
     assert_eq!(account.id, id);
     assert_eq!(account.name.as_bytes(), "Ateliê Millani 🧵".as_bytes());
 }
+
+#[test]
+fn account_name_rejects_empty() {
+    use super::Account;
+
+    let account = Account {
+        id: [0; 16],
+        name: String::new(),
+    };
+
+    assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
+}
+
+#[test]
+fn account_name_rejects_unicode_whitespace() {
+    use super::Account;
+
+    for name in [
+        " ",
+        "\t",
+        "\n\r",
+        "\u{00a0}",
+        "\u{2003}",
+        " \t\n\r\u{00a0}\u{2003}",
+    ] {
+        let account = Account {
+            id: [0; 16],
+            name: name.to_owned(),
+        };
+
+        assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
+    }
+}
+
+#[test]
+fn account_name_accepts_unicode_without_mutation() {
+    use super::Account;
+
+    let id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255];
+    let name = String::from("  Ateliê Millani 🧵  ");
+    let account = Account { id, name };
+
+    account.validate_name().unwrap();
+
+    assert_eq!(account.id, id);
+    assert_eq!(account.name.as_bytes(), "  Ateliê Millani 🧵  ".as_bytes());
+}

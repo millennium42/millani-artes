@@ -356,3 +356,5 @@ Infraestrutura audit_event: migration v2, append transacional e validação/sani
 
 
 DB-014: evidência E3 de atomicidade técnica no harness SQLite; requisitos de produto INV-FIN-006/007 continuam sem prova, consumidores não iniciados. CI entrega `38438041786` passou; fechamento documental pendente. [Handoff](../../planning/handoffs/DB-014.md).
+## FIN-002 — cadastro de conta / nome (MVP-01, parcial)
+FIN-002 prova validação explícita por trim().is_empty(): E3 local, três casos nome vazio/whitespace Unicode/válido Unicode preservando espaços e ID; cobertura direta do módulo full8/8 linhas e controle3/8 rejeitado a 90%. O smoke WebView2 foi executado localmente; CI padrão não inclui teste ignored. A matriz continua parcial: sem FIN-008, nome público pode contornar validação e não há criação/persistência de conta demonstrada. INV-FIN-001/002 e invariantes financeiras seguem E0; CI final, validators e Gitleaks staged pendentes.
