@@ -1679,3 +1679,464 @@ fn db012_abrupt_exit_recovers_hot_journal() {
         .expect("DATABASE_WRITE_LOCK_REMAINS");
     assert_eq!(db012_snapshot(&reopened), original);
 }
+
+#[test]
+fn db013_audit_event_persists_metadata() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction, AuditEventError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db013-audit-event.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let connection =
+        execute_versioned_migration(connection, 1, "").expect("BASELINE_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("AUDIT_EVENT_MIGRATION_FAILED");
+    let event = millani_artes::database::AuditEvent {
+        event_id: [1; 16],
+        occurred_at_ms: 1_765_000_000_123,
+        operation: "sale_create",
+        entity: "sale",
+        entity_id: [2; 16],
+    };
+
+    let (connection, ()) = execute_write_transaction(connection, |transaction| {
+        append_audit_event(transaction, &event)?;
+        let observer = open_database(&path).expect("OBSERVER_DATABASE_OPEN_FAILED");
+        let before_commit: i64 = observer
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| {
+                row.get(0)
+            })
+            .expect("OBSERVER_READ_FAILED");
+        assert_eq!(before_commit, 0);
+        Ok::<(), AuditEventError>(())
+    })
+    .expect("AUDIT_EVENT_TRANSACTION_FAILED");
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    let stored: (Vec<u8>, i64, String, String, Vec<u8>) = reopened
+        .query_row(
+            "SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event",
+            [],
+            |row| {
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                ))
+            },
+        )
+        .expect("AUDIT_EVENT_NOT_PERSISTED");
+    assert_eq!(
+        stored,
+        (
+            [1; 16].to_vec(),
+            1_765_000_000_123,
+            "sale_create".into(),
+            "sale".into(),
+            [2; 16].to_vec()
+        )
+    );
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA integrity_check", [], |row| row.get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}
+
+fn db013_migrate_v2(connection: Connection) -> Connection {
+    let connection =
+        execute_versioned_migration(connection, 1, "").expect("BASELINE_MIGRATION_FAILED");
+    execute_versioned_migration(
+        connection,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("AUDIT_EVENT_MIGRATION_FAILED")
+}
+
+fn db013_event(
+    event_id: [u8; 16],
+    occurred_at_ms: i64,
+    operation: &'static str,
+    entity: &'static str,
+    entity_id: [u8; 16],
+) -> millani_artes::database::AuditEvent {
+    millani_artes::database::AuditEvent {
+        event_id,
+        occurred_at_ms,
+        operation,
+        entity,
+        entity_id,
+    }
+}
+
+#[test]
+fn db013_audit_schema_initializes_empty_and_upgrades_file() {
+    let directory = common::TempDirectory::new();
+    let empty_path = directory.path().join("db013-empty-upgrade.sqlite");
+    let empty = open_database(&empty_path).expect("EMPTY_DATABASE_OPEN_FAILED");
+    assert_eq!(schema_version(&empty, 2).unwrap(), 0);
+    let empty = db013_migrate_v2(empty);
+    assert_eq!(schema_version(&empty, 2).unwrap(), 2);
+    drop(empty);
+    let reopened = open_database(&empty_path).expect("EMPTY_DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA integrity_check", [], |row| row.get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+    drop(reopened);
+
+    let fixture_path = directory.path().join("db013-existing-v1.sqlite");
+    let fixture = open_database(&fixture_path).expect("FIXTURE_DATABASE_OPEN_FAILED");
+    let fixture = execute_versioned_migration(
+        fixture,
+        1,
+        "CREATE TABLE db013_probe(id INTEGER PRIMARY KEY, value TEXT NOT NULL); CREATE INDEX db013_probe_value ON db013_probe(value); CREATE TRIGGER db013_probe_no_delete BEFORE DELETE ON db013_probe BEGIN SELECT RAISE(ABORT, 'PROBE_DELETE_BLOCKED'); END; INSERT INTO db013_probe VALUES (7, 'preserved');",
+    )
+    .expect("FIXTURE_V1_MIGRATION_FAILED");
+    let fixture = execute_versioned_migration(
+        fixture,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("FIXTURE_UPGRADE_FAILED");
+    let probe: (i64, String) = fixture
+        .query_row("SELECT id, value FROM db013_probe", [], |row| {
+            Ok((row.get(0)?, row.get(1)?))
+        })
+        .unwrap();
+    assert_eq!(probe, (7, "preserved".into()));
+    assert_eq!(schema_version(&fixture, 2).unwrap(), 2);
+    let objects: Vec<String> = {
+        let mut statement = fixture.prepare(
+            "SELECT name FROM main.sqlite_schema WHERE name IN ('db013_probe_value', 'db013_probe_no_delete', 'audit_event_no_update', 'audit_event_no_delete') ORDER BY name",
+        ).unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        objects,
+        [
+            "audit_event_no_delete",
+            "audit_event_no_update",
+            "db013_probe_no_delete",
+            "db013_probe_value"
+        ]
+    );
+    let columns: Vec<(String, String, i64)> = {
+        let mut statement = fixture
+            .prepare("PRAGMA main.table_xinfo('audit_event')")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(1)?, row.get(2)?, row.get(3)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        columns,
+        [
+            ("event_id".into(), "BLOB".into(), 1),
+            ("occurred_at_ms".into(), "INTEGER".into(), 1),
+            ("operation".into(), "TEXT".into(), 1),
+            ("entity".into(), "TEXT".into(), 1),
+            ("entity_id".into(), "BLOB".into(), 1)
+        ]
+    );
+    drop(fixture);
+
+    let reopened = open_database(&fixture_path).expect("UPGRADED_DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    assert_eq!(
+        reopened
+            .query_row("SELECT value FROM db013_probe WHERE id = 7", [], |row| {
+                row.get::<_, String>(0)
+            })
+            .unwrap(),
+        "preserved"
+    );
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA integrity_check", [], |row| row.get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}
+
+#[test]
+fn db013_audit_event_rejects_invalid_metadata_and_duplicates() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction, AuditEventError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db013-validation.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let valid_64: &'static str = Box::leak("a".repeat(64).into_boxed_str());
+    let invalid_tags = [
+        "",
+        "Upper",
+        "é",
+        "a b",
+        "a\0b",
+        "a-",
+        "_a",
+        "a".repeat(65).leak(),
+    ];
+    let (connection, ()) = execute_write_transaction(connection, |transaction| {
+        for tag in invalid_tags {
+            let event = db013_event([1; 16], 0, tag, "sale", [2; 16]);
+            assert_eq!(
+                append_audit_event(transaction, &event),
+                Err(AuditEventError::InvalidEvent)
+            );
+            let event = db013_event([1; 16], 0, "sale_create", tag, [2; 16]);
+            assert_eq!(
+                append_audit_event(transaction, &event),
+                Err(AuditEventError::InvalidEvent)
+            );
+        }
+        let mut nil_event_id = db013_event([0; 16], 0, "a", "a", [2; 16]);
+        assert_eq!(
+            append_audit_event(transaction, &nil_event_id),
+            Err(AuditEventError::InvalidEvent)
+        );
+        nil_event_id.event_id = [1; 16];
+        nil_event_id.entity_id = [0; 16];
+        assert_eq!(
+            append_audit_event(transaction, &nil_event_id),
+            Err(AuditEventError::InvalidEvent)
+        );
+        let negative_time = db013_event([3; 16], -1, "a", "a", [4; 16]);
+        assert_eq!(
+            append_audit_event(transaction, &negative_time),
+            Err(AuditEventError::InvalidEvent)
+        );
+
+        let boundary_min = db013_event([5; 16], 0, "a", "a", [6; 16]);
+        append_audit_event(transaction, &boundary_min)?;
+        let boundary_max = db013_event([7; 16], 1, valid_64, valid_64, [8; 16]);
+        append_audit_event(transaction, &boundary_max)?;
+        assert_eq!(
+            append_audit_event(transaction, &boundary_min),
+            Err(AuditEventError::InsertFailed)
+        );
+        let preserved: i64 = transaction
+            .query_row(
+                "SELECT occurred_at_ms FROM main.audit_event WHERE event_id = ?1",
+                [boundary_min.event_id.as_slice()],
+                |row| row.get(0),
+            )
+            .unwrap();
+        assert_eq!(preserved, 0);
+        Ok::<(), AuditEventError>(())
+    })
+    .expect("VALIDATION_TRANSACTION_FAILED");
+    drop(connection);
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        2
+    );
+    assert_eq!(
+        reopened
+            .query_row(
+                "SELECT operation, length(operation) FROM main.audit_event WHERE event_id = ?1",
+                [[7; 16].as_slice()],
+                |row| Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            )
+            .unwrap(),
+        ("a".repeat(64), 64)
+    );
+}
+
+fn db013_assert_constraint_row(connection: &Connection, values: &[rusqlite::types::Value; 5]) {
+    let result = connection.execute(
+        "INSERT INTO main.audit_event (event_id, occurred_at_ms, operation, entity, entity_id) VALUES (?1, ?2, ?3, ?4, ?5)",
+        rusqlite::params_from_iter(values.iter()),
+    );
+    match result {
+        Err(rusqlite::Error::SqliteFailure(code, _)) => {
+            assert_eq!(code.code, rusqlite::ErrorCode::ConstraintViolation);
+        }
+        other => panic!("INVALID_ROW_DID_NOT_FAIL_CONSTRAINT: {other:?}"),
+    }
+}
+
+#[test]
+fn db013_audit_schema_rejects_invalid_rows_and_mutations() {
+    use rusqlite::types::Value;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db013-constraints.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let valid = [
+        Value::Blob(vec![1; 16]),
+        Value::Integer(0),
+        Value::Text("a".into()),
+        Value::Text("a".into()),
+        Value::Blob(vec![2; 16]),
+    ];
+    connection.execute(
+        "INSERT INTO main.audit_event (event_id, occurred_at_ms, operation, entity, entity_id) VALUES (?1, ?2, ?3, ?4, ?5)",
+        rusqlite::params_from_iter(valid.iter()),
+    ).expect("VALID_ROW_INSERT_FAILED");
+    let mut invalid_rows = Vec::new();
+    for column in 0..5 {
+        let mut row = valid.clone();
+        row[column] = Value::Null;
+        invalid_rows.push(row);
+    }
+    for id in [vec![0; 16], vec![1; 15], vec![1; 17]] {
+        let mut row = valid.clone();
+        row[0] = Value::Blob(id.clone());
+        invalid_rows.push(row);
+        let mut row = valid.clone();
+        row[4] = Value::Blob(id);
+        invalid_rows.push(row);
+    }
+    for wrong_type in [Value::Text("x".into()), Value::Integer(1)] {
+        let mut row = valid.clone();
+        row[0] = wrong_type.clone();
+        invalid_rows.push(row);
+        let mut row = valid.clone();
+        row[4] = wrong_type;
+        invalid_rows.push(row);
+    }
+    for bad_time in [
+        Value::Real(1.5),
+        Value::Text("not-time".into()),
+        Value::Integer(-1),
+    ] {
+        let mut row = valid.clone();
+        row[1] = bad_time;
+        invalid_rows.push(row);
+    }
+    for bad_tag in [
+        Value::Text(String::new()),
+        Value::Text("a".repeat(65)),
+        Value::Text("A".into()),
+        Value::Text("é".into()),
+        Value::Text("a b".into()),
+        Value::Text("a\0b".into()),
+    ] {
+        let mut row = valid.clone();
+        row[2] = bad_tag.clone();
+        invalid_rows.push(row);
+        let mut row = valid.clone();
+        row[3] = bad_tag;
+        invalid_rows.push(row);
+    }
+    for row in &invalid_rows {
+        db013_assert_constraint_row(&connection, row);
+    }
+
+    for sql in [
+        "UPDATE main.audit_event SET operation = 'changed' WHERE event_id = X'01010101010101010101010101010101'",
+        "DELETE FROM main.audit_event WHERE event_id = X'01010101010101010101010101010101'",
+    ] {
+        match connection.execute(sql, []) {
+            Err(rusqlite::Error::SqliteFailure(code, _)) => assert_eq!(code.code, rusqlite::ErrorCode::ConstraintViolation),
+            other => panic!("AUDIT_MUTATION_DID_NOT_FAIL: {other:?}"),
+        }
+    }
+    drop(connection);
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 2).unwrap(), 2);
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(
+        reopened
+            .query_row("SELECT operation FROM main.audit_event", [], |row| row
+                .get::<_, String>(
+                0
+            ))
+            .unwrap(),
+        "a"
+    );
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA integrity_check", [], |row| row.get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}
+
+#[test]
+fn db013_audit_errors_hide_driver_payload() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction, AuditEventError};
+
+    const MARKER: &str = "DB013_SYNTHETIC_DRIVER_MARKER";
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db013-sanitized-error.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    connection.execute_batch(
+        "CREATE TRIGGER db013_fail_insert BEFORE INSERT ON audit_event BEGIN SELECT RAISE(ABORT, 'DB013_SYNTHETIC_DRIVER_MARKER'); END;",
+    ).expect("SENTINEL_TRIGGER_CREATE_FAILED");
+    let event = db013_event([9; 16], 1, "sale_create", "sale", [10; 16]);
+    let (connection, ()) = execute_write_transaction(connection, |transaction| {
+        let driver_error = transaction.execute(
+            "INSERT INTO main.audit_event (event_id, occurred_at_ms, operation, entity, entity_id) VALUES (?1, ?2, ?3, ?4, ?5)",
+            rusqlite::params![event.event_id.as_slice(), event.occurred_at_ms, event.operation, event.entity, event.entity_id.as_slice()],
+        ).expect_err("SYNTHETIC_TRIGGER_DID_NOT_FAIL");
+        assert!(driver_error.to_string().contains(MARKER));
+
+        let error = append_audit_event(transaction, &event).expect_err("API_ACCEPTED_TRIGGER_FAILURE");
+        assert_eq!(error, AuditEventError::InsertFailed);
+        assert_eq!(error.to_string(), "audit event could not be inserted");
+        assert_eq!(format!("{error:?}"), "InsertFailed");
+        assert!(error.source().is_none());
+        assert!(!error.to_string().contains(MARKER));
+        assert!(!format!("{error:?}").contains(MARKER));
+
+        let invalid = db013_event([0; 16], 1, "sale_create", "sale", [10; 16]);
+        let error = append_audit_event(transaction, &invalid).expect_err("INVALID_EVENT_ACCEPTED");
+        assert_eq!(error, AuditEventError::InvalidEvent);
+        assert_eq!(error.to_string(), "audit event is invalid");
+        assert_eq!(format!("{error:?}"), "InvalidEvent");
+        assert!(error.source().is_none());
+
+        transaction.execute_batch(
+            "DROP TRIGGER db013_fail_insert; CREATE TRIGGER db013_ignore_insert BEFORE INSERT ON audit_event BEGIN SELECT RAISE(IGNORE); END;",
+        ).expect("IGNORE_TRIGGER_SETUP_FAILED");
+        let ignored = db013_event([11; 16], 1, "sale_create", "sale", [12; 16]);
+        let error = append_audit_event(transaction, &ignored).expect_err("IGNORED_INSERT_REPORTED_SUCCESS");
+        assert_eq!(error, AuditEventError::InsertFailed);
+        let count: i64 = transaction
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row.get(0))
+            .unwrap();
+        assert_eq!(count, 0);
+        Ok::<(), AuditEventError>(())
+    }).expect("ERROR_SANITIZATION_TRANSACTION_FAILED");
+    drop(connection);
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        0
+    );
+}

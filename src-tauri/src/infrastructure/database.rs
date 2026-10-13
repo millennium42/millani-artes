@@ -313,3 +313,78 @@ fn has_other_user_objects(connection: &Connection) -> Result<bool, MigrationErro
         )
         .map_err(|_| MigrationError::InvalidSchemaState)
 }
+
+pub const AUDIT_EVENT_MIGRATION_VERSION: u32 = 2;
+pub const AUDIT_EVENT_MIGRATION_SQL: &str = include_str!("../../migrations/002-audit-event.sql");
+
+pub struct AuditEvent {
+    pub event_id: [u8; 16],
+    pub occurred_at_ms: i64,
+    pub operation: &'static str,
+    pub entity: &'static str,
+    pub entity_id: [u8; 16],
+}
+
+#[derive(PartialEq, Eq)]
+pub enum AuditEventError {
+    InvalidEvent,
+    InsertFailed,
+}
+
+impl fmt::Debug for AuditEventError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(match self {
+            Self::InvalidEvent => "InvalidEvent",
+            Self::InsertFailed => "InsertFailed",
+        })
+    }
+}
+
+impl fmt::Display for AuditEventError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(match self {
+            Self::InvalidEvent => "audit event is invalid",
+            Self::InsertFailed => "audit event could not be inserted",
+        })
+    }
+}
+
+impl Error for AuditEventError {}
+
+pub fn append_audit_event(
+    transaction: &Transaction<'_>,
+    event: &AuditEvent,
+) -> Result<(), AuditEventError> {
+    if event.event_id == [0; 16]
+        || event.entity_id == [0; 16]
+        || event.occurred_at_ms < 0
+        || !valid_audit_tag(event.operation)
+        || !valid_audit_tag(event.entity)
+    {
+        return Err(AuditEventError::InvalidEvent);
+    }
+
+    match transaction.execute(
+            "INSERT INTO main.audit_event (event_id, occurred_at_ms, operation, entity, entity_id) VALUES (?1, ?2, ?3, ?4, ?5)",
+            rusqlite::params![
+                event.event_id.as_slice(),
+                event.occurred_at_ms,
+                event.operation,
+                event.entity,
+                event.entity_id.as_slice(),
+            ],
+        ) {
+        Ok(1) => Ok(()),
+        Ok(_) | Err(_) => Err(AuditEventError::InsertFailed),
+    }
+}
+
+fn valid_audit_tag(tag: &str) -> bool {
+    let bytes = tag.as_bytes();
+    !bytes.is_empty()
+        && bytes.len() <= 64
+        && bytes[0].is_ascii_lowercase()
+        && bytes[1..]
+            .iter()
+            .all(|byte| byte.is_ascii_lowercase() || byte.is_ascii_digit() || *byte == b'_')
+}

@@ -39,3 +39,7 @@ DB-006 materializa uma fixture SQL trusted e sintética em arquivos SQLite de te
 ## DB-011 — transação de escrita
 
 `execute_write_transaction` usa BEGIN IMMEDIATE e compartilha o executor interno com migrations, mantendo migrations DEFERRED. E3 local: fmt/clippy, Rust39/39 e release26/26; quatro testes novos passaram. Review independente E2 sem P0/P1/P2. CI entrega `38394130462`/job `115284940750` passou 23/23; release remoto26/26. Gitleaks staged13 paths/0 findings e quatro validators PASS. Teste de COMMIT com FK deferred verifica falha no commit, sem resultado/conexão; isso não prova rollback de operação composta, DB-012 continua pendente. CI final/nota72 ainda pendentes; ver [spec](../../planning/specs/DB-011.md) e [handoff](../../planning/handoffs/DB-011.md).
+
+## DB-013 — migration do evento técnico (CI pendente)
+
+Migration 002 foi aplicada no RED e é imutável; cinco testes focais, suíte Rust49/49 e release harness36/36 passaram localmente em SQLite3.53.2. Banco vazio e upgrade com probes, constraints e triggers foram exercitados. Cargo/OSV passaram após preservação do advisory RustSec fora do lockfile; review E2 sem P0/P1/P2. CI de entrega/fechamento e nota74 pendentes; ver [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md). Não comprova auditoria na mesma operação financeira.

@@ -1,0 +1,29 @@
+{
+  "id": "DB-013",
+  "title": "adicionar evento técnico de auditoria SQLite",
+  "specPath": "planning/specs/DB-013.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "Migration aditiva 002 cria audit_event e triggers append-only; banco vazio passa por baseline vazia v1 e v2 usando executor versionado existente, e upgrade v1 preserva probes.",
+    "API append_audit_event recebe Transaction emprestada, valida UUID opaco não nulo, timestamp Unix ms não negativo e tags estáticas; não faz commit nem registra payload sensível.",
+    "SQL e Rust impõem campos obrigatórios, tipos/tamanhos, tag ASCII sem NUL, duplicatas rejeitadas e bloqueio de UPDATE/DELETE; erros não revelam payload do driver.",
+    "Cinco testes SQLite físicos cobrem inicialização/upgrade, persistência, entradas inválidas/duplicata, constraints/mutações SQL e sanitização de erro.",
+    "Checks, segurança, review E2, CI no SHA final, nota pública preservando blobs/refs e liberação da reserva registrados antes de passes=true; DB-014 não iniciado."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente, Gitleaks diferencial, validators e CI de entrega/fechamento no SHA exato."
+  ],
+  "agentPlan": "P-INT/root owner de reserva, checks e commits; P-TRC/P-OPS Luna 6 low, escrita documental serial; P-DAT/P-QA Luna 6 medium, código/harness; P-REV Sol 6 medium, review E2 independente. Paths exatos constam no handoff.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local: RED stub falhou 0/1, 31 filtered, Cargo101/9.451s. Correção exige Ok(1); RAISE(IGNORE) coberto fisicamente. Migration aplicada em RED e imutável. fmt3.768s/clippy6.539s; focal5/5 11.805s; Rust49/49 (6 lib+7 bin+36 harness) 17.467s; release36/36 51.384s; SQLite3.53.2; sem falha/ignored final. Cargo422/0 vulnerabilidades/2 warnings excetuados, 3.211s; OSV542 (120 npm+422 Cargo)/3 excetuados/0 fora, 2.855s. Review Sol6 medium E2 read-only sem P0/P1/P2. Hashes finais database ec036e186432eadd94cef4f461eb0a36d91035aed7a1d5d05a061760382a32ea, harness35c16c528081626463dcc81ce9970bd0495fdd8c202b8a8e171a5ea3504552cf, SQL3fe9d4c02f21cdcaca4954791d561176fe8ffd917528dfd11af222d5127c0f3e. Prefixos fonte11075B e harness antigo31 testes/63175B preservados. Progress log append-only: prefixo base4c40 311678B/SHA256 052dad59265933d5627247de9e3a20043e32df5ead0b7baf34860596901b84b8. Gate RUSTSEC CARGO_DATABASE_DIRTY resolvido por preservação do advisory Kuva no artefato reservado, sem bypass; Cargo audit retry PASS. Reserva ACTIVE16. CI entrega/fechamento e nota74 pendentes; status in_progress/E3/passesfalse. Inventário esperado 348 files/28 sources/75 items, validators pendentes. Roster cumulativo3: Luna6 medium código, Luna6 low docs, Sol6 medium review; escalação0; tokens/custo/cache/retries evitados não registrado."
+}

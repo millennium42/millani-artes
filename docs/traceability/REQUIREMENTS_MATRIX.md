@@ -347,3 +347,7 @@ E3 local implementa BEGIN IMMEDIATE, sucesso somente após commit confirmado e e
 ## DB-012 — rollback genérico SQLite
 
 E3: cinco testes físicos `db012_*` passaram em debug/release e na CI de entrega `38400843616` (harness31/31); RED confirmou snapshot alterado na mutação e a fonte foi restaurada ao SHA DB-011. Harness SHA-256 `7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4`. Review E2 sem P0/P1/P2, sem validar hash/testes/scans. Validators4/344 files/28 sources/74 items PASS; Gitleaks staged entrega11 paths/45.749B/0 findings. Evidência limitada à infraestrutura SQLite; invariantes financeiras seguem pendentes. CI documental final e nota73 pendentes.
+
+## DB-013 — evento técnico de auditoria
+
+Infraestrutura de audit_event: migration versionada v2, append pela transação emprestada, validação de campos/tags e sanitização. E3 local: cinco testes focais, Rust49/49, release36/36, Cargo/OSV PASS; review E2 sem P0/P1/P2. Não fecha invariantes financeiras nem composição transacional; DB-014 e consumidores permanecem necessários. CI de entrega pendente. Consulte [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md).

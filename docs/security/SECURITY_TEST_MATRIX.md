@@ -217,3 +217,7 @@ E3 local de root: quatro testes físicos passaram em debug/release; sanitizaçã
 ## DB-012 — rollback genérico (E3 local)
 
 Cinco casos físicos `db012_*` passaram debug/release e na CI de entrega `38400843616` (harness31/31). Scans remotos: Gitleaks160/0, Cargo422/0 vulnerabilidades/2 warnings aprovados, OSV542/3 excetuados/0 fora, npm120/0, SAST45 (42 Biome/3 PS; backend Rust/SQL/restore fora). Validators4/344 files/28 sources/74 items PASS; Gitleaks staged de entrega11 paths/45.749B/0 findings. Review E2 sem P0/P1/P2, limitada ao diff. CI documental final e nota73 pendentes. Não declarar SEC-006 fechado; C SQLite segue excluído dos scanners.
+
+## DB-013 — evento técnico de auditoria (E3 local; CI pendente)
+
+SQLite físico verifica metadados validados, tags ASCII sem NUL, IDs/timestamp inválidos, duplicata, constraints diretas, UPDATE/DELETE e erro sanitizado; trigger `RAISE(IGNORE)` garante que zero linhas inseridas resulte em erro. Cargo e OSV passaram após preservar o advisory Kuva fora do lockfile em artefato reservado. Review E2 sem P0/P1/P2. Limites: não protege contra processo hostil que controla arquivo SQLite, não audita payload e não prova atomicidade com escrita financeira; CI pendente. Evidência detalhada na [spec](../../planning/specs/DB-013.md).

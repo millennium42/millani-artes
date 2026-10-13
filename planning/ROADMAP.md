@@ -462,3 +462,7 @@ ARC-005 executor done/E3 após entregac5872e20/[CI37974060505](https://github.co
 ## DB-012 — verificar rollback genérico (E3 local; CI pendente)
 
 [Spec](specs/DB-012.md)/[handoff](handoffs/DB-012.md): executor `done`/E3/`passes=true` após entrega CI `38400843616` (SHA `03042f6f980ae90f4c74ad989d3dc6c6c7a19a01`, 23/23, harness31/31, cinco `db012_*` PASS). fmt/clippy, Rust44/44, release31/31, Cargo/OSV e validators4/344 files/28 sources/74 items passaram. Produção restaurada ao SHA `fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe`, harness `7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4`. Scans remotos registrados; Gitleaks staged entrega11 paths/45.749B/0 findings. Review E2 sem P0/P1/P2, escopo limitado ao diff. INV-FIN-006/007 produto continua E0. CI documental final, nota73 e liberação13 pendentes; DB-013 não iniciar.
+
+## DB-013 — evento técnico de auditoria (E3 local; entrega pendente)
+
+RED stub falhou 0/1 (31 filtrados, Cargo101/9.451s); cinco focais 5/5, Rust49/49, release36/36, fmt/clippy e Cargo/OSV passaram. Migration v2 aplicada em RED e congelada; inserção ignorada requer `Ok(1)` e tem prova física. Review Sol6 medium E2 sem P0/P1/P2. Hashes, prefixos preservados, evidência e limites estão na [spec](specs/DB-013.md). Executor segue `in_progress`/E3/`passes=false`; CI entrega/fechamento e nota74 pendentes. Reserva16 ACTIVE; DB-014 não iniciado.
