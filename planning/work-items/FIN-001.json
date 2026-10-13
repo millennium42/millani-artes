@@ -2,7 +2,7 @@
   "id": "FIN-001",
   "title": "definir tipo Account",
   "specPath": "planning/specs/FIN-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": ["ARC-002"],
   "acceptanceCriteria": [
     "contrato compilado e testado",
@@ -18,11 +18,11 @@
     "CI de entrega executará o harness SQLite release existente; não foi repetido localmente nesta tarefa",
     "Cargo audit PASS 422/0 vulnerabilidades/2 avisos aprovados; OSV PASS 542/3 exceções/0 fora",
     "release do módulo de domínio PASS 7/7; cobertura LLVM full 3/3 linhas executáveis, controle 0/3 rejeitado; Account sem statements",
-    "Review independente E2 sem P0/P1/P2; CI de entrega/final e fechamento documental pendentes"
+    "Review independente E2 sem P0/P1/P2; CI de entrega 38444911363/job115460653591 no SHA 31af12adcf8bebe617539d9e5dde286a64674deb PASS 23/0; CI final documental ainda pendente"
   ],
   "agentPlan": "P-INT/root integra, executa checks e committa; por instrução humana explícita, Luna6 faz as escritas delegadas em série, sobrepondo a regra antiga de delegado somente leitura. P-TRC Luna6 low redigiu os quatro documentos iniciais; P-DOM Luna6 medium implementação serial; P-REV Sol6 medium revisão independente. Efetivos, tokens, cache, custo, latência e retries não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Execução local E3; detalhes, limites, hashes e cleanup em planning/handoffs/FIN-001.md. Review independente E2 sem P0/P1/P2. Reserva ACTIVE21. Status in_progress/E3/passesfalse até CI de entrega/final, fechamento documental e nota. Nenhuma invariável financeira foi elevada de E0; FIN-002/003/004 e consumidores não iniciados."
+  "passes": true,
+  "notes": "Executor concluído E3 após CI de entrega 38444911363/job115460653591 no SHA 31af12adcf8bebe617539d9e5dde286a64674deb: 23/0, seis sourceSha markers exatos; release SQLite 41/41 sem falhas/ignorados/filtrados. Root validators4/354 files/28 sources/76 items e staged Gitleaks13 paths/44,944B/0 findings; 13 guards. Review independente E2 sem P0/P1/P2. Evidência, scans, artefatos e limites em planning/handoffs/FIN-001.md. passes=true é estado do executor após CI de entrega; CI documental final, nota76 preservando75 modos/blobs/tuplas e 3 refs remotas, Git limpo e liberação ACTIVE21 ainda pendentes. Conta permanece identidade/nome; invariantes financeiras E0; FIN-002/003/004, consumidores e setup.exe não iniciados."
 }
