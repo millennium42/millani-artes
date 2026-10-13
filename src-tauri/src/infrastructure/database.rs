@@ -1,8 +1,49 @@
 use rusqlite::OptionalExtension;
-use rusqlite::{Connection, OpenFlags, Transaction};
+use rusqlite::{Connection, OpenFlags, Transaction, TransactionBehavior};
 use std::error::Error;
 use std::fmt;
 use std::path::Path;
+
+#[derive(PartialEq, Eq)]
+pub enum TransactionError<E> {
+    BeginFailed,
+    OperationFailed(E),
+    CommitFailed,
+    RollbackFailed,
+}
+
+impl<E> fmt::Debug for TransactionError<E> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(match self {
+            Self::BeginFailed => "BeginFailed",
+            Self::OperationFailed(_) => "OperationFailed",
+            Self::CommitFailed => "CommitFailed",
+            Self::RollbackFailed => "RollbackFailed",
+        })
+    }
+}
+
+impl<E> fmt::Display for TransactionError<E> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(match self {
+            Self::BeginFailed => "write transaction could not begin",
+            Self::OperationFailed(_) => "write transaction operation failed",
+            Self::CommitFailed => "write transaction could not commit",
+            Self::RollbackFailed => "write transaction rollback failed",
+        })
+    }
+}
+
+impl<E> Error for TransactionError<E> {}
+
+/// Runs one write unit. The trusted callback must not control transactions, attach databases,
+/// vacuum, or perform external effects; this API does not promise recovery after commit failure.
+pub fn execute_write_transaction<T, E>(
+    connection: Connection,
+    operation: impl FnOnce(&Transaction<'_>) -> Result<T, E>,
+) -> Result<(Connection, T), TransactionError<E>> {
+    execute_transaction_with_behavior(connection, TransactionBehavior::Immediate, operation)
+}
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum DatabaseOpenError {
@@ -87,22 +128,40 @@ pub fn execute_migration(
 }
 
 fn execute_transaction(
-    mut connection: Connection,
+    connection: Connection,
     apply: impl FnOnce(&Transaction<'_>) -> Result<(), MigrationError>,
 ) -> Result<Connection, MigrationError> {
+    execute_transaction_with_behavior(connection, TransactionBehavior::Deferred, apply)
+        .map(|(connection, ())| connection)
+        .map_err(|error| match error {
+            TransactionError::BeginFailed => MigrationError::BeginFailed,
+            TransactionError::OperationFailed(error) => error,
+            TransactionError::CommitFailed => MigrationError::CommitFailed,
+            TransactionError::RollbackFailed => MigrationError::RollbackFailed,
+        })
+}
+
+fn execute_transaction_with_behavior<T, E>(
+    mut connection: Connection,
+    behavior: TransactionBehavior,
+    operation: impl FnOnce(&Transaction<'_>) -> Result<T, E>,
+) -> Result<(Connection, T), TransactionError<E>> {
     let transaction = connection
-        .transaction()
-        .map_err(|_| MigrationError::BeginFailed)?;
-    if let Err(error) = apply(&transaction) {
-        return match transaction.rollback() {
-            Ok(()) => Err(error),
-            Err(_) => Err(MigrationError::RollbackFailed),
-        };
-    }
+        .transaction_with_behavior(behavior)
+        .map_err(|_| TransactionError::BeginFailed)?;
+    let value = match operation(&transaction) {
+        Ok(value) => value,
+        Err(error) => {
+            return match transaction.rollback() {
+                Ok(()) => Err(TransactionError::OperationFailed(error)),
+                Err(_) => Err(TransactionError::RollbackFailed),
+            };
+        }
+    };
     transaction
         .commit()
-        .map_err(|_| MigrationError::CommitFailed)?;
-    Ok(connection)
+        .map_err(|_| TransactionError::CommitFailed)?;
+    Ok((connection, value))
 }
 
 /// Reads the main database's contiguous migration ledger up to the caller's compiled version.

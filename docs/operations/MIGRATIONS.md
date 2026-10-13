@@ -32,6 +32,10 @@ DB-006 materializa uma fixture SQL trusted e sintética em arquivos SQLite de te
 [Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
 
 
-## DB-010 — provar enforcement de foreign keys (entrega validada; fechamento documental pendente)
+## DB-010 — provar enforcement de foreign keys (fechado)
 
-[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): E3 e CI entrega 38385705543/job 115256842315 no SHA da23abb3896ad93d72fe79022457c31322870d51 SUCCESS (23/23/0 skip). Arquivo parent/child sintético: seis DMLs inválidos rejeitados com code 787, estado preservado e `foreign_key_check` vazio após reopen. Debug Rust35/35, release harness22/22; remoto release22/22, novo teste named PASS, SQLite3.53.2. Executor done/E3/passes=true; fechamento documental/CI final/nota71 pendentes. Não cobre schemas/processos de produto nem migrations financeiras.
+[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): executor E3 fechado. Baseline SHA `083ac68e073667db3cba474722962b89ca7cdaa5`; CI `38387475775` SUCCESS 16/7/0; nota71 pública `dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19`, 70 notas preservadas e reserva11 liberada. DB-010 limita-se a schema sintético; não cobre schemas/processos de produto nem migrations financeiras.
+
+## DB-011 — transação de escrita
+
+`execute_write_transaction` usa BEGIN IMMEDIATE e compartilha o executor interno com migrations, mantendo migrations DEFERRED. E3 local: fmt/clippy, Rust39/39 e release26/26; quatro testes novos passaram. Review independente E2 nos hashes finais de produção/harness não encontrou P0/P1/P2. Teste de COMMIT com FK deferred verifica falha no commit, sem resultado/conexão. Isso não é prova de rollback de operação composta; DB-012 continua pendente. Gitleaks, validators, CI e fechamento documental ainda pendentes; ver [spec](../../planning/specs/DB-011.md) e [handoff](../../planning/handoffs/DB-011.md).

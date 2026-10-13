@@ -206,6 +206,10 @@ SQL checked-in trusted, estático e sintético exercitado por `execute_migration
 [Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
 
 
-## DB-010 — provar enforcement de foreign keys (entrega validada; fechamento documental pendente)
+## DB-010 — provar enforcement de foreign keys (fechado)
 
-[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): schema sintético E3 rejeitou seis DMLs FK inválidos (extended code787), preservou estado e deixou `foreign_key_check` vazio após reopen. CI entrega 38385705543/job 115256842315 no SHA da23abb3896ad93d72fe79022457c31322870d51 SUCCESS 23/23/0 skip; Gitleaks8.30.1 156 commits/0 findings; npm120/0; Cargo422/0 vulns/2 warnings excetuados (DB1309/commit d8325cf4f578e2df4cc5b98a30e9f46b3b88e9f0); OSV542 pacotes/3 excetuados/0 fora; SAST45 (42 Biome+3 PS), sem cobertura Rust/backend/C SQLite. Executor done/E3/passes=true. Fechamento documental/nota71 pendentes. Evidência SEC-002 parcial, limitada ao schema sintético.
+[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): executor fechado no baseline SHA `083ac68e073667db3cba474722962b89ca7cdaa5`, CI `38387475775` SUCCESS 16/7/0, nota71 pública `dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19`, 70 notas preservadas e reserva11 liberada. Evidência SEC-002 parcial e limitada ao schema sintético.
+
+## DB-011 — transação SQLite
+
+E3 local de root: quatro testes físicos passaram em debug/release; sanitização foi exercitada com arquivo real, erro real do driver e identificador sintético dentro de E. Gitleaks sinalizou a variável local do marcador; foi renomeada junto de três referências, mantendo literal, driver e oráculos; nenhuma regra/allowlist foi relaxada. Harness final SHA-256 `aec307745a413a46ba209d3a3228dd0ba14505999b309468d3ad4c5c16cc7913`. Review independente E2 e confirmação focal no hash final não encontraram P0/P1/P2. Isso não prova rollback composto nem resolve SEC-006. Gitleaks staged repetido, validators, CI e fechamento ainda pendentes. C SQLite permanece fora do alcance dos scanners. Consulte [spec](../../planning/specs/DB-011.md) e [handoff](../../planning/handoffs/DB-011.md).

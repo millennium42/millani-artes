@@ -10,7 +10,7 @@
 
 Cada operação canônica de escrita — lançamento, transferência, finalizar venda, receber, pagar recorrência, devolver, reembolsar e restaurar — terá um único caso de uso.
 
-O [modelo transacional](TRANSACTION_MODEL.md#fronteira-da-unidade--arc-004) define a propriedade da unidade financeira: caso de uso coordena validação do estado, repositórios no mesmo contexto, gravações, auditoria e resultado após commit. Repositórios não confirmam etapas independentemente; a infraestrutura implementará a transação em DB-011. Restore possui seu protocolo de arquivo e não presume proteção por rollback SQL. ARC-004 define este contrato documental, sem executor ou prova de atomicidade.
+O [modelo transacional](TRANSACTION_MODEL.md#fronteira-da-unidade--arc-004) define a propriedade da unidade financeira: caso de uso coordena validação do estado, repositórios no mesmo contexto, gravações, auditoria e resultado após commit. Repositórios não confirmam etapas independentemente; DB-011 fornece `execute_write_transaction` na infraestrutura, com BEGIN IMMEDIATE. Os testes de DB-011 provam o contrato básico SQLite, não rollback de operação composta nem atomicidade financeira. Restore possui seu protocolo de arquivo e não presume proteção por rollback SQL. ARC-004 continua sendo a fronteira arquitetural da unidade.
 
 ## Estrutura atual — ARC-001
 

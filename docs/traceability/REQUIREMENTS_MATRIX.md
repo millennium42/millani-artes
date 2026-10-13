@@ -336,6 +336,10 @@ ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium4
 [Spec](../../planning/specs/DB-009.md)/[handoff](../../planning/handoffs/DB-009.md): baseline ON, controle OFF fail-closed; E3 local 34/34 e release21/21; CI entrega 38324569231/job115060146427 passou 23/23. Executor `done`/E3/`passes=true`. DB-009 fechado: CI final 38325659041/job115063600279 no SHA 17f5397efc996091bfb4271a5169d4eede4249fe (16/7/0); nota70 refs 097a4650bac277404275272876296cbd5e682dbb, 69 notas preservadas e reserva12 liberada pelo root.
 
 
-## DB-010 — provar enforcement de foreign keys (entrega validada; fechamento documental pendente)
+## DB-010 — provar enforcement de foreign keys (fechado)
 
-[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): E3 e CI entrega 38385705543/job 115256842315 no SHA da23abb3896ad93d72fe79022457c31322870d51 SUCCESS 23/23/0 skip. Seis DMLs FK inválidos em arquivo sintético deram code787, estado íntegro e `foreign_key_check` vazio após reopen; 21 testes antigos byte-prefix intactos; Rust35/35 e release22/22; release remoto22/22/teste nomeado PASS. Executor done/E3/passes=true; pendem commit documental/CI final/nota71/preservação de refs. Limite: schema sintético. DB-011 não iniciar.
+[Spec](../../planning/specs/DB-010.md)/[handoff](../../planning/handoffs/DB-010.md): executor fechado no baseline SHA `083ac68e073667db3cba474722962b89ca7cdaa5`; CI `38387475775` SUCCESS 16/7/0; nota71 pública `dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19`, 70 notas preservadas e reserva11 liberada. Limite: schema sintético.
+
+## DB-011 — execução da unidade SQLite
+
+E3 local implementa BEGIN IMMEDIATE, sucesso somente após commit confirmado e erros tipados/sanitizados. Quatro testes físicos passaram em debug/release, incluindo visibilidade entre conexões, BUSY no begin, commit rejeitado por FK deferred e sanitização. Após corrigir marcador sintético somente por renomear variável e três referências (literal/driver/oráculos preservados), harness final SHA-256 é `aec307745a413a46ba209d3a3228dd0ba14505999b309468d3ad4c5c16cc7913`. Review independente E2 e confirmação focal não encontraram P0/P1/P2. Esta evidência de infraestrutura não fecha INV-FIN-006/007 nem rollback composto; consumers e DB-012/013/014 seguem necessários. Gitleaks staged repetido, CI final e fechamento pendentes. Consulte [spec](../../planning/specs/DB-011.md) e [handoff](../../planning/handoffs/DB-011.md).

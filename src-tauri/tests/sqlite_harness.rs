@@ -1289,3 +1289,138 @@ fn foreign_keys_reject_invalid_references_in_file() {
     assert_foreign_key_violation(reopened.execute("DELETE FROM parent WHERE id = ?1", [1]));
     assert_valid_state(&reopened);
 }
+
+#[test]
+fn write_transaction_returns_committed_value_in_file() {
+    use millani_artes::database::execute_write_transaction;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("write-transaction-success.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    connection
+        .execute_batch("CREATE TABLE write_transaction_fixture (value INTEGER NOT NULL)")
+        .unwrap();
+    let observer = open_database(&path).expect("OBSERVER_OPEN_FAILED");
+
+    let (connection, value) = execute_write_transaction(connection, |transaction| {
+        assert!(!transaction.is_autocommit());
+        transaction.execute(
+            "INSERT INTO write_transaction_fixture(value) VALUES (?1)",
+            [42],
+        )?;
+        let visible: i64 = observer.query_row(
+            "SELECT count(*) FROM write_transaction_fixture",
+            [],
+            |row| row.get(0),
+        )?;
+        assert_eq!(visible, 0);
+        Ok::<_, rusqlite::Error>(42)
+    })
+    .expect("WRITE_TRANSACTION_FAILED");
+    assert_eq!(value, 42);
+    assert!(connection.is_autocommit());
+    drop(observer);
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    let persisted: i64 = reopened
+        .query_row("SELECT value FROM write_transaction_fixture", [], |row| {
+            row.get(0)
+        })
+        .unwrap();
+    assert_eq!(persisted, 42);
+}
+
+#[test]
+fn write_transaction_does_not_run_callback_when_writer_is_busy() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+    use std::cell::Cell;
+    use std::time::Duration;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("write-transaction-busy.sqlite");
+    let mut writer = open_database(&path).expect("WRITER_OPEN_FAILED");
+    writer
+        .execute_batch("CREATE TABLE write_transaction_busy_fixture (value INTEGER)")
+        .unwrap();
+    let held_transaction = writer
+        .transaction_with_behavior(rusqlite::TransactionBehavior::Immediate)
+        .expect("WRITER_TRANSACTION_FAILED");
+    let challenger = open_database(&path).expect("CHALLENGER_OPEN_FAILED");
+    challenger.busy_timeout(Duration::ZERO).unwrap();
+    let called = Cell::new(false);
+
+    let result = execute_write_transaction(challenger, |_| {
+        called.set(true);
+        Ok::<_, ()>(())
+    });
+    assert!(matches!(result, Err(TransactionError::BeginFailed)));
+    assert!(!called.get());
+    drop(held_transaction);
+}
+
+#[test]
+fn write_transaction_rejects_deferred_foreign_key_at_commit() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory
+        .path()
+        .join("write-transaction-deferred-fk.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    connection
+        .execute_batch(
+            "CREATE TABLE write_transaction_parent (id INTEGER PRIMARY KEY); CREATE TABLE write_transaction_child (parent_id INTEGER REFERENCES write_transaction_parent(id) DEFERRABLE INITIALLY DEFERRED)",
+        )
+        .unwrap();
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction.execute(
+            "INSERT INTO write_transaction_child(parent_id) VALUES (?1)",
+            [999],
+        )?;
+        Ok::<_, rusqlite::Error>(42)
+    });
+    assert!(matches!(result, Err(TransactionError::CommitFailed)));
+}
+
+#[test]
+fn write_transaction_errors_hide_callback_payload() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("write-transaction-error.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction.query_row(
+            "SELECT value FROM synthetic_secret_identifier_7f31",
+            [],
+            |row| row.get::<_, i64>(0),
+        )
+    });
+    let error = result.expect_err("CALLBACK_ERROR_WAS_ACCEPTED");
+    assert!(matches!(&error, TransactionError::OperationFailed(_)));
+    match &error {
+        TransactionError::OperationFailed(callback_error) => assert!(callback_error
+            .to_string()
+            .contains("synthetic_secret_identifier_7f31")),
+        _ => unreachable!(),
+    }
+    assert!(error.source().is_none());
+    assert!(!error
+        .to_string()
+        .contains("synthetic_secret_identifier_7f31"));
+    assert!(!format!("{error:?}").contains("synthetic_secret_identifier_7f31"));
+
+    let sentinel = "synthetic_secret_identifier_7f31";
+    let variants = [
+        TransactionError::<String>::BeginFailed,
+        TransactionError::OperationFailed(sentinel.to_owned()),
+        TransactionError::CommitFailed,
+        TransactionError::RollbackFailed,
+    ];
+    for variant in variants {
+        assert!(!variant.to_string().contains(sentinel));
+        assert!(!format!("{variant:?}").contains(sentinel));
+        assert!(variant.source().is_none());
+    }
+}
