@@ -4,6 +4,8 @@ TRC-005 indexa exatamente os17IDs do [catálogo canônico](../product/INVARIANTS
 
 ARC-004 define a [fronteira e tabela de falhas](../architecture/TRANSACTION_MODEL.md) de INV-FIN-006/007, incluindo validação do estado, gravações e auditoria na mesma unidade. O contrato é E2; checks documentais E3 não alteram o estado E0 de produto das duas linhas. DB-011/012/014 e consumidores permanecem responsáveis por transações reais, estado completo após falha e recuperação quando o cancelamento não puder ser confirmado. Os17 invariantes e os oráculos abaixo permanecem canônicos.
 
+DB-012 tem E3 local de infraestrutura: cinco testes físicos `db012_*` passaram em debug/release e o estado após rollback/reopen foi conferido. INV-FIN-006/007 permanecem E0 para produto; nenhum consumidor financeiro ou audit_event foi exercitado.
+
 | invariante | executores concretos | unit futuro / oráculo | integração futura / oráculo | detalhe/smoke futuros / prova pendente |
 |---|---|---|---|---|
 | INV-FIN-001 | FIN-004, FIN-005, FIN-008, FIN-027 | saldo inicial10000 não é receita | criar/reabrir preserva inicial e resultado sem receita por ele | [contas](#contas--detalhe-planejado-de-inv-fin-001002); SMK-003, SMK-009; E0/testes não registrados |

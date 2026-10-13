@@ -1424,3 +1424,258 @@ fn write_transaction_errors_hide_callback_payload() {
         assert!(variant.source().is_none());
     }
 }
+
+#[derive(Debug, PartialEq, Eq)]
+struct Db012Snapshot {
+    schema: Vec<(String, String)>,
+    parents: Vec<(i64, String)>,
+    children: Vec<(i64, i64, String)>,
+    integrity: String,
+    foreign_key_violation: Option<(String, Option<i64>, String, i64)>,
+}
+
+fn db012_seed_baseline(connection: &Connection) -> Db012Snapshot {
+    connection
+        .execute_batch(
+            "CREATE TABLE db012_parent (id INTEGER PRIMARY KEY, value TEXT NOT NULL UNIQUE); CREATE TABLE db012_child (id INTEGER PRIMARY KEY, parent_id INTEGER NOT NULL REFERENCES db012_parent(id) DEFERRABLE INITIALLY DEFERRED, value TEXT NOT NULL CHECK (value <> 'rejected')); INSERT INTO db012_parent VALUES (1, 'original'); INSERT INTO db012_child VALUES (1, 1, 'original-child');",
+        )
+        .unwrap();
+    db012_snapshot(connection)
+}
+
+fn db012_snapshot(connection: &Connection) -> Db012Snapshot {
+    use rusqlite::OptionalExtension;
+
+    let schema = {
+        let mut statement = connection
+            .prepare("SELECT name, sql FROM main.sqlite_schema WHERE name NOT GLOB 'sqlite_*' ORDER BY name")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    let parents = {
+        let mut statement = connection
+            .prepare("SELECT id, value FROM db012_parent ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    let children = {
+        let mut statement = connection
+            .prepare("SELECT id, parent_id, value FROM db012_child ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    let integrity = connection
+        .query_row("PRAGMA integrity_check", [], |row| row.get(0))
+        .unwrap();
+    let foreign_key_violation = connection
+        .query_row("PRAGMA foreign_key_check", [], |row| {
+            Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+        })
+        .optional()
+        .unwrap();
+    Db012Snapshot {
+        schema,
+        parents,
+        children,
+        integrity,
+        foreign_key_violation,
+    }
+}
+
+#[test]
+fn db012_write_failure_rolls_back_schema_and_rows() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+    use std::cell::Cell;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db012-operation-failure.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let original = db012_seed_baseline(&connection);
+    assert_eq!(original.integrity, "ok");
+    assert_eq!(original.foreign_key_violation, None);
+    let completed_steps = Cell::new(0);
+
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction.execute("UPDATE db012_parent SET value = 'changed' WHERE id = 1", [])?;
+        completed_steps.set(1);
+        transaction.execute("INSERT INTO db012_parent VALUES (2, 'new-parent')", [])?;
+        completed_steps.set(2);
+        transaction.execute_batch("CREATE TABLE db012_transient (value TEXT NOT NULL)")?;
+        completed_steps.set(3);
+        transaction.execute("INSERT INTO db012_child VALUES (2, 1, 'rejected')", [])?;
+        Ok::<_, rusqlite::Error>(())
+    });
+    let error = result.expect_err("CONSTRAINT_FAILURE_WAS_ACCEPTED");
+    match error {
+        TransactionError::OperationFailed(rusqlite::Error::SqliteFailure(code, _)) => {
+            assert_eq!(code.code, rusqlite::ErrorCode::ConstraintViolation);
+            assert_eq!(code.extended_code, rusqlite::ffi::SQLITE_CONSTRAINT_CHECK);
+        }
+        other => panic!("UNEXPECTED_TRANSACTION_ERROR: {other:?}"),
+    }
+    assert_eq!(completed_steps.get(), 3);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(db012_snapshot(&reopened), original);
+}
+
+#[test]
+fn db012_validation_rejection_preserves_file() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+    use millani_artes::domain::DomainError;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db012-validation.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let original = db012_seed_baseline(&connection);
+    let result = execute_write_transaction(connection, |transaction| {
+        let value: String = transaction
+            .query_row("SELECT value FROM db012_parent WHERE id = 1", [], |row| {
+                row.get(0)
+            })
+            .expect("STATE_READ_FAILED");
+        assert_eq!(value, "original");
+        Err::<(), _>(DomainError::InvalidInput)
+    });
+    assert!(matches!(
+        result,
+        Err(TransactionError::OperationFailed(DomainError::InvalidInput))
+    ));
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(db012_snapshot(&reopened), original);
+}
+
+#[test]
+fn db012_commit_failure_preserves_file() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db012-commit-failure.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let original = db012_seed_baseline(&connection);
+    let result = execute_write_transaction(connection, |transaction| {
+        transaction.execute("UPDATE db012_parent SET value = 'changed' WHERE id = 1", [])?;
+        transaction.execute("INSERT INTO db012_parent VALUES (2, 'new-parent')", [])?;
+        transaction.execute("INSERT INTO db012_child VALUES (2, 999, 'orphan')", [])?;
+        Ok::<_, rusqlite::Error>(42)
+    });
+    assert!(matches!(result, Err(TransactionError::CommitFailed)));
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(db012_snapshot(&reopened), original);
+}
+
+#[test]
+fn db012_panic_unwind_preserves_file() {
+    use millani_artes::database::execute_write_transaction;
+    use std::panic::{catch_unwind, AssertUnwindSafe};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db012-panic.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let original = db012_seed_baseline(&connection);
+    let panic = catch_unwind(AssertUnwindSafe(|| {
+        let _ = execute_write_transaction(connection, |transaction| -> rusqlite::Result<()> {
+            transaction.execute("UPDATE db012_parent SET value = 'changed' WHERE id = 1", [])?;
+            transaction
+                .execute_batch("CREATE TABLE db012_panic_transient (value TEXT NOT NULL)")?;
+            panic!("DB012_SYNTHETIC_UNWIND");
+        });
+    }));
+    assert!(panic.is_err());
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(db012_snapshot(&reopened), original);
+}
+
+#[test]
+fn db012_abrupt_exit_recovers_hot_journal() {
+    use millani_artes::database::{execute_write_transaction, TransactionError};
+    use std::process::Command;
+
+    const CHILD_PATH_ENV: &str = "MILLANI_DB012_ABRUPT_CHILD_PATH";
+    if let Some(child_path) = std::env::var_os(CHILD_PATH_ENV) {
+        let path = Path::new(&child_path);
+        let parent = path.parent().expect("CHILD_DATABASE_PARENT_MISSING");
+        let temp_root =
+            std::fs::canonicalize(std::env::temp_dir()).expect("TEMP_DIRECTORY_ROOT_UNAVAILABLE");
+        assert!(path.is_absolute());
+        assert_eq!(std::fs::canonicalize(parent).unwrap(), parent);
+        assert_eq!(parent.parent(), Some(temp_root.as_path()));
+        assert!(parent
+            .file_name()
+            .and_then(|name| name.to_str())
+            .is_some_and(|name| name.starts_with("millani-db002-")));
+        assert!(path
+            .file_name()
+            .and_then(|name| name.to_str())
+            .is_some_and(|name| name.starts_with("db012-abrupt-")));
+        assert!(path.is_file());
+
+        let connection = open_database(path).expect("CHILD_DATABASE_OPEN_FAILED");
+        assert_eq!(db012_snapshot(&connection).integrity, "ok");
+        connection
+            .pragma_update(None, "journal_mode", "DELETE")
+            .unwrap();
+        let journal_mode: String = connection
+            .pragma_query_value(None, "journal_mode", |row| row.get(0))
+            .unwrap();
+        assert_eq!(journal_mode, "delete");
+        connection.pragma_update(None, "cache_size", 2).unwrap();
+        connection.pragma_update(None, "cache_spill", true).unwrap();
+        let large_value = "x".repeat(32 * 1024);
+        let _: Result<(Connection, ()), TransactionError<rusqlite::Error>> =
+            execute_write_transaction(connection, |transaction| {
+                for id in 2..66 {
+                    transaction.execute(
+                        "INSERT INTO db012_parent(id, value) VALUES (?1, ?2)",
+                        rusqlite::params![id, format!("{id}-{large_value}")],
+                    )?;
+                }
+                std::process::exit(86);
+            });
+        unreachable!("CHILD_PROCESS_DID_NOT_EXIT");
+    }
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("db012-abrupt-recovery.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let original = db012_seed_baseline(&connection);
+    drop(connection);
+
+    let output = Command::new(std::env::current_exe().expect("TEST_EXE_UNAVAILABLE"))
+        .args([
+            "--exact",
+            "db012_abrupt_exit_recovers_hot_journal",
+            "--nocapture",
+        ])
+        .env(CHILD_PATH_ENV, &path)
+        .output()
+        .expect("CHILD_PROCESS_START_FAILED");
+    assert_eq!(output.status.code(), Some(86), "CHILD_EXIT_WAS_NOT_86");
+
+    let journal_path = std::path::PathBuf::from(format!("{}-journal", path.display()));
+    let journal = fs::read(&journal_path).expect("HOT_JOURNAL_MISSING");
+    assert!(journal.len() > 512);
+    assert_eq!(
+        &journal[..8],
+        &[0xd9, 0xd5, 0x05, 0xf9, 0x20, 0xa1, 0x63, 0xd7]
+    );
+
+    let reopened = open_database(&path).expect("DATABASE_RECOVERY_OPEN_FAILED");
+    assert_eq!(db012_snapshot(&reopened), original);
+    assert!(!journal_path.exists());
+    let (reopened, ()) = execute_write_transaction(reopened, |_| Ok::<_, rusqlite::Error>(()))
+        .expect("DATABASE_WRITE_LOCK_REMAINS");
+    assert_eq!(db012_snapshot(&reopened), original);
+}

@@ -1,0 +1,29 @@
+{
+  "id": "DB-012",
+  "title": "verificar rollback genérico SQLite",
+  "specPath": "planning/specs/DB-012.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "Cinco testes físicos cobrem rejeição de validação sem escrita, erro real de constraint após escrita e DDL parciais, falha de COMMIT por FK deferred após outras escritas, panic com catch_unwind e encerramento abrupto exit 86 com hot journal DELETE; reopen confirma o estado baseline conforme cada caso.",
+    "RED focal demonstra sensibilidade: trocar rollback por commit apenas para o caso de erro do callback faz o teste detectar snapshot alterado após o callback retornar erro, mesmo se API ainda retorna OperationFailed; fonte original SHA-256 fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe é restaurada byte a byte antes dos checks finais.",
+    "Os 26 testes anteriores do harness permanecem byte-prefix intactos; nenhuma alteração de produção final, dependências, workflow, schema, migrations, flags de produção ou caminhos fora da reserva; testes podem configurar suas flags SQLite locais.",
+    "Documentar que rollback real falho ou sem gatilho estável/prova física limita a conclusão: conexão descartada, sem promessa de restauração ou retry. Exit 86 não prova power loss, panic-abort, WAL nem recovery global.",
+    "Root fecha E3, review E2, segurança, validators e CI no SHA exato; nota73 preserva 72 notas/blobs anteriores e refs remotas antes de liberar reserva."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py; rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Review independente Sol 6 medium, Gitleaks diferencial, validators e CI de entrega/fechamento no SHA exato."
+  ],
+  "agentPlan": "P-INT/root owner da reserva, checks e commits. Escrita documental serial por P-TRC/P-OPS Luna 6 low nos 10 paths documentais reservados; P-DAT/P-QA Luna 6 medium nos dois paths Rust; P-REV Sol 6 medium review E2 independente. Uma delegação read-only de recon já ocorreu; máximo de dois ativos além de root.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "DB-011 fechado e dependência determinística: 73 records, 341 files, 28 sources, main/branch/notes confirmadas; CI 38397098609/job 115294988829 SUCCESS 16/7/0, nota72 preserva 71 e reserva15 liberada. DB-012: RED sensível confirmou snapshot alterado apesar de OperationFailed ao trocar rollback por commit; fonte restaurada SHA-256 fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe sem diff final. Harness final 7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4; prefixo 26 testes/52478B preservado. fmt2.244s, clippy3.968s, Rust44/44, release31/31 SQLite3.53.2; cinco db012_* PASS debug/release. Exit86: hot journal DELETE físico >512B/magic válido; reopen recuperou snapshot/integrity/FK, removeu journal e nova unidade confirmou. Cargo422/0 vuln/2 warnings aprovados; OSV542/3 excetuados/0 fora. Review P-REV Sol6 medium E2 sem P0/P1/P2, diff executor/TempDirectory read-only, sem verificar hash/testes/scans. Validators4 PASS/344 files/28 sources/74 items. Gitleaks intermediário staged11 paths/44017B/SHA256 e4266fcd99650a69d94889435e078640bebb6fd336fbb1f2a0509286fdfa8d44/0/0/0.422s; scan final pendente. Executor in_progress/E3/passes=false até CI entrega. CI, nota73 e liberação13 pendentes. E4 herdados inalterados; C SQLite excluído, sem novo gate. Cleanup sem perfil/fixture/scriptcache, ownedWV0/SQLtemp0; 10+2 guards estáveis. Três delegados cumulativos/0 escalonamentos; custo NR. Reserva13 ACTIVE; owner root. DB-013 não iniciar."
+}
