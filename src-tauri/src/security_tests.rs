@@ -160,15 +160,8 @@ mod native {
             literal(&junction),
             literal(&target)
         );
-        let status = std::process::Command::new("rtk")
-            .args([
-                "proxy",
-                "pwsh",
-                "-NoProfile",
-                "-NonInteractive",
-                "-Command",
-                &script,
-            ])
+        let status = std::process::Command::new("pwsh")
+            .args(["-NoProfile", "-NonInteractive", "-Command", &script])
             .status()
             .unwrap();
         assert!(status.success());
