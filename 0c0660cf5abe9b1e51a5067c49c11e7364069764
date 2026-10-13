@@ -1,0 +1,41 @@
+# DB-011 — recibo final do executor
+
+Executor `done` / E3 / `passes=true` / `humanGateRequired=false`. A nota72 ainda não foi publicada. A liberação dos 15 paths permanece sob condição: publicação da nota72, preservação verificável das 71 notas anteriores e seus blobs, confirmação remota de main/branch/notes e Git limpo. Este recibo não afirma que esses atos posteriores já ocorreram.
+
+## Entrega e CI final
+
+Entrega: SHA `803ca4cf85ac56b135e9ce10509c7d97b1a8f6aa`; CI `38394130462`, job `115284940750`, main push attempt1, SUCCESS 23/23/0 skipped. Release remoto: harness 26/26, 15.77s, SQLite 3.53.2; quatro testes DB-011 nomeados PASS. Native PE32+ AMD64, customProtocol=true, 8.536.064 bytes, SHA-256 `edbcbd771abc16a253342755edd144ad617c269f89993ff2a1a4cdb12f0ac664`; não é setup.exe nem EXE retido. Frontend: 2 arquivos, 3 testes, 100% somente scaffold App. Artifact `frontend-coverage-38394130462-1`, id `11809504657`, 21.872 bytes, digest `9e41d535129c1fc0d616d0538bc88d29e5fb66ba12e305b7e8abeed80b56eb51`, consulta `expired=false`, expira 2026-10-14T12:02:31Z.
+
+CI final: SHA `0c0660cf5abe9b1e51a5067c49c11e7364069764`, run `38397098609`, job `115294988829`, attempt1 completed SUCCESS, 16 success/7 skipped/0 artifacts. Quatro markers finais: Gitleaks 159 commits/0; npm 120/0; Cargo audit 422/0 vulnerabilidades/2 warnings excetuados (DB1309, commit `64a0302dc836df15a10ac27ebdcdf8f9b4ce845a`); OSV 542 pacotes/3 findings excetuados/0 fora. A CI final não repetiu testes Rust/frontend/native nem SAST. SAST de entrega: 45 casos (42 Biome + 3 PowerShell), com limites para Rust/backend/SQL/restore, computed eval/Function constructor, fragmentos/prefixos SQL e C SQLite. Coverage Rust global não registrada; C SQLite não auditado.
+
+## Implementação e validação local
+
+Fontes finais: produção SHA-256 `fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe`; harness `aec307745a413a46ba209d3a3228dd0ba14505999b309468d3ad4c5c16cc7913`. Doze guards estáveis; 22 testes anteriores preservados byte a byte. fmt PASS 2.27s; clippy 3.961s; Rust 39/39 (6 lib, 7 bin, 26 harness) em 10.905s; release 26/26 em 28.16s, SQLite 3.53.2. RED do stub falhou como esperado. Primeiro fmt apontou dois layouts, corrigidos antes dos checks finais. Gitleaks apontou um marcador nominal: a correção alterou apenas o nome de uma variável e três referências; literal, driver e oráculos ficaram iguais, diff de quatro substituições confirmado por root, sem allowlist ou regra relaxada. Review independente E2 gpt-5.6-sol medium, mais confirmação focal E2, sem P0/P1/P2; a review antecede a nova decisão de roteamento e não foi renomeada ou repetida.
+
+Gitleaks staged local: 13 paths/55.482 bytes, 0 findings, 0.403s. Quatro validators: 341 files/28 fontes/73 work items-schema-evidence, PASS. Prefixo do `PROGRESS_LOG.md` no HEAD base desta etapa, 306.939 bytes, SHA-256 `a6d3730c8b514d90dda51a143f8f5e5a1272cd2a92a97e0abc77a6f1fa173fb1`, preservado. Final cached scan de fechamento documental: 11 paths/42.917 bytes/SHA-256 `9bdf569f0549974b74169e75c0759413c830bc964669a540ad09b9881ed64e1a`, 0 findings/0.425s, default/ignore vazio/redact100/sem allowlist/scratch removido. Cleanup: perfil, fixture e script cache ausentes; owned WebView 0; SQL temp 0.
+
+E4 herdados sem alteração de inputs/records/expiry: Cargo scope `d1ac88b7e1ae43a4778c083a3b4ee114ed0a99921892141036cfb9d30bf37098`, OSV scope `9a7aeb66435091eb0ca302b4b269478fb95bfac6a2a7fb6f69ec61c8d3314318`; exceções glib 0.18.5 (unsound) e proc-macro-error 1.0.4 (unmaintained), alvo x86_64-pc-windows-msvc, expiração 2026-10-23T00:00Z (22/10/2026 às 21h em São Paulo). C SQLite excluído. Artefato de quarentena `artifacts/db011-quarantined-cargo-advisory-c9df9e0a8ae8.md`, SHA-256 `c9df9e0a8ae8e895dd3237dc5d5d620f77b522ce1fc2271b4417eeeafb0ac6e5`: arquivo untracked da cache preservado por movimentação literal de bytes, sem bypass; incorporado como 15º path após a operação, além dos 14 paths originais.
+
+## Reserva exata e governança
+
+Owner: P-INT/root. Reserva de 15 paths, ativa até a condição inicial:
+
+1. `planning/specs/DB-011.md`
+2. `planning/work-items/DB-011.json`
+3. `planning/handoffs/DB-011.md`
+4. `planning/PROGRESS_LOG.md`
+5. `docs/architecture/TRANSACTION_MODEL.md`
+6. `docs/architecture/MODULE_BOUNDARIES.md`
+7. `docs/operations/MIGRATIONS.md`
+8. `docs/quality/TEST_STRATEGY.md`
+9. `docs/security/SECURITY_TEST_MATRIX.md`
+10. `docs/traceability/REQUIREMENTS_MATRIX.md`
+11. `planning/ROADMAP.md`
+12. `src-tauri/src/infrastructure/database.rs`
+13. `src-tauri/tests/sqlite_harness.rs`
+14. `artifacts/db011-final-note.md`
+15. `artifacts/db011-quarantined-cargo-advisory-c9df9e0a8ae8.md`
+
+Após publicação da nota72, root deve confirmar preservação dos modos e blobs das 71 notas anteriores, refs remotas main/branch/notes e Git limpo antes de liberar a reserva. Base de notas preservada: `dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19`. Não iniciar DB-012. Meta do projeto permanece em andamento.
+
+Roteamento econômico decidido: Luna 6 (`gpt-6-luna`) medium para código e low para documentação; Sol 6 (`gpt-6-sol`) medium para próximas revisões/integração delegada. A review DB-011 foi historicamente executada por `gpt-5.6-sol` medium, antes da decisão, e permanece registrada assim. Três delegados cumulativos, zero escalonamentos; custos/tokens/cache/retries evitados não registrados.
