@@ -91,6 +91,8 @@ SEC-001 in_progress/passesfalse: seleção explícita/RED-resolver/probeWebView2
 
 ## B3 — Contas, categorias e movimentos
 
+FIN-001 está em progresso: implementação, checks locais E3 e review E2 sem achados; CI de entrega/final e fechamento pendentes. O contrato cobre somente ID opaco de 16 bytes e nome próprio; regras e invariantes financeiras permanecem E0.
+
 - FIN-001 — definir Account ← ARC-002
 - FIN-002 — validar nome de conta ← FIN-001
 - FIN-003 — definir tipo de conta ← FIN-001

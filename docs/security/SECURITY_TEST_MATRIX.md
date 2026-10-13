@@ -224,3 +224,7 @@ SQLite físico verifica metadados, tags, inválidos, duplicata, constraints, mut
 
 
 DB-014 E3: cenários SQLite temporários exercitaram atomicidade, erros sanitizados e integridade; nenhuma auditoria parcial visível. Evidência limitada ao harness, sem prova de ameaça de host/arquivo ou invariantes financeiras; CI entrega `38438041786` passou; fechamento documental pendente. [Handoff](../../planning/handoffs/DB-014.md).
+
+## FIN-001 — superfície mínima de Account
+
+E3 local verificou tipo de domínio sem I/O, SQL, IPC, logging, rede ou dependência nova; teste unitário preserva ID opaco e nome Unicode, e doctests negativos confirmam ausência de `Debug`/`Display`. Cargo/OSV locais passaram nos inputs atuais; E4 existente foi preservada. Review E2 sem P0/P1/P2. Esta verificação não cobre dados financeiros, validação de nome, armazenamento, queries, nem fecha controles/invariantes de produto. CI de entrega/final ainda pendente. [Spec/handoff](../../planning/specs/FIN-001.md).

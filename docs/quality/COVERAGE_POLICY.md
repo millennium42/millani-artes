@@ -43,3 +43,7 @@ Stockrustc1.99.0 suporta -Cinstrument-coverage; llvm-tools-preview pin1.99 usaLL
 
 
 ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.com/millennium42/millani-artes/actions/runs/37963747801), root13Rust/5negativos/reviewE2 sem achados. Fechamento documental preserva fontes/thresholds/inputs; reserva14 até CI final/nota59 no [handoff](../../planning/handoffs/ARC-003.md). Portas não comprovam UUID real/unicidade/relógio monotônico/invariantes financeiras.
+
+## FIN-001 — Account
+
+LLVM 23.1.1 mediu diretamente `src-tauri/src/domain/mod.rs` compilado com `rustc --test` (sem `lib.rs`, wrapper ou dependência): full 7 testes, 3/3 linhas executáveis, 1/1 função, 5/5 regiões; controle 6 testes, 0/3 linhas e rejeição pelo gate90. Hashes de relatórios, comandos e fonte na [spec](../../planning/specs/FIN-001.md). `Account` não contém statements executáveis, então não recebe cobertura percentual fictícia. Probe de branch no stable falhou com `nightly required`; nenhum percentual de branch foi inferido. Não equivale a cobertura Rust global/financeira e não altera thresholds.

@@ -65,3 +65,7 @@ Cinco testes físicos `db012_*` passaram em debug/release. Root confirmou fmt/cl
 ## DB-014 — auditoria na unidade
 
 E3 local: cinco casos físicos passaram em debug/release, inclusive erro de audit/SQL, COMMIT deferred e panic unwind; RED detectou commit indevido. CI entrega `38438041786` passou; gates documentais pendem. [Handoff](../../planning/handoffs/DB-014.md).
+
+## FIN-001 — identidade mínima de conta
+
+RED de ausência do tipo falhou com E0432; fmt/clippy passaram. A suíte Cargo completa passou 55 testes ordinários (7 lib, 7 bin, 41 SQLite) e 2 doctests, sem falhas/ignorados; doctests `compile_fail` individuais diagnosticaram ausência de `Debug`/`Display` via E0277. Release do módulo de domínio compilado diretamente passou 7/7. O release SQLite não foi repetido localmente. Esses testes provam somente a preservação exata dos 16 bytes do ID e do nome Unicode; não provam validação, tipo, saldo ou comportamento financeiro. CI de entrega/final segue pendente. [Spec](../../planning/specs/FIN-001.md) e [handoff](../../planning/handoffs/FIN-001.md).

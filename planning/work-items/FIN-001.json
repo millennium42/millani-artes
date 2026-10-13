@@ -1,0 +1,28 @@
+{
+  "id": "FIN-001",
+  "title": "definir tipo Account",
+  "specPath": "planning/specs/FIN-001.md",
+  "status": "in_progress",
+  "dependencies": ["ARC-002"],
+  "acceptanceCriteria": [
+    "contrato compilado e testado",
+    "Account público no domínio contém somente id [u8; 16] opaco e name String próprio",
+    "teste unitário preserva exatamente o ID de 16 bytes e o nome Unicode",
+    "doctests compile_fail independentes provam ausência de Debug e Display por limites genéricos somente de tipo",
+    "nenhuma validação de nome, tipo de conta ou saldo inicial de FIN-002/003/004 entra neste item",
+    "checks Rust, segurança proporcional, review, documentos e CI remoto no SHA final comprovados pelo integrador"
+  ],
+  "checks": [
+    "fmt PASS 2.529s; Clippy PASS 4.527s",
+    "suite Cargo PASS: 55 testes ordinários (7 lib, 7 bin, 41 SQLite) + 2 doctests, 0 falhas/ignorados, 12.058s",
+    "CI de entrega executará o harness SQLite release existente; não foi repetido localmente nesta tarefa",
+    "Cargo audit PASS 422/0 vulnerabilidades/2 avisos aprovados; OSV PASS 542/3 exceções/0 fora",
+    "release do módulo de domínio PASS 7/7; cobertura LLVM full 3/3 linhas executáveis, controle 0/3 rejeitado; Account sem statements",
+    "Review independente E2 sem P0/P1/P2; CI de entrega/final e fechamento documental pendentes"
+  ],
+  "agentPlan": "P-INT/root integra, executa checks e committa; por instrução humana explícita, Luna6 faz as escritas delegadas em série, sobrepondo a regra antiga de delegado somente leitura. P-TRC Luna6 low redigiu os quatro documentos iniciais; P-DOM Luna6 medium implementação serial; P-REV Sol6 medium revisão independente. Efetivos, tokens, cache, custo, latência e retries não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Execução local E3; detalhes, limites, hashes e cleanup em planning/handoffs/FIN-001.md. Review independente E2 sem P0/P1/P2. Reserva ACTIVE21. Status in_progress/E3/passesfalse até CI de entrega/final, fechamento documental e nota. Nenhuma invariável financeira foi elevada de E0; FIN-002/003/004 e consumidores não iniciados."
+}
