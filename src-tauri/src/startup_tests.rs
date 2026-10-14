@@ -10,6 +10,8 @@ const PHONE_TEST_NAME: &str = "startup_tests::phone_is_absent_from_startup_diagn
 const PHONE_FIXTURE: &str = "PHONE_SENTINEL_014 unknown={\"nested\":{\"phone\":\"+55 (11) 90000-0000\"}}\r\n(11) 90000-0000; 11900000000; １１９００００００００";
 const FINANCIAL_TEST_NAME: &str =
     "startup_tests::financial_data_is_absent_from_startup_diagnostics";
+const STARTUP_COVERAGE_TEST_NAME: &str =
+    "startup_tests::startup_paths_return_normally_for_coverage";
 const FINANCIAL_FIXTURE: &str = "FINANCE_SENTINEL_015 balanceCents=-765432109 priceCents=1234567 quantity=23 zeroCents=0 account=CONTA_SINTETICA_015 category=CATEGORIA_SINTETICA_015 context=Fábrica/Casa customerId=CLIENTE_SINTETICO_015 saleId=VENDA_SINTETICA_015 movementId=MOVIMENTO_SINTETICO_015 unknown={\"nested\":{\"totalCents\":987654321,\"display\":\"R$ 9.876.543,21\",\"aggregate\":\"-7.654.321,09\",\"decimal\":\"9876543.21\"}}\r\n＄１２３４５６７";
 const STARTUP: &[u8] =
     b"{\"level\":\"error\",\"operation\":\"startup\",\"code\":\"TAURI_STARTUP_FAILED\"}\n";
@@ -200,4 +202,85 @@ fn financial_data_is_absent_from_startup_diagnostics() {
         "STARTUP_FINANCIAL_LEAK_DETECTED",
     );
     println!("FINANCIAL_REDACTION_EVIDENCE {{\"cases\":5,\"realTauriBuild\":true,\"faultInjectedIo\":true,\"earlyFailureRejected\":true,\"panicHook\":true,\"closedStderr\":true,\"rawOutputPublished\":false,\"childrenTerminated\":true}}");
+}
+
+#[test]
+fn startup_paths_return_normally_for_coverage() {
+    let args: Vec<_> = std::env::args().collect();
+    let exact = args
+        .windows(2)
+        .any(|pair| pair == ["--exact", STARTUP_COVERAGE_TEST_NAME]);
+    if exact {
+        if let Ok(case) = std::env::var("MILLANI_STARTUP_COVERAGE_CASE") {
+            assert!(["success", "error", "panic"].contains(&case.as_str()));
+            std::io::stdin()
+                .read_exact(&mut [0])
+                .expect("STARTUP_COVERAGE_BARRIER_FAILED");
+            let previous_hook = std::panic::take_hook();
+            let outcome = std::panic::catch_unwind(|| {
+                super::application::run_startup(
+                    || match case.as_str() {
+                        "success" => Ok(()),
+                        "error" => Err("CONTROLLED_STARTUP_ERROR"),
+                        "panic" => std::panic::panic_any("CONTROLLED_STARTUP_PANIC"),
+                        _ => unreachable!(),
+                    },
+                    super::infrastructure::emit_failure,
+                )
+            });
+            let _startup_hook = std::panic::take_hook();
+            std::panic::set_hook(previous_hook);
+            match (case.as_str(), outcome) {
+                ("success", Ok(code)) => assert_eq!(code, std::process::ExitCode::SUCCESS),
+                ("error", Ok(code)) => assert_eq!(code, std::process::ExitCode::FAILURE),
+                ("panic", Err(_)) => {}
+                _ => panic!("STARTUP_COVERAGE_OUTCOME_INVALID"),
+            }
+            return;
+        }
+    }
+
+    for (case, expected) in [("success", &[][..]), ("error", STARTUP), ("panic", PANIC)] {
+        let mut child = Command::new(std::env::current_exe().expect("STARTUP_TEST_EXE_MISSING"))
+            .args([
+                "--quiet",
+                "--exact",
+                STARTUP_COVERAGE_TEST_NAME,
+                "--nocapture",
+                "--color",
+                "never",
+            ])
+            .env("MILLANI_STARTUP_COVERAGE_CASE", case)
+            .stdin(Stdio::piped())
+            .stdout(Stdio::null())
+            .stderr(Stdio::piped())
+            .spawn()
+            .expect("STARTUP_COVERAGE_CHILD_LAUNCH_FAILED");
+        let stderr = read_pipe(child.stderr.take().expect("STARTUP_STDERR_MISSING"));
+        let result = (|| -> std::io::Result<()> {
+            child
+                .stdin
+                .take()
+                .ok_or_else(|| std::io::Error::other("STARTUP_STDIN_MISSING"))?
+                .write_all(b"G")?;
+            let deadline = Instant::now() + Duration::from_secs(20);
+            while child.try_wait()?.is_none() {
+                if Instant::now() >= deadline {
+                    return Err(std::io::Error::other("STARTUP_CHILD_TIMEOUT"));
+                }
+                thread::sleep(Duration::from_millis(10));
+            }
+            Ok(())
+        })();
+        if result.is_err() {
+            let _ = child.kill();
+            let _ = child.wait();
+        }
+        let exit = child.wait().expect("STARTUP_CHILD_WAIT_FAILED");
+        let err = stderr.join().expect("STARTUP_STDERR_THREAD_FAILED");
+        assert!(result.is_ok(), "STARTUP_CHILD_CONTROL_FAILED");
+        assert!(err.len() <= 16_384, "STARTUP_OUTPUT_TOO_LARGE");
+        assert!(exit.success(), "STARTUP_CHILD_EXIT_FAILED");
+        assert!(err == expected, "STARTUP_DIAGNOSTIC_NOT_STATIC");
+    }
 }

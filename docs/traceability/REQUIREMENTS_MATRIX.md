@@ -368,3 +368,6 @@ CI entrega E3: type/name tests PASS na suíte58+2, junction PASS. Evidência con
 
 ## FIN-004 — saldo inicial em centavos (MVP-01, parcial)
 E3 local prova armazenamento/preservação exata de seis valores i64 no campo em memória. Não soma, classifica como receita, persiste, valida limites nem prova saldo derivado. INV-FIN-001 sobre saldo inicial fora de receita permanece E0 até FIN-005; criação/persistência dependem de FIN-008/DB. Precisão de UI e política de valores negativos não decididas. MVP-01 parcial.
+
+
+FIN-004 continua MVP-01 parcial: i64 inicial representa centavos sem cálculo; a medição global de Rust passou gates existentes de linha/função, mas não cobre regra financeira, persistência ou setup. Estado in_progress até CI corretiva e liberação.

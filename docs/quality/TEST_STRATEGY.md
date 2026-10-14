@@ -81,3 +81,6 @@ CI entrega38487235749: release58 testes ordinários+2 doctests, 0 falhas/1 ignor
 
 ## FIN-004 — saldo inicial
 RED de campo ausente, cinco literais atualizados a zero e account_preserves_initial_balance_cents verifica i64::MIN, -123456, 0, 1, 123456 e i64::MAX exatos. Suíte local default59 ordinários+2 doctests, 0 falhas/1 ignored; dois compile_fail mantidos. Sem teste de soma/receita/persistência; classificação pertence a FIN-005.
+
+
+FIN-004 CORRECT E3: startup test isolado corrigido; fmt/clippy PASS e suíte local padrão 60 ordinários+2 doctests/1 WebView2 ignored. Suíte instrumentada com smoke nativo: 61 Rust+2 doctests, 0 falhas/ignored. CI corretiva do SHA atual ainda pendente.

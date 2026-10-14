@@ -59,3 +59,6 @@ CI entrega38487235749 passou suíte padrão release58 ordinários+2 doctests/1 i
 
 ## FIN-004 — campo de saldo inicial
 LLVM direto: full12 tests,8/8 linhas,2/2 funções,11/11 regiões; controle9 pass/3 filtered,3/8 linhas (37.5%),1/2 funções,5/11 regiões, rejeitado gate90. Reports full48b8b855c1d0ffd6411307f5e2251bc13f75fd3d3f0ec12447f5c8d9886fcffa e control2cf1509b5a2978da7e98a8fbcec37edd2689e83d6c976314d933465b1c85e1f6. Campo de dados não adiciona statement executável; sem percentual fictício. Branches stable não medidos; sem coverage global/financeira.
+
+
+FIN-004 medição global E3: produção 301/312 linhas (96.474359%),30/33 funções (90.909091%),373/408 regions; gates existentes global90 e database95 linhas/funções PASS. Statements não medidos, branches indisponíveis no LLVM estável; lib/ports sem linhas executáveis N/A, binário normal não executado. Não alegar vetor completo nem cobertura financeira.
