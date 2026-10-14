@@ -2,7 +2,7 @@
   "id": "FIN-011",
   "title": "rejeitar contexto inválido",
   "specPath": "planning/specs/FIN-011.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-010"
   ],
@@ -14,13 +14,14 @@
     "Review primary, segurança proporcional, validators e CI no SHA final passam sem reduzir thresholds"
   ],
   "checks": [
-    "Red/BUILD/coverage focal E3 da WT está documentada; root repete os mesmos três casos no primary após integrar source",
-    "No primary: fmt, clippy, Cargo tests e quatro doctests, audit/OSV e checks aplicáveis",
-    "Review independente primary, Gitleaks staged, validators e CI no SHA exato integrado"
+    "Source CI 38621842911/job116051059765/attempt1/main/push no SHA 809626e89dabbcce158fb466f63401c0a7b02c99 SUCCESS23/0; seis marcadores SHA conferidos",
+    "Release 70 testes ordinários (20 lib+7 bin+43 SQL)+4 compile-fail doctests PASS/1 WebView ignored; três Context tests e junction PASS em SQLite3.53.2",
+    "fmt/clippy e audit/OSV/Gitleaks/NPM/SAST passaram; validators locais 4 PASS; review primary E2 sem achados impeditivos",
+    "Executor done/E3/passes=true; publicação final documental/nota84 e liberação ACTIVE24 ainda pendentes; não declarar META completo"
   ],
-  "agentPlan": "P-TRC gpt-6-luna low docs; P-DOM gpt-6-luna medium testes/implementação concluídos na WT; P-INT/root integra, repete focal e executa checks/CI; P-REV gpt-6-sol medium review WT E2 sem achados, review primary pendente. Escrita Luna autorizada; máximo root+2; integração serial. ACTIVE24: 12 tracked (4 docs, domain/mod.rs+tests.rs, ROADMAP, cinco matrizes), final-note, coverage dir + 8 filhos, target/fin-011 e duas fixtures sec001 já reservadas. Modelo/esforço root e custo: não registrado.",
+  "agentPlan": "P-TRC gpt-6-luna low documentou; P-DOM gpt-6-luna medium implementação concluída na WT; P-INT/root integrou source e fechou executor; P-REV gpt-6-sol medium review primary E2 concluída sem achados impeditivos. Escrita Luna autorizada; máximo root+2; integração serial. ACTIVE24: 12 tracked (4 docs, domain/mod.rs+tests.rs, ROADMAP, cinco matrizes), final-note, coverage dir + 8 filhos, target e duas fixtures sec001. Modelo/esforço root e custo: não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Formal dependency FIN-010 apenas: CI38513877196 success16/7, nota81 ref e62a4f371be3f51ef10bd67eb8f3bdf9bcb757a4 preserva80 tuplas/3 refs, quatro roots ausentes/ACTIVE24 liberada. CAT-002 não é dependency: CI38616439285/job116032611143 success23/0 no SHA3a94855181576ed354a73831dca3e1964641e79d; note83 ref9b1aad5697ce793cf0c5c9e04ec7864a24ae632c preserva82 tuplas/3 refs, Git limpo, quatro roots+scanner/bytecache ausentes, ACTIVE26 liberada. WT fontes mod.rs SHA6a613d285999c1f521fdca2784caa91f5f847833cb0ed031a15dcd1698f76c85/tests.rs SHAd0f966fb7538d76fb1336da96a60439901e6db521d401e8d9311bbf55d5561c5; diff2/1529B SHA2a2ba1b9ba930aae795e25f5622c342a88a57b4421d90503065ee99d7394129d. RED exit1/.380s seis E0277+um E0308, zero outputs; BUILD LLVM .551s; full17PASS/14-14 linhas/3-3 funções/19-19 regions report61e4b4c939f466ce723ade62a37059fbc95cdb16f883bc32c3f5be68230be554; controle skip somente 3 context_*:14PASS/3 filtered/8-14 linhas/2-3 funções/11-19 regions, gate90 rejeitado, report3b0e1e1e414ab2b3778757d89cbaf1bb864c4978cfdbd346e3b0af7f0f06bfb6; branches N/A, regions não são statements/global coverage. Review WT Sol6 medium E2 sem P0/P1/P2; Display estático, Category/name/ports/exports intactos. Primary branch codex/fin-011-integration baseline fd7ca0c6418a1662a39870c517794bec62c01d60; execução focal, review, fmt/clippy/Cargo/doctests/audit/OSV/Gitleaks/validators/CI primary pendentes. E3 refere-se somente à WT. CAT-002→FIN-011 precedência operacional sem dependência formal."
+  "passes": true,
+  "notes": "Executor FIN-011 fechado done/E3/passes=true/humanGateRequired=false. CI source38621842911/job116051059765/attempt1/main/push, SHA809626e89dabbcce158fb466f63401c0a7b02c99, SUCCESS23/0; seis SHA markers conferidos. Release70 ordinary (20lib+7bin+43SQL)+4 compile-fail doctests PASS/1 WebView ignored; três Context tests+junction PASS SQLite3.53.2. Source/pins/config unchanged since SourceCI. Checks: Gitleaks184 commits/0/.694s; OSV542 packages/3 approved/0 outside/1.227s; NPM120/0 vulns/.794s; Cargo422/0 vuln/2 approved E4, DB caee11f41fab07d676c0a4655a2a5dd1f94da97c,14.315s expiry2026-10-23T00Z; SAST45/5.047s. Frontend format/lint/typecheck/coverage apenas scaffold 2 files/3 tests/100%; artifact11922631416,21873B,digest7c0c30dd68982a5d33c984984f0c6cb344590cc6ff7e3cda8ed232a5cf9821b3, exact source SHA, expiry2026-10-15T19:15:26Z, não baixado. Native PE AMD64 custom-protocol 8536064B SHAe9c4a060e4ae009b74558c4d31fbf40c51bfb64d954b6f123762630be4973ff5, no-bundle/not installer/not retained. Local staged Gitleaks12paths/27761B/SHA6db65a03cdc6cb9a503bf1a6f30a18bf852f50c145e47c75c1369c7c2c30b7cf/0/.715s; four validators PASS 379files/28sources/84items; PL prefix339854B preserved/diffcheck PASS. Official roadmap 245 executors:83 done/162 remaining (flatten BOOTSTRAP-INDEX array). Final publication pending: CI documental, note84 preserving83 tuples/ancestor9b1aad5697ce793cf0c5c9e04ec7864a24ae632c/3 refs/Git clean/4 managed roots and scanner+__cache absence, then explicit root release ACTIVE24. Do not call META complete. No Rust global coverage, consumer, FIN005, setup/installer claim. Formal dependency FIN-010 only; CAT-002 operational predecessor not graph dependency. Model/root cost NR."
 }
