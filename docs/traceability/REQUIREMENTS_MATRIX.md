@@ -394,3 +394,5 @@ FIN-006 VERIFY focal E3: database.rs 276/280 linhas e 25/25 funções; gates cr�
 
 
 FIN-006 executor done/E3/passes:true após CI38570028370. Cobre migration/persistência física exercitada e gates focalizados; não comprova startup, consumer, UI, regra financeira nem FIN-005 receita. Liberação global permanece pendente de CI documental e nota82.
+
+CAT-002 | E3 focal e Cargo primários; `in_progress`, `passes=false` | `Category::validate_name` usa `trim().is_empty()`, preserva campos; RED pré-implementação da WT e GREEN fresh primário formatado 17 PASS; suíte 67+4 doctests PASS, fmt/clippy/OSV/review final PASS; cleanup focal E3 concluído | Não demonstra consumer, persistência ou fluxo de ativação; Gitleaks staged, validators, CI de entrega, nota e liberação ACTIVE25 pendentes; dependência formal CAT-001 somente.

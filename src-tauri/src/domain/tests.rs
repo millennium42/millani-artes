@@ -167,3 +167,60 @@ fn context_variants_are_distinct() {
         std::mem::discriminant(&Context::Factory)
     );
 }
+
+#[test]
+fn category_name_rejects_empty() {
+    use super::Category;
+
+    let category = Category {
+        id: [0; 16],
+        name: String::new(),
+        is_active: true,
+    };
+
+    assert_eq!(category.validate_name(), Err(DomainError::InvalidInput));
+}
+
+#[test]
+fn category_name_rejects_unicode_whitespace() {
+    use super::Category;
+
+    for name in [
+        " ",
+        "\t",
+        "\n",
+        "\r",
+        "\u{00a0}",
+        "\u{2003}",
+        " \t\n\u{00a0}\u{2003} ",
+    ] {
+        let category = Category {
+            id: [0; 16],
+            name: String::from(name),
+            is_active: true,
+        };
+
+        assert_eq!(category.validate_name(), Err(DomainError::InvalidInput));
+    }
+}
+
+#[test]
+fn category_name_accepts_unicode_without_mutation() {
+    use super::Category;
+
+    let id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255];
+    let name = "  Categoria Açúcar 🧵  ";
+    for is_active in [true, false] {
+        let category = Category {
+            id,
+            name: String::from(name),
+            is_active,
+        };
+
+        category.validate_name().unwrap();
+
+        assert_eq!(category.id, id);
+        assert_eq!(category.name.as_bytes(), name.as_bytes());
+        assert_eq!(category.is_active, is_active);
+    }
+}

@@ -60,6 +60,16 @@ pub struct Category {
     pub is_active: bool,
 }
 
+impl Category {
+    pub fn validate_name(&self) -> Result<()> {
+        if self.name.trim().is_empty() {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

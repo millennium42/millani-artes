@@ -107,3 +107,5 @@ FIN-006 coverage focal primária E3: harness compilado em 1.600s; 43 PASS/0 igno
 
 
 FIN-006 entrega CI E3: 64 testes ordinários+4 compile-fail doctests PASS, 0 falhas/1 WebView ignored; dois casos FIN-006 nomeados passaram, SQLite3.53.2. Coverage Rust não é executada pela CI.
+
+CAT-002 primário: os três casos (vazio, whitespace Unicode e nome Unicode válido com espaços preservados/is_active true e false) passaram no focal fresh formatado: 17 PASS, BUILD 1,314 s. Suíte Cargo reportada: 67 testes (17 lib, 7 bin, 43 SQLite) + 4 compile-fail doctests PASS/1 WebView ignored; fmt/clippy também passaram. Isso valida o contrato explícito, não consumer, persistência ou ativação; CI de entrega ainda pendente.

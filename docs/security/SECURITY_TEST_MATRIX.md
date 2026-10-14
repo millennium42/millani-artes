@@ -270,3 +270,5 @@ FIN-006 coverage focal E3 passou os gates críticos de linhas/funções no datab
 
 
 FIN-006 CI: Gitleaks180/0, Cargo422/0 vulnerabilidades/2 E4 aprovadas, OSV542/3 aprovadas/0 fora. SAST cobre Biome/PowerShell, não backend Rust. Exceções vigentes até 2026-10-23T00Z.
+
+CAT-002 primário continua validação pura, sem I/O ou trust boundary novo; review final Sol6 medium E2 na fonte formatada sem P0/P1/P2. Fmt/clippy/Cargo/OSV e testes focais reportados PASS. Reparo do cache advisory-db E3 preservou os quatro drafts públicos fora do cache; só `cargo audit` foi rerodado para `CARGO_DATABASE_DIRTY` (422 deps, 0 vuln, 2 advisories aprovados); drafts permanecem no path externo ACTIVE25 e não devem ser apagados. Cleanup E3 dos oito outputs focais teve containment/no-reparse/inventário/hash e zero processos confirmados, diretório removido e root ausente. Gitleaks staged, validators e CI de entrega ainda pendentes. Campos públicos exigem chamada explícita por consumers futuros.

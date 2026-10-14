@@ -1,0 +1,24 @@
+{
+  "id": "CAT-002",
+  "title": "validar nome de categoria",
+  "specPath": "planning/specs/CAT-002.md",
+  "status": "in_progress",
+  "dependencies": ["CAT-001"],
+  "acceptanceCriteria": [
+    "Category.validate_name usa trim().is_empty() e retorna DomainError::InvalidInput para vazio/whitespace, Ok para conteúdo",
+    "Nome, ID e is_active permanecem inalterados",
+    "Três casos: vazio, whitespace Unicode incluindo tab/newline/NBSP/em space, Unicode válido com espaços preservados",
+    "Sem normalização, unicidade, limite, consumer, persistência, UI, schema ou dependência nova",
+    "Review, checks, validators e CI exata passam sem reduzir thresholds"
+  ],
+  "checks": [
+    "RED dos três casos antes do método; repetir GREEN focal após integração e formatação",
+    "fmt, clippy, suíte Rust/doctests, audit, OSV, Gitleaks e coverage full/controle conforme política vigente",
+    "Review E2, validators e CI exata no SHA integrado"
+  ],
+  "agentPlan": "P-INT/root integra, verifica e commita; P-DOM Luna6 medium implementou na worktree; P-TRC Luna6 low documenta; P-REV Sol6 medium fez review FINAL E2 da fonte formatada, sem P0/P1/P2. Review anterior ao wrapping é somente histórico em notes. Integração serial; CAT-001 é a dependência formal única. Modelo/esforço efetivo do root e custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Histórico WT: RED três E0599/0.207s; revisão inicial anterior à correção de wrapping é histórica; fonte formatada foi então integrada e testada novamente no primário. Primário E3: mod.rs SHA2fa1bd958ef684f7bbf371c249047dbe19eb6f59c7ccd30deac0c25e53d6daa0/tests.rs d5bd92ca86f5f21473f246ffe43751ef3c98cdacd26a805e181ebdaf54845eae; BUILD1.314s; full17PASS/0.063s/13-13linhas/3-3funções/17-17regions relatório80e5c53230f8ae76b479473c916f05ef9c0451aeb63a83df8eae21a4a833d75f; controle skip account_name/category_name 11PASS/6filtrados/0.019s/3-13linhas (23.076923%)/1-3funções/5-17regions rejeita90 relatório6826e73b20a876d5d08aa16e18f6319cf616839164c844449404a1f14d6a0540. Fmt PASS; clippy all-targets -D warnings PASS18.81s; Cargo67 (17lib+7bin+43SQLite)+4compile-fail doctests PASS/1 WebView ignored; OSV542/3 aprovadas/0 fora/2.214s. Review Sol6 medium FINAL E2 sem P0/P1/P2; Account/Context/exports/SQL003/database/harness/pins preservados. Statements não medidos, branches0/N/A; sem vetor/global/consumer. Cache RustSec reparado E3: quatro drafts públicos byte iguais ao predecessor movidos para path ACTIVE25, nunca apagar; origem HEAD preservado/cache limpo, manifest c688ff026c556e452900e19f39f2c7f1127328e167a778dee30e7571ee144cd9; só audit rerodado, PASS422deps/0vuln/2 aprovadas RUSTSEC-2024-0370/0429, 3.218s, expiry2026-10-23. Cleanup focal E3: containment/no-reparse/inventário exato8/hashindividual/0 processos validados; artifacts/cat002-coverage removido/root ausente. Quatro drafts externos+manifest permanecem preservados. CI38572108059 é apenas baseline verde no SHA df59ca6903e886e3bdcfb2a0c456423aa8f3c57e; CI de entrega, Gitleaks staged, validators, nota e liberação ACTIVE25 pendentes. Estado in_progress/E3/passes:false; dependência formal CAT-001; sem consumer ou fluxo de ativação."
+}
