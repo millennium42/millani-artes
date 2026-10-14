@@ -1,0 +1,31 @@
+# FIN-003 — recibo final do executor
+
+## Escopo
+
+AccountType tem as variantes Cash, BankPix, Card e Other, e Account expõe account_type em memória. Não há derive/default/tag numérica/conversor, serialização, schema, persistência, saldo, UI ou semântica financeira. Contexto Casa/Fábrica permanece independente. A prova não cobre consumidores financeiros, Rust global, setup.exe ou release do MVP.
+
+## Evidência local e revisão
+
+RED demonstrou ausência da enum/campo; root executou fmt, clippy, testes Rust padrão (58 ordinários e 2 doctests, zero falhas, um ignored WebView2), audit, OSV e LLVM direto do módulo. Coverage: full 8/8 linhas, 2/2 funções, 11/11 regiões; controle 3/8 linhas (37,5%), rejeitado no gate90. Enum sem statements não recebe cobertura fictícia; branches stable não medidos. Review independente E2 sem P0/P1/P2. Fixture e artefatos temporários foram limpos.
+
+Hashes, comandos, perfis e limites estão em planning/handoffs/FIN-003.md e planning/specs/FIN-003.md. E3 vincula-se à entrega commit 02c86f9f3fe623f809944b0f1d8636da319c94e9.
+
+## CI de entrega
+
+Commit [02c86f9](https://github.com/millennium42/millani-artes/commit/02c86f9f3fe623f809944b0f1d8636da319c94e9); CI [38487235749](https://github.com/millennium42/millani-artes/actions/runs/38487235749), job115603712741, tentativa1/main push, 23 success/0 skipped, seis sourceSha markers verificados. Release passou 58 testes ordinários (11 lib,6 bin,41 SQLite) +2 doctests, zero falhas/um ignored WebView2; AccountType/name e junction passaram. SQLite41/41 em11,29s; doctests0,06s. O executável Windows era PE32+AMD64/custom protocol, 8.536.064 bytes, SHA-256 8e7468e54b0bb06dbd16553150219c04649488cc5f81f05b9642467042438e38; não é instalador nem artifact retido. Coverage remota é somente scaffold frontend (2 arquivos/3 testes/100%), sem coverage Rust.
+
+Scans de entrega: Gitleaks171 commits/0 findings; npm120 dependências/0; Cargo422/0 vulnerabilidades/2 avisos aprovados; OSV542/3 exceções/0 fora; SAST45 (42 Biome+3 PowerShell), sem cobertura backend. Exceções Cargo/OSV mantêm expiração 2026-10-23T00:00:00Z e approvals/inputs inalterados.
+
+## CI documental final
+
+No SHA3ef70f1014abd63903e9cbd45626384177b18a1a, CI [38488339882](https://github.com/millennium42/millani-artes/actions/runs/38488339882), job115607323735, tentativa1/main push, concluiu 16 success, 7 skipped, 0 falhas e 0 artifacts; quatro sourceSha markers conferidos. Código/configuração não mudaram desde a entrega.
+
+Scans finais: Gitleaks172 commits/0 em0,752s; npm120/0 em0,707s; Cargo422/0 vulnerabilidades/2 aprovados em12,899s; OSV542/3 exceções/0 fora em1,226s, expiração mantida. Validators finais: 360 files/28 sources/78 items; prefixo progress log de321.159 bytes preservado. Gitleaks staged final: 10 paths/19.294B, SHA-256 346188785c13222bfc49432b05f8d0be91e33306376ea6a9b3660a2fb3231622, 0 findings em0,566s; validators locais4 PASS. Nenhum job adicionado ao workflow nem rerun manual.
+
+## Estado e liberação condicionada
+
+Executor FIN-003 está done/E3/passes true, sem gate humano. META não concluída: roadmap contém 245 IDs, 77 executores done e 168 restantes; FIN-004 ainda não iniciado. Consumidores financeiros, regras/invariantes globais, Rust global e setup.exe não foram verificados.
+
+A nota anterior FIN-002 foi publicada na ref d6b0e177c0e320b72c941232111c78c84fb704a4. Reserva ACTIVE23: liberação somente após o root publicar esta nota como nota78, preservar as 77 tuplas anteriores (IDs, modos e blobs), refs remotas e checkout limpo, e confirmar ausência dos artefatos gerenciados. Essas ações ainda não ocorreram; não atribuo hash/ref à nota atual. FIN-004 só começa após liberação explícita.
+
+Roteamento: P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low documentação; P-REV gpt-6-sol medium revisão; root integração e checks. Modelo/esforço efetivo do root e custo não registrados.
