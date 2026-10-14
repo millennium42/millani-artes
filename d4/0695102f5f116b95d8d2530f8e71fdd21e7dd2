@@ -1,0 +1,19 @@
+# FIN-010 — recibo de entrega e liberação condicional
+
+## Entrega do executor
+
+O contexto `Home`/`Factory` foi integrado e verificado. A entrega `ea1f689c22bf0321734efc86e5b848cdd61b7166` passou na CI run `38512646302`, job `115684416671`, tentativa 1 em main push: 23 passos, 0 falhas; seis marcadores de source SHA conferidos. Release: 62 testes ordinários (14 lib, 7 bin, 41 SQLite) e 4 doctests compile-fail aprovados, 0 falhas e 1 teste WebView2 ignorado. Os testes de contexto, junction e quatro guardas passaram; SQLite 3.53.2.
+
+A CI documental final passou no SHA `d40695102f5f116b95d8d2530f8e71fdd21e7dd2`, run `38513877196`, job `115688203234`, tentativa 1 em main push: 16 passos, 7 ignorados, 0 falhas, 0 artifacts; quatro marcadores correspondem ao source. Scans: Gitleaks 179 commits/0 achados; npm 120/0; Cargo 422/0 vulnerabilidades/2 exceções E4 aprovadas; OSV 542/3 exceções aprovadas/0 fora. Banco de avisos Cargo DB1310, commit `6aed84668c23d7f535077a9fe918bf1fa0f6a5bc`; inputs e aprovações sem mudança, validade até `2026-10-23T00Z`. SAST cobre 42 Biome e 3 PowerShell; não cobre o backend Rust.
+
+Verificação local primária: fmt, clippy e Cargo test 62+4 passaram, com 1 WebView ignorado; audit 422/0/2 e OSV 542/3/0. Review Sol6 medium E2 não encontrou P0/P1/P2. LLVM local do módulo: full 14 testes, 8/8 linhas, 2/2 funções, 11/11 regiões, relatório `1d92215016517eeba5b0e9eb8cd84ebbeea30d39a6c1b52704a02d2854892f95`; controle 11 testes/3 filtrados, 3/8 linhas, 1/2 funções, 5/11 regiões, relatório `c64a543ae5bdaedf13581edc293cc972acd9268fe7587bfec9d257727807d03c`, gate de 90% rejeitado. O enum não tem linhas executáveis próprias; branches estáveis não disponíveis, regiões não são statements e coverage Rust global não foi medida.
+
+Executável nativo PE32+ AMD64, custom protocol, 8.536.064 bytes, SHA-256 `d7ce9095af6f87fbbc87e553f128fd75158a14893e7b5484d6c838e551969f12`; build `--no-bundle`, não é instalador nem artefato retido. Artifact frontend `11870881576` (21.871 bytes, digest `857c19320332712c6222c8db4d66cf2baaf2f370ddaedeee218caab4f014056e`) é scaffold de 2 arquivos/3 testes, não integração financeira.
+
+## Estado e limites
+
+FIN-010 executor: `done`, evidência E3, `passes: true`. O MVP permanece parcial: esta tarefa não demonstra consumidores financeiros, setup/instalador nem coverage Rust global completa. FIN-005 continua sem caminho real de receita comprovado. O inventário tem 245 IDs oficiais; 80 executores concluídos e 165 restantes.
+
+A reserva primária ACTIVE24 só será liberada quando o root publicar esta nota preservando as 80 tuplas anteriores (IDs, modos e blobs) e o ancestral `86b24911e7913a19d904022eca1c66f25e836a7b`, confirmar as três refs remotas (main, `codex/fin-010-integration`, notas), Git limpo, quatro raízes temporárias ausentes e liberação explícita. Essas ações ainda não estão declaradas como concluídas. FIN-006 está pronto para sequência serial após a liberação; CAT-002 pode avançar em worktree paralela por depender formalmente de CAT-001. FIN-005 aguarda evidência de um consumidor real de receita.
+
+Modelos delegados: Luna6 medium (código), Luna6 low (documentação), Sol6 medium (revisão). Modelo/esforço efetivo do root e custo: não registrados. Nenhum job foi adicionado ao workflow nem houve rerun manual.
