@@ -365,3 +365,6 @@ Entrega CI 38483459997 E3: 3 account_name tests PASS, suíte release57 ordinári
 E3 local: enum público Cash/BankPix/Card/Other e account_type em Account; teste percorre quatro variantes sem mapear discriminant a número. Testa representação em memória; não prova serialização, cadastro/persistência, saldo ou invariantes financeiras. Card não implica fatura, taxa ou antecipação. Contexto Casa/Fábrica separado. MVP-01 permanece parcial; requisitos/invariantes financeiros continuam E0. CI, Gitleaks staged e validators finais pendentes.
 
 CI entrega E3: type/name tests PASS na suíte58+2, junction PASS. Evidência confirma apenas representação em memória e compilação; cadastro, persistência e invariantes financeiras não demonstrados. MVP-01 parcial, FIN-004 saldo e FIN-008 consumidor pendentes; nenhuma semântica de cartão inferida. CI documental final/liberação ainda pendentes.
+
+## FIN-004 — saldo inicial em centavos (MVP-01, parcial)
+E3 local prova armazenamento/preservação exata de seis valores i64 no campo em memória. Não soma, classifica como receita, persiste, valida limites nem prova saldo derivado. INV-FIN-001 sobre saldo inicial fora de receita permanece E0 até FIN-005; criação/persistência dependem de FIN-008/DB. Precisão de UI e política de valores negativos não decididas. MVP-01 parcial.

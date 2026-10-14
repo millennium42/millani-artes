@@ -239,3 +239,6 @@ Entrega CI FIN-002 38483459997: junction smoke PASS; release suite 57 ordinário
 E3 local: AccountType com quatro variantes sem conversores/serialização, teste preserva variantes; sem I/O, SQL, IPC ou dados sensíveis. Cargo audit422/0 vulnerabilidades/2 avisos E4 aprovados; OSV542/3 exceções/0 fora, expiry2026-10-23T00Z, inputs intactos. Review E2 sem P0/P1/P2. Nenhuma validação de fatura/taxas/cartão ou regra financeira inferida; CI e Gitleaks staged pendentes.
 
 CI entrega38487235749: release suite58 ordinários+2 doctests, 0 falhas/1 ignored; junction test PASS. Gitleaks171/0, Cargo422/0 vuln/2 avisados, OSV542/3 exceções/0 fora; SAST45 não cobre backend Rust. Resultados são gates da entrega; não demonstram armazenamento de tipo nem operação financeira.
+
+## FIN-004 — campo inicial i64
+Tipo primitivo sem I/O ou boundary exercitada; preservação exata dos seis valores testada. Audit Cargo422/0 vulnerabilidades/2 E4 aprovados; OSV542/3 exceções/0 fora. Review E2 sem achados. Precisão de UI, consumo/persistência e política de sinal continuam não implementadas; FIN-005 deve provar tratamento como saldo inicial, não receita.

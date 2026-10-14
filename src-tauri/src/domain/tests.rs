@@ -38,6 +38,7 @@ fn account_preserves_opaque_id_and_owned_unicode_name() {
         id,
         name,
         account_type: AccountType::BankPix,
+        initial_balance_cents: 0,
     };
 
     assert_eq!(account.id, id);
@@ -52,6 +53,7 @@ fn account_name_rejects_empty() {
         id: [0; 16],
         name: String::new(),
         account_type: AccountType::BankPix,
+        initial_balance_cents: 0,
     };
 
     assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
@@ -73,6 +75,7 @@ fn account_name_rejects_unicode_whitespace() {
             id: [0; 16],
             name: name.to_owned(),
             account_type: AccountType::BankPix,
+            initial_balance_cents: 0,
         };
 
         assert_eq!(account.validate_name(), Err(DomainError::InvalidInput));
@@ -89,6 +92,7 @@ fn account_name_accepts_unicode_without_mutation() {
         id,
         name,
         account_type: AccountType::BankPix,
+        initial_balance_cents: 0,
     };
 
     account.validate_name().unwrap();
@@ -112,8 +116,25 @@ fn account_preserves_each_account_type() {
             id: [0; 16],
             name: String::from("SYNTHETIC_ACCOUNT"),
             account_type,
+            initial_balance_cents: 0,
         };
 
         assert_eq!(std::mem::discriminant(&account.account_type), expected);
+    }
+}
+
+#[test]
+fn account_preserves_initial_balance_cents() {
+    use super::Account;
+
+    for initial_balance_cents in [i64::MIN, -123456, 0, 1, 123456, i64::MAX] {
+        let account = Account {
+            id: [0; 16],
+            name: String::from("SYNTHETIC_ACCOUNT"),
+            account_type: AccountType::BankPix,
+            initial_balance_cents,
+        };
+
+        assert_eq!(account.initial_balance_cents, initial_balance_cents);
     }
 }

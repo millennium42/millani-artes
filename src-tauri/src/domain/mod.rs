@@ -9,7 +9,7 @@ pub enum AccountType {
     Other,
 }
 
-/// Account identity metadata; financial fields belong to later tasks.
+/// Account identity metadata and opening balance in cents.
 ///
 /// ```compile_fail
 /// fn require_debug<T: std::fmt::Debug>() {}
@@ -24,6 +24,7 @@ pub struct Account {
     pub id: [u8; 16],
     pub name: String,
     pub account_type: AccountType,
+    pub initial_balance_cents: i64,
 }
 
 impl Account {

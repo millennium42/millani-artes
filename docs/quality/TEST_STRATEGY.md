@@ -78,3 +78,6 @@ CI de entrega FIN-002 confirmado: release 57 testes ordinários (10 lib,6 bin,41
 RED E0432/E0560/E0609 confirmou enum/campo ausentes. Quatro literais existentes atualizados e account_preserves_each_account_type prova as quatro variantes sem mapping numérico. Debug suite 58 ordinários+2 doctests, 0 falhas/1 ignored; teste do tipo incluído. Comentário de Account reposicionado após enum; correção só de layout, sem rerun de suíte. CI e scanners staged pendentes.
 
 CI entrega38487235749: release58 testes ordinários+2 doctests, 0 falhas/1 ignored; account_type/name e junction tests passaram; SQLite41/41. Rust coverage não executada na CI. Smoke WebView2 ignored. O teste verifica representação do enum em memória e não persistência nem significado financeiro.
+
+## FIN-004 — saldo inicial
+RED de campo ausente, cinco literais atualizados a zero e account_preserves_initial_balance_cents verifica i64::MIN, -123456, 0, 1, 123456 e i64::MAX exatos. Suíte local default59 ordinários+2 doctests, 0 falhas/1 ignored; dois compile_fail mantidos. Sem teste de soma/receita/persistência; classificação pertence a FIN-005.

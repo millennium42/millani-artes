@@ -1,0 +1,25 @@
+{
+  "id": "FIN-004",
+  "title": "definir saldo inicial em centavos",
+  "specPath": "planning/specs/FIN-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-001"
+  ],
+  "acceptanceCriteria": [
+    "Account publica initial_balance_cents: i64 e preserva valor atribuído sem conversão/cálculo",
+    "cinco literais existentes recebem zero; novo teste preserva i64::MIN, -123456, 0, 1, 123456 e i64::MAX",
+    "doc comment Account atualizado e dois doctests compile_fail Debug/Display preservados",
+    "sem constructor/getter/wrapper/serde/default/UI/IPC/schema/persistência/matemática/dependência; checks, review, docs e CI entrega passam"
+  ],
+  "checks": [
+    "RED dos cinco literais/teste antes de adicionar campo",
+    "fmt, clippy, suíte Rust padrão, audit, OSV, Gitleaks e coverage LLVM local full/controle conforme gates existentes",
+    "review, validators, CI exato, nota79 e liberação pelo integrador"
+  ],
+  "agentPlan": "P-INT/root integrador/checker/committer; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium revisão E2 concluída sem achados. Escrita serial; 0 escaladas. Modelo root e custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY E3 local sobre working state na base3ef70f1, sem commit SHA. Debug default59 ordinários+2 doctests/0 falhas/1 ignored; seis valores i64 preservados. LLVM full8/8 linhas, control3/8=37.5% rejeitado gate90; sem coverage global/matemática financeira. Cargo422/0 vulns/2 E4; OSV542/3 exc/0 fora, expiry2026-10-23T00Z. Review E2 sem achados. Cleanup artifacts/fin004-coverage, guardfixture, WV profile/script cache ausentes. Validators, Gitleaks staged e CI pendentes. Saldo não-receita E0 até FIN-005; MVP incompleto."
+}
