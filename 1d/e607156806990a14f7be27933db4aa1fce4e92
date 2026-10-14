@@ -1,0 +1,23 @@
+# FIN-011 — nota final do executor
+
+## Estado e escopo
+FIN-011, “rejeitar contexto inválido”, executor `done`/E3/`passes=true`/`humanGateRequired=false`. Escopo: `TryFrom<&str>` aceita somente as chaves internas `home` e `factory`; demais entradas retornam `DomainError::InvalidInput` estático. Casa/Fábrica continuam labels de produto. Sem conversão reversa, normalização, serialização, consumer, armazenamento, UI/IPC, regra financeira, FIN-005 ou setup/installer. Dependência formal única: FIN-010; CAT-002 foi predecessor operacional, não dependência do grafo.
+
+## Fonte e CI
+Branch `codex/fin-011-integration`, HEAD `1de607156806990a14f7be27933db4aa1fce4e92`. CI documental final `38626342585`/job `116066340230`, attempt1/main/push, SUCCESS16/7/0 artifacts; quatro SHA markers conferidos. CI documental anterior `38624648531`/job `116060609760` passou16/7/0 no HEAD `ef4abc3cc44b55b8931a04c9f1b2745d6bc12e52`; depois, root detectou que a transcrição do digest de controle omitira o primeiro `e`. Erratum append-only corrigiu somente COVERAGE_POLICY, handoff e PL; sem rerun de testes ou jobs. Source CI `38621842911`/job `116051059765`, SHA `809626e89dabbcce158fb466f63401c0a7b02c99`, SUCCESS23/0; seis SHA markers verificados. Release70 ordinary (20lib+7bin+43SQL)+4 compile-fail PASS/1 WebView ignored; Context3+junction PASS/SQLite3.53.2. Nove paths fonte/config/test/pin/lock inalterados após source CI.
+
+## Verificações
+- Gitleaks final: 186 commits/0 findings/1,010 s. Staged anterior: 10 paths/29.785 bytes, SHA-256 `2a9e34e0b007e0d29ef9c3d98b390fada701914a6c0922acfbc5fa59211d7240`, 0 findings/0,641 s. Staged corretivo: 3 paths/5.118 bytes, SHA-256 `f1b8143e80fe370a8a4d9344e15a3f27b64523f10a8562a5ce663b8551cf316d`, 0 findings/0,545 s.
+- OSV: 542 pacotes/3 aprovados/0 fora/1,054 s. NPM: 120 dependências/0 vulnerabilidades/0,853 s. Cargo audit: 422 dependências/0 vulnerabilidades/2 avisos E4 aprovados, banco `caee11f41fab07d676c0a4655a2a5dd1f94da97c`, 14,253 s; expiração 2026-10-23T00Z inalterada. Sem nova exceção. SAST: 45 casos/5,047 s; não cobre backend Rust.
+- Quatro validators PASS: 379 arquivos, 28 fontes, 84 items. Prefixo do PROGRESS_LOG de 341.560 bytes preservado; diff-check PASS.
+- LLVM primary: full20 PASS, 19/19 linhas, 4/4 funções, 25/25 regions, report `ea52cbdc9bbc07a469c69592398fa2c1bae39508d6c0ef968390ee53ea8f9d69`. Controle excluiu apenas os três testes Context: 17 PASS/3 filtrados, 13/19 linhas (68,421%), 3/4 funções, 17/25 regions; gate90 rejeitado, report `e7ce1210b609fc50d66986fa31a636aaabcbfb242a30e9fe42684e2b94b55ead`. Statements não medidos; branches 0/N/A. Regions não são statements; não é vetor completo nem coverage global.
+
+## Artefatos e limites
+Frontend format/lint/typecheck/coverage corresponde somente ao scaffold: 2 arquivos/3 testes/100%. Artifact `11922631416`, digest `7c0c30dd68982a5d33c984984f0c6cb344590cc6ff7e3cda8ed232a5cf9821b3`, associado ao SHA fonte exato, expira 2026-10-15T19:15:26Z e não foi baixado; não representa coverage Rust. Native PE AMD64/custom protocol: 8.536.064 bytes, SHA-256 `e9c4a060e4ae009b74558c4d31fbf40c51bfb64d954b6f123762630be4973ff5`; sem bundle, não é setup/installer e não foi retido.
+
+WT ACTIVE23 liberada; worktree arquivada (path ausente; 6 não ignorados/0 ignorados necessários). Cleanup primário: 8 outputs hash/containment/no-reparse e 0 processos; roots ausentes. ACTIVE24 primária segue retida.
+
+## Publicação e próximo passo
+ACTIVE24 permanece retida até a publicação desta nota, preservação das 83 tuplas anteriores, ancestral `9b1aad5697ce793cf0c5c9e04ec7864a24ae632c`, três refs, Git limpo, ausência dos quatro managed roots e de scanner/bytecache, e liberação explícita pelo root. Estado de executor fechado não significa que a META esteja completa. Contagem oficial: 245 executores, 83 done e 162 restantes, contando o array BOOTSTRAP-INDEX achatado (57 JSON individuais +27 entradas BOOTSTRAP-INDEX; total materializado 84). Próxima sequência operacional: FIN-007 e depois FIN-008, cujo focal isolado já foi concluído. Não há alegação de consumer, jornada financeira, UI/IPC, serialização, cobertura Rust global ou instalador.
+
+Registro de pessoas/esforço: documentação P-TRC gpt-6-luna low; implementação P-DOM gpt-6-luna medium; revisão P-REV gpt-6-sol medium; integração P-INT/root. Modelo/esforço efetivo e custo/tokens root, retries evitados e escalonamentos: não registrados.
