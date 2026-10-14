@@ -43,3 +43,9 @@ DB-006 materializa uma fixture SQL trusted e sintética em arquivos SQLite de te
 ## DB-013 — migration do evento técnico (entrega E3)
 
 Migration 002 foi aplicada no RED e é imutável; cinco testes focais, suíte Rust49/49 e release harness36/36 passaram localmente em SQLite3.53.2. Banco vazio e upgrade com probes, constraints e triggers foram exercitados. Cargo/OSV passaram após preservação do advisory RustSec fora do lockfile; review E2 sem P0/P1/P2. CI de entrega 38429912850 no SHA 63ef7f6004f3e697f365f34f681c499726f2f867 passou (harness36/36, cinco db013_* PASS); fechamento documental/nota74 pendentes; ver [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md). Não comprova auditoria na mesma operação financeira.
+
+
+## FIN-006 — migration inicial de contas (E3 local)
+A migration imutável `003-accounts.sql` adiciona tabela STRICT com somente `id` BLOB16, `name` TEXT, `account_type` TEXT e `initial_balance_cents` INTEGER; registro e `include_str!` usam o executor versionado existente. Harness SQLite físico executou banco vazio v1→v2→v3/ledger `[1,2,3]` e upgrade v2 com audit preservado, reopen/integrity, sem seed, NUL no nome e limites signed i64; 43 PASS, SQLite 3.53.2. Não prova startup, consumer, UI, regra FIN-005 ou política comercial de sinal. Full gates e CI integrados pendentes; ver [spec](../../planning/specs/FIN-006.md) e [handoff](../../planning/handoffs/FIN-006.md).
+
+FIN-006 focal E3: database.rs 276/280 linhas (98.57142857%) e 25/25 funções (100%); gates críticos ADR-019 passam. Métricas de statements não disponíveis; sem vetor coverage completo/global. Gitleaks staged, validators e CI integrada pendentes.

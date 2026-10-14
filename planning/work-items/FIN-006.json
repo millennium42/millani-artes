@@ -1,0 +1,29 @@
+{
+  "id": "FIN-006",
+  "title": "migration de contas",
+  "specPath": "planning/specs/FIN-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "FIN-001"
+  ],
+  "acceptanceCriteria": [
+    "Review técnico P-DAT/P-REV da proposta de DDL concluído antes de qualquer implementação da migration",
+    "Migration aditiva 003 cria somente id BLOB16, name TEXT, account_type TEXT e initial_balance_cents INTEGER em tabela STRICT; versão 3 registrada pelo executor existente",
+    "Teste em arquivo vazio aplica v1/v2/v3 pelo executor real e confirma ledger [1,2,3], shape, sem seed, autocommit e integrity_check",
+    "Upgrade de arquivo v2 com audit event preserva seus valores exatos, e schema/dados/ledger persistem após fechar e reabrir",
+    "ID BLOB16, nome Unicode incluindo prefixo U+0000, quatro account_type keys e signed i64 incluindo extremos são preservados; não atribui regra financeira",
+    "Checks, review, security, validators e CI no SHA integrado passam sem reduzir thresholds"
+  ],
+  "checks": [
+    "Review da proposta SQL e das limitações antes de DDL",
+    "RED focado; migrations reais v1/v2/v3 em arquivo temporário vazio e upgrade de v2 populado",
+    "fmt, clippy, suíte Rust, audit, OSV, Gitleaks e LLVM coverage segundo política existente",
+    "review focal E2, validators e CI exata após integração serial"
+  ],
+  "agentPlan": "P-INT/root integração e verificações; P-TRC documentação; P-DAT implementação; P-REV Sol6 medium revisão técnica/final. Modelos usados: Luna6 medium código, Luna6 low documentação, Sol6 medium revisão; root/custo não registrados. Desenvolvimento independente paralelo conforme decisão humana; integração/publicação serial CAT-001, FIN-010 e FIN-006 é operacional. Dependências formais apenas DB-005 e FIN-001. FIN-005 exige consumidor real de receita, não provado aqui.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Primary focal coverage E3: 11 private rlibs/23,489,344 B, manifest f7ba7d434ce94f2499cbdf1d02d020b95dfa4819caa6f5c1362f5de55df9d2d5; rustc1.99/LLVM23.1.1, rusqlite driver verified. Own lib+harness compile1.600s; 43 PASS/0 fail/0 ignored/1.68s test/1.861s wall; two named FIN-006 PASS; SQLite3.53.2. Exact production database.rs 276/280 lines=98.57142857%,25/25 functions=100%; critical ADR-019 line/function >=95% gates pass. Instantiations67/73 and regions343/368 are separate metrics, not statements/functions; statements unmeasured, branches N/A, no full-vector/global claim. Report700c79ed30c798b2a612cda61c72c27c500d399c30344d04c140f7d9e03ff96b; objectsa078500d465fe5e14d445eb615c162da86d991a4fe4ad652b1bf9ac7f6248879; cleanup manifestb8b720e9f5e3fadcd8f385e5ad9923676db22dfd7919550cb037ebabeaee30e2, 19 owned files inventoried/0 processes/root removed. Standard Cargo cache kept; WT target15 files remains separate until archive. Current pending: Gitleaks staged, final validators, integrated CI, four primary managed roots confirmed absent; source frozen. No app consumer/startup/FIN-005 income proof. Executor remains in_progress/E3/passes:false, humanGateRequired:false; primary ACTIVE18 and WT ACTIVE16 separate."
+}

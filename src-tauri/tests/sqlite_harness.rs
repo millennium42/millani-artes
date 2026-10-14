@@ -2439,3 +2439,257 @@ fn db014_panic_unwind_rolls_back_operation_and_audit() {
     );
     assert_eq!(db014_snapshot(&reopened), baseline);
 }
+
+#[test]
+fn fin006_accounts_initialize_empty_and_roundtrip() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("fin006-accounts-empty.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    assert_eq!(schema_version(&connection, 3).unwrap(), 0);
+    let connection =
+        execute_versioned_migration(connection, 1, "").expect("BASELINE_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("AUDIT_EVENT_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_version(&connection, 3).unwrap(), 3);
+    let versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(versions, [1, 2, 3]);
+    let columns: Vec<(String, String, i64, i64, i64)> = {
+        let mut statement = connection
+            .prepare("PRAGMA main.table_xinfo('accounts')")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        columns,
+        [
+            ("id".into(), "BLOB".into(), 1, 1, 0),
+            ("name".into(), "TEXT".into(), 1, 0, 0),
+            ("account_type".into(), "TEXT".into(), 1, 0, 0),
+            ("initial_balance_cents".into(), "INTEGER".into(), 1, 0, 0),
+        ]
+    );
+    let strict: i64 = connection
+        .query_row(
+            "SELECT strict FROM pragma_table_list WHERE schema = 'main' AND name = 'accounts'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(strict, 1);
+    let account_count: i64 = connection
+        .query_row("SELECT count(*) FROM main.accounts", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(account_count, 0);
+    assert_eq!(
+        connection
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+
+    let account_types = ["cash", "bank_pix", "card", "other"];
+    let balances = [i64::MIN, -123456, 0, 1, 123456, i64::MAX];
+    let mut expected = Vec::new();
+    for account_type in account_types {
+        for (balance_index, initial_balance_cents) in balances.into_iter().enumerate() {
+            let mut id = [0; 16];
+            id[..8].copy_from_slice(&((expected.len() as u64) + 1).to_be_bytes());
+            id[15] = 255;
+            let name = if balance_index % 2 == 0 {
+                "Ateliê Millani 🧵"
+            } else {
+                "\0Conta"
+            };
+            connection
+                .execute(
+                    "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+                    rusqlite::params![id.as_slice(), name, account_type, initial_balance_cents],
+                )
+                .unwrap();
+            expected.push((
+                id.to_vec(),
+                name.to_owned(),
+                account_type.to_owned(),
+                initial_balance_cents,
+            ));
+        }
+    }
+    let stored: Vec<(Vec<u8>, String, String, i64)> = {
+        let mut statement = connection
+            .prepare("SELECT id, name, account_type, initial_balance_cents FROM main.accounts ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(stored, expected);
+    assert!(connection.is_autocommit());
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 3).unwrap(), 3);
+    let reopened_rows: Vec<(Vec<u8>, String, String, i64)> = {
+        let mut statement = reopened
+            .prepare("SELECT id, name, account_type, initial_balance_cents FROM main.accounts ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(reopened_rows, expected);
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}
+
+#[test]
+fn fin006_accounts_upgrade_preserves_v2_audit_event() {
+    use millani_artes::database::{append_audit_event, execute_write_transaction, AuditEventError};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("fin006-accounts-upgrade.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let event = db013_event(
+        [0xA1; 16],
+        1_765_000_000_123,
+        "account_schema_upgrade",
+        "account",
+        [0xB2; 16],
+    );
+    let (connection, ()) = execute_write_transaction(connection, |transaction| {
+        append_audit_event(transaction, &event)?;
+        Ok::<(), AuditEventError>(())
+    })
+    .expect("AUDIT_EVENT_INSERT_FAILED");
+    let read_audit = |connection: &Connection| {
+        connection
+            .query_row(
+                "SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event",
+                [],
+                |row| {
+                    Ok((
+                        row.get::<_, Vec<u8>>(0)?,
+                        row.get::<_, i64>(1)?,
+                        row.get::<_, String>(2)?,
+                        row.get::<_, String>(3)?,
+                        row.get::<_, Vec<u8>>(4)?,
+                    ))
+                },
+            )
+            .unwrap()
+    };
+    let read_audit_schema = |connection: &Connection| {
+        let mut statement = connection
+            .prepare(
+                "SELECT type, name, sql FROM main.sqlite_schema WHERE name IN ('audit_event', 'audit_event_no_update', 'audit_event_no_delete') ORDER BY name",
+            )
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<Vec<_>>>()
+            .unwrap()
+    };
+    let original_audit = read_audit(&connection);
+    let original_audit_schema = read_audit_schema(&connection);
+    assert_eq!(schema_version(&connection, 3).unwrap(), 2);
+    assert!(connection.is_autocommit());
+
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+    assert_eq!(schema_version(&connection, 3).unwrap(), 3);
+    assert!(connection.is_autocommit());
+    assert_eq!(read_audit(&connection), original_audit);
+    assert_eq!(read_audit_schema(&connection), original_audit_schema);
+    assert_eq!(
+        connection
+            .query_row("SELECT count(*) FROM main.accounts", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        0
+    );
+    assert_eq!(
+        connection
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 3).unwrap(), 3);
+    assert!(reopened.is_autocommit());
+    assert_eq!(read_audit(&reopened), original_audit);
+    assert_eq!(read_audit_schema(&reopened), original_audit_schema);
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.accounts", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        0
+    );
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}

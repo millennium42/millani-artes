@@ -385,3 +385,9 @@ FIN-010 inicia integração primária: Context Home/Factory é classificação d
 FIN-010 E3 local primário confirma enum Context Home/Factory e teste discriminant. Não prova conversão externa, consumer, contexto em Account, schema ou persistência. MVP parcial; review E2 concluída sem P0/P1/P2; Gitleaks staged, validators e CI pendentes. Estado histórico pré-CI final.
 
 FIN-010 executor done/E3/passes:true com CI delivery verde. Evidência cobre enum de contexto e gates executados, não consumidores financeiros, setup/instalador nem coverage Rust global. Liberação documental permanece pendente.
+
+
+## FIN-006 — status de rastreabilidade
+FIN-006 cobre a migration inicial de contas e registro versionado; evidência focal E3: banco vazio v1→v2→v3, ledger `[1,2,3]`, upgrade com audit preservado, reopen/integrity e round-trip dos quatro campos, 43 PASS em SQLite 3.53.2. Work item permanece `in_progress`, `passes=false`; integração, gates completos e CI pendentes. Não marcar startup/consumer, regra FIN-005 ou invariantes financeiras como cobertos.
+
+FIN-006 VERIFY focal E3: database.rs 276/280 linhas e 25/25 funções; gates críticos ADR-019 passam. Statements não medidos, sem vetor/global coverage claim. Item permanece in_progress/E3/passes:false até Gitleaks staged, validators e CI integrada. Persistência exercitada não comprova consumer/startup nem receita FIN-005.

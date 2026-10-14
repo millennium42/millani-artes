@@ -31,3 +31,9 @@ FIN-010 representa contexto somente como enum Home/Factory no domínio; não dec
 FIN-010 local primário: Context Home/Factory compilou e suíte62+4 doctests passou. Enum continua somente classificação; sem consumer, Account.context, conversão externa ou persistência.
 
 FIN-010 E3: Context Home/Factory permanece enum classificatório puro. CI run38512646302 passou; não prova consumer, persistência ou conversão financeira.
+
+
+## FIN-006 — persistência inicial de contas (E3 local)
+A migration `003-accounts.sql` registra quatro campos: ID opaco BLOB16, nome TEXT, chave técnica `account_type` (`cash`, `bank_pix`, `card`, `other`) e saldo inicial em centavos INTEGER. Testes físicos confirmaram round-trip, inclusive nome Unicode com prefixo NUL e extremos i64, vazio sem seed e upgrade com audit preservado; 43 PASS em SQLite 3.53.2. As chaves não são ordinais e o inteiro não aprova regra financeira. Sem consumer/startup/UI demonstrado; FIN-005 receita continua sem prova.
+
+FIN-006 coverage focal E3 confirma gates ADR-019 na produção database.rs: 276/280 linhas e 25/25 funções; statements não medidos, sem vetor/global claim. O teste físico não demonstra app consumer, startup ou receita.

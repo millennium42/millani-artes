@@ -495,3 +495,11 @@ FIN-010 documentação integrada ao primário sobre base CAT-001 dfa8572; depend
 FIN-010 VERIFY local primário E3: fmt/clippy, Rust62+4 doctests, audit/OSV PASS; LLVM full8/8 linhas e controle3/8 rejeita90. Review primária, Gitleaks staged, validators e CI pendentes; sem commit SHA ainda. Estado histórico anterior à entrega verde abaixo.
 
 FIN-010 executor concluído (E3, passes:true): entrega CI ea1f689c22bf0321734efc86e5b848cdd61b7166, run 38512646302/job 115684416671, sucesso23/0; 62 testes ordinários+4 doctests, 1 WebView2 ignored. CI documental, nota81 e liberação ACTIVE24 ainda pendentes. FIN-005 segue sem consumidor real de receita; MVP não concluído.
+
+
+## FIN-006 — migration de contas (E3 local; integração pendente)
+[Spec](specs/FIN-006.md)/[handoff](handoffs/FIN-006.md): migration imutável 003 e executor versionado exercitados no WT. Harness SQLite físico 43/43, SQLite 3.53.2: banco vazio v1/v2/v3 e ledger `[1,2,3]`, upgrade com audit preservado, reopen/integrity e round-trip das quatro colunas, NUL inicial e extremos i64. Review E2 sem P0/P1/P2. Work item permanece `in_progress`/E3/`passes=false`; Cargo, security, validators e CI integrados pendentes. Dependências formais somente DB-005 e FIN-001; sequência operacional após FIN-010 não cria dependência.
+
+FIN-006 primário: FIN-010 agora fechado/liberado pela nota81; fmt/clippy, Cargo64+4, audit/OSV e review primária E2 passaram. FIN-006 permanece in_progress/E3/passes:false enquanto coverage focal, Gitleaks staged, validators e CI integrada aguardam execução. Evidência de SQLite cobre persistência física, não startup, consumer nem receita FIN-005.
+
+FIN-006 focal coverage primária E3 concluída: database.rs 276/280 linhas=98.57142857%,25/25 funções=100%, gates ADR-019 >=95% passam. Statements não medidos; branches N/A; sem vetor completo/global. Próximos gates: Gitleaks staged, validators e CI integrada.

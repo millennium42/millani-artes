@@ -261,3 +261,9 @@ FIN-010 local primário preservou pins/locks/approvals e 15 guards tracked; audi
 FIN-010 review primária Sol6 medium E2 concluída sem P0/P1/P2; diff focal enum/teste, sem consumidor novo. Gitleaks staged e CI final continuam pendentes. Estado histórico anterior à entrega final.
 
 FIN-010 CI final passou Gitleaks178/0, Cargo422/0 vulnerabilidades/2 E4 aprovadas, OSV542/3 aprovadas/0 fora e SAST limitado a Biome/PowerShell; backend Rust não coberto por SAST.
+
+
+## FIN-006 — constraints de migration (E3 focal)
+Migration STRICT `003-accounts.sql` limita ID a BLOB16, aceita apenas quatro chaves explícitas de account_type, exige nome SQL não vazio e saldo INTEGER; o harness executou vazio/upgrade, audit preservado, reopen e integridade. CHECK `name <> ''` não implementa trim Unicode; validação de domínio pertence a consumidor futuro. Não há evidência de startup, consumer/UI, regra de receita FIN-005 ou enforcement fora do executor exercitado. Cargo/security scans e CI integrados pendentes.
+
+FIN-006 coverage focal E3 passou os gates críticos de linhas/funções no database.rs. Não substitui security scans: Gitleaks staged, validators e CI integrada pendentes; audit/OSV locais permanecem evidência E3 registrada na spec/handoff.

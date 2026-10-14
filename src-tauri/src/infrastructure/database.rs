@@ -316,6 +316,8 @@ fn has_other_user_objects(connection: &Connection) -> Result<bool, MigrationErro
 
 pub const AUDIT_EVENT_MIGRATION_VERSION: u32 = 2;
 pub const AUDIT_EVENT_MIGRATION_SQL: &str = include_str!("../../migrations/002-audit-event.sql");
+pub const ACCOUNTS_MIGRATION_VERSION: u32 = 3;
+pub const ACCOUNTS_MIGRATION_SQL: &str = include_str!("../../migrations/003-accounts.sql");
 
 pub struct AuditEvent {
     pub event_id: [u8; 16],
