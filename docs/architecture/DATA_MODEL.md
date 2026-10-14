@@ -41,4 +41,4 @@ FIN-006 coverage focal E3 confirma gates ADR-019 na produção database.rs: 276/
 
 FIN-006 CI final 38570028370 passou testes da migration e do executor. O registro inicial de conta não demonstra consumo pela aplicação, startup, UI ou regra de receita FIN-005.
 
-CAT-002 primário: `Category::validate_name` usa `trim().is_empty()` e preserva nome/ID/estado; fmt/clippy, 67 testes Rust+4 compile-fail doctests e focal fresh formatado passaram conforme recibo E3. Categoria continua representação em memória: sem consumer, persistência ou fluxo de ativação. CI de entrega ainda pendente.
+CAT-002 executor done/E3/passes:true: CI 38616439285 no SHA `3a94855181576ed354a73831dca3e1964641e79d` passou 67 testes +4 compile-fail doctests; 1 WebView ignored; guard/category tests PASS. `validate_name` permanece validação explícita em memória. Não prova consumer, persistência, ativação, FIN-005 ou setup; publicação final pendente.
