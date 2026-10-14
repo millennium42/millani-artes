@@ -112,3 +112,5 @@ CAT-002 executor done/E3/passes:true após CI exata 38616439285/job116032611143 
 
 ## FIN-011 — validação de Context
 FIN-011 executor `done`/E3: três testes Context exercitam aceitação exata `home`/`factory` e rejeição de vazio, whitespace, uppercase, chaves espaçadas/desconhecidas e labels Casa/Fábrica; erro estático. Source CI38621842911/SHA `809626e89dabbcce158fb466f63401c0a7b02c99` passou70 testes ordinários+4 compile-fail doctests/1 WebView ignored; junction PASS, SQLite3.53.2. Não adicionar consumidor nem inferir validação fora do domínio. Publicação documental ainda pendente.
+
+FIN-007 primary E3: 2 testes novos do harness (16 invalid+1 duplicate oracle) passaram dentro de 45 SQL PASS; suite Cargo72 ordinary+4 compile-fail doctests PASS/1 WebView ignored. Staged Gitleaks, validators e source CI ainda pendentes.

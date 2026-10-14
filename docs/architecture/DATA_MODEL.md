@@ -45,3 +45,5 @@ CAT-002 executor done/E3/passes:true: CI 38616439285 no SHA `3a94855181576ed354a
 
 ## FIN-011 — conversão interna de contexto (E3 focal WT)
 `Context` continua enum classificatório `Home`/`Factory`, separado de conta (ADR-008). Conversão interna `TryFrom<&str>` aceita exatamente `home`/`factory`; não estabelece storage key, contrato externo, contexto em Account ou persistência. Executor FIN-011 `done`/E3: primary source CI 38621842911 no SHA `809626e89dabbcce158fb466f63401c0a7b02c99` passou 70 testes+4 doctests/1 WebView ignored; três testes Context/junction passaram. Sem inferir consumo financeiro. CI documental e liberação ACTIVE24 pendentes.
+
+FIN-007 primary E3 exercitou constraints da migration 003 imutável: 16 classes de linha inválida e ID duplicado; 45 SQL tests PASS no primary. Nenhuma mudança de schema ou regra de produto; source CI ainda pendente.

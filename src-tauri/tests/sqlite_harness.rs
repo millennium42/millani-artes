@@ -2693,3 +2693,214 @@ fn fin006_accounts_upgrade_preserves_v2_audit_event() {
         "ok"
     );
 }
+
+#[test]
+fn fin007_accounts_constraints_reject_invalid_rows_and_preserve_seed() {
+    use rusqlite::types::Value;
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("fin007-accounts-invalid.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+    let seed = [
+        Value::Blob(vec![0xA1; 16]),
+        Value::Text("Conta semente".into()),
+        Value::Text("bank_pix".into()),
+        Value::Integer(12345),
+    ];
+    connection
+        .execute(
+            "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+            rusqlite::params![seed[0], seed[1], seed[2], seed[3]],
+        )
+        .expect("ACCOUNT_SEED_INSERT_FAILED");
+
+    let assert_state = |connection: &Connection| {
+        assert!(connection.is_autocommit());
+        let stored: Vec<(Vec<u8>, String, String, i64)> = {
+            let mut statement = connection
+                .prepare(
+                    "SELECT id, name, account_type, initial_balance_cents FROM main.accounts ORDER BY id"
+                )
+                .unwrap();
+            statement
+                .query_map([], |row| {
+                    Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+                })
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(
+            stored,
+            [(
+                vec![0xA1; 16],
+                "Conta semente".into(),
+                "bank_pix".into(),
+                12345
+            )]
+        );
+        let versions: Vec<i64> = {
+            let mut statement = connection
+                .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(versions, [1, 2, 3]);
+        assert_eq!(schema_version(connection, 3).unwrap(), 3);
+        assert_eq!(
+            connection
+                .query_row("PRAGMA main.integrity_check", [], |row| row
+                    .get::<_, String>(0))
+                .unwrap(),
+            "ok"
+        );
+    };
+    assert_state(&connection);
+
+    let valid = [
+        Value::Blob(vec![0xB2; 16]),
+        Value::Text("Outra conta".into()),
+        Value::Text("cash".into()),
+        Value::Integer(7),
+    ];
+    let mut invalid_rows = Vec::new();
+    for column in 0..4 {
+        let mut row = valid.clone();
+        row[column] = Value::Null;
+        invalid_rows.push((format!("null-{column}"), row));
+    }
+    for id in [
+        Value::Blob(vec![0xB1; 15]),
+        Value::Blob(vec![]),
+        Value::Blob(vec![0xB1; 17]),
+        Value::Text("1234567890abcdef".into()),
+    ] {
+        let mut row = valid.clone();
+        row[0] = id;
+        invalid_rows.push(("invalid-id".into(), row));
+    }
+    let mut row = valid.clone();
+    row[1] = Value::Text(String::new());
+    invalid_rows.push(("empty-name".into(), row));
+    let mut row = valid.clone();
+    row[1] = Value::Blob(vec![0xFF]);
+    invalid_rows.push(("blob-name".into(), row));
+    for account_type in [
+        Value::Text("unknown".into()),
+        Value::Text("Cash".into()),
+        Value::Blob(b"cash".to_vec()),
+    ] {
+        let mut row = valid.clone();
+        row[2] = account_type;
+        invalid_rows.push(("invalid-account-type".into(), row));
+    }
+    for balance in [
+        Value::Real(1.5),
+        Value::Text("not-a-number".into()),
+        Value::Blob(vec![1]),
+    ] {
+        let mut row = valid.clone();
+        row[3] = balance;
+        invalid_rows.push(("invalid-balance".into(), row));
+    }
+
+    for (case, row) in invalid_rows {
+        let result = connection.execute(
+            "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+            rusqlite::params![row[0], row[1], row[2], row[3]],
+        );
+        assert!(
+            matches!(result, Err(rusqlite::Error::SqliteFailure(error, _)) if error.code == rusqlite::ErrorCode::ConstraintViolation),
+            "{case} was not rejected with ConstraintViolation"
+        );
+        assert_state(&connection);
+    }
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_state(&reopened);
+}
+
+#[test]
+fn fin007_accounts_constraints_reject_duplicate_id_and_preserve_original() {
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("fin007-accounts-duplicate.sqlite");
+    let connection = db013_migrate_v2(open_database(&path).expect("DATABASE_OPEN_FAILED"));
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+    let seed_id = [0xC1; 16];
+    connection
+        .execute(
+            "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+            rusqlite::params![seed_id.as_slice(), "Conta original", "other", -987],
+        )
+        .expect("ACCOUNT_SEED_INSERT_FAILED");
+    let assert_state = |connection: &Connection| {
+        assert!(connection.is_autocommit());
+        let stored: (Vec<u8>, String, String, i64) = connection
+            .query_row(
+                "SELECT id, name, account_type, initial_balance_cents FROM main.accounts",
+                [],
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?)),
+            )
+            .unwrap();
+        assert_eq!(
+            stored,
+            (
+                seed_id.to_vec(),
+                "Conta original".into(),
+                "other".into(),
+                -987
+            )
+        );
+        let versions: Vec<i64> = {
+            let mut statement = connection
+                .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(versions, [1, 2, 3]);
+        assert_eq!(schema_version(connection, 3).unwrap(), 3);
+        assert_eq!(
+            connection
+                .query_row("PRAGMA main.integrity_check", [], |row| row
+                    .get::<_, String>(0))
+                .unwrap(),
+            "ok"
+        );
+    };
+    assert_state(&connection);
+
+    let result = connection.execute(
+        "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+        rusqlite::params![seed_id.as_slice(), "Nome substituto", "cash", 100],
+    );
+    assert!(matches!(
+        result,
+        Err(rusqlite::Error::SqliteFailure(error, _))
+            if error.code == rusqlite::ErrorCode::ConstraintViolation
+    ));
+    assert_state(&connection);
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_state(&reopened);
+}

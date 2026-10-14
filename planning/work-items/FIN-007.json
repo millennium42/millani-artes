@@ -1,0 +1,30 @@
+{
+  "id": "FIN-007",
+  "title": "testar constraints de conta",
+  "specPath": "planning/specs/FIN-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-006"
+  ],
+  "acceptanceCriteria": [
+    "Dois testes novos do harness aplicam migrations reais v1/v2/v3 em arquivos sob TempDirectory, sem alterar migration 003 ou código/registry de produção",
+    "Matriz rejeita NULL nas quatro colunas, IDs de tipo/comprimento inválido, nome vazio, account_type fora das quatro chaves e saldo com REAL fracionário/texto não conversível/BLOB, com ConstraintViolation",
+    "Após cada rejeição preserva linha sintética válida, ledger [1,2,3], autocommit e integrity_check; reabertura confirma estado",
+    "ID duplicado é rejeitado e preserva a linha original, ledger, integridade e estado após reabrir",
+    "Os 24 casos válidos FIN-006 permanecem preservados; não inferir rejeição de coerções sem perda nem invalidar whitespace no nome",
+    "Review, segurança, checks, coverage aplicável, validators e CI no SHA integrado passam sem reduzir thresholds"
+  ],
+  "checks": [
+    "RED controlled em conexão própria: BLOB ID inválido aceito com ignore_check_constraints e oráculo falha; removido só o PRAGMA; GREEN mantém 24 casos FIN-006 e 45 SQL PASS.",
+    "Primary local: fmt PASS; clippy PASS/2.50s; Cargo72 ordinary (20lib+7bin+45SQL)+4 compile-fail PASS/1 WebView ignored; tempos compile8.86/bin.59/SQL.56/docs.11s.",
+    "Audit422/0 vuln/2 approved E4; OSV542/3 approved/0 outside; review Sol6 primary E2 sem P0/P1/P2.",
+    "Coverage crítica database.rs 276/280 linhas (98.5714%),25/25 funções PASS ADR-019; controle SQL omitido 0/280 linhas,0/25 funções rejeita95; statements não medidos, branches0/N/A, sem global claim.",
+    "Cleanup E3 verificado: 24 arquivos/46,892,573B/3 subdirs; coverage/target/scanner fixture/WebView/bytecache ausentes.",
+    "Ainda pendem staged Gitleaks, 4 validators e source CI no SHA integrado; não fechar nem liberar ACTIVE15 antes desses gates."
+  ],
+  "agentPlan": "P-TRC gpt-6-luna low documentação; P-DAT gpt-6-luna medium escreve os dois testes; P-INT/root integra, executa checks e commita; P-REV gpt-6-sol medium review read-only. Reserva ACTIVE15: 12 tracked (4 docs, ROADMAP, 5 matrizes, MIGRATIONS.md e sqlite_harness.rs), artifacts/fin007-final-note.md, artifacts/fin007-coverage com próprios perfis/relatórios, src-tauri/target/fin-007 com 11 runtime copies/manifest/outputs. Modelo/custo root não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-006 source delivery SHA914b230edc705644303a27e0b8d18296e80ef002; formal final closure SHA df59ca6903e886e3bdcfb2a0c456423aa8f3c57e, CI38572108059/job115879704947 16 success/7 skipped, note82 ref a3b2aa7c213456f7691c09ef16aff4d2e5b9bf83; 81 tuples/3 refs, four roots absent, ACTIVE18 released. Root E3 focal: private 11-crate runtime copies 23,489,344 bytes, manifest SHA25bfc80e823ec8ca595a0dcd43b4225ff3a53801b14224bbd0fccb469fe839c8; library compile .389s, harness 1.570s. RED two tests exit101/.361s: duplicate passed; invalid matrix failed as expected because 15-byte BLOB ID was accepted with controlled ignore_check_constraints. Removed only control pragma, added BLOB name case. Initial rustfmt failure .109s due two query_row closures; Luna rustfmt fixed source, preserving published 100976-byte prefix. Final source SHA30686e72734c0b797f1bb910fd6ceb9788bdb67aa2720fae4b629a2c58ce54f3, diff SHA b84fffb61a563f10ec55aeca789c00ec326ea39121b9858b308cfab253cf3f46. Root fmt PASS .092s; harness compile 1.452s, all45 SQL tests PASS (43 existing+2 new), 1.89s test/2.153s wall; exe SHA79a63dddba28ea60123d625e38c1c89d83acca38f27544f2cc3d264ba6a614b4. Sol6 medium final E2 review no P0/P1/P2. Correct matrix is 16 invalid (4 NULL+4 ID+2 name+3 type+3 balance) plus 1 duplicate; 211 added lines, no production SQL changes. Root cleanup E3 PASS: inventory 15 files/36,027,938 bytes and 1 dependency directory; manifest/all hashes, containment/no-reparse/owned processes verified; target root absent. First guard self-matched and aborted before deletion; corrected selection excluded self/ancestors and removed only task-owned executables/compilers. No overwrite/rewrite; no shared cache/output or installer touched. CAT-002 source commit3a94855181576ed354a73831dca3e1964641e79d CI pending. Primary local fmt/clippy/Cargo/audit/OSV/review/critical coverage têm recibo E3 abaixo; staged Gitleaks, quatro validators e source CI ainda pendem. SQLite STRICT permits lossless coercions; do not claim rejection of numeric text/integral REAL; whitespace name is accepted by name <> ''. FIN-007 depends formally only on FIN-006; no business rule, consumer, startup, new migration or production change. Model/cost root not registered. Primary HEAD1de607156806990a14f7be27933db4aa1fce4e92; harness SHA30686e72734c0b797f1bb910fd6ceb9788bdb67aa2720fae4b629a2c58ce54f3 (diff211 lines,16 invalid+1 duplicate). fmt PASS; clippy2.50s; Cargo72 ordinary+4 doctests PASS/1 ignored. Audit422/0/2 E4 DBcaee11f41fab07d676c0a4655a2a5dd1f94da97c/4.180s; OSV542/3/0/2.615s; review Sol6 E2 no P0/P1/P2. LLVM report76e55e628ec8d3affdc9a2d595fc46443e30777def3f6cf21b5fe4144f45de56; db276/280 lines,25/25 functions; control report9d98945c7f3b11293d58655fab40ba11b24ff60a08375b77ed5718eabfef1908 rejected95. Cleanup E3 24 files/46,892,573B/3 subdirs; roots/output absences verified. Source CI, staged Gitleaks and validators pending; status remains in_progress/E3/passes=false. Cost/model root NR."
+}
