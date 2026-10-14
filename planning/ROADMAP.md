@@ -489,3 +489,7 @@ CAT-001: integração primária iniciada após FIN-004 liberado; Category perman
 CAT-001 VERIFY local primário: fmt/clippy, 61 testes+4 compile_fail doctests/0 falhas/1 ignored, audit/OSV e LLVM full passaram; controle 3/8 linhas rejeita90. Category é declaração sem execução própria. Gitleaks staged, validators finais e CI pendentes; permanece in_progress.
 
 CAT-001 executor E3 concluído: CI38507827612 no SHA c4def86 SUCCESS23/0, release61+4 doctests/0 falhas/1 ignored; 79 executores concluídos/166 restantes. Liberação documental ACTIVE24 ainda pendente. Próxima integração operacional FIN-010; FIN-006 requer SPEC/review antes de schema; FIN-005 sem consumidor real.
+
+FIN-010 documentação integrada ao primário sobre base CAT-001 dfa8572; dependência formal ARC-002 apenas. Implementação standalone E3/review E2 não substitui verificações primárias. FIN-010 aguardando gates primários; FIN-006 permanece independente para desenvolvimento paralelo.
+
+FIN-010 VERIFY local primário E3: fmt/clippy, Rust62+4 doctests, audit/OSV PASS; LLVM full8/8 linhas e controle3/8 rejeita90. Review primária, Gitleaks staged, validators e CI pendentes; sem commit SHA ainda.

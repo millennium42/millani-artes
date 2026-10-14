@@ -2,6 +2,12 @@
 
 pub mod ports;
 
+/// A Casa/Fábrica classification for movements, separate from an account.
+pub enum Context {
+    Home,
+    Factory,
+}
+
 pub enum AccountType {
     Cash,
     BankPix,

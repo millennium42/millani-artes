@@ -157,3 +157,13 @@ fn category_preserves_identity_name_and_active_state() {
         assert_eq!(category.is_active, is_active);
     }
 }
+
+#[test]
+fn context_variants_are_distinct() {
+    use super::Context;
+
+    assert_ne!(
+        std::mem::discriminant(&Context::Home),
+        std::mem::discriminant(&Context::Factory)
+    );
+}

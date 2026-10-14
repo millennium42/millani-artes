@@ -379,3 +379,7 @@ CAT-001 adiciona somente representação de categoria em memória: ID opaco, nom
 CAT-001 local E3 confirma representação em memória id/name/is_active e preservação dos estados, não workflow nem persistência. Suíte local e coverage de módulo passaram; controle rejeita90. MVP continua parcial até Gitleaks, validators e CI.
 
 CAT-001 executor done/E3 após CI38507827612: Category e guard doctests passaram. Evidência cobre representação e compilação; não prova ativação operacional, persistência, schema ou histórico. MVP permanece parcial; FIN-005 sem consumidor real.
+
+FIN-010 inicia integração primária: Context Home/Factory é classificação de domínio, não conta. Sem consumidor, conversão externa, validação inválida, schema ou persistência; MVP financeiro permanece parcial. Formal dependency ARC-002 only.
+
+FIN-010 E3 local primário confirma enum Context Home/Factory e teste discriminant. Não prova conversão externa, consumer, contexto em Account, schema ou persistência. MVP parcial; review E2 concluída sem P0/P1/P2; Gitleaks staged, validators e CI pendentes.

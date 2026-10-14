@@ -1,0 +1,25 @@
+{
+  "id": "FIN-010",
+  "title": "definir contexto Casa/Fábrica",
+  "specPath": "planning/specs/FIN-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "Context público possui somente Home e Factory no módulo de domínio existente; comentário distingue contexto de conta",
+    "Teste compara discriminants das variantes e confirma distinção sem depender de ordinais",
+    "Nenhum campo Account.context, validação, consumer, SQL/persistência, UI/IPC, conversão externa, derive ou dependência nova",
+    "Review, security, validators e CI no SHA integrado passam sem reduzir thresholds"
+  ],
+  "checks": [
+    "RED standalone focal antes da definição; BUILD após implementação",
+    "fmt, clippy, suíte Rust, audit, OSV, Gitleaks e LLVM coverage full/controle conforme política existente",
+    "review E2, validators e CI exata após integração serial"
+  ],
+  "agentPlan": "P-INT/root integra e verifica; P-TRC gpt-6-luna low escreve os quatro documentos iniciais; P-DOM gpt-6-luna medium implementa; P-REV gpt-6-sol medium revisão read-only. Decisão humana permite paralelo entre tarefas independentes, mantendo hierarquia/dependências, máximo root+2; FIN-010 desenvolve em worktree isolado. A integração/publicação serial depois de CAT-001 e antes de FIN-006 é coordenação operacional, não dependência formal nem gate para iniciar FIN-006, que pode desenvolver em paralelo e depende de DB-005 e FIN-001. Root aplica patch focal em mod.rs para preservar CAT-001. Modelo/custo root não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Primary VERIFY E3: fmt PASS, clippy16.25s, Rust62+4 doctests PASS/1 ignored, audit422/0/2 E4, OSV542/3/0. Source mod1995f48/tests d0a47b; diff SHA3020ab269d8333774ca414ada3ed9a8681973bd5d909350aaeb68689c461bab2; CAT-001 preserved. LLVM full14 8/8 lines, control3/8 rejects90; no global claim. Cleanup8/0, four roots absent, cache kept. Primary review Sol6 medium E2 completed without P0/P1/P2; separate from E3. Gitleaks staged, validators and CI pending. Markers still base dfa8572; no new commit SHA. Executor in_progress/E3/passes:false. Reserve primary ACTIVE24; WT ACTIVE23 remains active."
+}

@@ -253,3 +253,9 @@ CAT-001 é estrutura pura sem I/O ou trust boundary. Review focal E2 sem P0/P1/P
 CAT-001 checks locais primários: review Sol6 medium E2 sem P0/P1/P2; 15 paths guard tracked intactos, cleanup de 8 artefatos e 0 processos; raízes temporárias ausentes. Gitleaks staged e CI finais ainda pendentes.
 
 CAT-001 CI final scans: Gitleaks176/0, npm120/0, Cargo422/0 vulnerabilidades/2 aprovadas, OSV542/3 aprovadas/0 fora; SAST45 limita-se a Biome/PowerShell, sem Rust backend. Guard tests passaram; sem claim de workflow/persistência.
+
+FIN-010 enum puro sem I/O/trust boundary; review E2 focal sem P0/P1/P2. Scans/Gitleaks do diff primário e CI exata pendentes; não alegar cobertura de consumers ou persistência.
+
+FIN-010 local primário preservou pins/locks/approvals e 15 guards tracked; audit422/0/2, OSV542/3/0 passaram. Review primária, Gitleaks staged e CI exata pendentes; não inferir security de consumers inexistentes.
+
+FIN-010 review primária Sol6 medium E2 concluída sem P0/P1/P2; diff focal enum/teste, sem consumidor novo. Gitleaks staged e CI final continuam pendentes.

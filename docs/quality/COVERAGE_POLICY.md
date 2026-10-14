@@ -70,3 +70,7 @@ CAT-001 declaração de dados não adiciona linhas executáveis. Métricas stand
 CAT-001 LLVM local primário full13:8/8 linhas,2/2 funções,11/11 regiões; controle10/3 filtrados:3/8 linhas,1/2 funções,gate90 rejeitado. Category sem linhas executáveis; regions não são statements, branches estáveis indisponíveis. Não confundir com coverage global FIN-004 nem inferir 100% para o campo.
 
 CAT-001 métricas de módulo primário permanecem locais E3: full13,8/8 linhas,2/2 funções; control3/8 e gate90 rejeitado. CI final não rodou LLVM Rust. Category não tem linhas executáveis; sem inferência de statements a partir de regions.
+
+FIN-010 standalone LLVM: full13, 8/8 linhas,2/2 funções; controle3/8 linhas (37,5%) rejeita90. Pertence à worktree; enum sem linhas executáveis é N/A. Coverage focal primária e global não medida nesta integração.
+
+FIN-010 LLVM primário full14:8/8 linhas,2/2 funções,11/11 regiões; controle11/3 filtrados:3/8 linhas,1/2 funções,gate90 rejeitado. Enum sem linhas próprias (N/A); branches não disponíveis, regions não são statements. Não alegar coverage global.
