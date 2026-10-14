@@ -2,7 +2,7 @@
   "id": "FIN-004",
   "title": "definir saldo inicial em centavos",
   "specPath": "planning/specs/FIN-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-001"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT/root integrador/checker/committer; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium revisão E2 concluída sem achados. Escrita serial; 0 escaladas. Modelo root e custo não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
+  "passes": true,
   "notes": "CORRECT/VERIFY local E3 sobre entrega29b1cfd8455639ccb2df2c2c41700ca9dd133662 + startup_tests SHA589cbc38659979898938bbedfb6e640d0680c100e0db85e2a389f31b3a752ec3; CI corretiva pendente. fmt/clippy PASS; suite local 60 ordinários+2 docs/1 ignored. Global instrumentado PASS: 301/312 linhas 96.474359%,30/33 funções 90.909091%,373/408 regions; gates global90 e database95 linhas/funções PASS. Statements não medidos, branches N/A, lib/ports sem linhas executáveis, binário normal não executado. Review E2 sem P0/P1/P2. Histórico de gate inicial 27/33 e probe STDOUT_NOT_STATIC preservado no handoff. Cleanup scratch/profile ausentes; cache Cargo isolado preservado. Validators, Gitleaks staged, CI exata e nota79 pendentes. Saldo sem classificação financeira E0; MVP incompleto."
 }

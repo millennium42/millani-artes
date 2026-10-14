@@ -371,3 +371,5 @@ E3 local prova armazenamento/preservação exata de seis valores i64 no campo em
 
 
 FIN-004 continua MVP-01 parcial: i64 inicial representa centavos sem cálculo; a medição global de Rust passou gates existentes de linha/função, mas não cobre regra financeira, persistência ou setup. Estado in_progress até CI corretiva e liberação.
+
+FIN-004 executor E3/done: CI38504766831 no SHA9e2068b SUCCESS23/0, testes de saldo/startup/junction passaram. MVP-01 continua parcial: saldo i64 em memória não prova receita, persistência ou consumidores; FIN-005 sem prova. Liberação documental ainda pendente.

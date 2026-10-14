@@ -62,3 +62,5 @@ LLVM direto: full12 tests,8/8 linhas,2/2 funções,11/11 regiões; controle9 pas
 
 
 FIN-004 medição global E3: produção 301/312 linhas (96.474359%),30/33 funções (90.909091%),373/408 regions; gates existentes global90 e database95 linhas/funções PASS. Statements não medidos, branches indisponíveis no LLVM estável; lib/ports sem linhas executáveis N/A, binário normal não executado. Não alegar vetor completo nem cobertura financeira.
+
+FIN-004: medição global Rust reportada é local E3. CI de entrega 9e2068b não executou coverage Rust; artifact remoto mede somente scaffold frontend. Contagens/limitações globais registradas no handoff; sem alegar vetor completo ou cobertura financeira.
