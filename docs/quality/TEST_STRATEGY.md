@@ -86,3 +86,7 @@ RED de campo ausente, cinco literais atualizados a zero e account_preserves_init
 FIN-004 CORRECT E3: startup test isolado corrigido; fmt/clippy PASS e suíte local padrão 60 ordinários+2 doctests/1 WebView2 ignored. Suíte instrumentada com smoke nativo: 61 Rust+2 doctests, 0 falhas/ignored. CI corretiva do SHA atual ainda pendente.
 
 FIN-004 CI final run38504766831/job115659617683 no SHA9e2068b: 60 testes release ordinários+2 doctests, zero falhas/1 WebView2 ignored; probe startup normal-return, saldo e junction passaram. Coverage Rust global não roda na CI; evidência global é medição local E3.
+
+CAT-001 standalone teve 13/13 testes e coverage focal 8/8 linhas, mas não confirma doctests nem suíte Cargo primária. Root integrou sources; fmt --check passou. Clippy, suite completa, doctests, audit/OSV e CI permanecem pendentes.
+
+CAT-001 primário: fmt/clippy PASS; Rust61 ordinários+4 compile_fail doctests PASS, 0 falhas/1 WebView ignored; guard doctest E0277 real. Audit422/0/2 e OSV542/3/0 PASS. CI ainda pendente.

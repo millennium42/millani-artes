@@ -1,0 +1,25 @@
+{
+  "id": "CAT-001",
+  "title": "definir categoria ativa",
+  "specPath": "planning/specs/CAT-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "Category pública contém id [u8; 16], name String e is_active bool sem derives/construtores/validação",
+    "Teste preserva ID opaco, nome Unicode próprio e estados true/false; compile_fail mantém ausência de Debug/Display",
+    "Docs e matrizes rastreiam apenas representação; sem antecipar operações CAT-002 a CAT-007",
+    "Review, security, validators e CI no SHA integrado passam sem reduzir thresholds"
+  ],
+  "checks": [
+    "RED antes da definição do tipo/campos",
+    "fmt, clippy, suíte Rust, audit, OSV, Gitleaks e LLVM coverage full/controle conforme política existente",
+    "review E2, validators e CI exata após integração serial"
+  ],
+  "agentPlan": "P-INT/root integra/checker/committer após FIN-004; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium revisão. Decisão humana permite paralelo apenas entre tarefas independentes, máx. root+2 delegados, hierarquia/deps intactas, paths/checkouts separados; CAT-001 em worktree isolado. Execução delegados conforme solicitado; modelo efetivo root e custo não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Primary VERIFY E3: source mod.rs 3b2293791e8c056df69981aed4112c4fb42c683ddb62f58fdd0cd5dca7e0a576/tests.rs d88a3bb090cd76004cc1d5552bb8d799107f991c51d5f66529c1e51ac9d5eb75. fmt PASS; clippy PASS2.56s; Rust61+4 doctests PASS/1 ignored, guard E0277 PASS; audit422/0/2 e OSV542/3/0 PASS. LLVM full13 8/8 linhas; control3/8 rejeita90. Cleanup8 files/0 processos,4 raízes ausentes; Cargo cache ignorado mantido. Worktree standalone e review são evidência focal. Gitleaks staged/validators/CI pendentes. Reserva primária ACTIVE24; WT ACTIVE23 histórica. Mantém in_progress/E3/passes:false até CI final/nota80/liberação."
+}

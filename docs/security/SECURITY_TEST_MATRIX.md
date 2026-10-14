@@ -247,3 +247,7 @@ Tipo primitivo sem I/O ou boundary exercitada; preservação exata dos seis valo
 FIN-004 startup-test correction: probe exige stdout null sem parser; cinco fixtures de privacidade existentes preservados. Review Sol6 medium E2 sem P0/P1/P2. Medição global não cobre setup, persistência ou consumidores financeiros.
 
 FIN-004 CI final: Gitleaks174 commits/0 findings; Cargo422/0 vulnerabilidades/2 aprovações E4; OSV542/3 aprovações/0 fora; npm120/0. SAST45 cobre Biome/PowerShell, não backend Rust. Nenhum desses scans prova consumidores financeiros ou setup.
+
+CAT-001 é estrutura pura sem I/O ou trust boundary. Review focal E2 sem P0/P1/P2; Gitleaks/validators/CI primários ainda pendentes. Não inferir semântica operacional de is_active.
+
+CAT-001 checks locais primários: review Sol6 medium E2 sem P0/P1/P2; 15 paths guard tracked intactos, cleanup de 8 artefatos e 0 processos; raízes temporárias ausentes. Gitleaks staged e CI finais ainda pendentes.

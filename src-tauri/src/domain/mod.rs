@@ -37,6 +37,23 @@ impl Account {
     }
 }
 
+/// Category identity and active-state metadata.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Category>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Category>();
+/// ```
+pub struct Category {
+    pub id: [u8; 16],
+    pub name: String,
+    pub is_active: bool,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

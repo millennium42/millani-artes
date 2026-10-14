@@ -138,3 +138,22 @@ fn account_preserves_initial_balance_cents() {
         assert_eq!(account.initial_balance_cents, initial_balance_cents);
     }
 }
+
+#[test]
+fn category_preserves_identity_name_and_active_state() {
+    use super::Category;
+
+    let id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255];
+    let name = "  Categoria Açúcar 🧵  ";
+    for is_active in [true, false] {
+        let category = Category {
+            id,
+            name: String::from(name),
+            is_active,
+        };
+
+        assert_eq!(category.id, id);
+        assert_eq!(category.name.as_bytes(), name.as_bytes());
+        assert_eq!(category.is_active, is_active);
+    }
+}

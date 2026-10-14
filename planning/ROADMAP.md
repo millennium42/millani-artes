@@ -483,3 +483,7 @@ FIN-004 VERIFY local E3/root sobre base3ef70f1: RED7 erros por campo ausente; fm
 FIN-004 VERIFY atualizado: startup test corrigido, instrumentação global mede 96.474359% linhas/90.909091% funções; gates existentes global90 e crítico database95 PASS. Statements/branches não medidos; sem semântica financeira. FIN-004 permanece in_progress até CI corretiva, nota79 e liberação; FIN-005 aguarda.
 
 FIN-004 executor E3 concluído na entrega 9e2068b: CI38504766831 SUCCESS23/0, suíte release60+2 doctests/0 falhas/1 WebView2 ignored; nota79 e CI documental final ainda necessárias para liberação. Próxima sequência após liberação: integração serial CAT-001; FIN-006 e FIN-010 elegíveis em paralelo; FIN-005 segue sem prova de receita real, sem nova dependência formal.
+
+CAT-001: integração primária iniciada após FIN-004 liberado; Category permanece metadado puro (ID opaco, nome, bool), sem workflow de ativação inferido. Worktree standalone/review existentes são evidência focal, não substituem os gates primários. CAT-001 in_progress até checks/CI/nota80; FIN-010 pode desenvolver em worktree paralelo, integração serial.
+
+CAT-001 VERIFY local primário: fmt/clippy, 61 testes+4 compile_fail doctests/0 falhas/1 ignored, audit/OSV e LLVM full passaram; controle 3/8 linhas rejeita90. Category é declaração sem execução própria. Gitleaks staged, validators finais e CI pendentes; permanece in_progress.
