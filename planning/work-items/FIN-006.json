@@ -2,7 +2,7 @@
   "id": "FIN-006",
   "title": "migration de contas",
   "specPath": "planning/specs/FIN-006.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-005",
     "FIN-001"
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT/root integração e verificações; P-TRC documentação; P-DAT implementação; P-REV Sol6 medium revisão técnica/final. Modelos usados: Luna6 medium código, Luna6 low documentação, Sol6 medium revisão; root/custo não registrados. Desenvolvimento independente paralelo conforme decisão humana; integração/publicação serial CAT-001, FIN-010 e FIN-006 é operacional. Dependências formais apenas DB-005 e FIN-001. FIN-005 exige consumidor real de receita, não provado aqui.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Primary focal coverage E3: 11 private rlibs/23,489,344 B, manifest f7ba7d434ce94f2499cbdf1d02d020b95dfa4819caa6f5c1362f5de55df9d2d5; rustc1.99/LLVM23.1.1, rusqlite driver verified. Own lib+harness compile1.600s; 43 PASS/0 fail/0 ignored/1.68s test/1.861s wall; two named FIN-006 PASS; SQLite3.53.2. Exact production database.rs 276/280 lines=98.57142857%,25/25 functions=100%; critical ADR-019 line/function >=95% gates pass. Instantiations67/73 and regions343/368 are separate metrics, not statements/functions; statements unmeasured, branches N/A, no full-vector/global claim. Report700c79ed30c798b2a612cda61c72c27c500d399c30344d04c140f7d9e03ff96b; objectsa078500d465fe5e14d445eb615c162da86d991a4fe4ad652b1bf9ac7f6248879; cleanup manifestb8b720e9f5e3fadcd8f385e5ad9923676db22dfd7919550cb037ebabeaee30e2, 19 owned files inventoried/0 processes/root removed. Standard Cargo cache kept; WT target15 files remains separate until archive. Current pending: Gitleaks staged, final validators, integrated CI, four primary managed roots confirmed absent; source frozen. No app consumer/startup/FIN-005 income proof. Executor remains in_progress/E3/passes:false, humanGateRequired:false; primary ACTIVE18 and WT ACTIVE16 separate."
+  "passes": true,
+  "notes": "Executor done/E3/passes:true: delivery SHA914b230edc705644303a27e0b8d18296e80ef002 CI38570028370/job115872486265 success23/0, six source markers; release64 ordinary+4 doctests PASS/1 WebView ignored; FIN-006 named tests/junction/4 guards PASS, SQLite3.53.2. Gitleaks180/0; npm120/0; Cargo422/0 vuln/2 E4; OSV542/3/0; SAST does not cover Rust backend. Local fmt/clippy and focal database.rs coverage 276/280 lines/25/25 functions with critical ADR-019 gates PASS; statements/global vector not measured. Review Sol6 medium E2 no P0/P1/P2. Native PE8536064B SHA47ee3161511e739218525789699b9b9bd9c0b4bf2434b93c31ec0fec2450969d is --no-bundle, not installer/retained; frontend artifact is scaffold only. MVP consumers/startup/UI/FIN-005 income and setup unverified. Overall release pending final-doc CI, note82 preserving 81 tuples/ancestor e62a4f371be3f51ef10bd67eb8f3bdf9bcb757a4/3 refs/Git clean/4 roots absent/root release ACTIVE18. Next operational CAT-002 integration then FIN-011; formal FIN-007 after closure."
 }

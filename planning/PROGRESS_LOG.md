@@ -1282,3 +1282,6 @@ FIN-006 | VERIFY primário | evidência E3 | checks: fmt/clippy; Cargo64+4 PASS/
 
 
 FIN-006 | VERIFY coverage focal | evidência E3 | checks: private lib+harness compile1.600s; 43 PASS/0 ignore; database.rs 276/280 lines,25/25 functions; ADR-019 critical gates PASS; cleanup19 files/0 processes | riscos: statements não medidos, branches N/A, sem global/full vector; Gitleaks staged, validators, CI e confirmação roots pendentes; sem consumer/FIN-005 receita | próximo ID: concluir os gates integrados
+
+
+FIN-006 | CI DELIVERY | evidência E3 | checks: SHA914b230edc705644303a27e0b8d18296e80ef002 run38570028370/job115872486265 success23/0; release64+4 PASS/1 WebView ignored; Gitleaks180/0, Cargo422/0 vuln/2 E4, OSV542/3/0; coverage focal crítica já PASS | riscos: statements/global não medidos; CI documental/nota82/ACTIVE18 pendentes; sem startup/consumer/FIN-005 receita | próximo ID: liberar FIN-006, depois CAT-002 integração/FIN-011

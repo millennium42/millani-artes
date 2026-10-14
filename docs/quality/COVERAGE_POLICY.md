@@ -82,3 +82,6 @@ FIN-010: métrica LLVM local do módulo permanece full8/8 linhas,2/2 funções e
 FIN-006 acrescenta SQL e registro por constantes/include_str!, sem novo código Rust executável. Os 43 testes SQLite exercitam migration, mas não substituem coverage Rust nem alteram thresholds. Métricas globais/criticas não foram reportadas no plano pré-execução; branches estáveis não medidos são N/A e LLVM regions não são statements.
 
 FIN-006 medição focal E3: database.rs 276/280 linhas=98.57142857%,25/25 funções=100%; gates críticos ADR-019 >=95% linhas/funções PASS. Instantiations67/73 e regions343/368 são métricas distintas, não statements/funções; statements não medidos. Branches estáveis 0/N/A; outros módulos instrumentados excluídos. Não alegar vetor completo nem coverage global.
+
+
+FIN-006 coverage focal local: database.rs 276/280 linhas (98.57142857%),25/25 funções (100%), gates críticos ADR-019 ≥95% PASS. Statements não medidos, branches N/A; métricas instantiations/regions distintas. CI não prova coverage global/vetor completo.

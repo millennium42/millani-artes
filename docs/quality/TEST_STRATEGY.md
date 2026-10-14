@@ -104,3 +104,6 @@ FIN-010 executor E3 concluído: delivery CI 62 testes ordinários+4 compile-fail
 O harness real executou upgrade de banco vazio v1→v2→v3, ledger `[1,2,3]`, upgrade de v2 populado preservando audit, fechamento/reabertura, integridade, ausência de seed e round-trip de quatro account_type keys, ID BLOB16, nome Unicode com U+0000 inicial e signed i64 extremos. Root reportou 43 PASS/0 falhas/0 ignorados no SQLite 3.53.2. Execução focal não substitui gates Cargo/Rust completos nem CI no SHA integrado; validação de consumer permanece futura.
 
 FIN-006 coverage focal primária E3: harness compilado em 1.600s; 43 PASS/0 ignorados, 1.68s teste, SQLite 3.53.2. LLVM focado em database.rs passou gates críticos; Gitleaks staged, validators e CI integrada ainda pendentes.
+
+
+FIN-006 entrega CI E3: 64 testes ordinários+4 compile-fail doctests PASS, 0 falhas/1 WebView ignored; dois casos FIN-006 nomeados passaram, SQLite3.53.2. Coverage Rust não é executada pela CI.

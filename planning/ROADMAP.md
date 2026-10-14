@@ -503,3 +503,6 @@ FIN-010 executor concluído (E3, passes:true): entrega CI ea1f689c22bf0321734efc
 FIN-006 primário: FIN-010 agora fechado/liberado pela nota81; fmt/clippy, Cargo64+4, audit/OSV e review primária E2 passaram. FIN-006 permanece in_progress/E3/passes:false enquanto coverage focal, Gitleaks staged, validators e CI integrada aguardam execução. Evidência de SQLite cobre persistência física, não startup, consumer nem receita FIN-005.
 
 FIN-006 focal coverage primária E3 concluída: database.rs 276/280 linhas=98.57142857%,25/25 funções=100%, gates ADR-019 >=95% passam. Statements não medidos; branches N/A; sem vetor completo/global. Próximos gates: Gitleaks staged, validators e CI integrada.
+
+
+FIN-006 executor concluído E3: CI 38570028370/job115872486265 no SHA914b230edc705644303a27e0b8d18296e80ef002, 23/0; suite64+4 PASS/1 WebView ignored. Liberação ACTIVE18 pendente de CI documental, nota82, preservação de 81 tuplas/3 refs, Git limpo e autorização root. Próximo operacional CAT-002, depois FIN-011; FIN-007 após fechamento formal.

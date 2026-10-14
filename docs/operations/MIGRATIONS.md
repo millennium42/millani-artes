@@ -49,3 +49,6 @@ Migration 002 foi aplicada no RED e é imutável; cinco testes focais, suíte Ru
 A migration imutável `003-accounts.sql` adiciona tabela STRICT com somente `id` BLOB16, `name` TEXT, `account_type` TEXT e `initial_balance_cents` INTEGER; registro e `include_str!` usam o executor versionado existente. Harness SQLite físico executou banco vazio v1→v2→v3/ledger `[1,2,3]` e upgrade v2 com audit preservado, reopen/integrity, sem seed, NUL no nome e limites signed i64; 43 PASS, SQLite 3.53.2. Não prova startup, consumer, UI, regra FIN-005 ou política comercial de sinal. Full gates e CI integrados pendentes; ver [spec](../../planning/specs/FIN-006.md) e [handoff](../../planning/handoffs/FIN-006.md).
 
 FIN-006 focal E3: database.rs 276/280 linhas (98.57142857%) e 25/25 funções (100%); gates críticos ADR-019 passam. Métricas de statements não disponíveis; sem vetor coverage completo/global. Gitleaks staged, validators e CI integrada pendentes.
+
+
+FIN-006 CI E3: migration 003 e executor passaram 43 testes SQLite dentro da suite release64+4; SQLite3.53.2. Isso prova somente a persistência exercitada pelo harness, não startup ou consumer. Liberação documental ainda pendente.
