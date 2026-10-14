@@ -1,0 +1,23 @@
+# FIN-006 — recibo de entrega e liberação condicional
+
+## Entrega
+
+O source integrado `914b230edc705644303a27e0b8d18296e80ef002` passou na CI run `38570028370`, job `115872486265`, tentativa 1 em main push: 23 passos, 0 falhas; seis marcadores de SHA conferidos. Release: 64 testes ordinários (14 lib, 7 bin, 43 SQLite) e 4 doctests compile-fail aprovados, 0 falhas e 1 teste WebView2 ignorado. Os dois testes FIN-006, junction e quatro guardas passaram; SQLite 3.53.2.
+
+A CI documental final passou no SHA `df59ca6903e886e3bdcfb2a0c456423aa8f3c57e`, run `38572108059`, job `115879704947`, tentativa 1 em main push: 16 passos, 7 ignorados, 0 falhas, 0 artifacts; quatro marcadores de source SHA conferidos. Scans: Gitleaks 181/0; npm 120/0; Cargo 422/0 vulnerabilidades/2 exceções E4 aprovadas; OSV 542/3 aprovadas/0 fora. Cargo DB1314, commit `caee11f41fab07d676c0a4655a2a5dd1f94da97c`, atualizado em 2026-10-14; inputs e aprovações inalterados, validade até `2026-10-23T00Z`. A verificação local anterior usou DB1310, commit `22908666e50caf5d9fe40e13edab0d34bddcbaef`; não houve vulnerabilidades nem exceções fora do conjunto aprovado. SAST cobre 42 Biome e 3 PowerShell, não o backend Rust.
+
+A migration versionada `003-accounts.sql` cria tabela STRICT com `id` BLOB16, `name` TEXT, `account_type` com quatro chaves técnicas e `initial_balance_cents` INTEGER signed i64. A execução pelo executor aplicou v1→v2→v3 em arquivo vazio, confirmou ledger `[1,2,3]`, e atualizou arquivo v2 preservando audit; fechamento/reabertura, integridade e 24 casos físicos passaram, incluindo prefixo U+0000 e extremos i64. `CHECK(name <> '')` rejeita vazio sem rejeitar o prefixo NUL aceito pelo domínio. Isso comprova persistência exercitada, sem demonstrar consumer, startup, UI, receita FIN-005 ou regras financeiras.
+
+## Evidência local e limites
+
+Localmente, fmt, clippy, suíte Cargo 64+4, audit e OSV passaram; review Sol6 medium E2 sem P0/P1/P2. Coverage focal de `database.rs`: 276/280 linhas (98,5714%) e 25/25 funções (100%); gates críticos ADR-019 de 95% disponíveis passaram. Instantiations 67/73 e regions 343/368 são métricas separadas; statements não medidos, branches estáveis 0/N/A. Não há vetor completo nem cobertura Rust global. Relatório `700c79ed30c798b2a612cda61c72c27c500d399c30344d04c140f7d9e03ff96b`; objetos `a078500d465fe5e14d445eb615c162da86d991a4fe4ad652b1bf9ac7f6248879`. Cleanup conferiu 19 arquivos/hash, 0 processos, containment sem reparse e raiz focal ausente; quatro raízes primárias ausentes, cache Cargo padrão preservado.
+
+O executável nativo PE32+ AMD64 com custom protocol tem 8.536.064 bytes e SHA-256 `47ee3161511e739218525789699b9b9bd9c0b4bf2434b93c31ec0fec2450969d`. O build usou `--no-bundle`; não é instalador nem artefato retido. Artifact frontend `11898361258` (21.874 bytes, digest `098c3aa7254ec2e24d360a9efceec2f30f52c97b3f1841f4f382a5485d40295e`) é scaffold de 2 arquivos/3 testes, não integração financeira.
+
+## Estado e liberação
+
+FIN-006 executor está `done`, evidência E3, `passes: true`. Há 245 IDs oficiais: 81 executores concluídos e 164 restantes. FIN-005 segue sem caminho real de receita comprovado; consumidores financeiros, setup/instalador e cobertura global Rust permanecem não demonstrados.
+
+A reserva primária ACTIVE18 só será liberada após publicação desta nota, preservando as 81 tuplas anteriores (IDs, modos e blobs) e o ancestral `e62a4f371be3f51ef10bd67eb8f3bdf9bcb757a4`, confirmação das três refs (main, `codex/fin-006-integration`, notas), Git limpo, quatro raízes temporárias ausentes e liberação explícita do root. Esses passos ainda não estão declarados como concluídos. CAT-002 é a próxima integração operacional, seguida de FIN-011; FIN-007 inicia após o fechamento completo de FIN-006. FIN-005 continua sem prova de consumidor real de receita.
+
+Modelos delegados: Luna6 medium (código), Luna6 low (documentação), Sol6 medium (revisão). Modelo/esforço efetivo do root e custo: não registrados. Nenhum job foi adicionado ao workflow nem houve rerun manual.
