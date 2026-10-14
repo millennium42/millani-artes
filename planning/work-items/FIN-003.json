@@ -2,7 +2,7 @@
   "id": "FIN-003",
   "title": "definir tipo de conta",
   "specPath": "planning/specs/FIN-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-001"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT/root integra, executa checks e commita; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium review E2 concluída sem P0/P1/P2. Escrita serial autorizada; 0 escaladas. Modelo efetivo root e custo não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY E3 local sobre working state na base b5fabc, sem SHA commit. cargo test padrão --nocapture:58 ordinários+2 doctests, 0 falhas/1 ignored; não usou include-ignored. Review E2 sem achados. Validators4 PASS: mapa360 files/28 sources, schema/evidence78, progress prefix320188B preservado, diffcheck PASS. Gitleaks staged é scan histórico pré-delta:12 paths/27917B/SHA f6e4b74e476ae274952382a7c5df6465054e1b9839448d6193e601f738971a16/0 findings; repetir após docs pendente. CI e gates finais pendentes; passesfalse. Reserva ACTIVE23."
+  "passes": true,
+  "notes": "Executor FIN-003 done/E3 após CI38487235749/job115603712741/attempt1/main push/SHA02c86f9f3fe623f809944b0f1d8636da319c94e9 SUCCESS23/0, seis sourceSha markers. Release58 ordinários+2 doctests/0 falhas/1 ignored; AccountType/name e junction PASS; SQLite41/41. Scans Gitleaks171/0, npm120/0, Cargo422/0 vuln/2 aprovados, OSV542/3 exceções/0 fora, SAST45 limitado; Rust coverage CI não executada. Só representação em memória, MVP-01 parcial e regras financeiras E0. CI documental final, nota78/preservação/liberação ACTIVE23 pendentes; FIN-004 aguarda liberação."
 }

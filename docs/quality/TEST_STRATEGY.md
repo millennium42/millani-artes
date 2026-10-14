@@ -76,3 +76,5 @@ CI de entrega FIN-002 confirmado: release 57 testes ordinários (10 lib,6 bin,41
 
 ## FIN-003 — tipo de conta
 RED E0432/E0560/E0609 confirmou enum/campo ausentes. Quatro literais existentes atualizados e account_preserves_each_account_type prova as quatro variantes sem mapping numérico. Debug suite 58 ordinários+2 doctests, 0 falhas/1 ignored; teste do tipo incluído. Comentário de Account reposicionado após enum; correção só de layout, sem rerun de suíte. CI e scanners staged pendentes.
+
+CI entrega38487235749: release58 testes ordinários+2 doctests, 0 falhas/1 ignored; account_type/name e junction tests passaram; SQLite41/41. Rust coverage não executada na CI. Smoke WebView2 ignored. O teste verifica representação do enum em memória e não persistência nem significado financeiro.

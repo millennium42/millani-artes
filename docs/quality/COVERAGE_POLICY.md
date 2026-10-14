@@ -54,3 +54,5 @@ CI de entrega 38483459997 executou testes Rust release padrão (57 ordinários+2
 
 ## FIN-003 — enum AccountType
 LLVM23.1.1 direto no módulo: full11 tests,8/8 linhas,2/2 funções,11/11 regiões; controle8 tests,3/8 linhas (37.5%) rejeitado no gate90. Reports 0e5f1e066772f403ec4d074acd543c8e2c94e8b1da0b7be70544f3996ae53e44 e 2afcc6d17b1a5306cf37e47d6e6870306fd67e792c34bfcfc143e893966ec53c. AccountType não contém statements executáveis e não recebe cobertura fictícia. Stable branch counters não medidos. Medição é local e limitada ao módulo, sem coverage global/financeira.
+
+CI entrega38487235749 passou suíte padrão release58 ordinários+2 doctests/1 ignored, mas não executou Rust coverage. Artifact coverage remoto é frontend scaffold2 arquivos/3 testes/100%; não representa AccountType nem regras financeiras. Manter LLVM local como medida focal e não inferir cobertura global.
