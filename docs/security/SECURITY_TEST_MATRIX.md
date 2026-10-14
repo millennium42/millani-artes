@@ -272,3 +272,5 @@ FIN-006 coverage focal E3 passou os gates críticos de linhas/funções no datab
 FIN-006 CI: Gitleaks180/0, Cargo422/0 vulnerabilidades/2 E4 aprovadas, OSV542/3 aprovadas/0 fora. SAST cobre Biome/PowerShell, não backend Rust. Exceções vigentes até 2026-10-23T00Z.
 
 CAT-002 executor done/E3/passes:true após CI exata 38616439285/job116032611143 SUCCESS 23/0 no SHA `3a94855181576ed354a73831dca3e1964641e79d`; Gitleaks staged 12 paths/30.621B/0; OSV542/3 aprovadas/0 fora; audit422/0 vulnerabilidades/2 aprovadas; NPM120/0 vulnerabilidades/0,700s; SAST45/4.453; review E2 sem P0/P1/P2. Reparo advisory-db e cleanup E3 preservam drafts/manifest externos (não apagar). Campos públicos exigem chamada explícita por consumers futuros; sem consumer, FIN-005, setup ou publicação final.
+
+FIN-011 é conversão pura de `&str`, sem I/O, persistência ou trust boundary externo. WT E3 testa erro estático sem eco da entrada e casos de chaves aceitas/rejeitadas; review WT E2 sem achados impeditivos. Isso não cobre consumers, SQL, UI/IPC ou parsing serializado. Gitleaks, audit/OSV, review e CI do diff primary permanecem pendentes; SAST não cobre backend Rust.

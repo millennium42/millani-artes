@@ -8,6 +8,18 @@ pub enum Context {
     Factory,
 }
 
+impl std::convert::TryFrom<&str> for Context {
+    type Error = DomainError;
+
+    fn try_from(value: &str) -> Result<Self> {
+        match value {
+            "home" => Ok(Self::Home),
+            "factory" => Ok(Self::Factory),
+            _ => Err(DomainError::InvalidInput),
+        }
+    }
+}
+
 pub enum AccountType {
     Cash,
     BankPix,

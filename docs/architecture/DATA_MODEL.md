@@ -42,3 +42,6 @@ FIN-006 coverage focal E3 confirma gates ADR-019 na produção database.rs: 276/
 FIN-006 CI final 38570028370 passou testes da migration e do executor. O registro inicial de conta não demonstra consumo pela aplicação, startup, UI ou regra de receita FIN-005.
 
 CAT-002 executor done/E3/passes:true: CI 38616439285 no SHA `3a94855181576ed354a73831dca3e1964641e79d` passou 67 testes +4 compile-fail doctests; 1 WebView ignored; guard/category tests PASS. `validate_name` permanece validação explícita em memória. Não prova consumer, persistência, ativação, FIN-005 ou setup; publicação final pendente.
+
+## FIN-011 — conversão interna de contexto (E3 focal WT)
+`Context` continua enum classificatório `Home`/`Factory`, separado de conta (ADR-008). Conversão interna exata proposta por `TryFrom<&str>` aceita somente `home` e `factory`; não estabelece storage key, contrato externo, contexto em Account ou persistência. Em WT, focal full17 PASS; revisão primary e reteste após integração permanecem pendentes. Não inferir consumo financeiro.

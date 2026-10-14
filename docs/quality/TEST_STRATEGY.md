@@ -109,3 +109,6 @@ FIN-006 coverage focal primária E3: harness compilado em 1.600s; 43 PASS/0 igno
 FIN-006 entrega CI E3: 64 testes ordinários+4 compile-fail doctests PASS, 0 falhas/1 WebView ignored; dois casos FIN-006 nomeados passaram, SQLite3.53.2. Coverage Rust não é executada pela CI.
 
 CAT-002 executor done/E3/passes:true após CI exata 38616439285/job116032611143 SUCCESS 23/0 no SHA `3a94855181576ed354a73831dca3e1964641e79d`. Focal fresh formatado: 17 PASS; release 67 testes ordinários +4 compile-fail doctests PASS/1 WebView ignored; junction guard e category tests PASS; fmt/clippy PASS. Frontend checks mediram apenas scaffold (2 arquivos/3 testes/100%). Valida contrato explícito, não consumer, persistência, ativação ou jornadas; publicação final pendente.
+
+## FIN-011 — validação de Context
+WT E3: três testes exercitam aceitação exata `home`/`factory` e rejeição de vazio, whitespace, uppercase, chaves espaçadas/desconhecidas e labels Casa/Fábrica; erro existente é estático. RED por ausência de TryFrom; full17 PASS. Primary deve repetir o foco após integração e executar suite Cargo/doctests e demais gates. Não adicionar consumidor ou inferir validação fora do domínio.

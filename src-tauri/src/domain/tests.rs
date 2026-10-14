@@ -224,3 +224,32 @@ fn category_name_accepts_unicode_without_mutation() {
         assert_eq!(category.is_active, is_active);
     }
 }
+
+#[test]
+fn context_accepts_home_key() {
+    use super::Context;
+
+    assert!(matches!(Context::try_from("home"), Ok(Context::Home)));
+}
+
+#[test]
+fn context_accepts_factory_key() {
+    use super::Context;
+
+    assert!(matches!(Context::try_from("factory"), Ok(Context::Factory)));
+}
+
+#[test]
+fn context_rejects_invalid_keys() {
+    use super::Context;
+
+    for value in [
+        "", " ", "\t\n", "HOME", "Factory", " home", "factory ", "fac tory", "other", "Casa",
+        "Fábrica",
+    ] {
+        assert!(matches!(
+            Context::try_from(value),
+            Err(DomainError::InvalidInput)
+        ));
+    }
+}
