@@ -382,4 +382,6 @@ CAT-001 executor done/E3 após CI38507827612: Category e guard doctests passaram
 
 FIN-010 inicia integração primária: Context Home/Factory é classificação de domínio, não conta. Sem consumidor, conversão externa, validação inválida, schema ou persistência; MVP financeiro permanece parcial. Formal dependency ARC-002 only.
 
-FIN-010 E3 local primário confirma enum Context Home/Factory e teste discriminant. Não prova conversão externa, consumer, contexto em Account, schema ou persistência. MVP parcial; review E2 concluída sem P0/P1/P2; Gitleaks staged, validators e CI pendentes.
+FIN-010 E3 local primário confirma enum Context Home/Factory e teste discriminant. Não prova conversão externa, consumer, contexto em Account, schema ou persistência. MVP parcial; review E2 concluída sem P0/P1/P2; Gitleaks staged, validators e CI pendentes. Estado histórico pré-CI final.
+
+FIN-010 executor done/E3/passes:true com CI delivery verde. Evidência cobre enum de contexto e gates executados, não consumidores financeiros, setup/instalador nem coverage Rust global. Liberação documental permanece pendente.

@@ -258,4 +258,6 @@ FIN-010 enum puro sem I/O/trust boundary; review E2 focal sem P0/P1/P2. Scans/Gi
 
 FIN-010 local primário preservou pins/locks/approvals e 15 guards tracked; audit422/0/2, OSV542/3/0 passaram. Review primária, Gitleaks staged e CI exata pendentes; não inferir security de consumers inexistentes.
 
-FIN-010 review primária Sol6 medium E2 concluída sem P0/P1/P2; diff focal enum/teste, sem consumidor novo. Gitleaks staged e CI final continuam pendentes.
+FIN-010 review primária Sol6 medium E2 concluída sem P0/P1/P2; diff focal enum/teste, sem consumidor novo. Gitleaks staged e CI final continuam pendentes. Estado histórico anterior à entrega final.
+
+FIN-010 CI final passou Gitleaks178/0, Cargo422/0 vulnerabilidades/2 E4 aprovadas, OSV542/3 aprovadas/0 fora e SAST limitado a Biome/PowerShell; backend Rust não coberto por SAST.

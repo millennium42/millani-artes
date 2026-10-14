@@ -95,4 +95,6 @@ CAT-001 CI38507827612: release61 ordinários+4 compile_fail doctests PASS, zero 
 
 FIN-010: suíte standalone focal 13/13 reportada na worktree, mas não constitui execução Cargo primária. Fmt, clippy, suíte completa/doctests e CI primários aguardam integração.
 
-FIN-010 primário: fmt/clippy PASS; Rust62 ordinários+4 compile_fail doctests PASS, 0 falhas/1 WebView ignored; audit422/0/2 e OSV542/3/0 PASS. Gitleaks staged, review final, validators e CI pendentes.
+FIN-010 primário: fmt/clippy PASS; Rust62 ordinários+4 compile_fail doctests PASS, 0 falhas/1 WebView ignored; audit422/0/2 e OSV542/3/0 PASS. Gitleaks staged, review final, validators e CI pendentes. Estado histórico antes da entrega CI final.
+
+FIN-010 executor E3 concluído: delivery CI 62 testes ordinários+4 compile-fail doctests PASS, 1 WebView2 ignored. Nenhuma cobertura Rust global alegada; liberação documental pendente.

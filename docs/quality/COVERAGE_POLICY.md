@@ -74,3 +74,5 @@ CAT-001 métricas de módulo primário permanecem locais E3: full13,8/8 linhas,2
 FIN-010 standalone LLVM: full13, 8/8 linhas,2/2 funções; controle3/8 linhas (37,5%) rejeita90. Pertence à worktree; enum sem linhas executáveis é N/A. Coverage focal primária e global não medida nesta integração.
 
 FIN-010 LLVM primário full14:8/8 linhas,2/2 funções,11/11 regiões; controle11/3 filtrados:3/8 linhas,1/2 funções,gate90 rejeitado. Enum sem linhas próprias (N/A); branches não disponíveis, regions não são statements. Não alegar coverage global.
+
+FIN-010: métrica LLVM local do módulo permanece full8/8 linhas,2/2 funções e controle3/8 (gate90 rejeitado); CI não executa coverage Rust. Global coverage permanece não demonstrada, sem alteração de threshold.

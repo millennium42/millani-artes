@@ -492,4 +492,6 @@ CAT-001 executor E3 concluído: CI38507827612 no SHA c4def86 SUCCESS23/0, releas
 
 FIN-010 documentação integrada ao primário sobre base CAT-001 dfa8572; dependência formal ARC-002 apenas. Implementação standalone E3/review E2 não substitui verificações primárias. FIN-010 aguardando gates primários; FIN-006 permanece independente para desenvolvimento paralelo.
 
-FIN-010 VERIFY local primário E3: fmt/clippy, Rust62+4 doctests, audit/OSV PASS; LLVM full8/8 linhas e controle3/8 rejeita90. Review primária, Gitleaks staged, validators e CI pendentes; sem commit SHA ainda.
+FIN-010 VERIFY local primário E3: fmt/clippy, Rust62+4 doctests, audit/OSV PASS; LLVM full8/8 linhas e controle3/8 rejeita90. Review primária, Gitleaks staged, validators e CI pendentes; sem commit SHA ainda. Estado histórico anterior à entrega verde abaixo.
+
+FIN-010 executor concluído (E3, passes:true): entrega CI ea1f689c22bf0321734efc86e5b848cdd61b7166, run 38512646302/job 115684416671, sucesso23/0; 62 testes ordinários+4 doctests, 1 WebView2 ignored. CI documental, nota81 e liberação ACTIVE24 ainda pendentes. FIN-005 segue sem consumidor real de receita; MVP não concluído.

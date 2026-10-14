@@ -2,7 +2,7 @@
   "id": "FIN-010",
   "title": "definir contexto Casa/Fábrica",
   "specPath": "planning/specs/FIN-010.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-002"
   ],
@@ -17,9 +17,9 @@
     "fmt, clippy, suíte Rust, audit, OSV, Gitleaks e LLVM coverage full/controle conforme política existente",
     "review E2, validators e CI exata após integração serial"
   ],
-  "agentPlan": "P-INT/root integra e verifica; P-TRC gpt-6-luna low escreve os quatro documentos iniciais; P-DOM gpt-6-luna medium implementa; P-REV gpt-6-sol medium revisão read-only. Decisão humana permite paralelo entre tarefas independentes, mantendo hierarquia/dependências, máximo root+2; FIN-010 desenvolve em worktree isolado. A integração/publicação serial depois de CAT-001 e antes de FIN-006 é coordenação operacional, não dependência formal nem gate para iniciar FIN-006, que pode desenvolver em paralelo e depende de DB-005 e FIN-001. Root aplica patch focal em mod.rs para preservar CAT-001. Modelo/custo root não registrados.",
+  "agentPlan": "P-INT/root integrou e verificou; P-TRC gpt-6-luna low documentação; P-DOM gpt-6-luna medium implementação; P-REV gpt-6-sol medium revisão read-only. Modelos delegados usados: Luna6 medium código, Luna6 low documentação, Sol6 medium revisão; modelo/esforço root e custo não registrados. Decisão humana permite paralelo entre tarefas independentes, com hierarquia/dependências e máximo root+2. FIN-010 integrou serial após CAT-001; FIN-006 depende formalmente de DB-005 e FIN-001, não de FIN-010. Próximo serial após liberação: FIN-006; CAT-002 pode desenvolver paralelo sob CAT-001. FIN-005 não comprovado sem consumidor real de receita.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Primary VERIFY E3: fmt PASS, clippy16.25s, Rust62+4 doctests PASS/1 ignored, audit422/0/2 E4, OSV542/3/0. Source mod1995f48/tests d0a47b; diff SHA3020ab269d8333774ca414ada3ed9a8681973bd5d909350aaeb68689c461bab2; CAT-001 preserved. LLVM full14 8/8 lines, control3/8 rejects90; no global claim. Cleanup8/0, four roots absent, cache kept. Primary review Sol6 medium E2 completed without P0/P1/P2; separate from E3. Gitleaks staged, validators and CI pending. Markers still base dfa8572; no new commit SHA. Executor in_progress/E3/passes:false. Reserve primary ACTIVE24; WT ACTIVE23 remains active."
+  "passes": true,
+  "notes": "Executor done/E3: delivery ea1f689c22bf0321734efc86e5b848cdd61b7166, CI38512646302/job115684416671 success23/0, six source SHA markers verified; release62 ordinary+4 compile-fail doctests PASS/1 WebView ignored; Gitleaks178/0, npm120/0, Cargo422/0 vuln/2 E4, OSV542/3/0; local fmt/clippy/LLVM and Sol6 medium review E2 no P0/P1/P2. Local LLVM full8/8 lines, control3/8 rejects90; CI does not measure Rust coverage. No global coverage claim. MVP partial: financial consumers, setup/installer and complete Rust global coverage unverified; FIN-005 lacks real income consumer. Overall release pending final-doc CI, note81 preserving 80 tuples/ancestor86b24911e7913a19d904022eca1c66f25e836a7b, three refs, clean Git, temporary roots absent and explicit ACTIVE24 release. FIN-006 next serial; CAT-002 parallel under CAT-001."
 }
