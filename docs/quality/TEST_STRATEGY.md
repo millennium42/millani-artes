@@ -90,3 +90,5 @@ FIN-004 CI final run38504766831/job115659617683 no SHA9e2068b: 60 testes release
 CAT-001 standalone teve 13/13 testes e coverage focal 8/8 linhas, mas não confirma doctests nem suíte Cargo primária. Root integrou sources; fmt --check passou. Clippy, suite completa, doctests, audit/OSV e CI permanecem pendentes.
 
 CAT-001 primário: fmt/clippy PASS; Rust61 ordinários+4 compile_fail doctests PASS, 0 falhas/1 WebView ignored; guard doctest E0277 real. Audit422/0/2 e OSV542/3/0 PASS. CI ainda pendente.
+
+CAT-001 CI38507827612: release61 ordinários+4 compile_fail doctests PASS, zero falhas/1 WebView ignored; Category named test, quatro guard doctests e junction passaram. SQLite3.53.2. Coverage Rust foi medida localmente, não executada na CI.

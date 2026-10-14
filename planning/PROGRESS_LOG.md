@@ -1257,3 +1257,5 @@ CAT-001 | CORRECT docs | evidência E2 | checks: correção documental append-on
 CAT-001 | integração primária SPEC/RECON | evidência E3 focal; primário E2 | checks: fontes copiadas/hash congelado, review focal sem achados, standalone13/13; fmt --check primário PASS; clippy/Cargo/audits/CI pendentes | riscos: bool é representação, não workflow; nenhuma prova de persistência/schema | próximo ID: completar gates primários e CI, nota80 preservando79 tuplas
 
 CAT-001 | VERIFY local primário | evidência E3 | checks: fmt/clippy PASS; Rust61+4 doctests/0 falhas/1 ignored; audit422/0/2, OSV542/3/0; LLVM full13/13, controle3/8 rejeita90; cleanup8/0 | riscos: Category é metadado, sem workflow/persistência; Gitleaks staged/validators/CI pendentes | próximo ID: fechar CI e nota80
+
+CAT-001 | CI entrega E3 concluída | evidência E3 | checks: CI38507827612/job115669284795 SHA c4def86 SUCCESS23/0; release61+4 PASS/1 ignored; scans/validators finais PASS; LLVM coverage somente local | riscos: ACTIVE24 aguarda CI documental/nota80/refs/liberação; is_active é metadado, sem workflow | próximo ID: FIN-010 integração após reserva

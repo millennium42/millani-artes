@@ -68,3 +68,5 @@ FIN-004: medição global Rust reportada é local E3. CI de entrega 9e2068b não
 CAT-001 declaração de dados não adiciona linhas executáveis. Métricas standalone: full8/8 linhas/2/2 funções; controle3/8 linhas e gate90 rejeitado. Evidência pertence à worktree; medir gates primários sem inferir statements de regions ou atribuir coverage artificial ao campo.
 
 CAT-001 LLVM local primário full13:8/8 linhas,2/2 funções,11/11 regiões; controle10/3 filtrados:3/8 linhas,1/2 funções,gate90 rejeitado. Category sem linhas executáveis; regions não são statements, branches estáveis indisponíveis. Não confundir com coverage global FIN-004 nem inferir 100% para o campo.
+
+CAT-001 métricas de módulo primário permanecem locais E3: full13,8/8 linhas,2/2 funções; control3/8 e gate90 rejeitado. CI final não rodou LLVM Rust. Category não tem linhas executáveis; sem inferência de statements a partir de regions.

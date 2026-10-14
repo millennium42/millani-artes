@@ -251,3 +251,5 @@ FIN-004 CI final: Gitleaks174 commits/0 findings; Cargo422/0 vulnerabilidades/2 
 CAT-001 é estrutura pura sem I/O ou trust boundary. Review focal E2 sem P0/P1/P2; Gitleaks/validators/CI primários ainda pendentes. Não inferir semântica operacional de is_active.
 
 CAT-001 checks locais primários: review Sol6 medium E2 sem P0/P1/P2; 15 paths guard tracked intactos, cleanup de 8 artefatos e 0 processos; raízes temporárias ausentes. Gitleaks staged e CI finais ainda pendentes.
+
+CAT-001 CI final scans: Gitleaks176/0, npm120/0, Cargo422/0 vulnerabilidades/2 aprovadas, OSV542/3 aprovadas/0 fora; SAST45 limita-se a Biome/PowerShell, sem Rust backend. Guard tests passaram; sem claim de workflow/persistência.

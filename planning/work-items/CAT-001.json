@@ -2,7 +2,7 @@
   "id": "CAT-001",
   "title": "definir categoria ativa",
   "specPath": "planning/specs/CAT-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-002"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT/root integra/checker/committer após FIN-004; P-DOM gpt-6-luna medium código; P-TRC gpt-6-luna low docs; P-REV gpt-6-sol medium revisão. Decisão humana permite paralelo apenas entre tarefas independentes, máx. root+2 delegados, hierarquia/deps intactas, paths/checkouts separados; CAT-001 em worktree isolado. Execução delegados conforme solicitado; modelo efetivo root e custo não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Primary VERIFY E3: source mod.rs 3b2293791e8c056df69981aed4112c4fb42c683ddb62f58fdd0cd5dca7e0a576/tests.rs d88a3bb090cd76004cc1d5552bb8d799107f991c51d5f66529c1e51ac9d5eb75. fmt PASS; clippy PASS2.56s; Rust61+4 doctests PASS/1 ignored, guard E0277 PASS; audit422/0/2 e OSV542/3/0 PASS. LLVM full13 8/8 linhas; control3/8 rejeita90. Cleanup8 files/0 processos,4 raízes ausentes; Cargo cache ignorado mantido. Worktree standalone e review são evidência focal. Gitleaks staged/validators/CI pendentes. Reserva primária ACTIVE24; WT ACTIVE23 histórica. Mantém in_progress/E3/passes:false até CI final/nota80/liberação."
+  "passes": true,
+  "notes": "Executor done/E3: CI38507827612/job115669284795 no SHA c4def86b77dfa62589c6860f9cf9d72cdd0eff06 SUCCESS23/0; release61+4 doctests PASS/1 ignored, Category/guard doctests/junction PASS. Scans e validators registrados no handoff. Coverage LLVM primária local; CI não a executa. MVP parcial: is_active é metadado; sem workflow, schema ou persistência. 79 done/166 pendentes de245. ACTIVE24 liberação ainda depende CI documental/nota80/79 tuplas/3 refs/Git limpo/root. Worktree histórica arquivada. Próximo FIN-010 após liberação; FIN-006 requer SPEC/review; FIN-005 sem consumidor real. Modelo/custo root NR."
 }

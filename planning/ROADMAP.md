@@ -487,3 +487,5 @@ FIN-004 executor E3 concluído na entrega 9e2068b: CI38504766831 SUCCESS23/0, su
 CAT-001: integração primária iniciada após FIN-004 liberado; Category permanece metadado puro (ID opaco, nome, bool), sem workflow de ativação inferido. Worktree standalone/review existentes são evidência focal, não substituem os gates primários. CAT-001 in_progress até checks/CI/nota80; FIN-010 pode desenvolver em worktree paralelo, integração serial.
 
 CAT-001 VERIFY local primário: fmt/clippy, 61 testes+4 compile_fail doctests/0 falhas/1 ignored, audit/OSV e LLVM full passaram; controle 3/8 linhas rejeita90. Category é declaração sem execução própria. Gitleaks staged, validators finais e CI pendentes; permanece in_progress.
+
+CAT-001 executor E3 concluído: CI38507827612 no SHA c4def86 SUCCESS23/0, release61+4 doctests/0 falhas/1 ignored; 79 executores concluídos/166 restantes. Liberação documental ACTIVE24 ainda pendente. Próxima integração operacional FIN-010; FIN-006 requer SPEC/review antes de schema; FIN-005 sem consumidor real.

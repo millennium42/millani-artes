@@ -377,3 +377,5 @@ FIN-004 executor E3/done: CI38504766831 no SHA9e2068b SUCCESS23/0, testes de sal
 CAT-001 adiciona somente representação de categoria em memória: ID opaco, nome e estado booleano. Não prova criação, ativação, desativação, histórico, persistência ou schema. MVP permanece parcial; executor in_progress/E3 até verificação e CI primárias.
 
 CAT-001 local E3 confirma representação em memória id/name/is_active e preservação dos estados, não workflow nem persistência. Suíte local e coverage de módulo passaram; controle rejeita90. MVP continua parcial até Gitleaks, validators e CI.
+
+CAT-001 executor done/E3 após CI38507827612: Category e guard doctests passaram. Evidência cobre representação e compilação; não prova ativação operacional, persistência, schema ou histórico. MVP permanece parcial; FIN-005 sem consumidor real.
