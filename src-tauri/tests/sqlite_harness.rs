@@ -3265,3 +3265,390 @@ mod fin008_account_creation_tests {
         }
     }
 }
+
+fn assert_cat003_categories_schema(connection: &Connection) {
+    let columns: Vec<(String, String, i64, i64, i64)> = {
+        let mut statement = connection
+            .prepare("PRAGMA main.table_xinfo('categories')")
+            .unwrap();
+        statement
+            .query_map([], |row| {
+                Ok((
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(
+        columns,
+        [
+            ("id".into(), "BLOB".into(), 1, 1, 0),
+            ("name".into(), "TEXT".into(), 1, 0, 0),
+            ("is_active".into(), "INTEGER".into(), 1, 0, 0),
+        ]
+    );
+    assert_eq!(connection.query_row(
+        "SELECT strict FROM pragma_table_list WHERE schema = 'main' AND name = 'categories'", [], |row| row.get::<_, i64>(0),
+    ).unwrap(), 1);
+}
+
+#[test]
+fn cat003_categories_migrate_empty_database_and_enforce_constraints() {
+    use millani_artes::database::{CATEGORIES_MIGRATION_SQL, CATEGORIES_MIGRATION_VERSION};
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("cat003-empty.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let connection =
+        execute_versioned_migration(connection, 1, "").expect("BASELINE_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("AUDIT_EVENT_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        CATEGORIES_MIGRATION_VERSION,
+        CATEGORIES_MIGRATION_SQL,
+    )
+    .expect("CATEGORIES_MIGRATION_FAILED");
+
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_version(&connection, 4).unwrap(), 4);
+    let versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(versions, [1, 2, 3, 4]);
+    assert_cat003_categories_schema(&connection);
+
+    let id = [0xA5; 16];
+    let unicode_nul = "\0Ateli\u{ea} \u{1f9f5}";
+    connection
+        .execute(
+            "INSERT INTO main.categories (id, name, is_active) VALUES (?1, ?2, ?3)",
+            rusqlite::params![id.as_slice(), unicode_nul, 0],
+        )
+        .unwrap();
+    let second_id = [0x5A; 16];
+    connection
+        .execute(
+            "INSERT INTO main.categories (id, name, is_active) VALUES (?1, ?2, ?3)",
+            rusqlite::params![second_id.as_slice(), "\u{7d19}\u{30fb}\u{7d75}\u{5177}", 1],
+        )
+        .unwrap();
+    let expected: Vec<(Vec<u8>, String, i64)> = vec![
+        (id.to_vec(), unicode_nul.to_owned(), 0),
+        (
+            second_id.to_vec(),
+            "\u{7d19}\u{30fb}\u{7d75}\u{5177}".to_owned(),
+            1,
+        ),
+    ];
+    let read_rows = |connection: &Connection| -> Vec<(Vec<u8>, String, i64)> {
+        let mut statement = connection
+            .prepare("SELECT id, name, is_active FROM main.categories ORDER BY id")
+            .unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    let expected_sorted = {
+        let mut rows = expected.clone();
+        rows.sort_by(|a, b| a.0.cmp(&b.0));
+        rows
+    };
+    assert_eq!(read_rows(&connection), expected_sorted);
+
+    for invalid in [
+        "INSERT INTO main.categories VALUES (NULL, 'x', 1)",
+        "INSERT INTO main.categories VALUES ('not-blob-16-bytes', 'x', 1)",
+        "INSERT INTO main.categories VALUES (x'', 'x', 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(15), 'x', 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(17), 'x', 1)",
+        "INSERT INTO main.categories VALUES (x'a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5', 'duplicate', 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), NULL, 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), '', 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), x'78', 1)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', NULL)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', 2)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', -1)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', 1.5)",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', 'active')",
+        "INSERT INTO main.categories VALUES (zeroblob(16), 'x', x'31')",
+    ] {
+        let error = connection
+            .execute(invalid, [])
+            .expect_err("INVALID_CATEGORY_ACCEPTED");
+        assert!(
+            matches!(error, rusqlite::Error::SqliteFailure(ref code, _) if code.code == rusqlite::ErrorCode::ConstraintViolation),
+            "unexpected error: {error}"
+        );
+        assert!(connection.is_autocommit());
+        assert_eq!(read_rows(&connection), expected_sorted);
+        let versions: Vec<i64> = {
+            let mut statement = connection
+                .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<_>>()
+                .unwrap()
+        };
+        assert_eq!(versions, [1, 2, 3, 4]);
+        assert_eq!(
+            connection
+                .query_row("PRAGMA main.integrity_check", [], |row| row
+                    .get::<_, String>(0))
+                .unwrap(),
+            "ok"
+        );
+    }
+    connection
+        .execute(
+            "INSERT INTO main.categories VALUES (zeroblob(16), 'numeric text', '1')",
+            [],
+        )
+        .expect("STRICT_LOSSLESS_NUMERIC_TEXT_REJECTED");
+    connection
+        .execute(
+            "DELETE FROM main.categories WHERE name = 'numeric text'",
+            [],
+        )
+        .unwrap();
+    let integrity: String = connection
+        .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
+        .unwrap();
+    assert_eq!(integrity, "ok");
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(schema_version(&reopened, 4).unwrap(), 4);
+    assert!(reopened.is_autocommit());
+    assert_cat003_categories_schema(&reopened);
+    assert_eq!(read_rows(&reopened), expected_sorted);
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}
+
+#[test]
+fn cat003_categories_upgrade_v3_preserves_accounts_and_audit_event() {
+    use millani_artes::database::{
+        append_audit_event, execute_write_transaction, AuditEventError, CATEGORIES_MIGRATION_SQL,
+        CATEGORIES_MIGRATION_VERSION,
+    };
+
+    let directory = common::TempDirectory::new();
+    let path = directory.path().join("cat003-upgrade.sqlite");
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    let connection =
+        execute_versioned_migration(connection, 1, "").expect("BASELINE_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_VERSION,
+        millani_artes::database::AUDIT_EVENT_MIGRATION_SQL,
+    )
+    .expect("AUDIT_EVENT_MIGRATION_FAILED");
+    let connection = execute_versioned_migration(
+        connection,
+        millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+        millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+    )
+    .expect("ACCOUNTS_MIGRATION_FAILED");
+    let account = ([0x31; 16], "Conta de teste", "bank_pix", 987654_i64);
+    connection.execute(
+        "INSERT INTO main.accounts (id, name, account_type, initial_balance_cents) VALUES (?1, ?2, ?3, ?4)",
+        rusqlite::params![account.0.as_slice(), account.1, account.2, account.3],
+    ).unwrap();
+    let event = db013_event(
+        [0x41; 16],
+        1_791_234_567_890,
+        "category_schema_upgrade",
+        "account",
+        account.0,
+    );
+    let (connection, ()) = execute_write_transaction(connection, |transaction| {
+        append_audit_event(transaction, &event)?;
+        Ok::<(), AuditEventError>(())
+    })
+    .expect("AUDIT_EVENT_INSERT_FAILED");
+    assert_eq!(schema_version(&connection, 4).unwrap(), 3);
+    let account_snapshot: (Vec<u8>, String, String, i64) = connection
+        .query_row(
+            "SELECT id, name, account_type, initial_balance_cents FROM main.accounts",
+            [],
+            |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?)),
+        )
+        .unwrap();
+    let audit_snapshot: (Vec<u8>, i64, String, String, Vec<u8>) = connection
+        .query_row(
+            "SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event",
+            [],
+            |row| {
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                ))
+            },
+        )
+        .unwrap();
+    let previous_schema: Vec<(String, String, String)> = {
+        let mut statement = connection.prepare("SELECT type, name, sql FROM main.sqlite_schema WHERE name NOT GLOB 'sqlite_*' ORDER BY name").unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+
+    let connection = execute_versioned_migration(
+        connection,
+        CATEGORIES_MIGRATION_VERSION,
+        CATEGORIES_MIGRATION_SQL,
+    )
+    .expect("CATEGORIES_MIGRATION_FAILED");
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_version(&connection, 4).unwrap(), 4);
+    assert_cat003_categories_schema(&connection);
+    assert_eq!(
+        connection
+            .query_row(
+                "SELECT id, name, account_type, initial_balance_cents FROM main.accounts",
+                [],
+                |row| Ok((
+                    row.get::<_, Vec<u8>>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                    row.get::<_, i64>(3)?
+                ))
+            )
+            .unwrap(),
+        account_snapshot
+    );
+    assert_eq!(connection.query_row("SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event", [],
+        |row| Ok((row.get::<_, Vec<u8>>(0)?, row.get::<_, i64>(1)?, row.get::<_, String>(2)?, row.get::<_, String>(3)?, row.get::<_, Vec<u8>>(4)?))).unwrap(), audit_snapshot);
+    let versions: Vec<i64> = {
+        let mut statement = connection
+            .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get(0))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(versions, [1, 2, 3, 4]);
+    let after_previous_schema: Vec<(String, String, String)> = {
+        let mut statement = connection.prepare("SELECT type, name, sql FROM main.sqlite_schema WHERE name NOT GLOB 'sqlite_*' AND name != 'categories' ORDER BY name").unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(after_previous_schema, previous_schema);
+    assert_eq!(
+        connection
+            .query_row("SELECT count(*) FROM main.accounts", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(
+        connection
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(
+        connection
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+    drop(connection);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert!(reopened.is_autocommit());
+    assert_eq!(schema_version(&reopened, 4).unwrap(), 4);
+    assert_cat003_categories_schema(&reopened);
+    assert_eq!(
+        reopened
+            .query_row(
+                "SELECT id, name, account_type, initial_balance_cents FROM main.accounts",
+                [],
+                |row| Ok((
+                    row.get::<_, Vec<u8>>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                    row.get::<_, i64>(3)?
+                ))
+            )
+            .unwrap(),
+        account_snapshot
+    );
+    assert_eq!(reopened.query_row("SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event", [],
+        |row| Ok((row.get::<_, Vec<u8>>(0)?, row.get::<_, i64>(1)?, row.get::<_, String>(2)?, row.get::<_, String>(3)?, row.get::<_, Vec<u8>>(4)?))).unwrap(), audit_snapshot);
+    let reopened_previous_schema: Vec<(String, String, String)> = {
+        let mut statement = reopened.prepare("SELECT type, name, sql FROM main.sqlite_schema WHERE name NOT GLOB 'sqlite_*' AND name != 'categories' ORDER BY name").unwrap();
+        statement
+            .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+            .unwrap()
+            .collect::<rusqlite::Result<_>>()
+            .unwrap()
+    };
+    assert_eq!(reopened_previous_schema, previous_schema);
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.accounts", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(
+        reopened
+            .query_row("SELECT count(*) FROM main.audit_event", [], |row| row
+                .get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    assert_eq!(
+        reopened
+            .query_row("PRAGMA main.integrity_check", [], |row| row
+                .get::<_, String>(0))
+            .unwrap(),
+        "ok"
+    );
+}

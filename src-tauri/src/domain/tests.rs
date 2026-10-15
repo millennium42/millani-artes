@@ -253,3 +253,90 @@ fn context_rejects_invalid_keys() {
         ));
     }
 }
+
+#[test]
+fn movement_preserves_identity_amount_and_context_metadata() {
+    use super::{Context, Movement, MovementKind};
+
+    let id = [0; 16];
+    let account_id = [0xA5; 16];
+    let source_account_id = [0x3C; 16];
+    let destination_account_id = [0xC3; 16];
+    for amount_cents in [i64::MIN, -1, 0, 1, 1_000, i64::MAX] {
+        for context_index in 0..2 {
+            let expected_context = match context_index {
+                0 => std::mem::discriminant(&Context::Home),
+                _ => std::mem::discriminant(&Context::Factory),
+            };
+            for kind_index in 0..3 {
+                let kind = match kind_index {
+                    0 => MovementKind::Entry { account_id },
+                    1 => MovementKind::Exit { account_id },
+                    _ => MovementKind::Transfer {
+                        source_account_id,
+                        destination_account_id,
+                    },
+                };
+                let movement = Movement {
+                    id,
+                    kind,
+                    amount_cents,
+                    context: match context_index {
+                        0 => Context::Home,
+                        _ => Context::Factory,
+                    },
+                };
+
+                assert_eq!(movement.id, id);
+                assert_eq!(movement.amount_cents, amount_cents);
+                assert_eq!(std::mem::discriminant(&movement.context), expected_context);
+            }
+        }
+    }
+}
+
+#[test]
+fn movement_kind_keeps_account_association_for_each_operation() {
+    use super::{Context, Movement, MovementKind};
+
+    let account_id = [0xA5; 16];
+    let source_account_id = [0x3C; 16];
+    let destination_account_id = [0xC3; 16];
+    let entry = Movement {
+        id: [0; 16],
+        kind: MovementKind::Entry { account_id },
+        amount_cents: 0,
+        context: Context::Home,
+    };
+    assert!(matches!(entry.kind, MovementKind::Entry { account_id: id } if id == account_id));
+
+    let exit = Movement {
+        id: [0; 16],
+        kind: MovementKind::Exit { account_id },
+        amount_cents: 0,
+        context: Context::Factory,
+    };
+    assert!(matches!(exit.kind, MovementKind::Exit { account_id: id } if id == account_id));
+
+    for (source, destination) in [
+        (source_account_id, destination_account_id),
+        (source_account_id, source_account_id),
+    ] {
+        let transfer = Movement {
+            id: [0; 16],
+            kind: MovementKind::Transfer {
+                source_account_id: source,
+                destination_account_id: destination,
+            },
+            amount_cents: 0,
+            context: Context::Home,
+        };
+        assert!(matches!(
+            transfer.kind,
+            MovementKind::Transfer {
+                source_account_id: actual_source,
+                destination_account_id: actual_destination,
+            } if actual_source == source && actual_destination == destination
+        ));
+    }
+}

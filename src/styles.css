@@ -8,9 +8,17 @@ body {
   margin: 0;
 }
 
+header {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #d8d4cc;
+  font-weight: 600;
+}
+
 main {
   max-width: 40rem;
-  margin: 3rem auto;
+  margin: 2rem auto;
   padding: 1.5rem;
 }
 

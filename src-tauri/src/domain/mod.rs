@@ -82,6 +82,48 @@ impl Category {
     }
 }
 
+/// The account association carried by a movement.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::MovementKind>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::MovementKind>();
+/// ```
+pub enum MovementKind {
+    Entry {
+        account_id: [u8; 16],
+    },
+    Exit {
+        account_id: [u8; 16],
+    },
+    Transfer {
+        source_account_id: [u8; 16],
+        destination_account_id: [u8; 16],
+    },
+}
+
+/// Identity, kind, raw amount in cents, and context for a movement.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Movement>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Movement>();
+/// ```
+pub struct Movement {
+    pub id: [u8; 16],
+    pub kind: MovementKind,
+    pub amount_cents: i64,
+    pub context: Context,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

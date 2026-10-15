@@ -1,0 +1,27 @@
+{
+  "id": "CAT-003",
+  "title": "migration versionada de categorias",
+  "specPath": "planning/specs/CAT-003.md",
+  "status": "in_progress",
+  "dependencies": ["DB-005", "CAT-001"],
+  "acceptanceCriteria": [
+    "Criar migration aditiva e imutável src-tauri/migrations/004-categories.sql v4; não alterar 001–003 nem o executor.",
+    "main.categories STRICT tem somente id BLOB NOT NULL PRIMARY KEY CHECK(typeof(id)='blob' AND length(id)=16), name TEXT NOT NULL CHECK(name<>''), is_active INTEGER NOT NULL CHECK(is_active IN (0,1)); sem default/seed/índice extra/uniqueness/FK.",
+    "Registrar CATEGORIES_MIGRATION_VERSION e CATEGORIES_MIGRATION_SQL; executor existente aplica v1→v4 sem alteração.",
+    "Exatamente dois testes: banco vazio e round-trip de BLOB16/NUL Unicode/estados 0 e 1 mais constraints; upgrade v3 populated preserva account e audit_event e confere schema/ledger/autocommit/integrity/reopen.",
+    "Constraint matrix cobre NULL/tipo/IDs 0,15,17/duplicado, name NULL/vazio/BLOB, is_active NULL/2/-1/1.5/texto inválido/BLOB; falhas preservam seed/ledger; coerção textual numérica lossless aceita por STRICT não deve ser rejeitada.",
+    "RED real antes de registrar SQL/constants (diagnóstico previsto E0425; observar e registrar o código real); nenhum stub, falha artificial ou DDL em DB de usuário. Review Sol6 medium aprova proposta antes de DDL.",
+    "Fmt/clippy/tests/doctests/release harness/audit/OSV/security/validators/review/CI exata passam sem reduzir thresholds; sem consumer, CRUD, UI, histórico ou regra financeira inferidos."
+  ],
+  "checks": [
+    "Review pré-DDL Sol6 medium; não criar/aplicar SQL antes do parecer.",
+    "RED dos dois testes antes de registrar SQL/constants; registrar o diagnóstico do compilador observado (E0432 unresolved imports).",
+    "Provas em arquivo vazio→v4, constraints e upgrade populado v3→v4 com reopen/integrity/autocommit.",
+    "Fmt, clippy, Cargo/doctests, release SQLite harness, wrappers audit/OSV, security scan, validators, review E2 e CI exata de entrega/final."
+  ],
+  "agentPlan": "P-INT root integra/executa/commita; P-DAT Luna6 medium implementa após aprovação pré-DDL; P-TRC Luna6 low documenta; P-REV Sol6 medium review read-only. Integração operacional após FIN-007/FIN-008; dependências formais apenas DB-005 e CAT-001. Modelo/custo root NR.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Migration v4 e duas constantes implementadas sem alterar executor nem migrations 001–003. RED real E0432 (unresolved imports para duas constantes ausentes), exit 1/0.664s, sem exe; E0425 era o diagnóstico previsto, não observado. GREEN focal: 45/45 harness tests (43 anteriores + 2 CAT-003), 0 falhas/ignored; biblioteca 0.272s, harness 1.383s; SQL, upgrade v3 populado, 15 inserções inválidas, ledger, integridade, autocommit, reopen e schema verificados. Review final P-REV Sol6 medium em database.rs:2697 e sqlite_harness.rs:2730,2890, sem achados P0/P1/P2 (E2). Hashes SQL 56006ec384478d3808e4f3f28fc9043a5fee4f271e468ef01a928f3e6d3e7bd6; banco f7d872f7699e02ede2f4e0aa524bc46a4a80a0109e711b0c6172198115f4d074; harness 5c8668d64ea299fa12b571d0408dfc8c6093e19c6632affa7232e7b55c82da59; fonte Rust executada 3b662204d6479c79978a2c09aba660c9a6b1e893df288aa148fdadd78ef284bb. Trabalho focal E3 de worktree, não validação primária/global. Mantém in_progress/E3/passes=false/humanGateRequired=false: gates integrados, coverage aplicável, scans, validators e CI exata pendentes após FIN-007/FIN-008. FIN-011 final CI38626342585/job11606634023016 7/0 foi liberada, sem dependência formal. Sem consumer/CRUD/UI/histórico/setup/global coverage alegados."
+}

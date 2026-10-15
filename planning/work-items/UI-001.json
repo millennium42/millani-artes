@@ -1,0 +1,32 @@
+{
+  "id": "UI-001",
+  "title": "shell acessível",
+  "specPath": "planning/specs/UI-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "INF-002",
+    "ARC-001"
+  ],
+  "acceptanceCriteria": [
+    "Shell estático apresenta landmark de cabeçalho, um main e heading principal Millani Artes, em pt-BR",
+    "Não adiciona navegação, controles, dados ou promessas de fluxos financeiros ainda sem contrato",
+    "RED focal acrescenta ao teste SSR existente expectativa de header e falha antes da mudança App; GREEN verifica header/main/h1/texto",
+    "Teste SSR verifica semântica e conteúdo sem nova dependência ou mock como prova visual/DOM/WebView",
+    "Preview de produção em browser observado em 1280x720, 320x568 e 1024x720; sem truncamento ou overflow horizontal aparente; 320px exploratório, mínimo de produto não definido",
+    "Quality e build passam com thresholds atuais; preview visual E3 em browser registrado; inspeção nativa e CI no SHA final pendentes"
+  ],
+  "checks": [
+    "Review final Sol6 medium E2 sem achados P0/P1/P2; reviewer não executou checks",
+    "Runtime portátil Node24.21.0/npm11.19.0; npm ci --ignore-scripts --no-audit --no-fund exit0, 59 pacotes/21s; lockfile preservado",
+    "RED pré-App: npm run coverage exit1; 2 testes passaram, 1 falhou pela ausência de header; Vitest398ms/wall2.466s",
+    "Quality exit0/wall6.325s: format10 arquivos/44ms, lint10/51ms, typecheck, 3 testes/2 arquivos/Vitest413ms; coverage focal V8 statements5/5, branches2/2, functions1/1, lines4/4; thresholds inalterados",
+    "Build exit0/wall2.345s: Vite16 módulos/183ms; HTML0.40kB, CSS0.26kB, JS219.93kB",
+    "Preview de produção no browser: 1280x720/320x568/1024x720; DOM em 320/1024 sem overflow horizontal, 1 header/main/h1; cores observadas rgb(37, 48, 59) sobre rgb(246, 244, 240); sem focáveis em 1024; não é teste de teclado/foco; sem alegação WCAG",
+    "Screenshots não arquivados; 320px é exploratório, mínimo de produto não definido; WebView nativa/Tauri e CI remota no SHA final não verificadas"
+  ],
+  "agentPlan": "P-TRC Luna6 low documenta SPEC/RECON; implementação posterior Luna6 medium após review; P-REV Sol6 medium read-only; P-INT/root integra e executa gates. Modelo/esforço/custo do root: não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Dependencies INF-002 e ARC-001 conferidas done/E3/passes=true, releases em refs/notes/evidence. ACTIVE18 continua: 13 tracked exatos (4 docs/log, ROADMAP, 5 matrizes, App.tsx/App.test.tsx/styles.css) + node_modules, coverage, dist e dois roots próprios de artifact/visual; target/perfil nativo exigem reserva própria antes de comandos. Implementação e preview de produção em browser registrados como E3; inspeção WebView nativa e CI final pendentes. Item segue in_progress/passes=false/humanGateRequired=false."
+}
