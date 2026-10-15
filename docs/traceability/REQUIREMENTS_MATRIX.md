@@ -400,3 +400,5 @@ CAT-002 | executor E3 concluído; `done`, `passes=true`, gate humano false | CI 
 FIN-011 executor `done`/E3/passes:true valida `TryFrom<&str>` somente para chaves internas `home`/`factory`; contexto classifica movimento, não é conta (ADR-008). Source CI38621842911/SHA `809626e89dabbcce158fb466f63401c0a7b02c99` SUCCESS23/0 e release70+4 doctests PASS/1 WebView ignored. Não demonstra contrato serializado, consumer financeiro, storage, UI ou nova regra de negócio. Dependência formal somente FIN-010; publicação documental e liberação ACTIVE24 pendentes.
 
 FIN-007 primary E3 cobre constraints da migration 003 via harness físico: 16 casos inválidos mais ID duplicado, seed/ledger/integrity/reopen; 45 SQL PASS. Não cria regra de domínio, startup ou consumer; source CI segue pendente.
+
+FIN-007 executor concluído E3: source CI `38628675813`/job `116074330758` SUCCESS23/0 no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978`; release72+4 doctests PASS/1 WebView ignored e validators4 PASS. Status do item `done`/`passes=true`; publicação final continua pendente.

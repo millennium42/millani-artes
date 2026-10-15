@@ -54,3 +54,5 @@ FIN-006 focal E3: database.rs 276/280 linhas (98.57142857%) e 25/25 funções (1
 FIN-006 CI E3: migration 003 e executor passaram 43 testes SQLite dentro da suite release64+4; SQLite3.53.2. Isso prova somente a persistência exercitada pelo harness, não startup ou consumer. Liberação documental ainda pendente.
 
 FIN-007 primary E3 testa constraints de `003-accounts.sql` sem alterar a migration ou o executor versionado. Harness SQL45 PASS, incluindo as duas novas provas de rejeição/preservação e reabertura. Source CI permanece pendente; não há migration nova.
+
+Source CI `38628675813` no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978` passou release72+4 doctests/1 ignored, usando migrations reais; versão SQLite não registrada no log. Sem migration nova ou mudança do executor.
