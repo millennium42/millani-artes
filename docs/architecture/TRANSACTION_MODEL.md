@@ -40,3 +40,5 @@ DB-013 implementa append de evento na transação emprestada; testes locais e CI
 
 
 DB-014 | E3 e CI de entrega `38438041786` no SHA `af1c5aabbefa785b8d26b7351cddf538ad68769b` confirmam cinco testes SQLite físicos; auditoria e operação são atômicas nos cenários exercitados. Produto permanece E0. Ver [handoff](../../planning/handoffs/DB-014.md).
+
+FIN-008 primary E3 adiciona um consumidor concreto: criação de Account e `audit_event` usam a mesma `execute_write_transaction`; os testes físicos exercitam sucesso/reopen e falhas nos inserts sem persistência parcial, inclusive contexto descartado após erro. Isso não fecha INV-FIN-006/007 globalmente nem prova projeção financeira/INV-FIN-001; consumers e estados adicionais seguem necessários. Gitleaks staged, validators e source CI pendentes; detalhes no [handoff FIN-008](../../planning/handoffs/FIN-008.md).

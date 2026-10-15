@@ -49,3 +49,6 @@ CAT-002 executor done/E3/passes:true: CI 38616439285 no SHA `3a94855181576ed354a
 FIN-007 primary E3 exercitou constraints da migration 003 imutável: 16 classes de linha inválida e ID duplicado; 45 SQL tests PASS no primary. Nenhuma mudança de schema ou regra de produto; source CI ainda pendente.
 
 FIN-007 source CI `38628675813` no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978` passou; registro acima descreve os testes do executor, sem inferir regra/consumer. Publicação documental permanece pendente.
+
+## FIN-008 — gravação de conta e auditoria na aplicação (E3 primary)
+O caso de uso valida nome, injeta IDs/relógio e usa adapter SQLite parametrizado para persistir os quatro campos de Account junto de um audit_event na mesma transação. Cargo executou 48 testes SQL; casos FIN-008 cobrem reopen e rollback de account/audit. Nenhuma migration/schema foi alterada. Isso prova o caminho focal exercitado, não startup, UI/IPC, projeção de saldo/receita, INV-FIN-001 ou consumer posterior; Gitleaks staged, validators e CI ainda pendentes.

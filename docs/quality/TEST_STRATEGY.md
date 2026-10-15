@@ -116,3 +116,5 @@ FIN-011 executor `done`/E3: três testes Context exercitam aceitação exata `ho
 FIN-007 primary E3: 2 testes novos do harness (16 invalid+1 duplicate oracle) passaram dentro de 45 SQL PASS; suite Cargo72 ordinary+4 compile-fail doctests PASS/1 WebView ignored. Staged Gitleaks, validators e source CI ainda pendentes.
 
 Fechamento FIN-007: source CI `38628675813`/job `116074330758` SUCCESS23/0 no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978`; 72 testes ordinários+4 compile-fail doctests PASS/1 WebView ignored, Gitleaks187/0, quatro validators PASS e junction smoke PASS. A versão SQLite não consta no log.
+
+FIN-008 primary E3: Cargo82 testes ordinários (27 library,7 binário,48 SQLite)+4 compile-fail doctests PASS/1 WebView ignored; fmt e clippy all-targets/locked/keep-going/`-D warnings` PASS. Casos físicos verificam criação/reopen dos quatro campos e audit_event e rollback diante de falha nos inserts; unit tests cobrem validação/portas e erros sanitizados. Harness usa migrations reais v1/v2/v3. Não demonstra startup/UI/IPC, resultado financeiro nem INV-FIN-001. Gitleaks staged, quatro validators e CI primary seguem pendentes.

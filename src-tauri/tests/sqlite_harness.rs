@@ -2904,3 +2904,364 @@ fn fin007_accounts_constraints_reject_duplicate_id_and_preserve_original() {
     let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
     assert_state(&reopened);
 }
+
+mod fin008_account_creation_tests {
+    use super::*;
+    use millani_artes::application::create_account::create_account;
+    use millani_artes::domain::ports::{Clock, UuidGenerator};
+    use millani_artes::domain::AccountType;
+    use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+    use std::cell::Cell;
+    use std::collections::VecDeque;
+    use std::time::{Duration, SystemTime, UNIX_EPOCH};
+
+    type AuditSnapshotRow = (Vec<u8>, i64, String, String, Vec<u8>);
+
+    #[derive(Debug, PartialEq, Eq)]
+    struct Snapshot {
+        accounts: Vec<(Vec<u8>, String, String, i64)>,
+        audit: Vec<AuditSnapshotRow>,
+        versions: Vec<i64>,
+        integrity: String,
+    }
+
+    struct FixedClock {
+        now: SystemTime,
+        calls: Cell<usize>,
+    }
+
+    impl FixedClock {
+        fn new(now: SystemTime) -> Self {
+            Self {
+                now,
+                calls: Cell::new(0),
+            }
+        }
+    }
+
+    impl Clock for FixedClock {
+        fn now(&self) -> SystemTime {
+            self.calls.set(self.calls.get() + 1);
+            self.now
+        }
+    }
+
+    struct FixedIds {
+        values: VecDeque<[u8; 16]>,
+        fail_at: Option<usize>,
+        calls: usize,
+    }
+
+    impl FixedIds {
+        fn new(values: impl IntoIterator<Item = [u8; 16]>, fail_at: Option<usize>) -> Self {
+            Self {
+                values: values.into_iter().collect(),
+                fail_at,
+                calls: 0,
+            }
+        }
+    }
+
+    impl UuidGenerator for FixedIds {
+        type Error = ();
+
+        fn generate(&mut self) -> Result<[u8; 16], Self::Error> {
+            let call = self.calls;
+            self.calls += 1;
+            if self.fail_at == Some(call) {
+                return Err(());
+            }
+            self.values.pop_front().ok_or(())
+        }
+    }
+
+    fn migrate_accounts(path: &Path) -> Connection {
+        let connection = db013_migrate_v2(open_database(path).expect("DATABASE_OPEN_FAILED"));
+        execute_versioned_migration(
+            connection,
+            millani_artes::database::ACCOUNTS_MIGRATION_VERSION,
+            millani_artes::database::ACCOUNTS_MIGRATION_SQL,
+        )
+        .expect("ACCOUNTS_MIGRATION_FAILED")
+    }
+
+    fn snapshot(connection: &Connection) -> Snapshot {
+        assert!(connection.is_autocommit());
+        let accounts = {
+            let mut statement = connection
+                .prepare(
+                    "SELECT id, name, account_type, initial_balance_cents FROM main.accounts ORDER BY id",
+                )
+                .unwrap();
+            statement
+                .query_map([], |row| {
+                    Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+                })
+                .unwrap()
+                .collect::<rusqlite::Result<Vec<_>>>()
+                .unwrap()
+        };
+        let audit = {
+            let mut statement = connection
+                .prepare(
+                    "SELECT event_id, occurred_at_ms, operation, entity, entity_id FROM main.audit_event ORDER BY event_id",
+                )
+                .unwrap();
+            statement
+                .query_map([], |row| {
+                    Ok((
+                        row.get(0)?,
+                        row.get(1)?,
+                        row.get(2)?,
+                        row.get(3)?,
+                        row.get(4)?,
+                    ))
+                })
+                .unwrap()
+                .collect::<rusqlite::Result<Vec<_>>>()
+                .unwrap()
+        };
+        let versions = {
+            let mut statement = connection
+                .prepare("SELECT version FROM main.schema_migration ORDER BY version")
+                .unwrap();
+            statement
+                .query_map([], |row| row.get(0))
+                .unwrap()
+                .collect::<rusqlite::Result<Vec<_>>>()
+                .unwrap()
+        };
+        Snapshot {
+            accounts,
+            audit,
+            versions,
+            integrity: connection
+                .query_row("PRAGMA main.integrity_check", [], |row| row.get(0))
+                .unwrap(),
+        }
+    }
+
+    fn id(value: u128) -> [u8; 16] {
+        value.to_be_bytes()
+    }
+
+    #[test]
+    fn create_account_persists_all_types_balances_and_audit_after_reopen() {
+        let directory = common::TempDirectory::new();
+        let path = directory.path().join("fin008-create-success.sqlite");
+        let connection = migrate_accounts(&path);
+        let mut generated = (1..=48).map(id);
+        let mut uuid_generator = FixedIds::new(generated.by_ref(), None);
+        let clock = FixedClock::new(UNIX_EPOCH + Duration::from_millis(1_765_000_000_123));
+        let mut store = AdapterSqliteAccountStore::new(connection);
+        let account_types = ["cash", "bank_pix", "card", "other"];
+        let balances = [i64::MIN, -123456, 0, 1, 123456, i64::MAX];
+        let mut expected_accounts = Vec::new();
+        let mut expected_audit = Vec::new();
+
+        for type_key in account_types {
+            for (balance_index, balance) in balances.into_iter().enumerate() {
+                let account_id = id((expected_accounts.len() as u128) * 2 + 1);
+                let event_id = id((expected_accounts.len() as u128) * 2 + 2);
+                let name = format!("Conta {type_key} {balance_index}");
+                let account_type = match type_key {
+                    "cash" => AccountType::Cash,
+                    "bank_pix" => AccountType::BankPix,
+                    "card" => AccountType::Card,
+                    _ => AccountType::Other,
+                };
+                let account = create_account(
+                    name.clone(),
+                    account_type,
+                    balance,
+                    &mut uuid_generator,
+                    &clock,
+                    &mut store,
+                )
+                .expect("ACCOUNT_CREATE_FAILED");
+                assert_eq!(account.id, account_id);
+                expected_accounts.push((account_id.to_vec(), name, type_key.to_owned(), balance));
+                expected_audit.push((
+                    event_id.to_vec(),
+                    1_765_000_000_123,
+                    "account_create".into(),
+                    "account".into(),
+                    account_id.to_vec(),
+                ));
+            }
+        }
+        assert_eq!(uuid_generator.calls, 48);
+        assert_eq!(clock.calls.get(), 24);
+        drop(store);
+
+        let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+        let actual = snapshot(&reopened);
+        expected_accounts.sort_by(|left, right| left.0.cmp(&right.0));
+        expected_audit.sort_by(|left, right| left.0.cmp(&right.0));
+        assert_eq!(actual.accounts, expected_accounts);
+        assert_eq!(actual.audit, expected_audit);
+        assert_eq!(actual.versions, [1, 2, 3]);
+        assert_eq!(actual.integrity, "ok");
+        assert_eq!(
+            reopened
+                .query_row(
+                    "SELECT count(*) FROM main.sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%'",
+                    [],
+                    |row| row.get::<_, i64>(0),
+                )
+                .unwrap(),
+            3
+        );
+    }
+
+    #[test]
+    fn rejected_inputs_and_clock_do_not_write_to_sqlite() {
+        let directory = common::TempDirectory::new();
+        let path = directory.path().join("fin008-create-rejections.sqlite");
+        let connection = migrate_accounts(&path);
+        let baseline = snapshot(&connection);
+        let observer = open_database(&path).expect("OBSERVER_OPEN_FAILED");
+        let mut store = AdapterSqliteAccountStore::new(connection);
+
+        for name in [String::new(), "\u{2003}\u{00A0}".into()] {
+            let clock = FixedClock::new(UNIX_EPOCH);
+            let mut uuid_generator = FixedIds::new([id(1), id(2)], None);
+            let result = create_account(
+                name,
+                AccountType::Cash,
+                0,
+                &mut uuid_generator,
+                &clock,
+                &mut store,
+            );
+            assert!(result.is_err());
+            assert_eq!(uuid_generator.calls, 0);
+            assert_eq!(clock.calls.get(), 0);
+            assert_eq!(snapshot(&observer), baseline);
+        }
+
+        for fail_at in [0, 1] {
+            let clock = FixedClock::new(UNIX_EPOCH);
+            let mut uuid_generator = FixedIds::new([id(3), id(4)], Some(fail_at));
+            let result = create_account(
+                "Conta válida".into(),
+                AccountType::BankPix,
+                10,
+                &mut uuid_generator,
+                &clock,
+                &mut store,
+            );
+            assert!(result.is_err());
+            assert_eq!(uuid_generator.calls, fail_at + 1);
+            assert_eq!(clock.calls.get(), 0);
+            assert_eq!(snapshot(&observer), baseline);
+        }
+
+        let clock = FixedClock::new(UNIX_EPOCH - Duration::from_millis(1));
+        let mut uuid_generator = FixedIds::new([id(5), id(6)], None);
+        let result = create_account(
+            "Conta válida".into(),
+            AccountType::Card,
+            10,
+            &mut uuid_generator,
+            &clock,
+            &mut store,
+        );
+        assert!(result.is_err());
+        assert_eq!(uuid_generator.calls, 2);
+        assert_eq!(clock.calls.get(), 1);
+        assert_eq!(snapshot(&observer), baseline);
+
+        drop(store);
+        drop(observer);
+        let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+        assert_eq!(snapshot(&reopened), baseline);
+    }
+
+    #[test]
+    fn failed_atomic_persistence_preserves_rows_and_discards_context() {
+        for case in [
+            "duplicate-account",
+            "ignored-account",
+            "duplicate-audit",
+            "ignored-audit",
+        ] {
+            let directory = common::TempDirectory::new();
+            let path = directory.path().join(format!("fin008-{case}.sqlite"));
+            let connection = migrate_accounts(&path);
+            let seed_account_id = [0xA1; 16];
+            let duplicate_event_id = [0xE1; 16];
+            connection
+                .execute(
+                    "INSERT INTO main.accounts VALUES (?1, ?2, ?3, ?4)",
+                    rusqlite::params![seed_account_id.as_slice(), "Conta existente", "other", 99],
+                )
+                .expect("SEED_ACCOUNT_FAILED");
+            connection
+                .execute(
+                    "INSERT INTO main.audit_event VALUES (?1, ?2, ?3, ?4, ?5)",
+                    rusqlite::params![
+                        duplicate_event_id.as_slice(),
+                        77_i64,
+                        "seed_event",
+                        "account",
+                        seed_account_id.as_slice(),
+                    ],
+                )
+                .expect("SEED_AUDIT_FAILED");
+            match case {
+                "ignored-account" => connection
+                    .execute_batch("CREATE TRIGGER ignore_account BEFORE INSERT ON accounts BEGIN SELECT RAISE(IGNORE); END;")
+                    .unwrap(),
+                "ignored-audit" => connection
+                    .execute_batch("CREATE TRIGGER ignore_audit BEFORE INSERT ON audit_event BEGIN SELECT RAISE(IGNORE); END;")
+                    .unwrap(),
+                _ => {}
+            }
+            let baseline = snapshot(&connection);
+            let observer = open_database(&path).expect("OBSERVER_OPEN_FAILED");
+            let (account_id, event_id) = match case {
+                "duplicate-account" => (seed_account_id, [0xD1; 16]),
+                "duplicate-audit" => ([0xD2; 16], duplicate_event_id),
+                "ignored-account" => ([0xD3; 16], [0xD4; 16]),
+                _ => ([0xD5; 16], [0xD6; 16]),
+            };
+            let mut uuid_generator = FixedIds::new([account_id, event_id], None);
+            let clock = FixedClock::new(UNIX_EPOCH + Duration::from_millis(100));
+            let mut store = AdapterSqliteAccountStore::new(connection);
+            let result = create_account(
+                "Conta candidata".into(),
+                AccountType::Cash,
+                123,
+                &mut uuid_generator,
+                &clock,
+                &mut store,
+            );
+            assert!(result.is_err(), "{case} incorrectly returned success");
+            assert_eq!(snapshot(&observer), baseline, "{case} changed visible rows");
+
+            let mut retry_ids = FixedIds::new([[0xF1; 16], [0xF2; 16]], None);
+            let retry_clock = FixedClock::new(UNIX_EPOCH + Duration::from_millis(101));
+            let retry = create_account(
+                "Não repetir".into(),
+                AccountType::Cash,
+                124,
+                &mut retry_ids,
+                &retry_clock,
+                &mut store,
+            );
+            assert!(retry.is_err(), "{case} reused a discarded connection");
+            assert_eq!(retry_ids.calls, 2);
+            assert_eq!(snapshot(&observer), baseline);
+
+            drop(store);
+            drop(observer);
+            let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+            assert_eq!(
+                snapshot(&reopened),
+                baseline,
+                "{case} changed reopened rows"
+            );
+        }
+    }
+}

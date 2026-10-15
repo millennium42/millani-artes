@@ -18,6 +18,6 @@
 | Automação | `.github/workflows/` | checks remotos |
 | Checks locais | `scripts/` | validação reproduzível do mapa |
 
-Diretórios agrupam seus arquivos internos; o mapa não duplica o inventário completo. O estado atual contém documentação, checks e scaffold Tauri/React em verificação. Banco, regras financeiras e instalador ainda não implementados; builds/estado factual estão no handoff INF-002. Verifique os paths e a cobertura da árvore com `rtk proxy pwsh -NoProfile -File scripts/check-project-map.ps1`.
+Diretórios agrupam seus arquivos internos; o mapa não duplica o inventário completo. Além da documentação, checks e scaffold Tauri/React, o core agora contém domínio, SQLite/migrations e caso de uso/adaptador para criação de conta (FIN-008). Jornada UI/IPC/startup, regras financeiras de projeção, coverage Rust global e instalador continuam sem comprovação; consulte os handoffs correspondentes. Verifique paths e cobertura da árvore com `rtk proxy pwsh -NoProfile -File scripts/check-project-map.ps1`.
 
 Não implemente regras financeiras na UI. Caminho de escrita: UI → caso de uso → domínio → repositório → SQLite.
