@@ -1,0 +1,25 @@
+# FIN-007 — recibo de entrega e liberação condicional
+
+## Entrega
+
+Source `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978` passou na CI run `38628675813`, job `116074330758`, main push: 23/0, com seis marcadores de SHA conferidos. Release: 72 testes ordinários (20 lib, 7 bin, 45 SQL) e 4 doctests compile-fail passaram; 1 teste WebView foi ignorado. Os dois testes FIN-007 e o smoke de junction passaram. O log não registra a versão SQLite.
+
+A CI documental final passou no HEAD `b5d4089338c862d627acfaef8ccf58822ffb8511`, run `38761182048`, job `116512555460`, main push: 16/7/0, com quatro marcadores de SHA conferidos. Gitleaks 188/0; OSV 542/3 aprovadas/0 fora; npm 120/0; Cargo audit 422/0 vulnerabilidades/2 exceções E4 aprovadas, IDs `RUSTSEC-2024-0370` e `RUSTSEC-2024-0429`, validade até `2026-10-23T00Z`. Cargo DB1329 (`edb58f5974b83eb8302332821cb6d389777aa351`) foi usado; os avisos aprovados não mudaram. Source Gitleaks registrou 187/0. Os quatro validators passaram em 382 arquivos, 28 fontes e 85 itens materializados.
+
+FIN-007 acrescenta somente dois testes ao harness. Eles cobrem 16 casos inválidos e ID duplicado, verificando `ConstraintViolation`, preservação da semente, ledger `[1,2,3]`, autocommit, integridade e reabertura. Os 24 casos válidos de FIN-006 permanecem. Migration e produção não mudaram. SQLite STRICT permite coerções sem perda; não se afirma rejeição de toda representação coercível, nem validação de domínio, consumer, startup ou regra comercial.
+
+## Evidência local e limites
+
+Localmente, fmt e clippy passaram; Cargo passou 72 testes ordinários e 4 doctests compile-fail, com 1 WebView ignorado. Audit e OSV passaram; review Sol6 medium E2 não encontrou P0/P1/P2. Coverage focal de `database.rs`: 276/280 linhas e 25/25 funções, acima do gate ADR-019 de 95%. Controle sem os testes SQL: 0/280 linhas e 0/25 funções; o gate falhou como esperado. Relatórios: full `76e55e628ec8d3affdc9a2d595fc46443e30777def3f6cf21b5fe4144f45de56`; controle `9d98945c7f3b11293d58655fab40ba11b24ff60a08375b77ed5718eabfef1908`. Statements não medidos, branches 0/N/A; regions não são statements. Não há alegação de cobertura global ou vetor completo.
+
+Os hashes de source, configuração, testes, pins e lockfiles permaneceram iguais entre o source SHA e o HEAD documental; não houve rerun do source CI após a integração documental. O artefato nativo CI é PE AMD64 de 8.536.064 bytes, SHA-256 `03386217a6cab8cd402b1709e8bd49f15900be16b550e37f42ce3d77ee8da992`; foi compilado sem bundle, não é setup e não foi retido. Artifact frontend `11924997372` (21.868 bytes, SHA-256 `9cdf28e62a77743976e6b11adf7d8ed4728266aa4dcf77f48deb56403bae0f5d`) expira em `2026-10-15T20:04:20Z`; metadados registram o artefato, e os logs da CI mostram scaffold com 2 arquivos, 3 testes e 100%. Não é evidência Rust; o artefato não foi baixado.
+
+## Estado e liberação
+
+FIN-007 executor está `done`, evidência E3, `passes: true`, `humanGateRequired: false`. Há 245 IDs oficiais: 84 executores concluídos, 161 restantes; 85 materializados (58 itens JSON e 27 entradas achatadas de BOOTSTRAP). FIN-008 é a próxima integração operacional; CAT-003 e FIN-012 têm trabalho focal dependente de integração serial.
+
+A branch de integração é `codex/fin-007-integration`. A worktree foi arquivada; snapshot recuperável de 12 arquivos não ignorados; 0 ignorados necessários, e o path foi removido. O root confirmou a liberação da reserva WT ACTIVE15. Cleanup primário E3 verificou 24 arquivos/46.892.573 bytes, hashes, containment, ausência de reparse points e zero processos; cobertura privada, fixtures, scratch e bytecache ausentes. A reserva primária ACTIVE15 segue retida até a publicação desta nota e suas verificações. O prefixo de 343.308 bytes do progress log foi preservado; comparação raw diff passou. Scan final: 11 paths/38.637 bytes, hash `b71f81bc722f6f47dd9a0333e97c16dfeed67f38ef37c447cfe75e810cc2b489`, zero findings em 0,501 s.
+
+A reserva primária ACTIVE15 permanece retida até publicação desta nota e reconciliação das 84 tuplas, preservando IDs/modos/blobs, ancestral `75b258fce9f0048ee7f0d561cb4754f93d064b50` e três refs remotas; também requer Git limpo, raízes gerenciadas ausentes e liberação explícita do root. Esses passos não estão declarados como concluídos. Nenhuma publicação final ou liberação da reserva é afirmada.
+
+Modelos delegados: Luna6 medium (código), Luna6 low (documentação), Sol6 medium (revisão). Modelo/esforço efetivo do root e custo: não registrados.
