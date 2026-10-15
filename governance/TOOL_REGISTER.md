@@ -225,3 +225,18 @@ Manifest/lock atualizados e `cargo fetch` concluído. Metadata offline E3 do roo
 ## DB-002 — promoção do rusqlite para produção
 
 DB-002 promove `rusqlite 0.40.2` existente de dev para dependência normal, sem mudança de pacotes/versões e com lock idêntico. E4 autorizou e os gates Cargo/OSV pós-aceite passaram; a CI da entrega pública `b38892374b80aac4b0324f6958d7eb92b4ff7d9b` passou 23/23 (38103942047); CI do fechamento documental pendente. Ver [spec/handoff](../planning/specs/DB-002.md); scanners de coordenadas não cobrem C SQLite bundled.
+
+
+## Pesquisa local autorizada — 2026-10-15
+
+Decisão humana: pesquisar amplamente modelos/motores, instalar/configurar e usar CPU+GPU com trabalhadores locais; GPT para falhas e revisão. Escopo externo de ferramentas do agente, sem dependência Cargo/npm, migração ou retomada da meta. Pasta: `C:\Users\milla\Documents\Pesquisa Modelos Locais\2026-10-15`; relatório README.md, receitas USO.md, recibos e routing.json.
+
+| ferramenta | origem e integridade | adoção e limite |
+|---|---|---|
+| Ollama 0.40.4 existente | [upstream](https://github.com/ollama/ollama), MIT conforme fonte E2; executável SHA256 `96d1fd3377ab61340e18a7be12860baace02df965906461dfb9cdb66b3458824` | E3 API/ROCm, CPU+RX7600; loopback11434, cloud desabilitada no processo, sem autenticação. Sem mudança global/PATH/startup. |
+| llama.cpp b11429 portátil Windows Vulkan | [release oficial](https://github.com/ggml-org/llama.cpp/releases/tag/b11429), MIT conforme fonte E2; ZIP SHA256 `1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36` coincide com digest GitHub; servidor SHA256 `7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6` | E3 RX7600/9B/Granite; loopback11435, chave local, CORS restrito. Qwen3.6 GGUF rejeitado por RoPE antes da inferência; mesmo modelo funcionou no Ollama. |
+| worker.py externo, stdlib | SHA256 `82c7d5579f99e52861821f49e3ace1d3269270c826f55053fd9ab01ed57dd5a1`; código/selfcheck preservados na pasta externa | E3 limites/schema/cache/hash do GGUF real/redirect negado; candidato permanece needs_review. Sem ferramentas executadas pelo modelo, patch ou chamada GPT paga automática. |
+
+Oito modelos testados: Qwen3.5 4B/9B, Qwen2.5-Coder7B/14B, Qwen3.6-35B-A3B, Qwen3.8-27B, Gemma4-12B e Granite4.0-H-Tiny. Dois já existiam; seis foram baixados. Cards/fontes/licenças declaradas (Apache-2.0 para estes pesos) estão no catálogo externo. Licença de cada DLL/transitivo, assinatura e telemetria completa não verificadas. Hash não prova ausência de vulnerabilidade. Outros motores pesquisados não precisaram ser instalados.
+
+runtime-cleanup.json registra unload, encerramento apenas dos servidores próprios por PID/path/hash/horário e portas11434/11435 fechadas. Pesos/runtime/chave/evidência preservados. Remoção futura: encerrar somente processos próprios verificados, preservar recibos, remover o diretório portátil explicitamente conferido e modelos específicos pelo gerenciador após decisão humana. Não remover todo o cache Ollama, que contém pesos anteriores. Nenhum serviço/startup criado. Custo não registrado.

@@ -48,3 +48,21 @@ Aplicável somente se o projeto vier a chamar uma API de modelos; não é uma pr
 - [OpenAI — prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching): prefixo compartilhado, breakpoints e telemetria de cache.
 - [Anthropic — prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching): cache cobre prefixo de tools/sistema/mensagens e requer conteúdo estável.
 - [Google — context caching](https://ai.google.dev/gemini-api/docs/generate-content/caching): cache serve para contexto inicial grande e repetido; usage metadata mede tokens cacheados.
+
+
+## Decisão humana: trabalhadores locais primeiro — 2026-10-15
+
+A solicitação posterior à pausa autoriza pesquisa ampla, instalação/configuração e CPU+GPU; não retoma a meta. Este roteamento específico orienta trabalho futuro, preservando hierarquia, revisão independente e gates:
+
+| tarefa delimitada | trabalhador inicial | escalonamento |
+|---|---|---|
+| extração e rascunho curto | Qwen3.5:9b, preset local low, Ollama ROCm | saída inválida, contexto obrigatório acima do limite ou falha não resolvida |
+| rascunho de código focal | Gemma4:12b-it-q4_K_M, preset local low | Qwen3.6:35b-a3b-q4_K_M medium seletivo após falha/ambiguidade concreta |
+| falha local não resolvida, decisão difícil ou contexto incompatível | GPT Luna6 medium | conforme governança de risco vigente |
+| revisão independente exigida | GPT Sol6 medium | conforme política de agentes |
+
+Ferramentas determinísticas vêm primeiro. Presets locais low/medium não equivalem aos esforços Luna. Nenhum local passou os14 casos estritos:8 modelos/11 configurações/154 casos sintéticos completos, melhores11/14; baselines Luna low/medium14/14 com protocolo Codex diferente. Equivalência geral e economia líquida de tokens não comprovadas; custo não registrado.
+
+O worker externo usa contexto curto/schema delimitado, verifica limites/identidade, reutiliza cache sem aprovação e devolve needs_review/needs_gpt/invalid_json_or_schema. Não autoriza commits, decisões de evidência, ferramentas ou patches automáticos. Revisar diff/callers antes de integrar e manter os checks do projeto. Uma GPU/modelo residente por vez; investigação independente pode ser paralela no limite da política, dependências/integração continuam seriais. Não repetir benchmark sem causa concreta.
+
+Fonte externa: `C:\Users\milla\Documents\Pesquisa Modelos Locais\2026-10-15` (README.md, USO.md, routing.json, RESULTADOS.json); hashes no [registro](TOOL_REGISTER.md). Ollama é padrão pela execução híbrida35B; llama.cpp/Vulkan9B é alternativa executada. API somente loopback; chave do llama.cpp nunca deve entrar no Git/prompts/logs. Esta configuração não altera o provedor global do Codex: o integrador chama o trabalhador explicitamente. Meta pausada; nenhum work item fechado pela pesquisa.
