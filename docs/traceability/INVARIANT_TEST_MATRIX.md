@@ -99,4 +99,6 @@ Integração financeira deve usar SQLite temporário real e conferir estado ante
 
 DB-014 E3 prova integração da API de auditoria com a transação nos cinco cenários físicos; INV-FIN-006/007 permanecem E0 até testes de consumidores. CI entrega `38438041786` passou; INV-FIN-006/007 continuam E0. [Handoff](../../planning/handoffs/DB-014.md).
 
-FIN-008 primary E3 exercita criação/reabertura da conta com saldo inicial armazenado e audit_event; o caso de uso não cria movimento. Isso não verifica projeção financeira/resultado igual a zero, portanto INV-FIN-001 continua sem prova e FIN-005 é necessário. Jornada/smoke de produção não executada; FIN-008 segue in_progress até Gitleaks staged, quatro validators e CI source.
+FIN-008 primary E3 exercita criação/reabertura da conta com saldo inicial armazenado e audit_event; o caso de uso não cria movimento. Isso não verifica projeção financeira/resultado igual a zero, portanto INV-FIN-001 continua sem prova e FIN-005 é necessário. Jornada/smoke de produção não executada. O status in_progress registrado antes do fechamento source CI foi superado pelo recibo E3 abaixo.
+## FIN-008 — evidência do executor (E3)
+FIN-008 demonstra criação/reabertura e auditoria atômicas, sem movimento; não prova projeção/resultado nem INV-FIN-001. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.

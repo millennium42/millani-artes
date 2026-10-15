@@ -95,3 +95,5 @@ FIN-007 primary LLVM E3: `database.rs` 276/280 linhas (98,5714%) e25/25 funçõe
 Erratum FIN-007: source CI `38628675813`/job `116074330758` passou no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978`; coverage acima é focal local, não cobertura executada pela CI. Sem claim global.
 
 FIN-008 primary focal LLVM E3: application 50/50 linhas,4/4 funções,59/60 regiões; adapter 56/56 linhas,5/5 funções,55/55 regiões. Gates críticos de linhas/funções ≥95% passam. Full report `5c9210baab546ef0eb2bed61fff2089711523d9a4a901dd950e4a15556bfade1`; controle exclui7 app+3 SQL, e em 20 unit+45 SQL PASS deixa as duas produções sem linhas/funções cobertas e rejeita95 (report `0ac3a8a7d4828c39ada7732bb834b295af6836b4603e5de5c6573e1b81a8ba31`). Statements não medidos, branches0/N/A, regions não são statements; sem vetor completo/global. Limpeza de coverage e target própria verificada E3; CI não é alegada como coverage LLVM.
+## FIN-008 — evidência do executor (E3)
+FIN-008 passa os gates focais ≥95% de linhas e funções em application/adapter; statements não medidos e sem vetor/global coverage claim. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.

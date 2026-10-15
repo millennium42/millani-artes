@@ -2,7 +2,7 @@
   "id": "FIN-008",
   "title": "criar caso de uso de conta",
   "specPath": "planning/specs/FIN-008.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-002",
     "FIN-003",
@@ -18,17 +18,16 @@
     "Mover os seis testes unitários para src-tauri/src/application/create_account_tests.rs via módulo test-only; adicionar testes de apresentação dos quatro CreateAccountError e da privacidade Debug/Display/source de AccountStoreError."
   ],
   "checks": [
-    "Review Sol E2 do port específico persist_account_with_audit, transação no adapter, Clock/UuidGenerator e tags técnicas; concluído sem P0/P1",
-    "Separação test-only e privacidade: 6 app tests em create_account_tests.rs; quatro CreateAccountError e AccountStoreError Debug/Display/source cobertos.",
-    "Harness físico SQLite: migrations reais v1/v2/v3, sucesso/reopen e audit duplicado após INSERT prova rollback e preservação",
-    "Primary fmt e clippy --all-targets --locked --keep-going -D warnings PASS; Cargo 82 ordinários (27 library/7 bin/48 SQL)+4 compile-fail doctests PASS, 1 WebView ignored",
-    "Primary audit422/0 vulnerabilidades/2 aprovadas E4 DB1329/edb58f5974b83eb8302332821cb6d389777aa351; OSV542/3 aprovadas/0 fora; review Sol6 medium E2 sem P0/P1/P2",
-    "Coverage focal primary app50/50 linhas,4/4 funções,59/60 regiões; adapter56/56,5/5,55/55; gates críticos linha/função≥95 PASS. Control exclui7 app+3 SQL e rejeita95; reports/hashes na spec/handoff",
-    "Cleanup E3 25 arquivos/47.818.065B/3 dirs verificados; staged Gitleaks, quatro validators e source CI no SHA integrado pendentes"
+    "Review final Sol6 medium E2 sem P0/P1/P2; apresentação dos erros e privacidade cobertas.",
+    "Harness SQLite físico com migrations reais v1/v2/v3: sucesso/reopen e rollback; três testes FIN-008 e junction smoke PASS.",
+    "Source CI 38765481430/job116527438722 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57: SUCCESS 23/0; 82 testes ordinários+4 compile-fail PASS, 1 WebView ignored.",
+    "fmt/clippy PASS; Gitleaks staged source 19 paths/76.690B/0; OSV542/3 aprovadas/0 fora; npm120/0; Cargo audit422/0 vulnerabilidades/2 aprovações E4 DB1329; SAST45 (sem cobertura Rust). No preparo deste recibo, o staged documental ainda não havia sido escaneado; o scan do conteúdo final será registrado na nota de fechamento.",
+    "Quatro validadores: 388 arquivos, 28 fontes, 86 itens; prefixo normalizado do PROGRESS_LOG 343.979B preservado.",
+    "Coverage focal crítica ≥95% linhas/funções PASS; sem claim de statements, vetor completo ou coverage global."
   ],
   "agentPlan": "P-TRC gpt-6-luna low documentação; P-DOM gpt-6-luna medium implementação/separação test-only; P-REV gpt-6-sol medium review final E2 sem P0/P1/P2; P-INT/root integração e checks. Reservas e evidências detalhadas na spec/handoff. Modelo/esforço efetivo e custo root não registrados.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "FIN-008 permanece in_progress/E3/passes:false/humanGateRequired:false. Integração primary sobre b5d4089338c862d627acfaef8ccf58822ffb8511 preservou prefixo de harness de 108459B. Application eb269972b10335f261220f41ce11852b6520751ab163ebd0c188d3e1f12172cb; adapter2fc6a68472da3f6ff1a1dd9c6b7115048db13685b489ffb813b89a32c9068f7b; lib unchanged 2764374d474c170bc99ce4f7eaba1ac0a02fe79218f6448311c5dff6eb62d320; app tests28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad; harness3f7a70ef686207b7044725140ed483900dc6e92739904da67a48cb67de967ddf. Primary fmt/clippy PASS; Cargo82 ordinary (27 lib,7 bin,48 SQL)+4 compile-fail doctests PASS/1 WebView ignored; audit422/0 vuln/2 approved E4 DB1329/edb58f5974b83eb8302332821cb6d389777aa351; OSV542/3 approved/0 outside. Sol6 medium primary review E2 no P0/P1/P2, no checks run by reviewer. LLVM full app50/50 lines,4/4 functions,59/60 regions; adapter56/56,5/5,55/55; control excludes7 app+3 SQL, both production profiles zero lines/functions and rejects95. Full report5c9210baab546ef0eb2bed61fff2089711523d9a4a901dd950e4a15556bfade1; control0ac3a8a7d4828c39ada7732bb834b295af6836b4603e5de5c6573e1b81a8ba31. Statements unmeasured, branches N/A, regions are not statements, no global/full-vector coverage claim. Cleanup25 files/47,818,065B +3 dirs; guarded hashes/containment/no-reparse/process count, outputs absent, shared cache untouched. Gitleaks staged, four validators, source CI, final note86/85 tuples/3 refs and ACTIVE24 release pending. No claim of UI/IPC/startup/UUID provider/income projection/INV-FIN-001/global coverage/installer."
+  "passes": true,
+  "notes": "Executor concluído done/E3/passes:true/humanGateRequired:false. Source SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; CI38765481430/job116527438722 SUCCESS23/0. Release82 ordinários+4 compile-fail PASS/1 WebView ignored; Gitleaks189/0, OSV542/3 aprovadas/0 fora, npm120/0, Cargo audit422/0 vulnerabilidades/2 aprovações E4 DB1329 edb58f5974b83eb8302332821cb6d389777aa351, SAST45 sem Rust; validators4/388/28/86. Nativo PE AMD64 8.536.064B SHA3ae47ebd6640e88c85ec733ba8ab0e83189fc96d2b79cb9f39b4db08940d73fc no-bundle (bundle desativado), binário não retido, não setup.exe. Frontend metadata ID11989760544,21874B,digest9631754e70c58b0f855ee09b112efc1b13f35969e2ec7c96841b498a678c49c8, expira2026-10-16T16:03:53Z, não baixado; logs mostram scaffold 2 arquivos/3 testes/100%, não coverage Rust. CI documental, nota86, preservação 85 tuplas/3 refs e liberação ACTIVE24 pendentes. Próximo CAT-003; FIN-009 depende formalmente e não foi iniciado. Sem UI/IPC/startup/UUID real/receita/INV-FIN-001/coverage global/setup; versão SQLite da CI não registrada."
 }
