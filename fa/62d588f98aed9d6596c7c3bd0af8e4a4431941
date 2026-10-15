@@ -1,0 +1,27 @@
+# FIN-008 — recibo de entrega e liberação condicional
+
+## Entrega
+
+Source `eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57`, CI https://github.com/millennium42/millani-artes/actions/runs/38765481430, job116527438722, main/push/tentativa1: SUCCESS23/0 e seis marcadores ancorados no SHA. Release82 ordinários (27 library,7 binário,48 SQL)+4 compile-fail doctests PASS/1 WebView ignored. Três SQL FIN-008 (criação/reopen/rollback) e junction smoke PASS. Source Gitleaks189/0; OSV542/3 aprovadas/0 fora; npm120/0; Cargo422/0 vulnerabilidades/2 avisos E4 aprovados, DB1329 `edb58f5974b83eb8302332821cb6d389777aa351`; SAST45 casos PASS, não Rust.
+
+Final `fa62d588f98aed9d6596c7c3bd0af8e4a4431941`, CI https://github.com/millennium42/millani-artes/actions/runs/38778468207, job116572146595, main/push/tentativa1: SUCCESS16/7/0 artefatos; quatro marcadores no SHA exato. Gitleaks190/0 (0,985s); OSV542/3 aprovadas/0 fora (1,196s); npm120/0 (1,068s); Cargo422/0 vulnerabilidades/2 aprovadas E4 (18,547s), DB1329/edb58f5974b83eb8302332821cb6d389777aa351. IDs RUSTSEC-2024-0370 e RUSTSEC-2024-0429, validade até 2026-10-23T00Z. Source/config/testes/pins/locks iguais entre source e final; não houve rerun.
+
+## Evidência local e limites
+
+Fmt e clippy all-targets/locked/keep-going/-D warnings PASS; Cargo82 ordinários+4 compile-fail doctests PASS/1 WebView ignored; audit/OSV PASS. Review Sol6 medium E2 sem P0/P1/P2. Coverage LLVM focal: application50/50 linhas,4/4 funções,59/60 regiões; adapter56/56 linhas,5/5 funções,55/55 regiões; gate crítico≥95% linhas/funções PASS. Controle exclui7 testes app+3 SQL, zera linhas/funções desses dois arquivos e rejeita95. Reports full `5c9210baab546ef0eb2bed61fff2089711523d9a4a901dd950e4a15556bfade1`, controle `0ac3a8a7d4828c39ada7732bb834b295af6836b4603e5de5c6573e1b81a8ba31`. Statements não medidos, branches0/N/A; regiões não são statements; sem coverage global/vetor completo.
+
+Source staged19 paths/76.690B/hash `c36364b52563ce217e1cfb891ad720238eb963afc7d097e0d89437875cf3d237`, Gitleaks0/0,674s. Final documental staged13 paths/35.078B/hash `3af1fd653376ecce3a876c7407a79250dbb6918bc4502247e0192e49e6451204`, Gitleaks0/0,440s; quatro validadores PASS:388 arquivos,28 fontes,86 itens, prefixo publicado346.012B do PROGRESS_LOG preservado; raw diff PASS. P2 de redação histórica corrigido e re-review E2 sem achados.
+
+PE AMD64/custom-protocol8.536.064B SHA256 `3ae47ebd6640e88c85ec733ba8ab0e83189fc96d2b79cb9f39b4db08940d73fc`: no-bundle, bundle desativado, não setup.exe, binário não retido. Frontend artifact11989760544/21.874B/digest `9631754e70c58b0f855ee09b112efc1b13f35969e2ec7c96841b498a678c49c8`, expira2026-10-16T16:03:53Z: metadata consultada, não baixado. Logs3 testes/2 arquivos/100% scaffold, não Rust. Versão SQLite da CI não registrada.
+
+O caso de uso valida nome e grava conta/auditoria na mesma transação nos cenários executados. Não prova UI/IPC/startup, provedor UUID real, projeção de receita/INV-FIN-001, cobertura Rust global ou instalador.
+
+## Estado e liberação
+
+Executor done/E3/passes:true/humanGateRequired:false. 245 IDs oficiais:85 concluídos,160 restantes;86 materializados (59 JSON individuais+27 bootstrap achatados). Humano pediu encerramento e unificação para retomar posteriormente. Próximo operacional CAT-003; FIN-012 e UI-001 permanecem abertos em WTs, a consolidar em branch de retomada. FIN-009 e FIN-005 não iniciados.
+
+WT FIN-008 arquivada pelo aplicativo, path ausente,19 paths não ignorados recuperáveis,0 ignorados necessários; SHA do snapshot não registrado. Root liberou WT ACTIVE22. Cleanup primário E3:25 arquivos/47.818.065B/3 subdiretórios, hashes/containment/no-reparse/zero processos próprios; coverage/private target/fixtures/scratch/bytecache ausentes, cache compartilhado intacto.
+
+PRIMARY ACTIVE24 retida até publicação desta nota, preservação das85 tuplas (IDs/modos/tipos/blobs) do ancestral `ee48bc85fa4f48e9e092c45a83b6dd6d32b9a96f`, reconciliação remota de refs/heads/main, refs/heads/codex/fin-008-integration e refs/notes/evidence, Git limpo, raízes próprias ausentes e liberação explícita root. A nota não antecipa essas verificações.
+
+Modelos: Luna6 medium código; Luna6 low documentos; Sol6 medium revisão. Modelo/esforço efetivo do root não registrado; custo não registrado.
