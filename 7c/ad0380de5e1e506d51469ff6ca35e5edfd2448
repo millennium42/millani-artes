@@ -1,0 +1,73 @@
+{
+  "id": "CAT-003 / INT-001",
+  "date": "2026-10-16 America/Sao_Paulo",
+  "scope": "migration SQLite de categorias integrada; nao comprova CRUD,UI/IPC,historico,financas,coverage global,setup.exe ou E2E",
+  "source": {
+    "sha": "7573c65899416cf180bb25545f6cfae6335bb00e",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/38907719490",
+    "job": 116995418974,
+    "attempt": 1,
+    "status": "success23/0",
+    "anchored_markers": 6,
+    "release": "86 ordinary+8 compile-fail doctests PASS;1WebView ignored;50SQLite including2CAT003 PASS"
+  },
+  "final": {
+    "id": 38909068737,
+    "sha": "7cad0380de5e1e506d51469ff6ca35e5edfd2448",
+    "status": "completed",
+    "conclusion": "success",
+    "attempt": 1,
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/38909068737",
+    "job": 117000000743,
+    "steps": "16success/7skipped/0artifacts",
+    "anchored_markers": 4
+  },
+  "local": {
+    "environment": "Windows x64,Python3.12.10,Node24.21.0/npm11.19.0,Rust1.99.0/LLVM23.1.1",
+    "commands": "cargo fmt check;clippy locked/all-targets/custom-protocol/Dwarnings;cargo test locked debug+release custom-protocol;npm quality/build;Tauri build --no-bundle -- --locked;Cargo/OSV/npm audits;SAST;Gitleaks;9docs checks;4final validators;all exit0",
+    "tests": "86ordinary+8doctests PASS each debug/release;1WebView ignored",
+    "coverage_critical_database": {
+      "lines": "276/280=98.57142857%",
+      "functions": "25/25=100%",
+      "gate": ">=95 passed;control omittedSQL0/280+0/25 rejected95",
+      "limits": "statements not measured;stablebranchesN/A;regions are notstatements;not global",
+      "full_report_sha256": "692744e2cd871c612cafc38bde8a907946a756a54072c2415bf5291f871bbf1f",
+      "control_report_sha256": "bd9d0ead5e1ef8c1f7606b479c5501e09de42727ec1a5892de2dc612fabf1b82"
+    },
+    "audit": "Cargo422/0vulnerabilities/2E4;OSV542/3E4/0outside;npm120/0;SAST45limited;Gitleaks290/0;sourceCI Gitleaks194/0;E4valid exactinputs until2026-10-23T00Z",
+    "staged_final": {
+      "paths": 12,
+      "bytes": 668716,
+      "sha256": "bccb06d334856c2c10a63d7a53a3f0679b7e23cdbdd28f0e4245d0b29b6379f4",
+      "findings": 0
+    },
+    "validators": "400files/28sources/89items;356850historic log bytes preserved;rawdiffPASS"
+  },
+  "review": {
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "evidence": "E2 read-only",
+    "result": "no remainingP0/P1/P2;P2 stagedbytes corrected and rechecked"
+  },
+  "preservation": {
+    "branches": 97,
+    "all_ancestors_checkpoint": true,
+    "main_fast_forward": "fa62d588->7573c65;normalatomicpush main/retomada",
+    "previous_notes": 86,
+    "previous_notes_ref": "aee3e4f70ee41a5c89b9da601e40cfae3c066d63",
+    "method": "verify every previous mode/type/blob tuple retained;no reset,forcepush,branch/note removal"
+  },
+  "models": {
+    "local": "Qwen9B low P-MAP readzero-diff and P-TRC handoff via installedAider0.86.2/Ollama0.40.4;rootverified/corrected",
+    "review": "Sol6medium",
+    "root": "GPT model/effort nao registrado",
+    "cost": "custo nao registrado"
+  },
+  "receipt_root": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao",
+  "release": {
+    "reservation": "root release conditional only on successful normal note push,previous86tuples preserved,Git clean and remote refs matching",
+    "worktree": "archived_worktree confirmed by app;path absent;1localdoc recoverable;neededignored0",
+    "next_id": "FIN-012;UI-001 remainsopen"
+  }
+}
