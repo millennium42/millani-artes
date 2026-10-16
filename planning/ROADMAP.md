@@ -532,3 +532,19 @@ CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/
 CAT-003 liberado após CI final 38909068737 e nota 87. FIN-012 está em fechamento serial; UI-001 aguarda sua liberação. Grafo formal preservado. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
 
 FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
+
+
+## UI-001 — verificação primária em 16/10/2026
+
+Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
+
+```json
+{
+  "FIN-012": "liberado com CI38910468674 e nota88,87notas preservadas",
+  "UI-001": "inspeção nativa concluída; fechamento/CI final/nota89/liberação pendentes",
+  "próximo": "reconciliar elegibilidade FIN-005 após liberação; grafo preservado"
+}
+```
+
+
+UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.

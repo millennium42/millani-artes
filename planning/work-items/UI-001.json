@@ -2,7 +2,7 @@
   "id": "UI-001",
   "title": "shell acessível",
   "specPath": "planning/specs/UI-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "INF-002",
     "ARC-001"
@@ -22,11 +22,12 @@
     "Quality exit0/wall6.325s: format10 arquivos/44ms, lint10/51ms, typecheck, 3 testes/2 arquivos/Vitest413ms; coverage focal V8 statements5/5, branches2/2, functions1/1, lines4/4; thresholds inalterados",
     "Build exit0/wall2.345s: Vite16 módulos/183ms; HTML0.40kB, CSS0.26kB, JS219.93kB",
     "Preview de produção no browser: 1280x720/320x568/1024x720; DOM em 320/1024 sem overflow horizontal, 1 header/main/h1; cores observadas rgb(37, 48, 59) sobre rgb(246, 244, 240); sem focáveis em 1024; não é teste de teclado/foco; sem alegação WCAG",
-    "Screenshots não arquivados; 320px é exploratório, mínimo de produto não definido; WebView nativa/Tauri e CI remota no SHA final não verificadas"
+    "Screenshots não arquivados; 320px é exploratório, mínimo de produto não definido; WebView nativa/Tauri e CI remota no SHA final não verificadas",
+    "Integração16/10: produção idêntica source7573c65;quality/build e CI38907719490PASS;inspeção WebView nativa1026x752/313x752 externa,Tab/ShiftTab,capturas por hash,processos próprios encerrados ecleanup seguro;exitcode não registrado(null);review integrado/visualSol6mediumE2semP0/P1/P2."
   ],
-  "agentPlan": "P-TRC Luna6 low documenta SPEC/RECON; implementação posterior Luna6 medium após review; P-REV Sol6 medium read-only; P-INT/root integra e executa gates. Modelo/esforço/custo do root: não registrado.",
+  "agentPlan": "P-TRC Luna6 low documenta SPEC/RECON; implementação posterior Luna6 medium após review; P-REV Sol6 medium read-only; P-INT/root integra e executa gates. Modelo/esforço/custo do root: não registrado. Retomada16/10: P-TRC Qwen9B low local, rascunho amplo descartado e parágrafo factual focal usado após conferência; root executa e integra; P-REV Sol6 medium integrado/visual. Reserva atual10docs e perfil/visual próprios na spec; custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Dependencies INF-002 e ARC-001 conferidas done/E3/passes=true, releases em refs/notes/evidence. ACTIVE18 continua: 13 tracked exatos (4 docs/log, ROADMAP, 5 matrizes, App.tsx/App.test.tsx/styles.css) + node_modules, coverage, dist e dois roots próprios de artifact/visual; target/perfil nativo exigem reserva própria antes de comandos. Implementação e preview de produção em browser registrados como E3; inspeção WebView nativa e CI final pendentes. Item segue in_progress/passes=false/humanGateRequired=false."
+  "passes": true,
+  "notes": "Dependencies INF-002 e ARC-001 conferidas done/E3/passes=true, releases em refs/notes/evidence. ACTIVE18 continua: 13 tracked exatos (4 docs/log, ROADMAP, 5 matrizes, App.tsx/App.test.tsx/styles.css) + node_modules, coverage, dist e dois roots próprios de artifact/visual; target/perfil nativo exigem reserva própria antes de comandos. Implementação e preview de produção em browser registrados como E3; inspeção WebView nativa e CI final pendentes. Item segue in_progress/passes=false/humanGateRequired=false. Inspeção nativa concluída16/10 no binário real de produção, perfil próprio confirmado6processos;capturas1026x752 e313x752 externas preservadas,legíveis sem corte/overflow aparente;Tab/ShiftTabdocumento sem controles;janela/processos encerrados eperfil removido seguro. Process.ExitCode=null, não registrado. ReviewsE2 semP0/P1/P2. CI source7573c65/38907719490SUCCESS23/0 e atual59a3789/38910468674SUCCESS16/7/0;sem rerun,código idêntico. Fechamento documental/CI final/nota89/liberação ainda pendentes;passesfalse. Executor concluído E3 após inspeção nativa e gates do código idêntico;docs/matrizes/handoff atualizados. Código de saída nativo não registrado(null),sem falsa alegação exit0. CI documental final no novo SHA,nota89,preservação88notas,Gitlimpo,WTarquivada/liberação pendentes;nenhum próximo item iniciado."
 }
