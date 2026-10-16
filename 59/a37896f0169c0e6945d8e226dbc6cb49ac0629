@@ -1,0 +1,74 @@
+{
+  "id": "FIN-012",
+  "date": "2026-10-16 America/Sao_Paulo",
+  "scope": "Movement/MovementKind metadata contract; no financial validation,transfer operation,balance,schema,category/date,production consumer,UI/IPC,setup.exe or E2E",
+  "source": {
+    "sha": "7573c65899416cf180bb25545f6cfae6335bb00e",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/38907719490",
+    "job": 116995418974,
+    "attempt": 1,
+    "status": "success23/0",
+    "proof": "2 movement tests and4 compile-fail guards PASS; E0277 expected and observed;86ordinary+8doctests PASS/1WebView ignored",
+    "code_identity": "production/tests/pins/locks byte-identical from7573c65 through7cad038 and final; no rerun"
+  },
+  "final": {
+    "id": 38910468674,
+    "sha": "59a37896f0169c0e6945d8e226dbc6cb49ac0629",
+    "status": "completed",
+    "conclusion": "success",
+    "attempt": 1,
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/38910468674",
+    "job": 117004717686,
+    "steps": "16success/7skipped/0artifacts",
+    "anchored_markers": 4
+  },
+  "local": {
+    "commands": "fmt/clippy locked/all-targets/custom-protocol/Dwarnings;debug+release Cargo/doctests;npm quality/build;Tauri no-bundle;Cargo/OSV/npm audits;SAST/Gitleaks;all already executed on identical integrated code",
+    "coverage": {
+      "scope": "domain/mod.rs focal only",
+      "lines": "19/19",
+      "functions": "4/4",
+      "regions": "25/25,notstatements",
+      "new_types": "declarations with no own executable lines;N/A",
+      "limits": "statements not measured;stablebranchesN/A;not global",
+      "report": "CAT-003-coverage-full-20261016.json"
+    },
+    "staged_final": {
+      "files": 10,
+      "bytes": 645806,
+      "inputSHA256": "045c63b504f69d2f7ee35ba57134873a72c6fa04ebf652b78c40344a3aca5d05",
+      "findings": 0
+    },
+    "validators": "4 PASS;400files/28sources/89items;358155historic log bytes preserved;diffcheckPASS",
+    "e4": "approved exact Cargo.toml/lock inputs valid until2026-10-23T00Z;no new exception"
+  },
+  "review": {
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "persona": "P-REV",
+    "evidence": "E2 read-only",
+    "result": "noP0/P1/P2 in integrated code and documents;no checks executed by reviewer"
+  },
+  "models": {
+    "historical_implementation": "Luna6 as preserved record;no new implementation in this resumption",
+    "local_docs": "Qwen9B low P-TRC via installedAider/Ollama in isolatedWT;root verified and removed copiedinstruction sentence",
+    "root": "GPT model/effort nao registrado",
+    "cost": "custo nao registrado"
+  },
+  "preservation": {
+    "previous_notes": 87,
+    "previous_notes_ref": "472a5e304546c816e7ee4ed026c5cde17156ddc6",
+    "branches": "97 retained, no exclusive heads outside main",
+    "checkpoint": "7573c65899416cf180bb25545f6cfae6335bb00e retained",
+    "source_hashes": {
+      "src-tauri\\src\\domain\\mod.rs": "2cd150ddc735b7f323fc9d2524663816ec6370478ad81b123036f2083d51fa49",
+      "src-tauri\\src\\domain\\tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7"
+    }
+  },
+  "release": {
+    "worktree": "app archived_worktree confirmed;path absent;localdoc recoverable;neededignored0",
+    "reservation": "root release conditional on normalnote push,87previous note tuples preserved and remote/Gitclean verified",
+    "next_id": "UI-001"
+  },
+  "receipts": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao"
+}
