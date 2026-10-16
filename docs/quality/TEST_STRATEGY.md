@@ -127,3 +127,10 @@ Primario: debug/release86 ordinarios+8doctests PASS/1WebView ignored;50SQLite in
 
 
 CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+
+
+## FIN-012 — integração primária em 16/10/2026
+
+Os dois testes de metadados e quatro guards compile-fail passaram na suíte integrada e no CI source 38907719490. Cobrem extremos i64, zero/negativo, contextos, espécies, IDs e associações; não comprovam execução financeira. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
+
+FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.

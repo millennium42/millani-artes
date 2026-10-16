@@ -2,7 +2,7 @@
   "id": "FIN-012",
   "title": "definir movimento",
   "specPath": "planning/specs/FIN-012.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-001",
     "CAT-001",
@@ -18,11 +18,12 @@
     "RECON E2 e reconciliação de dependências E3 registradas",
     "RED focal E3: E0432 por tipos ausentes, exit 1; GREEN focal: rustfmt e 22 testes PASS, incluindo duas famílias de metadados",
     "LLVM focal domínio 19/19 linhas, 4/4 funções, 25/25 regiões; controle sem filtro rejeita 90%; não é coverage global",
-    "Review final Sol6 medium E2 sem P0/P1/P2; cleanup E3; integração primária, compile-fail doctests, gates completos e CI ainda pendentes"
+    "Review final Sol6 medium E2 sem P0/P1/P2; cleanup E3; integração primária, compile-fail doctests, gates completos e CI ainda pendentes",
+    "Integração primária: quatro guards compile-fail e dois movement_* PASS no CI38907719490/job116995418974/SHA7573c65; suíte debug/release86+8doctests/1ignored e fmt/clippy/audits/scans reutilizados em produção idêntica7cad038; review integrado Sol6 medium sem P0/P1/P2."
   ],
-  "agentPlan": "P-TRC/P-DOM gpt-6-luna low: spec/recon; P-REV gpt-6-sol medium: revisão read-only proposta; root aprova o escopo antes de autorizar implementação Luna6 medium em tarefa futura. Worktree independente autorizada; integração serial, máximo root+2. Reserva ACTIVE 12 tracked (4 FIN-012 docs, ROADMAP, 5 matrizes, domain/mod.rs+tests.rs), artifacts/fin012-final-note.md e artifacts/fin012-coverage próprio. Modelo/custo root não registrados.",
+  "agentPlan": "P-TRC/P-DOM gpt-6-luna low: spec/recon; P-REV gpt-6-sol medium: revisão read-only proposta; root aprova o escopo antes de autorizar implementação Luna6 medium em tarefa futura. Worktree independente autorizada; integração serial, máximo root+2. Reserva ACTIVE 12 tracked (4 FIN-012 docs, ROADMAP, 5 matrizes, domain/mod.rs+tests.rs), artifacts/fin012-final-note.md e artifacts/fin012-coverage próprio. Modelo/custo root não registrados. Retomada16/10: P-TRC Qwen9B low pelo executor local em WTfin-012-local, apenas handoff; root integra e valida; P-REV Sol6 medium independente. Reserva exata atual de10docs na spec; custo não registrado.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Contrato implementado focalmente: MovementKind::Entry{account_id}, Exit{account_id}, Transfer{source_account_id,destination_account_id}; Movement{id,kind,amount_cents:i64,context}. RED E0432 exit1/0.160s; rustfmt absoluto PASS; 22 testes focal PASS; dois testes novos exercitam seis i64 × dois Context × três kinds, identidade opaca e payloads de conta. Quatro guards compile-fail adicionados, não executados. Coverage focal 19/19 linhas,4/4 funções,25/25 regiões; regions não são statements, branches não medidos, sem coverage global/vetor completo. Sol6 medium review E2 sem P0/P1/P2, sem checks pelo reviewer. Cleanup focal E3 8 arquivos/4.203.530B, zero diretórios; output focal ausente. FIN-001 ff064f792674c403c277e9b01f234b59d527afc0/CI38446686075; CAT-001 dfa8572098ca2e44aa778d08023d1e7a6fa4b35e/CI38509942382; FIN-010 d40695102f5f116b95d8d2530f8e71fdd21e7dd2/CI38513877196 ancestrais conferidos. Primary integration, doctests, Cargo/fmt/clippy/audit/OSV/scans/validators/CI pendentes; não alegar consumers ou semântica financeira."
+  "passes": true,
+  "notes": "Contrato implementado focalmente: MovementKind::Entry{account_id}, Exit{account_id}, Transfer{source_account_id,destination_account_id}; Movement{id,kind,amount_cents:i64,context}. RED E0432 exit1/0.160s; rustfmt absoluto PASS; 22 testes focal PASS; dois testes novos exercitam seis i64 × dois Context × três kinds, identidade opaca e payloads de conta. Quatro guards compile-fail adicionados, não executados. Coverage focal 19/19 linhas,4/4 funções,25/25 regiões; regions não são statements, branches não medidos, sem coverage global/vetor completo. Sol6 medium review E2 sem P0/P1/P2, sem checks pelo reviewer. Cleanup focal E3 8 arquivos/4.203.530B, zero diretórios; output focal ausente. FIN-001 ff064f792674c403c277e9b01f234b59d527afc0/CI38446686075; CAT-001 dfa8572098ca2e44aa778d08023d1e7a6fa4b35e/CI38509942382; FIN-010 d40695102f5f116b95d8d2530f8e71fdd21e7dd2/CI38513877196 ancestrais conferidos. Primary integration, doctests, Cargo/fmt/clippy/audit/OSV/scans/validators/CI pendentes; não alegar consumers ou semântica financeira. Primário16/10: código e inputs byte idênticos ao source7573c65, CI38907719490SUCCESS23/0 com2movement_* e4guardscompile-failPASS; CI documental atual7cad038/38909068737SUCCESS16/7/0. LLVM integrado domínio19/19linhas e4/4funções, declarações novas sem linhas próprias; sem global. Review integrado E2 sem P0/P1/P2. Executor done/E3/passestrue; CI documental final/nota88/liberação pendentes. UI-001 somente após liberação."
 }

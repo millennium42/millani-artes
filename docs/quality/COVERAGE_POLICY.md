@@ -104,3 +104,10 @@ LLVM23.1.1 focal database.rs276/280linhas(98,5714%),25/25funcoes(100%);gatescrit
 
 
 CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+
+
+## FIN-012 — integração primária em 16/10/2026
+
+Report LLVM integrado: domain/mod.rs 19/19 linhas e 4/4 funções. Movement/MovementKind não adicionam linhas executáveis próprias. Statements não medidos, branches stable N/A; sem cobertura global ou percentual artificial para declarações. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
+
+FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.

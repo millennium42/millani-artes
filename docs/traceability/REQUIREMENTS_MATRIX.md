@@ -415,3 +415,10 @@ CAT-003 comprova somente schema SQLite de categorias e upgrade preservado;MVP ca
 
 
 CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+
+
+## FIN-012 — integração primária em 16/10/2026
+
+FIN-012 entrega somente a representação de movimento. Neutralidade de transferência, saldo, categoria histórica, persistência e consumidores continuam sem comprovação por este contrato. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
+
+FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
