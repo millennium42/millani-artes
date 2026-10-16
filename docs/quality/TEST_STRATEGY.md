@@ -120,3 +120,10 @@ Fechamento FIN-007: source CI `38628675813`/job `116074330758` SUCCESS23/0 no SH
 FIN-008 primary E3: Cargo82 testes ordinários (27 library,7 binário,48 SQLite)+4 compile-fail doctests PASS/1 WebView ignored; fmt e clippy all-targets/locked/keep-going/`-D warnings` PASS. Casos físicos verificam criação/reopen dos quatro campos e audit_event e rollback diante de falha nos inserts; unit tests cobrem validação/portas e erros sanitizados. Harness usa migrations reais v1/v2/v3. Não demonstra startup/UI/IPC, resultado financeiro nem INV-FIN-001. Gitleaks staged, quatro validators e CI primary seguem pendentes.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 source CI executou 82 testes ordinários+4 compile-fail PASS/1 WebView ignored; inclui sucesso/reopen/rollback SQL e junction smoke. Source SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; sem UI/IPC.
+
+## CAT-003 — integracao primaria 16/10/2026
+
+Primario: debug/release86 ordinarios+8doctests PASS/1WebView ignored;50SQLite incluem2CAT003 com banco vazio/upgradev3 populado/constraints/NUL/ledger/integridade/reopen. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

@@ -54,3 +54,10 @@ FIN-007 source CI `38628675813` no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978
 O caso de uso valida nome, injeta IDs/relógio e usa adapter SQLite parametrizado para persistir os quatro campos de Account junto de um audit_event na mesma transação. Cargo executou 48 testes SQL; casos FIN-008 cobrem reopen e rollback de account/audit. Nenhuma migration/schema foi alterada. Isso prova o caminho focal exercitado, não startup, UI/IPC, projeção de saldo/receita, INV-FIN-001 ou consumer posterior; Gitleaks staged, validators e CI ainda pendentes.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 confirma a persistência dos quatro campos Account sem inferir receita do saldo inicial. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; INV-FIN-001 segue sem prova.
+
+## CAT-003 — integracao primaria 16/10/2026
+
+Tabela main.categories STRICT v4 com idBLOB16/nameTEXTnaovazio NUL-safe/is_activeINTEGER0|1; constantes registradas e executor/migrations001-003 preservados. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

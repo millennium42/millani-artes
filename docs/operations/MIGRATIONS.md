@@ -56,3 +56,11 @@ FIN-006 CI E3: migration 003 e executor passaram 43 testes SQLite dentro da suit
 FIN-007 primary E3 testa constraints de `003-accounts.sql` sem alterar a migration ou o executor versionado. Harness SQL45 PASS, incluindo as duas novas provas de rejeição/preservação e reabertura. Source CI permanece pendente; não há migration nova.
 
 Source CI `38628675813` no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978` passou release72+4 doctests/1 ignored, usando migrations reais; versão SQLite não registrada no log. Sem migration nova ou mudança do executor.
+
+
+## CAT-003 — integracao primaria 16/10/2026
+
+v4 categories exercitada em arquivo fisico vazio->v4 e upgradev3 populado,com constraints/ledger/autocommit/integridade/reopen;accounts e audit_event preservados. Migrations001-003/executor inalterados;nenhum banco da usuaria usado. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

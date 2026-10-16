@@ -97,3 +97,10 @@ Erratum FIN-007: source CI `38628675813`/job `116074330758` passou no SHA `a58ad
 FIN-008 primary focal LLVM E3: application 50/50 linhas,4/4 funções,59/60 regiões; adapter 56/56 linhas,5/5 funções,55/55 regiões. Gates críticos de linhas/funções ≥95% passam. Full report `5c9210baab546ef0eb2bed61fff2089711523d9a4a901dd950e4a15556bfade1`; controle exclui7 app+3 SQL, e em 20 unit+45 SQL PASS deixa as duas produções sem linhas/funções cobertas e rejeita95 (report `0ac3a8a7d4828c39ada7732bb834b295af6836b4603e5de5c6573e1b81a8ba31`). Statements não medidos, branches0/N/A, regions não são statements; sem vetor completo/global. Limpeza de coverage e target própria verificada E3; CI não é alegada como coverage LLVM.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 passa os gates focais ≥95% de linhas e funções em application/adapter; statements não medidos e sem vetor/global coverage claim. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.
+
+## CAT-003 — integracao primaria 16/10/2026
+
+LLVM23.1.1 focal database.rs276/280linhas(98,5714%),25/25funcoes(100%);gatescriticos>=95PASS;controle semSQL0linhas/0funcoes rejeita95. Statements nao medidos,branches stableN/A,regioes nao sao statements;sem global. Reports692744e2cd871c612cafc38bde8a907946a756a54072c2415bf5291f871bbf1f e bd9d0ead5e1ef8c1f7606b479c5501e09de42727ec1a5892de2dc612fabf1b82 preservados externamente. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

@@ -282,3 +282,10 @@ Fechamento FIN-007: source CI `38628675813`/job `116074330758` SUCCESS23/0 no SH
 FIN-008 primary E3: INSERTs usam parâmetros SQLite e account/audit compartilham `execute_write_transaction`; erros externos são mapeados a mensagens estáticas. Cargo audit422/0 vulnerabilidades/2 avisos E4 aprovados; OSV542/3 aprovados/0 fora; review Sol6 medium E2 sem P0/P1/P2. Isso cobre o diff e cenários focais exercitados; Gitleaks staged, quatro validators e CI source ainda pendentes. Sem claim de threat coverage global, UI/IPC, startup ou acesso ao banco da usuária.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 concluiu scanners do source: Gitleaks staged source 19 paths/0; Cargo audit 422/0 vulnerabilidades/2 aprovadas; OSV 542/3 aprovadas/0 fora. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; No preparo deste recibo, o staged documental ainda não havia sido escaneado; o scan do conteúdo final será registrado na nota de fechamento.
+
+## CAT-003 — integracao primaria 16/10/2026
+
+Schema restrito e SQL trusted sem dados reais;preserva executor e migrations aplicadas;auditsCargo422/0vulnerabilidades/2E4,OSV542/3E4/0fora,NPM120/0,Gitleaks290/0,SAST45limitado. E4 validada nos inputs atuais ate2026-10-23T00Z;nao e seguranca global. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

@@ -517,3 +517,11 @@ FIN-007 primary local E3: fmt/clippy/Cargo72+4 doctests PASS, audit/OSV e review
 FIN-007 executor concluído `done`/E3/`passes=true`/humanGate false. Source CI `38628675813`/job `116074330758` SUCCESS23/0 no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978`; release72+4 doctests PASS/1 WebView ignored, Gitleaks187/0, OSV542/3 aprovadas/0 fora, npm120/0, Cargo audit422/0 vulnerabilidades/2 aprovadas, SAST45 (não Rust), validators4 e junction smoke PASS. Publicação final/nota85/liberação ACTIVE15 ainda pendentes; sem alegação de publicação.
 
 FIN-008 executor concluído done/E3/passes=true/humanGateRequired=false: source CI 38765481430/job116527438722 SUCCESS23/0 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; release82+4 compile-fail PASS/1 WebView ignored; Gitleaks staged19/76.690B/0; OSV542/3/0; npm120/0; Cargo audit422/0 vulnerabilidades/2 aprovadas E4; SAST45 (não Rust); validators4/388 arquivos/28 fontes/86 itens. CI documental, nota86, 85 tuplas/3 refs e liberação ACTIVE24 pendentes. Próximo operacional CAT-003; FIN-009 é dependente formal e não iniciado. Sem UI/IPC/startup/receita/INV-FIN-001/coverage global/setup.
+
+
+## CAT-003 — integracao primaria 16/10/2026
+
+Integracao inicial humana autorizada por fast-forward fa62d588->7573c65;97branches ancestrais/86notas preservadas e refs main/retomada publicadas. CAT-003 ainda in_progress/E3/passesfalse,com gateslocaisPASS;CI38907719490 em execucao. FIN-012 e UI-001 permanecem abertos,160IDs pendentes;sem alterar grafo. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.

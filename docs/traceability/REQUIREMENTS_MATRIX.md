@@ -407,3 +407,11 @@ FIN-007 executor concluído E3: source CI `38628675813`/job `116074330758` SUCCE
 E3 primary: caso valida nome e grava os quatro campos da conta via adapter SQLite parametrizado, junto do audit_event na mesma transação; testes em banco temporário com migrations reais verificam reopen e rollback diante de erros em account/audit. fmt/clippy; Cargo82+4 doctests PASS/1 WebView ignored; audit422/0 vulnerabilidades/2 E4 aprovados e OSV542/3 aprovados/0 fora; review E2 sem P0/P1/P2. O saldo inicial é armazenado sem criar movimento, mas isso não prova que projeção/resultado trate o valor como não receita (INV-FIN-001 segue sem prova; FIN-005 necessário). Sem UI/IPC/startup/UUID real/coverage global/instalador. O status in_progress/E3/passes:false era o estado antes dos scanners/validadores/source CI concluídos; o recibo atualizado aparece abaixo.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 executa a criação persistente de conta e audit_event com sucesso/reopen/rollback; INV-FIN-001, UI/IPC e startup seguem fora da evidência. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.
+
+
+## CAT-003 — integracao primaria 16/10/2026
+
+CAT-003 comprova somente schema SQLite de categorias e upgrade preservado;MVP categorias/CRUD/UI e historico continuam parciais. FIN-012/UI-001 abertos;sem jornada financeira/E2E/setup. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+
+
+CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
