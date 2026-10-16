@@ -9,3 +9,6 @@ Use o mínimo necessário: reutilize antes de criar, prefira stdlib/plataforma e
 Migrations são versionadas, aditivas quando possível, nunca editadas após aplicadas, testadas em banco vazio e upgrade. Commits são atômicos. Atualize spec, matrizes, `planning/PROGRESS_LOG.md` append-only e handoff antes de `passes: true`; não inicie a próxima tarefa.
 
 Formato de atualização: `ID | estado | evidência E0–E4 | checks | riscos | próximo ID`. Ausências devem ser `não registrado`.
+
+
+Para retomar com os trabalhadores locais preparados por decisão humana de 15/10/2026, leia também [roteamento e personas locais](governance/LOCAL_MODEL_ROUTING.md). GPT participa das revisões exigidas e dos casos extremos; o ciclo, a hierarquia e os gates acima permanecem obrigatórios.

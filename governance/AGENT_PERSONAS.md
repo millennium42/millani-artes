@@ -117,3 +117,8 @@ Os esforços máximos obedecem ao cliente da sessão. `xhigh`, `max` e `ultra` e
 4. Máximo: Integrador + dois departamentos independentes. Não contrate dois departamentos para a mesma pergunta.
 5. Saída delegada é E1/E2; E3 exige reprodução pelo Integrador. Nunca enviar segredos, dados reais de clientes ou backups reais.
 6. Registre no handoff a persona, modelo, esforço, motivo, resultado usado/descartado, retries e uso quando disponível.
+
+
+## Aplicação aos quatro trabalhadores locais — decisão humana de 15/10/2026
+
+O [roteamento local](LOCAL_MODEL_ROUTING.md) aplica estas mesmas personas: Qwen9B para P-PRO/P-MAP/P-TRC; Gemma12B para P-INT/P-UI/P-QA; Laguna XS2.1 para domínio/dados e implementação complexa; Muse30B para investigação difícil. P-SEC começa em ferramentas determinísticas. P-OPS pode executar builds/checks no worktree autorizado, sem publicar. P-REV independente permanece GPT Sol6 medium; GPT também recebe falha local não resolvida/decisão extrema conforme política de risco. A persona não amplia permissão, não altera decisão humana e não transforma saída local E2 em E3. Não contratar todos por rotina.

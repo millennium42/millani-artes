@@ -30,3 +30,8 @@ Fases: o Integrador contrata os departamentos de `AGENT_PERSONAS.md` pelo proble
 Delegação contém: persona de `AGENT_PERSONAS.md`, ID, SHA, pergunta única, fontes canônicas, modo read/write, arquivos permitidos, limite de saída e critério de aceite. Retorno contém no máximo três achados, arquivos/linhas inspecionados, conclusão, risco e comandos executados/não executados. Análise delegada vale E1/E2 no máximo; somente execução reproduzida pelo líder é E3. Handoff registra `persona/papel | modelo | esforço | escopo | saída usada/descartada | verificação do líder` e tokens/custo quando o cliente os expuser; caso contrário, `não registrado`.
 
 Meça por tarefa: número de delegados, escalonamentos, retries evitados e tokens/uso quando o cliente expuser telemetria. Revise a política após 10 work items; não infira economia apenas por usar modelo menor.
+
+
+## Trabalhadores locais no fluxo granular — decisão humana de 15/10/2026
+
+Consultar [LOCAL_MODEL_ROUTING](LOCAL_MODEL_ROUTING.md). Os quatro modelos locais fazem o trabalho delegado com spec e paths focais; Codex/GPT recebe pacotes curtos nas revisões obrigatórias e casos extremos. O executor local é Aider com provedor Ollama dentro do sandbox do Codex CLI, sem inferência GPT no subprocesso, sem fallback pago automático; não é seleção de modelo local pela ferramenta de subagentes desta conversa. O checkout principal continua exclusivo do integrador. Máximo integrador+2 departamentos independentes, uma fila/modelo na GPU, um ID do roadmap por vez; WTs isolados para escrita e integração serial. O integrador reproduz checks para E3. Não marcar passes:true, publicar ou reaproveitar CI de outro SHA pela saída do executor. Sem tarefa recorrente agendada ou retomada automática da meta pausada.
