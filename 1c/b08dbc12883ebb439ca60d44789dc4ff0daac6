@@ -1,0 +1,86 @@
+{
+  "id": "UI-001",
+  "date": "2026-10-16 America/Sao_Paulo",
+  "scope": "static accessible shell only; no financialjourney,controls,navigation,IPC,persistence,globalRustcoverage,installer or E2E",
+  "source": {
+    "sha": "7573c65899416cf180bb25545f6cfae6335bb00e",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/38907719490",
+    "job": 116995418974,
+    "attempt": 1,
+    "status": "success23/0",
+    "identity": "production/tests/pins/locks unchanged to59a3789 and final;checks reused,no rerun"
+  },
+  "final": {
+    "sha": "1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/38913807462",
+    "run": 38913807462,
+    "job": 117016021739,
+    "attempt": 1,
+    "status": "success",
+    "steps_success": 16,
+    "steps_skipped": 7,
+    "artifacts": 0,
+    "markers": 4
+  },
+  "checks": {
+    "frontend": "quality format/lint/typecheck/3tests PASS;V8 statements5/5,branches2/2,functions1/1,lines4/4;build andTauri --no-bundle PASS;thresholds unchanged",
+    "rust_security": "existing samecode fmt/clippy/debug+release86ordinary+8doctests PASS/1WebViewignored;Cargo/OSV/npm audits,SAST andGitleaks passed;E4approved exactinputs validuntil2026-10-23T00Z",
+    "staged_final": {
+      "files": 10,
+      "bytes": 652987,
+      "sha256": "1c94abacc1f57969c13d99a75a4cdcdb7ed6febcc5fbee3688d38f00f63a2192",
+      "findings": 0
+    },
+    "validators": "4PASS;400files/28sources/89items;359598historic log bytes preserved;diffcheckPASS"
+  },
+  "native": {
+    "exeSHA256": "8591e2d47a2da656f592ca21abb03d5c495d6dd29a441990a5c280353a4325ce",
+    "window": "own production MillaniArtes at tauri.localhost",
+    "captures": [
+      {
+        "label": "native-default",
+        "width": 1026,
+        "height": 752,
+        "imageSHA256": "145ea1283e7f5651fab8a5ec7494f9204e396251aa6d3b39c135c02681029ccf",
+        "preserved_image_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\UI-001-native-default.jpg"
+      },
+      {
+        "label": "native-narrow-313",
+        "width": 313,
+        "height": 752,
+        "imageSHA256": "e98ac0141ec79ce7fd069eab2b901aa1f76a78780ffee07a4498a4e6a9d164fe",
+        "preserved_image_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\UI-001-native-narrow-313.jpg"
+      }
+    ],
+    "observation": "outer1026x752 and313x752;brand/title/message legible,no apparent truncation/overflow;native accessibilityheader/main/heading/text",
+    "keyboard": "Tab andShiftTab documentfocus/text unchanged;no appcontrols;no claim about future forms",
+    "profile": "exact own WebView2 profile verified in6children;no financialuserDB/migrations",
+    "close": "sky Alt+F4 ownwindow;window,PID20068 andprofilechildren absent;safecontained/noreparsecleanup;2capturespreserved byhash",
+    "exit_code": null,
+    "exit_code_status": "nao registrado;attached Process.ExitCode returned null;no exit0claim",
+    "limits": "313px exploratory,productminimum undefined;no numericalWCAG;empty/error/loading nonapplicable static content"
+  },
+  "reviews": {
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "persona": "P-REV",
+    "scope": "integratedcode,nativecaptures/receipts,finaldocs",
+    "evidence": "E2 readonly",
+    "result": "noP0/P1/P2;no reviewer tests/nativecontrol"
+  },
+  "models": {
+    "local": "Qwen9B low via installedexecutor;wide draft rejected (stalefacts/wrongthresholds),focal factualparagraph used;placeholders/instructions discarded;receipts preserved",
+    "root": "GPT model/effort nao registrado",
+    "cost": "custo nao registrado"
+  },
+  "preservation": {
+    "previous_notes": 88,
+    "previous_notes_ref": "79b12ba8e868ed5168edf281bcce6095913294e4",
+    "branches": "97 retained;checkpoint7573c65 preserved"
+  },
+  "receipts": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao",
+  "release": {
+    "reservation": "Root verification complete: exact final CI, clean main, archived worktree/path absent; release requires note 89 normal push and remote verification below.",
+    "next_id": "reconcile FIN-005 eligibility using canonical sources"
+  }
+}
