@@ -1,0 +1,24 @@
+{
+  "id": "FIN-016",
+  "title": "testar constraints de movimento",
+  "specPath": "planning/specs/FIN-016.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-015"
+  ],
+  "acceptanceCriteria": [
+    "Dois testes físicos de invalidrows/PK/FK/NOACTION preservam dados completos/autocommit/ledger/integridade/reopen,sem alterarschema/migrations/executor.",
+    "REDcontroladoCHECK emtestenovo temporariamente restauradoexato;GREEN2PASS sembypass/productioncopies.",
+    "GatesRust/TS/securityE4/review/docs/matrizes/log/handoff/CI exatoantespasses;nota94preservando93/liberação antespróximoID."
+  ],
+  "checks": [
+    "PhysicalSQLiteconstraintmatrix+preservation+negativecontrolRED/GREEN",
+    "fmt/clippy/debug+release/audit,quality/build/securityE4",
+    "ReviewSol6medium/4validators/stagedscan/exactCI"
+  ],
+  "agentPlan": "P-INTroot,P-QALagunalocal,P-REVSol6medium,13pathsreserved,oneinference",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-016 | VERIFY local | E3 | Dois testes físicos novos da migration005 imutável:39linhas inválidas(38matrix+id15) e7probesPK/FK/NOACTION,com errosConstraintViolation eextendedPRIMARYKEY/FOREIGNKEY nas probes pertinentes. Cadeia real1..5 por open_database/executor; snapshots7camposmovements/4accounts,ledger/autocommit/integridade/FKcheck e reopen preservados. Seeds0/-5 continuam aceitos conforme rawschema. Nenhuma produção/migration/manifest/lock alterada;identidade byteexata do primary registrada.\nRootRED compila e executa2testes;controleCHECK temporário só no testenovo daWT fazid15seraceito e primeiroteste falha/segundopassa. Runner restaura todosbytes econfirmahashesprodução,sem alteração SQLaplicada. GREENnormal2PASS/0warnings. Debug e releasecustomprotocol112ordinários(43lib+7bin+62SQLite)+8doctestsPASS/1WebViewignored. Fmt/clippy-Dwarnings/TSquality(format/lint/typecheck/coverage)/buildPASS;frontend3testes2arquivos scaffold100%,semfinanças.\nnpm120/0,Cargo422/0vuln/2E4,OSV542/3E4/0fora,plugin/SAST45PASS. E4 nos inputs aprovados até23out,semnovaexceção/thresholdreduzido. Cobertura críticaE3FIN015database276/280linhas25/25funções econtrole0/280/0/25 reusados porhashprodução exato;controle omiteTODOharnessSQL,não atribui métrica aos testesnovos. Statementsnão medidos/branchesstableN/A;semglobalatual/CIcoverage.\nP-REVSol6medium read-only2paths/spec semP0/P1/P2,nãoexecutouchecks. LocaisLaguna/Muse produziram candidatos;integrador rejeitou bypass,corrigiu contexto faltante003 e resíduos de API/oráculos apósfalhas. Último jobboundedwrite semautotestretry declarouchecksnot_run;rootexecutouRED/GREENseparadamente. Recibosoriginais/candidatosrejeitados/jobserver interrompido preservados;executorinstalado intacto. Servidorpróprio58064 encerradopelocontrolador,11434fechada.\nFontes/recibos FIN-016-RED-root/GREEN-root/root-residue/main-integration/rust-gates/other-gates/verification-facts-20261017.json emoperacao. Custo não registrado. Validators/stagedscan/CI source/final/nota94preservando93/liberação pendentes;in_progress/passesfalse. SemjornadaUIIPC/receita/setup.exe/E2E."
+}
