@@ -320,6 +320,8 @@ pub const ACCOUNTS_MIGRATION_VERSION: u32 = 3;
 pub const ACCOUNTS_MIGRATION_SQL: &str = include_str!("../../migrations/003-accounts.sql");
 pub const CATEGORIES_MIGRATION_VERSION: u32 = 4;
 pub const CATEGORIES_MIGRATION_SQL: &str = include_str!("../../migrations/004-categories.sql");
+pub const MOVEMENTS_MIGRATION_VERSION: u32 = 5;
+pub const MOVEMENTS_MIGRATION_SQL: &str = include_str!("../../migrations/005-movements.sql");
 
 pub struct AuditEvent {
     pub event_id: [u8; 16],
