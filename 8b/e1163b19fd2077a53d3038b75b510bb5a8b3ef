@@ -1,0 +1,107 @@
+{
+  "id": "FIN-009",
+  "date": "2026-10-17 America/Sao_Paulo",
+  "scope": "AccountReadStore/list_accounts/SQLite read adapter; no UI/IPC/revenue consumer/INV-FIN-001/installer/E2E",
+  "source": {
+    "sha": "83e682303354c000d2319f512f8321882901aa35",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/39009285553",
+    "run": 39009285553,
+    "job": 117328105513,
+    "attempt": 1,
+    "status": "success23/0",
+    "source_markers": 7,
+    "rust": "release97ordinary+8compilefaildoctests PASS/1WebViewignored",
+    "native_production": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+      "sourceSha": "83e682303354c000d2319f512f8321882901aa35",
+      "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+      "customProtocol": true,
+      "imageVersion": "20261007.264.1",
+      "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+      "node": "v24.21.0",
+      "machine": "AMD64",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+      "pe": "PE32+",
+      "bytes": 8536064,
+      "imageOS": "win25-vs2026",
+      "sha256": "549445a0fdaccc03253f38509886514160fdf98b8b9addadae2d16fbf793e8c0"
+    },
+    "artifact": "1 frontend coverage scaffold, not Rust or installer"
+  },
+  "final": {
+    "sha": "8be1163b19fd2077a53d3038b75b510bb5a8b3ef",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/39010148028",
+    "run": 39010148028,
+    "job": 117330794829,
+    "attempt": 1,
+    "status": "success",
+    "steps_success": 16,
+    "steps_skipped": 7,
+    "artifacts": 0,
+    "source_markers": 5,
+    "identity": "production/tests/pins/locks unchanged from exact successful source CI; no unjustified rerun"
+  },
+  "checks": {
+    "local_rust": "fmt/clippy alltargets customprotocol -Dwarnings/debug+release97ordinary+8doctests PASS/1nativeignored; instrumented98+8/0ignored",
+    "frontend": "pinned Node24.21.0/npm11.19.0 quality/build/3tests2files scaffold100% PASS; thresholds unchanged",
+    "security": "Gitleaks/npm120/0/Cargo422/0vuln/2E4/OSV542/3E4/0outside/plugin/SAST45PASS; SAST not Rust; approved exact inputs expire2026-10-23T00Z; drafts preserved externally",
+    "final_staged": {
+      "exit": 0,
+      "paths": 11,
+      "bytes": 687331,
+      "framed_sha256": "0ee96c03b50125c59db4aea728f7fa24384fb391f8ecd12da77152fe62e4bf3f",
+      "findings": 0
+    },
+    "validators": "4PASS/407files/28sources/90items;363130historic progress bytes preserved;diffcheckPASS"
+  },
+  "coverage": {
+    "llvm": "23.1.1",
+    "global_lines": {
+      "count": 470,
+      "covered": 459,
+      "percent": 97.65957446808511
+    },
+    "global_functions": {
+      "count": 49,
+      "covered": 46,
+      "percent": 93.87755102040816
+    },
+    "global_gate90": true,
+    "critical_gate95": true,
+    "critical": "create50/50lines4/4fn;list9/9lines3/3fn;accounts88/88lines7/7fn;database276/280lines25/25fn",
+    "focal_negative_control": "application0/9lines0/3fn;adapter56/88lines5/7fn rejects95; full both100%",
+    "limits": "local E3 not CI; statements not measured; stable branches N/A; regions not statements; main normal0/3lines0/1function compiled but not run; no complete vector or financial journey",
+    "original_runner_exit": 1,
+    "reason": "tests/merge/export0 and gates passed; native profile cleanup pending, then independently guarded closeout PASS",
+    "cleanup": "owned native196entries/noReparse/noactiveprocess removed; two coverage scratch roots removed after report/profiledata preservation; instrumented Cargo cache retained"
+  },
+  "reviews": {
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "scope": "seven code paths, staged docs/global protocol/receipts",
+    "result": "noP0/P1/P2",
+    "evidence": "E2 readonly; reviewer did not run tests"
+  },
+  "models": {
+    "production": "millani-laguna:xs-2.1 local",
+    "tests": "millani-muse:30b and millani-laguna:xs-2.1; root bounded unresolved truncation/assertions/clippy",
+    "documents": "millani-qwen:9b and millani-laguna:xs-2.1 drafts; false claims rejected/corrected against receipts",
+    "local_effort": "operational labels low/medium/high; not measured engine effort",
+    "root": "model/effort não registrado",
+    "cost": "custo não registrado"
+  },
+  "preservation": {
+    "previous_notes": 89,
+    "previous_notes_ref": "00ee6e29b484d92aac3094dd39ebcb56d65e5d8e",
+    "original_branches": 97,
+    "all_original_branches_retained": true,
+    "checkpoint": "7573c65899416cf180bb25545f6cfae6335bb00e"
+  },
+  "receipts": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao",
+  "release": {
+    "preconditions": "exact final CI success, clean main, archived recoverable worktree/path absent, original97 branches and previous89 note tuples verified",
+    "activation": "normal note90 push plus exact remote verification recorded in FIN-009-release-20261017.json",
+    "next_id": "reconcile eligible roadmap dependencies after release"
+  }
+}
