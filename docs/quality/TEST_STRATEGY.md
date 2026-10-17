@@ -166,3 +166,6 @@ FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1
 ## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
 
 Cinco testes focais passam: 1/123456/MAX e 0/-1/MIN nos dois contextos, quatro campos preservados, Exit/Transfer positivos rejeitados e erro real com Display/Debug/source estáticos. Debug e release/custom-protocol: 102 ordinários (38lib+7bin+57SQLite)+8doctests PASS, 1WebViewignored. RED original antes BUILD; controle final remove somente o novo método na WT própria, obtém E0599 e restaura bytes exatos.
+
+
+FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.

@@ -325,3 +325,6 @@ FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1
 ## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
 
 validate_entry recebe &self, não faz IO/logs/mutação/aritmética e retorna erro estático existente, sem serializar Movement. Clone/Copy fora do contrato foram removidos de Context; privacidade e construção raw preservadas. npm120/0, Cargo422/0vuln/2E4, OSV542/3E4/0fora, plugin e SAST45PASS; SAST não cobre Rust. E4 expirando23/10/2026 e hashes aprovados revalidados, sem novas exceções.
+
+
+FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.

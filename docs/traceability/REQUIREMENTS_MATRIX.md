@@ -449,3 +449,6 @@ FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1
 ## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
 
 FIN-013 implementa apenas validação pura de entrada positiva, com dependência FIN-012 liberada. Aceite focal E3 e suite102+8 PASS; P-REV Sol6medium independente E2 sem P0/P1/P2. Sem novo chamador produtivo, persistência, jornada UI/IPC, receita/INV-FIN-001, saída FIN-014, transferência FIN-019 ou setup. CI source/final, nota91 e liberação ainda pendentes; in_progress/passesfalse.
+
+
+FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.

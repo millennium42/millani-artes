@@ -148,3 +148,6 @@ FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1
 ## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
 
 Classificação crítica financeira: src-tauri/src/domain/mod.rs, gate de linhas/funções >=95%. LLVM23.1.1 focal: full24/24linhas,5/5funções; controle sem domain::entry_tests conserva19/24linhas(79,1667%) e4/5funções(80%), rejeitando95. Statements não medidos, branches stableN/A, regiões não são statements. Não é coverage global; a medição global FIN-009 permanece histórica no source83e6823.
+
+
+FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.

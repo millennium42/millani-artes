@@ -557,3 +557,6 @@ FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1
 
 
 FIN-013 in_progress/E3/passesfalse: validação pura Entrypositivo integrada localmente;5focais e102+8 debug/releasePASS/1ignored;domainmodcrítico24/24linhas5/5funções/controlerejeita95;security/E4/reviewPASS. CI source/final,nota91/liberação pendentes. SemUIIPC/persistência/receita/setup. FIN-005 ainda sem consumidor de receita.
+
+
+FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.
