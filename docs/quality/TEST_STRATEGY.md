@@ -161,3 +161,8 @@ FIN-009 LLVM23.1.1 global local E3:459/470linhas=97,659574%,46/49funções=93,87
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+Cinco testes focais passam: 1/123456/MAX e 0/-1/MIN nos dois contextos, quatro campos preservados, Exit/Transfer positivos rejeitados e erro real com Display/Debug/source estáticos. Debug e release/custom-protocol: 102 ordinários (38lib+7bin+57SQLite)+8doctests PASS, 1WebViewignored. RED original antes BUILD; controle final remove somente o novo método na WT própria, obtém E0599 e restaura bytes exatos.

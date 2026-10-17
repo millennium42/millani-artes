@@ -49,3 +49,8 @@ O módulo porta AccountReadStore lista contas via adapter SQLite com implementa�
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+Movement::validate_entry é regra pura no domínio: Entry positivo retorna Ok(()); outros kinds ou valor não positivo retornam DomainError::InvalidInput existente. Não valida UUID/conta/contexto nem escreve ou faz aritmética. Consumidores atuais: cinco testes de domínio; aplicação, persistência e UI/IPC ainda não chamam esse método.

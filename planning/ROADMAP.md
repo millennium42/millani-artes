@@ -554,3 +554,6 @@ FIN-009 in_progress/E3/passesfalse: leitura integrada localmente,97+8 debug/rele
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+FIN-013 in_progress/E3/passesfalse: validação pura Entrypositivo integrada localmente;5focais e102+8 debug/releasePASS/1ignored;domainmodcrítico24/24linhas5/5funções/controlerejeita95;security/E4/reviewPASS. CI source/final,nota91/liberação pendentes. SemUIIPC/persistência/receita/setup. FIN-005 ainda sem consumidor de receita.

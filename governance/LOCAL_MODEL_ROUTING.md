@@ -120,3 +120,8 @@ Local dependia de rustc shim .cargo/bin sob USERPROFILE efêmero: tentava auto-i
 ## FIN-009 — leitura de contas, E3 local em 17/10/2026
 
 Saída local é rascunho até inspeção e execução real. Qwen e Laguna produziram afirmações documentais incorretas; originais preservados e resíduos corrigidos pelo integrador com recibos canônicos. Teste truncado não foi aceito como execução; helper usa compiler/linker instalados por paths absolutos. Modelos/esforços operacionais registrados; custo não registrado.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+FIN-013: Gemma terminou vazio; Laguna produziu RED parcial e método; Muse completou limites, com resíduos de tipos corrigidos pelo integrador. Não aceitar exit0/needs_review ou alegação local como execução. Helpers devem distinguir nomes de testes de métodos falsos e normalizar quebras de linha antes de substituições. Rejeitar derives extras usados para mascarar erro de fixture. Código de negócio ficou local; root tratou somente integração/resíduos comprovados. Esforços locais são rótulos operacionais; custo não registrado.

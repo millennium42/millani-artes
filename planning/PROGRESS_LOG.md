@@ -1376,3 +1376,26 @@ FIN-009 | VERIFY integrado local | evidência E3 | checks:97+8 debug/release,98+
 
 
 FIN-009 | executor concluído; reserva ativa | evidência E3 | checks: CI39009285553/job117328105513/SHA83e6823 SUCCESS23/0,97+8PASS;docs/matrizes/review/scans/E4/validators atualizados | riscos: CI documental/nota90/liberação pendentes;semUIIPC/receita/setup/vetorcompleto | próximo ID: FIN-009 fechamento final.
+
+
+FIN-009 | liberado antes do próximo ID | evidência E3 | checks: CIfinal39010148028/job117330794829/SHA8be1163 SUCCESS16/7,nota90publicada/ref28326e4,89tuplas/97branches/checkpointpreservados,Gitlimpo/WTarquivada | riscos: semE2Efinanceiro/setup;coverageglobal localnãoCI | próximo ID: FIN-013.
+
+FIN-013 | SPEC/RECON/aceite fechado | evidência E2 | checks: fontes/callers lidos,depFIN-012done,reserva emspec,sem implementação | riscos: RED/gates/CI/not91 pendentes | próximo ID: FIN-013 RED local.
+
+
+FIN-013 | RED local sem saída útil; roteamento corretivo | evidência E2 de diagnóstico | checks: zeroedits/artifacts/execução,helperhashintacto,WTlimpa | riscos: nenhumaREDreal/BUILD/gates | próximo ID: FIN-013 RED Laguna local.
+
+
+FIN-013 | helper corrigido; RED rejeitado corretamente | evidência E3 de diagnóstico, não da regra | checks:3selfchecksPASS;compilerE0308+E0599,nenhumBUILD | riscos: teste local precisa corrigir tipo/completar limites,CI/gates pendentes | próximo ID: FIN-013 RED local.
+
+
+FIN-013 | RED parcial reproduzido; critérios faltantes rejeitados | evidência E3 de compilação esperada | checks: somenteE0599,métodoausente | riscos: limites/preservação/erroreal pendentes,semBUILD | próximo ID: FIN-013 testes focais Muse local.
+
+
+FIN-013 | RED completo reproduzido | evidência E3 de falha esperada | checks:5testes reais cobrindo limites/campos/erro,apenasE0599métodoausente | riscos: semGREEN/gates/CI | próximo ID: FIN-013 BUILD Laguna local.
+
+
+FIN-013 | GREEN focal integrado | evidência E3 local | checks:5PASS/zerowarnings,Contextsemderivesnovos,NET2paths | riscos: fullgates/coverage/security/review/CI/not91 pendentes | próximo ID: FIN-013 TEST/SECURITY.
+
+
+FIN-013 | VERIFY local concluído | evidência E3 | checks:102+8 debug/releasePASS/1ignored,fmt/clippy/quality/build/scans/E4/reviewPASS,LLVMcrítico24/24linhas5/5funções/controlerejeita95 | riscos: CI source/final/not91/liberação pendentes;semjornadaUIIPC/setup/globalatual | próximo ID: FIN-013 CI source.

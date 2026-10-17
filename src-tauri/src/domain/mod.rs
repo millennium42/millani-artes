@@ -1,4 +1,4 @@
-//! Pure business rules belong here; financial rules are not implemented yet.
+//! Pure business rules belong here.
 
 pub mod ports;
 
@@ -124,6 +124,15 @@ pub struct Movement {
     pub context: Context,
 }
 
+impl Movement {
+    pub fn validate_entry(&self) -> Result<()> {
+        match &self.kind {
+            MovementKind::Entry { .. } if self.amount_cents > 0 => Ok(()),
+            _ => Err(DomainError::InvalidInput),
+        }
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -144,3 +153,6 @@ mod tests;
 
 #[cfg(test)]
 mod ports_tests;
+
+#[cfg(test)]
+mod entry_tests;

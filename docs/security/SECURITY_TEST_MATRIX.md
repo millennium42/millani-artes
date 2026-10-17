@@ -320,3 +320,8 @@ npm120/0 vulnerabilidades, Cargo422/0 vulnerabilidades/2E4, OSV542/3E4/0fora; SA
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+validate_entry recebe &self, não faz IO/logs/mutação/aritmética e retorna erro estático existente, sem serializar Movement. Clone/Copy fora do contrato foram removidos de Context; privacidade e construção raw preservadas. npm120/0, Cargo422/0vuln/2E4, OSV542/3E4/0fora, plugin e SAST45PASS; SAST não cobre Rust. E4 expirando23/10/2026 e hashes aprovados revalidados, sem novas exceções.

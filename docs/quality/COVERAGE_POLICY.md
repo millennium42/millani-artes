@@ -143,3 +143,8 @@ FIN-009 LLVM23.1.1 global local E3:459/470linhas=97,659574%,46/49funções=93,87
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+Classificação crítica financeira: src-tauri/src/domain/mod.rs, gate de linhas/funções >=95%. LLVM23.1.1 focal: full24/24linhas,5/5funções; controle sem domain::entry_tests conserva19/24linhas(79,1667%) e4/5funções(80%), rejeitando95. Statements não medidos, branches stableN/A, regiões não são statements. Não é coverage global; a medição global FIN-009 permanece histórica no source83e6823.

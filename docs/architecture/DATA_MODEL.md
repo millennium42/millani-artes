@@ -90,3 +90,8 @@ O modelo de dados mantém estrutura existente sem alterações de schema. A tabe
 
 
 FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
+
+
+## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
+
+Movement e MovementKind conservam seus campos e construção bruta, inclusive valores negativos usados em fixtures de FIN-012. A validação explícita validate_entry(&self) aceita apenas Entry com amount_cents > 0. Não altera schema, saldo, histórico, contexto ou conta; não executa migrations.
