@@ -1,0 +1,92 @@
+{
+  "id": "FIN-013",
+  "date": "2026-10-17 America/Sao_Paulo",
+  "scope": "pure Movement::validate_entry; Entry and positive cents only; no UI/IPC/persistence/revenue consumer/INV-FIN-001/exit/transfer/installer/E2E",
+  "source": {
+    "sha": "a3dee6febce169d4dbac3779ce6a67c998e506ab",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/39021912847",
+    "run": 39021912847,
+    "job": 117365252558,
+    "attempt": 1,
+    "status": "success23/0",
+    "source_markers": 7,
+    "rust": "102ordinary+8doctests PASS/1WebViewignored",
+    "native_production": {
+      "bytes": 8536064,
+      "customProtocol": true,
+      "imageVersion": "20261007.264.1",
+      "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+      "sourceSha": "a3dee6febce169d4dbac3779ce6a67c998e506ab",
+      "pe": "PE32+",
+      "imageOS": "win25-vs2026",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+      "sha256": "7cc59ac60ad1e3b0671d0782cff07be3ef6234f025b6e00b04dfc17dda69bfea",
+      "machine": "AMD64",
+      "node": "v24.21.0",
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+      "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284"
+    },
+    "artifact": "1 frontend scaffold coverage, not Rust/installer"
+  },
+  "final": {
+    "sha": "b9f1a5d011c6370edc0b73d2d705174b79dac270",
+    "ci": "https://github.com/millennium42/millani-artes/actions/runs/39022819060",
+    "run": 39022819060,
+    "job": 117367859210,
+    "attempt": 1,
+    "status": "success",
+    "steps_success": 16,
+    "steps_skipped": 7,
+    "artifacts": 0,
+    "source_markers": 5,
+    "identity": "product/tests/pins/locks unchanged from exact successful source CI; no gratuitous rerun"
+  },
+  "checks": {
+    "local_rust": "fmt/clippy alltargets customprotocol -Dwarnings/debug+release102ordinary+8doctests PASS/1nativeignored",
+    "frontend": "Node24.21.0/npm11.19.0 quality/build/3tests2files scaffold100% PASS; thresholds unchanged",
+    "security": "Gitleaks/npm120/0/Cargo422/0vuln/2E4/OSV542/3E4/0outside/plugin/SAST45PASS; SAST not Rust; exact approved inputs valid before2026-10-23T00Z",
+    "final_staged": {
+      "exit": 0,
+      "files": 11,
+      "bytes": 682760,
+      "framed_sha256": "fa54837b274a0b81c4f0db1bb1b3040fe16bec5468de4ed8b8660b4d63e90c3b",
+      "findings": 0
+    },
+    "validators": "4PASS/411files/28sources/91items;365481historic progress bytes preserved;diffcheckPASS"
+  },
+  "coverage": {
+    "scope": "critical src-tauri/src/domain/mod.rs only; local LLVM23.1.1",
+    "full": "24/24lines,5/5functions",
+    "control": "19/24lines(79.1667%),4/5functions(80%) after skipping entry_tests; gate95 rejects",
+    "limits": "statements not measured; stable branches N/A; regions not statements; no current global coverage claim, historical FIN009 global applies only to83e6823",
+    "test_negative_control": "final tests also compiled with only new method temporarily removed in owned isolated WT: only E0599; exact bytes restored; initial RED before BUILD separately preserved"
+  },
+  "reviews": {
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "scope": "two source paths and focal contract",
+    "result": "noP0/P1/P2",
+    "evidence": "E2 readonly; reviewer did not run tests"
+  },
+  "models": {
+    "local": "Gemma12B empty/rejected; Laguna xs2.1 partial tests and final business method; Muse30B boundary test draft",
+    "root": "integration, own helper/CRLF correction and bounded typed test residues; removed unauthorized Context Clone/Copy; business method remained local",
+    "effort": "local operational labels not measured engine effort; root model/effort não registrado",
+    "cost": "custo não registrado"
+  },
+  "preservation": {
+    "previous_notes": 90,
+    "previous_notes_ref": "28326e461d9a07729d8de88d05a64c5c33df0c39",
+    "original_branches": 97,
+    "all_retained": true,
+    "checkpoint": "7573c65899416cf180bb25545f6cfae6335bb00e"
+  },
+  "receipts": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao",
+  "cleanup": "owned focal scratch removed after9evidence files/profiledata preserved; useful Cargo cache/models retained; owned server stopped; worktree archived recoverably/path absent",
+  "release": {
+    "preconditions": "exact final CI, clean main, archived WT, original97branches and90note tuples verified",
+    "activation": "normal note91 push and exact remote verification in FIN-013-release-20261017.json",
+    "next_id": "select next canonically eligible roadmap ID"
+  }
+}
