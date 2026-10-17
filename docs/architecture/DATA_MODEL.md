@@ -82,3 +82,8 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 
 
 UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+
+
+## FIN-009 — leitura de contas, E3 local em 17/10/2026
+
+O modelo de dados mantém estrutura existente sem alterações de schema. A tabela accounts mantém os campos id, name, account_type, initial_balance_cents. Nenhuma nova coluna adicionada. Não há migration nova; persistência de criação permanece FIN-008.

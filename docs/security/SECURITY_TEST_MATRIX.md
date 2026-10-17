@@ -312,3 +312,8 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 
 
 UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+
+
+## FIN-009 — leitura de contas, E3 local em 17/10/2026
+
+npm120/0 vulnerabilidades, Cargo422/0 vulnerabilidades/2E4, OSV542/3E4/0fora; SAST45casos frontend, sem scanner Rust. E4 revalidado expiry 2026-10-23. Inputs inalterados. RustSec drafts preservados. Erro opaco sem writes. Nenhuma validação nova.

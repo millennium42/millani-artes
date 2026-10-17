@@ -1356,3 +1356,20 @@ FIN-012 | liberação confirmada pelo root | evidência E3 | checks: CI389104686
 UI-001 | inspeção nativa concluída; fechamento pendente | evidência E3 | checks:produção real source7573c65;capturas1026x752/313x752 preservadas por hash;UIAheader/main/heading/texto;Tab/ShiftTab;perfil próprio confirmado;janela/processos encerrados ecleanup contido;reviewsSol6mediumE2 semP0/P1/P2;checks anteriores reutilizados em código idêntico | riscos:código de saída não registrado(null);sem WCAG numérico/mínimo de produto/E2E;rascunho amplo Qwen rejeitado e apenas parágrafo factual focal usado;custo não registrado | próximo ID:CI final/nota89/liberação UI-001
 
 UI-001 | executor concluído; reserva retida | evidência E3 | checks:execução nativa/capturas/UIA/teclado ecleanup seguro;quality/build/scans e CI38907719490 no código idêntico;review integrado evisualSol6mediumE2 semP0/P1/P2;docs/matrizes/handoff atualizados antes de passestrue | riscos:código saída não registrado(null),sem WCAG numérico/mínimo/jornadas/coverageglobal/setup;CI final/nota89/liberação pendentes | próximo ID:FIN-005 reconciliação de elegibilidade somente após liberar UI-001
+
+FIN-009 | SPEC/RECON, contrato aceito antes de BUILD | evidência E2 | checks: FIN-008/UI-001 liberados; review Sol6 medium sem ADR/gate novo | riscos: RED/implementação/gates/CI/nota90 pendentes; FIN-005 sem consumidor de receita | próximo ID: FIN-009 RED.
+
+FIN-009 | correção operacional de timeout verificada, RED pendente | evidência E3 somente runtime | checks: 12 selfchecks/parser Aider PASS, review Sol6 medium E2 sem P0/P1/P2 | riscos: funcionalidade não testada; deadline externo24h | próximo ID: FIN-009 RED local.
+
+FIN-009 | RED unitário reproduzido, RED físico pendente | evidência E3 de falha esperada | checks: E0432 símbolos reais ausentes; quatro testes corrigidos por Muse | riscos: sem GREEN/implementação/CI | próximo ID: FIN-009 RED físico.
+
+FIN-009 | porta BUILD e4 unitários GREEN reproduzidos | evidência E3 focal | checks: 4PASS/29filtrados, erro opaco e campos preservados | riscos: adapter/físicos/gates/CI pendentes | próximo ID: FIN-009 RED físico tipado.
+
+FIN-009 | RED físico tipado reproduzido | evidência E3 de falha esperada | checks: somente5 E0277 impl de leitura ausente, zero outro erro | riscos: sem GREEN SQLite, falhas/coverage/gates/CI pendentes | próximo ID: FIN-009 BUILD SQLite local.
+
+FIN-009 | GREEN focal SQLite reproduzido no WT | evidência E3 local | checks:4unit+2físicos PASS,24contas/reopen/ordem/snapshots/schema | riscos: falhas/gates/coverage/review/CI pendentes; não main integrada | próximo ID: FIN-009 TEST falhas local.
+
+FIN-009 | compiler/linker local corrigidos e comprovados no sandbox | evidência E3 runtime | checks:4unit PASS,helper hash intacto,sem auto-install | riscos: falhas funcionais/gates/CI pendentes | próximo ID: FIN-009 TEST erros com compiler real.
+
+
+FIN-009 | VERIFY integrado local | evidência E3 | checks:97+8 debug/release,98+8instrumentado,focal100%/controle rejeita95,global459/470linhas46/49funções,fmt/clippy/quality/build/audits/E4/SAST/review PASS | riscos: CI exata/nota90/liberação pendentes;semUIIPC/setup/vetorcompleto | próximo ID: FIN-009 CI source.

@@ -3,6 +3,7 @@ pub mod database;
 pub mod domain;
 pub mod application {
     pub mod create_account;
+    pub mod list_accounts;
 }
 pub mod infrastructure {
     pub mod accounts;

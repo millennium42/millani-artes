@@ -1,4 +1,5 @@
 use crate::application::create_account::AccountCreationStore;
+use crate::application::list_accounts::AccountReadStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Account, AccountType};
 use rusqlite::Connection;
@@ -83,5 +84,42 @@ impl AccountCreationStore for AdapterSqliteAccountStore {
             }
             Err(_) => Err(AccountStoreError),
         }
+    }
+}
+
+impl AccountReadStore for AdapterSqliteAccountStore {
+    type Error = AccountStoreError;
+
+    fn read_all_accounts(&self) -> Result<Vec<Account>, Self::Error> {
+        let connection = self.connection.as_ref().ok_or(AccountStoreError)?;
+        let mut stmt = connection
+            .prepare("SELECT id, name, account_type, initial_balance_cents FROM main.accounts ORDER BY id")
+            .map_err(|_| AccountStoreError)?;
+        let rows = stmt
+            .query_map([], |row| {
+                let id_vec: Vec<u8> = row.get(0)?;
+                let id: [u8; 16] = id_vec
+                    .try_into()
+                    .map_err(|_| rusqlite::Error::InvalidQuery)?;
+                let name: String = row.get(1)?;
+                let account_type_str: String = row.get(2)?;
+                let account_type = match account_type_str.as_str() {
+                    "cash" => AccountType::Cash,
+                    "bank_pix" => AccountType::BankPix,
+                    "card" => AccountType::Card,
+                    "other" => AccountType::Other,
+                    _ => return Err(rusqlite::Error::InvalidQuery),
+                };
+                let initial_balance_cents: i64 = row.get(3)?;
+                Ok(Account {
+                    id,
+                    name,
+                    account_type,
+                    initial_balance_cents,
+                })
+            })
+            .map_err(|_| AccountStoreError)?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|_| AccountStoreError)
     }
 }

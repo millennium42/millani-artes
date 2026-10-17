@@ -548,3 +548,6 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 
 
 UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+
+
+FIN-009 in_progress/E3/passesfalse: leitura integrada localmente,97+8 debug/release e98+8 instrumentadoPASS;global459/470linhas46/49funções/críticos95PASS;reviewsemP0P1P2. CI source/final/nota90/liberação pendentes;supersede nota histórica de não iniciado,semjornadaUIIPC/setup.

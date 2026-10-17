@@ -132,3 +132,11 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 
 
 UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+
+
+## FIN-009 — leitura de contas, E3 local em 17/10/2026
+
+Adapter: 88/88 linhas, 7/7 funções. Controle: 56/88 linhas, 5/7 funções. Aplicação: 0/9 linhas, 0/3 funções. LLVM 23.1.1 compilou. Clippy passou. Cobertura não é global. Estes números são focais; full application9/9linhas3/3funções. Controle rejeita o gate95%; não mede percentual de chamadas. Statements não medidos e branches stableN/A; regiões não são statements. Cobertura global separada no registro abaixo.
+
+
+FIN-009 LLVM23.1.1 global local E3:459/470linhas=97,659574%,46/49funções=93,877551%; global90PASS. Críticos conservadores create_account50/50linhas4/4funções, list_accounts9/9e3/3, accounts88/88e7/7, database276/280(98,5714%)e25/25:95PASS. Produção somente src-tauri/src;8arquivos reportados,lib.rs/ports.rs semlinhasexecutáveis N/A; testes/deps/gerados/tooling excluídos. Main normal incluído0/3linhas0/1função(não executado); infraestrutura startup6/10linhas1/3funções. Instrumentado98ordinários+8doctests include-ignored,0ignored. Statements não medidos,branches stableN/A;regiões não statements,sem vetorcompleto/finançasUI. Relatório e logs preservados externamente, FIN-009-global-rust-20261017.json e FIN-009-global-rust-closeout-20261017.json; perfilWebView2 próprio removido sem processo ativo após196entradas semreparse. Runner originalexit1 porcleanup pendente, métricas/testesexit0; closeout separado confirmoucleanup,sem reclassificar exit. Cache instrumentado ignorado preservado. Isto não é coverage executada na CI nem instalador.

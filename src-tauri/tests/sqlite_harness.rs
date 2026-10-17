@@ -2918,20 +2918,20 @@ mod fin008_account_creation_tests {
     type AuditSnapshotRow = (Vec<u8>, i64, String, String, Vec<u8>);
 
     #[derive(Debug, PartialEq, Eq)]
-    struct Snapshot {
+    pub(super) struct Snapshot {
         accounts: Vec<(Vec<u8>, String, String, i64)>,
         audit: Vec<AuditSnapshotRow>,
         versions: Vec<i64>,
         integrity: String,
     }
 
-    struct FixedClock {
+    pub(super) struct FixedClock {
         now: SystemTime,
         calls: Cell<usize>,
     }
 
     impl FixedClock {
-        fn new(now: SystemTime) -> Self {
+        pub(super) fn new(now: SystemTime) -> Self {
             Self {
                 now,
                 calls: Cell::new(0),
@@ -2946,14 +2946,17 @@ mod fin008_account_creation_tests {
         }
     }
 
-    struct FixedIds {
+    pub(super) struct FixedIds {
         values: VecDeque<[u8; 16]>,
         fail_at: Option<usize>,
         calls: usize,
     }
 
     impl FixedIds {
-        fn new(values: impl IntoIterator<Item = [u8; 16]>, fail_at: Option<usize>) -> Self {
+        pub(super) fn new(
+            values: impl IntoIterator<Item = [u8; 16]>,
+            fail_at: Option<usize>,
+        ) -> Self {
             Self {
                 values: values.into_iter().collect(),
                 fail_at,
@@ -2975,7 +2978,7 @@ mod fin008_account_creation_tests {
         }
     }
 
-    fn migrate_accounts(path: &Path) -> Connection {
+    pub(super) fn migrate_accounts(path: &Path) -> Connection {
         let connection = db013_migrate_v2(open_database(path).expect("DATABASE_OPEN_FAILED"));
         execute_versioned_migration(
             connection,
@@ -2985,7 +2988,7 @@ mod fin008_account_creation_tests {
         .expect("ACCOUNTS_MIGRATION_FAILED")
     }
 
-    fn snapshot(connection: &Connection) -> Snapshot {
+    pub(super) fn snapshot(connection: &Connection) -> Snapshot {
         assert!(connection.is_autocommit());
         let accounts = {
             let mut statement = connection
@@ -3652,3 +3655,9 @@ fn cat003_categories_upgrade_v3_preserves_accounts_and_audit_event() {
         "ok"
     );
 }
+
+#[path = "common/list_accounts.rs"]
+mod fin009_list_accounts_tests;
+
+#[path = "common/list_accounts_errors.rs"]
+mod fin009_list_accounts_error_tests;

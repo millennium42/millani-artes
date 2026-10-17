@@ -42,3 +42,7 @@ ARC-003 executor E3 validado na entrega6eafaa40/[CI37963747801](https://github.c
 ARC-005 executor done/E3 após [entrega c5872e20](https://github.com/millennium42/millani-artes/commit/c5872e2026291512fd9eb879e3562200d72b7dd7)/[CI37974060505](https://github.com/millennium42/millani-artes/actions/runs/37974060505), tentativa1/23success.45casos SAST/42CLI/3PS, quality/audits/build Windows aprovados; [prova e limites](../../planning/specs/ARC-005.md#ci--learn--entrega-validada). Fechamento preserva fontes; reserva14 até CI final/nota61 pública. Guard de padrões não comprova SQLi/SQLite/finanças; META ativa/DB001 não iniciado.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 mantém criação em application e persistência/auditoria no adapter; UI, IPC e startup não integrados. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.
+
+## FIN-009 — leitura de contas, E3 local em 17/10/2026
+
+O módulo porta AccountReadStore lista contas via adapter SQLite com implementação read_all_accounts. Consumer futuro sem implementação. Interface retorna Result<Vec<Account>>. Escopo limitado à leitura sem UI/IPC/startup. Adapter ganhou funcionalidade de leitura.

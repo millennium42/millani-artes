@@ -1,0 +1,28 @@
+{
+  "id": "FIN-009",
+  "title": "listar contas",
+  "specPath": "planning/specs/FIN-009.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-008"
+  ],
+  "acceptanceCriteria": [
+    "Porta/caso retornam todas Account ou erro estático opaco; vazio retorna Vec vazio.",
+    "Adapter existente lê quatro campos ORDER BY id, preserva ID16, nomes exatos, quatro tipos e i64.",
+    "Teste físico cria via FIN-008, lista, fecha/reabre/lista e compara campos/snapshots; leitura repetida não altera contas/audit/schema/ledger.",
+    "ID BLOB fora16, enum desconhecido ou tipo SQLite ilegível rejeitam integralmente sem pânico/parcial; query falha e contexto None retornam erro seguro.",
+    "Não acrescentar validação de nome/saldo: nome vazio em fixture CHECKdisabled é preservado. Sem UI/IPC/startup/schema/deps/projeção.",
+    "RED antes BUILD; gates, cobertura afetada, security, review, docs/matrizes/log/handoff e CI source exato antes passes. Final CI/nota90 preservando89/liberação antes próximo ID."
+  ],
+  "checks": [
+    "Rust fmt/clippy/test debug+release/audit; physical SQLite",
+    "LLVM affected production full/control lines/functions >=95%; limitations explicit",
+    "npm quality/build; existing security; 4 validators; staged scan",
+    "Independent Sol6 medium; exact source/final CI; note90 preserving89"
+  ],
+  "agentPlan": "P-INT root integrator/residual test corrections; Laguna local production; Muse/Laguna local tests; Qwen/Laguna P-TRC drafts reviewed/corrected; P-REV gpt-6-sol medium read-only; one model queue; reservation active until exact CI/note90/clean release",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 integrado main working source:97+8 debug/release PASS/1nativeignored;instrumentado98+8/0ignored; LLVMglobal459/470linhas46/49funções/global90 ecríticos95PASS;focalfull/controlPASS;fmtclippy/npmqualitybuild/Taurinobundle/audits/E4/SASTPASS;P-REVsemP0P1P2. CI/nota90/liberação pendentes;passesfalse. SemUIIPC/receita/setup/vetorcompleto. Custo não registrado."
+}
