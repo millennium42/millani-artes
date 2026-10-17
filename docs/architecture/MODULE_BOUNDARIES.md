@@ -57,3 +57,8 @@ Movement::validate_entry é regra pura no domínio: Entry positivo retorna Ok(()
 
 
 FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.
+
+
+## FIN-014 — validação pura de saída, E3 local em 17/10/2026
+
+Movement::validate_exit reutiliza o padrão puro de validate_entry: Exit positivo retorna Ok(()); zero, negativos, Entry e Transfer retornam DomainError::InvalidInput existente. Sem nova validação de UUID/conta/contexto, IO/logs/mutação/aritmética. Consumidores atuais são cinco testes de domínio; aplicação/persistência/UIIPC não chamam o novo método.

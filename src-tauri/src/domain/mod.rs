@@ -131,6 +131,13 @@ impl Movement {
             _ => Err(DomainError::InvalidInput),
         }
     }
+
+    pub fn validate_exit(&self) -> Result<()> {
+        match &self.kind {
+            MovementKind::Exit { .. } if self.amount_cents > 0 => Ok(()),
+            _ => Err(DomainError::InvalidInput),
+        }
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -156,3 +163,6 @@ mod ports_tests;
 
 #[cfg(test)]
 mod entry_tests;
+
+#[cfg(test)]
+mod exit_tests;

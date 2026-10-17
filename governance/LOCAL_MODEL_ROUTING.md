@@ -125,3 +125,8 @@ Saída local é rascunho até inspeção e execução real. Qwen e Laguna produz
 ## FIN-013 — validação pura de entrada, E3 local em 17/10/2026
 
 FIN-013: Gemma terminou vazio; Laguna produziu RED parcial e método; Muse completou limites, com resíduos de tipos corrigidos pelo integrador. Não aceitar exit0/needs_review ou alegação local como execução. Helpers devem distinguir nomes de testes de métodos falsos e normalizar quebras de linha antes de substituições. Rejeitar derives extras usados para mascarar erro de fixture. Código de negócio ficou local; root tratou somente integração/resíduos comprovados. Esforços locais são rótulos operacionais; custo não registrado.
+
+
+## FIN-014 — validação pura de saída, E3 local em 17/10/2026
+
+FIN-014 reutilizou como fonte o arquivo de testes já validado de FIN-013: Laguna transpôs Entry/Exit e implementou apenas o método, sem correções GPT no código/testes. Contratos claros com padrão concreto evitaram repetir erros de Context nãoCopy e de limites ausentes. Root reproduziu RED/GREEN/gates; P-REV Sol6medium independente. Esforço local é rótulo operacional, custo não registrado.

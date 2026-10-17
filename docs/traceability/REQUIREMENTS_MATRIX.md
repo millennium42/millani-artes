@@ -452,3 +452,8 @@ FIN-013 implementa apenas validação pura de entrada positiva, com dependência
 
 
 FIN-013 executor done/E3/passestrue após CI39021912847/job117365252558/attempt1/SHAa3dee6febce169d4dbac3779ce6a67c998e506ab SUCCESS23/0,102ordinários+8doctestsPASS/1ignored. Crítico domainmod24/24linhas5/5funções/controle rejeita95 é E3 local,não coverageCI/globalatual;statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4/validators atualizados;CIfinaldocumental/nota91/preservação90/liberação pendentes. SemUIIPC/persistência/receita/setup. Fonte planning/handoffs/FIN-013.md.
+
+
+## FIN-014 — validação pura de saída, E3 local em 17/10/2026
+
+FIN-014, dependente de FIN-012 liberado, entrega só validação pura de saída positiva. Testes e método são Laguna local, reaproveitando FIN-013, com reprodução E3 root e review Sol6medium E2 semP0/P1/P2. Sem jornada UIIPC/persistência/receita/INV-FIN-001/transferência/setup/globalatual. CI source/final,nota92/liberação pendentes; in_progress/passesfalse.

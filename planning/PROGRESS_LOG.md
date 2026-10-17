@@ -1402,3 +1402,17 @@ FIN-013 | VERIFY local concluído | evidência E3 | checks:102+8 debug/releasePA
 
 
 FIN-013 | executor concluído; reserva ativa | evidência E3 | checks: CI39021912847/job117365252558/SHAa3dee6f SUCCESS23/0,102+8PASS;docs/matrizes/review/scans/E4/validators atualizados | riscos: CIfinal/not91/liberação pendentes,semUIIPC/setup/globalatual | próximo ID: FIN-013 fechamento final.
+
+
+FIN-013 | liberado antes do próximo ID | evidência E3 | checks:CIfinal39022819060/job117367859210/SHAb9f1a5d SUCCESS16/7,nota91publicada/ref1494962,90tuplas/97branches/checkpointpreservados,Gitlimpo/WTarquivada | riscos:semUIIPC/setup/globalatual | próximo ID: FIN-014.
+
+FIN-014 | SPEC/RECON/aceite fechado | evidência E2 | checks:depFIN-012done,semchamadorvalidate_exit,reservaem spec,padrãotipadoEntryreutilizado | riscos:RED/gates/CI/not92 pendentes | próximo ID: FIN-014 RED local.
+
+
+FIN-014 | RED tipado completo reproduzido | evidência E3 de falha esperada | checks:5testes reais reutilizados,apenasE0599validate_exit ausente | riscos: semGREEN/gates/CI | próximo ID: FIN-014 BUILD Laguna local.
+
+
+FIN-014 | GREEN focal integrado | evidência E3 | checks:5PASS/zerowarnings,NET2paths locais sem correçãoGPT | riscos:fullgates/coverage/security/review/CI/not92 pendentes | próximo ID: FIN-014 TEST/SECURITY.
+
+
+FIN-014 | VERIFY local concluído | evidência E3 | checks:107+8 debug/releasePASS/1ignored,fmt/clippy/quality/build/scans/E4/reviewPASS,LLVMcrítico29/29linhas6/6funções/controlerejeita95 | riscos:CI source/final/not92/liberação pendentes,semUIIPC/setup/globalatual | próximo ID: FIN-014 CI source.

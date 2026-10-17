@@ -1,0 +1,28 @@
+{
+  "id": "FIN-014",
+  "title": "validar saída positiva",
+  "specPath": "planning/specs/FIN-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-012"
+  ],
+  "acceptanceCriteria": [
+    "Movement::validate_exit(&self)->domain::Result<()> aceita somente Exit com amount_cents>0; rejeita zero, negativos, Entry e Transfer com DomainError::InvalidInput existente.",
+    "Aceita1/123456/i64::MAX e rejeita0/-1/i64::MIN emHome eFactory; preserva id/account_id/amount/context, sem aritmética nem conversão.",
+    "Preserva construção raw, traits e validate_entry de FIN-013. Sem validação nova de UUID/conta/contexto, IO/schema/persistência/UIIPC/receita/transferência.",
+    "Erro real do método tem Display DOMAIN_INVALID_INPUT, Debug InvalidInput e sourceNone; sem payload ou derive financeiro novo.",
+    "Testes novos reutilizam o padrão validado de entry_tests.rs, com context_index e Context novo por iteração; sem Clone/Copy/Debug/PartialEq adicionais.",
+    "RED real antes BUILD; gates Rust fmt/clippy-Dwarnings/debug+release/audit,quality/build/security/E4,coveragecrítica domainmod>=95linhas/funções econtrole negativo;reviewSol6medium/docs/matrizes/log/handoff/CI source antespasses. CIfinal/nota92 preservando91/Gitlimpo/WTarquivada/liberação antespróximoID."
+  ],
+  "checks": [
+    "Rust fmt/clippy-Dwarnings/debug+release/audit; TypeScript quality/build",
+    "LLVM critical domainmod95lines/functions + negativecontrol",
+    "Security/E4/4validators/stagedGitleaks/independentSol6medium",
+    "Docs/matrices/log/handoff beforepasses; exactsourceCI; finalCI/note92preserving91/release"
+  ],
+  "agentPlan": "P-INT integrator; Laguna local P-QA/P-DOM reusing proven Entry pattern; Muse only unresolved residue; P-REV gpt-6-sol medium final; exact reservation active",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 working main:5focais e107ordinários+8doctests debug/releasePASS/1ignored;fmt/clippy/quality/build/scans/E4PASS;LLVMcrítico29/29linhas6/6fn/control24/29e5/6rejeita95;P-REVSol6medium semP0P1P2. CI source/final/not92/liberação pendentes,passesfalse. SemUIIPC/persistência/receita/setup/globalatual. Custo não registrado."
+}
