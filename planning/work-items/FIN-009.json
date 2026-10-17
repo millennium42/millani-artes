@@ -2,7 +2,7 @@
   "id": "FIN-009",
   "title": "listar contas",
   "specPath": "planning/specs/FIN-009.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-008"
   ],
@@ -23,6 +23,6 @@
   "agentPlan": "P-INT root integrator/residual test corrections; Laguna local production; Muse/Laguna local tests; Qwen/Laguna P-TRC drafts reviewed/corrected; P-REV gpt-6-sol medium read-only; one model queue; reservation active until exact CI/note90/clean release",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 integrado main working source:97+8 debug/release PASS/1nativeignored;instrumentado98+8/0ignored; LLVMglobal459/470linhas46/49funções/global90 ecríticos95PASS;focalfull/controlPASS;fmtclippy/npmqualitybuild/Taurinobundle/audits/E4/SASTPASS;P-REVsemP0P1P2. CI/nota90/liberação pendentes;passesfalse. SemUIIPC/receita/setup/vetorcompleto. Custo não registrado."
+  "passes": true,
+  "notes": "Done/E3 apósCI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. LLVMglobal local459/470linhas46/49funções/global90/críticos95PASS;instrumentado98+8PASS/0ignored;focalfull/controlPASS;fmtclippy/quality/build/Tauri/scans/E4/review/validatorsPASS;docs/matrizes/log/handoffatualizadosantespasses. CI documental/nota90/preservação89/liberação pendentes. SemUIIPC/receita/setup/vetorcompleto. Custo não registrado."
 }

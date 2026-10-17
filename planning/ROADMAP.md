@@ -551,3 +551,6 @@ UI-001 executor concluído: E3 de execução e inspeção nativa, checks do cód
 
 
 FIN-009 in_progress/E3/passesfalse: leitura integrada localmente,97+8 debug/release e98+8 instrumentadoPASS;global459/470linhas46/49funções/críticos95PASS;reviewsemP0P1P2. CI source/final/nota90/liberação pendentes;supersede nota histórica de não iniciado,semjornadaUIIPC/setup.
+
+
+FIN-009 executor done/E3/passestrue após CI39009285553/job117328105513/attempt1/SHA83e682303354c000d2319f512f8321882901aa35 SUCCESS23/0,97ordinários+8doctestsPASS/1ignored. Evidência local global459/470linhas46/49funções ecríticos95PASS não é coverage CI; statementsnão medidos/branchesstableN/A. Docs/contratos/testes/review/scans/E4 atualizados; CI documental final/nota90/preservação89/liberação ainda pendentes. Sem UI/IPC/receita/setup; fonte planning/handoffs/FIN-009.md.
