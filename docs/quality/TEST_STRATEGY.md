@@ -223,3 +223,6 @@ CAT-006 E3:7unit+3SQLite reais cobrem umID/Clockchecked/erros opacos, ativa/inat
 
 
 CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.
+
+
+CAT-007 E3:2SQLite físicos provam migration6vazia/upgrade,nullableBLOB16/FKNOACTION,probes inválidos/snapshots/reopen e vínculo de movimento real após rename/deactivate com audit exato. Atribuição feita sópela fixture SQL no campo real. Rust153+8docs/debug/release/quality/security/review PASS;CI/E2E pendentes; handoffCAT007.

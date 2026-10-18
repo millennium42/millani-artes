@@ -1,0 +1,26 @@
+{
+  "id": "CAT-007",
+  "title": "preservar categoria histórica",
+  "specPath": "planning/specs/CAT-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CAT-006"
+  ],
+  "acceptanceCriteria": [
+    "Migration6 aditiva nullable FK movements.category_id preserva movimentos anteriores; ID BLOB16 ou NULL, sem cascata em DELETE/UPDATE do pai.",
+    "Banco vazio e upgradev5 reais provam schema/constraints/integridade/reopen e preservação de dados/ledger.",
+    "Movimento real associado pela fixture continua referenciando mesma categoria após rename/deactivate reais, com campos financeiros intactos e audit exato; sem alegar atribuição UI/IPC.",
+    "Gates locais/review independente/validators/CI SHAexato e docs/matrizes/log/handoff antespasses; liberação antes próximo ID."
+  ],
+  "checks": [
+    "RED constantes ausentes/GREEN2SQLite",
+    "Rustfmt/clippy/debug+release/audit;TSquality/build/securityE4",
+    "Identidade de produção crítica anterior/review/validators/stagedscan",
+    "CI fonte/final,nota99/liberação"
+  ],
+  "agentPlan": "P-MAP determinístico;P-QA/P-DAT locais focais;P-INT único integrador;P-REVgpt-6-solmedium independente;reserva14paths na spec; custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFYlocal2SQLite,migration6 eFKhistórica reais;Rust153+8docs/debug+release/TS/securityE4/currentcritical>=95controle/reviewPASS. CI fonte/final/nota99/liberação pendentes; fixtureSQL não UIIPC;MetaE2Eativa."
+}

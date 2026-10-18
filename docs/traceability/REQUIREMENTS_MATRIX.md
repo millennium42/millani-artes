@@ -506,3 +506,6 @@ MVP-02/desativação → CAT-006 → deactivate_category_tests7 + common::catego
 
 
 CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.
+
+
+MVP-02/histórico → CAT-007 → common::category_history2: migration6 real movements.category_id FKcategories.id; movimento mantém ID/campos financeiros e referência após rename/deactivate reais,joinreopen encontra inativa,audit exato e parentDELETE/IDUPDATErejeitados. E3 física,CI pendente. Fixture faz atribuiçãoSQL; caso de uso/UIIPC/política inativa ainda não comprovados. Fonte:handoffCAT007.

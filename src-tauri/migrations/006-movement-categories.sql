@@ -1,0 +1,1 @@
+ALTER TABLE main.movements ADD COLUMN category_id BLOB CHECK(category_id IS NULL OR (typeof(category_id)='blob' AND length(category_id)=16)) REFERENCES categories(id) ON DELETE NO ACTION ON UPDATE NO ACTION;

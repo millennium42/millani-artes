@@ -612,3 +612,6 @@ CAT-006 VERIFY E3:7unit+3SQLite e151Rust+8docs/debug/release PASS,quality/securi
 
 
 CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.
+
+
+CAT-007 VERIFY E3: migration6 aditiva e2SQLite;Rust153+8docs/debug/release,quality/securityE4/critical>=95controle/review PASS;in_progress/passesfalse atéCI. FIN005 ainda sem consumidor;MetaE2Eativa. Fonte: handoffCAT007.

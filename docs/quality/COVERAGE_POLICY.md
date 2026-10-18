@@ -205,3 +205,6 @@ CAT-006 LLVM23.1.1 E3:deactivate_category.rs38/38linhas4/4funções100%;categori
 
 
 CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.
+
+
+CAT-007 LLVM23.1.1 atual:database276/280linhas98,5714% e25/25funções100%; appdeactivation38/38 e4/4; adaptercategories153/155 e11/11. Full>=95PASS; controle corrigido só após novo teste histórico cobrir desativação: omite ambos grupos,app0/adapter106/155e8/11,rejeita95. Repetido sócontrole,full/compilação preservados. Duas constantes novas não adicionam função executável; databasecontroleobservacional. Statementsnão medidos/branchesstableN/A;nãoRustglobal/CIcoverage. HandoffCAT007.

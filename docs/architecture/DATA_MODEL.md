@@ -134,3 +134,6 @@ FIN-017 | E3 local:6unit+3SQLite/4falhas,criaçãoEntry+audit atômicas/reopen/r
 
 
 FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340/attempt1success23/0skip/7marcadores exatos;121testesRust+8doctests. Entry+audit atômicos/6unit+3SQLite4falhas,critical app43/43linhas3/3fn+adapter51/51linhas5/5fn100%,controle0. Gateslocais/review/validators/stagedscan aprovados;docs antespassestrue. CI documental/nota95/liberação pendentes;WTarquivada,evidênciapreservada,locaisencerrados. DepoispausarMETA por decisão humana,nenhumpróximoID. ProdutoUIIPC/receitaFIN005/globalRust/setup.exe/E2E pendentes;custonão registrado.
+
+
+CAT-007: movements.category_id BLOB nullable/NULLoublob16/FKcategories.id NOACTION adicionada por migration6; preserva v5 e referência a categoria renomeada/inativa. Domínio e APIs permanecem anteriores; atribuição testada por fixture SQL, UIIPC/política inativa não comprovadas. E3 física; handoffCAT007.
