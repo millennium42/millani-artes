@@ -137,3 +137,6 @@ FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/
 
 
 CAT-007: movements.category_id BLOB nullable/NULLoublob16/FKcategories.id NOACTION adicionada por migration6; preserva v5 e referência a categoria renomeada/inativa. Domínio e APIs permanecem anteriores; atribuição testada por fixture SQL, UIIPC/política inativa não comprovadas. E3 física; handoffCAT007.
+
+
+CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.

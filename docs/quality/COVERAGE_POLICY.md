@@ -208,3 +208,6 @@ CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779
 
 
 CAT-007 LLVM23.1.1 atual:database276/280linhas98,5714% e25/25funções100%; appdeactivation38/38 e4/4; adaptercategories153/155 e11/11. Full>=95PASS; controle corrigido só após novo teste histórico cobrir desativação: omite ambos grupos,app0/adapter106/155e8/11,rejeita95. Repetido sócontrole,full/compilação preservados. Duas constantes novas não adicionam função executável; databasecontroleobservacional. Statementsnão medidos/branchesstableN/A;nãoRustglobal/CIcoverage. HandoffCAT007.
+
+
+CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.

@@ -87,3 +87,6 @@ FIN-016 | CI source aprovado / executor concluído | E3 | SHAf31c8286091af4285bd
 
 
 CAT-007 migration006-movement-categories.sql/versão6 aditiva ALTER: nullable category_id/FKNOACTION,sem seed/default/índice extra. Migrations1..5 hash idêntico; testes físicos vazio1..6 eupgradev5 provam preservação/constraints/FKs/reopen. Sem down migration: rollback de falha pelo executor transacional existente. E3 local; CI pendente; handoffCAT007.
+
+
+CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.

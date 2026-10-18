@@ -226,3 +226,6 @@ CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779
 
 
 CAT-007 E3:2SQLite físicos provam migration6vazia/upgrade,nullableBLOB16/FKNOACTION,probes inválidos/snapshots/reopen e vínculo de movimento real após rename/deactivate com audit exato. Atribuição feita sópela fixture SQL no campo real. Rust153+8docs/debug/release/quality/security/review PASS;CI/E2E pendentes; handoffCAT007.
+
+
+CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.

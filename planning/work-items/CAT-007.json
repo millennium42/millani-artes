@@ -2,7 +2,7 @@
   "id": "CAT-007",
   "title": "preservar categoria histórica",
   "specPath": "planning/specs/CAT-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "CAT-006"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-MAP determinístico;P-QA/P-DAT locais focais;P-INT único integrador;P-REVgpt-6-solmedium independente;reserva14paths na spec; custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocal2SQLite,migration6 eFKhistórica reais;Rust153+8docs/debug+release/TS/securityE4/currentcritical>=95controle/reviewPASS. CI fonte/final/nota99/liberação pendentes; fixtureSQL não UIIPC;MetaE2Eativa."
+  "passes": true,
+  "notes": "Critérios satisfeitos;docs/matrizes/log/handoff antespasses.Source143190b374d186da75f2a44bdc85cb0bfad58219/CI39131643684/job117687859259success23/0skip/7sourceShaexatos;Rust153+8docs/2SQLite/gatescriticos/scansE4/review/validators/stagedscan PASS. CI final/nota99preservando98/refs/mainlimpa/liberação pendentes,reservaATIVA. FixtureSQL não UIIPC/E2E/setup;MetaE2Eativa;custo não registrado."
 }

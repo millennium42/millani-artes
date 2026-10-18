@@ -509,3 +509,6 @@ CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779
 
 
 MVP-02/histórico → CAT-007 → common::category_history2: migration6 real movements.category_id FKcategories.id; movimento mantém ID/campos financeiros e referência após rename/deactivate reais,joinreopen encontra inativa,audit exato e parentDELETE/IDUPDATErejeitados. E3 física,CI pendente. Fixture faz atribuiçãoSQL; caso de uso/UIIPC/política inativa ainda não comprovados. Fonte:handoffCAT007.
+
+
+CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.
