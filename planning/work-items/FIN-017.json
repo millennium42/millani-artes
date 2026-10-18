@@ -2,7 +2,7 @@
   "id": "FIN-017",
   "title": "persistir entrada",
   "specPath": "planning/specs/FIN-017.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-013",
     "FIN-015",
@@ -22,6 +22,6 @@
   "agentPlan": "P-INT root integration/2prod;P-QA gpt-6-sol medium tests;P-DOC gpt-6-luna low docs;P-REV gpt-6-sol medium independent;locals stopped by latest human decision;24 paths reserved",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "RED/GREEN6unit+3SQLite,121ordinary+8doctests debug/release,fmt/clippy/TS/securityE4/critical100/control0/review PASS. CI source/final/notes95/release pending;passesfalse. Latest human:finish FIN017 then pause META,no nextID;cost not registered."
+  "passes": true,
+  "notes": "Acceptance verified: RED/GREEN6unit+3SQLite/4faults;121ordinary+8docs debug/release;fmt/clippy/TS/securityE4/critical100/control0/review/validators/stagedscan PASS;sourceSHA5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340 success23/0skip/7exactmarkers. Docs/matrices/log/handoff updated beforepasses. FinaldocCI/note95/release pending;WT archived/evidence preserved/locals stopped. Human:stop afterFIN017,pauseMETA,no nextID;cost não registrado."
 }

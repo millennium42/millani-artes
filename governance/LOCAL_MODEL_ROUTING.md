@@ -163,3 +163,6 @@ Fontes oficiais consultadas em 17/10/2026: [OpenAI — uso do Codex e fatores da
 
 
 Decisão humana mais recente nesta entrega FIN-017: encerrar todos os modelos locais, concluir somente o item atual por roteamento econômico GPT e salvar o progresso; depois pausar a META, sem outro ID ou retomada automática. Essa decisão prevalece sobre a rota local-first anterior para esta entrega. Regras provisórias de tentativas locais acima não autorizam reinício de servidor/modelos. Custo não registrado.
+
+
+FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340/attempt1success23/0skip/7marcadores exatos;121testesRust+8doctests. Entry+audit atômicos/6unit+3SQLite4falhas,critical app43/43linhas3/3fn+adapter51/51linhas5/5fn100%,controle0. Gateslocais/review/validators/stagedscan aprovados;docs antespassestrue. CI documental/nota95/liberação pendentes;WTarquivada,evidênciapreservada,locaisencerrados. DepoispausarMETA por decisão humana,nenhumpróximoID. ProdutoUIIPC/receitaFIN005/globalRust/setup.exe/E2E pendentes;custonão registrado.
