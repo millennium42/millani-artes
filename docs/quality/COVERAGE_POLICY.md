@@ -217,3 +217,6 @@ FIN-018 LLVM23.1.1 atual appcreate_exit43/43linhas3/3funções eadaptermovements
 
 
 FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.
+
+
+FIN-019 LLVM23.1.1 atualdomain/mod.rs34/34linhas7/7funções100%;controle semnovos5testes29/34linhas85,2941% e6/7funções85,7143%,rejeita95. Statementsnão medidos/branchesstableN/A;nãoRustglobalatual/CIcoverage. Recibos/hashes preservados;handoffFIN019.

@@ -518,3 +518,6 @@ MVP-03/saída → FIN-014/FIN-015/FIN-018 → create_exit_tests6 ecommon::exit_*
 
 
 FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.
+
+
+MVP-03/transferência → FIN-019 → domain::transfer_tests5: validate_transfer puro positivo/kindexclusivo,metadados/contas/contexto preservados. E3 de validação,CI pendente; não prova contas distintasFIN020/atomicidadeFIN021/neutralidadeFIN022/rollbackFIN023/UIIPC. Fonte:handoffFIN019.

@@ -97,3 +97,6 @@ FIN-018: create_exit/ExitCreationStore→mesmoAdapterSqliteMovementStore→movim
 
 
 FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.
+
+
+FIN-019 Movement::validate_transfer puro: Transfer positivo=>Ok,demaisDomainErrorInvalidInput existente;sem mutação/IO/cálculo. Endpoints são metadados,FIN020/021/022 separados. APIEntry/Exit idêntica. E3local;handoffFIN019.

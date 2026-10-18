@@ -235,3 +235,6 @@ FIN-018 E3:6unit reutilizados e3SQLite1..6/contextos/i64MAX/1/reopen/categoriaNU
 
 
 FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.
+
+
+FIN-019 E3:5unit reais amboscontextos/positivos1/123456/MAX/zero/-1/MIN,Entry/Exit rejeitados,metadados/erro opaco;RED5E0599/GREEN5. Rust167+8docs/debug/release,quality/security/reviewPASS. Não prova transferência financeira;CI pendente;handoffFIN019.
