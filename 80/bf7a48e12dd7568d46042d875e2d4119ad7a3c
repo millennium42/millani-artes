@@ -1,0 +1,1169 @@
+{
+  "id": "CAT-006",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "25311c0fb01d066e39d557e3779287d680553c7f",
+  "final_sha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+  "source_ci": {
+    "run": {
+      "id": 39128570976,
+      "head_sha": "25311c0fb01d066e39d557e3779287d680553c7f",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39128570976",
+      "run_attempt": 1,
+      "created_at": "2026-10-18T12:44:48Z",
+      "updated_at": "2026-10-18T12:54:19Z"
+    },
+    "job": {
+      "id": 117678814958,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39128570976,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          70,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          74,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ]
+      ],
+      "new_unit_tests": 7,
+      "new_sqlite_tests": 3,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 214,
+          "findings": 0,
+          "seconds": 1.067,
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.191,
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.889,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 15.585,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.281
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "bytes": 8536064,
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "imageVersion": "20261007.264.1",
+          "customProtocol": true,
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "sourceSha": "25311c0fb01d066e39d557e3779287d680553c7f",
+          "pe": "PE32+",
+          "node": "v24.21.0",
+          "machine": "AMD64",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "imageOS": "win25-vs2026",
+          "sha256": "6a9d9303e88b0d706e295b29844da04a47130d7722a03cdbcb408af060c906fe"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12136898219,
+          "name": "frontend-coverage-39128570976-1",
+          "size_in_bytes": 21917,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12136898219",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12136898219/zip",
+          "expired": false,
+          "created_at": "2026-10-18T12:46:54Z",
+          "expires_at": "2026-10-19T12:46:53Z",
+          "updated_at": "2026-10-18T12:46:54Z",
+          "digest": "sha256:8a73aabebd632927f9a9323f3cac315080d2f990373c428e374fae72b02e5007",
+          "workflow_run": {
+            "id": 39128570976,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "25311c0fb01d066e39d557e3779287d680553c7f"
+          }
+        }
+      ],
+      "limitations": "No Rust global coverage CI; frontend artifact scaffold; native PE not installer; no UIIPC/E2E proof"
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39129305545,
+      "head_sha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39129305545",
+      "run_attempt": 1,
+      "created_at": "2026-10-18T12:55:15Z",
+      "updated_at": "2026-10-18T12:57:15Z"
+    },
+    "job": {
+      "id": 117680993054,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39129305545,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 215,
+          "findings": 0,
+          "seconds": 1.109,
+          "sourceSha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.34,
+          "sourceSha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.931,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 19.015,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": [],
+      "code_identity": "Exact source code from25311c0fb01d066e39d557e3779287d680553c7f; docs-only closing commit; no new execution claimed for skipped tests/build",
+      "limitations": "No UIIPC/currentglobalRust/installer/E2E proof"
+    }
+  },
+  "verification_facts": {
+    "id": "CAT-006",
+    "evidence": "E3",
+    "base": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+    "sources": {
+      "src-tauri/src/lib.rs": "ec45acd42fc7e56d2fc315cb5069befaff1ece31164b8896b6697380f91c1a19",
+      "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+      "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+      "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+      "src-tauri/tests/common/mod.rs": "01c3031b3fa53c973e9e60445df4d282aa4aafc5303256dd3974ddeab13cc22a",
+      "src-tauri/tests/common/category_deactivation.rs": "4ff1b1fc61d4510be088c13595dfce88089a5fd9754dd15d8ea6f0d0181b137c"
+    },
+    "rust": {
+      "base": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+      "sources": {
+        "src-tauri/src/lib.rs": "ec45acd42fc7e56d2fc315cb5069befaff1ece31164b8896b6697380f91c1a19",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/tests/common/mod.rs": "01c3031b3fa53c973e9e60445df4d282aa4aafc5303256dd3974ddeab13cc22a",
+        "src-tauri/tests/common/category_deactivation.rs": "4ff1b1fc61d4510be088c13595dfce88089a5fd9754dd15d8ea6f0d0181b137c"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.32,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-rust-gate-0-20261018.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 21.41,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-rust-gate-1-20261018.log",
+          "sha256": "09e7820235ca25b568cc5dc5d0eaea131ef4d883de5c0008421dfbebec43b658"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 18.25,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-rust-gate-2-20261018.log",
+          "sha256": "3fb75217f86981be17028f57680c06a522384aee0cc8ce460f3f71499332d56c"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 68.12,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-rust-gate-3-20261018.log",
+          "sha256": "77bb73297f891345821dd306557c5451fbd57ef06907fb6eb3c4839cdcd92fad"
+        }
+      ]
+    },
+    "other": {
+      "base": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 12.37,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-0-20261018.log",
+          "sha256": "a22131c915651811182a091b6a04611d402dada4921c0e6f4326fe43d3001ed3"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 1.83,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-1-20261018.log",
+          "sha256": "81db8f5e77155ec2d8e039d036fdcb0f352515a3b49ad871118bb506735df03a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 12.62,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-2-20261018.log",
+          "sha256": "6b7be494b0a48e8d260f4db08735144919a60a3749fe7eb9d9b8026d281c9059"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 6.39,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-3-20261018.log",
+          "sha256": "7669b7a8138615b9b7f76b7386afb20bb26b587f85320a39780956889b5b6676"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 3.65,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-4-20261018.log",
+          "sha256": "0f6cb88180fba8dd437cedc1526085b6d44800842ce9989e291a46dfdfd9ca5a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.16,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-5-20261018.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 7.19,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-other-gate-6-20261018.log",
+          "sha256": "79a9df64883ff42acedd1b675b63caff144f7626eec5cd8e2e114fb49f253e81"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      70,
+      7,
+      74,
+      8
+    ],
+    "unit": 7,
+    "sqlite": 3,
+    "coverage": {
+      "full": {
+        "src/application/deactivate_category.rs": {
+          "lines": {
+            "count": 38,
+            "covered": 38,
+            "percent": 100
+          },
+          "functions": {
+            "count": 4,
+            "covered": 4,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 9,
+            "covered": 6,
+            "percent": 66.66666666666666
+          },
+          "regions": {
+            "count": 52,
+            "covered": 51,
+            "notcovered": 1,
+            "percent": 98.07692307692307
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/categories.rs": {
+          "lines": {
+            "count": 155,
+            "covered": 153,
+            "percent": 98.70967741935483
+          },
+          "functions": {
+            "count": 11,
+            "covered": 11,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 11,
+            "percent": 50
+          },
+          "regions": {
+            "count": 173,
+            "covered": 169,
+            "notcovered": 4,
+            "percent": 97.6878612716763
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/application/deactivate_category.rs": {
+          "lines": {
+            "count": 38,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 4,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 9,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 52,
+            "covered": 0,
+            "notcovered": 52,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/categories.rs": {
+          "lines": {
+            "count": 155,
+            "covered": 106,
+            "percent": 68.38709677419355
+          },
+          "functions": {
+            "count": 11,
+            "covered": 8,
+            "percent": 72.72727272727273
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 8,
+            "percent": 36.36363636363637
+          },
+          "regions": {
+            "count": 173,
+            "covered": 117,
+            "notcovered": 56,
+            "percent": 67.63005780346822
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "security": {
+      "NPM_AUDIT": {
+        "auditLevel": "high",
+        "dependencies": 120,
+        "elapsedSeconds": 12.482,
+        "inputSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+        },
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "sourceSha": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+        "vulnerabilities": {
+          "critical": 0,
+          "high": 0,
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "total": 0
+        }
+      },
+      "CARGO_AUDIT": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1338,
+          "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+          "last-updated": "2026-10-17T17:23:59+02:00"
+        },
+        "dependencies": 422,
+        "elapsedSeconds": 6.216,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+        },
+        "sourceSha": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      },
+      "OSV": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 422
+        },
+        "packages": 542,
+        "seconds": 1.915,
+        "sourceSha": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "SAST": {
+        "sourceSha": "c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+        "biome": "2.5.15",
+        "cases": 45,
+        "biomeCli": 42,
+        "powershell": 3,
+        "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+        "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+        "fixtureVcsDisabledOnly": true,
+        "scratchRemoved": true,
+        "limitations": [
+          "computed eval property",
+          "Function constructor",
+          "SQL fragments/escapes",
+          "SQL-prefix UI strings rejected",
+          "Rust/backend SQL/restore"
+        ],
+        "elapsedSeconds": 7.047
+      }
+    },
+    "preserved": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\cat-006-deactivate-category\\Millani Artes\\artifacts\\cat006-check\\receipt-sqlite-green.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\receipt-sqlite-green.json",
+        "bytes": 4206,
+        "sha256": "6f56f3567a27cdd6ee8e3cffdf3945700192528aa85fc4a72f3ef544d038ea2b"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\cat-006-deactivate-category\\Millani Artes\\artifacts\\cat006-check\\receipt-unit-green.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\receipt-unit-green.json",
+        "bytes": 3003,
+        "sha256": "ecfddc543f7102e48a5773370e07492663e87978473b35e9627b0ad762f175cc"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\cat-006-deactivate-category\\Millani Artes\\artifacts\\cat006-check\\receipt-unit-red.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\receipt-unit-red.json",
+        "bytes": 3173,
+        "sha256": "1edbbcf37525c89678adda22aebdf2220e47b5824a16ed3e23acd9764cf04897"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\cat006-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\receipt-coverage.json",
+        "bytes": 35275,
+        "sha256": "f8ee34b8ebb86fae2d732381d2483f1ee4399de0e9abfeda99d0223ce8bcc64f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\cat006-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\full.json",
+        "bytes": 15969,
+        "sha256": "41f078080692c51731e2ec427892ebe7afb69868aca2db4e87cd2452edf91b22"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\cat006-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\CAT-006-focal-evidence-20261018\\control.json",
+        "bytes": 15908,
+        "sha256": "464d7b0b3e54641be4cd52fabca1c83650f0da9aa8067bab6949e4e907b7ba80"
+      }
+    ],
+    "review": {
+      "id": "CAT-006",
+      "persona": "P-REV",
+      "agent": "/root/cat004_review",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "evidence": "E2",
+      "scope": [
+        "src-tauri/src/lib.rs",
+        "src-tauri/src/application/deactivate_category.rs",
+        "src-tauri/src/application/deactivate_category_tests.rs",
+        "src-tauri/src/infrastructure/categories.rs",
+        "src-tauri/tests/common/mod.rs",
+        "src-tauri/tests/common/category_deactivation.rs",
+        "planning/specs/CAT-006.md"
+      ],
+      "sources": {
+        "src-tauri/src/lib.rs": "ec45acd42fc7e56d2fc315cb5069befaff1ece31164b8896b6697380f91c1a19",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/tests/common/mod.rs": "01c3031b3fa53c973e9e60445df4d282aa4aafc5303256dd3974ddeab13cc22a",
+        "src-tauri/tests/common/category_deactivation.rs": "4ff1b1fc61d4510be088c13595dfce88089a5fd9754dd15d8ea6f0d0181b137c"
+      },
+      "findings": [],
+      "result": "No P0/P1/P2; one ID/checked Clock/static errors; atomic UPDATE only active state and audit; exact identity/name, inactive accepted, NotFound reuse, rollback and same-instance poison observed by tests",
+      "tests_executed_by_reviewer": false,
+      "cost": "não registrado"
+    },
+    "local": {
+      "model": "Laguna XS2.1",
+      "unit": {
+        "persona": "P-QA",
+        "calls": 1,
+        "seconds": 272.808,
+        "result": "filename-only rejected; root deterministic adaptation of existing7unit tests"
+      },
+      "build": {
+        "persona": "P-DAT",
+        "calls": 1,
+        "seconds": 338.435,
+        "result": "used; root removed unused InvalidName and two match arms"
+      },
+      "sqlite": {
+        "persona": "P-QA",
+        "calls": 1,
+        "seconds": 281.075,
+        "result": "used; root fixed format capture/unused tuple/boolean assertion and exact literal seed-oracle"
+      },
+      "total_seconds": 892.318,
+      "retries": 0,
+      "originals_preserved": true,
+      "runtime_pid": 67348,
+      "runtime": "controller stopped,11434closed"
+    },
+    "limitations": "backend deactivation; no historical consumer/UIIPC/revenueFIN005/currentglobalRust/setup.exe/install/update/signature/E2E",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "CAT-006",
+    "persona": "P-REV",
+    "agent": "/root/cat004_review",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "evidence": "E2",
+    "scope": [
+      "src-tauri/src/lib.rs",
+      "src-tauri/src/application/deactivate_category.rs",
+      "src-tauri/src/application/deactivate_category_tests.rs",
+      "src-tauri/src/infrastructure/categories.rs",
+      "src-tauri/tests/common/mod.rs",
+      "src-tauri/tests/common/category_deactivation.rs",
+      "planning/specs/CAT-006.md"
+    ],
+    "sources": {
+      "src-tauri/src/lib.rs": "ec45acd42fc7e56d2fc315cb5069befaff1ece31164b8896b6697380f91c1a19",
+      "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+      "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+      "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+      "src-tauri/tests/common/mod.rs": "01c3031b3fa53c973e9e60445df4d282aa4aafc5303256dd3974ddeab13cc22a",
+      "src-tauri/tests/common/category_deactivation.rs": "4ff1b1fc61d4510be088c13595dfce88089a5fd9754dd15d8ea6f0d0181b137c"
+    },
+    "findings": [],
+    "result": "No P0/P1/P2; one ID/checked Clock/static errors; atomic UPDATE only active state and audit; exact identity/name, inactive accepted, NotFound reuse, rollback and same-instance poison observed by tests",
+    "tests_executed_by_reviewer": false,
+    "cost": "não registrado"
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 15,
+    "bytes": 710806,
+    "framed_sha256": "6a59cbca6bc3a1d28e621894156302e0ca1d9fc803a9b3d262342af54e3fbea6",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 9,
+    "bytes": 693769,
+    "framed_sha256": "35479310f2cea5e2ec4292db1013d831a658030b93621314b7877d1a1dcaf512",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 451 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 98 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 98 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 392922 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "deactivate_category generates one audit ID/checked clock; SELECT name then UPDATE only is_active0 and audit in same transaction; preserve ID/name/line; already inactive accepted; missing category permits reuse; DB failure rolls back and poisons adapter",
+  "preserved": "97 previous note tuples exact;99 initial heads and97 historical branches/checkpoint ancestry;6 focal evidence files77534B hashverified;worktree recoverably archived",
+  "limitations": "backend deactivation only; UI/IPC,historical consumerCAT007/revenue consumerFIN005,currentglobalRust,setup.exe/install/update/signature/E2E remain unproved",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;FIN005 pending real revenue consumer",
+  "cost": "não registrado"
+}
