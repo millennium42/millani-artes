@@ -1,0 +1,941 @@
+{
+  "id": "FIN-017",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+  "final_sha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+  "source_ci": {
+    "run": {
+      "id": 39090756071,
+      "head_sha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39090756071",
+      "run_attempt": 1,
+      "created_at": "2026-10-18T02:37:31Z",
+      "updated_at": "2026-10-18T02:46:51Z"
+    },
+    "job": {
+      "id": 117566803340,
+      "run_id": 39090756071,
+      "workflow_name": "Documentation",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/millennium42/millani-artes/actions/runs/39090756071",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU5IfUc8AAAAbX4cNjA",
+      "head_sha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+      "url": "https://api.github.com/repos/millennium42/millani-artes/actions/jobs/117566803340",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39090756071/job/117566803340",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T02:37:31Z",
+      "started_at": "2026-10-18T02:37:33Z",
+      "completed_at": "2026-10-18T02:46:50Z",
+      "name": "validate",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-18T02:37:35Z",
+          "completed_at": "2026-10-18T02:37:36Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-18T02:37:36Z",
+          "completed_at": "2026-10-18T02:37:45Z"
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-18T02:37:45Z",
+          "completed_at": "2026-10-18T02:37:49Z"
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-18T02:37:49Z",
+          "completed_at": "2026-10-18T02:37:54Z"
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-18T02:37:54Z",
+          "completed_at": "2026-10-18T02:38:02Z"
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-18T02:38:02Z",
+          "completed_at": "2026-10-18T02:38:02Z"
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-18T02:38:02Z",
+          "completed_at": "2026-10-18T02:38:12Z"
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-18T02:38:12Z",
+          "completed_at": "2026-10-18T02:38:18Z"
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-18T02:38:18Z",
+          "completed_at": "2026-10-18T02:38:33Z"
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-18T02:38:33Z",
+          "completed_at": "2026-10-18T02:38:34Z"
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-18T02:38:34Z",
+          "completed_at": "2026-10-18T02:38:42Z"
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-18T02:38:42Z",
+          "completed_at": "2026-10-18T02:38:52Z"
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-18T02:38:52Z",
+          "completed_at": "2026-10-18T02:39:34Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-18T02:39:34Z",
+          "completed_at": "2026-10-18T02:39:37Z"
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-18T02:39:37Z",
+          "completed_at": "2026-10-18T02:39:47Z"
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-18T02:39:47Z",
+          "completed_at": "2026-10-18T02:39:47Z"
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-18T02:39:47Z",
+          "completed_at": "2026-10-18T02:39:49Z"
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-18T02:39:49Z",
+          "completed_at": "2026-10-18T02:39:51Z"
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-18T02:39:51Z",
+          "completed_at": "2026-10-18T02:46:45Z"
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-18T02:46:45Z",
+          "completed_at": "2026-10-18T02:46:45Z"
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-18T02:46:45Z",
+          "completed_at": "2026-10-18T02:46:46Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-18T02:46:46Z",
+          "completed_at": "2026-10-18T02:46:48Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-18T02:46:48Z",
+          "completed_at": "2026-10-18T02:46:48Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/millennium42/millani-artes/check-runs/117566803340",
+      "labels": [
+        "windows-latest"
+      ],
+      "runner_id": 1000000720,
+      "runner_name": "GitHub Actions 1000000720",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    "artifacts": [
+      {
+        "id": 12122546748,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEyMjU0Njc0OA==",
+        "name": "frontend-coverage-39090756071-1",
+        "size_in_bytes": 21917,
+        "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12122546748",
+        "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12122546748/zip",
+        "expired": false,
+        "digest": "sha256:beca89a4a039509ce7c89573658e2550e19cb4dfa88b10b44cc30267f2404baf",
+        "created_at": "2026-10-18T02:39:49Z",
+        "updated_at": "2026-10-18T02:39:49Z",
+        "expires_at": "2026-10-19T02:39:47Z",
+        "workflow_run": {
+          "id": 39090756071,
+          "repository_id": 1402085201,
+          "head_repository_id": 1402085201,
+          "head_branch": "main",
+          "head_sha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf"
+        }
+      }
+    ],
+    "markers": {
+      "GITLEAKS": {
+        "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+        "commits": 208,
+        "findings": 0,
+        "seconds": 1.085,
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "version": "8.30.1"
+      },
+      "OSV": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 422
+        },
+        "packages": 542,
+        "seconds": 1.179,
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "NPM_AUDIT": {
+        "auditLevel": "high",
+        "dependencies": 120,
+        "elapsedSeconds": 0.901,
+        "inputSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+        },
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "vulnerabilities": {
+          "critical": 0,
+          "high": 0,
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "total": 0
+        }
+      },
+      "CARGO_AUDIT": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1338,
+          "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+          "last-updated": "2026-10-17T17:23:59+02:00"
+        },
+        "dependencies": 422,
+        "elapsedSeconds": 19.363,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+        },
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      },
+      "SAST": {
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "biome": "2.5.15",
+        "cases": 45,
+        "biomeCli": 42,
+        "powershell": 3,
+        "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+        "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+        "fixtureVcsDisabledOnly": true,
+        "scratchRemoved": true,
+        "limitations": [
+          "computed eval property",
+          "Function constructor",
+          "SQL fragments/escapes",
+          "SQL-prefix UI strings rejected",
+          "Rust/backend SQL/restore"
+        ],
+        "elapsedSeconds": 5.5
+      },
+      "FINANCIAL_REDACTION": {
+        "cases": 5,
+        "realTauriBuild": true,
+        "faultInjectedIo": true,
+        "earlyFailureRejected": true,
+        "panicHook": true,
+        "closedStderr": true,
+        "rawOutputPublished": false,
+        "childrenTerminated": true
+      },
+      "PHONE_REDACTION": {
+        "cases": 5,
+        "realTauriBuild": true,
+        "faultInjectedIo": true,
+        "earlyFailureRejected": true,
+        "panicHook": true,
+        "closedStderr": true,
+        "rawOutputPublished": false,
+        "childrenTerminated": true
+      },
+      "NATIVE": {
+        "node": "v24.21.0",
+        "imageOS": "win25-vs2026",
+        "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+        "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+        "machine": "AMD64",
+        "sourceSha": "5a09ca2ec7117be7e39605bfe25848e7fc39acaf",
+        "customProtocol": true,
+        "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+        "bytes": 8536064,
+        "imageVersion": "20261007.264.1",
+        "pe": "PE32+",
+        "sha256": "72b3287b7129edd919e2964d86eb646ed037d7e6c5483c290c9492a802f2e5cb",
+        "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)"
+      }
+    },
+    "source_sha_markers": 7,
+    "all_source_markers_exact": true,
+    "test_counts": [
+      [
+        49,
+        0,
+        0
+      ],
+      [
+        7,
+        0,
+        1
+      ],
+      [
+        65,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0
+      ]
+    ],
+    "limitations": "CI exact source SHA; native PE is not setup.exe; frontend artifact scaffold; not current global Rust coverage."
+  },
+  "final_ci": {
+    "run": {
+      "id": 39091370911,
+      "head_sha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39091370911",
+      "run_attempt": 1,
+      "created_at": "2026-10-18T02:48:11Z",
+      "updated_at": "2026-10-18T02:50:07Z"
+    },
+    "job": {
+      "id": 117568664652,
+      "run_id": 39091370911,
+      "workflow_name": "Documentation",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/millennium42/millani-artes/actions/runs/39091370911",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU5IfUc8AAAAbX6N0TA",
+      "head_sha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+      "url": "https://api.github.com/repos/millennium42/millani-artes/actions/jobs/117568664652",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39091370911/job/117568664652",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T02:48:11Z",
+      "started_at": "2026-10-18T02:48:13Z",
+      "completed_at": "2026-10-18T02:50:07Z",
+      "name": "validate",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-18T02:48:14Z",
+          "completed_at": "2026-10-18T02:48:15Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-18T02:48:15Z",
+          "completed_at": "2026-10-18T02:48:23Z"
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-18T02:48:23Z",
+          "completed_at": "2026-10-18T02:48:26Z"
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-18T02:48:26Z",
+          "completed_at": "2026-10-18T02:48:30Z"
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-18T02:48:30Z",
+          "completed_at": "2026-10-18T02:48:37Z"
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-18T02:48:37Z",
+          "completed_at": "2026-10-18T02:48:38Z"
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-18T02:48:38Z",
+          "completed_at": "2026-10-18T02:48:48Z"
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-18T02:48:48Z",
+          "completed_at": "2026-10-18T02:48:54Z"
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-18T02:48:54Z",
+          "completed_at": "2026-10-18T02:49:09Z"
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-18T02:49:09Z",
+          "completed_at": "2026-10-18T02:49:09Z"
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-18T02:49:09Z",
+          "completed_at": "2026-10-18T02:49:14Z"
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-18T02:49:14Z",
+          "completed_at": "2026-10-18T02:49:24Z"
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-18T02:49:24Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:03Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-18T02:50:03Z",
+          "completed_at": "2026-10-18T02:50:05Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-18T02:50:05Z",
+          "completed_at": "2026-10-18T02:50:05Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/millennium42/millani-artes/check-runs/117568664652",
+      "labels": [
+        "windows-latest"
+      ],
+      "runner_id": 1000000721,
+      "runner_name": "GitHub Actions 1000000721",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    "artifacts": [],
+    "markers": {
+      "GITLEAKS": {
+        "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+        "commits": 209,
+        "findings": 0,
+        "seconds": 1.076,
+        "sourceSha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+        "version": "8.30.1"
+      },
+      "OSV": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 422
+        },
+        "packages": 542,
+        "seconds": 1.18,
+        "sourceSha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "NPM_AUDIT": {
+        "auditLevel": "high",
+        "dependencies": 120,
+        "elapsedSeconds": 0.915,
+        "inputSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+        },
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "sourceSha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+        "vulnerabilities": {
+          "critical": 0,
+          "high": 0,
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "total": 0
+        }
+      },
+      "CARGO_AUDIT": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1338,
+          "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+          "last-updated": "2026-10-17T17:23:59+02:00"
+        },
+        "dependencies": 422,
+        "elapsedSeconds": 14.706,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+        },
+        "sourceSha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      }
+    },
+    "source_sha_markers": 5,
+    "all_source_markers_exact": true,
+    "limitations": "Doc final CI; code unchanged from approved source SHA; 7 expected code steps skipped; no artifacts."
+  },
+  "verification_facts": {
+    "id": "FIN-017",
+    "counts": {
+      "2": [
+        [
+          49,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          65,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ]
+      ],
+      "3": [
+        [
+          49,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          65,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ]
+      ]
+    },
+    "audits": {
+      "NPM_AUDIT": {
+        "auditLevel": "high",
+        "dependencies": 120,
+        "elapsedSeconds": 12.697,
+        "inputSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+        },
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "sourceSha": "9a86f400da802ef1be3b740f877b12edbc5e6743",
+        "vulnerabilities": {
+          "critical": 0,
+          "high": 0,
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "total": 0
+        }
+      },
+      "CARGO_AUDIT": {
+        "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+        "database": {
+          "advisory-count": 1338,
+          "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+          "last-updated": "2026-10-17T17:23:59+02:00"
+        },
+        "dependencies": 422,
+        "elapsedSeconds": 7.801,
+        "excepted": 2,
+        "exceptionExpiry": "2026-10-23",
+        "ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "inputSHA256": {
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+        },
+        "sourceSha": "9a86f400da802ef1be3b740f877b12edbc5e6743",
+        "version": "0.22.2",
+        "vulnerabilities": 0,
+        "warnings": 2
+      },
+      "OSV": {
+        "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+        "excepted": 3,
+        "exceptionExpiry": "2026-10-23",
+        "findings": 3,
+        "lockSHA256": {
+          "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+        },
+        "lockfiles": {
+          "package-lock.json": 120,
+          "src-tauri/Cargo.lock": 422
+        },
+        "packages": 542,
+        "seconds": 1.767,
+        "sourceSha": "9a86f400da802ef1be3b740f877b12edbc5e6743",
+        "unexcepted": 0,
+        "version": "2.6.0"
+      },
+      "SAST": {
+        "sourceSha": "9a86f400da802ef1be3b740f877b12edbc5e6743",
+        "biome": "2.5.15",
+        "cases": 45,
+        "biomeCli": 42,
+        "powershell": 3,
+        "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+        "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+        "fixtureVcsDisabledOnly": true,
+        "scratchRemoved": true,
+        "limitations": [
+          "computed eval property",
+          "Function constructor",
+          "SQL fragments/escapes",
+          "SQL-prefix UI strings rejected",
+          "Rust/backend SQL/restore"
+        ],
+        "elapsedSeconds": 6.968
+      }
+    },
+    "models": [
+      {
+        "persona": "P-PRO",
+        "model": "millani-qwen:9b",
+        "effort": "local preset",
+        "scope": "recon accepted"
+      },
+      {
+        "persona": "P-QA",
+        "model": "millani-laguna:xs-2.1 / millani-muse:30b",
+        "effort": "local preset",
+        "scope": "rejected candidates/interrupted SQLite; originals preserved"
+      },
+      {
+        "persona": "P-QA",
+        "model": "gpt-6-sol",
+        "effort": "medium",
+        "scope": "unit6/SQLite3 tests after local residues and latest explicit human routing"
+      },
+      {
+        "persona": "P-DOC",
+        "model": "gpt-6-luna",
+        "effort": "low",
+        "scope": "13 focal docs; root updated actual evidence"
+      },
+      {
+        "persona": "P-REV",
+        "model": "gpt-6-sol",
+        "effort": "medium",
+        "scope": "independent review, no findings"
+      },
+      {
+        "persona": "P-INT",
+        "model": "session root",
+        "effort": "client configured, not measured",
+        "scope": "2 production files/integration/checks/publication"
+      }
+    ],
+    "cost": "não registrado",
+    "locals_stopped": {
+      "pid": 49056,
+      "port11434": "closed",
+      "method": "runtime-control.py stop"
+    },
+    "shared_governance": "4 edits appeared externally and preserved as patch; reserved24paths amendment, latest explicit human stop/GPT/pause recorded"
+  },
+  "independent_review": {
+    "id": "FIN-017",
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "independent": true,
+    "findings": [],
+    "scope": "7 reserved source paths + spec and existing transaction/account pattern",
+    "checks": "read-only, not executed by reviewer",
+    "root_verification": "Unit6/SQLite3 GREEN, critical app43/43lines3/3functions+adapter51/51lines5/5functions; control0. Full gates/CI pending.",
+    "cost": "não registrado",
+    "source_hashes": {
+      "src-tauri/src/lib.rs": "066179627866f1c9e6c2135fa05f78791a47c0af4fb0929354e73d4caf473ab4",
+      "src-tauri/src/application/create_entry.rs": "58e7c320d06ed88772967c65bd6cdd045d416640ab01c386de78d30ebe1e198f",
+      "src-tauri/src/application/create_entry_tests.rs": "0b76da095e8a73b30f7a0d4364440ef8d54ef63450543081d415484ed4cc526f",
+      "src-tauri/src/infrastructure/movements.rs": "4f5139c1142c79dc720ca25d82eaacde18f80601918e4ead98e40b7c060167e0",
+      "src-tauri/tests/common/mod.rs": "43d7ba3bf2773d18f38d8f0b5623327829ab6d4a8a8024831fbd14cb9cdddfdd",
+      "src-tauri/tests/common/entry_persistence.rs": "6ad22c19e15d0569241c2f768524a25757e5f8da4107aa17d3d3975833e88371",
+      "src-tauri/tests/common/entry_failures.rs": "6827b7c6d222d685517be720326d6eff2bb526baa9981ce1893bcaa1a61586f3"
+    },
+    "governance_findings": [
+      {
+        "severity": "P2",
+        "issue": "20/40min attributed to human without recorded provenance",
+        "resolution": "Marked integrator proposal; human acceptance not recorded; no local restart authorization"
+      },
+      {
+        "severity": "P2",
+        "issue": "local-first wording conflicts latest human stop/GPT/pause",
+        "resolution": "Explicit latest human override appended in 4 docs"
+      }
+    ],
+    "mechanical_correction": "Clippy expect_err on Result<()>; production unchanged"
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 24,
+    "bytes": 872660,
+    "framed_sha256": "ffb275bac80ae3a32a535106203dd0841bcb6da819948a52cbf2f7d58b6365b4",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 17,
+    "bytes": 857663,
+    "framed_sha256": "f0e6e127d8cde967444a5ea4da2069d045f6d5ce5198593fe14bbaff4af20b92",
+    "findings": 0
+  },
+  "validators": "432files/28sources/95items;4PASS",
+  "production": "create_entry+EntryCreationStore and AdapterSqliteMovementStore, validation before effects, two IDs and checkedClock, parameterized main.movements Entry and audit in SAME BEGIN IMMEDIATE,affectedrows1,returnaftercommit,staticerrors/poisonstore;immutable migrations/domain/manifest/locks unchanged;7sourcepaths",
+  "tests": "6unit+3physical/4faultfixtures;actualcreate_accountseed/chain1..5,HomeMAX/Factory1,sameadapterreuse,invalid0/-1/MIN/Exit/Transfer no effects;missingaccount/duplicateID/auditABORT/movementIGNORE rollback+poison+reopen/fullsnapshots+integrity;full121ordinary49lib7bin65SQL+8doctests debug/releasePASS/1nativeignored",
+  "coverage": "LLVM23.1.1 critical app43/43lines3/3functions and adapter51/51lines5/5functions100%;control skips newunit/SQLentrytests0lines/functions,rejects95;domain29/29lines6/6functions;notRustglobal/CIcoverage;statementsnotmeasured/branchesstableN/A",
+  "models": "Latesthuman explicitly stoppedlocals and authorizedeconomicGPTtofinishFIN017thenpause;localcandidates/rawlogs preserved;P-QAgpt-6-solmediumtests,P-DOCgpt-6-lunalowdocs,P-REVgpt-6-solmediumindependent,P-INTroot2prod/integration/checks. OwncontrollerPID49056stopped/11434closed;no worker lock. Four sharedgovernanceedits preserved/reconciled;20/40min proposal humanacceptance not recorded.",
+  "preserved": "94previousnotes exact;97originalbranchhistories/checkpoint7573c658 preserved;28focalevidencefiles49,318,595Bhashverified and recoverableWTarchive;mainclean/remotemainandnotesexact",
+  "limitations": "Entrybackendapplication+SQLite complete;no integratedUIIPC/revenueconsumerFIN005/currentglobalRust/setup.exeinstallupgrade/signature/E2E;nativePEnotinstaller;frontend scaffold",
+  "human_stop": "FIN017 only then pause META;no nextID/no automaticresume",
+  "cost": "não registrado"
+}
