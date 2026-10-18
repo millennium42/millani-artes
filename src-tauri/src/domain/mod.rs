@@ -148,6 +148,23 @@ impl Movement {
             _ => Err(DomainError::InvalidInput),
         }
     }
+
+    pub fn result_effect_cents(&self) -> Result<i64> {
+        match &self.kind {
+            MovementKind::Entry { .. } => {
+                self.validate_entry()?;
+                Ok(self.amount_cents)
+            }
+            MovementKind::Exit { .. } => {
+                self.validate_exit()?;
+                Ok(-self.amount_cents)
+            }
+            MovementKind::Transfer { .. } => {
+                self.validate_transfer()?;
+                Ok(0)
+            }
+        }
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -179,3 +196,6 @@ mod exit_tests;
 
 #[cfg(test)]
 mod transfer_tests;
+
+#[cfg(test)]
+mod result_effect_tests;
