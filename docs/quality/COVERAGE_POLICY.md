@@ -190,3 +190,6 @@ FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/
 
 
 CAT-004 LLVM23.1.1 E3: create_category.rs47/47linhas4/4funções e categories.rs50/50linhas5/5funções100%; controle omite unit/SQLite novos e ambos0linhas/funções,rejeita95. Statements não medidos, branchesstableN/A; não éRustglobalatual/coverageCI. Hashes e relatório em artifacts/cat004-coverage/receipt-coverage.json e recibos externos;CI fonte/final pendentes.
+
+
+CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.

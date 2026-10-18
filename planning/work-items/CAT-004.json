@@ -2,7 +2,7 @@
   "id": "CAT-004",
   "title": "criar categoria ativa com auditoria atômica",
   "specPath": "planning/specs/CAT-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "CAT-002",
     "CAT-003"
@@ -23,6 +23,6 @@
   "agentPlan": "P-INT único escritor main/integrador/checks; Gemma P-QA/P-INT local em WT isolado; Qwen P-TRC; P-REV gpt-6-sol medium independente; reserva18paths na spec ATIVA; custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY local130Rust+8docs/debug+release et6unit/3SQLite GREEN;critical47/47lines4/4fn+50/50lines5/5fn100/control0;securityE4/reviewPASS. CI source/final/validators/stagedscan/nota96/liberação pendentes. FIN005sem consumidor;MetaE2Eativa. Fonte spec/handoffCAT004."
+  "passes": true,
+  "notes": "VERIFY local130Rust+8docs/debug+release et6unit/3SQLite GREEN;critical47/47lines4/4fn+50/50lines5/5fn100/control0;securityE4/reviewPASS. CI source/final/validators/stagedscan/nota96/liberação pendentes. FIN005sem consumidor;MetaE2Eativa. Fonte spec/handoffCAT004. SourceCI39094721622/job117578661996/attempt1/SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e SUCCESS23/0,130Rust+8docs/1ignored. Aceite e docs/matriz/log/handoff antespassestrue. CIfinal/nota96/liberação pendentes; MetaE2Eativa, próximoCAT005após liberação."
 }

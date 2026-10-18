@@ -208,3 +208,6 @@ FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/
 
 
 CAT-004 E3 local:6unit e3SQLite físicos com helpers existentes cobrem nomes exatos/repetidos, validação antes de portas, IDs/Clockchecked/erros opacos, criação/auditoria/reopen/reuso; três faults reais duplicata/auditABORT/INSERTIGNORE e snapshots completos/poison. RED APIsausentes e guardinativa comprovados;130ordinários+8doctests debug/releasePASS/1WebViewignored. Nenhuma jornadaUIIPC/E2E provada; CI pendente; planning/handoffs/CAT-004.md.
+
+
+CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.

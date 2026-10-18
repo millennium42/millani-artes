@@ -76,3 +76,6 @@ FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/
 
 
 CAT-004: application::create_category/CategoryCreationStore e infrastructure::categories::AdapterSqliteCategoryStore expostos na lib. Criação ativa com validação antes de efeitos e categoria+audit na mesma transação existente; erroDB descartaadapter. Sem novo caminho de escrita UI/IPC/startup. E3 local;CI source/final pendentes; detalhes planning/handoffs/CAT-004.md.
+
+
+CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.
