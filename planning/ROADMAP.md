@@ -600,3 +600,6 @@ CAT-004 em VERIFY local E3,6unit+3SQLite e130Rust+8docs/debug+release,critical10
 
 
 CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.
+
+
+CAT-005 | VERIFY local E3 | 8 unitários + 3 SQLite e 141 Rust + 8 doctests/debug/release PASS, qualidade/segurança E4 e revisão independente sem P0/P1/P2. In_progress/passesfalse até CI fonte. FIN-005 ainda sem consumidor real. Meta E2E ativa; detalhes no handoff CAT-005.

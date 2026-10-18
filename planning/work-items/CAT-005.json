@@ -1,0 +1,26 @@
+{
+  "id": "CAT-005",
+  "title": "renomear categoria sem mudar identidade e estado",
+  "specPath": "planning/specs/CAT-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CAT-004"
+  ],
+  "acceptanceCriteria": [
+    "Renomear valida nome antes de efeitos, usa um ID de audit e Clockchecked, preserva nome exato, ID e estado do banco e retorna após commit.",
+    "UPDATE somente name e audit category_rename/category atômicos pelo adapter existente; uma linha exigida, rollback/poison em falhaDB; inválidos e ausência não envenenam conexão.",
+    "Unitários e SQLite físico real provam estados ativo/inativo, NotFound, reuso/reopen, snapshots completos e faults auditduplicado/ABORT/UPDATEIGNORE.",
+    "Gates Rust/TS/security/coverage95 aplicável/review independente/validators/CIexata aprovados, sem migrations/deps/thresholds novos; docs/matriz/log/handoff antespasses e liberação final antes outroID."
+  ],
+  "checks": [
+    "RED APIsausentes e GREEN8unit/3SQLite",
+    "Rustfmt/clippy/test debug+release/audit;TSquality/build",
+    "LLVM crítico e controle,scans/review/validators/stagedscan",
+    "CI fonte/final SHAexato e nota/liberação"
+  ],
+  "agentPlan": "P-INT único escritor/integrador; Laguna P-QA/P-DAT em WT isolado após falha Gemma concreta CAT004; P-REVgpt-6-solmedium independente; reserva15paths spec ATIVA; custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY local: 8unit+3SQLite, Rust141+8docs debug/release/fmt/clippy, TS/securityE4, critical49/49+106/107lines econtrole,revisão independente semP0/P1/P2 PASS. CI fonte/final, nota97 e liberação pendentes. Meta E2E ativa."
+}

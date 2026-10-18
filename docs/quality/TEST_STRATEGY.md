@@ -211,3 +211,6 @@ CAT-004 E3 local:6unit e3SQLite físicos com helpers existentes cobrem nomes exa
 
 
 CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.
+
+
+CAT-005 E3 local: 8 unitários + 3 SQLite reais cobrem validação antes de efeitos, um ID, Clock checked, nome literal, ativa/inativa, NotFound/reuso/reopen, snapshots completos e rollback/poison na mesma instância por audit duplicado/ABORT/UPDATE IGNORE. Rust 141+8 doctests em debug/release PASS, um WebView ignored; quality/build/security PASS. Revisão independente sem P0/P1/P2. CI e E2E pendentes; handoff CAT-005.

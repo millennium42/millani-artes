@@ -6,6 +6,7 @@ pub mod application {
     pub mod create_category;
     pub mod create_entry;
     pub mod list_accounts;
+    pub mod rename_category;
 }
 pub mod infrastructure {
     pub mod accounts;

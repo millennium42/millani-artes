@@ -494,3 +494,6 @@ MVP-02/criação → CAT-002/CAT-003/CAT-004 → create_category_tests6 e common
 
 
 CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.
+
+
+MVP-02/renomeação → CAT-005 → rename_category_tests8 + common::category_rename3: rename_category → CategoryRenamingStore → AdapterSqliteCategoryStore → categories.name + audit_event atômicos, preservando ID/is_active. E3 local e revisão independente aprovados; CI fonte/final pendentes. MVP-02 permanece parcial: UI/IPC, desativação e vínculos históricos dependentes dos IDs próprios. Fonte: planning/handoffs/CAT-005.md.

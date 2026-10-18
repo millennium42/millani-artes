@@ -193,3 +193,6 @@ CAT-004 LLVM23.1.1 E3: create_category.rs47/47linhas4/4funções e categories.rs
 
 
 CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a38146ebfd6abb61cd42766d47e success23/0 e130Rust+8docs; detalhes e limites no handoff CAT-004. CI documental final/nota96/liberação pendentes. MVP02 criação backend parcial; semUIIPC/E2E/setup. MetaE2Eativa.
+
+
+CAT-005 LLVM23.1.1 E3: rename_category.rs49/49 linhas e4/4funções100%; categories.rs inteiro106/107 linhas99,0654% e8/8funções100%. Controle sem testes rename: aplicação0/49 e0/4; adapter50/107 linhas46,729% e5/8funções62,5%, preservando criação; rejeita gate95. Statements não medidos/branchesstableN/A; não é cobertura global Rust atual nem CI. Recibo artifacts/cat005-coverage/receipt-coverage.json preservado comhash em operacao; handoff CAT-005.

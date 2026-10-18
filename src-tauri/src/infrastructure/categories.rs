@@ -1,4 +1,5 @@
 use crate::application::create_category::CategoryCreationStore;
+use crate::application::rename_category::CategoryRenamingStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::Category;
 use rusqlite::Connection;
@@ -72,6 +73,83 @@ impl CategoryCreationStore for AdapterSqliteCategoryStore {
             Ok((connection, ())) => {
                 self.connection = Some(connection);
                 Ok(())
+            }
+            Err(_) => Err(CategoryStoreError),
+        }
+    }
+}
+
+impl CategoryRenamingStore for AdapterSqliteCategoryStore {
+    type Error = CategoryStoreError;
+
+    fn rename_category_with_audit(
+        &mut self,
+        id: [u8; 16],
+        name: &str,
+        event_id: [u8; 16],
+        occurred_at_ms: i64,
+    ) -> Result<Option<Category>, Self::Error> {
+        let temp_category = Category {
+            id,
+            name: name.to_string(),
+            is_active: true,
+        };
+        temp_category
+            .validate_name()
+            .map_err(|_| CategoryStoreError)?;
+
+        let connection = self.connection.take().ok_or(CategoryStoreError)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let is_active_result: Result<bool, rusqlite::Error> = transaction.query_row(
+                "SELECT is_active FROM main.categories WHERE id = ?1",
+                rusqlite::params![id.as_slice()],
+                |row| row.get(0),
+            );
+
+            let is_active = match is_active_result {
+                Ok(active) => active,
+                Err(rusqlite::Error::QueryReturnedNoRows) => {
+                    return Ok(None);
+                }
+                Err(_) => {
+                    return Err(());
+                }
+            };
+
+            let updated = transaction
+                .execute(
+                    "UPDATE main.categories SET name = ?1 WHERE id = ?2",
+                    rusqlite::params![name, id.as_slice()],
+                )
+                .map_err(|_| ())?;
+
+            if updated != 1 {
+                return Err(());
+            }
+
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id,
+                    occurred_at_ms,
+                    operation: "category_rename",
+                    entity: "category",
+                    entity_id: id,
+                },
+            )
+            .map_err(|_| ())?;
+
+            Ok(Some(Category {
+                id,
+                name: name.to_string(),
+                is_active,
+            }))
+        });
+
+        match result {
+            Ok((connection, category)) => {
+                self.connection = Some(connection);
+                Ok(category)
             }
             Err(_) => Err(CategoryStoreError),
         }
