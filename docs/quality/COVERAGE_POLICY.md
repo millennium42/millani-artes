@@ -232,3 +232,6 @@ FIN-020 done/E3/passestrue após CI39137975946/SHA78beb2f62b024899d923b136251d39
 
 
 FIN-021 LLVM23.1.1 create_transfer.rs+movements.rs inteiros>=95linhas/funções;controle sem7unit+3SQL rejeita95. Métricasexatas emspec/handoff/recibo;statementsnão medidos/branchesstableN/A;nãoRustglobal/CIcoverage.
+
+
+FIN-021 done/E3/passestrue após CI39142344305/SHA1ba38ca0cca75a313431cc6ab5ae89ef50db88f3success23/0skip/7marcadores,Rust179+8docs/7unit+3SQLite. Gates/review/validators/stagedscanPASS;CI final/nota103/liberaçãopendentes;MetaE2Eativa;FIN022neutralidade/FIN023matrizrollback/FIN024saldos/receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes;fonte:handoffFIN021.

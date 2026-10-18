@@ -250,3 +250,6 @@ FIN-020 done/E3/passestrue após CI39137975946/SHA78beb2f62b024899d923b136251d39
 
 
 FIN-021 E3 REDAPIausente/GREEN7unit+3SQLite/5falhas(sourceFK,destFK,duplicate,auditABORT,IGNORE),snapshot/reopen/poison/reuso/errosopacos;Rust179+8docs/debug+release/quality/security/reviewPASS. NãofechaFIN022/023/UIIPC;CIpendente;handoffFIN021.
+
+
+FIN-021 done/E3/passestrue após CI39142344305/SHA1ba38ca0cca75a313431cc6ab5ae89ef50db88f3success23/0skip/7marcadores,Rust179+8docs/7unit+3SQLite. Gates/review/validators/stagedscanPASS;CI final/nota103/liberaçãopendentes;MetaE2Eativa;FIN022neutralidade/FIN023matrizrollback/FIN024saldos/receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes;fonte:handoffFIN021.
