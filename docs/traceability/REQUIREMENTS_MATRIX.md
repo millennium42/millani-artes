@@ -503,3 +503,6 @@ CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11
 
 
 MVP-02/desativação → CAT-006 → deactivate_category_tests7 + common::category_deactivation3: caso → porta → adapter → categories.is_active + audit_event atômicos, sem remover linha/ID/nome. E3 local;CI pendente. UIIPC e prova de referências históricas consumidorasCAT007 permanecem próprias. Fonte: handoffCAT006.
+
+
+CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.

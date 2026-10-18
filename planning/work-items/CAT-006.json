@@ -2,7 +2,7 @@
   "id": "CAT-006",
   "title": "desativar categoria",
   "specPath": "planning/specs/CAT-006.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "CAT-004"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único escritor; LagunaP-QA/P-DAT focal noWT após falha concreta anterior; P-REVgpt-6-solmedium independente; reserva15paths na spec ATIVA; custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY local:7unit+3SQLite,Rust151+8docs/debug+release/fmt/clippy,TS/securityE4,critical38/38+153/155linhas econtrole,revisão independente semP0/P1/P2 PASS. CI fonte/final,nota98/liberação pendentes. MetaE2Eativa."
+  "passes": true,
+  "notes": "Critérios satisfeitos;docs/matrizes/log/handoff antespasses. Source25311c0fb01d066e39d557e3779287d680553c7f/CI39128570976/job117678814958success23/0skip/7sourceShaexatos;7unit+3SQLite/Rust151+8docs. Gateslocais/critical>=95controle/review/validators/stagedscan PASS. CI final documental,nota98preservando97/refs/mainlimpa/liberação pendentes,reservaATIVA. MetaE2Eativa;semUIIPC/E2E/setup; custo não registrado."
 }
