@@ -139,3 +139,48 @@ fn invalid_movements_even_unrelated_and_equal_endpoints_are_rejected_opaqely() {
         );
     }
 }
+#[test]
+fn current_history_is_replayed_without_retaining_prior_balance() {
+    let first = account(1, 100);
+    let second = account(2, 200);
+    let mut history = [
+        movement(1, 0, 50, 1, 0, 0),
+        movement(2, 1, 20, 1, 0, 1),
+        movement(3, 2, 30, 1, 2, 0),
+        movement(4, 2, 7, 2, 1, 1),
+    ];
+    for (length, expected_first, expected_second) in [
+        (4, 107, 223),
+        (0, 100, 200),
+        (1, 150, 200),
+        (2, 130, 200),
+        (3, 100, 230),
+        (4, 107, 223),
+        (1, 150, 200),
+    ] {
+        assert_eq!(first.balance_cents(&history[..length]), Ok(expected_first));
+        assert_eq!(
+            second.balance_cents(&history[..length]),
+            Ok(expected_second)
+        );
+    }
+    history.reverse();
+    assert_eq!(first.balance_cents(&history), Ok(107));
+    assert_eq!(second.balance_cents(&history), Ok(223));
+    assert_eq!(first.balance_cents(&[]), Ok(100));
+    assert_eq!(second.balance_cents(&[]), Ok(200));
+    assert_eq!(first.balance_cents(&history), Ok(107));
+    assert_eq!(second.balance_cents(&history), Ok(223));
+    assert_eq!(first.initial_balance_cents, 100);
+    assert_eq!(second.initial_balance_cents, 200);
+    assert_eq!(first.id, [1; 16]);
+    assert_eq!(second.id, [2; 16]);
+    assert!(matches!(history[0].amount_cents, 7));
+    assert!(matches!(history[1].amount_cents, 30));
+    assert!(matches!(history[2].amount_cents, 20));
+    assert!(matches!(history[3].amount_cents, 50));
+    assert!(matches!(history[0].context, Context::Factory));
+    assert!(matches!(history[1].context, Context::Home));
+    assert!(matches!(history[2].context, Context::Factory));
+    assert!(matches!(history[3].context, Context::Home));
+}

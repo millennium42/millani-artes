@@ -1,0 +1,26 @@
+{
+  "id": "FIN-025",
+  "title": "provar saldo derivado",
+  "specPath": "planning/specs/FIN-025.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-024"
+  ],
+  "acceptanceCriteria": [
+    "MesmaAccount e históricos diferentes/reordenados/repetidos usam cálculo real,abertura imutável e2ladosTransfer.",
+    "UMteste novo detecta2mutantes ignorados;produção/migrations/deps byteidênticos.",
+    "Suíte real incluindoSQLite/gates/criticalcontrole/security/review/CIexato.",
+    "Docsantespasses/nota107/liberaçãoantespróximo;FIN026/028/030/UIIPC separados."
+  ],
+  "checks": [
+    "1unit replay+2mutantesRED+GREENreal",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMdomain>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota107/liberação"
+  ],
+  "agentPlan": "P-DOMLaguna1unit até900s/P-INTdeterminístico/P-REVgpt-6-solmedium;10paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-025 VERIFY E3:1unit replayreal2contas/prefixos/reverse/vazio/repetição;2mutantesRED/GREENreal/produçãozero. Rust192+8docs/debug+release/quality/securityE4/LLVMdomaincriticalcontrole/P-REV PASS. In_progress/passesfalseatéCI;edição canônicaFIN028/prova semsaldo diretoFIN030,leitor público/extratoFIN026,resultadoFIN027,receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN025. CI fonte/final/nota107/liberaçãopendentes;MetaE2Eativa."
+}
