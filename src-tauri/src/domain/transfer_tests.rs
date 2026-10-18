@@ -107,3 +107,63 @@ fn validate_transfer_error_display_debug_source() {
     assert_eq!(format!("{:?}", err), "InvalidInput");
     assert!(std::error::Error::source(&err).is_none());
 }
+
+#[test]
+fn validate_transfer_same_account_rejected_both_contexts() {
+    for account in [[0u8; 16], [u8::MAX; 16]] {
+        for amount in [1, i64::MAX] {
+            for context in [Context::Home, Context::Factory] {
+                let mut m = transfer(amount, context);
+                m.kind = MovementKind::Transfer {
+                    source_account_id: account,
+                    destination_account_id: account,
+                };
+                assert_eq!(m.validate_transfer(), Err(DomainError::InvalidInput));
+            }
+        }
+    }
+}
+
+#[test]
+fn validate_transfer_distinct_last_byte_preserved_both_directions() {
+    let a = [u8::MAX; 16];
+    let mut b = a;
+    b[15] = 0;
+    for (source, destination) in [(a, b), (b, a)] {
+        for amount in [1, i64::MAX] {
+            for context_index in 0..2 {
+                let context = if context_index == 0 {
+                    Context::Home
+                } else {
+                    Context::Factory
+                };
+                let m = Movement {
+                    id: [37; 16],
+                    kind: MovementKind::Transfer {
+                        source_account_id: source,
+                        destination_account_id: destination,
+                    },
+                    amount_cents: amount,
+                    context,
+                };
+                assert_eq!(m.validate_transfer(), Ok(()));
+                assert_eq!(m.id, [37; 16]);
+                assert_eq!(m.amount_cents, amount);
+                match &m.kind {
+                    MovementKind::Transfer {
+                        source_account_id,
+                        destination_account_id,
+                    } => {
+                        assert_eq!(*source_account_id, source);
+                        assert_eq!(*destination_account_id, destination);
+                    }
+                    _ => panic!("transfer kind changed"),
+                }
+                assert!(matches!(
+                    (&m.context, context_index),
+                    (Context::Home, 0) | (Context::Factory, 1)
+                ));
+            }
+        }
+    }
+}

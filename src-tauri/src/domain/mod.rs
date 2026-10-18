@@ -141,7 +141,10 @@ impl Movement {
 
     pub fn validate_transfer(&self) -> Result<()> {
         match &self.kind {
-            MovementKind::Transfer { .. } if self.amount_cents > 0 => Ok(()),
+            MovementKind::Transfer {
+                source_account_id,
+                destination_account_id,
+            } if self.amount_cents > 0 && source_account_id != destination_account_id => Ok(()),
             _ => Err(DomainError::InvalidInput),
         }
     }

@@ -103,3 +103,6 @@ FIN-019 Movement::validate_transfer puro: Transfer positivo=>Ok,demaisDomainErro
 
 
 FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
+
+
+FIN-020 amplia somenteguard de Movement::validate_transfer:amount>0 eorigem!=destino nos16bytes,erro existente;semIO/mutação/cálculo. Contratosanteriores intactos;FIN021/022/023 separados. E3local;handoffFIN020.

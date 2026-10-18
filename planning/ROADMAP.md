@@ -630,3 +630,6 @@ FIN-019 VERIFY E3:validate_transfer puro/5unit e167Rust+8docs/debug+release,qual
 
 
 FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
+
+
+FIN-020 VERIFY E3:contasiguais rejeitadas no validador puro;REDregressão/GREEN7/Rust169+8docs/debug+release/quality/securityE4/critical/reviewPASS;in_progress/passesfalse atéCI. FIN005semconsumidor;MetaE2Eativa.

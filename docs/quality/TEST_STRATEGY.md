@@ -241,3 +241,6 @@ FIN-019 E3:5unit reais amboscontextos/positivos1/123456/MAX/zero/-1/MIN,Entry/Ex
 
 
 FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
+
+
+FIN-020 E3:RED6pass/1fail porcontasiguais antesguard;GREEN7. Doisnovostestes:iguais0/FF econtasdistintas somenteúltimobyte ambasdireções,1/MAX,amboscontextos/metadados;cincoanteriores preservados. Rust169+8docs/debug+release,quality/security/reviewPASS;CIpendente;handoffFIN020.

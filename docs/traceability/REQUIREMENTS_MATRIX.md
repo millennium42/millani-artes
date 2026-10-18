@@ -524,3 +524,6 @@ MVP-03/transferência → FIN-019 → domain::transfer_tests5: validate_transfer
 
 
 FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
+
+
+MVP-03/transferência → FIN-020 → domain::transfer_tests7:origemigualdestino rejeitada/16bytes opacos,positivo/kindexclusivo/metadados/contexto preservados. E3validação;CIpendente;FIN021atomicidade/FIN022neutralidade/FIN023rollback/UIIPC separados. Fonte:handoffFIN020.

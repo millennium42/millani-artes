@@ -223,3 +223,6 @@ FIN-019 LLVM23.1.1 atualdomain/mod.rs34/34linhas7/7funções100%;controle semnov
 
 
 FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
+
+
+FIN-020 LLVM23.1.1 domain/mod.rs lines=36/36(100.0000%),functions=7/7(100.0000%);controle sem7transfer_tests lines=29/36(80.5556%),functions=6/7(85.7143%) rejeita95;REDprova regressãoespecífica. Statementsnão medidos/branchesstableN/A;nãoRustglobalatual/CIcoverage. Recibos/hashpreservados;handoffFIN020.
