@@ -2,7 +2,7 @@
   "id": "FIN-019",
   "title": "definir transferência",
   "specPath": "planning/specs/FIN-019.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-012"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT reutiliza testes;P-DOMLaguna focal após falhaGemmaFIN018;P-REVgpt-6-solmedium independente;reserva11paths;custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocal5unit,Rust167+8docs/debug+release/TS/securityE4/domaincritical100%controle/reviewPASS. CI fonte/final/nota101/liberação pendentes;FIN020/021/022 separados;MetaE2Eativa."
+  "passes": true,
+  "notes": "Critérios satisfeitos;docs/matrizes/log/handoff antespasses.Source7ac497730b507c5576b05bff8f285169215b21cb/CI39136146173/job117700941862success23/0skip/7sourceShaexatos;Rust167+8docs/5unit/gatescriticos/scansE4/review/validators/stagedscan PASS. CI final/nota101preservando100/refs/mainlimpa/liberação pendentes,reservaATIVA. FIN020/021/022/E2E separados;MetaE2Eativa;custo não registrado."
 }

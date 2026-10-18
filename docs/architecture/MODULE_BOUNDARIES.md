@@ -100,3 +100,6 @@ FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79ba
 
 
 FIN-019 Movement::validate_transfer puro: Transfer positivo=>Ok,demaisDomainErrorInvalidInput existente;sem mutação/IO/cálculo. Endpoints são metadados,FIN020/021/022 separados. APIEntry/Exit idêntica. E3local;handoffFIN019.
+
+
+FIN-019 done/E3/passestrue após CI39136146173/SHA7ac497730b507c5576b05bff8f285169215b21cbsuccess23/0skip e167Rust+8docs,5unit. Validação pura Transferpositivo e gates/review/validators/stagedscan PASS. CI documental final/nota101/liberação pendentes;MetaE2Eativa. FIN020/021/022/UIIPC/globalRust/setup/E2E pendentes. Fonte:handoffFIN019.
