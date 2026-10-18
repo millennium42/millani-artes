@@ -73,3 +73,5 @@ mod movements_constraints;
 
 mod entry_failures;
 mod entry_persistence;
+
+mod category_creation;

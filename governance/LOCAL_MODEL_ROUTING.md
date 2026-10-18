@@ -71,8 +71,10 @@ rtk proxy python -B resources.py
 5. Disparar a persona/modelo selecionados, sem reabrir toda a conversa:
 
 ```powershell
-rtk proxy python -B local-agent.py --model gemma --persona P-INT --task tarefa.json --worktree 'CAMINHO_ABSOLUTO_DA_WT' --timeout 86400
+rtk proxy python -B local-agent.py --model gemma --persona P-INT --task tarefa.json --worktree 'CAMINHO_ABSOLUTO_DA_WT' --timeout 2400
 ```
+
+Use `--timeout 1200` para uma missão simples e no máximo `2400` na chamada inicial de implementação/teste focal. Continuação ou correção recebe somente o tempo restante do orçamento acumulado do artefato. O executor trata `--timeout` como limite rígido daquela chamada.
 
 6. Ler o recibo *.job.json; revisar diff, reproduzir checks e cumprir REVIEW→CORRECT→VERIFY→CI→LEARN. O executor recusa checkout primário, base divergente, contexto/perfil inválido, concorrência ou paths de diff fora do contrato. O sandbox de escrita é aplicado pelo Codex CLI; não há bypass. HOME/XDG/CODEX_HOME/TEMP/TMP/APPDATA são diretórios efêmeros dentro da WT, removidos antes de auditar o diff; nenhuma credencial cloud é herdada. O backend Windows atual não oferece isolamento comprovado de leitura externa e mantém rede habilitada para Ollama: não fornecer dados privados/segredos nem alegar confinamento de rede ao localhost. Aider recebe só fontes públicas selecionadas e não possui executor livre de comandos neste fluxo; checks são definidos pelo integrador. O modo read fornece arquivos --read ao Aider e exige diff zero ao terminar; o sandbox :workspace permite a escrita do estado efêmero e não torna o checkout somente leitura no SO. Contexto/qualidade em tarefas reais requerem observação.
 7. Ao terminar: preservar evidência sanitizada, encerrar processo próprio e limpar outputs dispensados:
@@ -131,9 +133,9 @@ FIN-013: Gemma terminou vazio; Laguna produziu RED parcial e método; Muse compl
 
 FIN-014 reutilizou como fonte o arquivo de testes já validado de FIN-013: Laguna transpôs Entry/Exit e implementou apenas o método, sem correções GPT no código/testes. Contratos claros com padrão concreto evitaram repetir erros de Context nãoCopy e de limites ausentes. Root reproduziu RED/GREEN/gates; P-REV Sol6medium independente. Esforço local é rótulo operacional, custo não registrado.
 
-## Proposta operacional 17/10/2026 — divisão por retorno e capacidade local (aceite humano não registrado)
+## Política operacional vigente — divisão por retorno e capacidade local
 
-Esta proposta do integrador refina o fluxo local-first anterior; aceite humano dos limites 20/40 minutos não registrado. A decisão humana posterior de encerrar locais prevalece nesta entrega. Preserva as personas, a hierarquia, os gates, a revisão independente e a integração serial. Objetivo operacional: maximizar trabalho aprovado por tempo e uso disponível, não manter CPU/GPU ocupadas sem entrega aproveitável.
+Esta política refina o fluxo local-first anterior e incorpora a decisão humana desta conversa sobre prazos por tamanho da missão. Os limites são operacionais, não calibração empírica. Preserva personas, hierarquia, gates, revisão independente e integração serial. O objetivo é maximizar trabalho aprovado por tempo e capacidade disponível, sem manter CPU/GPU ocupadas quando não há progresso aproveitável.
 
 ### Quem faz cada parte
 
@@ -145,9 +147,9 @@ Esta proposta do integrador refina o fluxo local-first anterior; aceite humano d
 
 ### Orçamento de tentativas locais
 
-Se esta proposta for aprovada em uma retomada futura, cada geração receberá prazo por chamada no contrato. Começo proposto: **20 minutos por artefato focal**; até **40 minutos**, uma única vez, se o Integrador justificar antes da chamada que o artefato é maior e o modelo já demonstrou progresso útil naquele fluxo. Esses prazos são limites operacionais provisórios, não desempenho medido. Não use o limite de 24 horas como orçamento normal de uma geração.
+O orçamento é acumulado por artefato, não por work item inteiro. Leitura, inventário, documentação simples e testes pequenos têm até **20 minutos no total**. Um artefato focal de implementação ou testes recebe até **40 minutos na primeira chamada**. Se ela retornar progresso verificável e útil, mas incompleto, permita uma única continuação focada de até **20 minutos adicionais**, com orçamento acumulado máximo de **60 minutos** para o artefato. A continuação é uma nova chamada — o executor encerra no timeout e não oferece extensão ao vivo — e deve pedir apenas o critério ainda não concluído. “Ainda está pensando”, CPU/GPU ocupadas ou uma resposta sem diff aproveitável não justificam continuação. Sem entrega utilizável, preserve o recibo e reduza o escopo ou escale conforme o risco. Divida trabalho maior em artefatos menores; não aumente o orçamento por padrão. O `--timeout` do executor deve corresponder ao tempo reservado para a chamada; o limite de 24 horas do supervisor não é orçamento normal de geração.
 
-Por artefato/fase, faça uma tentativa inicial, no máximo uma correção com diagnóstico concreto novo e, se ainda fizer sentido, uma única troca para outro modelo local com missão menor. Não repita o mesmo prompt acrescentando histórico. Se a terceira chamada local não produzir diff utilizável, pare, preserve o recibo e encaminhe a decisão focal ao GPT conforme a política de risco. `needs_gpt` sinaliza essa decisão ao Integrador; nunca inicia chamada paga automaticamente.
+Por artefato/fase, faça uma tentativa inicial, no máximo uma correção baseada em diagnóstico concreto novo e, se ainda fizer sentido, uma única troca para outro modelo local com missão menor. São no máximo três chamadas locais, dentro do orçamento acumulado por artefato acima. Não repita o mesmo prompt acrescentando histórico. Se o orçamento terminar ou a terceira chamada não produzir diff utilizável, pare, preserve os recibos e encaminhe ao GPT somente a decisão focal, conforme a política de risco. `needs_gpt` sinaliza essa decisão ao Integrador; nunca inicia chamada paga automaticamente.
 
 ### Uso da CPU, GPU e da fila Ollama
 
@@ -162,7 +164,7 @@ Não foram executados benchmarks nesta revisão. O histórico mostra contribuiç
 Fontes oficiais consultadas em 17/10/2026: [OpenAI — uso do Codex e fatores da allowance](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan), [OpenAI — subagentes](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Ollama — FAQ sobre concorrência, memória e Windows/Radeon](https://docs.ollama.com/faq#how-does-ollama-handle-concurrent-requests). A política de economia detalha a aplicação ao uso compartilhado.
 
 
-Decisão humana mais recente nesta entrega FIN-017: encerrar todos os modelos locais, concluir somente o item atual por roteamento econômico GPT e salvar o progresso; depois pausar a META, sem outro ID ou retomada automática. Essa decisão prevalece sobre a rota local-first anterior para esta entrega. Regras provisórias de tentativas locais acima não autorizam reinício de servidor/modelos. Custo não registrado.
+Decisão humana registrada no fechamento do FIN-017: encerrar todos os modelos locais, concluir somente aquele item por roteamento econômico GPT e pausar a META sem iniciar outro ID. Essa decisão se aplicava àquele fechamento. A instrução humana posterior desta conversa autoriza preparar uma nova retomada até o E2E usando os trabalhadores locais desta política; na retomada, inicie o servidor somente pelo controlador registrado e não altere o provedor global do Codex. Custo não registrado.
 
 
 FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340/attempt1success23/0skip/7marcadores exatos;121testesRust+8doctests. Entry+audit atômicos/6unit+3SQLite4falhas,critical app43/43linhas3/3fn+adapter51/51linhas5/5fn100%,controle0. Gateslocais/review/validators/stagedscan aprovados;docs antespassestrue. CI documental/nota95/liberação pendentes;WTarquivada,evidênciapreservada,locaisencerrados. DepoispausarMETA por decisão humana,nenhumpróximoID. ProdutoUIIPC/receitaFIN005/globalRust/setup.exe/E2E pendentes;custonão registrado.

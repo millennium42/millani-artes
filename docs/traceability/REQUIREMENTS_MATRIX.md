@@ -488,3 +488,6 @@ FIN-017 | E3 local:6unit+3SQLite/4falhas,criaçãoEntry+audit atômicas/reopen/r
 
 
 FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340/attempt1success23/0skip/7marcadores exatos;121testesRust+8doctests. Entry+audit atômicos/6unit+3SQLite4falhas,critical app43/43linhas3/3fn+adapter51/51linhas5/5fn100%,controle0. Gateslocais/review/validators/stagedscan aprovados;docs antespassestrue. CI documental/nota95/liberação pendentes;WTarquivada,evidênciapreservada,locaisencerrados. DepoispausarMETA por decisão humana,nenhumpróximoID. ProdutoUIIPC/receitaFIN005/globalRust/setup.exe/E2E pendentes;custonão registrado.
+
+
+MVP-02/criação → CAT-002/CAT-003/CAT-004 → create_category_tests6 e common::category_creation3: caso real valida nome/ativa e persiste categoria+audit atômicos com reopen/rollback/poison. E3 local,130Rust+8docs/debug+releasePASS; critical app47/47linhas4/4fn+adapter50/50linhas5/5fn,controle0. Revisão independente semP0/P1/P2;CI fonte/final pendentes. Requisito categorias permanece parcial: UI, rename, deactivate e preservação histórica não comprovados. Fonte planning/handoffs/CAT-004.md.

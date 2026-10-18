@@ -1,0 +1,28 @@
+{
+  "id": "CAT-004",
+  "title": "criar categoria ativa com auditoria atômica",
+  "specPath": "planning/specs/CAT-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CAT-002",
+    "CAT-003"
+  ],
+  "acceptanceCriteria": [
+    "Caso create_category valida nome antes de efeitos, preserva nome exato, cria ativa, gera dois IDs e timestamp checked e retorna após commit.",
+    "Adapter SQLite grava categoria e category_create/category na mesma transação existente; exige uma linha, rollback e descarte após erro; input inválido não envenena conexão.",
+    "Unitários e banco físico sintético provam sucesso/reopen, chamadas/erros opacos, inválidos sem efeitos, duplicata, audit ABORT e zero linhas com snapshots preservados.",
+    "Migrations, dependências, thresholds e dados da usuária inalterados; gates Rust/TS/security/coverage aplicável/review/validators e CI remota no SHA exato aprovados.",
+    "Spec, matriz, log append-only e handoff atualizados antes de passes; CI final, nota e liberação antes de outro ID."
+  ],
+  "checks": [
+    "RED APIs ausentes; GREEN unitário e SQLite físico",
+    "Rust fmt/clippy/test debug+release/audit; TS quality/build",
+    "LLVM crítico >=95 linhas/funções e controle rejeitado",
+    "Security scans, review independente, validators/staged scan, CI fonte/final exata"
+  ],
+  "agentPlan": "P-INT único escritor main/integrador/checks; Gemma P-QA/P-INT local em WT isolado; Qwen P-TRC; P-REV gpt-6-sol medium independente; reserva18paths na spec ATIVA; custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY local130Rust+8docs/debug+release et6unit/3SQLite GREEN;critical47/47lines4/4fn+50/50lines5/5fn100/control0;securityE4/reviewPASS. CI source/final/validators/stagedscan/nota96/liberação pendentes. FIN005sem consumidor;MetaE2Eativa. Fonte spec/handoffCAT004."
+}

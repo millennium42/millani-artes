@@ -205,3 +205,6 @@ FIN-017 | E3 local:6unit+3SQLite/4falhas,criaçãoEntry+audit atômicas/reopen/r
 
 
 FIN-017 | done/E3: source5a09ca2ec7117be7e39605bfe25848e7fc39acaf CI39090756071/job117566803340/attempt1success23/0skip/7marcadores exatos;121testesRust+8doctests. Entry+audit atômicos/6unit+3SQLite4falhas,critical app43/43linhas3/3fn+adapter51/51linhas5/5fn100%,controle0. Gateslocais/review/validators/stagedscan aprovados;docs antespassestrue. CI documental/nota95/liberação pendentes;WTarquivada,evidênciapreservada,locaisencerrados. DepoispausarMETA por decisão humana,nenhumpróximoID. ProdutoUIIPC/receitaFIN005/globalRust/setup.exe/E2E pendentes;custonão registrado.
+
+
+CAT-004 E3 local:6unit e3SQLite físicos com helpers existentes cobrem nomes exatos/repetidos, validação antes de portas, IDs/Clockchecked/erros opacos, criação/auditoria/reopen/reuso; três faults reais duplicata/auditABORT/INSERTIGNORE e snapshots completos/poison. RED APIsausentes e guardinativa comprovados;130ordinários+8doctests debug/releasePASS/1WebViewignored. Nenhuma jornadaUIIPC/E2E provada; CI pendente; planning/handoffs/CAT-004.md.
