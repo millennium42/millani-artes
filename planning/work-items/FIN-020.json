@@ -2,7 +2,7 @@
   "id": "FIN-020",
   "title": "rejeitar origem igual ao destino",
   "specPath": "planning/specs/FIN-020.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-019"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT testes determinísticos;P-DOMLaguna guard focal;P-REVgpt-6-solmedium independente;reserva11paths;custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocalREDregressão/GREEN7,Rust169+8docs/debug+release/TS/securityE4/domaincritical/controle/reviewPASS. CI fonte/final/nota102/liberação pendentes;MetaE2Eativa."
+  "passes": true,
+  "notes": "FIN-020 done/E3/passestrue após CI39137975946/SHA78beb2f62b024899d923b136251d3907b937b82asuccess23/0skip/7marcadores,Rust169+8docs/7transferunit(2novos). Contasiguaisrejeitadas/contasdistintas/metadados preservados,gates/review/validators/stagedscanPASS. CI final/nota102/liberaçãopendentes;MetaE2Eativa;FIN021/022/023/UIIPC/globalRust/setup/E2Ependentes. Fonte:handoffFIN020. ReservaATIVA;liberaçãoantespróximoID;custo não registrado."
 }
