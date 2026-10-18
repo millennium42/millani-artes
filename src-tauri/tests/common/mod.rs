@@ -81,3 +81,6 @@ mod category_rename;
 mod category_deactivation;
 
 mod category_history;
+
+mod exit_failures;
+mod exit_persistence;

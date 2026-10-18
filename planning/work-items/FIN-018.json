@@ -1,0 +1,28 @@
+{
+  "id": "FIN-018",
+  "title": "persistir saída",
+  "specPath": "planning/specs/FIN-018.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-014",
+    "FIN-015",
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "create_exit valida antes de efeitos e preserva valor positivo/contexto/conta;doisIDs/Clockchecked/erro opaco/retorno apóscommit.",
+    "Adapter existente grava Exit+audit atômicos,exige uma linha,rollback/poisonDB,inválidos permitem reuso;Entry anterior preservada.",
+    "Seis unitários e três SQLite reais provam contextos/limites/reopen/audit/snapshots/categoriaNULL e quatro faults na mesma instância.",
+    "Gates locais/review/validators/CI SHAexato;docs/matrizes/log/handoff antespasses e liberação antes próximoID."
+  ],
+  "checks": [
+    "RED APIsausentes/GREEN6unit+3SQLite",
+    "Rustfmt/clippy/debug+release/audit;TSquality/build/securityE4",
+    "LLVM crítico>=95/controle/review/validators/stagedscan",
+    "CI fonte/final,nota100/liberação"
+  ],
+  "agentPlan": "P-INT templates/integra;P-QAGemma leituraunit/P-DATLaguna focal/P-QASQL;P-REVgpt-6-solmedium independente;reserva16paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFYlocal6unit+3SQLite/4faults,Rust162+8docs/debug+release/TS/securityE4/critical100%controle/reviewPASS. CI fonte/final/nota100/liberação pendentes;Entrypreservada;MetaE2Eativa."
+}

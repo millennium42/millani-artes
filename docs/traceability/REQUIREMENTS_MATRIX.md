@@ -512,3 +512,6 @@ MVP-02/histórico → CAT-007 → common::category_history2: migration6 real mov
 
 
 CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.
+
+
+MVP-03/saída → FIN-014/FIN-015/FIN-018 → create_exit_tests6 ecommon::exit_*3: create_exit→ExitCreationStore→movementsExit+audit atômicos,conta/contexto/centavos positivos exatos. E3física,reuso/reopen/rollback4faults/poison,CI pendente. Sem saldo/projeção/UIIPC/receitaFIN005;handoffFIN018.

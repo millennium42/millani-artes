@@ -211,3 +211,6 @@ CAT-007 LLVM23.1.1 atual:database276/280linhas98,5714% e25/25funções100%; appd
 
 
 CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb0bfad58219success23/0skip e153Rust+8docs,2SQLite novos. Migration6/FKhistórica física/reopen/rename/deactivate e gates/review/validators/stagedscan PASS. CI documental final/nota99/liberação pendentes;MetaE2Eativa. FixtureSQL não comprova atribuiçãoUIIPC/globalRust/setup/E2E. Fonte:handoffCAT007.
+
+
+FIN-018 LLVM23.1.1 atual appcreate_exit43/43linhas3/3funções eadaptermovements97/97linhas9/9funções100%. Controle omite unit/SQLExit:app0/adapter51/97linhas52,5773% e5/9funções55,5556%,rejeita95. Statementsnão medidos/branchesstableN/A;nãoRustglobalatual/CIcoverage. Recibos/hashes preservados;handoffFIN018.

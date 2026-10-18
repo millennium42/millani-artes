@@ -91,3 +91,6 @@ CAT-006: application::deactivate_category/CategoryDeactivationStore → AdapterS
 
 
 CAT-006 done/E3/passestrue após CI39128570976 no SHA25311c0fb01d066e39d557e3779287d680553c7f,23success/0skip e151Rust+8docs;7unit+3SQLite e gateslocais/review/validators/stagedscan PASS. Fonte: handoffCAT006. CI documental final/nota98/liberação pendentes. MetaE2Eativa; UIIPC/histórico consumidor/setup/E2E pendentes.
+
+
+FIN-018: create_exit/ExitCreationStore→mesmoAdapterSqliteMovementStore→movimentoExit+audit atômicos;validação antes de portas/consumo,2IDs/Clockchecked,row1/rollback/poison/invalidreuse. ExitStoreError próprio mantém Entry intacto;sem cálculo de saldo/UIIPC. E3local;handoffFIN018.
