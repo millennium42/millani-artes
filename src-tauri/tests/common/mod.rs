@@ -86,3 +86,5 @@ mod exit_failures;
 mod exit_persistence;
 
 mod transfer_persistence;
+
+mod transfer_rollback;

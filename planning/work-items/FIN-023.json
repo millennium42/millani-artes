@@ -1,0 +1,27 @@
+{
+  "id": "FIN-023",
+  "title": "provar rollback de transferência",
+  "specPath": "planning/specs/FIN-023.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-021",
+    "DB-012"
+  ],
+  "acceptanceCriteria": [
+    "Três falhas adicionais reais: auditPK, auditIGNORE, COMMIT porFKdiferida; nenhum efeito parcial.",
+    "Snapshot completo/reopen/mesmo adapter poison/novo adapter saudável/erro opaco.",
+    "Dois mutantes isolados falham, código real passa; nenhum diff emprodução/migrations/deps.",
+    "Gates/coveragecritical/controle/review/CIexato/docsantespasses/liberaçãoantespróximoID."
+  ],
+  "checks": [
+    "RED2mutantes/GREEN1teste3casosSQLite",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMapp+adapter>=95/controlefamília/P-REV/validators/stagedscan",
+    "CI fonte/final/nota105/liberação"
+  ],
+  "agentPlan": "P-DATLaguna1200s/umteste;P-INTmutantes+gates;P-REVgpt-6-solmedium;11paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-023 VERIFY E3:3falhas adicionais físicas auditPK/auditIGNORE/COMMITFK, snapshots/reopen/poison/novo adapter;RED2mutantes/GREEN1,produção inalterada. Rust185+8docs/debug+release/quality/securityE4/coveragefamília/P-REV PASS;in_progress/passesfalseatéCI;saldoFIN024/relatórioFIN027/receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN023. CI fonte/final/nota105/liberação pendentes;MetaE2Eativa."
+}
