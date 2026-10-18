@@ -70,3 +70,6 @@ fn has_reparse_point(metadata: &std::fs::Metadata) -> bool {
 mod movements_migration;
 
 mod movements_constraints;
+
+mod entry_failures;
+mod entry_persistence;

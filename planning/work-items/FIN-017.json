@@ -1,0 +1,27 @@
+{
+  "id": "FIN-017",
+  "title": "persistir entrada",
+  "specPath": "planning/specs/FIN-017.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-013",
+    "FIN-015",
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "create_entry usa validate_entry/IDsClockexistentes antesdepersistência e retornaMovementapóscommit;errosestáticos/sem efeitos eminválidos.",
+    "AdapterEntry SQLparametrizado+auditSAMEBEGINIMMEDIATE,affectedrows1,Fkssembypass,contexto descartadoapóserro/reusoapósinputinválido;schemaimutável.",
+    "Unit eSQLitefísicochamamcasosreais/seedviaCreateAccount,roundtrip/reopen/rollback4falhas/dadospreservados,REDantesBUILD.",
+    "GatesRust/TS/securityE4/criticalcoverage95/control/review/docs/matrizes/log/handoff/sourceCIantespasses;CIfinal/nota95preservando94/liberaçãoantespróximoID."
+  ],
+  "checks": [
+    "Unit6+SQLite3/4faultscenarios,RED/GREEN",
+    "Rustfmt/clippy/debug+release/audit;TSquality/build",
+    "Criticalapplication/adapter95/control;securityE4/reviewSol6medium/4validators/stagedscan/exactCI"
+  ],
+  "agentPlan": "P-INT root integration/2prod;P-QA gpt-6-sol medium tests;P-DOC gpt-6-luna low docs;P-REV gpt-6-sol medium independent;locals stopped by latest human decision;24 paths reserved",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "RED/GREEN6unit+3SQLite,121ordinary+8doctests debug/release,fmt/clippy/TS/securityE4/critical100/control0/review PASS. CI source/final/notes95/release pending;passesfalse. Latest human:finish FIN017 then pause META,no nextID;cost not registered."
+}

@@ -130,3 +130,36 @@ FIN-013: Gemma terminou vazio; Laguna produziu RED parcial e método; Muse compl
 ## FIN-014 — validação pura de saída, E3 local em 17/10/2026
 
 FIN-014 reutilizou como fonte o arquivo de testes já validado de FIN-013: Laguna transpôs Entry/Exit e implementou apenas o método, sem correções GPT no código/testes. Contratos claros com padrão concreto evitaram repetir erros de Context nãoCopy e de limites ausentes. Root reproduziu RED/GREEN/gates; P-REV Sol6medium independente. Esforço local é rótulo operacional, custo não registrado.
+
+## Proposta operacional 17/10/2026 — divisão por retorno e capacidade local (aceite humano não registrado)
+
+Esta proposta do integrador refina o fluxo local-first anterior; aceite humano dos limites 20/40 minutos não registrado. A decisão humana posterior de encerrar locais prevalece nesta entrega. Preserva as personas, a hierarquia, os gates, a revisão independente e a integração serial. Objetivo operacional: maximizar trabalho aprovado por tempo e uso disponível, não manter CPU/GPU ocupadas sem entrega aproveitável.
+
+### Quem faz cada parte
+
+- Ferramentas determinísticas fazem buscas, formatação, compilação, testes e scans antes de chamar um LLM.
+- P-INT mantém decisão, contrato e integração. Entrega a um trabalhador Aider/Ollama uma missão focal: um resultado verificável, SHA-base, fontes e `allowed_paths` mínimos, saída máxima e aceite. O trabalhador local prepara o diff; o integrador confere e reproduz os checks para E3.
+- Mantenha a inferência de código/documentação no executor local enquanto a missão for clara e delimitada. O executor Aider/Ollama configurado não usa inferência GPT nem tem fallback pago automático. A inferência local não consome a allowance do Codex; as chamadas GPT para planejar, interpretar, revisar e comunicar continuam sujeitas ao uso da conta.
+- GPT/Codex fica com decisões ambíguas ou de risco, integração, falhas que o caminho local não resolveu e as revisões independentes exigidas. Use o menor modelo/esforço que satisfaça esse papel; não encaminhe cada comando ou erro rotineiro ao GPT.
+- Subagentes nativos do Codex não são trabalhadores locais. Por padrão, não os abra. Use no máximo dois, conforme `MULTI_AGENT_POLICY.md`, apenas para frentes realmente independentes, preferencialmente somente leitura, quando a execução simultânea reduzir a cadeia serial. Não os use para duplicar uma análise, editar arquivos compartilhados ou esperar a mesma GPU/fila local. P-REV obrigatório continua independente.
+
+### Orçamento de tentativas locais
+
+Se esta proposta for aprovada em uma retomada futura, cada geração receberá prazo por chamada no contrato. Começo proposto: **20 minutos por artefato focal**; até **40 minutos**, uma única vez, se o Integrador justificar antes da chamada que o artefato é maior e o modelo já demonstrou progresso útil naquele fluxo. Esses prazos são limites operacionais provisórios, não desempenho medido. Não use o limite de 24 horas como orçamento normal de uma geração.
+
+Por artefato/fase, faça uma tentativa inicial, no máximo uma correção com diagnóstico concreto novo e, se ainda fizer sentido, uma única troca para outro modelo local com missão menor. Não repita o mesmo prompt acrescentando histórico. Se a terceira chamada local não produzir diff utilizável, pare, preserve o recibo e encaminhe a decisão focal ao GPT conforme a política de risco. `needs_gpt` sinaliza essa decisão ao Integrador; nunca inicia chamada paga automaticamente.
+
+### Uso da CPU, GPU e da fila Ollama
+
+Mantenha uma inferência local de cada vez e um modelo residente por vez, como já configurado: 12 threads, `OLLAMA_NUM_PARALLEL=1` e a margem de VRAM existente. Escolha o menor modelo que cobre a missão; mantenha o contexto do tamanho necessário. Não aumente concorrência ou contexto para perseguir uso máximo: Ollama documenta que requisições paralelas multiplicam a memória de contexto, e que a fila pode esperar por memória disponível. O FAQ também registra a limitação de carregamento concorrente padrão em Windows/Radeon.
+
+Use a janela de inferência para o trabalhador local. Depois da geração, aproveite CPU para compilação, testes e análise determinística; isso evita disputar os 12 threads com a inferência. Leituras leves podem ocorrer em paralelo se forem independentes. Não feche aplicativos da usuária nem reduza a margem de memória.
+
+### Evidência e revisão da regra
+
+Não foram executados benchmarks nesta revisão. O histórico mostra contribuições locais utilizáveis em FIN-013–FIN-016 e saídas locais rejeitadas durante FIN-017; isso justifica tentativas limitadas, mas não prova que um modelo é melhor em geral nem mede economia. Em tarefas normais, registre modelo/persona, duração, artefato usado ou rejeitado, correções do Integrador, retries e resultado dos checks. Registre allowance/custo apenas quando o cliente atribuir esse dado à tarefa; percentuais agregados da conta não são custo por item. Reavalie depois de dez itens concluídos, sem criar benchmark dedicado.
+
+Fontes oficiais consultadas em 17/10/2026: [OpenAI — uso do Codex e fatores da allowance](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan), [OpenAI — subagentes](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Ollama — FAQ sobre concorrência, memória e Windows/Radeon](https://docs.ollama.com/faq#how-does-ollama-handle-concurrent-requests). A política de economia detalha a aplicação ao uso compartilhado.
+
+
+Decisão humana mais recente nesta entrega FIN-017: encerrar todos os modelos locais, concluir somente o item atual por roteamento econômico GPT e salvar o progresso; depois pausar a META, sem outro ID ou retomada automática. Essa decisão prevalece sobre a rota local-first anterior para esta entrega. Regras provisórias de tentativas locais acima não autorizam reinício de servidor/modelos. Custo não registrado.

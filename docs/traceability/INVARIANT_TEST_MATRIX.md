@@ -102,3 +102,8 @@ DB-014 E3 prova integração da API de auditoria com a transação nos cinco cen
 FIN-008 primary E3 exercita criação/reabertura da conta com saldo inicial armazenado e audit_event; o caso de uso não cria movimento. Isso não verifica projeção financeira/resultado igual a zero, portanto INV-FIN-001 continua sem prova e FIN-005 é necessário. Jornada/smoke de produção não executada. O status in_progress registrado antes do fechamento source CI foi superado pelo recibo E3 abaixo.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 demonstra criação/reabertura e auditoria atômicas, sem movimento; não prova projeção/resultado nem INV-FIN-001. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.
+
+| criar Entry persistida | FIN-017; FIN-013; DB-011/013/014 | `validate_entry` antes dos efeitos; INSERT parametrizado de Entry e audit event na mesma `BEGIN IMMEDIATE`; commit antes do retorno | entrada inválida sem chamadas/efeitos; falha de FK, duplicata, trigger ABORT ou zero affected rows não deixa movimento/evento parcial e não reutiliza adapter | testes SQLite físicos/reopen e unitários FIN-017; execução pendente, não registrado |
+
+
+FIN-017 | E3 local:6unit+3SQLite/4falhas,criaçãoEntry+audit atômicas/reopen/rollback/poison/inputinválido sem efeitos;Rust121+8docs/debug+release/fmt/clippy/TS/securityE4 PASS;coveragecrítica app43/43linhas3/3fn eadapter51/51linhas5/5fn,controle0,rejeita95. Review independente concluído;CI source/final/liberação pendentes,in_progress/passesfalse. Sem jornadaUIIPC/globalRust/setup/E2E;apósFIN017METApausará,nenhum próximoID. Ver spec/handoffFIN017;custonão registrado.
