@@ -53,6 +53,49 @@ impl Account {
             Ok(())
         }
     }
+
+    pub fn balance_cents(&self, movements: &[Movement]) -> Result<i64> {
+        let mut balance = i128::from(self.initial_balance_cents);
+
+        for m in movements {
+            let delta = match &m.kind {
+                MovementKind::Entry { account_id } => {
+                    m.validate_entry()?;
+                    if account_id == &self.id {
+                        i128::from(m.amount_cents)
+                    } else {
+                        0
+                    }
+                }
+                MovementKind::Exit { account_id } => {
+                    m.validate_exit()?;
+                    if account_id == &self.id {
+                        -i128::from(m.amount_cents)
+                    } else {
+                        0
+                    }
+                }
+                MovementKind::Transfer {
+                    source_account_id,
+                    destination_account_id,
+                } => {
+                    m.validate_transfer()?;
+                    if source_account_id == &self.id {
+                        -i128::from(m.amount_cents)
+                    } else if destination_account_id == &self.id {
+                        i128::from(m.amount_cents)
+                    } else {
+                        0
+                    }
+                }
+            };
+            balance = balance
+                .checked_add(delta)
+                .ok_or(DomainError::InvalidInput)?;
+        }
+
+        i64::try_from(balance).map_err(|_| DomainError::InvalidInput)
+    }
 }
 
 /// Category identity and active-state metadata.
@@ -199,3 +242,6 @@ mod transfer_tests;
 
 #[cfg(test)]
 mod result_effect_tests;
+
+#[cfg(test)]
+mod balance_tests;

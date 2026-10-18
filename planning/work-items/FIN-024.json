@@ -1,0 +1,29 @@
+{
+  "id": "FIN-024",
+  "title": "calcular saldo por conta",
+  "specPath": "planning/specs/FIN-024.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-004",
+    "FIN-017",
+    "FIN-018",
+    "FIN-021"
+  ],
+  "acceptanceCriteria": [
+    "Saldo inicial+entradas-saídas-transferênciasorigem+transferênciasdestino,amboscontextos;validarledger.",
+    "i128checked comconversãofinali64/overflow opaco;semcache/mutação/deps.",
+    "RED/GREEN5unit+1SQLite real persistência/list_accounts/cálculo;gates/critical/review/CIexato.",
+    "Docsantespasses/liberaçãoantespróximoID;FIN025/026/027/UIIPC separados."
+  ],
+  "checks": [
+    "RED/GREEN5unit+1SQLite",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMdomain>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota106/liberação"
+  ],
+  "agentPlan": "P-INT5unit+1SQLdeterminísticos/P-DOMLaguna método puro/P-REVgpt-6-solmedium;13paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-024 VERIFY E3:saldo real porAccount comi128checked/erroopaco/5unit+1SQLite persistência/list_accounts/saldos-1179/7669. Rust191+8docs/debug+release/quality/securityE4/LLVMdomaincriticalcontrole/P-REV PASS. In_progress/passesfalseatéCI;prova de edição/derivaçãoFIN025,leitor público/extratoFIN026,resultadoFIN027,receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN024. CI fonte/final/nota106/liberaçãopendentes;MetaE2Eativa."
+}
