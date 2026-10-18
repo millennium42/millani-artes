@@ -636,3 +636,6 @@ FIN-020 VERIFY E3:contasiguais rejeitadas no validador puro;REDregressão/GREEN7
 
 
 FIN-020 done/E3/passestrue após CI39137975946/SHA78beb2f62b024899d923b136251d3907b937b82asuccess23/0skip/7marcadores,Rust169+8docs/7transferunit(2novos). Contasiguaisrejeitadas/contasdistintas/metadados preservados,gates/review/validators/stagedscanPASS. CI final/nota102/liberaçãopendentes;MetaE2Eativa;FIN021/022/023/UIIPC/globalRust/setup/E2Ependentes. Fonte:handoffFIN020.
+
+
+FIN-021 VERIFY E3:create_transfer+audit atômicos7unit+3SQLite/5falhas,reuso/poison/errosopacos;179Rust+8docs/debug+release/quality/securityE4/criticalcontrole/P-REV PASS. In_progress/passesfalse atéCI;FIN022neutralidade/FIN023matrizrollback/FIN024saldos/receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. MetaE2Eativa;fonte:handoffFIN021.

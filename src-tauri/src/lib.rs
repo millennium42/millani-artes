@@ -6,6 +6,7 @@ pub mod application {
     pub mod create_category;
     pub mod create_entry;
     pub mod create_exit;
+    pub mod create_transfer;
     pub mod deactivate_category;
     pub mod list_accounts;
     pub mod rename_category;

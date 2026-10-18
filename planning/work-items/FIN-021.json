@@ -1,0 +1,28 @@
+{
+  "id": "FIN-021",
+  "title": "persistir transferência atômica",
+  "specPath": "planning/specs/FIN-021.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-019",
+    "FIN-015",
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "create_transfer valida antesportas/2IDs/Clockchecked/uma persistência/retorno apóscommit.",
+    "Transfer+audit atômicos emarquivo SQLite real,source/destination exatos,account/categoryNULL;semcálculos.",
+    "Inválidos semefeito ereuso;FKs/duplicate/audit/IGNORE rollback/poison/erros opacos.",
+    "Gates/coveragecrítica/controle/review/CIexato/docsantespasses/liberação antespróximoID."
+  ],
+  "checks": [
+    "RED/GREEN7unit+3SQLite",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMapp+adapter>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota103/liberação"
+  ],
+  "agentPlan": "P-INT reuse7unit;P-DATLaguna SQL eproduçãofocais;P-REVgpt-6-solmedium independente;15paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-021 VERIFY E3:create_transfer+audit atômicos7unit+3SQLite/5falhas,reuso/poison/errosopacos;179Rust+8docs/debug+release/quality/securityE4/criticalcontrole/P-REV PASS. In_progress/passesfalse atéCI;FIN022neutralidade/FIN023matrizrollback/FIN024saldos/receitaFIN005/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. MetaE2Eativa;fonte:handoffFIN021. CI fonte/final/nota103/liberação pendentes."
+}

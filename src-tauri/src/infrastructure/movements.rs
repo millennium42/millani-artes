@@ -1,5 +1,6 @@
 use crate::application::create_entry::EntryCreationStore;
 use crate::application::create_exit::ExitCreationStore;
+use crate::application::create_transfer::TransferCreationStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Context, Movement, MovementKind};
 use rusqlite::Connection;
@@ -36,6 +37,22 @@ impl fmt::Display for ExitStoreError {
 }
 
 impl std::error::Error for ExitStoreError {}
+
+pub struct TransferStoreError;
+
+impl fmt::Debug for TransferStoreError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("TransferStoreError")
+    }
+}
+
+impl fmt::Display for TransferStoreError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("transfer could not be stored")
+    }
+}
+
+impl std::error::Error for TransferStoreError {}
 
 pub struct AdapterSqliteMovementStore {
     connection: Option<Connection>,
@@ -143,6 +160,60 @@ impl ExitCreationStore for AdapterSqliteMovementStore {
                 Ok(())
             }
             Err(_) => Err(ExitStoreError),
+        }
+    }
+}
+
+impl TransferCreationStore for AdapterSqliteMovementStore {
+    type Error = TransferStoreError;
+
+    fn persist_transfer_with_audit(
+        &mut self,
+        movement: &Movement,
+        event_id: [u8; 16],
+        occurred_at_ms: i64,
+    ) -> Result<(), Self::Error> {
+        let (source_account_id, destination_account_id) = match &movement.kind {
+            MovementKind::Transfer {
+                source_account_id,
+                destination_account_id,
+            } => (*source_account_id, *destination_account_id),
+            _ => return Err(TransferStoreError),
+        };
+        movement
+            .validate_transfer()
+            .map_err(|_| TransferStoreError)?;
+        let connection = self.connection.take().ok_or(TransferStoreError)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let context = match &movement.context {
+                Context::Home => "home",
+                Context::Factory => "factory",
+            };
+            let inserted = transaction.execute(
+                "INSERT INTO main.movements (id, kind, amount_cents, context, source_account_id, destination_account_id) VALUES (?1, 'transfer', ?2, ?3, ?4, ?5)",
+                rusqlite::params![movement.id.as_slice(), movement.amount_cents, context, source_account_id.as_slice(), destination_account_id.as_slice()],
+            ).map_err(|_| ())?;
+            if inserted != 1 {
+                return Err(());
+            }
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id,
+                    occurred_at_ms,
+                    operation: "movement_transfer_create",
+                    entity: "movement",
+                    entity_id: movement.id,
+                },
+            )
+            .map_err(|_| ())
+        });
+        match result {
+            Ok((connection, ())) => {
+                self.connection = Some(connection);
+                Ok(())
+            }
+            Err(_) => Err(TransferStoreError),
         }
     }
 }

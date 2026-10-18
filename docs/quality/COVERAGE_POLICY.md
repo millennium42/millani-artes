@@ -229,3 +229,6 @@ FIN-020 LLVM23.1.1 domain/mod.rs lines=36/36(100.0000%),functions=7/7(100.0000%)
 
 
 FIN-020 done/E3/passestrue após CI39137975946/SHA78beb2f62b024899d923b136251d3907b937b82asuccess23/0skip/7marcadores,Rust169+8docs/7transferunit(2novos). Contasiguaisrejeitadas/contasdistintas/metadados preservados,gates/review/validators/stagedscanPASS. CI final/nota102/liberaçãopendentes;MetaE2Eativa;FIN021/022/023/UIIPC/globalRust/setup/E2Ependentes. Fonte:handoffFIN020.
+
+
+FIN-021 LLVM23.1.1 create_transfer.rs+movements.rs inteiros>=95linhas/funções;controle sem7unit+3SQL rejeita95. Métricasexatas emspec/handoff/recibo;statementsnão medidos/branchesstableN/A;nãoRustglobal/CIcoverage.

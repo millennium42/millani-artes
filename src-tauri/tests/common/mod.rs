@@ -84,3 +84,5 @@ mod category_history;
 
 mod exit_failures;
 mod exit_persistence;
+
+mod transfer_persistence;
