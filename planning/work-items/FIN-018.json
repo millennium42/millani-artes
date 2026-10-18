@@ -2,7 +2,7 @@
   "id": "FIN-018",
   "title": "persistir saída",
   "specPath": "planning/specs/FIN-018.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-014",
     "FIN-015",
@@ -23,6 +23,6 @@
   "agentPlan": "P-INT templates/integra;P-QAGemma leituraunit/P-DATLaguna focal/P-QASQL;P-REVgpt-6-solmedium independente;reserva16paths;custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFYlocal6unit+3SQLite/4faults,Rust162+8docs/debug+release/TS/securityE4/critical100%controle/reviewPASS. CI fonte/final/nota100/liberação pendentes;Entrypreservada;MetaE2Eativa."
+  "passes": true,
+  "notes": "Critérios satisfeitos;docs/matrizes/log/handoff antespasses.Source4f7e7703793ac8ef5632935ade79badd3f9d44fa/CI39134383058/job117695817588success23/0skip/7sourceShaexatos;Rust162+8docs/6unit+3SQLite/gatescriticos/scansE4/review/validators/stagedscan PASS. CI final/nota100preservando99/refs/mainlimpa/liberação pendentes,reservaATIVA. SemUIIPC/E2E/setup;MetaE2Eativa;custo não registrado."
 }

@@ -515,3 +515,6 @@ CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb
 
 
 MVP-03/saída → FIN-014/FIN-015/FIN-018 → create_exit_tests6 ecommon::exit_*3: create_exit→ExitCreationStore→movementsExit+audit atômicos,conta/contexto/centavos positivos exatos. E3física,reuso/reopen/rollback4faults/poison,CI pendente. Sem saldo/projeção/UIIPC/receitaFIN005;handoffFIN018.
+
+
+FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.

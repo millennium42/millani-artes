@@ -621,3 +621,6 @@ CAT-007 done/E3/passestrue após CI39131643684/SHA143190b374d186da75f2a44bdc85cb
 
 
 FIN-018 VERIFY E3:6unit+3SQLite/4faults e162Rust+8docs/debug+release,quality/securityE4/critical100%controle/review PASS;in_progress/passesfalse atéCI. FIN005 sem consumidor;MetaE2Eativa. Fonte:handoffFIN018.
+
+
+FIN-018 done/E3/passestrue após CI39134383058/SHA4f7e7703793ac8ef5632935ade79badd3f9d44fasuccess23/0skip e162Rust+8docs,6unit+3SQLite. Saída+audit atômicos/rollback4faults/poison e gates/review/validators/stagedscan PASS. CI documental final/nota100/liberação pendentes;MetaE2Eativa. Sem saldo/receitaFIN005/UIIPC/globalRust/setup/E2E. Fonte:handoffFIN018.
