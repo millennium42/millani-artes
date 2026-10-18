@@ -1,0 +1,26 @@
+{
+  "id": "CAT-006",
+  "title": "desativar categoria",
+  "specPath": "planning/specs/CAT-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CAT-004"
+  ],
+  "acceptanceCriteria": [
+    "Desativar categoria preserva ID/nome e linha, usa um ID de audit/Clockchecked e retorna somente após commit.",
+    "Adapter existente SELECT name e UPDATE somente is_active=0 mais audit category_deactivate/category atômicos; exige uma linha, aceita já inativa, NotFound permite reuso, erroDB faz rollback/poison.",
+    "Unitários e SQLite físicos reais cobrem limites/erros opacos, ativa/inativa, nome literal/reopen/reuso, snapshots completos e faults auditduplicado/ABORT/UPDATEIGNORE na mesma instância.",
+    "Gates Rust/TS/security/coverage95 aplicável/revisão independente/validators/CIexata aprovados; docs/matriz/log/handoff antespasses e liberação antes outroID."
+  ],
+  "checks": [
+    "RED APIsausentes/GREEN unit e3SQLite",
+    "Rustfmt/clippy/debug+release/audit;TSquality/build",
+    "LLVM crítico/controle/scansE4/review/validators/stagedscan",
+    "CI fonte/final SHAexato,nota/liberação"
+  ],
+  "agentPlan": "P-INT único escritor; LagunaP-QA/P-DAT focal noWT após falha concreta anterior; P-REVgpt-6-solmedium independente; reserva15paths na spec ATIVA; custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY local:7unit+3SQLite,Rust151+8docs/debug+release/fmt/clippy,TS/securityE4,critical38/38+153/155linhas econtrole,revisão independente semP0/P1/P2 PASS. CI fonte/final,nota98/liberação pendentes. MetaE2Eativa."
+}

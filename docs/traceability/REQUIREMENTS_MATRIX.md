@@ -500,3 +500,6 @@ MVP-02/renomeação → CAT-005 → rename_category_tests8 + common::category_re
 
 
 CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.
+
+
+MVP-02/desativação → CAT-006 → deactivate_category_tests7 + common::category_deactivation3: caso → porta → adapter → categories.is_active + audit_event atômicos, sem remover linha/ID/nome. E3 local;CI pendente. UIIPC e prova de referências históricas consumidorasCAT007 permanecem próprias. Fonte: handoffCAT006.

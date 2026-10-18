@@ -1,4 +1,5 @@
 use crate::application::create_category::CategoryCreationStore;
+use crate::application::deactivate_category::CategoryDeactivationStore;
 use crate::application::rename_category::CategoryRenamingStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::Category;
@@ -143,6 +144,73 @@ impl CategoryRenamingStore for AdapterSqliteCategoryStore {
                 id,
                 name: name.to_string(),
                 is_active,
+            }))
+        });
+
+        match result {
+            Ok((connection, category)) => {
+                self.connection = Some(connection);
+                Ok(category)
+            }
+            Err(_) => Err(CategoryStoreError),
+        }
+    }
+}
+
+impl CategoryDeactivationStore for AdapterSqliteCategoryStore {
+    type Error = CategoryStoreError;
+
+    fn deactivate_category_with_audit(
+        &mut self,
+        id: [u8; 16],
+        event_id: [u8; 16],
+        occurred_at_ms: i64,
+    ) -> Result<Option<Category>, Self::Error> {
+        let connection = self.connection.take().ok_or(CategoryStoreError)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let name_result: Result<String, rusqlite::Error> = transaction.query_row(
+                "SELECT name FROM main.categories WHERE id = ?1",
+                rusqlite::params![id.as_slice()],
+                |row| row.get(0),
+            );
+
+            let name = match name_result {
+                Ok(n) => n,
+                Err(rusqlite::Error::QueryReturnedNoRows) => {
+                    return Ok(None);
+                }
+                Err(_) => {
+                    return Err(());
+                }
+            };
+
+            let updated = transaction
+                .execute(
+                    "UPDATE main.categories SET is_active = 0 WHERE id = ?1",
+                    rusqlite::params![id.as_slice()],
+                )
+                .map_err(|_| ())?;
+
+            if updated != 1 {
+                return Err(());
+            }
+
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id,
+                    occurred_at_ms,
+                    operation: "category_deactivate",
+                    entity: "category",
+                    entity_id: id,
+                },
+            )
+            .map_err(|_| ())?;
+
+            Ok(Some(Category {
+                id,
+                name,
+                is_active: false,
             }))
         });
 

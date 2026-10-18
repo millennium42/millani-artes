@@ -77,3 +77,5 @@ mod entry_persistence;
 mod category_creation;
 
 mod category_rename;
+
+mod category_deactivation;

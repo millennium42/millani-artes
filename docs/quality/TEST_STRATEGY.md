@@ -217,3 +217,6 @@ CAT-005 E3 local: 8 unitários + 3 SQLite reais cobrem validação antes de efei
 
 
 CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.
+
+
+CAT-006 E3:7unit+3SQLite reais cobrem umID/Clockchecked/erros opacos, ativa/inativa com nome literal/reopen/snapshots completos, ausência/reuso e3faults com rollback/poison mesma instância. Rust151+8docs debug/release,quality/build/securityE4/review PASS. CI/E2E pendentes; handoffCAT006.

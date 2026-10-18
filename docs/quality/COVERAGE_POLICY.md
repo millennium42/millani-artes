@@ -199,3 +199,6 @@ CAT-005 LLVM23.1.1 E3: rename_category.rs49/49 linhas e4/4funções100%; categor
 
 
 CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.
+
+
+CAT-006 LLVM23.1.1 E3:deactivate_category.rs38/38linhas4/4funções100%;categories.rs153/155linhas98,7097% e11/11funções100%. Controle sem novos testes:app0;adapter106/155linhas68,3871% e8/11funções72,7273%,rejeita95. Statementsnão medidos/branchesstableN/A; nãoRustglobalatual/CIcoverage. Recibos/hash preservados; handoffCAT006.
