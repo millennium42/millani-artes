@@ -603,3 +603,6 @@ CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a3814
 
 
 CAT-005 | VERIFY local E3 | 8 unitários + 3 SQLite e 141 Rust + 8 doctests/debug/release PASS, qualidade/segurança E4 e revisão independente sem P0/P1/P2. In_progress/passesfalse até CI fonte. FIN-005 ainda sem consumidor real. Meta E2E ativa; detalhes no handoff CAT-005.
+
+
+CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.

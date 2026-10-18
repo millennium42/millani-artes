@@ -82,3 +82,6 @@ CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a3814
 
 
 CAT-005: application::rename_category/CategoryRenamingStore reutilizam validação e portas existentes. AdapterSqliteCategoryStore lê is_active e atualiza somente name com audit na mesma transação; preserva ID/estado e retorna após commit. NotFound permite reuso, falha DB descarta adapter. E3 local; sem alteração na criação ou novo caminho UI/IPC. Fonte: planning/handoffs/CAT-005.md.
+
+
+CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.

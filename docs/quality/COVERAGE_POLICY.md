@@ -196,3 +196,6 @@ CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a3814
 
 
 CAT-005 LLVM23.1.1 E3: rename_category.rs49/49 linhas e4/4funções100%; categories.rs inteiro106/107 linhas99,0654% e8/8funções100%. Controle sem testes rename: aplicação0/49 e0/4; adapter50/107 linhas46,729% e5/8funções62,5%, preservando criação; rejeita gate95. Statements não medidos/branchesstableN/A; não é cobertura global Rust atual nem CI. Recibo artifacts/cat005-coverage/receipt-coverage.json preservado comhash em operacao; handoff CAT-005.
+
+
+CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.

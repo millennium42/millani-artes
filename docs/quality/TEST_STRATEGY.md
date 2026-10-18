@@ -214,3 +214,6 @@ CAT-004 executor done/E3/passestrue após CI39094721622 no SHAcbf40d8392e66a3814
 
 
 CAT-005 E3 local: 8 unitários + 3 SQLite reais cobrem validação antes de efeitos, um ID, Clock checked, nome literal, ativa/inativa, NotFound/reuso/reopen, snapshots completos e rollback/poison na mesma instância por audit duplicado/ABORT/UPDATE IGNORE. Rust 141+8 doctests em debug/release PASS, um WebView ignored; quality/build/security PASS. Revisão independente sem P0/P1/P2. CI e E2E pendentes; handoff CAT-005.
+
+
+CAT-005 executor done/E3/passestrue após CI39098498169 no SHAaef71f2308dbfa1d11f4960568fc0b041d1e7221 success23/0 e141Rust+8doctests, incluindo8unit+3SQLite. Gates locais, cobertura crítica >=95 e controle, revisão independente e validators/stagedscan aprovados; detalhes no handoff CAT-005. CI documental final/nota97/liberação pendentes. MVP02 renomeação backend parcial; UIIPC/desativação/E2E/setup pendentes. Meta E2E ativa.

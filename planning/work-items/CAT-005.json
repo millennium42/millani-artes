@@ -2,7 +2,7 @@
   "id": "CAT-005",
   "title": "renomear categoria sem mudar identidade e estado",
   "specPath": "planning/specs/CAT-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "CAT-004"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único escritor/integrador; Laguna P-QA/P-DAT em WT isolado após falha Gemma concreta CAT004; P-REVgpt-6-solmedium independente; reserva15paths spec ATIVA; custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "VERIFY local: 8unit+3SQLite, Rust141+8docs debug/release/fmt/clippy, TS/securityE4, critical49/49+106/107lines econtrole,revisão independente semP0/P1/P2 PASS. CI fonte/final, nota97 e liberação pendentes. Meta E2E ativa."
+  "passes": true,
+  "notes": "Critérios satisfeitos; docs/matrizes/log/handoff antespasses. Sourceaef71f2308dbfa1d11f4960568fc0b041d1e7221/CI39098498169/job11758976239123success/0skip e7sourceShaexatos;8unit+3SQLite/Rust141+8docs. Local fmt/clippy/debug+release/TS/securityE4/critical>=95controle/review/validators/stagedscan PASS. CI final documental,nota97preservando96/refs/mainlimpa/liberação pendentes,reservaATIVA. MVP02 backend parcial; semUIIPC/E2E/setup. MetaE2Eativa; custo não registrado."
 }
