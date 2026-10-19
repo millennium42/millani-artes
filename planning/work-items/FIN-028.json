@@ -1,0 +1,28 @@
+{
+  "id": "FIN-028",
+  "title": "editar lançamento pelo caso canônico",
+  "specPath": "planning/specs/FIN-028.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-017",
+    "FIN-018",
+    "DB-013"
+  ],
+  "acceptanceCriteria": [
+    "Editar Movement real com ID estável,validação real,1ID de audit/1Clock/1storecall,erroopaco.",
+    "UPDATE completo parametrizado/1linha+audit mesma transação/rollback e poison seletivo; preservar categoria,contas,opening,outros movimentos e ledger.",
+    "6unit+4SQL reais RED/GREEN,gates,critical app+adapter>=95/controle,P-REV e CIs exatos.",
+    "Docs antespasses/nota111/liberaçãoantespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN6unit+4SQL",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMcritical>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota111/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/P-DAT Laguna 2arquivos2400s/P-SEC scanners/P-REV Sol6medium;15paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-028 VERIFY E3: edição canônica real/identidade estável/UPDATE+audit atômicos/rollback e preservação de dados. 6unit+4SQL/Rust216+8docs/quality/security/LLVM app+adapter>=95 com controle/review PASS. In_progress/passesfalse até CI. FIN-029/030, UI/IPC, cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte: handoff FIN-028. CI fonte/final/nota111/liberação pendentes; Meta E2E ativa."
+}

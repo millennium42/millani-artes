@@ -1,6 +1,7 @@
 use crate::application::create_entry::EntryCreationStore;
 use crate::application::create_exit::ExitCreationStore;
 use crate::application::create_transfer::TransferCreationStore;
+use crate::application::edit_movement::MovementEditingStore;
 use crate::application::list_movements::MovementReadStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Context, Movement, MovementKind};
@@ -70,6 +71,22 @@ impl fmt::Display for MovementReadError {
 }
 
 impl std::error::Error for MovementReadError {}
+
+pub struct MovementEditStoreError;
+
+impl fmt::Debug for MovementEditStoreError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("MovementEditStoreError")
+    }
+}
+
+impl fmt::Display for MovementEditStoreError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("movement could not be edited")
+    }
+}
+
+impl std::error::Error for MovementEditStoreError {}
 
 pub struct AdapterSqliteMovementStore {
     connection: Option<Connection>,
@@ -301,5 +318,68 @@ impl MovementReadStore for AdapterSqliteMovementStore {
             .map_err(|_| MovementReadError)?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|_| MovementReadError)
+    }
+}
+
+impl MovementEditingStore for AdapterSqliteMovementStore {
+    type Error = MovementEditStoreError;
+
+    fn persist_movement_edit_with_audit(
+        &mut self,
+        movement: &Movement,
+        event_id: [u8; 16],
+        occurred_at_ms: i64,
+    ) -> Result<(), Self::Error> {
+        movement
+            .result_effect_cents()
+            .map_err(|_| MovementEditStoreError)?;
+        let (kind_str, account_id, source_account_id, destination_account_id) = match &movement.kind
+        {
+            MovementKind::Entry { account_id } => {
+                ("entry", Some(account_id.as_slice()), None, None)
+            }
+            MovementKind::Exit { account_id } => ("exit", Some(account_id.as_slice()), None, None),
+            MovementKind::Transfer {
+                source_account_id,
+                destination_account_id,
+            } => (
+                "transfer",
+                None,
+                Some(source_account_id.as_slice()),
+                Some(destination_account_id.as_slice()),
+            ),
+        };
+        let connection = self.connection.take().ok_or(MovementEditStoreError)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let context = match &movement.context {
+                Context::Home => "home",
+                Context::Factory => "factory",
+            };
+            let changed = transaction.execute(
+                "UPDATE main.movements SET kind=?1, amount_cents=?2, context=?3, account_id=?4, source_account_id=?5, destination_account_id=?6 WHERE id=?7",
+                rusqlite::params![kind_str, movement.amount_cents, context, account_id, source_account_id, destination_account_id, movement.id.as_slice()],
+            ).map_err(|_| ())?;
+            if changed != 1 {
+                return Err(());
+            }
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id,
+                    occurred_at_ms,
+                    operation: "movement_update",
+                    entity: "movement",
+                    entity_id: movement.id,
+                },
+            )
+            .map_err(|_| ())
+        });
+        match result {
+            Ok((connection, ())) => {
+                self.connection = Some(connection);
+                Ok(())
+            }
+            Err(_) => Err(MovementEditStoreError),
+        }
     }
 }
