@@ -795,3 +795,311 @@ fn rec014_payment_failures_rollback_all_state_and_preserve_financial_projections
         }
     }
 }
+
+fn rec015_eligible_snapshot(o: &RecurrenceObligation) -> RecurrenceObligation {
+    RecurrenceObligation {
+        id: o.id,
+        recurrence_id: o.recurrence_id,
+        period_year: o.period_year,
+        period_month: o.period_month,
+        due_at_ms: o.due_at_ms,
+        context: match &o.context {
+            Context::Home => Context::Home,
+            Context::Factory => Context::Factory,
+        },
+        state: match &o.state {
+            ObligationState::Payable { amount_cents } => ObligationState::Payable {
+                amount_cents: *amount_cents,
+            },
+            ObligationState::Overdue { amount_cents } => ObligationState::Overdue {
+                amount_cents: *amount_cents,
+            },
+            _ => panic!("eligible fixture required"),
+        },
+    }
+}
+
+fn rec015_assert_payments(
+    p: &std::path::Path,
+    before: &State,
+    ctx: u8,
+    selected: [u8; 16],
+    payments: &[([u8; 16], [u8; 16])],
+) {
+    use millani_artes::application::{
+        calculate_context_result::calculate_context_result, list_accounts::list_accounts,
+        list_movements::list_movements,
+    };
+    use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+    let c = open_database(p).unwrap();
+    health(&c);
+    let after = state(&c);
+    let mut expected_obligations = before.2.clone();
+    let mut expected_movements = Vec::new();
+    for (index, (movement, event)) in payments.iter().enumerate() {
+        expected_obligations[index][5] = Value::Text("paid".into());
+        expected_obligations[index][7] = Value::Blob(movement.to_vec());
+        expected_movements.push(vec![
+            Value::Blob(movement.to_vec()),
+            Value::Text("exit".into()),
+            Value::Integer(1000),
+            Value::Text(if ctx == 0 { "home" } else { "factory" }.into()),
+            Value::Blob(selected.to_vec()),
+            Value::Null,
+            Value::Null,
+            Value::Null,
+        ]);
+        let expected_audit = vec![
+            Value::Blob(event.to_vec()),
+            Value::Integer(1234),
+            Value::Text("recurrence_pay".into()),
+            Value::Text("recurrence_obligation".into()),
+            before.2[index][0].clone(),
+        ];
+        assert_eq!(
+            after
+                .0
+                 .2
+                .iter()
+                .filter(|row| *row == &expected_audit)
+                .count(),
+            1
+        );
+    }
+    for old in &before.0 .1 {
+        let mut row = old.clone();
+        row.push(Value::Null);
+        expected_movements.push(row);
+    }
+    assert_eq!(rows(&c, "SELECT id,kind,amount_cents,context,account_id,source_account_id,destination_account_id,category_id FROM main.movements ORDER BY id"), expected_movements);
+    assert_eq!(after.2, expected_obligations);
+    assert_eq!(after.1, before.1);
+    assert_eq!(after.3, before.3);
+    assert_eq!(after.0 .0, before.0 .0);
+    assert_eq!(after.0 .3, before.0 .3);
+    assert_eq!(after.0 .1.len(), before.0 .1.len() + payments.len());
+    assert_eq!(after.0 .2.len(), before.0 .2.len() + payments.len());
+    for old in &before.0 .2 {
+        assert_eq!(after.0 .2.iter().filter(|row| *row == old).count(), 1);
+    }
+    let accounts =
+        list_accounts(&AdapterSqliteAccountStore::new(open_database(p).unwrap())).unwrap();
+    let reader = AdapterSqliteMovementStore::new(open_database(p).unwrap());
+    let movements = list_movements(&reader).unwrap();
+    assert_eq!(accounts.len(), 2);
+    assert_eq!(movements.len(), 1 + payments.len());
+    let paid_cents = 1000 * payments.len() as i64;
+    for account in accounts {
+        if account.id == selected {
+            assert_eq!(account.initial_balance_cents, -1234);
+            assert_eq!(account.balance_cents(&movements), Ok(-1253 - paid_cents));
+        } else {
+            assert_eq!(account.id, [0xe0; 16]);
+            assert_eq!(account.initial_balance_cents, 7654);
+            assert_eq!(account.balance_cents(&movements), Ok(7654));
+        }
+    }
+    assert_eq!(
+        calculate_context_result(&Context::Home, &reader).unwrap(),
+        if ctx == 0 { -paid_cents } else { 0 }
+    );
+    assert_eq!(
+        calculate_context_result(&Context::Factory, &reader).unwrap(),
+        -19 - if ctx == 1 { paid_cents } else { 0 }
+    );
+}
+
+#[test]
+fn rec015_replays_fail_without_changes_and_next_month_can_be_paid() {
+    for kind in 0..2 {
+        for overdue in 0..2 {
+            for ctx in 0..2 {
+                let (_d, p) = setup();
+                let pending = seed(&p, kind, overdue, ctx, 2, 1000);
+                let stale_new = rec015_eligible_snapshot(&pending);
+                let stale_same = rec015_eligible_snapshot(&pending);
+                let other_month = seed(&p, kind, 0, ctx, 3, 1000);
+                let acc = account(&p);
+                open_database(&p).unwrap().execute("INSERT INTO main.accounts(id,name,account_type,initial_balance_cents) VALUES(?1,'Outra conta sintética','bank_pix',7654)", params![[0xe0u8;16].as_slice()]).unwrap();
+                existing_exit(&p, [0xd0; 16]);
+                let before = snapshot(&p);
+                let mut store = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                let result = pay_recurrence(
+                    pending,
+                    acc,
+                    &mut FixedIds::new([0xa0; 16], [0xb0; 16]),
+                    &FixedClock,
+                    &mut store,
+                )
+                .unwrap();
+                rec015_assert_payments(&p, &before, ctx, acc, &[([0xa0; 16], [0xb0; 16])]);
+                let once = snapshot(&p);
+                let mut replay_ids = FixedIds::new([0xa5; 16], [0xb5; 16]);
+                let replay =
+                    pay_recurrence(result, [0xe0; 16], &mut replay_ids, &FixedClock, &mut store);
+                assert_eq!(replay_ids.calls, 0, "paid replay allocates no identifiers");
+                assert!(matches!(replay, Err(PayRecurrenceError::InvalidInput)));
+                assert_eq!(snapshot(&p), once);
+                for (movement, event, stale) in [
+                    ([0xa1; 16], [0xb1; 16], stale_new),
+                    ([0xa0; 16], [0xb0; 16], stale_same),
+                ] {
+                    let mut retry_store =
+                        AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                    let mut retry_ids = FixedIds::new(movement, event);
+                    let replay =
+                        pay_recurrence(stale, acc, &mut retry_ids, &FixedClock, &mut retry_store);
+                    assert!(
+                        matches!(replay, Err(PayRecurrenceError::StoreFailed)),
+                        "stale payment must fail"
+                    );
+                    assert_eq!(retry_ids.calls, 2);
+                    assert_eq!(snapshot(&p), once, "stale replay leaves no exit or audit");
+                    assert!(
+                        matches!(
+                            pay_recurrence(
+                                rec015_eligible_snapshot(&other_month),
+                                acc,
+                                &mut FixedIds::new([0xa6; 16], [0xb6; 16]),
+                                &FixedClock,
+                                &mut retry_store
+                            ),
+                            Err(PayRecurrenceError::StoreFailed)
+                        ),
+                        "failed adapter must reject another eligible month"
+                    );
+                    assert_eq!(snapshot(&p), once);
+                }
+                rec015_assert_payments(&p, &before, ctx, acc, &[([0xa0; 16], [0xb0; 16])]);
+                let mut recovered = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                assert!(pay_recurrence(
+                    other_month,
+                    acc,
+                    &mut FixedIds::new([0xa4; 16], [0xb4; 16]),
+                    &FixedClock,
+                    &mut recovered
+                )
+                .is_ok());
+                let twice = snapshot(&p);
+                for old in &once.0 .1 {
+                    assert_eq!(twice.0 .1.iter().filter(|row| *row == old).count(), 1);
+                }
+                for old in &once.0 .2 {
+                    assert_eq!(twice.0 .2.iter().filter(|row| *row == old).count(), 1);
+                }
+                drop(store);
+                rec015_assert_payments(
+                    &p,
+                    &before,
+                    ctx,
+                    acc,
+                    &[([0xa0; 16], [0xb0; 16]), ([0xa4; 16], [0xb4; 16])],
+                );
+            }
+        }
+    }
+}
+
+#[test]
+fn rec015_concurrent_stale_requests_commit_exactly_one_payment() {
+    use std::sync::{Arc, Barrier};
+    for kind in 0..2 {
+        for overdue in 0..2 {
+            for ctx in 0..2 {
+                let (_d, p) = setup();
+                let pending = seed(&p, kind, overdue, ctx, 2, 1000);
+                let second = rec015_eligible_snapshot(&pending);
+                let other_month = seed(&p, kind, 0, ctx, 3, 1000);
+                let acc = account(&p);
+                open_database(&p).unwrap().execute("INSERT INTO main.accounts(id,name,account_type,initial_balance_cents) VALUES(?1,'Outra conta sintética','bank_pix',7654)",params![[0xe0u8;16].as_slice()]).unwrap();
+                existing_exit(&p, [0xd0; 16]);
+                let before = snapshot(&p);
+                let stores = [
+                    AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap()),
+                    AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap()),
+                ];
+                let start = Arc::new(Barrier::new(2));
+                let workers = stores
+                    .into_iter()
+                    .zip([pending, second])
+                    .zip([
+                        rec015_eligible_snapshot(&other_month),
+                        rec015_eligible_snapshot(&other_month),
+                    ])
+                    .enumerate()
+                    .map(|(index, ((mut store, request), probe))| {
+                        let ready = Arc::clone(&start);
+                        std::thread::spawn(move || {
+                            let mut ids =
+                                FixedIds::new([0xa0 + index as u8; 16], [0xb0 + index as u8; 16]);
+                            ready.wait();
+                            let result =
+                                pay_recurrence(request, acc, &mut ids, &FixedClock, &mut store);
+                            let blocked = result.is_err()
+                                && matches!(
+                                    pay_recurrence(
+                                        probe,
+                                        acc,
+                                        &mut FixedIds::new([0xa6; 16], [0xb6; 16]),
+                                        &FixedClock,
+                                        &mut store
+                                    ),
+                                    Err(PayRecurrenceError::StoreFailed)
+                                );
+                            (index, result, ids.calls, blocked)
+                        })
+                    })
+                    .collect::<Vec<_>>();
+                let mut winners = Vec::new();
+                for worker in workers {
+                    let (index, result, calls, blocked) = worker
+                        .join()
+                        .unwrap_or_else(|_| panic!("payment worker panicked"));
+                    assert_eq!(calls, 2);
+                    match result {
+                        Ok(obligation) => {
+                            assert!(
+                                matches!(obligation.state,ObligationState::Paid{amount_cents:1000,movement_id}if movement_id==[0xa0+index as u8;16])
+                            );
+                            winners.push(index);
+                        }
+                        Err(error) => {
+                            assert_eq!(error, PayRecurrenceError::StoreFailed);
+                            opaque(&error);
+                            assert!(blocked);
+                        }
+                    }
+                }
+                assert_eq!(winners.len(), 1, "exactly one concurrent payment succeeds");
+                let winner = winners[0] as u8;
+                rec015_assert_payments(
+                    &p,
+                    &before,
+                    ctx,
+                    acc,
+                    &[([0xa0 + winner; 16], [0xb0 + winner; 16])],
+                );
+                let mut recovered = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                assert!(pay_recurrence(
+                    other_month,
+                    acc,
+                    &mut FixedIds::new([0xa4; 16], [0xb4; 16]),
+                    &FixedClock,
+                    &mut recovered
+                )
+                .is_ok());
+                drop(recovered);
+                rec015_assert_payments(
+                    &p,
+                    &before,
+                    ctx,
+                    acc,
+                    &[
+                        ([0xa0 + winner; 16], [0xb0 + winner; 16]),
+                        ([0xa4; 16], [0xb4; 16]),
+                    ],
+                );
+            }
+        }
+    }
+}

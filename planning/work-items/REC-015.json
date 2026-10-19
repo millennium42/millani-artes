@@ -1,0 +1,26 @@
+{
+  "id": "REC-015",
+  "title": "impedir pagamento repetido",
+  "specPath": "planning/specs/REC-015.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-012"
+  ],
+  "acceptanceCriteria": [
+    "Paidreplay InvalidInput/0UUID;staleeligible StoreFailed sem segundaExit/audit com UUIDsnovos e reusados;adapter descartado.",
+    "8cenários seriais e8corridas físicas garantem um vencedor,link/evento/valor/contexto/conta/projeções exatos e histórico/reopen íntegros;outro mês permanece pagável.",
+    "2mutantes físicos detectados/restaurados;GREEN9SQL/gates/security/review;produção e7migrations imutáveis.",
+    "Docs/matrizes/log antespasses,CI fonte/final exatos,nota128 e liberação;MetaE2Eativa e sem provaUI/instalador inferida."
+  ],
+  "checks": [
+    "RED2mutantes/GREEN9SQL",
+    "Rustfmt/clippy/debug/release/audit;TSquality/build/scans",
+    "Produção/migrations imutáveis;review/validators/stagedscan",
+    "CI fonte/final/nota128/liberação"
+  ],
+  "agentPlan": "P-INT/P-QAroot reuso determinístico;P-SECferramentas;P-REVSol6mediumindependente;verification-before-completion adaptada;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-015 VERIFY E3:2SQLnovos/8seriais+8corridas/Paid0UUID/staleUUIDnovoereusadosemsegundaExit/1vencedor+loserpoison/outramêspagável/PaidFK-audit-payload8col/reopen/histórico/projeções exatos;3REDs atuais verificados/GREEN9SQL/P2corrigidopeloroot/Rust317+18docs/gates/security/reviewPASS. Parsercorrigidosemrerunválido,rawpreservado;skillsadaptadas aplicadas. Produção/7migrations intactas,coveragehistórica referenciada;CIs/nota128/liberação pendentes;UIIPC/globalRust/instalador/E2Ependentes;Metaativa;fonte:handoffREC-015."
+}
