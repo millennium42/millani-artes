@@ -517,3 +517,7 @@ mod fixed_generation_tests;
 mod variable_generation;
 #[cfg(test)]
 mod variable_generation_tests;
+
+mod obligation_amount;
+#[cfg(test)]
+mod obligation_amount_tests;

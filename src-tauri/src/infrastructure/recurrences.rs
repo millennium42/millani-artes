@@ -266,3 +266,5 @@ impl AdapterSqliteRecurrenceStore {
         }
     }
 }
+
+mod amount;

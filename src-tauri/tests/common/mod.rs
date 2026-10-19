@@ -106,3 +106,5 @@ mod recurrences_migration;
 mod recurrence_fixed_generation;
 
 mod recurrence_variable_generation;
+
+mod recurrence_amount;

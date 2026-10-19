@@ -1,0 +1,26 @@
+{
+  "id": "REC-010",
+  "title": "informar valor pendente",
+  "specPath": "planning/specs/REC-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-009"
+  ],
+  "acceptanceCriteria": [
+    "AwaitingValue recebe centavos positivos e vira Payable sem alterar metadados/template ou criar movimento.",
+    "Caso1ID/1Clock/1Store;UPDATEguardado+auditTx/rollback+poison/erros opacos/sem sobrescrever outros estados.",
+    "3domain6app5SQLnovos/RED/gates/security/LLVM3críticos95controle/review/CIs exatos.",
+    "Docsantespasses/nota123/liberação;sem pagamento/UIIPC/E2Einferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED3stages/GREEN9unit5SQL/18docs",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVM3critical95controle/review/validators/stagedscan",
+    "CI fonte/final/nota123/liberação"
+  ],
+  "agentPlan": "P-QAGemma testes/P-DOMLaguna/P-INTGemma/P-DATLaguna seriais/P-SEC/P-REVSol6medium;21paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-010 VERIFY E3:informar valor em uma ocorrência AwaitingValue→Payable positivo/metadata/templateNULL preservados/únicoUPDATEguardado+auditTx/rollback+poison/sem movimentos;9unit+5SQLnovos287+18docs/gates/security/LLVM3críticos100% comcontrole negativo/reviewP2corrigido PASS. Correçõesprodução integrador registradas;CIs pendentes;REC-011..015 (vencimento persistido,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;não há edição de valor já informado neste item. Fonte:handoff REC-010. Nota123/liberação pendentes;MetaE2Eativa."
+}

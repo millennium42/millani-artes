@@ -15,6 +15,7 @@ pub mod application {
     pub mod list_accounts;
     pub mod list_movements;
     pub mod rename_category;
+    pub mod supply_obligation_amount;
 }
 pub mod infrastructure {
     pub mod accounts;
