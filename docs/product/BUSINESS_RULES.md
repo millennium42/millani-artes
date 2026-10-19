@@ -9,3 +9,5 @@
 - Devolução parcial respeita a quantidade restante. Se reduzir dívida aberta, reduz somente o a receber; se houver dinheiro, cria reembolso em uma conta escolhida.
 - Dashboard projeta a fonte de verdade, sem agregados editáveis.
 - Escritas financeiras compostas são atômicas e deixam histórico técnico suficiente para diagnóstico.
+
+- Vencimento mensal: quando o dia escolhido não existir, usar o último dia do mês; considerar o vencimento até o fim do dia no horário de Brasília. Decisão humana registrada em 19/10/2026, na resposta à pergunta de calendário durante REC-011.

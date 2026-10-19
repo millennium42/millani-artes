@@ -1,0 +1,27 @@
+{
+  "id": "REC-011",
+  "title": "vencer obrigação",
+  "specPath": "planning/specs/REC-011.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-008",
+    "REC-006"
+  ],
+  "acceptanceCriteria": [
+    "Payable positivo viraOverdue sócomClockestritamenteposterior/precisão100ns/epochsemtruncar/datasano1..9999.",
+    "AppClock1ID1Store/portacapturatempoexato;adapterUPDATEguardadoestado+auditTx/rollback+poison/semalterarcentavos/movimentos/templates.",
+    "3domain7app5SQLnovos/RED/gates/security/LLVM3críticos95controle/review/CIs exatos.",
+    "Docsantespasses/nota124/liberação;sem pagamento/UIIPC/E2Einferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED3stages/GREEN10unit5SQL/18docs",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVM3critical95controle/review/validators/stagedscan",
+    "CI fonte/final/nota124/liberação"
+  ],
+  "agentPlan": "P-QALaguna2arquivosseriais/P-DOMLaguna/P-INTLaguna/P-DATLaguna/P-SEC/P-REVSol6medium;22paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-011 VERIFY E3:Payable→Overdue estritamente apósClock/100ns/epochi128ano1,appClock1ID1Store/portaTimeexata/UPDATEguardado+auditTx/rollbackpoison/semalterarvalores;10unit+5SQLnovos302+18docs/gates/security/LLVM3críticos100% comcontrole negativo/review PASS. Rootfixtures/importsfmtcorreçõesregistradas;decisãohumanacalendárioemBUSINESS_RULES;CIs pendentes;REC-012..015 (pagamento transacional,saída única e idempotência),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;implementação de calendário atual usaUTC-3fixo,semprovaIANA/DSThistórico,oaceitehumanofoiparapolíticaúltimodia/fimdiaBrasília. Fonte:handoff REC-011. Nota124/liberação pendentes;MetaE2Eativa."
+}
