@@ -1,0 +1,27 @@
+{
+  "id": "REC-009",
+  "title": "gerar pendência variável",
+  "specPath": "planning/specs/REC-009.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-007",
+    "REC-003"
+  ],
+  "acceptanceCriteria": [
+    "VariablegeraAwaitingValue/nenhumvalor/default0 por método real e calendárioEXATOreusado;IDs/metadados/contextopreservados.",
+    "Caso de uso2IDs1Clock1Store/errosopacos;adaptercompartilhadoTxvariableNULL/template+obligation+audit/Fixedregressões/rollback+poison/sem movimentos.",
+    "3domain6app5SQLnovos/18docspreservados/REDstages/gates/security/LLVM3críticos95controle/review/CIs exatos.",
+    "Docsantespasses/nota122/liberação antespróximo;semvalorinformado/pagamento/idempotênciasucesso/UIIPC/E2Einferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED3stages/GREEN3domain6app5SQL/18docspreservados",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVM3critical95controle/review/validators/stagedscan",
+    "CI fonte/final/nota122/liberação"
+  ],
+  "agentPlan": "P-DOMLaguna módulo pequeno/P-INTLaguna app/P-DATLaguna adaptercompartilhado seriais/P-SEC/P-REVSol6medium;20paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-009 VERIFY E3:geração variável AwaitingValue/NULL e auditoria em Tx compartilhada com Fixed,sem movimentos;9unit+5SQL novos,Fixed regressões273+18docs/gates/security/LLVM3críticos100% com controle negativo/review PASS. CI fonte/final pendentes;REC-010..015 (informar valor por ocorrência,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;calendário reaproveita default do integrador último dia/fim do dia UTC-3 fixo,sem IANA/DST histórico/aceite humano. Fonte:handoff REC-009. Nota122/liberação pendentes;MetaE2Eativa."
+}

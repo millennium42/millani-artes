@@ -513,3 +513,7 @@ mod overdue_state_tests;
 
 #[cfg(test)]
 mod fixed_generation_tests;
+
+mod variable_generation;
+#[cfg(test)]
+mod variable_generation_tests;

@@ -11,6 +11,7 @@ pub mod application {
     pub mod deactivate_category;
     pub mod edit_movement;
     pub mod generate_fixed_obligation;
+    pub mod generate_variable_obligation;
     pub mod list_accounts;
     pub mod list_movements;
     pub mod rename_category;
