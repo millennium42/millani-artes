@@ -110,3 +110,5 @@ mod recurrence_variable_generation;
 mod recurrence_amount;
 
 mod recurrence_overdue;
+
+mod recurrence_payment;
