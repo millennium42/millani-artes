@@ -1,0 +1,1532 @@
+{
+  "id": "REC-012",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+  "final_sha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+  "source_ci": {
+    "run": {
+      "id": 39248473269,
+      "head_sha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39248473269",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T11:58:14Z",
+      "updated_at": "2026-10-19T12:09:44Z"
+    },
+    "job": {
+      "id": 118046132295,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39248473269,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          181,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          125,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 5,
+      "new_unit_tests": 6,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 268,
+          "findings": 0,
+          "seconds": 1.341,
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.283,
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.941,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.069,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.953
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "sha256": "acc9bcc660c1271c06a8324f978ae4dd3b34f182413b509482cebe97385080de",
+          "imageOS": "win25-vs2026",
+          "pe": "PE32+",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "node": "v24.21.0",
+          "sourceSha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "imageVersion": "20261007.264.1",
+          "machine": "AMD64",
+          "bytes": 8536064,
+          "customProtocol": true
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12183978683,
+          "name": "frontend-coverage-39248473269-1",
+          "size_in_bytes": 21914,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12183978683",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12183978683/zip",
+          "expired": false,
+          "created_at": "2026-10-19T12:00:31Z",
+          "expires_at": "2026-10-20T12:00:30Z",
+          "updated_at": "2026-10-19T12:00:31Z",
+          "digest": "sha256:c18c66e283f4a2edc3cde219f81e86ec57e0829d80f40c5b4bdfae1105137fe3",
+          "workflow_run": {
+            "id": 39248473269,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "b4ee66f594ef2c723df3f595c7d14aa35d82cee3"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39249998342,
+      "head_sha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39249998342",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T12:10:30Z",
+      "updated_at": "2026-10-19T12:12:23Z"
+    },
+    "job": {
+      "id": 118051169300,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39249998342,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 269,
+          "findings": 0,
+          "seconds": 1.34,
+          "sourceSha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.233,
+          "sourceSha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.834,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.954,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-012",
+    "evidence": "E3",
+    "rust": {
+      "base": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+      "sources": {
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017",
+        "src-tauri/tests/common/recurrence_payment.rs": "4ba76b0dc8888f047d4afb8377aeb2e452622f33db4287c050799c50d1be84fa",
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.36,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 64.32,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-rust-gate-1-20261019.log",
+          "sha256": "f0b393406fe74892050fd48b7cad9f4fda9b99bfefca8179f4590d36f2ca430f"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 60.96,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-rust-gate-2-20261019.log",
+          "sha256": "b02c695faedc63eaabdee42f9349bc2917cc032755297ceaa73901ad4deaf15e"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 57.17,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-rust-gate-3-20261019.log",
+          "sha256": "21999e3e5134b0bd7e520c9f2f7523f0e337959855bbb52dd351e90ee5cc3253"
+        }
+      ]
+    },
+    "other": {
+      "base": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 7.57,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-0-20261019.log",
+          "sha256": "55dd477e4302abe6981afb9c889e36e4206102adaab712189d9664eee9fae31c"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 3.66,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-1-20261019.log",
+          "sha256": "10831961410e138d43bb78c3771bb41e964078d4bee63a2e51d0bf1c47d2f073"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 4.11,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-2-20261019.log",
+          "sha256": "8fc0500da0978e4b5958909e587d018504931e5ee8899ed2708dfa037507ef9c"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 7.03,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-3-20261019.log",
+          "sha256": "73261a5041b9123c523518f5aafaa42bf807d601126a95fd9490d69e60df226f"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 4.17,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-4-20261019.log",
+          "sha256": "ab5e818e15172b275ae1dbb93cc4c622453eeffe431a4e53952a5c95d968a400"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.3,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 14.45,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-other-gate-6-20261019.log",
+          "sha256": "e44ec0fbf6cfd119f9276cff02979bb7a320205e71d484e854c9c1aae6f1cd92"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      181,
+      7,
+      125,
+      18
+    ],
+    "new_unit": 6,
+    "new_doctests": 0,
+    "new_sql": 5,
+    "focal": {
+      "app/red": {
+        "id": "REC-012",
+        "phase": "app",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "e29a1b1c47cf7f8a5bf35d705301663940b9cfaf214c014c6aa1dce6936e1d94",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 0.773,
+            "output": "error[E0432]: unresolved imports `super::pay_recurrence`, `super::duration_to_epoch_millis`, `super::PayRecurrenceError`, `super::RecurrencePaymentStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\application\\pay_recurrence_tests.rs:1:13\n  |\n1 | use super::{pay_recurrence, duration_to_epoch_millis, PayRecurrenceError, RecurrencePaymentStore};\n  |             ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^ no `RecurrencePaymentStore` in `application::pay_recurrence`\n  |             |               |                         |\n  |             |               |                         no `PayRecurrenceError` in `application::pay_recurrence`\n  |             |               no `duration_to_epoch_millis` in `application::pay_recurrence`\n  |             no `pay_recurrence` in `application::pay_recurrence`\n  |\n  = help: consider importing this module instead:\n          crate::application::pay_recurrence\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0432`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "app/green": {
+        "id": "REC-012",
+        "phase": "app",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "75f17e26554e879d8c884529c403e4adf9979a6471165af0e8ec90a98860ef76",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green\\tests.exe\"",
+            "exit": 1,
+            "seconds": 1.071,
+            "output": "error[E0004]: non-exhaustive patterns: `&ObligationState::AwaitingValue` and `&ObligationState::Paid { .. }` not covered\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\application\\pay_recurrence.rs:51:24\n    |\n 51 |     let amount = match &obligation.state {\n    |                        ^^^^^^^^^^^^^^^^^ patterns `&ObligationState::AwaitingValue` and `&ObligationState::Paid { .. }` not covered\n    |\nnote: `ObligationState` defined here\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:10\n    |\n230 | pub enum ObligationState {\n    |          ^^^^^^^^^^^^^^^\n231 |     AwaitingValue,\n    |     ------------- not covered\n...\n235 |     Paid {\n    |     ---- not covered\n    = note: the matched value is of type `&ObligationState`\nhelp: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern, a match arm with multiple or-patterns as shown, or multiple match arms\n    |\n 53 ~         | ObligationState::Overdue { amount_cents } => *amount_cents,\n 54 ~         &ObligationState::AwaitingValue | &ObligationState::Paid { .. } => todo!(),\n    |\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0004`.\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "app/green-corrected": {
+        "id": "REC-012",
+        "phase": "app",
+        "mode": "green-corrected",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green-corrected\\tests.exe\"",
+            "exit": 0,
+            "seconds": 1.831,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green-corrected\\tests.exe\" application::pay_recurrence::tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.25,
+            "output": "\nrunning 6 tests\ntest application::pay_recurrence::tests::duration_conversion_preserves_i64_bound_and_rejects_overflow ... ok\ntest application::pay_recurrence::tests::noneligible_or_invalid_states_stop_before_identifiers_clock_and_store ... ok\ntest application::pay_recurrence::tests::pre_epoch_audit_clock_stops_after_two_identifiers_without_persisting ... ok\ntest application::pay_recurrence::tests::payment_preserves_metadata_and_links_exact_exit_in_both_states_contexts_and_amount_bounds ... ok\ntest application::pay_recurrence::tests::either_identifier_failure_or_zero_movement_identifier_prevents_clock_and_store ... ok\ntest application::pay_recurrence::tests::store_failure_and_all_public_errors_hide_private_payloads_and_never_retry ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 175 filtered out; finished in 0.00s\n\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/red": {
+        "id": "REC-012",
+        "phase": "sqlite",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "eb56c7e31aed5051e1fbf28987ed9cef4fe55d734c17fddb81e52441ea890f6b",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.536,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 1.52,
+            "output": "error[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:95:432\n   |\n95 | ...([0xa0;16],[0xb0;16]);let result=pay_recurrence(o,acc,&mut ids,&at,&mut store).unwrap();assert_eq!(ids.calls,2);assert_eq!((resul...\n   |                                     --------------                    ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                                     |\n   |                                     required by a bound introduced by this call\n   |\nnote: required by a bound in `pay_recurrence`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n   |\n39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n   |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:99:911\n   |\n99 | ...actory};let e=store.persist_recurrence_payment_with_audit(&o,&m,[0xb0;16],1234).unwrap_err();assert!(e.source().is_none());assert...\n   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:99:1116\n   |\n99 | ...ore);}assert!(store.persist_recurrence_payment_with_audit(&paid(0,7,[0xa0;16]),&payment(acc,0,7,[0xa0;16]),[0xb0;16],1234).is_ok(...\n   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:103:940\n    |\n103 | ...ap());assert!(store.persist_recurrence_payment_with_audit(&o,&m,[0xb0;16],1234).is_err());assert_eq!(snapshot(&p),before);assert...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:103:1056\n    |\n103 | ...fore);assert!(store.persist_recurrence_payment_with_audit(&paid(0,7,[0xa1;16]),&payment(acc,0,7,[0xa1;16]),[0xb1;16],1234).is_er...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:103:1337\n    |\n103 | ...ap());assert!(fresh.persist_recurrence_payment_with_audit(&paid(0,7,[0xa2;16]),&payment(acc,0,7,[0xa2;16]),[0xb3;16],1234).is_ok...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:107:1216\n    |\n107 | ...16]}else{[0xb0;16]});let e=pay_recurrence(pending,acc,&mut ids,&FixedClock,&mut store).err().unwrap();opaque(&e);assert_eq!(snap...\n    |                               --------------                                  ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                               |\n    |                               required by a bound introduced by this call\n    |\nnote: required by a bound in `pay_recurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n    |\n 39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n    |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:107:1432\n    |\n107 | ...op(c);assert!(store.persist_recurrence_payment_with_audit(&paid(0,7,[0xa1;16]),&payment(acc,0,7,[0xa1;16]),[0xb1;16],1234).is_er...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:107:1667\n    |\n107 | ...ap());assert!(fresh.persist_recurrence_payment_with_audit(&paid(0,7,[0xa2;16]),&payment(acc,0,7,[0xa2;16]),[0xb3;16],1234).is_ok...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:111:356\n    |\n111 | ...[0xb0;16]);let e=pay_recurrence(pending,if case==0{[0xfe;16]}else{acc},&mut ids,&FixedClock,&mut store).err().unwrap();opaque(&e...\n    |                     -------------- required by a bound introduced by this call                 ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |\nnote: required by a bound in `pay_recurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n    |\n 39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n    |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:111:440\n    |\n111 | ...fore);assert!(store.persist_recurrence_payment_with_audit(&paid(0,7,[0xa1;16]),&payment(acc,0,7,[0xa1;16]),[0xb1;16],1234).is_er...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0599]: no method named `persist_recurrence_payment_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:111:675\n    |\n111 | ...ap());assert!(fresh.persist_recurrence_payment_with_audit(&paid(0,7,[0xa2;16]),&payment(acc,0,7,[0xa2;16]),[0xb3;16],1234).is_ok...\n    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `AdapterSqliteRecurrenceStore`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:112:258\n    |\n112 | ...[0xb0;16]);let paid_result=pay_recurrence(pending,acc,&mut ids,&FixedClock,&mut store).unwrap();let before=snapshot(&p);let mut ...\n    |                               --------------                                  ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                               |\n    |                               required by a bound introduced by this call\n    |\nnote: required by a bound in `pay_recurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n    |\n 39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n    |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:112:423\n    |\n112 | ...b1;16]);assert!(matches!(pay_recurrence(original(0),acc,&mut retry,&FixedClock,&mut store),Err(PayRecurrenceError::StoreFailed))...\n    |                             --------------                                        ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                             |\n    |                             required by a bound introduced by this call\n    |\nnote: required by a bound in `pay_recurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n    |\n 39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n    |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: RecurrencePaymentStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:112:630\n    |\n112 | ...b3;16]);assert!(matches!(pay_recurrence(paid_result,acc,&mut blocked,&FixedClock,&mut store),Err(PayRecurrenceError::InvalidInpu...\n    |                             --------------                                          ^^^^^^^^^^ the trait `RecurrencePaymentStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                             |\n    |                             required by a bound introduced by this call\n    |\nnote: required by a bound in `pay_recurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\src\\application\\pay_recurrence.rs:39:26\n    |\n 39 | pub fn pay_recurrence<S: RecurrencePaymentStore, I: UuidGenerator, C: Clock>(\n    |                          ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `pay_recurrence`\n\nerror: aborting due to 15 previous errors\n\nSome errors have detailed explanations: E0277, E0599.\nFor more information about an error, try `rustc --explain E0277`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/green": {
+        "id": "REC-012",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "5dba256a2089fcdb0b6556eca08b34397d5709684fa53e3d23a73199e7390ba6",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 1,
+            "seconds": 0.497,
+            "output": "warning: unused import: `Context`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\src\\infrastructure\\recurrences\\payment.rs:3:21\n  |\n3 | use crate::domain::{Context, Movement, MovementKind, ObligationState, RecurrenceObligation};\n  |                     ^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0026]: variant `ObligationState::Payable` does not have a field named `movement_id`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\src\\infrastructure\\recurrences\\payment.rs:25:54\n   |\n25 |             ObligationState::Payable { amount_cents, movement_id }\n   |                                                      ^^^^^^^^^^^ variant `ObligationState::Payable` does not have this field\n\nerror[E0026]: variant `ObligationState::Overdue` does not have a field named `movement_id`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\src\\infrastructure\\recurrences\\payment.rs:26:56\n   |\n26 |             | ObligationState::Overdue { amount_cents, movement_id } => {\n   |                                                        ^^^^^^^^^^^ variant `ObligationState::Overdue` does not have this field\n\nerror: aborting due to 2 previous errors; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0026`.\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "sqlite/green-corrected": {
+        "id": "REC-012",
+        "phase": "sqlite",
+        "mode": "green-corrected",
+        "sources": {
+          "src-tauri/src/application/pay_recurrence.rs": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "80875010c07524e7da63c526c76a9fad7723fcf714ac90a8987d373e0979802d",
+          "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "src-tauri/src/lib.rs": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.572,
+            "output": "warning: unused import: `Context`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\src\\infrastructure\\recurrences\\payment.rs:3:21\n  |\n3 | use crate::domain::{Context, Movement, MovementKind, ObligationState, RecurrenceObligation};\n  |                     ^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n"
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.62,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\tests.exe\" common::recurrence_payment:: --nocapture",
+            "exit": 0,
+            "seconds": 1.747,
+            "output": "\nrunning 5 tests\ntest common::recurrence_payment::invalid_direct_pairs_preserve_data_and_adapter_usability_before_any_sql ... ok\ntest common::recurrence_payment::missing_account_existing_movement_and_repeated_payment_do_not_create_extra_exits ... ok\ntest common::recurrence_payment::movement_state_and_audit_abort_or_ignore_faults_rollback_every_payment_write ... ok\ntest common::recurrence_payment::stale_or_adulterated_obligation_snapshots_never_leave_an_inserted_exit_or_audit ... ok\ntest common::recurrence_payment::payment_commits_one_exact_exit_paid_link_and_audit_for_both_rules_states_contexts_and_bounds ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 120 filtered out; finished in 1.49s\n\n"
+          }
+        ],
+        "result": "pass"
+      }
+    },
+    "fixture_preparation": {
+      "id": "REC-012",
+      "persona": "P-QA integrator",
+      "method": "deterministictranspositionfromcreate_exit_tests+recurrencevariable/amount/overduephysicalpatterns;noQAmodelretryafterREC010/011failures",
+      "root_fixture_preparation": true,
+      "root_fixture_correction": false,
+      "root_production_correction": false,
+      "fixtures": {
+        "src-tauri/src/application/pay_recurrence_tests.rs": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+        "src-tauri/tests/common/recurrence_payment.rs": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8"
+      }
+    },
+    "integrator_corrections": [
+      {
+        "id": "REC-012",
+        "persona": "P-INT integrator",
+        "reason": "ActualcompilerE0004missingAwaitingValue/Paidarms;addsingledefaultrejectionrequiredbyclosedspecbeforeIDs;nochoiceofnewbusinessrule/noextra modelcall",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-APP-rejected-20261019.rs",
+        "sha256": "75f17e26554e879d8c884529c403e4adf9979a6471165af0e8ec90a98860ef76",
+        "corrected_sha256": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green\\receipt.json",
+        "root_production_correction": true,
+        "root_manual_executable_correction": true,
+        "changes": [
+          "one wildcardmatcharmreturnsInvalidInput"
+        ],
+        "checks_pending": "existing6APPtestsincludeineligiblestatesandzeroeffects"
+      },
+      {
+        "id": "REC-012",
+        "persona": "P-INT integrator",
+        "reason": "E0026inventedmovement_idonPayable/Overdue;staticreadalsofoundmissingpaidlink/matchingpositiveExitguard;applyclosedspecpreIOvalidationonly,keepgeneratedSQLtransactionunchanged",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-DATA-rejected-20261019.rs",
+        "sha256": "5dba256a2089fcdb0b6556eca08b34397d5709684fa53e3d23a73199e7390ba6",
+        "corrected_sha256": "80875010c07524e7da63c526c76a9fad7723fcf714ac90a8987d373e0979802d",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\receipt.json",
+        "root_production_correction": true,
+        "root_manual_executable_correction": true,
+        "changes": [
+          "targetPaid tuple extraction",
+          "exactlink/contextbeforeIO",
+          "Exitkindaccount extraction",
+          "reuse realPayable.mark_paid forpositive/matchingExit/nonzeroID;removead-hoczerocheck"
+        ],
+        "sql_unchanged": true,
+        "new_model_call": false
+      }
+    ],
+    "coverage": {
+      "full": {
+        "src/application/pay_recurrence.rs": {
+          "lines": {
+            "count": 55,
+            "covered": 55,
+            "percent": 100
+          },
+          "functions": {
+            "count": 3,
+            "covered": 3,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 8,
+            "covered": 7,
+            "percent": 87.5
+          },
+          "regions": {
+            "count": 70,
+            "covered": 68,
+            "notcovered": 2,
+            "percent": 97.14285714285714
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences/payment.rs": {
+          "lines": {
+            "count": 81,
+            "covered": 81,
+            "percent": 100
+          },
+          "functions": {
+            "count": 2,
+            "covered": 2,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 4,
+            "covered": 2,
+            "percent": 50
+          },
+          "regions": {
+            "count": 84,
+            "covered": 84,
+            "notcovered": 0,
+            "percent": 100
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/application/pay_recurrence.rs": {
+          "lines": {
+            "count": 55,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 3,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 8,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 70,
+            "covered": 0,
+            "notcovered": 70,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences/payment.rs": {
+          "lines": {
+            "count": 81,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 2,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 4,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 84,
+            "covered": 0,
+            "notcovered": 84,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "coverage_scope": "wholepaymentapplication+wholechildatomicpayment;controlskipsonly6APP5SQLnewtests,allpreviousdomain/application/SQLite retained;notRustglobal/CI;statementsnotmeasured,stablebranchesN/A",
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-app-red.json",
+        "bytes": 3160,
+        "sha256": "65f47547cd1abd6c9b030153379d00f1497830e81a8a16ec4d5dad692471a415"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-app-green.json",
+        "bytes": 3378,
+        "sha256": "38a57dc81ff87fc3d80c78f6d2c735b7321adf3041b985af4b5665c9152ca485"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green-corrected\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-app-green-corrected.json",
+        "bytes": 3199,
+        "sha256": "8cccbf0bc01ead50508d1b0a30ad4f19fd23be4f6852f93cb010a4ff44965251"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-sqlite-red.json",
+        "bytes": 15293,
+        "sha256": "0eac6139612016c20d75385d0a78d5e6a66d52e0bd200dfd934618e62953ab99"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-sqlite-green.json",
+        "bytes": 3777,
+        "sha256": "edbf51ec26fa7233bce5bf9ef04785849685b16f5e99a9ff0676b0b919d8b89d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green-corrected\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-sqlite-green-corrected.json",
+        "bytes": 5181,
+        "sha256": "f1d15f19d3143c30b09a64646287ccb67e0f855b47d242b47a76abbfb21ac6fe"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec012-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-coverage.json",
+        "bytes": 70351,
+        "sha256": "0f8cfae5b65ff54456d7f641c3a6d496d85e68d679e37ce258e3a4c1dd545a19"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec012-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\full.json",
+        "bytes": 43586,
+        "sha256": "9a8a70c53db8838aebb8d98a9192ac7211df168a062b4eb22f387a1d222683be"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec012-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\control.json",
+        "bytes": 43440,
+        "sha256": "a5e4414d3c2f987027b2e23ce37169e5afd110c2cf1057db175cb7610db6e1dc"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\application\\pay_recurrence.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__src__application__pay_recurrence.rs",
+        "bytes": 3193,
+        "sha256": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\application\\pay_recurrence_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__src__application__pay_recurrence_tests.rs",
+        "bytes": 7232,
+        "sha256": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__src__infrastructure__recurrences.rs",
+        "bytes": 8634,
+        "sha256": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__src__infrastructure__recurrences__payment.rs",
+        "bytes": 3858,
+        "sha256": "80875010c07524e7da63c526c76a9fad7723fcf714ac90a8987d373e0979802d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\tests\\common\\recurrence_payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__tests__common__recurrence_payment.rs",
+        "bytes": 13809,
+        "sha256": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\lib.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__src__lib.rs",
+        "bytes": 748,
+        "sha256": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\tests\\common\\mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\before-mechanical-src-tauri__tests__common__mod.rs",
+        "bytes": 3128,
+        "sha256": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-APP-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-APP-rejected-20261019.rs",
+        "bytes": 3133,
+        "sha256": "75f17e26554e879d8c884529c403e4adf9979a6471165af0e8ec90a98860ef76"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-app-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-app-correction-20261019.json",
+        "bytes": 910,
+        "sha256": "93defa83948816cc9bfdc6e887345217bf5c907b92ed1c22c866cdce8e4b3805"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-DATA-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-DATA-rejected-20261019.rs",
+        "bytes": 3989,
+        "sha256": "5dba256a2089fcdb0b6556eca08b34397d5709684fa53e3d23a73199e7390ba6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-data-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-data-correction-20261019.json",
+        "bytes": 1066,
+        "sha256": "77644605c16a974026094d769829f448be471702d8e0323509f73bb2c0e75c6d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-fixture-preparation-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-fixture-preparation-20261019.json",
+        "bytes": 593,
+        "sha256": "9b13093b859e3d0f3fe7ac9924823c993a951c899a99b2edc4682d425727869a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-rustfix-20261019.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-rustfix-20261019.log",
+        "bytes": 7849,
+        "sha256": "f75367bc1b051fd04072cd52c8e6decdb8169d2d4fdf51ea893ce707ad938515"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-APP-20261019-duration.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-APP-20261019-duration.json",
+        "bytes": 373,
+        "sha256": "b30b9e48a5ccb69fed0c7b68d57dd10a36b4ae280030d94f2308bc4f6624c49b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-DATA-20261019-duration.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-DATA-20261019-duration.json",
+        "bytes": 385,
+        "sha256": "785446daa79f1faa700f142da922bbb48258ff46149a4f6c1275d80a2c7f0f2f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-APP-20261019.1792409848220093900.job.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-APP-20261019.1792409848220093900.job.json",
+        "bytes": 4678,
+        "sha256": "9a560f06bf253b66780f8f05b8661ce2ee854417f1744c464ad3617aa19ad021"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-DATA-20261019.1792410188132327600.job.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\REC-012-DATA-20261019.1792410188132327600.job.json",
+        "bytes": 5767,
+        "sha256": "ef3388bf5bb5ef9df8ae016bd46f78391b4ed5b6bf6ebfeb426bf4b240991025"
+      }
+    ],
+    "review": {
+      "id": "REC-012",
+      "base": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+      "persona": "P-REV",
+      "reviewer": "/root/cat004_review",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "evidence": "E2",
+      "readonly": true,
+      "findings": [],
+      "conclusion": "Application validates obligation/exit;adapter checks link/value/context andexactrowcounts;exit/state/audit inonetransaction;focaltestscheckrollbackandpoisonincludingintegratorcorrections",
+      "limit": "Static review only;reviewer did not execute gates/tests;REC013..015 remainseparateproofs,notUI/IPC/E2E",
+      "sources": {
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017",
+        "src-tauri/tests/common/recurrence_payment.rs": "4ba76b0dc8888f047d4afb8377aeb2e452622f33db4287c050799c50d1be84fa",
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+      }
+    },
+    "local": {
+      "id": "REC-012",
+      "base": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+      "personas": [
+        "P-QA integrator",
+        "P-INT",
+        "P-DAT"
+      ],
+      "models": [
+        "LagunaXS2.1"
+      ],
+      "seconds": 347.591,
+      "calls_seconds": {
+        "APP": 180.51,
+        "DATA": 167.081
+      },
+      "local_calls": 2,
+      "app_calls": 1,
+      "app_seconds": 180.51,
+      "app_budget": 2400,
+      "data_calls": 1,
+      "data_seconds": 167.081,
+      "data_budget": 2400,
+      "extensions": 0,
+      "local_used": true,
+      "root_production_correction": true,
+      "root_manual_executable_correction": true,
+      "app_correction": {
+        "id": "REC-012",
+        "persona": "P-INT integrator",
+        "reason": "ActualcompilerE0004missingAwaitingValue/Paidarms;addsingledefaultrejectionrequiredbyclosedspecbeforeIDs;nochoiceofnewbusinessrule/noextra modelcall",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-APP-rejected-20261019.rs",
+        "sha256": "75f17e26554e879d8c884529c403e4adf9979a6471165af0e8ec90a98860ef76",
+        "corrected_sha256": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\app\\green\\receipt.json",
+        "root_production_correction": true,
+        "root_manual_executable_correction": true,
+        "changes": [
+          "one wildcardmatcharmreturnsInvalidInput"
+        ],
+        "checks_pending": "existing6APPtestsincludeineligiblestatesandzeroeffects"
+      },
+      "data_correction": {
+        "id": "REC-012",
+        "persona": "P-INT integrator",
+        "reason": "E0026inventedmovement_idonPayable/Overdue;staticreadalsofoundmissingpaidlink/matchingpositiveExitguard;applyclosedspecpreIOvalidationonly,keepgeneratedSQLtransactionunchanged",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-DATA-rejected-20261019.rs",
+        "sha256": "5dba256a2089fcdb0b6556eca08b34397d5709684fa53e3d23a73199e7390ba6",
+        "corrected_sha256": "80875010c07524e7da63c526c76a9fad7723fcf714ac90a8987d373e0979802d",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\artifacts\\rec012-check\\sqlite\\green\\receipt.json",
+        "root_production_correction": true,
+        "root_manual_executable_correction": true,
+        "changes": [
+          "targetPaid tuple extraction",
+          "exactlink/contextbeforeIO",
+          "Exitkindaccount extraction",
+          "reuse realPayable.mark_paid forpositive/matchingExit/nonzeroID;removead-hoczerocheck"
+        ],
+        "sql_unchanged": true,
+        "new_model_call": false
+      },
+      "root_fixture_correction": false,
+      "mechanical": "Whitespace-only trim/tokenparity andfmt;actualcargoclippy--fixsuggestions recorded separately ifany;no manualproductionlogic",
+      "rustfix": {
+        "command": [
+          "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+          "clippy",
+          "--fix",
+          "--allow-dirty",
+          "--allow-staged",
+          "--manifest-path",
+          "src-tauri/Cargo.toml",
+          "--locked",
+          "--all-targets",
+          "--features",
+          "tauri/custom-protocol",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "exit": 0,
+        "changed": {
+          "src-tauri/src/infrastructure/recurrences/payment.rs": {
+            "before": "508eec7f8b9a1d624bee7266f588e8f8e6f4413e6332c2a9796a258978c0f30c",
+            "after": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017"
+          }
+        }
+      },
+      "mechanical_originals": [
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\application\\pay_recurrence.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\application\\pay_recurrence.rs",
+          "sha256": "75596a6139da2959b24be963249200cf39c1d9a005a50fd34ec03af83fe95397",
+          "bytes": 3193
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\application\\pay_recurrence_tests.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\application\\pay_recurrence_tests.rs",
+          "sha256": "22d1c7e9059c2be3faf414f7d8864c91ea59d1d1ec5bfeaa74b49c88ebf80487",
+          "bytes": 7232
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\infrastructure\\recurrences.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences.rs",
+          "sha256": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "bytes": 8634
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\infrastructure\\recurrences\\payment.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences\\payment.rs",
+          "sha256": "80875010c07524e7da63c526c76a9fad7723fcf714ac90a8987d373e0979802d",
+          "bytes": 3858
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\tests\\common\\recurrence_payment.rs",
+          "sha256": "b74fe777e8b2fe39fb263ddf21e63ac1a1e5b38ed371024857846083f1b427a8",
+          "bytes": 13809
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\src\\lib.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\src\\lib.rs",
+          "sha256": "7053d72e18a790d279c583004e7a02955bcd5d472f9a5c18c9e7ecc1e08d75ac",
+          "bytes": 748
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-012-pay-recurrence\\Millani Artes\\src-tauri\\tests\\common\\mod.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-before-mechanical-20261019\\src-tauri\\tests\\common\\mod.rs",
+          "sha256": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6",
+          "bytes": 3128
+        }
+      ],
+      "root_fixtures": "deterministicreuseexistingcreate_exit_tests/recurrencephysicalpatterns;6APP5SQL;noQAmodelretry",
+      "old_migrations": {
+        "src-tauri\\migrations\\002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri\\migrations\\003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri\\migrations\\004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri\\migrations\\005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri\\migrations\\006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri\\migrations\\007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "paths": {
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017",
+        "src-tauri/tests/common/recurrence_payment.rs": "4ba76b0dc8888f047d4afb8377aeb2e452622f33db4287c050799c50d1be84fa",
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+      }
+    },
+    "runtime": [
+      {
+        "status": "stopped",
+        "pid": 127100,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 130152,
+        "port11434": "closed"
+      }
+    ],
+    "scope": "Pagar obrigação Payable/Overdue positiva reutiliza state.mark_paid e Exitreal,centavos/contexto da obrigação/contaselecionada;2IDs1Clock1Store,retornaPaidlinke metadados preservados. Filhoadapter confereTARGETPaid/link/valor/contexto/ExitantesIO eumaTxINSERTExit+UPDATEguardadoORIGINALPayableOUOverdue+centavos/metadadosexatos/unlinked+auditrecurrence_pay. Ambasrowcounts1,rollback+poison/préIOusável,semduplicarExit. Sóestado/linkmudam,semSETamount/template/accounts/categories/ledger/schema/deps/Domain/Calendar/IPC;saldo segue derivado.",
+    "limitations": "REC-013..015 exigem provas próprias desaídaúnica/rollback/concorrência/repetição,idempotência de sucesso nãoprometida;UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;calendárioaprovadoúltimodia/fimdiaBrasília registrado,implementaçãoUTC-3fixosemprovaIANA/DSThistórico",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-012",
+    "base": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+    "persona": "P-REV",
+    "reviewer": "/root/cat004_review",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "evidence": "E2",
+    "readonly": true,
+    "findings": [],
+    "conclusion": "Application validates obligation/exit;adapter checks link/value/context andexactrowcounts;exit/state/audit inonetransaction;focaltestscheckrollbackandpoisonincludingintegratorcorrections",
+    "limit": "Static review only;reviewer did not execute gates/tests;REC013..015 remainseparateproofs,notUI/IPC/E2E",
+    "sources": {
+      "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+      "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+      "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+      "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017",
+      "src-tauri/tests/common/recurrence_payment.rs": "4ba76b0dc8888f047d4afb8377aeb2e452622f33db4287c050799c50d1be84fa",
+      "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+      "src-tauri/tests/common/mod.rs": "a8e5d277ce7a6d62a15aa8e4a9aa7951be29f0067c74e80908b627e944db23b6"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 18,
+    "bytes": 1077898,
+    "framed_sha256": "12465186855257b41788626381af0dbbb6dd19f6ce54deaee8e69547aacf01c0",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 11,
+    "bytes": 1040771,
+    "framed_sha256": "12ee75c4ea0d45a31b0bf751da1d87d45b856cf785b44abdd371d6009f10bdd7",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 591 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 125 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 125 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 535639 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "Pagar obrigação Payable/Overdue positiva reutiliza state.mark_paid e Exitreal,centavos/contexto da obrigação/contaselecionada;2IDs1Clock1Store,retornaPaidlinke metadados preservados. Filhoadapter confereTARGETPaid/link/valor/contexto/ExitantesIO eumaTxINSERTExit+UPDATEguardadoORIGINALPayableOUOverdue+centavos/metadadosexatos/unlinked+auditrecurrence_pay. Ambasrowcounts1,rollback+poison/préIOusável,semduplicarExit. Sóestado/linkmudam,semSETamount/template/accounts/categories/ledger/schema/deps/Domain/Calendar/IPC;saldo segue derivado.",
+  "preserved": "all124 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;26 focal files 260710B hashverified;WT recoverably archived",
+  "limitations": "REC-013..015 exigem provas próprias desaídaúnica/rollback/concorrência/repetição,idempotência de sucesso nãoprometida;UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;calendárioaprovadoúltimodia/fimdiaBrasília registrado,implementaçãoUTC-3fixosemprovaIANA/DSThistórico",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
