@@ -1,0 +1,27 @@
+{
+  "id": "FIN-029",
+  "title": "auditar edição",
+  "specPath": "planning/specs/FIN-029.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-028",
+    "DB-014"
+  ],
+  "acceptanceCriteria": [
+    "Um teste SQLite real prova sete edições com um evento técnico exato por operação/um ID/Clock, histórico append-only e identidade/dados não editados preservados.",
+    "Falha de audit entre UPDATE/COMMIT retorna erro e rollback completo; adapter falho descartado/freshreader íntegro.",
+    "Mutantes no_audit e ignored_audit_error compilam e falham no ponto esperado; produção real passa sem mudanças.",
+    "Gates/critical herdado com controle/review/CIs exatos/docs antespasses/nota112/liberação;Meta E2E ativa."
+  ],
+  "checks": [
+    "GREEN1SQL/RED2mutantes",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMcritical>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota112/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/P-QA Laguna1teste1200s/P-SEC/P-REV Sol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-029 VERIFY E3:1SQL real/sete edições/audits exatos e imutáveis/rollback físico,2mutantes RED/GREEN;produção intacta. Rust217+8docs/quality/security/critical existente com controle/review PASS. In_progress/passesfalse até CI;FIN-030, UI/IPC, cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte: handoff FIN-029. CI fonte/final/nota112/liberação pendentes;Meta E2E ativa."
+}

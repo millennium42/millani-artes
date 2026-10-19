@@ -98,3 +98,5 @@ mod context_result;
 mod initial_balance_revenue;
 
 mod movement_editing;
+
+mod movement_edit_audit;
