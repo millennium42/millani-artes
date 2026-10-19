@@ -2,7 +2,7 @@
   "id": "FIN-027",
   "title": "calcular resultado por contexto",
   "specPath": "planning/specs/FIN-027.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-017",
     "FIN-018",
@@ -23,6 +23,6 @@
   "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-REVgpt-6-solmedium;15paths;custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "FIN-027 VERIFY E3:resultado líquido realporcontexto viaport/helperdomínio,Transfer0/validaantesfiltro/i128checked/erroopaco. 5unit+2SQLnovos+1SQLsaldoPASS/Rust205+8docs/debug+release/quality/securityE4/LLVMnewappcriticalcontrole/P-REV PASS. In_progress/passesfalseatéCI;provaFIN005/ediçãoFIN028/030/UIIPC/cronologia/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN027. CI fonte/final/nota109/liberaçãopendentes;MetaE2Eativa."
+  "passes": true,
+  "notes": "FIN-027 done/E3/passestrue após CI39181782882/SHAd438ab051db80153f5f2c505a56f710f1f0d0d41success23/0skip/7marcadores,Rust205+8docs/5unit+2SQLnovos+SQLsaldo chamandoresultadoreal. Gates/review/validators/stagedscanPASS;CI final/nota109/liberaçãopendentes;provaFIN005/ediçãoFIN028/030/UIIPC/cronologia/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes;MetaE2Eativa;fonte:handoffFIN027. ReservaATIVA."
 }
