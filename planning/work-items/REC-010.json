@@ -2,7 +2,7 @@
   "id": "REC-010",
   "title": "informar valor pendente",
   "specPath": "planning/specs/REC-010.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "REC-009"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-QAGemma testes/P-DOMLaguna/P-INTGemma/P-DATLaguna seriais/P-SEC/P-REVSol6medium;21paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "REC-010 VERIFY E3:informar valor em uma ocorrência AwaitingValue→Payable positivo/metadata/templateNULL preservados/únicoUPDATEguardado+auditTx/rollback+poison/sem movimentos;9unit+5SQLnovos287+18docs/gates/security/LLVM3críticos100% comcontrole negativo/reviewP2corrigido PASS. Correçõesprodução integrador registradas;CIs pendentes;REC-011..015 (vencimento persistido,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;não há edição de valor já informado neste item. Fonte:handoff REC-010. Nota123/liberação pendentes;MetaE2Eativa."
+  "passes": true,
+  "notes": "REC-010 done/E3/passestrue após CI39231570957/SHA2e7d8fb14a8ca4fde22b54d817a3e71439f68095success23/0skip/7marcadores,Rust287+18docs/9unit+5SQLnovos. Informar valor de uma ocorrência/Payable/únicoUPDATEguardado+audit/rollback+poison/gates/LLVM/reviewP2corrigido/validators/stagedscanPASS;CI final/nota123/liberação pendentes;REC-011..015 (vencimento persistido,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;não há edição de valor já informado neste item;MetaE2Eativa;fonte:handoff REC-010. Reserva ativa."
 }
