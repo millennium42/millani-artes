@@ -1,0 +1,26 @@
+{
+  "id": "FIN-026",
+  "title": "listar extrato",
+  "specPath": "planning/specs/FIN-026.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-024"
+  ],
+  "acceptanceCriteria": [
+    "Port/casodeuso list_movements real/allkinds/amboscontextos/erroopaco/1call.",
+    "Adaptermainexplicit/orderid/decodechecked/validarrows/falhatotal/read-only/preservarwriters.",
+    "3unit+3SQLnovos+SQLsaldo migrado aoleitorREAL;RED/GREEN/gates/criticalcontrole/review/CIexato.",
+    "Docsantespasses/nota108/liberaçãoantespróximo;semUIIPC/cronologia/novosdeps/migration."
+  ],
+  "checks": [
+    "REDlibunit+SQL/GREEN3unit+3SQL+saldoexistente",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMapp+adapter>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota108/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DATLaguna2arquivos1800s/P-REVgpt-6-solmedium;16paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-026 VERIFY E3:leitorcanônico real port+adapterstrict/erroopaco/1call/read-only e saldo pelo leitorpúblico. 3unit+3SQLnovos+1SQLsaldoPASS/Rust198+8docs/debug+release/quality/securityE4/LLVMapp+adaptercriticalcontrole/P-REV PASS. Writers/domínio/migrations/deps preservados. In_progress/passesfalseatéCI;UIIPC/cronologia/resultadoFIN027/receitaFIN005/ediçãoFIN028/030/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN026. CI fonte/final/nota108/liberaçãopendentes;MetaE2Eativa."
+}

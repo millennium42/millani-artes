@@ -9,6 +9,7 @@ pub mod application {
     pub mod create_transfer;
     pub mod deactivate_category;
     pub mod list_accounts;
+    pub mod list_movements;
     pub mod rename_category;
 }
 pub mod infrastructure {

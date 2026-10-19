@@ -90,3 +90,5 @@ mod transfer_persistence;
 mod transfer_rollback;
 
 mod balance_calculation;
+
+mod movement_reading;

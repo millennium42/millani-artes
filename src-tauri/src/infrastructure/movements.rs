@@ -1,6 +1,7 @@
 use crate::application::create_entry::EntryCreationStore;
 use crate::application::create_exit::ExitCreationStore;
 use crate::application::create_transfer::TransferCreationStore;
+use crate::application::list_movements::MovementReadStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Context, Movement, MovementKind};
 use rusqlite::Connection;
@@ -53,6 +54,22 @@ impl fmt::Display for TransferStoreError {
 }
 
 impl std::error::Error for TransferStoreError {}
+
+pub struct MovementReadError;
+
+impl fmt::Debug for MovementReadError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("MovementReadError")
+    }
+}
+
+impl fmt::Display for MovementReadError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("movement history could not be read")
+    }
+}
+
+impl std::error::Error for MovementReadError {}
 
 pub struct AdapterSqliteMovementStore {
     connection: Option<Connection>,
@@ -215,5 +232,74 @@ impl TransferCreationStore for AdapterSqliteMovementStore {
             }
             Err(_) => Err(TransferStoreError),
         }
+    }
+}
+
+impl MovementReadStore for AdapterSqliteMovementStore {
+    type Error = MovementReadError;
+
+    fn read_all_movements(&self) -> Result<Vec<Movement>, Self::Error> {
+        let connection = self.connection.as_ref().ok_or(MovementReadError)?;
+        let mut stmt = connection
+            .prepare("SELECT id, kind, amount_cents, context, account_id, source_account_id, destination_account_id FROM main.movements ORDER BY id")
+            .map_err(|_| MovementReadError)?;
+        let rows = stmt
+            .query_map([], |row| {
+                let id_vec: Vec<u8> = row.get(0)?;
+                let id: [u8; 16] = id_vec
+                    .try_into()
+                    .map_err(|_| rusqlite::Error::InvalidQuery)?;
+                let kind_str: String = row.get(1)?;
+                let amount_cents: i64 = row.get(2)?;
+                let context_str: String = row.get(3)?;
+                let context = Context::try_from(context_str.as_str())
+                    .map_err(|_| rusqlite::Error::InvalidQuery)?;
+
+                let kind = match (
+                    kind_str.as_str(),
+                    row.get::<_, Option<Vec<u8>>>(4)?,
+                    row.get::<_, Option<Vec<u8>>>(5)?,
+                    row.get::<_, Option<Vec<u8>>>(6)?,
+                ) {
+                    ("entry", Some(account), None, None) => MovementKind::Entry {
+                        account_id: account
+                            .try_into()
+                            .map_err(|_| rusqlite::Error::InvalidQuery)?,
+                    },
+                    ("exit", Some(account), None, None) => MovementKind::Exit {
+                        account_id: account
+                            .try_into()
+                            .map_err(|_| rusqlite::Error::InvalidQuery)?,
+                    },
+                    ("transfer", None, Some(source), Some(destination)) => MovementKind::Transfer {
+                        source_account_id: source
+                            .try_into()
+                            .map_err(|_| rusqlite::Error::InvalidQuery)?,
+                        destination_account_id: destination
+                            .try_into()
+                            .map_err(|_| rusqlite::Error::InvalidQuery)?,
+                    },
+                    _ => return Err(rusqlite::Error::InvalidQuery),
+                };
+
+                let movement = Movement {
+                    id,
+                    kind,
+                    amount_cents,
+                    context,
+                };
+
+                match &movement.kind {
+                    MovementKind::Entry { .. } => movement.validate_entry(),
+                    MovementKind::Exit { .. } => movement.validate_exit(),
+                    MovementKind::Transfer { .. } => movement.validate_transfer(),
+                }
+                .map_err(|_| rusqlite::Error::InvalidQuery)?;
+
+                Ok(movement)
+            })
+            .map_err(|_| MovementReadError)?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|_| MovementReadError)
     }
 }
