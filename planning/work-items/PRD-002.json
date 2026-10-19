@@ -1,0 +1,26 @@
+{
+  "id": "PRD-002",
+  "title": "validar nome de produto",
+  "specPath": "planning/specs/PRD-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "PRD-001"
+  ],
+  "acceptanceCriteria": [
+    "Product.validate_name puro retorna erro existente para name.trim().is_empty e Ok para conteúdo.",
+    "Preserva todos os campos,sem preço/estado/efeitos/deps/migration;regra copiada de Account/Category.",
+    "RED E0599/GREEN3unit(2novos),gates/LLVMdomain>=95comcontrole/P-REV/CIs exatos.",
+    "Docs antespasses/nota130/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "REDmethodausente/GREEN3unit/20doctests anteriores",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain>=95/controle sem2novos/review/validators/stagedscan",
+    "CIfonte/final/nota130/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/Gemma900stimeout0diff→P-DOMLaguna240s candidato10linhas/P-INTtransplanteguardado/P-SEC/P-REV;11repo+2scratchWT",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-002 VERIFY E3:MVP07 Product.validate_name puro/nome obrigatório conforme trim/erro existente/sem normalizarcampos nem acoplarpreçoativo;2unitnovos+PRD001/doctests preservados/RED/GREEN3/Rust320+20docs/gates/security/reviewPASS. LLVMdomain>=95 com controle sem2novos rejeitado;domínio anterior e7migrations intactos. CIs/nota130/liberação pendentes;MetaE2Eativa;fonte:handoff PRD-002."
+}
