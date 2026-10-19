@@ -457,6 +457,25 @@ fn recurrence_due_at_ms(year: u16, month: u8, due_day: u8) -> Result<i64> {
     Ok((days + 1) * 86400000 + 10800000 - 1)
 }
 
+/// Reusable product template; sale items preserve their own snapshots.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Product>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Product>();
+/// ```
+pub struct Product {
+    pub id: [u8; 16],
+    pub name: String,
+    pub description: String,
+    pub suggested_price_cents: i64,
+    pub is_active: bool,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -525,3 +544,6 @@ mod obligation_amount_tests;
 mod overdue_epoch;
 #[cfg(test)]
 mod overdue_epoch_tests;
+
+#[cfg(test)]
+mod product_tests;

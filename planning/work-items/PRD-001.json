@@ -1,0 +1,26 @@
+{
+  "id": "PRD-001",
+  "title": "definir produto template",
+  "specPath": "planning/specs/PRD-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "Product puro: id16/nome/descrição/preço sugerido i64 centavos/ativo bool, sem estoque ou efeitos.",
+    "Campos brutos preservados; validações em PRD002/003; sem Debug/Display, normalização, deps ou persistência.",
+    "REDausente/GREEN1unit+2doctests, gates/coverage do domínio com controle/review independente/CIs exatos.",
+    "Docs antespasses;nota129/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN contrato1unit/2compile_fail",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain>=95 com controle,sem percentual do tipo ou global",
+    "review/validators/stagedscan/CI fonte/final/nota129/liberação"
+  ],
+  "agentPlan": "P-INT reuso fixtures/P-DOM Laguna900s1arquivo/P-SECtools/P-REV Sol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-001 VERIFY E3:MVP07 representação Product id/nome/descrição/preçosugerido/ativo;1unit+2compile_fail/RED/GREEN/Rust318+20docs/gates/security/reviewPASS,domínioanterior e7migrations preservados. LLVMdomain>=95 com controle;tipo sem linhas executáveis/sem percentual próprio. Validações/CRUD/SQLite/UI e INV-SAL005 pendentes. CIs/nota129/liberação pendentes;MetaE2Eativa;fonte:handoff PRD-001."
+}
