@@ -2,7 +2,7 @@
   "id": "FIN-005",
   "title": "provar saldo inicial fora de receita",
   "specPath": "planning/specs/FIN-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "FIN-004"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-DATLaguna1SQL900s/P-INTdeterminístico/P-REVgpt-6-solmedium;11paths;custo não registrado",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "FIN-005 VERIFY E3:1SQLreal/openingsMIN/-1/0/1/MAX semEntry/report0,2entradasreais/report1e2;REDmutanteAccountStore/GREENreal. Rust206+8docs/debug+release/quality/securityE4/LLVMcalcsourceidêntica-controle/P-REV PASS. Produçãointacta/depformalFIN004preservada/consumerFIN026/027real. In_progress/passesfalseatéCI;ediçãoFIN028/030/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN005. CI fonte/final/nota110/liberaçãopendentes;MetaE2Eativa."
+  "passes": true,
+  "notes": "FIN-005 done/E3/passestrue após CI39184150887/SHAfd0f63a5decdefe4ea1715aee67e3a975cd4a192success23/0skip/7marcadores,Rust206+8docs/1SQLinitial+mutanteRED/GREENreal. OpeningsnãoEntry/report0,2entradasreais/report1e2,consumidoresFIN026/027reais;gates/review/validators/stagedscanPASS/produçãointacta. CI final/nota110/liberaçãopendentes;ediçãoFIN028/030/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes;MetaE2Eativa;fonte:handoffFIN005. ReservaATIVA."
 }
