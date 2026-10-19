@@ -394,3 +394,6 @@ REC-013 VERIFY E3:1SQLnovo/8combinações16pagamentos/umaExit por obrigação em
 
 
 REC-013 done/E3/passestrue apósCI39252069599/SHA1434f282bd06445994baca20333207888ac030fbsuccess23/0skip/7marcadores,Rust314+18docs/1SQLnovo. UmaExit por obrigação/2meses/8combinações16pagamentos/saldo e resultado reais/reopen/históricoincremental/3mutantes/reviewP2corrigido/gatesPASS;produção e7migrations intactas,coveragehistórica referenciada;CI final/nota126/liberação pendentes;REC-014/015 ainda exigem provas próprias de rollback completo/concorrência/repetição; sucesso idempotente não prometido. UI/IPC, cobertura Rust global atual, instalador Windows/instalação/atualização/backup-restauração/hash/assinatura e E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita e registrada; implementação UTC-3 fixa sem prova IANA/DST histórica;MetaE2Eativa;fonte:handoff REC-013.
+
+
+REC-014 VERIFY E3:1SQLnovo/64cenários físicos8combinações×8falhasinclusiveCOMMITdeferred/snapshot+reopen/projeções reais preservadas/poison+freshválido;2mutantes parciais rejeitados/GREEN7SQL/Rust315+18docs/gates/security/reviewPASS. Produção/7migrations intactas;coverageREC012histórica referenciada. CIs/nota127/liberação pendentes;REC015/UIIPC/globalRust/instalador/E2Ependentes;Metaativa;fonte:handoffREC-014.

@@ -1,0 +1,27 @@
+{
+  "id": "REC-014",
+  "title": "provar rollback",
+  "specPath": "planning/specs/REC-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-012",
+    "DB-012"
+  ],
+  "acceptanceCriteria": [
+    "64cenários físicos:8combinações de regra/estado/contexto e8falhas, inclusive COMMITdeferred; nenhuma saída/Paid/audit parcial.",
+    "Reabertura/snapshot e leitores reais provam saldo/resultado e histórico preservados;adapter falho descartado e novo viável.",
+    "Dois mutantes físicos rejeitados por assert, produção restaurada;GREEN7SQL/gates/review/documentação.",
+    "CI fonte/final exatos,nota127 e liberação;E2E não inferido e Meta ativa."
+  ],
+  "checks": [
+    "RED2mutantes/GREEN7SQL",
+    "Rustfmt/clippy/debug/release/audit;TSquality/build/scans",
+    "Produção/migrations imutáveis;review/validators/stagedscan",
+    "CI fonte/final/nota127/liberação"
+  ],
+  "agentPlan": "P-INT/P-QAroot reuso determinístico;P-SEC ferramentas;P-REVSol6medium independente;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-014 VERIFY E3:1SQLnovo/64cenários físicos8combinações×8falhasinclusiveCOMMITdeferred/snapshot+reopen/projeções reais preservadas/poison+freshválido;2mutantes parciais rejeitados/GREEN7SQL/Rust315+18docs/gates/security/reviewPASS. Produção/7migrations intactas;coverageREC012histórica referenciada. CIs/nota127/liberação pendentes;REC015/UIIPC/globalRust/instalador/E2Ependentes;Metaativa;fonte:handoffREC-014."
+}

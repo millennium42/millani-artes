@@ -647,3 +647,151 @@ fn rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen()
         }
     }
 }
+
+#[test]
+fn rec014_payment_failures_rollback_all_state_and_preserve_financial_projections() {
+    for kind in 0..2 {
+        for overdue in 0..2 {
+            for ctx in 0..2 {
+                for case in [4, 2, 0, 1, 3, 5, 6, 7] {
+                    let (_d, p) = setup();
+                    let pending = seed(&p, kind, overdue, ctx, 2, 1000);
+                    let _other_month = seed(&p, kind, 0, ctx, 3, 1000);
+                    let acc = account(&p);
+                    let other_account = [0xe0u8; 16];
+                    open_database(&p).unwrap().execute("INSERT INTO main.accounts(id,name,account_type,initial_balance_cents) VALUES(?1,'Outra conta sintética','bank_pix',7654)",params![other_account.as_slice()]).unwrap();
+                    existing_exit(&p, [0xd0; 16]);
+                    let assert_projection = |paid_cents: i64| {
+                        use millani_artes::application::{
+                            calculate_context_result::calculate_context_result,
+                            list_accounts::list_accounts, list_movements::list_movements,
+                        };
+                        use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+                        let accounts = list_accounts(&AdapterSqliteAccountStore::new(
+                            open_database(&p).unwrap(),
+                        ))
+                        .unwrap();
+                        let reader = AdapterSqliteMovementStore::new(open_database(&p).unwrap());
+                        let movements = list_movements(&reader).unwrap();
+                        assert_eq!(accounts.len(), 2);
+                        assert_eq!(movements.len(), 1 + usize::from(paid_cents > 0));
+                        for account in accounts {
+                            if account.id == acc {
+                                assert_eq!(account.initial_balance_cents, -1234);
+                                assert_eq!(
+                                    account.balance_cents(&movements),
+                                    Ok(-1253 - paid_cents)
+                                );
+                            } else {
+                                assert_eq!(account.id, other_account);
+                                assert_eq!(account.initial_balance_cents, 7654);
+                                assert_eq!(account.balance_cents(&movements), Ok(7654));
+                            }
+                        }
+                        assert_eq!(
+                            calculate_context_result(&Context::Home, &reader).unwrap(),
+                            if ctx == 0 { -paid_cents } else { 0 }
+                        );
+                        assert_eq!(
+                            calculate_context_result(&Context::Factory, &reader).unwrap(),
+                            -19 - if ctx == 1 { paid_cents } else { 0 }
+                        );
+                    };
+                    let trigger=match case{0=>Some("CREATE TRIGGER main.rec014_fail BEFORE INSERT ON movements BEGIN SELECT RAISE(ABORT,'PRIVATE_SQL_MARKER'); END"),1=>Some("CREATE TRIGGER main.rec014_fail BEFORE INSERT ON movements BEGIN SELECT RAISE(IGNORE); END"),2=>Some("CREATE TRIGGER main.rec014_fail BEFORE UPDATE ON recurrence_obligations BEGIN SELECT RAISE(ABORT,'PRIVATE_SQL_MARKER'); END"),3=>Some("CREATE TRIGGER main.rec014_fail BEFORE UPDATE ON recurrence_obligations BEGIN SELECT RAISE(IGNORE); END"),4=>Some("CREATE TRIGGER main.rec014_fail BEFORE INSERT ON audit_event WHEN NEW.operation='recurrence_pay' BEGIN SELECT RAISE(ABORT,'PRIVATE_SQL_MARKER'); END"),5=>Some("CREATE TRIGGER main.rec014_fail BEFORE INSERT ON audit_event WHEN NEW.operation='recurrence_pay' BEGIN SELECT RAISE(IGNORE); END"),7=>Some("CREATE TABLE main.rec014_deferred(account_id BLOB REFERENCES accounts(id) DEFERRABLE INITIALLY DEFERRED) STRICT; CREATE TRIGGER main.rec014_fail AFTER INSERT ON audit_event WHEN NEW.operation='recurrence_pay' BEGIN INSERT INTO rec014_deferred(account_id) VALUES(X'FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE'); END"),_=>None};
+                    let c = open_database(&p).unwrap();
+                    if let Some(sql) = trigger {
+                        c.execute_batch(sql).unwrap();
+                    }
+                    if case == 7 {
+                        let tx = c.unchecked_transaction().unwrap();
+                        tx.execute(
+                            "INSERT INTO main.rec014_deferred(account_id) VALUES(?1)",
+                            params![[0xfeu8; 16].as_slice()],
+                        )
+                        .unwrap();
+                        assert_eq!(
+                            rows(&tx, "SELECT count(*) FROM main.rec014_deferred"),
+                            vec![vec![Value::Integer(1)]]
+                        );
+                        assert!(tx.commit().is_err(), "deferred FK fails at commit");
+                        assert_eq!(
+                            rows(&c, "SELECT count(*) FROM main.rec014_deferred"),
+                            vec![vec![Value::Integer(0)]]
+                        );
+                    }
+                    let before = state(&c);
+                    drop(c);
+                    let mut store = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                    let mut ids =
+                        FixedIds::new([0xa0; 16], if case == 6 { [0x63; 16] } else { [0xb0; 16] });
+                    let e = pay_recurrence(pending, acc, &mut ids, &FixedClock, &mut store)
+                        .err()
+                        .unwrap();
+                    assert_eq!(e, PayRecurrenceError::StoreFailed);
+                    assert_eq!(ids.calls, 2);
+                    opaque(&e);
+                    assert_eq!(
+                        snapshot(&p),
+                        before,
+                        "rollback preserves whole payment state"
+                    );
+                    assert_projection(0);
+                    let c = open_database(&p).unwrap();
+                    health(&c);
+                    if trigger.is_some() {
+                        c.execute_batch("DROP TRIGGER main.rec014_fail").unwrap();
+                    }
+                    if case == 7 {
+                        assert_eq!(
+                            rows(&c, "SELECT count(*) FROM main.rec014_deferred"),
+                            vec![vec![Value::Integer(0)]]
+                        );
+                        c.execute_batch("DROP TABLE main.rec014_deferred").unwrap();
+                    }
+                    drop(c);
+                    assert!(store
+                        .persist_recurrence_payment_with_audit(
+                            &paid(ctx, 1000, [0xa1; 16]),
+                            &payment(acc, ctx, 1000, [0xa1; 16]),
+                            [0xb1; 16],
+                            1234
+                        )
+                        .is_err());
+                    assert_eq!(
+                        snapshot(&p),
+                        before,
+                        "rollback preserves whole payment state"
+                    );
+                    let mut fresh = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                    assert!(fresh
+                        .persist_recurrence_payment_with_audit(
+                            &paid(ctx, 1000, [0xa2; 16]),
+                            &payment(acc, ctx, 1000, [0xa2; 16]),
+                            [0xb3; 16],
+                            1234
+                        )
+                        .is_ok());
+                    let after = snapshot(&p);
+                    let mut expected_obligations = before.2.clone();
+                    expected_obligations[0][5] = Value::Text("paid".into());
+                    expected_obligations[0][7] = Value::Blob(vec![0xa2; 16]);
+                    assert_eq!(after.2, expected_obligations);
+                    assert_eq!(after.1, before.1);
+                    assert_eq!(after.3, before.3);
+                    assert_eq!(after.0 .0, before.0 .0);
+                    assert_eq!(after.0 .3, before.0 .3);
+                    assert_eq!(after.0 .1.len(), before.0 .1.len() + 1);
+                    assert_eq!(after.0 .2.len(), before.0 .2.len() + 1);
+                    for old in &before.0 .1 {
+                        assert_eq!(after.0 .1.iter().filter(|r| *r == old).count(), 1);
+                    }
+                    for old in &before.0 .2 {
+                        assert_eq!(after.0 .2.iter().filter(|r| *r == old).count(), 1);
+                    }
+                    assert_projection(1000);
+                    health(&open_database(&p).unwrap());
+                }
+            }
+        }
+    }
+}
