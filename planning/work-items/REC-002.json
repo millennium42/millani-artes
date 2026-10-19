@@ -1,0 +1,26 @@
+{
+  "id": "REC-002",
+  "title": "definir recorrência variável",
+  "specPath": "planning/specs/REC-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "VariableRecurrence mensal pura/id/nome/contexto/dia1..31,sem valor predefinido;validate pelo erro existente.",
+    "Sem efeitos/normalização/Debug/Display/deps/migrations;valorporocorrência/estados/geração/pagamento em itens posteriores.",
+    "RED/GREEN3unit+3doctests/LLVMdomain>=95controle/gates/review/CIs exatos.",
+    "Docsantespasses/nota115/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN3unit/3compile_faildoc",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdomain>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota115/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/P-DOM Laguna1arquivo900s/P-SEC/P-REV Sol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-002 VERIFY E3:VariableRecurrence pura/semvalor/nomeobrigatório/dia1..31/erroexistente/semDebugDisplay;RED/GREEN3unit+3doctests. Rust224+13docs/quality/security/LLVMdomain84/84 e11/11 com controle/review PASS;FixedRecurrence e domínio anterior preservados. CIs pendentes;REC-003..015 (estados,valorporocorrência,calendário de meses curtos,geração,persistência,pagamento),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-002. CIfonte/final/nota115/liberação pendentes;MetaE2Eativa."
+}

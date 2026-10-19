@@ -210,6 +210,40 @@ impl Movement {
     }
 }
 
+/// Monthly variable recurrence configuration; amount is supplied per obligation.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::VariableRecurrence>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::VariableRecurrence>();
+/// ```
+///
+/// ```compile_fail
+/// fn preset_amount(rule: &millani_artes::domain::VariableRecurrence) -> i64 {
+///     rule.amount_cents
+/// }
+/// ```
+pub struct VariableRecurrence {
+    pub id: [u8; 16],
+    pub name: String,
+    pub context: Context,
+    pub due_day: u8,
+}
+
+impl VariableRecurrence {
+    pub fn validate(&self) -> Result<()> {
+        if self.name.trim().is_empty() || !(1..=31).contains(&self.due_day) {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
+}
+
 /// Monthly fixed recurrence configuration; obligations and payments are separate operations.
 ///
 /// ```compile_fail
@@ -280,3 +314,6 @@ mod balance_tests;
 
 #[cfg(test)]
 mod fixed_recurrence_tests;
+
+#[cfg(test)]
+mod variable_recurrence_tests;
