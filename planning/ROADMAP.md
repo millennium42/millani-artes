@@ -804,3 +804,6 @@ PRD-001 done/E3/passestrue apósCI39271100208/SHAc092545f872849245405f65b4529e68
 
 
 PRD-002 VERIFY E3:MVP07 Product.validate_name puro/nome obrigatório conforme trim/erro existente/sem normalizarcampos nem acoplarpreçoativo;2unitnovos+PRD001/doctests preservados/RED/GREEN3/Rust320+20docs/gates/security/reviewPASS. LLVMdomain>=95 com controle sem2novos rejeitado;domínio anterior e7migrations intactos. CIs/nota130/liberação pendentes;MetaE2Eativa;fonte:handoff PRD-002.
+
+
+PRD-002 done/E3/passestrue apósCI39277622649/SHAeda023c04e073daa00f981c6210bba554398247bsuccess23/0skip/7marcadores,Rust320+20docs/2unitnovos. Product.validate_name puro/Unicodeblank/semnormalização-preçoativo/RED/GREEN3/LLVMdomaincomcontrole/gates/security/reviewPASS;domínio anterior e7migrations preservados;CIfinal/nota130/liberação pendentes;PRD-003..007 (preço,migration,criar,alterar,desativar),vendas/snapshots e INV-SAL-005 pendentes. validate_name não valida produto inteiro nem autoriza operação financeira;whitespace segue str::trim,não é sanitização geral. UI/IPC,cobertura Rust global e release Windows/instalação/atualização/backup-restauração/hashassinatura/E2E oficial pendentes;stable branches/statements/global/CI Rustcoverage não medidos.;Metaativa;fonte:handoff PRD-002.
