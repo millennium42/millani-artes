@@ -1,0 +1,26 @@
+{
+  "id": "REC-005",
+  "title": "estado pago",
+  "specPath": "planning/specs/REC-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-004"
+  ],
+  "acceptanceCriteria": [
+    "Paidpositivo/IDmovimentonãonulo e mark_paid puro sódePayableválido comExitreal/centavosexatos/IDcompleto,sem mutação.",
+    "Awaiting/Payable/Fixed/Variable/docsanteriores preservados;nenhum pagamento persistido/IO/deps/migrations/idempotência global inferidos.",
+    "RED/GREEN4unit/16docspreservados/LLVMdomain>=95controle/gates/review/CIs exatos.",
+    "Docsantespasses/nota118/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN4unit/16docspreservados",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdomain>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota118/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-SEC/P-REVSol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-005 VERIFY E3:Paid e mark_paid puros,apenasPayable+Exitválida devalorigual/IDnãonulo;domínio/docs anteriores preservados. RED/GREEN4unit,Rust235+16docs/quality/security/LLVMdomain123/123 e15/15 comcontrole/review PASS. CIs pendentes;REC-006..015 (valor por ocorrência,calendário,geração,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-005. CIfonte/final/nota118/liberação pendentes;MetaE2Eativa."
+}

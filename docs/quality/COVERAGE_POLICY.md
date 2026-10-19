@@ -319,3 +319,6 @@ REC-004 VERIFY E3:Payablepositivo/Statevalidate/Fixedinitialreal/Awaitingpreserv
 
 
 REC-004 done/E3/passestrue após CI39199353402/SHAfd2787d91af0082b7fcb0628ecabb00cdece0ac9success23/0skip/7marcadores,Rust231+16docs/4unit+2doctestsnovos. Payablevalidado/gates/review/validators/stagedscanPASS;CI final/nota117/liberação pendentes;REC-005..015 (demais estados,valorporocorrência,calendário,geração,persistência,pagamento),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;MetaE2Eativa;fonte:handoff REC-004.
+
+
+REC-005 VERIFY E3:Paid e mark_paid puros,apenasPayable+Exitválida devalorigual/IDnãonulo;domínio/docs anteriores preservados. RED/GREEN4unit,Rust235+16docs/quality/security/LLVMdomain123/123 e15/15 comcontrole/review PASS. CIs pendentes;REC-006..015 (valor por ocorrência,calendário,geração,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-005.

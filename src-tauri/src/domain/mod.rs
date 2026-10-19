@@ -229,7 +229,13 @@ impl Movement {
 /// ```
 pub enum ObligationState {
     AwaitingValue,
-    Payable { amount_cents: i64 },
+    Payable {
+        amount_cents: i64,
+    },
+    Paid {
+        amount_cents: i64,
+        movement_id: [u8; 16],
+    },
 }
 
 impl ObligationState {
@@ -243,7 +249,35 @@ impl ObligationState {
                     Err(DomainError::InvalidInput)
                 }
             }
+            Self::Paid {
+                amount_cents,
+                movement_id,
+            } => {
+                if *amount_cents > 0 && *movement_id != [0; 16] {
+                    Ok(())
+                } else {
+                    Err(DomainError::InvalidInput)
+                }
+            }
         }
+    }
+
+    pub fn mark_paid(&self, payment: &Movement) -> Result<Self> {
+        self.validate()?;
+        let amount_cents = match self {
+            Self::Payable { amount_cents } => *amount_cents,
+            _ => return Err(DomainError::InvalidInput),
+        };
+        payment.validate_exit()?;
+        if payment.amount_cents != amount_cents {
+            return Err(DomainError::InvalidInput);
+        }
+        let paid = Self::Paid {
+            amount_cents,
+            movement_id: payment.id,
+        };
+        paid.validate()?;
+        Ok(paid)
     }
 }
 
@@ -372,3 +406,6 @@ mod awaiting_value_tests;
 
 #[cfg(test)]
 mod payable_state_tests;
+
+#[cfg(test)]
+mod paid_state_tests;
