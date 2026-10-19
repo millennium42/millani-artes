@@ -1,0 +1,26 @@
+{
+  "id": "FIN-005",
+  "title": "provar saldo inicial fora de receita",
+  "specPath": "planning/specs/FIN-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-004"
+  ],
+  "acceptanceCriteria": [
+    "Contasreais MIN/-1/0/1/MAX não geramMovementEntry nemresultadoCasa/Fábrica;IDs/openings/audits exatos.",
+    "2Entradasreais1Casa/2Fábrica aparecemnoledger econsumerreal1/2,semreclassificaropening/projetorfixture.",
+    "Novo1SQLdetectamutanteopeningcomoEntry/GREENreal/gates/criticalcontrole/review/CIexato.",
+    "Docsantespasses/nota110/liberaçãoantespróximo;semprodução/deps/migrations/grafonovo/UIIPC/E2E."
+  ],
+  "checks": [
+    "1SQLreal+mutanteRED/GREENoriginal",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMcalcappsourceidêntica>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota110/liberação"
+  ],
+  "agentPlan": "P-DATLaguna1SQL900s/P-INTdeterminístico/P-REVgpt-6-solmedium;11paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-005 VERIFY E3:1SQLreal/openingsMIN/-1/0/1/MAX semEntry/report0,2entradasreais/report1e2;REDmutanteAccountStore/GREENreal. Rust206+8docs/debug+release/quality/securityE4/LLVMcalcsourceidêntica-controle/P-REV PASS. Produçãointacta/depformalFIN004preservada/consumerFIN026/027real. In_progress/passesfalseatéCI;ediçãoFIN028/030/UIIPC/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN005. CI fonte/final/nota110/liberaçãopendentes;MetaE2Eativa."
+}
