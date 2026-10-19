@@ -1,0 +1,27 @@
+{
+  "id": "PRD-004",
+  "title": "migration de produto",
+  "specPath": "planning/specs/PRD-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "PRD-001"
+  ],
+  "acceptanceCriteria": [
+    "Migration8aditivaSTRICT5campos,zero válido/negativosrejeitados/IDblob16/nameTEXTnão vazio/descriçãoTEXT/ativo0ou1,semseed/IFNOTEXISTS/deps.",
+    "Executorversionadoexistente e7migrations/domínio preservados,2constantesregistradas,semCRUD/startupnovo.",
+    "5SQLite físicos vazio/upgrade/constraints/reopen/rollbackDDLledger/colisão/duplicataversão;2mutantesSQL/LLVMdatabase>=95controle semSQL/P-REV/gates/CIs exatos.",
+    "Docsantespasses/nota132/liberaçãoantespróximo/MetaE2Eativa."
+  ],
+  "checks": [
+    "RED E0432constants/GREEN5SQL/2mutantes",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdatabase>=95/controle semSQLite/review/validators/stagedscan",
+    "CIfonte/final/nota132/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/registro2constantes;P-DATLagunaSQL360s1arquivo;P-SECtools/P-REVSol6medium;15paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-004 VERIFY E3:MVP07 migration8ProductSTRICT5campos/zero válido/negativosrejeitados/2constantesRustzeroexec/5SQLitefísicosREDGREEN+2mutantes/gates/security/reviewPASS. LLVMdatabase>=95controle semTODOSSQLite rejeitado;6SQLanteriores+v1vazia/executores/domíniointactos. CIs/nota132/liberaçãopendentes;Metaativa;fonte:handoffPRD-004."
+}

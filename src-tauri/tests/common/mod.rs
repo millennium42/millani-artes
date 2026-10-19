@@ -112,3 +112,5 @@ mod recurrence_amount;
 mod recurrence_overdue;
 
 mod recurrence_payment;
+
+mod products_migration;
