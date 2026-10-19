@@ -1,0 +1,1983 @@
+{
+  "id": "REC-014",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "921465015075a33f16368761f39bcf53c1a56c1f",
+  "final_sha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+  "source_ci": {
+    "run": {
+      "id": 39255062132,
+      "head_sha": "921465015075a33f16368761f39bcf53c1a56c1f",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39255062132",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T12:49:25Z",
+      "updated_at": "2026-10-19T13:00:59Z"
+    },
+    "job": {
+      "id": 118068154330,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39255062132,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          181,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          127,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 1,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 272,
+          "findings": 0,
+          "seconds": 1.31,
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.08,
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 1.04,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.032,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.937
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "sourceSha": "921465015075a33f16368761f39bcf53c1a56c1f",
+          "pe": "PE32+",
+          "bytes": 8536064,
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "imageOS": "win25-vs2026",
+          "sha256": "93dfaa00622bf2e97def182930cfefc925bb6686275d0b89a8add518ce67ee59",
+          "machine": "AMD64",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "customProtocol": true,
+          "node": "v24.21.0",
+          "imageVersion": "20261007.264.1"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12187112838,
+          "name": "frontend-coverage-39255062132-1",
+          "size_in_bytes": 21914,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12187112838",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12187112838/zip",
+          "expired": false,
+          "created_at": "2026-10-19T12:51:34Z",
+          "expires_at": "2026-10-20T12:51:33Z",
+          "updated_at": "2026-10-19T12:51:34Z",
+          "digest": "sha256:90e40417c90a3f98e26a47b33fc54d4dc247aeb4fe3e156d4553bcc9d71b9dcd",
+          "workflow_run": {
+            "id": 39255062132,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "921465015075a33f16368761f39bcf53c1a56c1f"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39256693018,
+      "head_sha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39256693018",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T13:01:41Z",
+      "updated_at": "2026-10-19T13:03:38Z"
+    },
+    "job": {
+      "id": 118073647466,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39256693018,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 273,
+          "findings": 0,
+          "seconds": 1.254,
+          "sourceSha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.348,
+          "sourceSha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.792,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 18.526,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "7e0f68b2890138fddd6540b31b9bb0cc11dbf9f5",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-014",
+    "evidence": "E3",
+    "rust": {
+      "base": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+      "sources": {
+        "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.35,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 2.07,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-rust-gate-1-20261019.log",
+          "sha256": "6db768d5a711401d4326f10c7e87c5d7c9b346d41038ca2cd5631117ec8c67f1"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 19.6,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-rust-gate-2-20261019.log",
+          "sha256": "aed7f83ad26de37466025751fc9a998940f9fb5c5ee066ce9173ca263a560d28"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 63.93,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-rust-gate-3-20261019.log",
+          "sha256": "ac419549a3268a99c13447951662d34090468e795681f371673bec8cb618aa3c"
+        }
+      ]
+    },
+    "other": {
+      "base": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 3.13,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-0-20261019.log",
+          "sha256": "76ff499e158cedb8eb2ca6e36be8833bb989b5c9d2af966a3f031a8b0906f988"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 0.8,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-1-20261019.log",
+          "sha256": "e9f98e89a7ab602ac8765fbf32ad83a811e4809c5752d7273eddae95c1ac5043"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 1.79,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-2-20261019.log",
+          "sha256": "5a42e205f6505cc09344a0c9a4e771cbd957d38951c57c954e769b893aecca6c"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 4.01,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-3-20261019.log",
+          "sha256": "aa7e9ca5be322d7dfffd671ac148c925a6254ef1b8c32fb858effa9d77f74cb9"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 2.07,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-4-20261019.log",
+          "sha256": "4132475a629ebca0c457cc271aa4cfbe7694de5d880ec51b78a1602e41f4524e"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.13,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 5.95,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-other-gate-6-20261019.log",
+          "sha256": "f3990bf13b0de83b0d7009d6ec37fc1712de3dbe4297f1f737c04f6ea14daa58"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      181,
+      7,
+      127,
+      18
+    ],
+    "new_unit": 0,
+    "new_sql": 1,
+    "new_doctests": 0,
+    "focal": {
+      "baseline": {
+        "id": "REC-014",
+        "phase": "sqlite",
+        "mode": "baseline",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.529,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.824,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\tests.exe\" common::recurrence_payment::rec014_ --nocapture",
+            "exit": 0,
+            "seconds": 6.937,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 126 filtered out; finished in 6.66s\n\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      },
+      "red-commit-on-error": {
+        "id": "REC-014",
+        "phase": "sqlite",
+        "mode": "red-commit-on-error",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.492,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.538,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\tests.exe\" common::recurrence_payment::rec014_ --nocapture",
+            "exit": 101,
+            "seconds": 0.331,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 126 filtered out; finished in 0.08s\n\n\nthread 'common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections' (141556) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:733:21:\nassertion `left == right` failed: rollback preserves whole payment state\n  left: (([[Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Text(\"Conta sintética\"), Text(\"bank_pix\"), Integer(-1234)], [Blob([224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224]), Text(\"Outra conta sintética\"), Text(\"bank_pix\"), Integer(7654)]], [[Blob([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160]), Text(\"exit\"), Integer(1000), Text(\"home\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null], [Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208]), Text(\"exit\"), Integer(19), Text(\"factory\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null]], [[Blob([99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67])], [Blob([100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68])], [Blob([178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178]), Integer(1234), Text(\"account_create\"), Text(\"account\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161])], [Blob([209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209]), Integer(1234), Text(\"movement_exit_create\"), Text(\"movement\"), Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208])]], [1, 2, 3, 4, 5, 6, 7]), [[Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Text(\"  Café '🧵'\\0; DROP TABLE accounts; --  \"), Text(\"fixed\"), Integer(1000), Text(\"home\"), Integer(31)]], [[Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(2), Integer(1772333999999), Text(\"paid\"), Integer(1000), Blob([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160]), Text(\"home\")], [Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(3), Integer(1775012399999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")]], [])\n right: (([[Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Text(\"Conta sintética\"), Text(\"bank_pix\"), Integer(-1234)], [Blob([224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224]), Text(\"Outra conta sintética\"), Text(\"bank_pix\"), Integer(7654)]], [[Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208]), Text(\"exit\"), Integer(19), Text(\"factory\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null]], [[Blob([99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67])], [Blob([100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68])], [Blob([178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178]), Integer(1234), Text(\"account_create\"), Text(\"account\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161])], [Blob([209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209]), Integer(1234), Text(\"movement_exit_create\"), Text(\"movement\"), Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208])]], [1, 2, 3, 4, 5, 6, 7]), [[Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Text(\"  Café '🧵'\\0; DROP TABLE accounts; --  \"), Text(\"fixed\"), Integer(1000), Text(\"home\"), Integer(31)]], [[Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(2), Integer(1772333999999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")], [Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(3), Integer(1775012399999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")]], [])\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "c867a9004f3ef8da179329654e6404805bfe6d1513ce585de831d3cef5cf0163",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      },
+      "red-split-transaction": {
+        "id": "REC-014",
+        "phase": "sqlite",
+        "mode": "red-split-transaction",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.502,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.491,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\tests.exe\" common::recurrence_payment::rec014_ --nocapture",
+            "exit": 101,
+            "seconds": 0.329,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 126 filtered out; finished in 0.09s\n\n\nthread 'common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections' (143116) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:733:21:\nassertion `left == right` failed: rollback preserves whole payment state\n  left: (([[Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Text(\"Conta sintética\"), Text(\"bank_pix\"), Integer(-1234)], [Blob([224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224]), Text(\"Outra conta sintética\"), Text(\"bank_pix\"), Integer(7654)]], [[Blob([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160]), Text(\"exit\"), Integer(1000), Text(\"home\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null], [Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208]), Text(\"exit\"), Integer(19), Text(\"factory\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null]], [[Blob([99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67])], [Blob([100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68])], [Blob([178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178]), Integer(1234), Text(\"account_create\"), Text(\"account\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161])], [Blob([209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209]), Integer(1234), Text(\"movement_exit_create\"), Text(\"movement\"), Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208])]], [1, 2, 3, 4, 5, 6, 7]), [[Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Text(\"  Café '🧵'\\0; DROP TABLE accounts; --  \"), Text(\"fixed\"), Integer(1000), Text(\"home\"), Integer(31)]], [[Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(2), Integer(1772333999999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")], [Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(3), Integer(1775012399999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")]], [])\n right: (([[Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Text(\"Conta sintética\"), Text(\"bank_pix\"), Integer(-1234)], [Blob([224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224]), Text(\"Outra conta sintética\"), Text(\"bank_pix\"), Integer(7654)]], [[Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208]), Text(\"exit\"), Integer(19), Text(\"factory\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161]), Null, Null]], [[Blob([99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67])], [Blob([100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]), Integer(1234), Text(\"recurrence_fixed_generate\"), Text(\"recurrence_obligation\"), Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68])], [Blob([178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178]), Integer(1234), Text(\"account_create\"), Text(\"account\"), Blob([161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161])], [Blob([209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209, 209]), Integer(1234), Text(\"movement_exit_create\"), Text(\"movement\"), Blob([208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208, 208])]], [1, 2, 3, 4, 5, 6, 7]), [[Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Text(\"  Café '🧵'\\0; DROP TABLE accounts; --  \"), Text(\"fixed\"), Integer(1000), Text(\"home\"), Integer(31)]], [[Blob([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(2), Integer(1772333999999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")], [Blob([68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68]), Blob([49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]), Integer(2026), Integer(3), Integer(1775012399999), Text(\"payable\"), Integer(1000), Null, Text(\"home\")]], [])\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "56d72344c398245d4411b8a8d7738b41d1f1acdb2ef2e42e13507d9501fef2a8"
+        },
+        "result": "pass"
+      },
+      "green": {
+        "id": "REC-014",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.514,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.485,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\tests.exe\" common::recurrence_payment:: --nocapture",
+            "exit": 0,
+            "seconds": 7.876,
+            "output": "\nrunning 7 tests\ntest common::recurrence_payment::invalid_direct_pairs_preserve_data_and_adapter_usability_before_any_sql ... ok\ntest common::recurrence_payment::missing_account_existing_movement_and_repeated_payment_do_not_create_extra_exits ... ok\ntest common::recurrence_payment::movement_state_and_audit_abort_or_ignore_faults_rollback_every_payment_write ... ok\ntest common::recurrence_payment::stale_or_adulterated_obligation_snapshots_never_leave_an_inserted_exit_or_audit ... ok\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... ok\ntest common::recurrence_payment::payment_commits_one_exact_exit_paid_link_and_audit_for_both_rules_states_contexts_and_bounds ... ok\ntest common::recurrence_payment::rec014_payment_failures_rollback_all_state_and_preserve_financial_projections ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 120 filtered out; finished in 7.63s\n\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      }
+    },
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\baseline\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\baseline-receipt.json",
+        "bytes": 11750,
+        "sha256": "093804c331aa99a2def5993c2f5344809554e5ec4451904179b760ebeb5d472e"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\red-commit-on-error-receipt.json",
+        "bytes": 17221,
+        "sha256": "ec77a690a8b5ad5860b731fc20af089eedf52f28426e371e0b5b98890c41ff31"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-commit-on-error\\src\\infrastructure\\database.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\red-commit-on-error-mutant.rs",
+        "bytes": 14433,
+        "sha256": "c867a9004f3ef8da179329654e6404805bfe6d1513ce585de831d3cef5cf0163"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\red-split-transaction-receipt.json",
+        "bytes": 17154,
+        "sha256": "8d0f92e897337c879fff1b7ad1e1d2847572c3d2744241a5309aae8821ba98f4"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\red-split-transaction\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\red-split-transaction-mutant.rs",
+        "bytes": 3988,
+        "sha256": "56d72344c398245d4411b8a8d7738b41d1f1acdb2ef2e42e13507d9501fef2a8"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\green-receipt.json",
+        "bytes": 12451,
+        "sha256": "14e6a3b44159059010d7e501253d8ad53034f85a3416d7b342a4fd9303d5e38c"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\src\\infrastructure\\database.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\original-infrastructure__database.rs",
+        "bytes": 14435,
+        "sha256": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-014-payment-rollback\\Millani Artes\\artifacts\\rec014-check\\sqlite\\green\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\original-infrastructure__recurrences__payment.rs",
+        "bytes": 3912,
+        "sha256": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-fixture-preparation-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\REC-014-fixture-preparation-20261019.json",
+        "bytes": 361,
+        "sha256": "228fdef2ece6d84008712fcd0bad436511cd3e925feec3eb06691c6a3a970efa"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-prepare-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\REC-014-prepare-20261019.py",
+        "bytes": 13761,
+        "sha256": "c84a59e9566665fac5e660e4dcc539c1b3dcbc337ec404db52a2501851518916"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\REC-014-focal-20261019.py",
+        "bytes": 3347,
+        "sha256": "4df836db86bf8e63cac41565b4839066cdf6d996182ace2be76067cb4661adb9"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-run-proof-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-014-focal-evidence-20261019\\REC-014-run-proof-20261019.py",
+        "bytes": 3382,
+        "sha256": "ae5a632c331685497d554e5eaa6c82a27fdabc0ac376fd343c5a9370e4442c6d"
+      }
+    ],
+    "review": {
+      "id": "REC-014",
+      "persona": "P-REV",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "base": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+      "evidence": "E2 static",
+      "findings": [],
+      "tests_executed": false,
+      "conclusion": "Sem achados P0–P2. Snapshot após reopen em64cenários,leitores/projeções reais,adapter descartado,FKdeferredCOMMIT semresíduo e adapter novo válido. Spec e diff focal revisados;sem concorrência/recoveryglobal inferidos.",
+      "cost": "não registrado",
+      "sources": {
+        "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+      }
+    },
+    "local": {
+      "id": "REC-014",
+      "paths": {
+        "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+      },
+      "production": {
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+        "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+        "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+        "src-tauri/src/application/calculate_context_result.rs": "33ea627d08bf09092b73bc245daa37c5a2e78e4813f56d66925e6bbc19f2395c",
+        "src-tauri/src/application/calculate_context_result_tests.rs": "ea69639afd085cd2b2c815796226a598a1fb8ee8fb9be8f61384bb82aa6eaeb5",
+        "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+        "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+        "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+        "src-tauri/src/application/create_category_tests.rs": "09f0e20b7da2468cc9e9b28d20355779de8299668f74b87392a9d424dd857a4f",
+        "src-tauri/src/application/create_entry.rs": "58e7c320d06ed88772967c65bd6cdd045d416640ab01c386de78d30ebe1e198f",
+        "src-tauri/src/application/create_entry_tests.rs": "0b76da095e8a73b30f7a0d4364440ef8d54ef63450543081d415484ed4cc526f",
+        "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+        "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+        "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+        "src-tauri/src/application/create_transfer_tests.rs": "bcb815e52cb868229950ff983353c71193d997ad8506903241998b77d706b4f0",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/application/generate_fixed_obligation.rs": "3647c538ceb59bc8322932e45940f3dbd3d73b5955763a6410e7b195feed27cd",
+        "src-tauri/src/application/generate_fixed_obligation_tests.rs": "e1d5ca31b74f82a1e0e43e5e7e152edefe0a86fb2b31fa25a005a78fc7a960f7",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+        "src-tauri/src/application/list_accounts_tests.rs": "088752a6d69ca0d8428e09abc91af07f0182f9ff7ff81ac4ad48f7b4619555f6",
+        "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+        "src-tauri/src/application/list_movements_tests.rs": "5dda89c8691ac9a45654d95550c703c3ebaa33c17bff7f96b5b8dcc391b4020c",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+        "src-tauri/src/application/rename_category_tests.rs": "2b5038cf0e8487b96f0a44eab769f2b72534aec5502e0878ac2ebded670ac253",
+        "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+        "src-tauri/src/application/supply_obligation_amount_tests.rs": "f6cbe7ed006b446f533c6f33b515252cd5d1c4ec94f0e0f9fddc46ffe5d6d479",
+        "src-tauri/src/domain/awaiting_value_tests.rs": "05b51218bae4e54f917168f3fb37a2d2417805121529d739dd6390bc6a49e7f1",
+        "src-tauri/src/domain/balance_tests.rs": "ae5fae4ec6766c28e9a4350c2560472488c3053038cdac9c0b69acc8a6ac7c95",
+        "src-tauri/src/domain/entry_tests.rs": "d9c4e244a2b38b4099879de0ed5ccc9b1c4bea25ae0c3abde6b4a4bc63211c3f",
+        "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+        "src-tauri/src/domain/fixed_generation_tests.rs": "d758042f3de5a241bd9261b2ecfaa23f8476554e11e3d9f33f1fa092d2d398a6",
+        "src-tauri/src/domain/fixed_recurrence_tests.rs": "e25df444a66f189d74bc8426aadc778b04a6f79d5796dcb3b9539f09aaf44f5b",
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/obligation_amount.rs": "74a13ef5cd98401d6718daa024f6fff29658d9c90ffe4f031bebfa5d4be4bc5d",
+        "src-tauri/src/domain/obligation_amount_tests.rs": "403ae5306bb2506cbdce516c860f2fa114562fa09966c707f6210cad034d4569",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+        "src-tauri/src/domain/payable_state_tests.rs": "6319d34b8145c87122bcb37290c1762b34c4d6ff84b40578c9038947e8078ca2",
+        "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+        "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+        "src-tauri/src/domain/result_effect_tests.rs": "04757aa9de9423efaa1ab3ef025179dbe339e3a431b3928030559173deb45d1a",
+        "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+        "src-tauri/src/domain/transfer_tests.rs": "c3f058f4447f36359c48b241b917b516903c6adc76e7e345438b10aab4305811",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/domain/variable_recurrence_tests.rs": "03d1ef05954069bf4c2f7fa462aecfd795c3136948e9d5afb1ee27c5ad76b63e",
+        "src-tauri/src/infrastructure/accounts.rs": "921fba851d5be61d9dbed3d760a10bdbb01fce30bb17b45e9cef2499723aa1b1",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+        "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017"
+      },
+      "old_migrations": {
+        "src-tauri/migrations/002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri/migrations/003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri/migrations/004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri/migrations/005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri/migrations/006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri/migrations/007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "mutations": [
+        {
+          "mode": "red-commit-on-error",
+          "path": "src-tauri/src/infrastructure/database.rs",
+          "mutant_sha256": "c867a9004f3ef8da179329654e6404805bfe6d1513ce585de831d3cef5cf0163",
+          "original_sha256": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39"
+        },
+        {
+          "mode": "red-split-transaction",
+          "path": "src-tauri/src/infrastructure/recurrences/payment.rs",
+          "mutant_sha256": "56d72344c398245d4411b8a8d7738b41d1f1acdb2ef2e42e13507d9501fef2a8",
+          "original_sha256": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        }
+      ],
+      "restored": true,
+      "local_calls": 0,
+      "root_production_correction": false,
+      "root_fixture_correction": false,
+      "cost": "não registrado"
+    },
+    "preparation": {
+      "id": "REC-014",
+      "base": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+      "branch": "main",
+      "notes_before": [
+        "e94913fa14c7f7d883ccdf3eea4aa9ee787d3718 0021149cda409de29b6c9d8f88f0a233f7e90f31",
+        "ac46660499532aa15c8a17bf4341f51efbb2c05e 00ba4f2d32cb88c1f7f05985693ea612195b24d0",
+        "a6a082aad030f9725c8c06f5c54f021862701d97 02e82460123d31f3e3fd6286997c22140dd9fc11",
+        "e1ecb3b403d1fc1edbe1650da8e2d907a5bdcef1 02f155fe6cab4e1bd57fc18bfc4fa43206944fe0",
+        "88b3cce7a9a750fa75bdca504e25c64bfc7a344b 032628d2912001f93e64e016393be97c9afaffc3",
+        "1c21d05f90238becd261a47caeadb8461335e73f 04d5b17a370d9d9fab6d65d35b19e7e00f50cf48",
+        "af3d4b0f0e23c447253e070fb962cda745206161 0560d720221f42f2a965dd574aaca178622e09d3",
+        "1059d83118c67c63bf3c4ee865926a1cf29fb1b4 083ac68e073667db3cba474722962b89ca7cdaa5",
+        "7872b4cab47218faceed5e90f084be5968305434 084a266dc206faf93cbdc943a4a9c27a880a2251",
+        "3670878ea0bda72c2befbc431dd8a39da2c646ad 0bb34d69ccb72e13fb23f43891ef92452675b380",
+        "9d761a243ad21bdb42701c5118d34a0a98e36fec 0bca4a518d687a2c609b8b010c3c06333405e83b",
+        "64809bdb5b2aa81c1ea2de6fe498f5e864e19022 0c0660cf5abe9b1e51a5067c49c11e7364069764",
+        "72868791628518e4fd212d2a02d6bcdfabd05c3d 0c8fc12b7a5ca58fbb205f9c6054fb06eb9a3ebb",
+        "9eff5d616366e165ccc53ac2196285e2114ddcde 0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+        "d07b5a20073cb85bcdf19fc8bcabec3e321bc33c 13333ad289cf41d7729e9c4ba73af42883fa83cd",
+        "2c0b1ad3c4c4d967484eb5cedc49a1c85b2e5327 14925c707c36187637c262c380fa01213b054af4",
+        "a4689960867f19dac2707af04f36c1641446622d 17f5397efc996091bfb4271a5169d4eede4249fe",
+        "20dab63572e67554c7073fbc161de680be7e09a2 1b31d51bccbbe568fa82ae32d80b03f109707bb4",
+        "5c3ea189bf705cabeeadfa689b2d3ce6fe8809ce 1bcb7a889d85eb0909e35c921fb95ce7aacb8cf2",
+        "828586907256df355c99fc80e43903f781c4fa99 1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+        "dc6e35c2a3b2bebec76169a077781f6bc0e239b3 1d92fdd185cf24aececd1fa5b5708d9d0efeab03",
+        "d768194792c429f8180b0b96ad9128d3393bd43e 1de607156806990a14f7be27933db4aa1fce4e92",
+        "42ebbaaa535cfeb5ad4e612f010204a841f9d436 1ef3bd833708f46e0e26188e71b3cfb83f679014",
+        "0ad072d1081b2e18a448a8120204608ca1dae04d 23c4a34b102c10b336203f6fa2352eeeccf761a7",
+        "27ef1ce832ea8f01d0e8e753007b58489b565d90 263e8db5e67b5ee1127826974530dff9fb481897",
+        "9b3525ef90a8d14b6ba6394bf030cd70a7744ca4 29ae7edb35e725325c42a07730df434560d45bf6",
+        "85eb970a400a8ba9c1533ed6b72689a89860db92 323e336b53c74147c4b70bdec44391dfad29fe72",
+        "c879cb72f81a40fc81a8509953f74681a0f3f508 32e4e0194c45060800e70bc7aed0d3fdb82cdc50",
+        "f910b2e62cb89c99fa414153ede616bf1446a2e4 37a79f900c7c481739f2d2acca9b148607b069fb",
+        "130e6d4b07fbab5fe8837e21552b4084aad05302 38b7fb6d6c284d048c3f34f0fdb1095d60d45070",
+        "5b3d25c0c1a1efd1cd82362df8ea39d8fc274dc2 39bc0194477fd104bb5d429eb99250d27c0cf401",
+        "e5173d322575d3e0d19e6289e814e5664e286499 3cb063569b72fa9f27d7aebc52dfb9370e36517f",
+        "ed90823ec0fc1aa9db63de84c38fc48ccc01bd35 3ef70f1014abd63903e9cbd45626384177b18a1a",
+        "a6e841f8f23163c19ae47390aadccaba075aeede 42bcfc648467f6ba835e5250fc279204b0a6a4f0",
+        "600abc8e9f9bd8eda69ab997537c002fd4e8fca0 43c51e88ff4c36cdac342c946a1d44b59b1389fc",
+        "a704be8893d0d55c83e3d23eb2bb4c595d4312ee 4416b35fb5515b3c347b0a77ea5299b10e0f0084",
+        "89b9ec7ddcb8bb28785ff863230187efb0300b56 46cb797d541efeee4617d819755afc94eb40025f",
+        "02c772cd16c7b3f5de9b25bc94f0064ce89840f6 487ef2fe440a2cd2918b49d44839e148ad783c08",
+        "c7675823cc5142f4e02e6a7287c70b6808e19b0f 4bc2d668eecc2259469ca60ca94e5e8be08cd95f",
+        "475f9aca45c5133559090a90f4c8d7a3cf7bcad2 4c40dd29ac16278ce8037ef3852697015c9a4a7c",
+        "8247fdb8cdb4e6e67f0a337f5604de0ad12ead03 51ea47715599e08293a10ca10ce40e03d1add267",
+        "9e69508c427b4d6994414753a0016300600178ac 56cbd08c882a6b8e2e41ffdb6220b6cf51a7cd4b",
+        "5d6808f1043f18772a9ae1dce30190ba9add0201 575af0194a43f786d831d9ff3200787ef5c9628e",
+        "78f2d1b41ad3e32c7036606db8eef5a57aaf504a 59a37896f0169c0e6945d8e226dbc6cb49ac0629",
+        "e19c042e4472c16c61b66db1f0dac522bfd62e0e 5ddbfc5e242cdfb37cb2daa5bc9c468a6d6fd7c8",
+        "e494f4c73921fdc1363283e130a78339e0451667 5f53f93a1a1ae0f0eea1cc46b6e403dc111627ab",
+        "6d06e2be782f644d07eac4c12cdfe9d0788d28f8 606a9ecf1a2f9c64814af196e1fa62c5bfb85c81",
+        "8183bb422f321a86e522f3ce97bfe6661a3ba613 639db7e1c1cad9574c1aac8ba14d862d198945b5",
+        "f64dc1890002c0cd1c3655c49a9822ceda01c2c9 685d10daa4c7226da581472edb5b169273050c97",
+        "c2b9c9c533a5850b63bf2a5284ddbe12d438df85 692bd362f59d58713ccb710a98f0559191468249",
+        "8dfbfee948fe38bd2c98adcdb76cb1837abb5683 69c2236c02adeceb3191792849e1c71cd96528af",
+        "0c2453e303250424185276fa02432a7edb62a47a 6bed951d8ca1188a72501a1693fa8fb68e7160ec",
+        "8687cc9ef23af5776c52de2a3ede439c42825b9f 6cb18fcc31480b377895cc595093dd53da3c986e",
+        "8480d9b1523958118744b8937eba93e02824d450 6e6e91177d37cbc428eb01c41acf0ec0b32d3b7c",
+        "6ccacb9cdf00451cb0b66e0aea509097c6fbe9ee 714baf3c6c01e02285a3e08c14d1d067359f2970",
+        "f1dcd65791bb4b17d8c03e20a2f9e1daf9fd76bd 75b7fcb60878d97d72d63cdf51125a8e58948e9a",
+        "de82b8035f95beb3c9c3f5a35ae7018736280023 775478da277d2121b10a4eeccbbdbad190bb94b1",
+        "b7792e1e75fa9a700ce29b3d204ec3ba43d24c40 797ab441a1c63caff9da959dd27d08dffec7ea91",
+        "2748397554499aed9cc8ce74df49af5debc2bdf3 79ecd49f3538c8c06c6aabffc67066b05448d562",
+        "e5bbde42c5e2ff1abc6c02f0da7bc53cbf698652 7cad0380de5e1e506d51469ff6ca35e5edfd2448",
+        "8088024a2a3d96a51bd192186c85fbfab0c153eb 7f62e5648f2d96be32783761af21e119a7c33626",
+        "6be12d0c7e9b6d88e5ca46aebef145036973a27a 80bf7a48e12dd7568d46042d875e2d4119ad7a3c",
+        "988c6cf4046b6f02ac4149ec9f5308a74dae50a4 87f996255ddf7d9d9ebc3f7743d9fdbb44439ee4",
+        "01e9b9e46cee62121be33f288dc9be5e5d154268 8be1163b19fd2077a53d3038b75b510bb5a8b3ef",
+        "4eefdbaa3fc4cd9745cd7da1d57dbf4873864211 8c7e7bc7b2046724b4b6ce530072b719e50e0cd1",
+        "b0f9c287c8d2800874f3c237f45f1af7fd4d632e 8d951d2643e8deae4b85603cb0e9da1dbdfd76af",
+        "5dba7e1beddeec522b42718ad5e6df2059c51806 94e37d38f5df375ffb9492e3f80d272f2f44b331",
+        "53997cde99838f2976ae0b64fe8ed5f6eab6a94f 999b420c610ce304fd7f42704c9456492e320dfe",
+        "e7c7032a57468f6cc0943eed147faaf787f1f9f3 9a86f400da802ef1be3b740f877b12edbc5e6743",
+        "71656cb31a1a5be1ce1aee380b19f323cf2e310d 9d5d276207023881c4e02dd1e86f79965470705b",
+        "8901359ec625b4eb87144cabaa66d35ed78e502b 9fa9b73d11cf14d9b6307d791536aaf48547addc",
+        "4a7fd93dca9937699ca3c5565151e23e9d1e6f25 a36f0c9ff76c03a7016dedee88bdb4171720f0b5",
+        "1e9e0486cdd8648d640cfa9df21afca87eb4d969 a39e8975fa21d32cbe0fff548083b38038e518b5",
+        "0243fb7444d47d325edd6797d8f622fa519b7388 aa0cca5f8d1ef5b6938145cf8407339960174245",
+        "f007aebf503f6bf0b6a5a894e26d01291a4d7650 ab3f751d6fe4be57037c83071f890ac6fc28428c",
+        "1cef14f72b4d62461b26f8350f3f980f940a9eb6 ab4e0c09cfcafe6c19be370b6cb42eec464b2bf1",
+        "d63a07fbbeaa78e68c3d75f5a48e6d396ec88eb1 b04f67167400b40079fc65e4551e186ded20f24f",
+        "61aa9d3e34409d6f2c54a7bbab2abd57a2ea5c2b b0cc1391e8541438e239999c4e9000f2b6306ddb",
+        "11665119854f49f399d9c72f8cb6b6be977d3a87 b31aaa63f68dec69e230c4829828a66f0930655d",
+        "96314a62c58b473b32b27091e9f0a497573a1427 b5d4089338c862d627acfaef8ccf58822ffb8511",
+        "fd84932923d8b80686c5b9be2aa16db51cf59760 b5fabc2453445cd04f9580751d0292eae4641cfe",
+        "d79e21e01370fb00aa446b7f393927e0b684ef57 b65c3616956c441201ae35d033d07be84f8f8d4e",
+        "c42c3a13779bc845e5b8de8776f952238ae43c72 b9db95e1e939b4a264a2679c1d6ab80bfdf9ea6d",
+        "5ba3d94c42c085494f0579c239909f95d0977d41 b9f1a5d011c6370edc0b73d2d705174b79dac270",
+        "f78ad86eaa6c472eb0280cfaa474501b0f7d73d6 bc4a7e04fce4986b0e1329d5c8bd2774a172aeb1",
+        "9ad1e57a71b18df6e98af31e6a56fb324330a82f bced460aca4909575956887c1e3905ec6ad5a159",
+        "e045c5da9f000ccbfcadc6eb9a85ae08162c6b26 bdb7071584aceff4b40a057bb7dc4a5c4d0fe8b6",
+        "b780f9f15bd095c43880dee2bbd7598156577e00 be751d3387f400316f1586f295369549eb765d71",
+        "92334b69322e321c7039f96e211f6e9ac37d492d bf8684fef1eb0d18a921e6d60a6c5be8fb1dc265",
+        "65fb0a4fb4f2be082d000e3ac47a5d842c805257 bf915ab236ef49332ff1a99a09b641c6a58bedec",
+        "ecc2dcb7c43c88d9655cb06eb2fbd70c27e3d75f c07e71aa0f9660c83a92e855a1e3df3d2373b251",
+        "846b9574e3c18617001f6db1d96a9ded063cd6ed c201ce00b2bea7e612091a82d6c08d04a4febafb",
+        "7e4e270deb008b5143dfdb6cbecf5489957008df c2811e0f1c51bcb04557cf5a4bab0dc7e11440f5",
+        "b0971c5e80ce2a83dc48d9b25103619dc04e90f7 c3e19438b76e27cfd0d5dd2e9608ca453d5212a3",
+        "a1378a1fe0efaa0e774dc244fff0db2d91adbe61 c596aa00b737cdc08542a61f2c04c6d4b6134790",
+        "0c5e49403075558b0ff464faf3e2fa1484fdfa58 c6d17ef46933e7531c1390e1827981c019efbead",
+        "5413119f51d7ab870912a0815b50d019eed56df5 c8118676fbc1e085164154d28ad4c5dca77a43c0",
+        "d5302944bbcfe26ae68cb2fc65c3f9dee0d3a92c ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "4a170dc22b61063865c1fc5ddf6dfca0ef4ebd9d ca8c32e43469519c581f8fae3c4c029035eb5bf1",
+        "0914c2c43edc6be1b851bda7f2f30313b6eb6f7e cba42dd8a3b9164dde9f78075c8720cf2182f6c0",
+        "027c4b74737791de391784244803de9adb4cd2a6 cc43154f7d0fcaa532e25499fb44222874f6cdd1",
+        "c32974610deff6188e1aa558440e9161115b86b4 d40695102f5f116b95d8d2530f8e71fdd21e7dd2",
+        "7d040a3ab804a6ae5501054a7e254fa736862804 d60e8f73cbc2745393a9c6217849c2bd20f40937",
+        "54f5a0e9f6e28ec85e880e82c59df32421f41feb d63eeaa4b8f3110d3cce940b208bef3182596e38",
+        "28afbb5e7d0213045f5ae7a3628a5fd722eaf5d3 d6df89de9c6b19997fd14924c832e18bcde31007",
+        "f31d9472579fa6b3c243c180bdfe87d29a687c6e d8151834a7288911e85547d4bae4536fe2aadf09",
+        "3600a20c35e5dfc3c457d87f578f3b7e511003f6 d844e76b30483cf347dcc5fa96491800d264ed80",
+        "a4917af17516b3ef9d98553fd4834998c578f15c d865773e3b68676d81e8814c723c90b878d5ddf7",
+        "5753f4e04e1e448777113c1f40005f3ecc18bcb0 d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+        "8eb81b38f14dff6f0bbca7f22cd9004b2e55c6d9 db11682594c61abc613086ae60b13d26649aad25",
+        "6921ef8edfa51895dde91659bf77bfa66dfd6ac3 dd60e198c7ae93bebc41ac873442e5be8193a748",
+        "3969a5da6de4a3ac5d274393ca843402e32f6a80 de92381fa508072c4eadff86a12a92410da02a27",
+        "0cce195bb6d8a8ea72497ac89356b9cdca61108e df59ca6903e886e3bdcfb2a0c456423aa8f3c57e",
+        "68db3de1398ccd9275de4212bcc8fd601099caf5 dfa8572098ca2e44aa778d08023d1e7a6fa4b35e",
+        "820127d66df6dc173b479b83a98186b6d293b7b6 dfbe60893150c222b17987518f65a161d3e7ef77",
+        "99adf72c592bab0295d1d7add1eaf5c829325dc2 e0bd6684b8fff527fadd5a5e33175f2475a3e3d2",
+        "a45408e5c1a4135de7038daa03b3fa1ea42ea16b e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+        "f4591085688c1a604176b19556aeb14ac80efd6a e49f3493194f08c1a8aa185bb0a24ec6d47b6c5f",
+        "93b483af71f999caaa256f2a94f2836933b86d3b e81897cdd2b9475aa9c53875c72da6c66a20d262",
+        "7f4d44f9382963e1eddef5d16cb0428345981254 efb25a13c5410f73e0b23e863938152718b367fe",
+        "be541d193bde290393de21b19118ff4575b45e7c f581ba91d395a497b83f27cbcd00bc409fe5d0f1",
+        "56b82d7f708b0647940340e2d6b6f13807090a0a f7b2f4232726c732fd50ea9cef948baf47db2866",
+        "b53294fb551e9051f93d9152f49decd0036a2d1e fa62d588f98aed9d6596c7c3bd0af8e4a4431941",
+        "41ad56a50083062565648f8e8434ef1e2b112309 fcffc3c99f6b3003bca44ffc3613693d0fafb9d3",
+        "140bf9a13a6f72b69c3558b2223e7b3cae2b2eda fd7ca0c6418a1662a39870c517794bec62c01d60",
+        "b35f1456cdd5ee9000d05c62a345c54be573176b ff064f792674c403c277e9b01f234b59d527afc0"
+      ],
+      "notes_ref_before": "aa8a7dc90dcfaf86920b7492bb1d4899fa4206be",
+      "refs_before": [
+        "refs/heads/codex/arc-001-layers 51ea47715599e08293a10ca10ce40e03d1add267",
+        "refs/heads/codex/arc-002-domain-result 606a9ecf1a2f9c64814af196e1fa62c5bfb85c81",
+        "refs/heads/codex/arc-003-clock-uuid 8d951d2643e8deae4b85603cb0e9da1dbdfd76af",
+        "refs/heads/codex/arc-004-transaction-boundary c2811e0f1c51bcb04557cf5a4bab0dc7e11440f5",
+        "refs/heads/codex/arc-005-ui-sql-gate b31aaa63f68dec69e230c4829828a66f0930655d",
+        "refs/heads/codex/cat-001-active-category 29b1cfd8455639ccb2df2c2c41700ca9dd133662",
+        "refs/heads/codex/cat-001-integration dfa8572098ca2e44aa778d08023d1e7a6fa4b35e",
+        "refs/heads/codex/cat-002-category-name ea1f689c22bf0321734efc86e5b848cdd61b7166",
+        "refs/heads/codex/cat-002-integration fd7ca0c6418a1662a39870c517794bec62c01d60",
+        "refs/heads/codex/cat-003-categories-schema ef4abc3cc44b55b8931a04c9f1b2745d6bc12e52",
+        "refs/heads/codex/cat-004-create-category 3f9acfb6a2b1cd2f77f6fa263b3847c7b64f5625",
+        "refs/heads/codex/cat-005-rename-category 6d9b313dead5de8182c6db3ab15426a97444c5e7",
+        "refs/heads/codex/db-001-sqlite-harness 487ef2fe440a2cd2918b49d44839e148ad783c08",
+        "refs/heads/codex/db-002-empty-database 1ef3bd833708f46e0e26188e71b3cfb83f679014",
+        "refs/heads/codex/db-003-migration-executor c201ce00b2bea7e612091a82d6c08d04a4febafb",
+        "refs/heads/codex/db-004-schema-version 94e37d38f5df375ffb9492e3f80d272f2f44b331",
+        "refs/heads/codex/db-005-empty-migration 1d92fdd185cf24aececd1fa5b5708d9d0efeab03",
+        "refs/heads/codex/db-006-upgrade-snapshot dd60e198c7ae93bebc41ac873442e5be8193a748",
+        "refs/heads/codex/db-007-upgrade-test 323e336b53c74147c4b70bdec44391dfad29fe72",
+        "refs/heads/codex/db-008-rollback-evidence dfbe60893150c222b17987518f65a161d3e7ef77",
+        "refs/heads/codex/db-009-foreign-keys 17f5397efc996091bfb4271a5169d4eede4249fe",
+        "refs/heads/codex/db-010-foreign-key-enforcement 083ac68e073667db3cba474722962b89ca7cdaa5",
+        "refs/heads/codex/db-011-write-transaction 0c0660cf5abe9b1e51a5067c49c11e7364069764",
+        "refs/heads/codex/db-012-generic-rollback 4c40dd29ac16278ce8037ef3852697015c9a4a7c",
+        "refs/heads/codex/db-013-technical-audit-event 02f155fe6cab4e1bd57fc18bfc4fa43206944fe0",
+        "refs/heads/codex/db-014-audit-atomicity 0bb34d69ccb72e13fb23f43891ef92452675b380",
+        "refs/heads/codex/doc-002-map 263e8db5e67b5ee1127826974530dff9fb481897",
+        "refs/heads/codex/doc-003-readme 00ba4f2d32cb88c1f7f05985693ea612195b24d0",
+        "refs/heads/codex/doc-004-hierarchy 0bca4a518d687a2c609b8b010c3c06333405e83b",
+        "refs/heads/codex/doc-005-requirements d60e8f73cbc2745393a9c6217849c2bd20f40937",
+        "refs/heads/codex/fin-001-account ff064f792674c403c277e9b01f234b59d527afc0",
+        "refs/heads/codex/fin-002-account-name b5fabc2453445cd04f9580751d0292eae4641cfe",
+        "refs/heads/codex/fin-003-account-type 3ef70f1014abd63903e9cbd45626384177b18a1a",
+        "refs/heads/codex/fin-004-opening-balance bced460aca4909575956887c1e3905ec6ad5a159",
+        "refs/heads/codex/fin-006-accounts-schema c4def86b77dfa62589c6860f9cf9d72cdd0eff06",
+        "refs/heads/codex/fin-006-integration df59ca6903e886e3bdcfb2a0c456423aa8f3c57e",
+        "refs/heads/codex/fin-007-account-constraints df59ca6903e886e3bdcfb2a0c456423aa8f3c57e",
+        "refs/heads/codex/fin-007-integration b5d4089338c862d627acfaef8ccf58822ffb8511",
+        "refs/heads/codex/fin-008-create-account 3a94855181576ed354a73831dca3e1964641e79d",
+        "refs/heads/codex/fin-008-integration fa62d588f98aed9d6596c7c3bd0af8e4a4431941",
+        "refs/heads/codex/fin-010-context bced460aca4909575956887c1e3905ec6ad5a159",
+        "refs/heads/codex/fin-010-integration d40695102f5f116b95d8d2530f8e71fdd21e7dd2",
+        "refs/heads/codex/fin-011-context-validation d40695102f5f116b95d8d2530f8e71fdd21e7dd2",
+        "refs/heads/codex/fin-011-integration 1de607156806990a14f7be27933db4aa1fce4e92",
+        "refs/heads/codex/fin-012-movement-contract a58ad20b7664db5f7b5fb85a3cb7b0b341a46978",
+        "refs/heads/codex/gov-001-session-review db11682594c61abc613086ae60b13d26649aad25",
+        "refs/heads/codex/gov-002-evidence-states b0cc1391e8541438e239999c4e9000f2b6306ddb",
+        "refs/heads/codex/gov-003-tool-register cc43154f7d0fcaa532e25499fb44222874f6cdd1",
+        "refs/heads/codex/gov-004-exception-applicability 8c7e7bc7b2046724b4b6ce530072b719e50e0cd1",
+        "refs/heads/codex/gov-005-policy-verification 999b420c610ce304fd7f42704c9456492e320dfe",
+        "refs/heads/codex/gov-006-token-policy 13333ad289cf41d7729e9c4ba73af42883fa83cd",
+        "refs/heads/codex/gov-007-usage-baseline 75b7fcb60878d97d72d63cdf51125a8e58948e9a",
+        "refs/heads/codex/gov-008-operational-personas e49f3493194f08c1a8aa185bb0a24ec6d47b6c5f",
+        "refs/heads/codex/gov-009-department-routing 69c2236c02adeceb3191792849e1c71cd96528af",
+        "refs/heads/codex/inf-001-runtime-pins 6bed951d8ca1188a72501a1693fa8fb68e7160ec",
+        "refs/heads/codex/inf-002-tauri-minimum 04d5b17a370d9d9fab6d65d35b19e7e00f50cf48",
+        "refs/heads/codex/inf-003-lockfiles 6e6e91177d37cbc428eb01c41acf0ec0b32d3b7c",
+        "refs/heads/codex/inf-004-typescript-strict 4416b35fb5515b3c347b0a77ea5299b10e0f0084",
+        "refs/heads/codex/inf-005-biome d6df89de9c6b19997fd14924c832e18bcde31007",
+        "refs/heads/codex/inf-006-vitest bc4a7e04fce4986b0e1329d5c8bd2774a172aeb1",
+        "refs/heads/codex/inf-007-coverage 5ddbfc5e242cdfb37cb2daa5bc9c468a6d6fd7c8",
+        "refs/heads/codex/inf-008-typecheck b9db95e1e939b4a264a2679c1d6ab80bfdf9ea6d",
+        "refs/heads/codex/inf-009-quality 639db7e1c1cad9574c1aac8ba14d862d198945b5",
+        "refs/heads/codex/inf-010-windows-ci 87f996255ddf7d9d9ebc3f7743d9fdbb44439ee4",
+        "refs/heads/codex/inf-011-clean-build ab3f751d6fe4be57037c83071f890ac6fc28428c",
+        "refs/heads/codex/inf-012-executed-versions d63eeaa4b8f3110d3cce940b208bef3182596e38",
+        "refs/heads/codex/inf-013-ci-coverage a36f0c9ff76c03a7016dedee88bdb4171720f0b5",
+        "refs/heads/codex/inf-014-tauri-ci ab4e0c09cfcafe6c19be370b6cb42eec464b2bf1",
+        "refs/heads/codex/inf-015-clean-checkout 79ecd49f3538c8c06c6aabffc67066b05448d562",
+        "refs/heads/codex/pln-001-spec-template e0bd6684b8fff527fadd5a5e33175f2475a3e3d2",
+        "refs/heads/codex/pln-002-work-item-schema b65c3616956c441201ae35d033d07be84f8f8d4e",
+        "refs/heads/codex/pln-003-handoff-template 4bc2d668eecc2259469ca60ca94e5e8be08cd95f",
+        "refs/heads/codex/pln-004-progress-log 0560d720221f42f2a965dd574aaca178622e09d3",
+        "refs/heads/codex/pln-005-path-reservations 0c8fc12b7a5ca58fbb205f9c6054fb06eb9a3ebb",
+        "refs/heads/codex/pln-006-canonical-dependencies 032628d2912001f93e64e016393be97c9afaffc3",
+        "refs/heads/codex/retomada-millani-artes 7573c65899416cf180bb25545f6cfae6335bb00e",
+        "refs/heads/codex/sec-001-deny-capabilities 6cb18fcc31480b377895cc595093dd53da3c986e",
+        "refs/heads/codex/sec-002-csp 9fa9b73d11cf14d9b6307d791536aaf48547addc",
+        "refs/heads/codex/sec-003-logging-policy bdb7071584aceff4b40a057bb7dc4a5c4d0fe8b6",
+        "refs/heads/codex/sec-004-plugin-inventory f581ba91d395a497b83f27cbcd00bc409fe5d0f1",
+        "refs/heads/codex/sec-005-plugin-adr-gate 7f62e5648f2d96be32783761af21e119a7c33626",
+        "refs/heads/codex/sec-006-local-gitleaks 42bcfc648467f6ba835e5250fc279204b0a6a4f0",
+        "refs/heads/codex/sec-007-gitleaks-ci efb25a13c5410f73e0b23e863938152718b367fe",
+        "refs/heads/codex/sec-008-osv-scanner 38b7fb6d6c284d048c3f34f0fdb1095d60d45070",
+        "refs/heads/codex/sec-009-osv-ci 3cb063569b72fa9f27d7aebc52dfb9370e36517f",
+        "refs/heads/codex/sec-010-npm-audit 797ab441a1c63caff9da959dd27d08dffec7ea91",
+        "refs/heads/codex/sec-011-cargo-audit 23c4a34b102c10b336203f6fa2352eeeccf761a7",
+        "refs/heads/codex/sec-012-audits-ci ca3ec510344a3f4b28ae9e7d68676bf6e75a5117",
+        "refs/heads/codex/sec-013-useful-sast 37a79f900c7c481739f2d2acca9b148607b069fb",
+        "refs/heads/codex/sec-014-phone-redaction ca8c32e43469519c581f8fae3c4c029035eb5bf1",
+        "refs/heads/codex/sec-015-financial-redaction 685d10daa4c7226da581472edb5b169273050c97",
+        "refs/heads/codex/trc-001-account-traceability 692bd362f59d58713ccb710a98f0559191468249",
+        "refs/heads/codex/trc-002-finance-traceability 1bcb7a889d85eb0909e35c921fb95ce7aacb8cf2",
+        "refs/heads/codex/trc-003-sales-traceability e81897cdd2b9475aa9c53875c72da6c66a20d262",
+        "refs/heads/codex/trc-004-backup-traceability d8151834a7288911e85547d4bae4536fe2aadf09",
+        "refs/heads/codex/trc-005-invariant-traceability 575af0194a43f786d831d9ff3200787ef5c9628e",
+        "refs/heads/codex/trc-006-security-traceability c07e71aa0f9660c83a92e855a1e3df3d2373b251",
+        "refs/heads/codex/ui-001-accessible-shell b5d4089338c862d627acfaef8ccf58822ffb8511",
+        "refs/heads/main f7b2f4232726c732fd50ea9cef948baf47db2866"
+      ],
+      "reserved_paths": [
+        "planning/specs/REC-014.md",
+        "planning/handoffs/REC-014.md",
+        "planning/work-items/REC-014.json",
+        "planning/PROGRESS_LOG.md",
+        "planning/ROADMAP.md",
+        "docs/quality/TEST_STRATEGY.md",
+        "docs/quality/COVERAGE_POLICY.md",
+        "docs/traceability/REQUIREMENTS_MATRIX.md",
+        "docs/traceability/INVARIANT_TEST_MATRIX.md",
+        "docs/architecture/TRANSACTION_MODEL.md",
+        "src-tauri/tests/common/recurrence_payment.rs"
+      ],
+      "docs": [
+        "planning/specs/REC-014.md",
+        "planning/handoffs/REC-014.md",
+        "planning/work-items/REC-014.json",
+        "planning/PROGRESS_LOG.md",
+        "planning/ROADMAP.md",
+        "docs/quality/TEST_STRATEGY.md",
+        "docs/quality/COVERAGE_POLICY.md",
+        "docs/traceability/REQUIREMENTS_MATRIX.md",
+        "docs/traceability/INVARIANT_TEST_MATRIX.md",
+        "docs/architecture/TRANSACTION_MODEL.md"
+      ],
+      "sources": [
+        "src-tauri/tests/common/recurrence_payment.rs"
+      ],
+      "production": {
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+        "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+        "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+        "src-tauri/src/application/calculate_context_result.rs": "33ea627d08bf09092b73bc245daa37c5a2e78e4813f56d66925e6bbc19f2395c",
+        "src-tauri/src/application/calculate_context_result_tests.rs": "ea69639afd085cd2b2c815796226a598a1fb8ee8fb9be8f61384bb82aa6eaeb5",
+        "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+        "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+        "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+        "src-tauri/src/application/create_category_tests.rs": "09f0e20b7da2468cc9e9b28d20355779de8299668f74b87392a9d424dd857a4f",
+        "src-tauri/src/application/create_entry.rs": "58e7c320d06ed88772967c65bd6cdd045d416640ab01c386de78d30ebe1e198f",
+        "src-tauri/src/application/create_entry_tests.rs": "0b76da095e8a73b30f7a0d4364440ef8d54ef63450543081d415484ed4cc526f",
+        "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+        "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+        "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+        "src-tauri/src/application/create_transfer_tests.rs": "bcb815e52cb868229950ff983353c71193d997ad8506903241998b77d706b4f0",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/application/generate_fixed_obligation.rs": "3647c538ceb59bc8322932e45940f3dbd3d73b5955763a6410e7b195feed27cd",
+        "src-tauri/src/application/generate_fixed_obligation_tests.rs": "e1d5ca31b74f82a1e0e43e5e7e152edefe0a86fb2b31fa25a005a78fc7a960f7",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+        "src-tauri/src/application/list_accounts_tests.rs": "088752a6d69ca0d8428e09abc91af07f0182f9ff7ff81ac4ad48f7b4619555f6",
+        "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+        "src-tauri/src/application/list_movements_tests.rs": "5dda89c8691ac9a45654d95550c703c3ebaa33c17bff7f96b5b8dcc391b4020c",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+        "src-tauri/src/application/rename_category_tests.rs": "2b5038cf0e8487b96f0a44eab769f2b72534aec5502e0878ac2ebded670ac253",
+        "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+        "src-tauri/src/application/supply_obligation_amount_tests.rs": "f6cbe7ed006b446f533c6f33b515252cd5d1c4ec94f0e0f9fddc46ffe5d6d479",
+        "src-tauri/src/domain/awaiting_value_tests.rs": "05b51218bae4e54f917168f3fb37a2d2417805121529d739dd6390bc6a49e7f1",
+        "src-tauri/src/domain/balance_tests.rs": "ae5fae4ec6766c28e9a4350c2560472488c3053038cdac9c0b69acc8a6ac7c95",
+        "src-tauri/src/domain/entry_tests.rs": "d9c4e244a2b38b4099879de0ed5ccc9b1c4bea25ae0c3abde6b4a4bc63211c3f",
+        "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+        "src-tauri/src/domain/fixed_generation_tests.rs": "d758042f3de5a241bd9261b2ecfaa23f8476554e11e3d9f33f1fa092d2d398a6",
+        "src-tauri/src/domain/fixed_recurrence_tests.rs": "e25df444a66f189d74bc8426aadc778b04a6f79d5796dcb3b9539f09aaf44f5b",
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/obligation_amount.rs": "74a13ef5cd98401d6718daa024f6fff29658d9c90ffe4f031bebfa5d4be4bc5d",
+        "src-tauri/src/domain/obligation_amount_tests.rs": "403ae5306bb2506cbdce516c860f2fa114562fa09966c707f6210cad034d4569",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+        "src-tauri/src/domain/payable_state_tests.rs": "6319d34b8145c87122bcb37290c1762b34c4d6ff84b40578c9038947e8078ca2",
+        "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+        "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+        "src-tauri/src/domain/result_effect_tests.rs": "04757aa9de9423efaa1ab3ef025179dbe339e3a431b3928030559173deb45d1a",
+        "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+        "src-tauri/src/domain/transfer_tests.rs": "c3f058f4447f36359c48b241b917b516903c6adc76e7e345438b10aab4305811",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/domain/variable_recurrence_tests.rs": "03d1ef05954069bf4c2f7fa462aecfd795c3136948e9d5afb1ee27c5ad76b63e",
+        "src-tauri/src/infrastructure/accounts.rs": "921fba851d5be61d9dbed3d760a10bdbb01fce30bb17b45e9cef2499723aa1b1",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+        "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017"
+      },
+      "worktree_production": {
+        "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+        "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+        "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+        "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+        "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+        "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+        "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+        "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+        "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+        "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+        "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+        "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+        "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+        "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+        "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+        "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+        "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+        "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+        "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+        "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+        "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+        "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+        "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+        "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+        "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+        "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+        "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+        "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+        "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+        "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+        "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+        "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+        "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+        "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+        "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+        "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+        "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+        "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+        "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+        "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+        "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+        "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+        "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+        "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+        "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+        "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+        "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+        "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+        "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+        "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+      },
+      "migrations": {
+        "src-tauri/migrations/002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri/migrations/003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri/migrations/004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri/migrations/005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri/migrations/006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri/migrations/007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "canonical_total": 245,
+      "done": 125,
+      "local_calls": 0,
+      "previous_turn": "progress: REC012/013 released with exact CIs and preserved notes; REC013 reviewer finding corrected",
+      "base_ci": {
+        "id": 39253666628,
+        "sha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+        "conclusion": "success",
+        "live_verified": true
+      },
+      "cost": "não registrado"
+    },
+    "scope": "Prova física de rollback do pagamento:8combinações fixa/variável informada,Payable/Overdue,Casa/Fábrica ×8falhas=64cenários. ABORT/IGNORE emINSERTExit/UPDATEobrigação/INSERTaudit,dupAuditID eFKdeferred noCOMMIT não deixam saída/Paid/audit parcial. Reopen/snapshot completo e leitores reais preservam contas/movimentos/eventos/ledger/templates/obrigações/categorias,saldos-1253/7654 e resultadosHome0/Factory-19. Contexto descartado permanece incapaz após remover a falha;novo adapter persiste umaExit1000/Paidlink/audit e saldos-2253/7654. Apenas1teste novo;produção e7migrations intactas.",
+    "limitations": "REC-015 ainda exige provas próprias de concorrência/repetição;sem retry automático/sucesso idempotente prometido. Não prova powerloss/WAL/panic-abort/falha física deROLLBACK/recuperação global. UI/IPC,cobertura Rust global atual e instalador Windows/instalação/atualização/backup-restauração/hash/assinatura/E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita;implementaçãoUTC-3fixa sem provaIANA/DSThistórica",
+    "coverage": {
+      "method": "No new critical production logic; historical REC012 measurement with identical hashes, not a fresh LLVM/global/remote measurement",
+      "historical_receipt": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-coverage.json",
+      "sha256": "0f8cfae5b65ff54456d7f641c3a6d496d85e68d679e37ce258e3a4c1dd545a19",
+      "metrics": {
+        "full": {
+          "src/application/pay_recurrence.rs": {
+            "lines": {
+              "count": 55,
+              "covered": 55,
+              "percent": 100
+            },
+            "functions": {
+              "count": 3,
+              "covered": 3,
+              "percent": 100
+            },
+            "instantiations": {
+              "count": 8,
+              "covered": 7,
+              "percent": 87.5
+            },
+            "regions": {
+              "count": 70,
+              "covered": 68,
+              "notcovered": 2,
+              "percent": 97.14285714285714
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          },
+          "src/infrastructure/recurrences/payment.rs": {
+            "lines": {
+              "count": 81,
+              "covered": 81,
+              "percent": 100
+            },
+            "functions": {
+              "count": 2,
+              "covered": 2,
+              "percent": 100
+            },
+            "instantiations": {
+              "count": 4,
+              "covered": 2,
+              "percent": 50
+            },
+            "regions": {
+              "count": 84,
+              "covered": 84,
+              "notcovered": 0,
+              "percent": 100
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          }
+        },
+        "control": {
+          "src/application/pay_recurrence.rs": {
+            "lines": {
+              "count": 55,
+              "covered": 0,
+              "percent": 0
+            },
+            "functions": {
+              "count": 3,
+              "covered": 0,
+              "percent": 0
+            },
+            "instantiations": {
+              "count": 8,
+              "covered": 0,
+              "percent": 0
+            },
+            "regions": {
+              "count": 70,
+              "covered": 0,
+              "notcovered": 70,
+              "percent": 0
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          },
+          "src/infrastructure/recurrences/payment.rs": {
+            "lines": {
+              "count": 81,
+              "covered": 0,
+              "percent": 0
+            },
+            "functions": {
+              "count": 2,
+              "covered": 0,
+              "percent": 0
+            },
+            "instantiations": {
+              "count": 4,
+              "covered": 0,
+              "percent": 0
+            },
+            "regions": {
+              "count": 84,
+              "covered": 0,
+              "notcovered": 84,
+              "percent": 0
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          }
+        }
+      }
+    },
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-014",
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "base": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+    "evidence": "E2 static",
+    "findings": [],
+    "tests_executed": false,
+    "conclusion": "Sem achados P0–P2. Snapshot após reopen em64cenários,leitores/projeções reais,adapter descartado,FKdeferredCOMMIT semresíduo e adapter novo válido. Spec e diff focal revisados;sem concorrência/recoveryglobal inferidos.",
+    "cost": "não registrado",
+    "sources": {
+      "src-tauri/tests/common/recurrence_payment.rs": "a30fb9d7bf0343d37f85f8d95c5a76cd9db236842f35614cf50f06928c35d320"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 11,
+    "bytes": 1019162,
+    "framed_sha256": "72538a348cceb538932791acf41e63d0234a7c3aa4f44ea44e9a364bc3f79515",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 10,
+    "bytes": 995698,
+    "framed_sha256": "c91a4b67ffcef746505968a58370a3a0980da06149fdbf16c4682895d50f3eea",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 597 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 127 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 127 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 547397 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "Prova física de rollback do pagamento:8combinações fixa/variável informada,Payable/Overdue,Casa/Fábrica ×8falhas=64cenários. ABORT/IGNORE emINSERTExit/UPDATEobrigação/INSERTaudit,dupAuditID eFKdeferred noCOMMIT não deixam saída/Paid/audit parcial. Reopen/snapshot completo e leitores reais preservam contas/movimentos/eventos/ledger/templates/obrigações/categorias,saldos-1253/7654 e resultadosHome0/Factory-19. Contexto descartado permanece incapaz após remover a falha;novo adapter persiste umaExit1000/Paidlink/audit e saldos-2253/7654. Apenas1teste novo;produção e7migrations intactas.",
+  "preserved": "all126 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;12 focal files 116195B hashverified;WT recoverably archived",
+  "limitations": "REC-015 ainda exige provas próprias de concorrência/repetição;sem retry automático/sucesso idempotente prometido. Não prova powerloss/WAL/panic-abort/falha física deROLLBACK/recuperação global. UI/IPC,cobertura Rust global atual e instalador Windows/instalação/atualização/backup-restauração/hash/assinatura/E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita;implementaçãoUTC-3fixa sem provaIANA/DSThistórica",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
