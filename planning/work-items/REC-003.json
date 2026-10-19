@@ -1,0 +1,26 @@
+{
+  "id": "REC-003",
+  "title": "estado aguardando valor",
+  "specPath": "planning/specs/REC-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-002"
+  ],
+  "acceptanceCriteria": [
+    "ObligationState::AwaitingValue semvalor e VariableRecurrence.initial_obligation_state validando configuração real antes do estado.",
+    "Sem efeitos/normalização/guardduplicado/novosdefaults/derives/deps/migrations;geração e pagamento separados.",
+    "RED/GREEN3unit+1compile_faildoc/LLVMdomain>=95controle/gates/review/CIs exatos.",
+    "Docsantespasses/nota116/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN3unit/compile_faildoc",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdomain>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota116/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-SEC/P-REVSol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-003 VERIFY E3:AwaitingValue inicial de VariableRecurrence validada por método real,semvalor/efeitos;RED/GREEN3unit+1doc. Rust227+14docs/quality/security/LLVMdomain88/88 e12/12 com controle porfunções/review PASS;domínioanteriorpreservado. CIs pendentes;REC-004..015 (demais estados,valorporocorrência,calendário,geração,persistência,pagamento),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-003. CIfonte/final/nota116/liberação pendentes;MetaE2Eativa."
+}

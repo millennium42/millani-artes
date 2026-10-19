@@ -210,6 +210,17 @@ impl Movement {
     }
 }
 
+/// An obligation waiting for its amount.
+///
+/// ```compile_fail
+/// fn amount(state: &millani_artes::domain::ObligationState) -> i64 {
+///     state.amount_cents
+/// }
+/// ```
+pub enum ObligationState {
+    AwaitingValue,
+}
+
 /// Monthly variable recurrence configuration; amount is supplied per obligation.
 ///
 /// ```compile_fail
@@ -241,6 +252,11 @@ impl VariableRecurrence {
         } else {
             Ok(())
         }
+    }
+
+    pub fn initial_obligation_state(&self) -> Result<ObligationState> {
+        self.validate()?;
+        Ok(ObligationState::AwaitingValue)
     }
 }
 
@@ -317,3 +333,6 @@ mod fixed_recurrence_tests;
 
 #[cfg(test)]
 mod variable_recurrence_tests;
+
+#[cfg(test)]
+mod awaiting_value_tests;
