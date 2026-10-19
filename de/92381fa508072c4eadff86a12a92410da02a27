@@ -1,0 +1,1145 @@
+{
+  "id": "FIN-028",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+  "final_sha": "de92381fa508072c4eadff86a12a92410da02a27",
+  "source_ci": {
+    "run": {
+      "id": 39187261583,
+      "head_sha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39187261583",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T01:51:45Z",
+      "updated_at": "2026-10-19T01:59:15Z"
+    },
+    "job": {
+      "id": 117852196179,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39187261583,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          115,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          94,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 4,
+      "new_unit_tests": 6,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 240,
+          "findings": 0,
+          "seconds": 0.875,
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 0.965,
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.74,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 13.881,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 4.453
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "machine": "AMD64",
+          "bytes": 8536064,
+          "sourceSha": "15020e5ea781b2ac58edb501c1abebb459a4493e",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "customProtocol": true,
+          "imageOS": "win25-vs2026",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "pe": "PE32+",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "sha256": "9d50cb4ac17adbf244e64cb1b18c5c8a0704d79b617c05136f0071e1b6984414",
+          "node": "v24.21.0",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "imageVersion": "20261007.264.1"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12157883827,
+          "name": "frontend-coverage-39187261583-1",
+          "size_in_bytes": 21917,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12157883827",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12157883827/zip",
+          "expired": false,
+          "created_at": "2026-10-19T01:53:39Z",
+          "expires_at": "2026-10-20T01:53:38Z",
+          "updated_at": "2026-10-19T01:53:39Z",
+          "digest": "sha256:b2d8035ae32df4e96a1ceef98382900f3155c13f54ebd59f32aa0458c7c36245",
+          "workflow_run": {
+            "id": 39187261583,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "15020e5ea781b2ac58edb501c1abebb459a4493e"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39187872913,
+      "head_sha": "de92381fa508072c4eadff86a12a92410da02a27",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39187872913",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T02:00:00Z",
+      "updated_at": "2026-10-19T02:02:02Z"
+    },
+    "job": {
+      "id": 117854033713,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39187872913,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 241,
+          "findings": 0,
+          "seconds": 1.265,
+          "sourceSha": "de92381fa508072c4eadff86a12a92410da02a27",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.303,
+          "sourceSha": "de92381fa508072c4eadff86a12a92410da02a27",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.792,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "de92381fa508072c4eadff86a12a92410da02a27",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.526,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "de92381fa508072c4eadff86a12a92410da02a27",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "FIN-028",
+    "evidence": "E3",
+    "rust": {
+      "base": "c6d17ef46933e7531c1390e1827981c019efbead",
+      "sources": {
+        "src-tauri/src/lib.rs": "4a21a93817d80ec71871ef40f427afc21cb6beab1929ee50a83be22fcd6c9daa",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+        "src-tauri/tests/common/movement_editing.rs": "8d7e0ef3316ed931d3a84e9954f6dfacf5f5d8cc128885124cb1cdf04f81a6fe"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.3,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-rust-gate-0-20261018.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 3.1,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-rust-gate-1-20261018.log",
+          "sha256": "5520ca5da289a48a9263b44a4d8938e86798778a48ea45fcf2949468a430d06c"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 13.68,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-rust-gate-2-20261018.log",
+          "sha256": "ec212e7cda49c6e7e0e233621648ce78d24b5e51867597101bf76fe2779ef628"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 54.83,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-rust-gate-3-20261018.log",
+          "sha256": "5dc491dd0baf440ef5f34033af165bdcb6cb7c6f2b2617f81f78ee40b7875bc1"
+        }
+      ]
+    },
+    "other": {
+      "base": "c6d17ef46933e7531c1390e1827981c019efbead",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 3.82,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-0-20261018.log",
+          "sha256": "0843d2d0d5e0ba7d3b4547911a0fbc924cc99026d4237b929c8be6ea9f2230ed"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 0.91,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-1-20261018.log",
+          "sha256": "5bcb3003b9f335c9af06ba16d65373e8a0c4dab7327d4a66a779f244aac4f93e"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 2.31,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-2-20261018.log",
+          "sha256": "b39599b538b83cfbecab3f3c0addb9147d3026caa666b600ba0dbbce7aa58323"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 4.58,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-3-20261018.log",
+          "sha256": "a488412a57269d903863fd8a54ecf711fc4371e2476011d0b2e6b936c651bd6d"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 2.54,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-4-20261018.log",
+          "sha256": "174960b1b741d6af2009c7a598741845daa0cffbc208dd25f136ead32d59f459"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.14,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-5-20261018.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 8.06,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-other-gate-6-20261018.log",
+          "sha256": "ef3e78ba249c5c8f01f460d61fabb1d67860e85aaab14f006773bedff7b09afe"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      115,
+      7,
+      94,
+      8
+    ],
+    "new_unit": 6,
+    "new_sql": 4,
+    "focal": {
+      "id": "FIN-028",
+      "mode": "green",
+      "sources": {
+        "src-tauri/src/lib.rs": "893fd0bf121607eaceb308ac86024c1302aefc14d370765d90bdb08275ff5007",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f3b0fcc747d0372a35bc5437df7ebdb41bea1d8453f9cea3cabc14f47cfe595d",
+        "src-tauri/src/infrastructure/movements.rs": "855c0b24ada13ceeb08416c8fc70b2d51ba14a75a8dcb39c46ed2bd84bcf8278",
+        "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+        "src-tauri/tests/common/movement_editing.rs": "c91ed68e191045ad810bdd3c8ceb109e01095191c4e9483d1f661b78438ee73e"
+      },
+      "steps": [
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\lib-tests.exe\"",
+          "exit": 0,
+          "seconds": 1.126,
+          "output": ""
+        },
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\libmillani_artes.rlib\"",
+          "exit": 0,
+          "seconds": 0.392,
+          "output": ""
+        },
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\sqlite-tests.exe\"",
+          "exit": 0,
+          "seconds": 1.96,
+          "output": ""
+        },
+        {
+          "command": "\"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\lib-tests.exe\" application::edit_movement::tests:: --nocapture",
+          "exit": 0,
+          "seconds": 0.208,
+          "output": "\nrunning 6 tests\ntest application::edit_movement::tests::duration_conversion_checks_i64_boundary ... ok\ntest application::edit_movement::tests::id_failure_stops_before_clock_and_store ... ok\ntest application::edit_movement::tests::edits_preserve_identity_and_forward_all_fields_with_one_audit_id ... ok\ntest application::edit_movement::tests::invalid_amounts_and_equal_transfer_accounts_stop_before_side_effects ... ok\ntest application::edit_movement::tests::pre_epoch_clock_stops_before_store ... ok\ntest application::edit_movement::tests::store_errors_are_opaque_and_do_not_retry ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 109 filtered out; finished in 0.00s\n\n"
+        },
+        {
+          "command": "\"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\sqlite-tests.exe\" common::movement_editing:: --nocapture",
+          "exit": 0,
+          "seconds": 0.639,
+          "output": "\nrunning 4 tests\ntest common::movement_editing::invalid_direct_edits_preserve_database_and_adapter_remains_usable ... ok\ntest common::movement_editing::existing_category_reference_and_unrelated_movement_are_preserved ... ok\ntest common::movement_editing::canonical_edit_replaces_all_fields_without_creating_another_movement ... ok\ntest common::movement_editing::missing_id_fk_and_audit_faults_roll_back_and_poison_only_failed_adapter ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 90 filtered out; finished in 0.40s\n\n"
+        }
+      ],
+      "result": "pass"
+    },
+    "red": {
+      "id": "FIN-028",
+      "mode": "red",
+      "sources": {
+        "src-tauri/src/lib.rs": "893fd0bf121607eaceb308ac86024c1302aefc14d370765d90bdb08275ff5007",
+        "src-tauri/src/application/edit_movement.rs": "61b93a92437255146bcf9f7b6d69170d50dd968d3564e8ff9ad9709682fcce20",
+        "src-tauri/src/application/edit_movement_tests.rs": "f3b0fcc747d0372a35bc5437df7ebdb41bea1d8453f9cea3cabc14f47cfe595d",
+        "src-tauri/src/infrastructure/movements.rs": "d70c41e3a236e2d0f5fd1b0aa93b786d61b68b4d0b584dba4e5a3615392ca616",
+        "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+        "src-tauri/tests/common/movement_editing.rs": "c91ed68e191045ad810bdd3c8ceb109e01095191c4e9483d1f661b78438ee73e"
+      },
+      "steps": [
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\lib-tests.exe\"",
+          "exit": 1,
+          "seconds": 0.227,
+          "output": "error[E0432]: unresolved imports `super::duration_to_epoch_millis`, `super::edit_movement`, `super::EditMovementError`, `super::MovementEditingStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\src\\application\\edit_movement_tests.rs:1:13\n  |\n1 | use super::{duration_to_epoch_millis, edit_movement, EditMovementError, MovementEditingStore};\n  |             ^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^ no `MovementEditingStore` in `application::edit_movement`\n  |             |                         |              |\n  |             |                         |              no `EditMovementError` in `application::edit_movement`\n  |             |                         no `edit_movement` in `application::edit_movement`\n  |             no `duration_to_epoch_millis` in `application::edit_movement`\n  |\n  = help: consider importing this module instead:\n          crate::application::edit_movement\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0432`.\n"
+        },
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\libmillani_artes.rlib\"",
+          "exit": 0,
+          "seconds": 0.344,
+          "output": ""
+        },
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\sqlite-tests.exe\"",
+          "exit": 1,
+          "seconds": 1.003,
+          "output": "error[E0432]: unresolved imports `millani_artes::application::edit_movement::edit_movement`, `millani_artes::application::edit_movement::MovementEditingStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\common\\movement_editing.rs:4:49\n  |\n4 | use millani_artes::application::edit_movement::{edit_movement,MovementEditingStore};\n  |                                                 ^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^ no `MovementEditingStore` in `application::edit_movement`\n  |                                                 |\n  |                                                 no `edit_movement` in `application::edit_movement`\n\nerror[E0599]: no method named `persist_movement_edit_with_audit` found for struct `AdapterSqliteMovementStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\common\\movement_editing.rs:55:21\n   |\n55 |         let e=store.persist_movement_edit_with_audit(&proposed([0x11;16],kind,amount,Context::Home),[0x41;16],1234).unwrap_err();\n   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_entry_with_audit` with a similar name\n   |\n55 -         let e=store.persist_movement_edit_with_audit(&proposed([0x11;16],kind,amount,Context::Home),[0x41;16],1234).unwrap_err();\n55 +         let e=store.persist_entry_with_audit(&proposed([0x11;16],kind,amount,Context::Home),[0x41;16],1234).unwrap_err();\n   |\n\nerror[E0599]: no method named `persist_movement_edit_with_audit` found for struct `AdapterSqliteMovementStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\common\\movement_editing.rs:59:19\n   |\n59 |     assert!(store.persist_movement_edit_with_audit(&proposed([0x11;16],MovementKind::Transfer{source_account_id:a,destination_accoun...\n   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_entry_with_audit` with a similar name\n   |\n59 -     assert!(store.persist_movement_edit_with_audit(&proposed([0x11;16],MovementKind::Transfer{source_account_id:a,destination_account_id:a},1,Context::Factory),[0x41;16],1234).is_err());\n59 +     assert!(store.persist_entry_with_audit(&proposed([0x11;16],MovementKind::Transfer{source_account_id:a,destination_account_id:a},1,Context::Factory),[0x41;16],1234).is_err());\n   |\n\nerror[E0599]: no method named `persist_movement_edit_with_audit` found for struct `AdapterSqliteMovementStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\common\\movement_editing.rs:80:21\n   |\n80 | ...   let e=store.persist_movement_edit_with_audit(&proposed(id,MovementKind::Exit{account_id:target},1,Context::Factory),audit,1234...\n   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_entry_with_audit` with a similar name\n   |\n80 -         let e=store.persist_movement_edit_with_audit(&proposed(id,MovementKind::Exit{account_id:target},1,Context::Factory),audit,1234).unwrap_err();\n80 +         let e=store.persist_entry_with_audit(&proposed(id,MovementKind::Exit{account_id:target},1,Context::Factory),audit,1234).unwrap_err();\n   |\n\nerror[E0599]: no method named `persist_movement_edit_with_audit` found for struct `AdapterSqliteMovementStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\src-tauri\\tests\\common\\movement_editing.rs:84:23\n   |\n84 | ...   assert!(store.persist_movement_edit_with_audit(&proposed([0x11;16],MovementKind::Entry{account_id:a},1,Context::Home),[0x52;16...\n   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_entry_with_audit` with a similar name\n   |\n84 -         assert!(store.persist_movement_edit_with_audit(&proposed([0x11;16],MovementKind::Entry{account_id:a},1,Context::Home),[0x52;16],1234).is_err());\n84 +         assert!(store.persist_entry_with_audit(&proposed([0x11;16],MovementKind::Entry{account_id:a},1,Context::Home),[0x52;16],1234).is_err());\n   |\n\nerror: aborting due to 5 previous errors\n\nSome errors have detailed explanations: E0432, E0599.\nFor more information about an error, try `rustc --explain E0432`.\n"
+        }
+      ],
+      "result": "pass"
+    },
+    "coverage": {
+      "full": {
+        "src/application/edit_movement.rs": {
+          "lines": {
+            "count": 32,
+            "covered": 32,
+            "percent": 100
+          },
+          "functions": {
+            "count": 3,
+            "covered": 3,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 7,
+            "covered": 5,
+            "percent": 71.42857142857143
+          },
+          "regions": {
+            "count": 43,
+            "covered": 42,
+            "notcovered": 1,
+            "percent": 97.67441860465115
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/movements.rs": {
+          "lines": {
+            "count": 265,
+            "covered": 265,
+            "percent": 100
+          },
+          "functions": {
+            "count": 21,
+            "covered": 21,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 42,
+            "covered": 21,
+            "percent": 50
+          },
+          "regions": {
+            "count": 373,
+            "covered": 367,
+            "notcovered": 6,
+            "percent": 98.39142091152814
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/application/edit_movement.rs": {
+          "lines": {
+            "count": 32,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 3,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 7,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 43,
+            "covered": 0,
+            "notcovered": 43,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/movements.rs": {
+          "lines": {
+            "count": 265,
+            "covered": 208,
+            "percent": 78.49056603773586
+          },
+          "functions": {
+            "count": 21,
+            "covered": 17,
+            "percent": 80.95238095238095
+          },
+          "instantiations": {
+            "count": 42,
+            "covered": 17,
+            "percent": 40.476190476190474
+          },
+          "regions": {
+            "count": 373,
+            "covered": 298,
+            "notcovered": 75,
+            "percent": 79.89276139410187
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\receipt-green.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\receipt-green.json",
+        "bytes": 6408,
+        "sha256": "0c8ce457b6a2db329c734933fd0ec19be6cd0d4461e0573dfeb41a47a521d247"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\fin-028-edit-movement\\Millani Artes\\artifacts\\fin028-check\\receipt-red.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\receipt-red.json",
+        "bytes": 10119,
+        "sha256": "498e978e661c82b3af48196f1ee3298acbdc17eb3da4bd413e652eb9fc9a85ce"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\fin028-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\receipt-coverage.json",
+        "bytes": 48483,
+        "sha256": "cc4e93bf709fff8cd36115b91f7421f8248d5ff5466fa2ba424ab327dfd6273f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\fin028-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\full.json",
+        "bytes": 27155,
+        "sha256": "f697f99db59457da845904da1a3d0aec3e8d5f7c5e7ccbbf596ae9438b1b3840"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\fin028-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\control.json",
+        "bytes": 27123,
+        "sha256": "ae67f0562c32761069c78b64ff38330f11fa4e0bf60f20d5389da284cde9e750"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-first-local-green-20261018.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\FIN-028-first-local-green-20261018.json",
+        "bytes": 7821,
+        "sha256": "e797959657b238b9ef91dc09c38cbff870ff7f76cae240e7ae9fd020dceb7db5"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-red-original-classifier-20261018.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\FIN-028-focal-evidence-20261018\\FIN-028-red-original-classifier-20261018.json",
+        "bytes": 10119,
+        "sha256": "60ca2e1ecd16b8511b5c74936b3ac32d31c36fb7c090d514846c8c39671ceb71"
+      }
+    ],
+    "review": {
+      "id": "FIN-028",
+      "base": "c6d17ef46933e7531c1390e1827981c019efbead",
+      "persona": "P-REV",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "evidence": "E2",
+      "findings": [],
+      "assessment": "Spec and six focal files inspected. Case validates before ports; adapter updates one row preserving id/category_id and audit in same transaction. Tests cover kind replacement/realbalances/results/invalidinputwithoutpoison/rollback/poisononphysicalfailure/preserved unrelateddata.",
+      "limitations": "Static independent review; no test or gate execution; root fullgates and exact CI pending.",
+      "sources": {
+        "src-tauri/src/lib.rs": "4a21a93817d80ec71871ef40f427afc21cb6beab1929ee50a83be22fcd6c9daa",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+        "src-tauri/tests/common/movement_editing.rs": "8d7e0ef3316ed931d3a84e9954f6dfacf5f5d8cc128885124cb1cdf04f81a6fe"
+      }
+    },
+    "local": {
+      "id": "FIN-028",
+      "base": "c6d17ef46933e7531c1390e1827981c019efbead",
+      "local_persona": "P-DAT",
+      "model": "Laguna XS2.1",
+      "seconds": 1138.594,
+      "durations": [
+        683.726,
+        454.868
+      ],
+      "local_calls": 2,
+      "local_used": true,
+      "root_production_correction": false,
+      "root_fixtures": "6unit+4SQL deterministic reuse;RED classifier refined to actual missingmethod;named test tuple for clippy+fmt",
+      "local_correction": "First adapter omitted validation;actual directSQLtest failed;secondlocalmission added real result_effect before take and removed unusedimport;GREEN6unit+4SQL passed",
+      "old_adapter_sha256": "5387ed30e5764cbd7c85605237e187ae7698cc2ccf93ca7d996ee72507535dc5",
+      "paths": {
+        "src-tauri/src/lib.rs": "4a21a93817d80ec71871ef40f427afc21cb6beab1929ee50a83be22fcd6c9daa",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+        "src-tauri/tests/common/movement_editing.rs": "8d7e0ef3316ed931d3a84e9954f6dfacf5f5d8cc128885124cb1cdf04f81a6fe"
+      }
+    },
+    "runtime": {
+      "status": "stopped",
+      "pid": 119452,
+      "port11434": "closed"
+    },
+    "scope": "Edição canônica de Movement com ID estável e validação real antes de efeitos; um ID técnico, uma leitura de relógio e uma chamada de persistência. UPDATE parametrizado de uma linha e evento movement_update na mesma transação. Categoria, contas, saldos iniciais, outros movimentos e ledger preservados. Rollback e descarte da conexão após falha física; entrada inválida preserva o adapter. Sem dependências ou migrations novas.",
+    "limitations": "FIN-029/030, UI/IPC, cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "FIN-028",
+    "base": "c6d17ef46933e7531c1390e1827981c019efbead",
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "evidence": "E2",
+    "findings": [],
+    "assessment": "Spec and six focal files inspected. Case validates before ports; adapter updates one row preserving id/category_id and audit in same transaction. Tests cover kind replacement/realbalances/results/invalidinputwithoutpoison/rollback/poisononphysicalfailure/preserved unrelateddata.",
+    "limitations": "Static independent review; no test or gate execution; root fullgates and exact CI pending.",
+    "sources": {
+      "src-tauri/src/lib.rs": "4a21a93817d80ec71871ef40f427afc21cb6beab1929ee50a83be22fcd6c9daa",
+      "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+      "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+      "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+      "src-tauri/tests/common/mod.rs": "ab462fb4b256f5bc941f3f0242b778d09b39e4b3e2b283c139dcd4c8099138df",
+      "src-tauri/tests/common/movement_editing.rs": "8d7e0ef3316ed931d3a84e9954f6dfacf5f5d8cc128885124cb1cdf04f81a6fe"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 15,
+    "bytes": 849251,
+    "framed_sha256": "f1f1e6c854488d5fe77d6cd1c79c9f340cee8110b835fc187ecf5d42f87a5b1d",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 9,
+    "bytes": 818958,
+    "framed_sha256": "111ec8b18fc2a884f81d898cacb52d29674c03f1459c729f4182c5e8479ba93f",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 514 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 111 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 111 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 464708 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "Edição canônica de Movement com ID estável e validação real antes de efeitos; um ID técnico, uma leitura de relógio e uma chamada de persistência. UPDATE parametrizado de uma linha e evento movement_update na mesma transação. Categoria, contas, saldos iniciais, outros movimentos e ledger preservados. Rollback e descarte da conexão após falha física; entrada inválida preserva o adapter. Sem dependências ou migrations novas.",
+  "preserved": "all110 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;7 focal files 137228B hashverified;WT recoverably archived",
+  "limitations": "FIN-029/030, UI/IPC, cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;FIN029 expected",
+  "cost": "não registrado"
+}
