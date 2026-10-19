@@ -1,0 +1,1079 @@
+{
+  "id": "REC-006",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+  "final_sha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+  "source_ci": {
+    "run": {
+      "id": 39204073999,
+      "head_sha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39204073999",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T05:20:52Z",
+      "updated_at": "2026-10-19T05:31:11Z"
+    },
+    "job": {
+      "id": 117902986170,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39204073999,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          137,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          95,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 0,
+      "new_unit_tests": 4,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 256,
+          "findings": 0,
+          "seconds": 1.214,
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.055,
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.908,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.972,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.453
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "pe": "PE32+",
+          "node": "v24.21.0",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "customProtocol": true,
+          "imageVersion": "20261007.264.1",
+          "imageOS": "win25-vs2026",
+          "machine": "AMD64",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "sourceSha": "5f145b619b43eb7213357235d12e8e680824f4c5",
+          "bytes": 8536064,
+          "sha256": "9422a645adf77fc34352e022c87a27b700cba7d1138723f430af1333361d188a",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12164139342,
+          "name": "frontend-coverage-39204073999-1",
+          "size_in_bytes": 21916,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12164139342",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12164139342/zip",
+          "expired": false,
+          "created_at": "2026-10-19T05:23:00Z",
+          "expires_at": "2026-10-20T05:23:00Z",
+          "updated_at": "2026-10-19T05:23:00Z",
+          "digest": "sha256:ee98c90f34b40574cb548b8dbd29ec626186b9c186ae71a6bed293120309beea",
+          "workflow_run": {
+            "id": 39204073999,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "5f145b619b43eb7213357235d12e8e680824f4c5"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39205145044,
+      "head_sha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39205145044",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T05:33:07Z",
+      "updated_at": "2026-10-19T05:34:38Z"
+    },
+    "job": {
+      "id": 117906240438,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39205145044,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 257,
+          "findings": 0,
+          "seconds": 0.691,
+          "sourceSha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 0.985,
+          "sourceSha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.62,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 16.345,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "e269dbd34f8f93ab1114ac5a45490a246efa7b98",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-006",
+    "evidence": "E3",
+    "rust": {
+      "base": "c596aa00b737cdc08542a61f2c04c6d4b6134790",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "317bb075d643c7e2179ee695f11b13a4ee8a8ceeb50a108bfb388fd67102881f",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.34,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 3.04,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-rust-gate-1-20261019.log",
+          "sha256": "6d0596cb8d118d99692a33f80ca5d92db95b879742a192365dc965ba81c95b0d"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 13.25,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-rust-gate-2-20261019.log",
+          "sha256": "bad9941d1edf7c2e904a80bac627839b10da1b9a1b703f104305f3484f1613b5"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 54.74,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-rust-gate-3-20261019.log",
+          "sha256": "5d65866faaeb75efbddf23363ebbab8ac3f02a00de3ebd365c737ee306f76f63"
+        }
+      ]
+    },
+    "other": {
+      "base": "c596aa00b737cdc08542a61f2c04c6d4b6134790",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 3.76,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-0-20261019.log",
+          "sha256": "f5a83216cce31246eb24b02465390b297ce1ce7d15ce264feab322eb75b946b4"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 0.93,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-1-20261019.log",
+          "sha256": "944a6bb13f89ec4a2ef7ecbe3614d802a74291011a930e92201f514a0bcff2c9"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 2.27,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-2-20261019.log",
+          "sha256": "be44447741c09606231e5ef906bafafa50a0f9084e327d6dc925a7d0259866a0"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 4.51,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-3-20261019.log",
+          "sha256": "bfb42fbe8301c45e5a52c1d05bbe932f8a8b54ca220db307ab49bca901672ed3"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 2.38,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-4-20261019.log",
+          "sha256": "07b243fe93e4a0f9e476f64a36bdc0214b243565d692c304603f712461000798"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.15,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 8.12,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-other-gate-6-20261019.log",
+          "sha256": "b371aa68d919cac3228e25b7f58fc5a11cb215d0469116493ce9168874e91b62"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      137,
+      7,
+      95,
+      16
+    ],
+    "new_unit": 4,
+    "new_doctests": 0,
+    "new_sql": 0,
+    "focal": {
+      "id": "REC-006",
+      "mode": "green",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "f7cc4ad0c9504ba606c32e9295881c814ec8523593bc4b887c486a7cec693d88",
+        "src-tauri/src/domain/overdue_state_tests.rs": "16f3206c834ac30dd0d982df03133cdc9af468955077929757ac077dbe1141e2",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      },
+      "steps": [
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\lib-tests.exe\"",
+          "exit": 0,
+          "seconds": 1.035,
+          "output": ""
+        },
+        {
+          "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\lib-tests.exe\" domain::overdue_state_tests:: --nocapture",
+          "exit": 0,
+          "seconds": 0.211,
+          "output": "\nrunning 4 tests\ntest domain::overdue_state_tests::at_or_before_due_time_is_not_overdue ... ok\ntest domain::overdue_state_tests::nonpayable_and_invalid_states_fail_before_reading_clock ... ok\ntest domain::overdue_state_tests::overdue_keeps_positive_amount_and_uses_existing_payment_validation ... ok\ntest domain::overdue_state_tests::overdue_requires_strictly_later_injected_time_and_preserves_payable ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 133 filtered out; finished in 0.00s\n\n"
+        }
+      ],
+      "result": "pass"
+    },
+    "red": {
+      "id": "REC-006",
+      "mode": "red",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "4d7722e77aa104a0b7df9f7a942323cef6b1ed322474b94ca890f39a1c56cddc",
+        "src-tauri/src/domain/overdue_state_tests.rs": "b63ad27b2f50bbcf5ff6b72876ad5f9dcb3e0cf4e3d25c2435b1d6e517f84746",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      },
+      "steps": [
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\lib-tests.exe\"",
+          "exit": 1,
+          "seconds": 0.699,
+          "output": "error[E0599]: no method named `mark_overdue` found for enum `ObligationState` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:17:33\n    |\n 17 |             let overdue = state.mark_overdue(due_at, &source).unwrap();\n    |                                 ^^^^^^^^^^^^ method not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ method `mark_overdue` not found for this enum\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:20:56\n    |\n 20 |             assert!(matches!(overdue, ObligationState::Overdue {amount_cents} if amount_cents==amount));\n    |                                                        ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no method named `mark_overdue` found for enum `ObligationState` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:32:36\n    |\n 32 |             assert!(matches!(state.mark_overdue(due_at, &source), Err(DomainError::InvalidInput)));\n    |                                    ^^^^^^^^^^^^ method not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ method `mark_overdue` not found for this enum\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:46:26\n    |\n 46 |         ObligationState::Overdue {amount_cents: 7},\n    |                          ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:47:26\n    |\n 47 |         ObligationState::Overdue {amount_cents: 0},\n    |                          ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:48:26\n    |\n 48 |         ObligationState::Overdue {amount_cents: -1},\n    |                          ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:49:26\n    |\n 49 |         ObligationState::Overdue {amount_cents: i64::MIN},\n    |                          ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:65:38\n    |\n 65 |         let state = ObligationState::Overdue {amount_cents};\n    |                                      ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:73:40\n    |\n 73 |             let state=ObligationState::Overdue {amount_cents:amount};\n    |                                        ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:79:54\n    |\n 79 |             assert!(matches!(state, ObligationState::Overdue {amount_cents} if amount_cents==amount));\n    |                                                      ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:95:36\n    |\n 95 |         let state=ObligationState::Overdue {amount_cents:7};\n    |                                    ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror[E0599]: no variant named `Overdue` found for enum `ObligationState`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:98:49\n    |\n 98 |         assert!(matches!(state,ObligationState::Overdue {amount_cents:7}));\n    |                                                 ^^^^^^^ variant not found in `ObligationState`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ variant `Overdue` not found here\n\nerror: aborting due to 12 previous errors\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+        }
+      ],
+      "result": "pass"
+    },
+    "failed_focal": {
+      "id": "REC-006",
+      "mode": "green",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "f7cc4ad0c9504ba606c32e9295881c814ec8523593bc4b887c486a7cec693d88",
+        "src-tauri/src/domain/overdue_state_tests.rs": "b63ad27b2f50bbcf5ff6b72876ad5f9dcb3e0cf4e3d25c2435b1d6e517f84746",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      },
+      "steps": [
+        {
+          "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\lib-tests.exe\"",
+          "exit": 0,
+          "seconds": 1.555,
+          "output": ""
+        },
+        {
+          "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\lib-tests.exe\" domain::overdue_state_tests:: --nocapture",
+          "exit": 101,
+          "seconds": 0.209,
+          "output": "\nrunning 4 tests\ntest domain::overdue_state_tests::at_or_before_due_time_is_not_overdue ... ok\ntest domain::overdue_state_tests::nonpayable_and_invalid_states_fail_before_reading_clock ... ok\ntest domain::overdue_state_tests::overdue_keeps_positive_amount_and_uses_existing_payment_validation ... ok\ntest domain::overdue_state_tests::overdue_requires_strictly_later_injected_time_and_preserves_payable ... FAILED\n\nfailures:\n\nfailures:\n    domain::overdue_state_tests::overdue_requires_strictly_later_injected_time_and_preserves_payable\n\ntest result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 133 filtered out; finished in 0.00s\n\n\nthread 'domain::overdue_state_tests::overdue_requires_strictly_later_injected_time_and_preserves_payable' (127912) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\src-tauri\\src\\domain\\overdue_state_tests.rs:17:63:\ncalled `Result::unwrap()` on an `Err` value: InvalidInput\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+        }
+      ],
+      "result": "fail"
+    },
+    "fixture_correction": {
+      "id": "REC-006",
+      "reason": "Original fixture assumed 1ns is representable in SystemTime; executed Windows probe shows1/99ns equal epoch,100ns advances",
+      "root_production_correction": false,
+      "root_fixture_correction": true,
+      "tests_before_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-tests-before-tick-correction-20261019.rs",
+      "tests_before_sha256": "b63ad27b2f50bbcf5ff6b72876ad5f9dcb3e0cf4e3d25c2435b1d6e517f84746",
+      "tests_after_sha256": "16f3206c834ac30dd0d982df03133cdc9af468955077929757ac077dbe1141e2",
+      "production_sha256_unchanged": "f7cc4ad0c9504ba606c32e9295881c814ec8523593bc4b887c486a7cec693d88",
+      "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\receipt-green-before-tick-correction.json",
+      "probe": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-system-time-probe-20261019.json"
+    },
+    "system_time_probe": {
+      "exit": 0,
+      "output": "1 false false\n99 false false\n100 true true\n101 true true\n",
+      "claim": "Actual Windows SystemTime representability only; no wall-clock precision claim"
+    },
+    "coverage": {
+      "full": {
+        "src/domain/mod.rs": {
+          "lines": {
+            "count": 142,
+            "covered": 142,
+            "percent": 100
+          },
+          "functions": {
+            "count": 16,
+            "covered": 16,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 32,
+            "covered": 24,
+            "percent": 75
+          },
+          "regions": {
+            "count": 193,
+            "covered": 192,
+            "notcovered": 1,
+            "percent": 99.48186528497409
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/domain/mod.rs": {
+          "lines": {
+            "count": 142,
+            "covered": 123,
+            "percent": 86.61971830985915
+          },
+          "functions": {
+            "count": 16,
+            "covered": 15,
+            "percent": 93.75
+          },
+          "instantiations": {
+            "count": 32,
+            "covered": 23,
+            "percent": 71.875
+          },
+          "regions": {
+            "count": 193,
+            "covered": 172,
+            "notcovered": 21,
+            "percent": 89.11917098445595
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\receipt-green-before-tick-correction.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\receipt-green-before-tick-correction.json",
+        "bytes": 2982,
+        "sha256": "08943ff31266cd71daed3f668ac91ce91d1375914ad3fbce90d2dfd6d8f974ce"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\receipt-green.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\receipt-green.json",
+        "bytes": 2444,
+        "sha256": "8a6aa7e321ee56aa6fbcac75dbe256fc46aa3333f7ea05b9986106c03c2f5d22"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-006-occurrence-value\\Millani Artes\\artifacts\\rec006-check\\receipt-red.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\receipt-red.json",
+        "bytes": 9400,
+        "sha256": "b72222d7dd53e9242c6f77b385ebf29ccbc158fa0fe9e6128b40d88f82d2a9d6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec006-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\receipt-coverage.json",
+        "bytes": 51728,
+        "sha256": "aae0b999f99e5cea036ea29b4b448a70b36ec8b58b9e3c5601ee74e6543d95e1"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec006-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\full.json",
+        "bytes": 30432,
+        "sha256": "454a96abf9644be57f92d7a9431c943dad190bf5ef67f03ca7884095325807aa"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec006-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\control.json",
+        "bytes": 30431,
+        "sha256": "e1a4ccc924eb5dd488a610f11005b46d8106f1c473f24920360343c1d8b0093d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-system-time-probe-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\REC-006-system-time-probe-20261019.json",
+        "bytes": 191,
+        "sha256": "57d562345aa96470575cf2c8f359bc98dc56cf4186f53072a22b1e010e88b4ea"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-fixture-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\REC-006-fixture-correction-20261019.json",
+        "bytes": 981,
+        "sha256": "1b4dc02f4691f059cd01e341c5d4c0345c20bca6eff91a19f90b6ee02572d346"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-tests-before-tick-correction-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-006-focal-evidence-20261019\\REC-006-tests-before-tick-correction-20261019.rs",
+        "bytes": 5314,
+        "sha256": "b63ad27b2f50bbcf5ff6b72876ad5f9dcb3e0cf4e3d25c2435b1d6e517f84746"
+      }
+    ],
+    "review": {
+      "id": "REC-006",
+      "base": "c596aa00b737cdc08542a61f2c04c6d4b6134790",
+      "persona": "P-REV",
+      "reviewer": "/root/cat004_review",
+      "model": "gpt-6-sol",
+      "evidence": "E2",
+      "readonly": true,
+      "findings": [],
+      "limit": "Static review only; no executed tests or gates by reviewer",
+      "conclusion": "mark_overdue validates before Clock; one injected read only for valid Payable, strict now>due_at. Positive Overdue uses existing mark_paid with real Exit and ID validation. Fixture100ns supported by Windows probe. No calendar/persistence/unique-payment proof.",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "317bb075d643c7e2179ee695f11b13a4ee8a8ceeb50a108bfb388fd67102881f",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      }
+    },
+    "local": {
+      "id": "REC-006",
+      "base": "c596aa00b737cdc08542a61f2c04c6d4b6134790",
+      "local_persona": "P-DOM",
+      "model": "Laguna XS2.1",
+      "seconds": 410.471,
+      "local_calls": 1,
+      "local_used": true,
+      "root_production_correction": false,
+      "root_fixture_correction": true,
+      "root_fixtures": "4unit deterministic reuse;2fixture ticks1ns to100ns after actual Windows probe;fmt;guard removes only Overdue variant/arm/mark_overdue/new mark_paid arm/testhook;old code/docs and paid test body unchanged",
+      "old_domain_sha256": "37ddf1df0bd74f902514307f5c646071098c249b1ba72a34a6edc67a0b1f4c42",
+      "paths": {
+        "src-tauri/src/domain/mod.rs": "317bb075d643c7e2179ee695f11b13a4ee8a8ceeb50a108bfb388fd67102881f",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+      }
+    },
+    "runtime": {
+      "status": "stopped",
+      "pid": 119868,
+      "port11434": "closed"
+    },
+    "scope": "ObligationState::Overdue tem centavos positivos. mark_overdue valida estado,aceita somente Payable válido,lê Clock injetado uma vez e exige now>due_at;igual ainda não vence. Invalidos/inelegíveis não leemClock. mark_paid aceita tambémOverdue pelo MESMO caminho real Exit/centavosiguais/ID16nãozero. Originais intactos,domínio/docsanteriores preservados;sem IO,calendário,SQL,UUID,deps ou migrations novas.",
+    "limitations": "REC-007..015 (calendário,fuso,geração,valor por ocorrência,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-006",
+    "base": "c596aa00b737cdc08542a61f2c04c6d4b6134790",
+    "persona": "P-REV",
+    "reviewer": "/root/cat004_review",
+    "model": "gpt-6-sol",
+    "evidence": "E2",
+    "readonly": true,
+    "findings": [],
+    "limit": "Static review only; no executed tests or gates by reviewer",
+    "conclusion": "mark_overdue validates before Clock; one injected read only for valid Payable, strict now>due_at. Positive Overdue uses existing mark_paid with real Exit and ID validation. Fixture100ns supported by Windows probe. No calendar/persistence/unique-payment proof.",
+    "sources": {
+      "src-tauri/src/domain/mod.rs": "317bb075d643c7e2179ee695f11b13a4ee8a8ceeb50a108bfb388fd67102881f",
+      "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+      "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 12,
+    "bytes": 910027,
+    "framed_sha256": "0d97c7a7c8992337d71c3c5d12d3a5d7e3d250ca04d33962df68bba90d1b1ba1",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 9,
+    "bytes": 895442,
+    "framed_sha256": "ae9430750d23c31dfce50e15d4a809d7554e872c2cdc40adee9e1702b93ad11e",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 545 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 119 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 119 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 500214 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "ObligationState::Overdue tem centavos positivos. mark_overdue valida estado,aceita somente Payable válido,lê Clock injetado uma vez e exige now>due_at;igual ainda não vence. Invalidos/inelegíveis não leemClock. mark_paid aceita tambémOverdue pelo MESMO caminho real Exit/centavosiguais/ID16nãozero. Originais intactos,domínio/docsanteriores preservados;sem IO,calendário,SQL,UUID,deps ou migrations novas.",
+  "preserved": "all118 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;9 focal files 133903B hashverified;WT recoverably archived",
+  "limitations": "REC-007..015 (calendário,fuso,geração,valor por ocorrência,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
