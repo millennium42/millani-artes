@@ -73,3 +73,32 @@ fn prd002_accepts_content_without_normalization_or_price_state_coupling() {
         }
     }
 }
+
+#[test]
+fn prd003_accepts_zero_and_positive_prices_without_mutation_or_name_state_coupling() {
+    for name in ["", "   ", "  Peça ‘azul’  "] {
+        for price in [0, 1, i64::MAX] {
+            for active in [true, false] {
+                let product = prd002_product(name, price, active);
+                assert_eq!(product.validate_suggested_price(), Ok(()));
+                prd002_assert_unchanged(&product, name, price, active);
+            }
+        }
+    }
+}
+
+#[test]
+fn prd003_rejects_negative_prices_without_mutation_or_name_state_coupling() {
+    for name in ["", "   ", "  Peça ‘azul’  "] {
+        for price in [-1, i64::MIN] {
+            for active in [true, false] {
+                let product = prd002_product(name, price, active);
+                assert_eq!(
+                    product.validate_suggested_price(),
+                    Err(DomainError::InvalidInput)
+                );
+                prd002_assert_unchanged(&product, name, price, active);
+            }
+        }
+    }
+}

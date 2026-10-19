@@ -1,0 +1,26 @@
+{
+  "id": "PRD-003",
+  "title": "validar preço sugerido de produto",
+  "specPath": "planning/specs/PRD-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "PRD-001"
+  ],
+  "acceptanceCriteria": [
+    "Decisão humana: preço zero válido;negativo InvalidInput existente.",
+    "validate_suggested_price puro,i64centavos,independente de nome/ativo,preserva campos e validate_name.",
+    "RED E0599/GREEN5unit(2novos)/gates/LLVMdomain>=95comcontrole5Product/P-REV/CIs exatos.",
+    "Docs antespasses/nota131/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "REDausente/GREEN5unit/20doctestsanteriores",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVM>=95/controle5Product/review/validators/stagedscan",
+    "CIfonte/final/nota131/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/P-DOMLaguna240s candidato8linhas/transplanteguardado/P-SECtools/P-REVSol6medium;12repo+2scratchWT",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-003 VERIFY E3:MVP07 preço sugerido não negativo/zero válido conforme humano19out;validate_suggested_price puro/2unitnovos/RED/GREEN5/Rust322+20docs/gates/security/reviewPASS. LLVMdomain>=95controle omitindo5Productrejeitado;domínio anterior e7migrations intactos. CIs/nota131/liberação pendentes;Metaativa;fonte:handoffPRD-003."
+}

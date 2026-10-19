@@ -484,6 +484,14 @@ impl Product {
             Ok(())
         }
     }
+
+    pub fn validate_suggested_price(&self) -> Result<()> {
+        if self.suggested_price_cents < 0 {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
