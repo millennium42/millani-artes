@@ -210,15 +210,41 @@ impl Movement {
     }
 }
 
-/// An obligation waiting for its amount.
+/// The financial state of a recurrence obligation.
 ///
 /// ```compile_fail
 /// fn amount(state: &millani_artes::domain::ObligationState) -> i64 {
 ///     state.amount_cents
 /// }
 /// ```
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::ObligationState>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::ObligationState>();
+/// ```
 pub enum ObligationState {
     AwaitingValue,
+    Payable { amount_cents: i64 },
+}
+
+impl ObligationState {
+    pub fn validate(&self) -> Result<()> {
+        match self {
+            Self::AwaitingValue => Ok(()),
+            Self::Payable { amount_cents } => {
+                if *amount_cents > 0 {
+                    Ok(())
+                } else {
+                    Err(DomainError::InvalidInput)
+                }
+            }
+        }
+    }
 }
 
 /// Monthly variable recurrence configuration; amount is supplied per obligation.
@@ -290,6 +316,13 @@ impl FixedRecurrence {
             Ok(())
         }
     }
+
+    pub fn initial_obligation_state(&self) -> Result<ObligationState> {
+        self.validate()?;
+        Ok(ObligationState::Payable {
+            amount_cents: self.amount_cents,
+        })
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -336,3 +369,6 @@ mod variable_recurrence_tests;
 
 #[cfg(test)]
 mod awaiting_value_tests;
+
+#[cfg(test)]
+mod payable_state_tests;

@@ -1,0 +1,27 @@
+{
+  "id": "REC-004",
+  "title": "estado a pagar",
+  "specPath": "planning/specs/REC-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-001",
+    "REC-002"
+  ],
+  "acceptanceCriteria": [
+    "Payablecentavospositivos/validateestado e Fixed.initial validando configuração real;AwaitingValue/Variable preservados.",
+    "Sem efeitos/pagamento/normalização/derives/deps/migrations;2doctestsprivacidade do payload.",
+    "RED/GREEN4unit+2doctests/LLVMdomain>=95controle/gates/review/CIs exatos.",
+    "Docsantespasses/nota117/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN4unit/2compile_faildoc",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdomain>=95controle/review/validators/stagedscan",
+    "CI fonte/final/nota117/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-SEC/P-REVSol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-004 VERIFY E3:Payablepositivo/Statevalidate/Fixedinitialreal/Awaitingpreservado/semefeitos;RED/GREEN4unit+2docs. P2doctestomitidorestaurado/verificado;Rust231+16docs/quality/security/LLVMdomain102/102 e14/14comcontrole/review PASS. CIs pendentes;REC-005..015 (demais estados,valorporocorrência,calendário,geração,persistência,pagamento),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-004. CIfonte/final/nota117/liberação pendentes;MetaE2Eativa."
+}
