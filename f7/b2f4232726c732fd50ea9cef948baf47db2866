@@ -1,0 +1,2224 @@
+{
+  "id": "REC-013",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "1434f282bd06445994baca20333207888ac030fb",
+  "final_sha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+  "source_ci": {
+    "run": {
+      "id": 39252069599,
+      "head_sha": "1434f282bd06445994baca20333207888ac030fb",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39252069599",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T12:26:26Z",
+      "updated_at": "2026-10-19T12:37:10Z"
+    },
+    "job": {
+      "id": 118058050542,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39252069599,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          181,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          126,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 1,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 270,
+          "findings": 0,
+          "seconds": 1.271,
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.094,
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 1.004,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.605,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.297
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "sourceSha": "1434f282bd06445994baca20333207888ac030fb",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "imageVersion": "20261007.264.1",
+          "bytes": 8536064,
+          "imageOS": "win25-vs2026",
+          "node": "v24.21.0",
+          "pe": "PE32+",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "customProtocol": true,
+          "machine": "AMD64",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "sha256": "f0025d7c213803eca84d1c7c85e4780cd0b7787946c52f45bc48c15018fa3d7f",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12186322183,
+          "name": "frontend-coverage-39252069599-1",
+          "size_in_bytes": 21913,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12186322183",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12186322183/zip",
+          "expired": false,
+          "created_at": "2026-10-19T12:28:30Z",
+          "expires_at": "2026-10-20T12:28:29Z",
+          "updated_at": "2026-10-19T12:28:30Z",
+          "digest": "sha256:cc092b7f87684b2182ba1be0d3e6819df5c3b6a1418c8211524ebb946cbe8410",
+          "workflow_run": {
+            "id": 39252069599,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "1434f282bd06445994baca20333207888ac030fb"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39253666628,
+      "head_sha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39253666628",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T12:38:42Z",
+      "updated_at": "2026-10-19T12:40:18Z"
+    },
+    "job": {
+      "id": 118063441367,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39253666628,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 271,
+          "findings": 0,
+          "seconds": 0.886,
+          "sourceSha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.142,
+          "sourceSha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.717,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 17.371,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "f7b2f4232726c732fd50ea9cef948baf47db2866",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-013",
+    "evidence": "E3",
+    "rust": {
+      "base": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+      "sources": {
+        "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.35,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 1.99,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-rust-gate-1-20261019.log",
+          "sha256": "3f3f84151ae5b6180ca8a8200ca23c0b89a5522402e0689d942e402a359bbe70"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 13.11,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-rust-gate-2-20261019.log",
+          "sha256": "69337e996162499c755c71a7391d1d4e6a5aef1022000c35f939a5aa73ffc86a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 56.71,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-rust-gate-3-20261019.log",
+          "sha256": "3c90506891aebfbd0cb0946f1b93eeb13ad49613d3a1b78faf2a9d7d9af0ef3c"
+        }
+      ]
+    },
+    "other": {
+      "base": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 3.22,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-0-20261019.log",
+          "sha256": "0c48a23837f0c5d4fc497bc47b11abc4e342cffc19d8f47abff4420e58192337"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 0.81,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-1-20261019.log",
+          "sha256": "f8875d49865ba676d235be2a9521f6418fabd73f07e0bf40a71f10278eebf6f1"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 1.89,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-2-20261019.log",
+          "sha256": "66b8b9e0502fab5c1ae3341957f67760f46863fd1400c6c7aa017a05de26dde5"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 3.87,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-3-20261019.log",
+          "sha256": "be05d3c1a8c8d280b87a497581e5631a0945e8a76888a9386dd2f73dea481a5a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 2.33,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-4-20261019.log",
+          "sha256": "1f1bbf187c6f978b50f266c229a896aafc34927723647d4b71624049f1e1d86a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.13,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 6.16,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-other-gate-6-20261019.log",
+          "sha256": "520ce64bd0fa4060993345d75cbcde1897d25ee8ca6fd5c4bb8b14b5fe6d7f15"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      181,
+      7,
+      126,
+      18
+    ],
+    "new_unit": 0,
+    "new_sql": 1,
+    "new_doctests": 0,
+    "focal": {
+      "rec013-check/baseline": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "baseline",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.518,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.804,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 0,
+            "seconds": 1.068,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.81s\n\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      },
+      "rec013-check/red-duplicate": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-duplicate",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.501,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.482,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.33,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.08s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (134272) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:558:21:\nassertion `left == right` failed: one new exit per paid obligation\n  left: 3\n right: 2\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "030b73ffaa92c7ab1a0bf92237fbc46831c7bd0a8e559298790369995464bb65"
+        },
+        "result": "pass"
+      },
+      "rec013-check/red-amount": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-amount",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.498,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.504,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.329,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.08s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (127292) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:585:21:\nassertion `left == right` failed: exact persisted exit and obligation amounts\n  left: ([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160], \"exit\", 1001, \"home\", [161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161], 1000)\n right: ([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160], \"exit\", 1000, \"home\", [161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161], 1000)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7c899a7fed907973ae0b67ebf4b341c5796910782fc9979e76fa7e193380079d"
+        },
+        "result": "pass"
+      },
+      "rec013-check/green": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.512,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.495,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\tests.exe\" common::recurrence_payment:: --nocapture",
+            "exit": 0,
+            "seconds": 1.921,
+            "output": "\nrunning 6 tests\ntest common::recurrence_payment::invalid_direct_pairs_preserve_data_and_adapter_usability_before_any_sql ... ok\ntest common::recurrence_payment::missing_account_existing_movement_and_repeated_payment_do_not_create_extra_exits ... ok\ntest common::recurrence_payment::movement_state_and_audit_abort_or_ignore_faults_rollback_every_payment_write ... ok\ntest common::recurrence_payment::stale_or_adulterated_obligation_snapshots_never_leave_an_inserted_exit_or_audit ... ok\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... ok\ntest common::recurrence_payment::payment_commits_one_exact_exit_paid_link_and_audit_for_both_rules_states_contexts_and_bounds ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 120 filtered out; finished in 1.67s\n\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      },
+      "rec013-review-check/red-duplicate": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-duplicate",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.622,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.489,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.33,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.08s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (141520) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:559:21:\nassertion `left == right` failed: one new exit per paid obligation\n  left: 3\n right: 2\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "89b66d5d66d390e54aa7eb76e1f7b307bb1c4587f4958d97fb3f5ce2d1bcd7f4"
+        },
+        "result": "pass"
+      },
+      "rec013-review-check/red-amount": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-amount",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.484,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.474,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.332,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.08s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (138688) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:594:21:\nassertion `left == right` failed: exact persisted exit and obligation amounts\n  left: ([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160], \"exit\", 1001, \"home\", [161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161], 1000)\n right: ([160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160], \"exit\", 1000, \"home\", [161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161], 1000)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7c899a7fed907973ae0b67ebf4b341c5796910782fc9979e76fa7e193380079d"
+        },
+        "result": "pass"
+      },
+      "rec013-review-check/red-history": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-history",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.507,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.46,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.329,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.09s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (138124) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:551:22:\ncalled `Result::unwrap()` on an `Err` value: StoreFailed\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "b9c4ee8908ab134cd7acfa2fb6e26e912f83a2bbad56612746d6c01b35f7c7ee"
+        },
+        "result": "fail"
+      },
+      "rec013-review-check/green": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.495,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.473,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\tests.exe\" common::recurrence_payment:: --nocapture",
+            "exit": 0,
+            "seconds": 1.902,
+            "output": "\nrunning 6 tests\ntest common::recurrence_payment::invalid_direct_pairs_preserve_data_and_adapter_usability_before_any_sql ... ok\ntest common::recurrence_payment::missing_account_existing_movement_and_repeated_payment_do_not_create_extra_exits ... ok\ntest common::recurrence_payment::movement_state_and_audit_abort_or_ignore_faults_rollback_every_payment_write ... ok\ntest common::recurrence_payment::stale_or_adulterated_obligation_snapshots_never_leave_an_inserted_exit_or_audit ... ok\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... ok\ntest common::recurrence_payment::payment_commits_one_exact_exit_paid_link_and_audit_for_both_rules_states_contexts_and_bounds ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 120 filtered out; finished in 1.66s\n\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+        },
+        "result": "pass"
+      },
+      "rec013-history-check/red-history": {
+        "id": "REC-013",
+        "phase": "sqlite",
+        "mode": "red-history",
+        "sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.546,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.454,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\tests.exe\" common::recurrence_payment::rec013_ --nocapture",
+            "exit": 101,
+            "seconds": 0.339,
+            "output": "\nrunning 1 test\ntest common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.09s\n\n\nthread 'common::recurrence_payment::rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen' (142444) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\src-tauri\\tests\\common\\recurrence_payment.rs:577:25:\nassertion `left == right` failed: previous audit retained\n  left: 0\n right: 1\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+          }
+        ],
+        "production": {
+          "src-tauri/src/lib.rs": "17c69f3196ffe1745b48a8f0b379d21a31105d7b2fa1de251bad89bb58dbde61",
+          "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+          "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+          "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+          "src-tauri/src/application/calculate_context_result.rs": "8961d4484d8cac463eb515b4658f5858c7e64d0f8854553e0957d1b2edbfe771",
+          "src-tauri/src/application/calculate_context_result_tests.rs": "5ebee72bcc4299e9614e6b70cfa2677b61e6a57548aa74d177e085c3f03e4a75",
+          "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+          "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+          "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+          "src-tauri/src/application/create_category_tests.rs": "fbd8abbe336a94afd28f32bfaa8083f89ccb976b261d35fa7636a918b1536146",
+          "src-tauri/src/application/create_entry.rs": "70bcb3dd034b639865cb29f809160d0c0c8aedfdd7fc65c9af4ed0013ec82f66",
+          "src-tauri/src/application/create_entry_tests.rs": "44d056bfed97272cfcd87a33aef1181f5e45eae1aed9df5a444bb024a8d8e15a",
+          "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+          "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+          "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+          "src-tauri/src/application/create_transfer_tests.rs": "e2b817f649b48c7dd8cc0a988a90aa872663980a6b5ea4f8ef5c92c542a3e358",
+          "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+          "src-tauri/src/application/deactivate_category_tests.rs": "906c14905c461e30b2bcd04f2dd3bfe12ab52f46cad512fd03aac6d094cd7af2",
+          "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+          "src-tauri/src/application/edit_movement_tests.rs": "38bbcfab947eac7818d06e685c8f2130a499c797312313471c474d6c18fcaf74",
+          "src-tauri/src/application/generate_fixed_obligation.rs": "890148d4c392dd75fa6b129db5ce83a4ce4a5c5fa5f632dfe4a86f99c785a7fb",
+          "src-tauri/src/application/generate_fixed_obligation_tests.rs": "ec436e063e9c18505d7d9c5ea885ae42dfdf3564c1e80195b5c3926f4a288add",
+          "src-tauri/src/application/generate_variable_obligation.rs": "28732a9d0e4d0f5bc84febcb0d3b253bbcdb305c791ebf89fd505583c40b5a03",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "fcddc5cd3f928d2ea8082537ea6c18068f03693dc3b60498d7567de0a7720d5c",
+          "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+          "src-tauri/src/application/list_accounts_tests.rs": "5c66abc9af67ff72e358a151b0d6a4a51ccc18b53453e996e163099a9e98cd96",
+          "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+          "src-tauri/src/application/list_movements_tests.rs": "1c57ebbbee689f91c29df3c73b1138091e3f11906d6a73ee76e75de5d3fd12cd",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "6955009a30d95183d79b13a7874871a7cf0050aa837551766df0da1df8b982e4",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "67b91594ac848db8357b54930f8668f7162b096405af9ec5f6e5b75a9dc56192",
+          "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+          "src-tauri/src/application/pay_recurrence.rs": "6c55a4358b78fda5ab9ab521dadeb5558ff1ea0340333102560e951b47ce8632",
+          "src-tauri/src/application/pay_recurrence_tests.rs": "7c52cae7cbd33d6ea9a6d365fb433adb107e273263fabec538be48144645796f",
+          "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+          "src-tauri/src/application/rename_category_tests.rs": "a3bdfee5cc28ef0a93a6ecf046c398d70948e16447cab02f7b043e8b43c0ce3e",
+          "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+          "src-tauri/src/application/supply_obligation_amount_tests.rs": "e691a3f954c2542ba774c5c579bf6fc48ac122a542287ac83abfc7ee9dc38e45",
+          "src-tauri/src/domain/awaiting_value_tests.rs": "677122955826503653745298b200b6a2e58d66f59fc652ee96a48bfb2939cae2",
+          "src-tauri/src/domain/balance_tests.rs": "207fcaaab6c6982f05fea3a9d06f219a6b2791b77a80e78aa15a8a682bd24e7e",
+          "src-tauri/src/domain/entry_tests.rs": "7eaf6b61c6d9825a82a99df909b20edfa2bf5aeed0a8ae756ecfd1ba3a646b1c",
+          "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+          "src-tauri/src/domain/fixed_generation_tests.rs": "91cf89e23d482199c394a7fca63e3b41153843a8784a6d5c9b86acb45637bdd3",
+          "src-tauri/src/domain/fixed_recurrence_tests.rs": "83ada62b8ddafc8ef6144d1d952a46e0edeb048835a8f81dfc72f848e6f03f3f",
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/obligation_amount.rs": "6a890dd0e22672d66335c6302b94dfa4d5e7f03f8a1dbe073bcc4e32a535f930",
+          "src-tauri/src/domain/obligation_amount_tests.rs": "752aa9d8cfc2c6c805c91eb07bd597bcf079c1d8314c3acce02511303d7b2e4a",
+          "src-tauri/src/domain/overdue_epoch.rs": "5867d2fa4314b967aa3b5043a2ae716c9689a24d9bfeab235236d38bc9e2bee7",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "4a14062cc1a4e7107abbea151d3a971dfad6541e6fae3b360937a63b3437959e",
+          "src-tauri/src/domain/overdue_state_tests.rs": "d781365587e473f5dc39279b145ae535ebf67771599d97b457997bffcd3485d9",
+          "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+          "src-tauri/src/domain/payable_state_tests.rs": "eb722775a6f2245339135f7a318399399bde6c7bc9773baf3929971e6fab382a",
+          "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+          "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+          "src-tauri/src/domain/result_effect_tests.rs": "0463d31c77eb215f3cfd8468010e158fcfe93afeab8f71c1b81c1f89c9e2169e",
+          "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+          "src-tauri/src/domain/transfer_tests.rs": "6b5d24d0a9584f3a81acbd3660fc1e7afe745b9f08ad51769c6b744e3fccc1b0",
+          "src-tauri/src/domain/variable_generation.rs": "0f497419b43f1571af2ea464926bfa5e63f3152225d1ed48bd2a5a33ac5dc964",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3965da362f18bef37e3c7d9594956f36a86f57d8b9b5a09f2b4a5e2e49ca3556",
+          "src-tauri/src/domain/variable_recurrence_tests.rs": "3dbb4a576144c82c4bee9f4f1f3836de7964cf2cd5d34816ae742c124c87e826",
+          "src-tauri/src/infrastructure/accounts.rs": "b412ae2021c92f1808f7a372d966d3b55086a797f2240fdb1b2c9cb0765e78d0",
+          "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+          "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+          "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+          "src-tauri/src/infrastructure/movements.rs": "7a251b69064539448d49e7997db2f22b30d86dcef4d4141abab2ab82b7205f4e",
+          "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+          "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "b58d99b637b8c7960624133bb91d862d09a0c415825561a4319cc294a163b564",
+          "src-tauri/src/infrastructure/recurrences/payment.rs": "7ab2f1e371a168b7f74a12bca433bd5eb9268b87ee3b6ec6623997495cff419c"
+        },
+        "result": "pass"
+      }
+    },
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\baseline\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-baseline-receipt.json",
+        "bytes": 11718,
+        "sha256": "3ed64a84116b434bb04a0769cbb86ab747ba572c26ec0dfd67bc453c1ac4dbf5"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-red-duplicate-receipt.json",
+        "bytes": 12327,
+        "sha256": "7f58add65c404fe3be1690eac7a0dee2dfd9b0395a6842709a0eb704d8ea058d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-red-duplicate-payment.rs",
+        "bytes": 4222,
+        "sha256": "030b73ffaa92c7ab1a0bf92237fbc46831c7bd0a8e559298790369995464bb65"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-red-amount-receipt.json",
+        "bytes": 12711,
+        "sha256": "74155aa6db7c1e53ee73153c153db5c76f2ce9dec369dfb68abf4b433ef6a04d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-red-amount-payment.rs",
+        "bytes": 3916,
+        "sha256": "7c899a7fed907973ae0b67ebf4b341c5796910782fc9979e76fa7e193380079d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-check-green-receipt.json",
+        "bytes": 12302,
+        "sha256": "66de194181b0011a7add08bc2b1aa54a715367660cbbeda7c2c1ac3512671871"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-duplicate-receipt.json",
+        "bytes": 12362,
+        "sha256": "5f8234efe6be32496527bfd036027284f24c221bacd64b4b788d0c6127991fd7"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-duplicate\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-duplicate-payment.rs",
+        "bytes": 4159,
+        "sha256": "89b66d5d66d390e54aa7eb76e1f7b307bb1c4587f4958d97fb3f5ce2d1bcd7f4"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-amount-receipt.json",
+        "bytes": 12746,
+        "sha256": "b6b93b6e4a6a4a108b73fd000b421a20370002d74c958b47763b54e61c069495"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-amount\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-amount-payment.rs",
+        "bytes": 3916,
+        "sha256": "7c899a7fed907973ae0b67ebf4b341c5796910782fc9979e76fa7e193380079d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-history-receipt.json",
+        "bytes": 12318,
+        "sha256": "5f932ab63361cd69ce7e90108b23da722c14ca1389305b517a6be426cb9b996e"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\red-history\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-red-history-payment.rs",
+        "bytes": 4071,
+        "sha256": "b9c4ee8908ab134cd7acfa2fb6e26e912f83a2bbad56612746d6c01b35f7c7ee"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-review-check-green-receipt.json",
+        "bytes": 12337,
+        "sha256": "33e5553568fb045b2c02aa33c010fd92a1a2f41b7800cef1ece0bf0782acb813"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-history-check-red-history-receipt.json",
+        "bytes": 12347,
+        "sha256": "aacc43b621bce6dbb3aca7861aa1e110960c7cee96a1e4dca2c3e639a50927e8"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-history-check\\sqlite\\red-history\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\rec013-history-check-red-history-payment.rs",
+        "bytes": 4173,
+        "sha256": "7ab2f1e371a168b7f74a12bca433bd5eb9268b87ee3b6ec6623997495cff419c"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-review-check\\sqlite\\green\\src\\infrastructure\\recurrences\\payment.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\production-payment-original.rs",
+        "bytes": 3912,
+        "sha256": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-fixture-preparation-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-fixture-preparation-20261019.json",
+        "bytes": 303,
+        "sha256": "d318ae618b765c1292a0d0e5b10abc0b4e48b754c083c6d68996a0d8139fe0cb"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-proof-wrapper-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-proof-wrapper-correction-20261019.json",
+        "bytes": 420,
+        "sha256": "35bc70906cadae6a09c631b37097c4c11b64b0fd89650f55e0fb8f748b0a8c68"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-review-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-review-20261019.json",
+        "bytes": 1071,
+        "sha256": "b1e070a1b9b7104338c3b5180687f6ff4072b130413b11992d8c3aedefd5ab7d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-focal-20261019.py",
+        "bytes": 3397,
+        "sha256": "6c84bcee106023739f9367f66f57d283d2a17b062440e011f64c35ecf40d1f3a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-review-focal-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-review-focal-20261019.py",
+        "bytes": 3468,
+        "sha256": "b0189a3f1d06731f9aebfe470ebe4b7caabce95cceaadc6aa8ad78e57c84a0fd"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-history-focal-20261019.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-history-focal-20261019.py",
+        "bytes": 3469,
+        "sha256": "1b7e60d39916befd3f86d5fccefe6219f7f3c64f09a06828747881b4f555f04b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-history-control-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-focal-evidence-20261019\\REC-013-history-control-correction-20261019.json",
+        "bytes": 573,
+        "sha256": "6e32eff0583f9ae48eb263187f458be0dcd40af203b04e3c78d09883ef9d2dbf"
+      }
+    ],
+    "review": {
+      "id": "REC-013",
+      "persona": "P-REV",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "base": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+      "evidence": "E2 static",
+      "tests_executed": false,
+      "findings": [
+        {
+          "severity": "P2",
+          "path": "src-tauri/tests/common/recurrence_payment.rs",
+          "line": 568,
+          "issue": "Initial snapshot did not protect first payment movement/audit from changes by second payment",
+          "correction": "Compare complete previous snapshot after every payment and update previous=after"
+        }
+      ],
+      "unresolved_findings": [],
+      "root_fixture_correction": true,
+      "correction_verified_by": "final GREEN and physical audit-history mutation plus exact diff/hash checks",
+      "reviewed_sources": {
+        "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+      },
+      "final_sources": {
+        "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+      },
+      "cost": "não registrado"
+    },
+    "local": {
+      "id": "REC-013",
+      "paths": {
+        "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+      },
+      "production": {
+        "src-tauri/src/lib.rs": "c116b50a89e7f827a9c07e2976104d4a10a4516820b8271dadd08ed3868baf7f",
+        "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+        "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+        "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+        "src-tauri/src/application/calculate_context_result.rs": "33ea627d08bf09092b73bc245daa37c5a2e78e4813f56d66925e6bbc19f2395c",
+        "src-tauri/src/application/calculate_context_result_tests.rs": "ea69639afd085cd2b2c815796226a598a1fb8ee8fb9be8f61384bb82aa6eaeb5",
+        "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+        "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+        "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+        "src-tauri/src/application/create_category_tests.rs": "09f0e20b7da2468cc9e9b28d20355779de8299668f74b87392a9d424dd857a4f",
+        "src-tauri/src/application/create_entry.rs": "58e7c320d06ed88772967c65bd6cdd045d416640ab01c386de78d30ebe1e198f",
+        "src-tauri/src/application/create_entry_tests.rs": "0b76da095e8a73b30f7a0d4364440ef8d54ef63450543081d415484ed4cc526f",
+        "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+        "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+        "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+        "src-tauri/src/application/create_transfer_tests.rs": "bcb815e52cb868229950ff983353c71193d997ad8506903241998b77d706b4f0",
+        "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+        "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+        "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+        "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+        "src-tauri/src/application/generate_fixed_obligation.rs": "3647c538ceb59bc8322932e45940f3dbd3d73b5955763a6410e7b195feed27cd",
+        "src-tauri/src/application/generate_fixed_obligation_tests.rs": "e1d5ca31b74f82a1e0e43e5e7e152edefe0a86fb2b31fa25a005a78fc7a960f7",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+        "src-tauri/src/application/list_accounts_tests.rs": "088752a6d69ca0d8428e09abc91af07f0182f9ff7ff81ac4ad48f7b4619555f6",
+        "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+        "src-tauri/src/application/list_movements_tests.rs": "5dda89c8691ac9a45654d95550c703c3ebaa33c17bff7f96b5b8dcc391b4020c",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+        "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+        "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+        "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+        "src-tauri/src/application/rename_category_tests.rs": "2b5038cf0e8487b96f0a44eab769f2b72534aec5502e0878ac2ebded670ac253",
+        "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+        "src-tauri/src/application/supply_obligation_amount_tests.rs": "f6cbe7ed006b446f533c6f33b515252cd5d1c4ec94f0e0f9fddc46ffe5d6d479",
+        "src-tauri/src/domain/awaiting_value_tests.rs": "05b51218bae4e54f917168f3fb37a2d2417805121529d739dd6390bc6a49e7f1",
+        "src-tauri/src/domain/balance_tests.rs": "ae5fae4ec6766c28e9a4350c2560472488c3053038cdac9c0b69acc8a6ac7c95",
+        "src-tauri/src/domain/entry_tests.rs": "d9c4e244a2b38b4099879de0ed5ccc9b1c4bea25ae0c3abde6b4a4bc63211c3f",
+        "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+        "src-tauri/src/domain/fixed_generation_tests.rs": "d758042f3de5a241bd9261b2ecfaa23f8476554e11e3d9f33f1fa092d2d398a6",
+        "src-tauri/src/domain/fixed_recurrence_tests.rs": "e25df444a66f189d74bc8426aadc778b04a6f79d5796dcb3b9539f09aaf44f5b",
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/obligation_amount.rs": "74a13ef5cd98401d6718daa024f6fff29658d9c90ffe4f031bebfa5d4be4bc5d",
+        "src-tauri/src/domain/obligation_amount_tests.rs": "403ae5306bb2506cbdce516c860f2fa114562fa09966c707f6210cad034d4569",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+        "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+        "src-tauri/src/domain/payable_state_tests.rs": "6319d34b8145c87122bcb37290c1762b34c4d6ff84b40578c9038947e8078ca2",
+        "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+        "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+        "src-tauri/src/domain/result_effect_tests.rs": "04757aa9de9423efaa1ab3ef025179dbe339e3a431b3928030559173deb45d1a",
+        "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+        "src-tauri/src/domain/transfer_tests.rs": "c3f058f4447f36359c48b241b917b516903c6adc76e7e345438b10aab4305811",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/domain/variable_recurrence_tests.rs": "03d1ef05954069bf4c2f7fa462aecfd795c3136948e9d5afb1ee27c5ad76b63e",
+        "src-tauri/src/infrastructure/accounts.rs": "921fba851d5be61d9dbed3d760a10bdbb01fce30bb17b45e9cef2499723aa1b1",
+        "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+        "src-tauri/src/infrastructure/database.rs": "f59150140cc440ab5dd753b9b786b0f7cf92051edb1ef1643b9d669e608a0b39",
+        "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+        "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+        "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+        "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017"
+      },
+      "old_migrations": {
+        "src-tauri/migrations/002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri/migrations/003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri/migrations/004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri/migrations/005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri/migrations/006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri/migrations/007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "mutations": [
+        {
+          "mode": "red-duplicate",
+          "mutant_sha256": "030b73ffaa92c7ab1a0bf92237fbc46831c7bd0a8e559298790369995464bb65",
+          "original_sha256": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7",
+          "receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-duplicate\\receipt.json"
+        },
+        {
+          "mode": "red-amount",
+          "mutant_sha256": "7c899a7fed907973ae0b67ebf4b341c5796910782fc9979e76fa7e193380079d",
+          "original_sha256": "7574d86ca5019f56b295e81d7f7425ff37958b4d813dce00f8ff516a6e2409d7",
+          "receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-013-single-exit\\Millani Artes\\artifacts\\rec013-check\\sqlite\\red-amount\\receipt.json"
+        }
+      ],
+      "restored": true,
+      "local_calls": 0,
+      "root_production_correction": false,
+      "root_fixture_correction": true,
+      "cost": "não registrado",
+      "review_correction": {
+        "id": "REC-013",
+        "persona": "P-REV",
+        "model": "gpt-6-sol",
+        "effort": "medium",
+        "base": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+        "evidence": "E2 static",
+        "tests_executed": false,
+        "findings": [
+          {
+            "severity": "P2",
+            "path": "src-tauri/tests/common/recurrence_payment.rs",
+            "line": 568,
+            "issue": "Initial snapshot did not protect first payment movement/audit from changes by second payment",
+            "correction": "Compare complete previous snapshot after every payment and update previous=after"
+          }
+        ],
+        "unresolved_findings": [],
+        "root_fixture_correction": true,
+        "correction_verified_by": "final GREEN and physical audit-history mutation plus exact diff/hash checks",
+        "reviewed_sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+        },
+        "final_sources": {
+          "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+        },
+        "cost": "não registrado"
+      },
+      "final_focal": "rec013-review-check",
+      "history_control_correction": {
+        "id": "REC-013",
+        "rejected_control": "rec013-review-check/sqlite/red-history",
+        "reason": "Existing audit_event_no_update trigger prevents mutation and causes StoreFailed, rather than the intended oracle assertion. Receipt rejected and retained. Corrected control explicitly drops only that trigger inside the isolated mutant transaction before corrupting prior audit. No production or canonical migration change.",
+        "schema_source": "src-tauri/migrations/002-audit-event.sql:14",
+        "root_fixture_correction": false,
+        "root_production_correction": false
+      }
+    },
+    "wrapper_correction": {
+      "id": "REC-013",
+      "cause": "Wrapper compared original restored WT CRLF bytes to main LF bytes; checkout text was identical. Both mutation tests compiled and failed by expected behavioral assertions before wrapper mismatch.",
+      "root_production_correction": false,
+      "root_fixture_correction": false,
+      "production_restored": true,
+      "worktree_raw_hashes_equal_baseline": true,
+      "checks_repeated": false
+    },
+    "scope": "Prova física de uma saída por obrigação mensal: 8 combinações fixa/variável informada, Payable/Overdue, Casa/Fábrica; 16 pagamentos em duas competências da mesma série. Após cada pagamento, aplicação/SQLite/reabertura e leitores reais reconciliam Exit/Paidlink/audit únicos, centavos/contexto/conta, saldo selecionado -2253/-3253 e outra conta7654, resultado por contexto; templates/contas/ledger/categories e todo histórico anterior preservados. Somente um teste novo, nenhuma produção/migration/dependência alterada.",
+    "limitations": "REC-014/015 ainda exigem provas próprias de rollback completo/concorrência/repetição; sucesso idempotente não prometido. UI/IPC, cobertura Rust global atual, instalador Windows/instalação/atualização/backup-restauração/hash/assinatura e E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita e registrada; implementação UTC-3 fixa sem prova IANA/DST histórica",
+    "coverage": {
+      "method": "No new critical production logic; refer REC012 measurement with identical production hashes, not a fresh LLVM/global/remote measurement",
+      "historical_receipt": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-012-focal-evidence-20261019\\receipt-coverage.json",
+      "sha256": "0f8cfae5b65ff54456d7f641c3a6d496d85e68d679e37ce258e3a4c1dd545a19",
+      "metrics": {
+        "full": {
+          "src/application/pay_recurrence.rs": {
+            "lines": {
+              "count": 55,
+              "covered": 55,
+              "percent": 100
+            },
+            "functions": {
+              "count": 3,
+              "covered": 3,
+              "percent": 100
+            },
+            "instantiations": {
+              "count": 8,
+              "covered": 7,
+              "percent": 87.5
+            },
+            "regions": {
+              "count": 70,
+              "covered": 68,
+              "notcovered": 2,
+              "percent": 97.14285714285714
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          },
+          "src/infrastructure/recurrences/payment.rs": {
+            "lines": {
+              "count": 81,
+              "covered": 81,
+              "percent": 100
+            },
+            "functions": {
+              "count": 2,
+              "covered": 2,
+              "percent": 100
+            },
+            "instantiations": {
+              "count": 4,
+              "covered": 2,
+              "percent": 50
+            },
+            "regions": {
+              "count": 84,
+              "covered": 84,
+              "notcovered": 0,
+              "percent": 100
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          }
+        },
+        "control": {
+          "src/application/pay_recurrence.rs": {
+            "lines": {
+              "count": 55,
+              "covered": 0,
+              "percent": 0
+            },
+            "functions": {
+              "count": 3,
+              "covered": 0,
+              "percent": 0
+            },
+            "instantiations": {
+              "count": 8,
+              "covered": 0,
+              "percent": 0
+            },
+            "regions": {
+              "count": 70,
+              "covered": 0,
+              "notcovered": 70,
+              "percent": 0
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          },
+          "src/infrastructure/recurrences/payment.rs": {
+            "lines": {
+              "count": 81,
+              "covered": 0,
+              "percent": 0
+            },
+            "functions": {
+              "count": 2,
+              "covered": 0,
+              "percent": 0
+            },
+            "instantiations": {
+              "count": 4,
+              "covered": 0,
+              "percent": 0
+            },
+            "regions": {
+              "count": 84,
+              "covered": 0,
+              "notcovered": 84,
+              "percent": 0
+            },
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0
+            }
+          }
+        }
+      }
+    },
+    "old_review_evidence": [
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-main-integration-20261019.json",
+        "sha256": "025437857e313ada9a2eedd4ac93416e687d320b01fc1e5ce794c729f27b5b7a"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-rust-gate-0-20261019.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-rust-gate-1-20261019.log",
+        "sha256": "8fd7855bddf7d9c76efa2b881f455cfb3ac972ead8ccc3c8f64c6da1d49f98ad"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-rust-gate-2-20261019.log",
+        "sha256": "762f83be7b045cd9f449cc1ef00b3b640a3c3d1c8d26363aae7f802f4c0efaac"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-rust-gate-3-20261019.log",
+        "sha256": "05469777d6bd435f349342f6be9d994d3f02a9aa7bc3c02c748d2400533c560b"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\REC-013-rust-gates-20261019.json",
+        "sha256": "4faa734238841db66f2b501c74eff287291fde4dc8f80a4d4fdc659f39b472c7"
+      },
+      {
+        "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-013-before-review-correction-20261019\\recurrence_payment.rs",
+        "sha256": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+      }
+    ],
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-013",
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "base": "0e94b59e92fb5df344f05a6742e3e26dd7cbeab0",
+    "evidence": "E2 static",
+    "tests_executed": false,
+    "findings": [
+      {
+        "severity": "P2",
+        "path": "src-tauri/tests/common/recurrence_payment.rs",
+        "line": 568,
+        "issue": "Initial snapshot did not protect first payment movement/audit from changes by second payment",
+        "correction": "Compare complete previous snapshot after every payment and update previous=after"
+      }
+    ],
+    "unresolved_findings": [],
+    "root_fixture_correction": true,
+    "correction_verified_by": "final GREEN and physical audit-history mutation plus exact diff/hash checks",
+    "reviewed_sources": {
+      "src-tauri/tests/common/recurrence_payment.rs": "ea92c8680764c0406f09ae561bf5de151a7e1693426690148a9faeff8bfba40f"
+    },
+    "final_sources": {
+      "src-tauri/tests/common/recurrence_payment.rs": "de7f5e5176445447091d12096083a6d05729622959765c7e4088ea182d76a0ff"
+    },
+    "cost": "não registrado"
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 10,
+    "bytes": 991918,
+    "framed_sha256": "efcb3b97482a7f0a153699e1322e260cde474507facf06f420efef34e5def106",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 9,
+    "bytes": 976225,
+    "framed_sha256": "12edb6a339f6b4093a6bebacd4860a0c03637c7ddf60dd3f0dd93024ed1661d2",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 594 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 126 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 126 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 541802 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "Prova física de uma saída por obrigação mensal: 8 combinações fixa/variável informada, Payable/Overdue, Casa/Fábrica; 16 pagamentos em duas competências da mesma série. Após cada pagamento, aplicação/SQLite/reabertura e leitores reais reconciliam Exit/Paidlink/audit únicos, centavos/contexto/conta, saldo selecionado -2253/-3253 e outra conta7654, resultado por contexto; templates/contas/ledger/categories e todo histórico anterior preservados. Somente um teste novo, nenhuma produção/migration/dependência alterada.",
+  "preserved": "all125 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;23 focal files 152238B hashverified;WT recoverably archived",
+  "limitations": "REC-014/015 ainda exigem provas próprias de rollback completo/concorrência/repetição; sucesso idempotente não prometido. UI/IPC, cobertura Rust global atual, instalador Windows/instalação/atualização/backup-restauração/hash/assinatura e E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita e registrada; implementação UTC-3 fixa sem prova IANA/DST histórica",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
