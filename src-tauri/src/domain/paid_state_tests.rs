@@ -81,7 +81,7 @@ fn incompatible_or_invalid_movements_cannot_mark_payable_as_paid() {
     }
 }
 #[test]
-fn only_a_valid_payable_state_can_transition_to_paid() {
+fn awaiting_paid_and_invalid_payable_cannot_transition_to_paid() {
     let movement = payment(0, 7, [1; 16], 0);
     for state in [
         ObligationState::AwaitingValue,

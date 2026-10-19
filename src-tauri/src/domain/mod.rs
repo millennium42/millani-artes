@@ -236,6 +236,9 @@ pub enum ObligationState {
         amount_cents: i64,
         movement_id: [u8; 16],
     },
+    Overdue {
+        amount_cents: i64,
+    },
 }
 
 impl ObligationState {
@@ -259,6 +262,13 @@ impl ObligationState {
                     Err(DomainError::InvalidInput)
                 }
             }
+            Self::Overdue { amount_cents } => {
+                if *amount_cents > 0 {
+                    Ok(())
+                } else {
+                    Err(DomainError::InvalidInput)
+                }
+            }
         }
     }
 
@@ -266,6 +276,7 @@ impl ObligationState {
         self.validate()?;
         let amount_cents = match self {
             Self::Payable { amount_cents } => *amount_cents,
+            Self::Overdue { amount_cents } => *amount_cents,
             _ => return Err(DomainError::InvalidInput),
         };
         payment.validate_exit()?;
@@ -278,6 +289,22 @@ impl ObligationState {
         };
         paid.validate()?;
         Ok(paid)
+    }
+
+    pub fn mark_overdue(
+        &self,
+        due_at: std::time::SystemTime,
+        clock: &dyn ports::Clock,
+    ) -> Result<Self> {
+        self.validate()?;
+        let amount_cents = match self {
+            Self::Payable { amount_cents } => *amount_cents,
+            _ => return Err(DomainError::InvalidInput),
+        };
+        if clock.now() <= due_at {
+            return Err(DomainError::InvalidInput);
+        }
+        Ok(Self::Overdue { amount_cents })
     }
 }
 
@@ -409,3 +436,6 @@ mod payable_state_tests;
 
 #[cfg(test)]
 mod paid_state_tests;
+
+#[cfg(test)]
+mod overdue_state_tests;

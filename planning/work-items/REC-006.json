@@ -1,0 +1,27 @@
+{
+  "id": "REC-006",
+  "title": "estado vencido",
+  "specPath": "planning/specs/REC-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-004",
+    "ARC-003"
+  ],
+  "acceptanceCriteria": [
+    "Overduepositivo e mark_overdue puro somentePayableválido/Clockinjetado/corteestrito now>due_at,antesepoch/passo representável100ns/limites monetários sem mutação.",
+    "Overdue pode mark_paid pelo mesmo caminho validado dePayable;Clock1vez no elegível e0vezes nos estados inválidos/inelegíveis.",
+    "Domínio/docsanteriores preservados;16doctests/RED/GREEN4unit/LLVMdomain95controle/gates/review/CIs exatos.",
+    "Docsantespasses/nota119/liberação antespróximo;sem pagamento persistido/IO/calendário/saídaúnica inferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN4unit/16docspreservados",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdomain95controle/review/validators/stagedscan",
+    "CI fonte/final/nota119/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-SEC/P-REVSol6medium;12paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-006 VERIFY E3:Overduepositivo/mark_overdue puro comClockinjetado e now>due_at;mark_paidreal aceita vencido. RED/GREEN4unit/Rust239+16docs/quality/security/LLVMdomain142/142 e16/16 comcontrole/review PASS. Fixture1ns corrigida100ns após probeWindows,originais/falha preservados,produçãointacta. CIs pendentes;REC-007..015 (calendário,fuso,geração,valor por ocorrência,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-006. CIfonte/final/nota119/liberação pendentes;MetaE2Eativa."
+}

@@ -205,3 +205,6 @@ REC-005 VERIFY E3:Paid e mark_paid puros,apenasPayable+Exitválida devalorigual/
 
 
 REC-005 done/E3/passestrue após CI39201697719/SHA1656a218b2bc0f74735cafc7e56bb9d8bacab5c8success23/0skip/7marcadores,Rust235+16docs/4unitnovos. Paid/mark_paid puros/gates/review/validators/stagedscanPASS;CI final/nota118/liberação pendentes;REC-006..015 (valor por ocorrência,calendário,geração,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;MetaE2Eativa;fonte:handoff REC-005.
+
+
+REC-006 VERIFY E3:Overduepositivo/mark_overdue puro comClockinjetado e now>due_at;mark_paidreal aceita vencido. RED/GREEN4unit/Rust239+16docs/quality/security/LLVMdomain142/142 e16/16 comcontrole/review PASS. Fixture1ns corrigida100ns após probeWindows,originais/falha preservados,produçãointacta. CIs pendentes;REC-007..015 (calendário,fuso,geração,valor por ocorrência,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-006.
