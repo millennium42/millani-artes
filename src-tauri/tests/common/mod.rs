@@ -102,3 +102,5 @@ mod movement_editing;
 mod movement_edit_audit;
 
 mod recurrences_migration;
+
+mod recurrence_fixed_generation;

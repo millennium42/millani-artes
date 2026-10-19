@@ -1,0 +1,27 @@
+{
+  "id": "REC-008",
+  "title": "gerar obrigação fixa",
+  "specPath": "planning/specs/REC-008.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-007",
+    "REC-004"
+  ],
+  "acceptanceCriteria": [
+    "ObrigaçãomensalfixaPayable validada por métodos reais/calendárioGregoriano/últimodia/fimdiaBRTUTC-3fixo/1MAX/contextosnapshot/IDsinteiros.",
+    "Caso de uso IDsClockinjetados/1storecall/auditopaco/adapterSQLatômicoreal persisteconfig+obrigação+audit/sem movimentarcontas;falhas/duplicidades preservam banco.",
+    "4unitdomínio/6unitapp/5SQLitefísicos/2privacydoctests/REDstages/gates/security/LLVMcríticos95controle/review/CIs exatos.",
+    "Docsantespasses/nota121/liberação antespróximo;semgeração variável/pagamento único/idempotênciasucesso/UIIPC/E2Einferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "REDpor3estágios/GREEN4domain6app5SQL+2docs",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMcritical95controle/review/validators/stagedscan",
+    "CI fonte/final/nota121/liberação"
+  ],
+  "agentPlan": "P-DOMLaguna domínio/P-INTLaguna app/P-DATLaguna adapter seriais;P-SEC/P-REVSol6medium;19paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-008 VERIFY E3:geraçãofixaPayable/calendárioBRTUTC-3fixo(defaultintegrador)+configobligationauditSQLatômicos/sem movimentos. RED3stages/GREEN4domain6app5SQL+2docs;Rust259+18docs/quality/security/LLVM3críticos100% comcontrole/review PASS. CorreçõesDATA locais efixmecânicoClippy registrados/originais preservados. CIs pendentes;REC-009..015 (variável,valor por ocorrência,vencer,pagamento transacional,saída única e idempotência do caso real),política de fuso fixa sujeita a resposta humana,UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-008. CIfonte/final/nota121/liberação pendentes;MetaE2Eativa."
+}

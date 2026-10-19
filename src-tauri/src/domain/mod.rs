@@ -384,6 +384,77 @@ impl FixedRecurrence {
             amount_cents: self.amount_cents,
         })
     }
+
+    pub fn generate_obligation(
+        &self,
+        id: [u8; 16],
+        period: (u16, u8),
+    ) -> Result<RecurrenceObligation> {
+        let state = self.initial_obligation_state()?;
+        let due_at_ms = recurrence_due_at_ms(period.0, period.1, self.due_day)?;
+        Ok(RecurrenceObligation {
+            id,
+            recurrence_id: self.id,
+            period_year: period.0,
+            period_month: period.1,
+            due_at_ms,
+            state,
+            context: match &self.context {
+                Context::Home => Context::Home,
+                Context::Factory => Context::Factory,
+            },
+        })
+    }
+}
+
+/// Identity, period, due date, state, and context for a recurrence obligation.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::RecurrenceObligation>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::RecurrenceObligation>();
+/// ```
+pub struct RecurrenceObligation {
+    pub id: [u8; 16],
+    pub recurrence_id: [u8; 16],
+    pub period_year: u16,
+    pub period_month: u8,
+    pub due_at_ms: i64,
+    pub state: ObligationState,
+    pub context: Context,
+}
+
+fn recurrence_due_at_ms(year: u16, month: u8, due_day: u8) -> Result<i64> {
+    if !(1..=9999).contains(&year) || !(1..=12).contains(&month) {
+        return Err(DomainError::InvalidInput);
+    }
+    let year_i64 = i64::from(year);
+    let leap = year.is_multiple_of(4) && (!year.is_multiple_of(100) || year.is_multiple_of(400));
+    let months: [i64; 12] = [
+        31,
+        if leap { 29 } else { 28 },
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31,
+    ];
+    let month_idx = usize::from(month - 1);
+    let day = i64::from(due_day).min(months[month_idx]);
+    let y = year_i64 - 1;
+    let days = 365 * y + y / 4 - y / 100 + y / 400 + months[..month_idx].iter().sum::<i64>() + day
+        - 1
+        - 719162;
+    Ok((days + 1) * 86400000 + 10800000 - 1)
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -439,3 +510,6 @@ mod paid_state_tests;
 
 #[cfg(test)]
 mod overdue_state_tests;
+
+#[cfg(test)]
+mod fixed_generation_tests;
