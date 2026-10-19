@@ -210,6 +210,38 @@ impl Movement {
     }
 }
 
+/// Monthly fixed recurrence configuration; obligations and payments are separate operations.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::FixedRecurrence>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::FixedRecurrence>();
+/// ```
+pub struct FixedRecurrence {
+    pub id: [u8; 16],
+    pub name: String,
+    pub amount_cents: i64,
+    pub context: Context,
+    pub due_day: u8,
+}
+
+impl FixedRecurrence {
+    pub fn validate(&self) -> Result<()> {
+        if self.name.trim().is_empty()
+            || self.amount_cents <= 0
+            || !(1..=31).contains(&self.due_day)
+        {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -245,3 +277,6 @@ mod result_effect_tests;
 
 #[cfg(test)]
 mod balance_tests;
+
+#[cfg(test)]
+mod fixed_recurrence_tests;
