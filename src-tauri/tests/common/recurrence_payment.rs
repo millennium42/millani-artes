@@ -509,3 +509,141 @@ fn missing_account_existing_movement_and_repeated_payment_do_not_create_extra_ex
     assert_eq!(before.0 .1.len(), 1);
     health(&open_database(&p).unwrap());
 }
+
+#[test]
+fn rec013_each_paid_month_has_one_exit_and_exact_financial_effect_after_reopen() {
+    use millani_artes::application::{
+        calculate_context_result::calculate_context_result, list_accounts::list_accounts,
+        list_movements::list_movements,
+    };
+    use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+
+    for kind in 0..2 {
+        for overdue in 0..2 {
+            for ctx in 0..2 {
+                let (_d, p) = setup();
+                let obligations = [
+                    seed(&p, kind, overdue, ctx, 2, 1000),
+                    seed(&p, kind, overdue, ctx, 3, 1000),
+                ];
+                let selected = account(&p);
+                let other_account = [0xe0u8; 16];
+                open_database(&p).unwrap().execute(
+                    "INSERT INTO main.accounts(id,name,account_type,initial_balance_cents) VALUES(?1,'Outra conta sintética','bank_pix',7654)",
+                    params![other_account.as_slice()],
+                ).unwrap();
+                existing_exit(&p, [0xd0; 16]);
+                let before = snapshot(&p);
+                let mut expected_obligations = before.2.clone();
+                let mut previous = before.clone();
+                for (index, obligation) in obligations.into_iter().enumerate() {
+                    let movement_id = [0xa0 + index as u8; 16];
+                    let audit_id = [0xb0 + index as u8; 16];
+                    let obligation_id = obligation.id;
+                    let mut store = AdapterSqliteRecurrenceStore::new(open_database(&p).unwrap());
+                    let result = pay_recurrence(
+                        obligation,
+                        selected,
+                        &mut FixedIds::new(movement_id, audit_id),
+                        &FixedClock,
+                        &mut store,
+                    )
+                    .unwrap();
+                    assert!(
+                        matches!(result.state, ObligationState::Paid { amount_cents: 1000, movement_id: id } if id == movement_id)
+                    );
+                    drop(store);
+                    let reopened = open_database(&p).unwrap();
+                    health(&reopened);
+                    let after = state(&reopened);
+                    assert_eq!(
+                        after.0 .1.len(),
+                        before.0 .1.len() + index + 1,
+                        "one new exit per paid obligation"
+                    );
+                    assert_eq!(
+                        after.0 .2.len(),
+                        before.0 .2.len() + index + 1,
+                        "one new audit per paid obligation"
+                    );
+                    for old in &previous.0 .1 {
+                        assert_eq!(
+                            after.0 .1.iter().filter(|row| *row == old).count(),
+                            1,
+                            "previous movement retained"
+                        );
+                    }
+                    for old in &previous.0 .2 {
+                        assert_eq!(
+                            after.0 .2.iter().filter(|row| *row == old).count(),
+                            1,
+                            "previous audit retained"
+                        );
+                    }
+                    assert_eq!(after.0 .0, before.0 .0);
+                    assert_eq!(after.0 .3, before.0 .3);
+                    assert_eq!(after.1, before.1);
+                    assert_eq!(after.3, before.3);
+                    expected_obligations[index][5] = Value::Text("paid".into());
+                    expected_obligations[index][7] = Value::Blob(movement_id.to_vec());
+                    assert_eq!(after.2, expected_obligations);
+                    let joined: (Vec<u8>, String, i64, String, Vec<u8>, i64) = reopened.query_row(
+                        "SELECT m.id,m.kind,m.amount_cents,m.context,m.account_id,o.amount_cents FROM main.recurrence_obligations o JOIN main.movements m ON m.id=o.movement_id WHERE o.id=?1 AND o.state='paid'",
+                        params![obligation_id.as_slice()], |row| Ok((row.get(0)?,row.get(1)?,row.get(2)?,row.get(3)?,row.get(4)?,row.get(5)?)),
+                    ).unwrap();
+                    assert_eq!(
+                        joined,
+                        (
+                            movement_id.to_vec(),
+                            "exit".into(),
+                            1000,
+                            if ctx == 0 { "home" } else { "factory" }.into(),
+                            selected.to_vec(),
+                            1000
+                        ),
+                        "exact persisted exit and obligation amounts"
+                    );
+                    let audit: (String, String, Vec<u8>) = reopened.query_row(
+                        "SELECT operation,entity,entity_id FROM main.audit_event WHERE event_id=?1",params![audit_id.as_slice()],
+                        |row| Ok((row.get(0)?,row.get(1)?,row.get(2)?)),
+                    ).unwrap();
+                    assert_eq!(
+                        audit,
+                        (
+                            "recurrence_pay".into(),
+                            "recurrence_obligation".into(),
+                            obligation_id.to_vec()
+                        )
+                    );
+                    let accounts =
+                        list_accounts(&AdapterSqliteAccountStore::new(open_database(&p).unwrap()))
+                            .unwrap();
+                    let reader = AdapterSqliteMovementStore::new(open_database(&p).unwrap());
+                    let movements = list_movements(&reader).unwrap();
+                    assert_eq!(accounts.len(), 2);
+                    assert_eq!(movements.len(), index + 2);
+                    let paid_cents = 1000 * (index as i64 + 1);
+                    for account in accounts {
+                        if account.id == selected {
+                            assert_eq!(account.initial_balance_cents, -1234);
+                            assert_eq!(account.balance_cents(&movements), Ok(-1253 - paid_cents));
+                        } else {
+                            assert_eq!(account.id, other_account);
+                            assert_eq!(account.initial_balance_cents, 7654);
+                            assert_eq!(account.balance_cents(&movements), Ok(7654));
+                        }
+                    }
+                    assert_eq!(
+                        calculate_context_result(&Context::Home, &reader).unwrap(),
+                        if ctx == 0 { -paid_cents } else { 0 }
+                    );
+                    assert_eq!(
+                        calculate_context_result(&Context::Factory, &reader).unwrap(),
+                        -19 - if ctx == 1 { paid_cents } else { 0 }
+                    );
+                    previous = after;
+                }
+            }
+        }
+    }
+}

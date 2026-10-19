@@ -1,0 +1,26 @@
+{
+  "id": "REC-013",
+  "title": "provar saída única",
+  "specPath": "planning/specs/REC-013.md",
+  "status": "in_progress",
+  "dependencies": [
+    "REC-012"
+  ],
+  "acceptanceCriteria": [
+    "Uma saída exata por obrigação mensal, duas competências da mesma série pagáveis, saldo e resultado reais reconciliados após reabertura.",
+    "8 combinações reais de tipo/estado/contexto; histórico e demais entidades preservados.",
+    "Mutações físicas de duplicação e centavo incorreto detectadas; produção restaurada e hashes iguais.",
+    "Gates, revisão independente, docs/matrizes/log, CI fonte/final exatos e nota126 antes liberação; E2E segue pendente."
+  ],
+  "checks": [
+    "RED2mutantes/GREEN6SQL",
+    "Rustfmt/clippy/debug/release/audit;TSquality/build/scans",
+    "Produção/migrations imutáveis;review/validators/stagedscan",
+    "CI fonte/final/nota126/liberação"
+  ],
+  "agentPlan": "P-INT/P-QA root reuso determinístico;P-SEC ferramentas;P-REV Sol6medium independente;10paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-013 VERIFY E3:1SQLnovo/8combinações16pagamentos/umaExit por obrigação em2meses/saldo eresultado exatos/reopen/histórico incremental preservado. Review1P2 corrigido e3mutantes finais rejeitados/GREEN6SQL/Rust314+18docs/gates/security PASS; produção/migrations imutáveis, coverageREC012 histórica referenciada sem nova medição. CIs/nota126/liberação pendentes;MetaE2Eativa;REC014/015/UIIPC/globalRust/instalador/E2Ependentes;fonte:handoff REC-013."
+}
