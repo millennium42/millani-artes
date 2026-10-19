@@ -331,3 +331,6 @@ REC-006 VERIFY E3:Overduepositivo/mark_overdue puro comClockinjetado e now>due_a
 
 
 REC-006 done/E3/passestrue após CI39204073999/SHA5f145b619b43eb7213357235d12e8e680824f4c5success23/0skip/7marcadores,Rust239+16docs/4unitnovos. Overdue/Clockdeadline/mark_paid/gates/review/validators/stagedscanPASS;fixture100ns/probe/falhaoriginais registrados;CI final/nota119/liberação pendentes;REC-007..015 (calendário,fuso,geração,valor por ocorrência,persistência,pagamento transacional,conta/contexto,saída única e idempotência persistida),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;MetaE2Eativa;fonte:handoff REC-006.
+
+
+REC-007 VERIFY E3:migration7recurrences/obligationsSTRICT,templates/estados/FK/UNIQUE/contextosnapshot;5SQLitevazio+upgrade+constraints+reopen+rollbacksegundaDDL/retry/2mutantesPASS. Rust244+16docs/quality/security/LLVMdatabase276/280 e25/25 comcontroleTODOSSQL/review PASS. CIs pendentes;REC-008..015 (calendário/fuso,geração,valor por ocorrência,pagamento transacional,Exit/valor/contexto correspondentes,saída única e idempotência do caso real),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-007.

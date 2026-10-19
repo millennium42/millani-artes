@@ -326,6 +326,9 @@ pub const MOVEMENT_CATEGORIES_MIGRATION_VERSION: u32 = 6;
 pub const MOVEMENT_CATEGORIES_MIGRATION_SQL: &str =
     include_str!("../../migrations/006-movement-categories.sql");
 
+pub const RECURRENCES_MIGRATION_VERSION: u32 = 7;
+pub const RECURRENCES_MIGRATION_SQL: &str = include_str!("../../migrations/007-recurrences.sql");
+
 pub struct AuditEvent {
     pub event_id: [u8; 16],
     pub occurred_at_ms: i64,

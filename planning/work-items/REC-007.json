@@ -1,0 +1,27 @@
+{
+  "id": "REC-007",
+  "title": "migration de recorrência",
+  "specPath": "planning/specs/REC-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "REC-001"
+  ],
+  "acceptanceCriteria": [
+    "Migration7aditiva/duastabelasSTRICT/templatesfixosvariáveis/obrigações4estados/constraintsFKUNIQUE/semseed/constantespadrãoexistente.",
+    "Migrationsanteriores+executores+domínioinalterados;5testesSQLitefísicos vazio/upgrade/constraints/reopen/rollbacksegundaDDL/retry e2mutantesSQL rejeitados.",
+    "Rustfmt/clippy/debugrelease/16docs/audit/TSquality/build/security/LLVMdatabase95controle/review/validators/stagedscan/CIs exatos.",
+    "Docsantespasses/nota120/liberação antespróximo;semcaso de geração/pagamento/saídaúnica/E2Einferidos;MetaE2Eativa."
+  ],
+  "checks": [
+    "REDconstantesausentes/GREEN5SQLite/2mutantes",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMdatabase95controle/review/validators/stagedscan",
+    "CI fonte/final/nota120/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/registroconstantes;P-DATLaguna1arquivo900s/P-SEC/P-REVSol6medium;15paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "REC-007 VERIFY E3:migration7recurrences/obligationsSTRICT,templates/estados/FK/UNIQUE/contextosnapshot;5SQLitevazio+upgrade+constraints+reopen+rollbacksegundaDDL/retry/2mutantesPASS. Rust244+16docs/quality/security/LLVMdatabase276/280 e25/25 comcontroleTODOSSQL/review PASS. CIs pendentes;REC-008..015 (calendário/fuso,geração,valor por ocorrência,pagamento transacional,Exit/valor/contexto correspondentes,saída única e idempotência do caso real),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff REC-007. CIfonte/final/nota120/liberação pendentes;MetaE2Eativa."
+}

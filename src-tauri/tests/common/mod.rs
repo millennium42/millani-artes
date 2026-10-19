@@ -100,3 +100,5 @@ mod initial_balance_revenue;
 mod movement_editing;
 
 mod movement_edit_audit;
+
+mod recurrences_migration;
