@@ -7,6 +7,7 @@ pub mod application {
     pub mod create_category;
     pub mod create_entry;
     pub mod create_exit;
+    pub mod create_product;
     pub mod create_transfer;
     pub mod deactivate_category;
     pub mod edit_movement;
@@ -23,5 +24,6 @@ pub mod infrastructure {
     pub mod accounts;
     pub mod categories;
     pub mod movements;
+    pub mod products;
     pub mod recurrences;
 }

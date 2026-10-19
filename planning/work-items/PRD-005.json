@@ -1,0 +1,28 @@
+{
+  "id": "PRD-005",
+  "title": "criar produto",
+  "specPath": "planning/specs/PRD-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "PRD-002",
+    "PRD-003",
+    "PRD-004"
+  ],
+  "acceptanceCriteria": [
+    "create_product puroantesportas nome/preçozero válido/negativorejeitado;ativo/metadados/textoexatos;falhasIDsClockStoreopacas.",
+    "AdapterSQLparametrizado+product_createauditIMMEDIATEatômico/rows1/poisoner/recuperaçãonovaconexão;semnovodeps/migration/CRUDextra.",
+    "RED E0432/GREEN7unit4SQLite/LLVMcadaarquivo>=95controleomitenovos/security/review/gates/CIsSHAsexatos.",
+    "Docsantespasses/nota133/liberaçãoantespróximo/MetaE2Eativa."
+  ],
+  "checks": [
+    "REDAPIausente/GREEN7unit4SQL",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVM2arquivos>=95/controle/review/validators/stagedscan",
+    "CIfonte/final/nota133/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/hooksguardados;P-DATLaguna900s2arquivos;P-SECtools/P-REVSol6medium;16repo+1scratchWT",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-005 VERIFY E3:MVP07 criaçãoProductativo/validaçãonomepreçoantesportas/SQL+auditIMMEDIATEparametrizado/rows1/poisoner-freshrecovery/7unit4SQLnovosREDGREEN/gates/security/reviewPASS. LLVM2arquivos>=95controleomitenovosrejeitado;7SQLmigrationsanteriores+v1vazia/domíniointactos. CIs/nota133/liberaçãopendentes;Metaativa;fonte:handoffPRD-005."
+}
