@@ -409,3 +409,6 @@ REC-015 done/E3/passestrue apósCI39261345263/SHAdfc4c405366cce24ee28be8db8bc147
 
 
 PRD-001 VERIFY E3:MVP07 representação Product id/nome/descrição/preçosugerido/ativo;1unit+2compile_fail/RED/GREEN/Rust318+20docs/gates/security/reviewPASS,domínioanterior e7migrations preservados. LLVMdomain>=95 com controle;tipo sem linhas executáveis/sem percentual próprio. Validações/CRUD/SQLite/UI e INV-SAL005 pendentes. CIs/nota129/liberação pendentes;MetaE2Eativa;fonte:handoff PRD-001.
+
+
+PRD-001 done/E3/passestrue apósCI39271100208/SHAc092545f872849245405f65b4529e68e3d5ec60dsuccess23/0skip/7marcadores,Rust318+20docs/1unit+2doctestsnovos. Product template puro/RED/GREEN/LLVMdomaincomcontrole/gates/security/reviewPASS;domínio anterior e7migrations preservados;CIfinal/nota129/liberação pendentes;PRD-002..007 (validações,migration,criar,alterar,desativar),vendas/snapshots e INV-SAL-005 ainda pendentes. Representação não é aceite de entrada inválida por operação. UI/IPC,cobertura Rust global e release Windows/instalação/atualização/backup-restauração/hashassinatura/E2E oficial pendentes. Product tem zero linhas executáveis;percentual próprio não aplicável;stable branches não medidos;sem coverage global ou remotoRust.;Metaativa;fonte:handoff PRD-001.
