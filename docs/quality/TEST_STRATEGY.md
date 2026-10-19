@@ -391,3 +391,6 @@ REC-012 done/E3/passestrue apósCI39248473269/SHAb4ee66f594ef2c723df3f595c7d14aa
 
 
 REC-013 VERIFY E3:1SQLnovo/8combinações16pagamentos/umaExit por obrigação em2meses/saldo eresultado exatos/reopen/histórico incremental preservado. Review1P2 corrigido e3mutantes finais rejeitados/GREEN6SQL/Rust314+18docs/gates/security PASS; produção/migrations imutáveis, coverageREC012 histórica referenciada sem nova medição. CIs/nota126/liberação pendentes;MetaE2Eativa;REC014/015/UIIPC/globalRust/instalador/E2Ependentes;fonte:handoff REC-013.
+
+
+REC-013 done/E3/passestrue apósCI39252069599/SHA1434f282bd06445994baca20333207888ac030fbsuccess23/0skip/7marcadores,Rust314+18docs/1SQLnovo. UmaExit por obrigação/2meses/8combinações16pagamentos/saldo e resultado reais/reopen/históricoincremental/3mutantes/reviewP2corrigido/gatesPASS;produção e7migrations intactas,coveragehistórica referenciada;CI final/nota126/liberação pendentes;REC-014/015 ainda exigem provas próprias de rollback completo/concorrência/repetição; sucesso idempotente não prometido. UI/IPC, cobertura Rust global atual, instalador Windows/instalação/atualização/backup-restauração/hash/assinatura e E2E oficial pendentes. Política mensal último dia/fimdiaBrasília aceita e registrada; implementação UTC-3 fixa sem prova IANA/DST histórica;MetaE2Eativa;fonte:handoff REC-013.
