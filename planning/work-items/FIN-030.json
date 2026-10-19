@@ -1,0 +1,27 @@
+{
+  "id": "FIN-030",
+  "title": "provar sem saldo direto",
+  "specPath": "planning/specs/FIN-030.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-028",
+    "FIN-025"
+  ],
+  "acceptanceCriteria": [
+    "Reexecutar testes existentes puro e SQLite real que comprovam replay e saldos após edição canônica com aberturas e ledger intactos.",
+    "Mutantes direct_balance e stale_history compilam e falham no teste físico no ponto esperado;produção/testes originais inalterados.",
+    "Gateslocais/critical existente comcontrole/review/CI docs-only SHAexato distinguindo Rust local de remoto anterior.",
+    "Docsantespasses/nota113/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "GREEN2testes existentes/RED2mutantes",
+    "Rustfmt/clippy/debug+release/audit/TSquality/build/security",
+    "LLVMcritical>=95controle/review/validators/stagedscan",
+    "CI documental fonte/final/nota113/liberação"
+  ],
+  "agentPlan": "P-QA Laguna read/diffzero600s/P-INT reuso e execução/P-SEC/P-REV Sol6medium;9paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-030 VERIFY E3:reuso de testes reais puro/SQLite confirma saldo derivado após edição,aberturas/contas/ledger intactos;2mutantesRED/GREEN. Rust217+8docs/quality/security/critical existente com controle/review PASS;produção/testes intactos. CI documental pendente,sem Rust remoto atual;UI/IPC, cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes. Fonte:handoff FIN-030. CI fonte/final/nota113/liberação pendentes;Meta E2E ativa."
+}
