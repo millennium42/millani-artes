@@ -810,3 +810,6 @@ PRD-002 done/E3/passestrue apósCI39277622649/SHAeda023c04e073daa00f981c6210bba5
 
 
 PRD-003 VERIFY E3:MVP07 preço sugerido não negativo/zero válido conforme humano19out;validate_suggested_price puro/2unitnovos/RED/GREEN5/Rust322+20docs/gates/security/reviewPASS. LLVMdomain>=95controle omitindo5Productrejeitado;domínio anterior e7migrations intactos. CIs/nota131/liberação pendentes;Metaativa;fonte:handoffPRD-003.
+
+
+PRD-003 done/E3/passestrue apósCI39288285719/SHAc8c11fb388b7ea7d4ab86768fb947842f53fc91asuccess23/0skip/7marcadores,Rust322+20docs/2unitnovos. Preço zero válido/negativosrejeitados/validaçãopura/RED/GREEN5/LLVMdomaincontrole5Product/gates/security/reviewPASS;domínio anterior e7migrations intactos;CIfinal/nota131/liberação pendentes;PRD-004..007(migration/criar/alterar/desativar),vendas/snapshots/INV-SAL005,UI/IPC,cobertura Rustglobal,releaseWindows/instalação/atualização/backuprestauração/hashassinatura/E2Eoficial pendentes. Stablebranches/statements/global/CI Rustcoverage não medidos;validação focal não valida produto inteiro.;Metaativa;fonte:handoffPRD-003.
