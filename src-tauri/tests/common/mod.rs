@@ -92,3 +92,5 @@ mod transfer_rollback;
 mod balance_calculation;
 
 mod movement_reading;
+
+mod context_result;

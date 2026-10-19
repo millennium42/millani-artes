@@ -108,6 +108,23 @@ fn persisted_movements_and_real_account_reader_feed_account_balance() {
     );
     assert_eq!(movements.len(), 4);
     assert_eq!(accounts.len(), 2);
+    let context_store = AdapterSqliteMovementStore::new(open_database(&path).unwrap());
+    assert_eq!(
+        millani_artes::application::calculate_context_result::calculate_context_result(
+            &Context::Home,
+            &context_store
+        )
+        .unwrap(),
+        100
+    );
+    assert_eq!(
+        millani_artes::application::calculate_context_result::calculate_context_result(
+            &Context::Factory,
+            &context_store
+        )
+        .unwrap(),
+        -30
+    );
     for account in accounts {
         if account.id == source {
             assert_eq!(account.initial_balance_cents, -1234);

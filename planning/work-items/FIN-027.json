@@ -1,0 +1,28 @@
+{
+  "id": "FIN-027",
+  "title": "calcular resultado por contexto",
+  "specPath": "planning/specs/FIN-027.md",
+  "status": "in_progress",
+  "dependencies": [
+    "FIN-017",
+    "FIN-018",
+    "FIN-022"
+  ],
+  "acceptanceCriteria": [
+    "Resultado líquido porContext via list_movements e result_effect_cents REAIS,uma portcall,Transfer0,validarantesfiltro.",
+    "i128checked/finali64checked/erroopaco/semcache/SQLparalelo/dep/migration.",
+    "5unit+2SQLnovos+1SQLsaldoexistente reais/RED/GREEN/gates/criticalcontrole/review/CIexato.",
+    "Docsantespasses/nota109/liberaçãoantespróximo;FIN005prova/UIIPC/E2E separados."
+  ],
+  "checks": [
+    "REDlibunit+SQL/GREEN5unit+2SQL+saldoexistente",
+    "fmt/clippy/debug+release/audit/TSquality/build/securityE4",
+    "LLVMnewapp>=95controle/P-REV/validators/stagedscan",
+    "CI fonte/final/nota109/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/P-DOMLaguna1arquivo900s/P-REVgpt-6-solmedium;15paths;custo não registrado",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "FIN-027 VERIFY E3:resultado líquido realporcontexto viaport/helperdomínio,Transfer0/validaantesfiltro/i128checked/erroopaco. 5unit+2SQLnovos+1SQLsaldoPASS/Rust205+8docs/debug+release/quality/securityE4/LLVMnewappcriticalcontrole/P-REV PASS. In_progress/passesfalseatéCI;provaFIN005/ediçãoFIN028/030/UIIPC/cronologia/currentglobalRust/setup.exe/instalação/atualização/assinatura/E2E pendentes. Fonte:handoffFIN027. CI fonte/final/nota109/liberaçãopendentes;MetaE2Eativa."
+}

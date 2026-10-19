@@ -2,6 +2,7 @@
 pub mod database;
 pub mod domain;
 pub mod application {
+    pub mod calculate_context_result;
     pub mod create_account;
     pub mod create_category;
     pub mod create_entry;
