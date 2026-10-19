@@ -1,0 +1,1780 @@
+{
+  "id": "REC-011",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+  "final_sha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+  "source_ci": {
+    "run": {
+      "id": 39241758403,
+      "head_sha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39241758403",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T11:02:38Z",
+      "updated_at": "2026-10-19T11:12:48Z"
+    },
+    "job": {
+      "id": 118024003359,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39241758403,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          175,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          120,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 5,
+      "new_unit_tests": 10,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 266,
+          "findings": 0,
+          "seconds": 1.225,
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.079,
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.91,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 13.686,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.203
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "customProtocol": true,
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "bytes": 8536064,
+          "machine": "AMD64",
+          "node": "v24.21.0",
+          "sha256": "e9f9f5d7376a0dbf4712a02c556fa0cca7d4a55930bcae9597adae90a2253003",
+          "pe": "PE32+",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "imageVersion": "20261007.264.1",
+          "imageOS": "win25-vs2026",
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "sourceSha": "c9db2729c3812feddacd2dabd8e82032432c3716"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12182176355,
+          "name": "frontend-coverage-39241758403-1",
+          "size_in_bytes": 21914,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12182176355",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12182176355/zip",
+          "expired": false,
+          "created_at": "2026-10-19T11:04:48Z",
+          "expires_at": "2026-10-20T11:04:47Z",
+          "updated_at": "2026-10-19T11:04:48Z",
+          "digest": "sha256:d79835018e9da643f83b9693d448e5f7c595e4c46488e5b64663f27b76d7dfe9",
+          "workflow_run": {
+            "id": 39241758403,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "c9db2729c3812feddacd2dabd8e82032432c3716"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39243255803,
+      "head_sha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39243255803",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T11:14:54Z",
+      "updated_at": "2026-10-19T11:16:51Z"
+    },
+    "job": {
+      "id": 118028910219,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39243255803,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 267,
+          "findings": 0,
+          "seconds": 1.232,
+          "sourceSha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.235,
+          "sourceSha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.96,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 16.626,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "02e82460123d31f3e3fd6286997c22140dd9fc11",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-011",
+    "evidence": "E3",
+    "rust": {
+      "base": "d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/tests/common/recurrence_overdue.rs": "202ed880a245bd2a3f6d0290ea6fee909c2350e37ad4d03d7215d456b4cdcb8d",
+        "src-tauri/src/lib.rs": "c11b81316f08f696cdfc2084b67c436e15c142e4f56f7ad0469be95fb5d17141",
+        "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.34,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 19.17,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-rust-gate-1-20261019.log",
+          "sha256": "e3959c00333a1f94ef8be4a1578c8ddfe8e0ec141c731787bd6de899f27bb0c8"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 20.93,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-rust-gate-2-20261019.log",
+          "sha256": "e8459e2b59a62afd4f10c817569f9a410464d083b66e1e2329b10331076f9669"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 66.23,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-rust-gate-3-20261019.log",
+          "sha256": "f74d5b75505f46b45552b578d50d23ce6a14c9ff69cdc31b2ef43d7cf3234a65"
+        }
+      ]
+    },
+    "other": {
+      "base": "d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 10.77,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-0-20261019.log",
+          "sha256": "c097fcf99b17668f783c096046df871ec11f052fee3b42fbbbdee2781eddd473"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 1.74,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-1-20261019.log",
+          "sha256": "094869acde1fa57a1730acffc4557261434fd307a2680ff0d2e539194a0e0acf"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 12.14,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-2-20261019.log",
+          "sha256": "c64b1ff6b2a2ea96f2c373e6fd10c804f01c4b86bbe8f43a08aabc5b9f4bccdc"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 6.11,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-3-20261019.log",
+          "sha256": "d2665a43443a89a32fac72c9f2ca30962597c260db1ebe132e66f660581b7797"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 3.47,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-4-20261019.log",
+          "sha256": "ca5319b172c75e2191790421a9087964a185726eb3772187ea08605edebe9586"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.15,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 7.57,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-other-gate-6-20261019.log",
+          "sha256": "aad8ee1110d62a0d7bd47e3f99258d229673cadd343c68a34a23598dd75563f9"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      175,
+      7,
+      120,
+      18
+    ],
+    "new_unit": 10,
+    "new_doctests": 0,
+    "new_sql": 5,
+    "focal": {
+      "domain/red": {
+        "id": "REC-011",
+        "phase": "domain",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "3fea7ba76aabc21c18a6d09bc1ec3c5140eeeedd8c79c5433ff63074767ff73a",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "fe4cbbde4d5b8056ef5493017c016a73ef37629149328aa0dae8b1a71572f1aa",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "332c04485c47080dc48c45b230c273ad4e05518fa0838d2cebddd69902577a70",
+          "src-tauri/tests/common/mod.rs": "40f173b491fe640996a60ff7c264ea8bade8daacbdaa539445a7b5d9e3ef0e0b"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\domain\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 4.099,
+            "output": "error[E0599]: no method named `mark_overdue_ms` found for enum `ObligationState` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch_tests.rs:9:408\n    |\n  9 | ...:amount};let a=state.mark_overdue(due,&old);let b=state.mark_overdue_ms(due_ms,&new);match(a,b){(Ok(ObligationState::Overdue{amo...\n    |                                                            ^^^^^^^^^^^^^^^\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ method `mark_overdue_ms` not found for this enum\n    |\nhelp: there is a method `mark_overdue` with a similar name\n    |\n  9 -  for due_ms in [-10000i64,0,10000]{let due=if due_ms<0{UNIX_EPOCH-Duration::from_millis(due_ms.unsigned_abs())}else{UNIX_EPOCH+Duration::from_millis(due_ms as u64)};for amount in [1,i64::MAX]{for at in [due-Duration::from_nanos(100),due,due+Duration::from_nanos(100)]{let old=clock(at);let new=clock(at);let state=ObligationState::Payable{amount_cents:amount};let a=state.mark_overdue(due,&old);let b=state.mark_overdue_ms(due_ms,&new);match(a,b){(Ok(ObligationState::Overdue{amount_cents:x}),Ok(ObligationState::Overdue{amount_cents:y}))=>assert_eq!((x,y),(amount,amount)),(Err(DomainError::InvalidInput),Err(DomainError::InvalidInput))=>{},_=>panic!(\"deadline rules differ\")};assert_eq!((old.calls.get(),new.calls.get()),(1,1));assert!(matches!(state,ObligationState::Payable{amount_cents}if amount_cents==amount));}}}\n  9 +  for due_ms in [-10000i64,0,10000]{let due=if due_ms<0{UNIX_EPOCH-Duration::from_millis(due_ms.unsigned_abs())}else{UNIX_EPOCH+Duration::from_millis(due_ms as u64)};for amount in [1,i64::MAX]{for at in [due-Duration::from_nanos(100),due,due+Duration::from_nanos(100)]{let old=clock(at);let new=clock(at);let state=ObligationState::Payable{amount_cents:amount};let a=state.mark_overdue(due,&old);let b=state.mark_overdue(due_ms,&new);match(a,b){(Ok(ObligationState::Overdue{amount_cents:x}),Ok(ObligationState::Overdue{amount_cents:y}))=>assert_eq!((x,y),(amount,amount)),(Err(DomainError::InvalidInput),Err(DomainError::InvalidInput))=>{},_=>panic!(\"deadline rules differ\")};assert_eq!((old.calls.get(),new.calls.get()),(1,1));assert!(matches!(state,ObligationState::Payable{amount_cents}if amount_cents==amount));}}}\n    |\n\nerror[E0599]: no method named `mark_overdue_ms` found for enum `ObligationState` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch_tests.rs:13:524\n    |\n 13 | ...d=std::mem::discriminant(&state);assert!(matches!(state.mark_overdue_ms(i64::MIN,&source),Err(DomainError::InvalidInput)));asser...\n    |                                                            ^^^^^^^^^^^^^^^\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ method `mark_overdue_ms` not found for this enum\n    |\nhelp: there is a method `mark_overdue` with a similar name\n    |\n 13 -  for state in [ObligationState::AwaitingValue,ObligationState::Payable{amount_cents:0},ObligationState::Payable{amount_cents:-1},ObligationState::Payable{amount_cents:i64::MIN},ObligationState::Overdue{amount_cents:1},ObligationState::Overdue{amount_cents:0},ObligationState::Paid{amount_cents:1,movement_id:[1;16]},ObligationState::Paid{amount_cents:0,movement_id:[1;16]},ObligationState::Paid{amount_cents:1,movement_id:[0;16]}]{let source=clock(UNIX_EPOCH);let kind=std::mem::discriminant(&state);assert!(matches!(state.mark_overdue_ms(i64::MIN,&source),Err(DomainError::InvalidInput)));assert_eq!(source.calls.get(),0);assert_eq!(std::mem::discriminant(&state),kind);}\n 13 +  for state in [ObligationState::AwaitingValue,ObligationState::Payable{amount_cents:0},ObligationState::Payable{amount_cents:-1},ObligationState::Payable{amount_cents:i64::MIN},ObligationState::Overdue{amount_cents:1},ObligationState::Overdue{amount_cents:0},ObligationState::Paid{amount_cents:1,movement_id:[1;16]},ObligationState::Paid{amount_cents:0,movement_id:[1;16]},ObligationState::Paid{amount_cents:1,movement_id:[0;16]}]{let source=clock(UNIX_EPOCH);let kind=std::mem::discriminant(&state);assert!(matches!(state.mark_overdue(i64::MIN,&source),Err(DomainError::InvalidInput)));assert_eq!(source.calls.get(),0);assert_eq!(std::mem::discriminant(&state),kind);}\n    |\n\nerror[E0599]: no method named `mark_overdue_ms` found for enum `ObligationState` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch_tests.rs:17:287\n    |\n 17 | ...ionState::Payable{amount_cents:amount};let result=state.mark_overdue_ms(due,&source);if expired{assert!(matches!(result,Ok(Oblig...\n    |                                                            ^^^^^^^^^^^^^^^\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:230:1\n    |\n230 | pub enum ObligationState {\n    | ------------------------ method `mark_overdue_ms` not found for this enum\n    |\nhelp: there is a method `mark_overdue` with a similar name\n    |\n 17 -  for amount in [1,i64::MAX]{for(due,expired)in[(i64::MIN,true),(-62135586000000,true),(-1,true),(0,true),(10,false),(253402311600000,false),(i64::MAX,false)]{let source=clock(UNIX_EPOCH+Duration::from_millis(10));let state=ObligationState::Payable{amount_cents:amount};let result=state.mark_overdue_ms(due,&source);if expired{assert!(matches!(result,Ok(ObligationState::Overdue{amount_cents})if amount_cents==amount));}else{assert!(matches!(result,Err(DomainError::InvalidInput)));}assert_eq!(source.calls.get(),1);}}\n 17 +  for amount in [1,i64::MAX]{for(due,expired)in[(i64::MIN,true),(-62135586000000,true),(-1,true),(0,true),(10,false),(253402311600000,false),(i64::MAX,false)]{let source=clock(UNIX_EPOCH+Duration::from_millis(10));let state=ObligationState::Payable{amount_cents:amount};let result=state.mark_overdue(due,&source);if expired{assert!(matches!(result,Ok(ObligationState::Overdue{amount_cents})if amount_cents==amount));}else{assert!(matches!(result,Err(DomainError::InvalidInput)));}assert_eq!(source.calls.get(),1);}}\n    |\n\nerror: aborting due to 3 previous errors\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "domain/green": {
+        "id": "REC-011",
+        "phase": "domain",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "fe4cbbde4d5b8056ef5493017c016a73ef37629149328aa0dae8b1a71572f1aa",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "332c04485c47080dc48c45b230c273ad4e05518fa0838d2cebddd69902577a70",
+          "src-tauri/tests/common/mod.rs": "40f173b491fe640996a60ff7c264ea8bade8daacbdaa539445a7b5d9e3ef0e0b"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\domain\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 1.846,
+            "output": "warning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n"
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\domain\\green\\tests.exe\" domain::overdue_epoch_tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.214,
+            "output": "\nrunning 3 tests\ntest domain::overdue_epoch_tests::ancient_future_and_extreme_epoch_deadlines_remain_exact_without_overflow ... ok\ntest domain::overdue_epoch_tests::epoch_deadline_matches_existing_rule_at_before_equal_and_one_windows_tick_after ... ok\ntest domain::overdue_epoch_tests::nonpayable_and_invalid_states_fail_before_observing_clock ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 165 filtered out; finished in 0.00s\n\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "app/red": {
+        "id": "REC-011",
+        "phase": "app",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "e818361159ef008c6096a4cf120ee377374e1c3e7444f33bc62b244b737f5754",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "fe4cbbde4d5b8056ef5493017c016a73ef37629149328aa0dae8b1a71572f1aa",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "40f173b491fe640996a60ff7c264ea8bade8daacbdaa539445a7b5d9e3ef0e0b"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 0.353,
+            "output": "error[E0432]: unresolved imports `super::duration_to_epoch_millis`, `super::mark_obligation_overdue`, `super::MarkObligationOverdueError`, `super::OverdueObligationStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue_tests.rs:2:5\n  |\n2 |     duration_to_epoch_millis, mark_obligation_overdue, MarkObligationOverdueError,\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^ no `MarkObligationOverdueError` in `application::mark_obligation_overdue`\n  |     |                         |\n  |     |                         no `mark_obligation_overdue` in `application::mark_obligation_overdue`\n  |     no `duration_to_epoch_millis` in `application::mark_obligation_overdue`\n3 |     OverdueObligationStore,\n  |     ^^^^^^^^^^^^^^^^^^^^^^ no `OverdueObligationStore` in `application::mark_obligation_overdue`\n  |\n  = help: consider importing this module instead:\n          crate::application::mark_obligation_overdue\n\nwarning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0432`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "app/green": {
+        "id": "REC-011",
+        "phase": "app",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "7edd71f5fa7f5bd13a9129b359127f6bce477221512053562dff2f6f2223ac8f",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "fe4cbbde4d5b8056ef5493017c016a73ef37629149328aa0dae8b1a71572f1aa",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "40f173b491fe640996a60ff7c264ea8bade8daacbdaa539445a7b5d9e3ef0e0b"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green\\tests.exe\"",
+            "exit": 1,
+            "seconds": 1.096,
+            "output": "error[E0425]: cannot find type `RecurrenceObligation` in this scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:13:22\n   |\n13 |         obligation: &RecurrenceObligation,\n   |                      ^^^^^^^^^^^^^^^^^^^^ not found in this scope\n   |\nhelp: consider importing this struct\n   |\n 1 + use crate::domain::RecurrenceObligation;\n   |\n\nerror[E0425]: cannot find type `RecurrenceObligation` in this scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:41:21\n   |\n41 |     mut obligation: RecurrenceObligation,\n   |                     ^^^^^^^^^^^^^^^^^^^^ not found in this scope\n   |\nhelp: consider importing this struct\n   |\n 1 + use crate::domain::RecurrenceObligation;\n   |\n\nerror[E0425]: cannot find type `RecurrenceObligation` in this scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:45:13\n   |\n45 | ) -> Result<RecurrenceObligation, MarkObligationOverdueError> {\n   |             ^^^^^^^^^^^^^^^^^^^^ not found in this scope\n   |\nhelp: consider importing this struct\n   |\n 1 + use crate::domain::RecurrenceObligation;\n   |\n\nwarning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: unused import: `crate::domain::DomainError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:3:5\n  |\n3 | use crate::domain::DomainError;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror[E0614]: type `i64` cannot be dereferenced\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:53:54\n   |\n53 |         ObligationState::Payable { amount_cents } => *amount_cents,\n   |                                                      ^^^^^^^^^^^^^ can't be dereferenced\n\nerror: aborting due to 4 previous errors; 2 warnings emitted\n\nSome errors have detailed explanations: E0425, E0614.\nFor more information about an error, try `rustc --explain E0425`.\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "app/green-corrected": {
+        "id": "REC-011",
+        "phase": "app",
+        "mode": "green-corrected",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "fe4cbbde4d5b8056ef5493017c016a73ef37629149328aa0dae8b1a71572f1aa",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "40f173b491fe640996a60ff7c264ea8bade8daacbdaa539445a7b5d9e3ef0e0b"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green-corrected\\tests.exe\"",
+            "exit": 0,
+            "seconds": 1.601,
+            "output": "warning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: unused import: `crate::domain::DomainError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs:3:5\n  |\n3 | use crate::domain::DomainError;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: 2 warnings emitted\n\n"
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green-corrected\\tests.exe\" application::mark_obligation_overdue::tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.207,
+            "output": "\nrunning 7 tests\ntest application::mark_obligation_overdue::tests::duration_conversion_checks_i64_boundary ... ok\ntest application::mark_obligation_overdue::tests::id_failure_follows_one_clock_read_and_stops_before_store ... ok\ntest application::mark_obligation_overdue::tests::invalid_states_including_nonpositive_payable_reject_before_clock_id_store ... ok\ntest application::mark_obligation_overdue::tests::strict_boundary_before_equal_and_one_windows_tick_after_preserves_observation ... ok\ntest application::mark_obligation_overdue::tests::pre_epoch_clock_and_due_i64_min_expired_makes_clock_failed_before_id ... ok\ntest application::mark_obligation_overdue::tests::store_errors_are_opaque_and_do_not_retry ... ok\ntest application::mark_obligation_overdue::tests::marks_payable_overdue_preserving_metadata_and_exact_observation ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 168 filtered out; finished in 0.00s\n\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/red": {
+        "id": "REC-011",
+        "phase": "sqlite",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "fd3801cdbd90eea6a65cd38ac65aea3234aa801da4ad07634a2416e21a646fc0",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.53,
+            "output": "warning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: unused import: `crate::domain::DomainError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\mark_obligation_overdue.rs:3:5\n  |\n3 | use crate::domain::DomainError;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: 2 warnings emitted\n\n"
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 1.672,
+            "output": "error[E0277]: the trait bound `AdapterSqliteRecurrenceStore: OverdueObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:91:518\n   |\n91 | ...0;16],[0xe1;16]);let after_o=mark_obligation_overdue(o,&mut ids,&At(instant),&mut store).unwrap();assert_eq!(ids.calls,1);assert!...\n   |                                 -----------------------                         ^^^^^^^^^^ the trait `OverdueObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                                 |\n   |                                 required by a bound introduced by this call\n   |\nnote: required by a bound in `mark_obligation_overdue`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\mark_obligation_overdue.rs:40:35\n   |\n40 | pub fn mark_obligation_overdue<S: OverdueObligationStore, I: UuidGenerator, C: Clock>(\n   |                                   ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `mark_obligation_overdue`\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:95:476\n   |\n95 | ...let mut o=target(0);o.state=state;let e=store.persist_overdue_obligation_with_audit(&o,[0xe0;16],observed()).unwrap_err();assert!...\n   |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n   |\n 9 | /     fn persist_fixed_obligation_with_audit(\n10 | |         &mut self,\n11 | |         recurrence: &FixedRecurrence,\n12 | |         obligation: &RecurrenceObligation,\n13 | |         event_id: [u8; 16],\n14 | |         occurred_at_ms: i64,\n15 | |     ) -> Result<(), Self::Error>;\n   | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:96:82\n   |\n96 |  for at in [due_instant()-Duration::from_nanos(100),due_instant()]{assert!(store.persist_overdue_obligation_with_audit(&target(0),[0...\n   |                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n   |\n 9 | /     fn persist_fixed_obligation_with_audit(\n10 | |         &mut self,\n11 | |         recurrence: &FixedRecurrence,\n12 | |         obligation: &RecurrenceObligation,\n13 | |         event_id: [u8; 16],\n14 | |         occurred_at_ms: i64,\n15 | |     ) -> Result<(), Self::Error>;\n   | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:96:255\n   |\n96 | ...t(0);ancient.due_at_ms=i64::MIN;assert!(store.persist_overdue_obligation_with_audit(&ancient,[0xe0;16],UNIX_EPOCH-Duration::from_...\n   |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n   |\n 9 | /     fn persist_fixed_obligation_with_audit(\n10 | |         &mut self,\n11 | |         recurrence: &FixedRecurrence,\n12 | |         obligation: &RecurrenceObligation,\n13 | |         event_id: [u8; 16],\n14 | |         occurred_at_ms: i64,\n15 | |     ) -> Result<(), Self::Error>;\n   | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:96:405\n   |\n96 | ...assert_eq!(snapshot(&p),before);assert!(store.persist_overdue_obligation_with_audit(&target(0),[0xe0;16],due_instant()+Duration::...\n   |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n   |\n 9 | /     fn persist_fixed_obligation_with_audit(\n10 | |         &mut self,\n11 | |         recurrence: &FixedRecurrence,\n12 | |         obligation: &RecurrenceObligation,\n13 | |         event_id: [u8; 16],\n14 | |         occurred_at_ms: i64,\n15 | |     ) -> Result<(), Self::Error>;\n   | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:100:399\n    |\n100 | ...:new(open_database(&p).unwrap());let e=store.persist_overdue_obligation_with_audit(&o,[0xe0;16],observed()).unwrap_err();assert!...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:100:551\n    |\n100 | ...ssert_eq!(snapshot(&p),before);assert!(store.persist_overdue_obligation_with_audit(&target(0),[0xe1;16],observed()).is_err());as...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:100:754\n    |\n100 | ...ew(open_database(&p).unwrap());assert!(fresh.persist_overdue_obligation_with_audit(&target(0),[0xe2;16],observed()).is_ok());hea...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: OverdueObligationStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:104:925\n    |\n104 | ...xe0;16],[0xe1;16]);let e=mark_obligation_overdue(pending,&mut ids,&At(observed()),&mut store).err().unwrap();opaque(&e);assert_e...\n    |                             -----------------------                                  ^^^^^^^^^^ the trait `OverdueObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                             |\n    |                             required by a bound introduced by this call\n    |\nnote: required by a bound in `mark_obligation_overdue`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\mark_obligation_overdue.rs:40:35\n    |\n 40 | pub fn mark_obligation_overdue<S: OverdueObligationStore, I: UuidGenerator, C: Clock>(\n    |                                   ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `mark_obligation_overdue`\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:104:1009\n    |\n104 | ...ssert_eq!(snapshot(&p),before);assert!(store.persist_overdue_obligation_with_audit(&target(0),[0xe2;16],observed()).is_err());as...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: OverdueObligationStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:105:234\n    |\n105 | ...new([0xe0;16],[0xe1;16]);mark_obligation_overdue(pending,&mut ids,&At(observed()),&mut store).unwrap();let before=snapshot(&p);a...\n    |                             -----------------------                                  ^^^^^^^^^^ the trait `OverdueObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                             |\n    |                             required by a bound introduced by this call\n    |\nnote: required by a bound in `mark_obligation_overdue`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\mark_obligation_overdue.rs:40:35\n    |\n 40 | pub fn mark_obligation_overdue<S: OverdueObligationStore, I: UuidGenerator, C: Clock>(\n    |                                   ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `mark_obligation_overdue`\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:105:293\n    |\n105 | ...wrap();let before=snapshot(&p);assert!(store.persist_overdue_obligation_with_audit(&target(0),[0xe2;16],observed()).is_err());as...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: OverdueObligationStore` is not satisfied\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:109:859\n    |\n109 | ...ent;16],[0xe1;16]);let e=mark_obligation_overdue(pending,&mut ids,&At(observed()),&mut store).err().unwrap();opaque(&e);assert_e...\n    |                             -----------------------                                  ^^^^^^^^^^ the trait `OverdueObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n    |                             |\n    |                             required by a bound introduced by this call\n    |\nnote: required by a bound in `mark_obligation_overdue`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\mark_obligation_overdue.rs:40:35\n    |\n 40 | pub fn mark_obligation_overdue<S: OverdueObligationStore, I: UuidGenerator, C: Clock>(\n    |                                   ^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `mark_obligation_overdue`\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:109:1075\n    |\n109 | ...ec011_fail\").unwrap();}drop(c);assert!(store.persist_overdue_obligation_with_audit(&target(0),[0xe2;16],observed()).is_err());as...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror[E0599]: no method named `persist_overdue_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:109:1278\n    |\n109 | ...ew(open_database(&p).unwrap());assert!(fresh.persist_overdue_obligation_with_audit(&target(0),[0xe3;16],observed()).is_ok());hea...\n    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\src\\application\\generate_fixed_obligation.rs:9:5\n    |\n  9 | /     fn persist_fixed_obligation_with_audit(\n 10 | |         &mut self,\n 11 | |         recurrence: &FixedRecurrence,\n 12 | |         obligation: &RecurrenceObligation,\n 13 | |         event_id: [u8; 16],\n 14 | |         occurred_at_ms: i64,\n 15 | |     ) -> Result<(), Self::Error>;\n    | |_________________________________^\n\nerror: aborting due to 15 previous errors\n\nSome errors have detailed explanations: E0277, E0599.\nFor more information about an error, try `rustc --explain E0277`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/green": {
+        "id": "REC-011",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "0589dc082820a4e8f9a4730782580f1d9fa1034316c5e129622e100475aba15f",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.521,
+            "output": "warning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: unused import: `crate::domain::DomainError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\src\\application\\mark_obligation_overdue.rs:3:5\n  |\n3 | use crate::domain::DomainError;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: unused import: `crate::application::supply_obligation_amount::ObligationAmountStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\src\\infrastructure\\recurrences\\overdue.rs:1:5\n  |\n1 | use crate::application::supply_obligation_amount::ObligationAmountStore;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: unused imports: `MarkObligationOverdueError` and `ObservedClock`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\src\\infrastructure\\recurrences\\overdue.rs:8:29\n  |\n8 |     OverdueObligationStore, MarkObligationOverdueError, ObservedClock, audit_millis\n  |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^\n\nwarning: 4 warnings emitted\n\n"
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.443,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\tests.exe\" common::recurrence_overdue:: --nocapture",
+            "exit": 101,
+            "seconds": 0.645,
+            "output": "\nrunning 5 tests\ntest common::recurrence_overdue::seven_snapshot_mismatches_roll_back_and_poison_without_overwriting_amount ... FAILED\ntest common::recurrence_overdue::overdue_commits_only_state_and_exact_audit_for_both_kinds_contexts_and_epoch_ranges ... FAILED\ntest common::recurrence_overdue::invalid_state_amount_or_observation_has_no_io_and_preserves_adapter_usability ... FAILED\ntest common::recurrence_overdue::state_update_and_audit_faults_roll_back_together_and_poison_adapter ... FAILED\ntest common::recurrence_overdue::pending_paid_overdue_missing_and_replay_cannot_be_marked_again_or_change_money ... FAILED\n\nfailures:\n\nfailures:\n    common::recurrence_overdue::invalid_state_amount_or_observation_has_no_io_and_preserves_adapter_usability\n    common::recurrence_overdue::overdue_commits_only_state_and_exact_audit_for_both_kinds_contexts_and_epoch_ranges\n    common::recurrence_overdue::pending_paid_overdue_missing_and_replay_cannot_be_marked_again_or_change_money\n    common::recurrence_overdue::seven_snapshot_mismatches_roll_back_and_poison_without_overwriting_amount\n    common::recurrence_overdue::state_update_and_audit_faults_roll_back_together_and_poison_adapter\n\ntest result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 115 filtered out; finished in 0.39s\n\n\nthread 'common::recurrence_overdue::seven_snapshot_mismatches_roll_back_and_poison_without_overwriting_amount' (131804) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:100:740:\nassertion failed: fresh.persist_overdue_obligation_with_audit(&target(0), [0xe2; 16],\n        observed()).is_ok()\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\nthread 'common::recurrence_overdue::overdue_commits_only_state_and_exact_audit_for_both_kinds_contexts_and_epoch_ranges' (131196) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:91:530:\ncalled `Result::unwrap()` on an `Err` value: StoreFailed\n\nthread 'common::recurrence_overdue::invalid_state_amount_or_observation_has_no_io_and_preserves_adapter_usability' (128036) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:95:539:\ncalled `Result::unwrap_err()` on an `Ok` value: ()\n\nthread 'common::recurrence_overdue::state_update_and_audit_faults_roll_back_together_and_poison_adapter' (129920) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:109:1264:\nassertion failed: fresh.persist_overdue_obligation_with_audit(&target(0), [0xe3; 16],\n        observed()).is_ok()\n\nthread 'common::recurrence_overdue::pending_paid_overdue_missing_and_replay_cannot_be_marked_again_or_change_money' (131556) panicked at C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs:105:246:\ncalled `Result::unwrap()` on an `Err` value: StoreFailed\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "sqlite/green-corrected": {
+        "id": "REC-011",
+        "phase": "sqlite",
+        "mode": "green-corrected",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "src-tauri/src/domain/overdue_epoch.rs": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "src-tauri/src/domain/overdue_epoch_tests.rs": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "src-tauri/src/application/mark_obligation_overdue.rs": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf",
+          "src-tauri/src/application/mark_obligation_overdue_tests.rs": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "src-tauri/src/infrastructure/recurrences/overdue.rs": "9de4465cf579036aba031370b1d9dc9ae29a4292404078725a1d2d541a61bb69",
+          "src-tauri/tests/common/recurrence_overdue.rs": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "src-tauri/src/lib.rs": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.815,
+            "output": "warning: unused imports: `Duration` and `SystemTime`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\src\\domain\\overdue_epoch.rs:2:17\n  |\n2 | use std::time::{Duration, SystemTime, UNIX_EPOCH};\n  |                 ^^^^^^^^  ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: unused import: `crate::domain::DomainError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\src\\application\\mark_obligation_overdue.rs:3:5\n  |\n3 | use crate::domain::DomainError;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: 2 warnings emitted\n\n"
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.858,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\tests.exe\" common::recurrence_overdue:: --nocapture",
+            "exit": 0,
+            "seconds": 1.646,
+            "output": "\nrunning 5 tests\ntest common::recurrence_overdue::invalid_state_amount_or_observation_has_no_io_and_preserves_adapter_usability ... ok\ntest common::recurrence_overdue::state_update_and_audit_faults_roll_back_together_and_poison_adapter ... ok\ntest common::recurrence_overdue::pending_paid_overdue_missing_and_replay_cannot_be_marked_again_or_change_money ... ok\ntest common::recurrence_overdue::seven_snapshot_mismatches_roll_back_and_poison_without_overwriting_amount ... ok\ntest common::recurrence_overdue::overdue_commits_only_state_and_exact_audit_for_both_kinds_contexts_and_epoch_ranges ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 115 filtered out; finished in 1.37s\n\n"
+          }
+        ],
+        "result": "pass"
+      }
+    },
+    "fixture_correction": {
+      "id": "REC-011",
+      "persona": "P-QA integrator",
+      "qa_model": "LagunaXS2.1",
+      "local_calls": 1,
+      "local_seconds": 450.601,
+      "root_fixture_correction": true,
+      "root_production_correction": false,
+      "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-APP-rejected-20261019.rs",
+      "rejected_sha256": "dbf9c19919a3b09490a9afbcb1a243ff74d7f4fa6d0d62d44a239913a0ccab24",
+      "corrected_sha256": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+      "reason": "Static contract review found8markers,wrongPayableStoreexpectation,hardcodedfuturedeadline/observed1234,unimplemented100nsclock andoldID-beforeClockcounts;beforeRED,no test success claimed",
+      "changes": [
+        "captureactualSystemTime/Overdue payload",
+        "validdue1000ms vsTime1234/amount1MAX",
+        "combinebefore/equal/+100ns inonefixture per7testcontract",
+        "AwaitingValue is noneligible,positivePayable is eligible",
+        "Clock-before-ID countsoninvalidtimeandIDfailure"
+      ]
+    },
+    "local_correction_plans": [
+      {
+        "id": "REC-011",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-APP-rejected-20261019.rs",
+        "sha256": "7edd71f5fa7f5bd13a9129b359127f6bce477221512053562dff2f6f2223ac8f",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green\\receipt.json",
+        "prior_seconds": 170.846,
+        "artifact_budget": 2400,
+        "next_timeout": 900,
+        "root_production_correction": false,
+        "findings": [
+          "MissingRecurrenceObligationimport",
+          "assignsvalidateResultunittoObligationState",
+          "readsClockbeforeeligibilitymatch",
+          "unusedDomainError/amount/occurred_at_ms"
+        ]
+      },
+      {
+        "id": "REC-011",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-DATA-rejected-20261019.rs",
+        "sha256": "0589dc082820a4e8f9a4730782580f1d9fa1034316c5e129622e100475aba15f",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\receipt.json",
+        "prior_seconds": 130.6,
+        "artifact_budget": 2400,
+        "next_timeout": 900,
+        "root_production_correction": false,
+        "findings": [
+          "compiledbutall5SQLfailed",
+          "requireswrongtargetPayable insteadOverdue",
+          "omitsstate.validate andrealmark_overdue_ms observationvalidation beforeIO",
+          "unusedoldtrait/error/ObservedClockimports"
+        ]
+      }
+    ],
+    "windows_probe": {
+      "id": "REC-011",
+      "evidence": "E3",
+      "command": [
+        "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe",
+        "-C",
+        "linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe",
+        "-L",
+        "native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64",
+        "-L",
+        "native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64",
+        "-L",
+        "native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64",
+        "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-time-probe-20261019\\time.rs",
+        "-o",
+        "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-time-probe-20261019\\time.exe"
+      ],
+      "compile_exit": 0,
+      "probe_exit": 0,
+      "output": "-62135586000000 false\n253402311600000 true\n-9223372036854775808 false\n9223372036854775807 false\n",
+      "limit": "Actual Windows SystemTime range probe only,not product behavior or E2E"
+    },
+    "human_calendar_decision": {
+      "id": "REC-011",
+      "source": "direct human asynchronous reply in current chat",
+      "question": "Para as recorrências mensais, posso usar o último dia do mês quando o dia escolhido não existir e considerar o vencimento até o fim do dia no horário de Brasília?",
+      "answer": "Sim, último dia e horário de Brasília (recomendado)",
+      "decision": "Vencimento mensal: quando o dia escolhido não existir, usar o último dia do mês; considerar o vencimento até o fim do dia no horário de Brasília.",
+      "document": "docs/product/BUSINESS_RULES.md",
+      "before_sha256": "2593a189e6177846d0ff2bf5305671ce7ce5dfd6a61876b6a0293d37be341923",
+      "after_sha256": "757c109dc5a4bd273cb697e80f4b35fbbf2522270c716b1d196bc3c51e66cf5b",
+      "implementation_scope": "Recorded approval covers the asked lastday/endofdayBrasilia policy;current fixedUTCminus3implementation and absenceofhistoricalIANA/DSTsupportremainexplicitimplementationlimits,notadditionalhumanapprovals",
+      "source_files_changed": false
+    },
+    "coverage": {
+      "full": {
+        "src/domain/overdue_epoch.rs": {
+          "lines": {
+            "count": 16,
+            "covered": 16,
+            "percent": 100
+          },
+          "functions": {
+            "count": 1,
+            "covered": 1,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 2,
+            "covered": 2,
+            "percent": 100
+          },
+          "regions": {
+            "count": 22,
+            "covered": 22,
+            "notcovered": 0,
+            "percent": 100
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/application/mark_obligation_overdue.rs": {
+          "lines": {
+            "count": 48,
+            "covered": 48,
+            "percent": 100
+          },
+          "functions": {
+            "count": 5,
+            "covered": 5,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 11,
+            "covered": 10,
+            "percent": 90.9090909090909
+          },
+          "regions": {
+            "count": 60,
+            "covered": 60,
+            "notcovered": 0,
+            "percent": 100
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences/overdue.rs": {
+          "lines": {
+            "count": 65,
+            "covered": 65,
+            "percent": 100
+          },
+          "functions": {
+            "count": 2,
+            "covered": 2,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 4,
+            "covered": 2,
+            "percent": 50
+          },
+          "regions": {
+            "count": 61,
+            "covered": 61,
+            "notcovered": 0,
+            "percent": 100
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/domain/overdue_epoch.rs": {
+          "lines": {
+            "count": 16,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 1,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 2,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 22,
+            "covered": 0,
+            "notcovered": 22,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/application/mark_obligation_overdue.rs": {
+          "lines": {
+            "count": 48,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 5,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 11,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 60,
+            "covered": 0,
+            "notcovered": 60,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences/overdue.rs": {
+          "lines": {
+            "count": 65,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 2,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 4,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 61,
+            "covered": 0,
+            "notcovered": 61,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "coverage_scope": "newi128epochdomain+wholeoverdueapplication/snapshotclock/audithelpers+wholechildtransaction;controlskipsonly3domain7app5SQLnewtests;allpreviousFixedVariableSupplytestsretained;notRustglobal/CI;statementsnotmeasured,stablebranchesN/A",
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\domain\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-domain-red.json",
+        "bytes": 8887,
+        "sha256": "612bdbd6aac46f91619de6ab7f889dac84c213f901c0fad204502f6371f69faa"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\domain\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-domain-green.json",
+        "bytes": 3416,
+        "sha256": "b775271c8bc1585b1cc51f3c48cea3ff940ec5600e8cdafd079ec75848f13cbf"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-app-red.json",
+        "bytes": 3954,
+        "sha256": "13d64ce63f5e848875e5e8f5cf71e9f472fca0a97956177c13cb3a9afb1b1071"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-app-green.json",
+        "bytes": 4978,
+        "sha256": "2411bf139e9be08cec596cfe4f8f35c10ba037498e57f6b0c6263518377dbb95"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\app\\green-corrected\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-app-green-corrected.json",
+        "bytes": 4355,
+        "sha256": "0cfea6f5ef87dc56edcf7e69175290599f7c1604463f55f7781af1efe9b6aa2d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-sqlite-red.json",
+        "bytes": 22453,
+        "sha256": "c1eccd87612036efcf5470013274f93df30bbbcd811c99a098710730cf314d3e"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-sqlite-green.json",
+        "bytes": 9062,
+        "sha256": "9cbb83b3a085d678c5466fac7356e0996b2940b352dde440ac0a9053e1a40ac7"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\artifacts\\rec011-check\\sqlite\\green-corrected\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-sqlite-green-corrected.json",
+        "bytes": 5837,
+        "sha256": "369bb11e6d3dc7908ec44957a57d285dc2ee46ac9d65fb3e0258d22329decfc7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec011-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\receipt-coverage.json",
+        "bytes": 69286,
+        "sha256": "d390079dbe02c51c7558feadc0d12fc17372d9c42453972c6cdfb79dc77b473b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec011-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\full.json",
+        "bytes": 41608,
+        "sha256": "5df09d62abc7101cc7e112d12b24c6dacb8a4e128a87bb1f877283160fda9781"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec011-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\control.json",
+        "bytes": 41475,
+        "sha256": "83b3c7187107bbc3ff6a38cac2f1b76b12350d9c52196ecba8a543c730851660"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__domain__mod.rs",
+        "bytes": 14140,
+        "sha256": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\overdue_epoch.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__domain__overdue_epoch.rs",
+        "bytes": 904,
+        "sha256": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\overdue_epoch_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__domain__overdue_epoch_tests.rs",
+        "bytes": 2609,
+        "sha256": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\application\\mark_obligation_overdue.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__application__mark_obligation_overdue.rs",
+        "bytes": 2994,
+        "sha256": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\application\\mark_obligation_overdue_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__application__mark_obligation_overdue_tests.rs",
+        "bytes": 7335,
+        "sha256": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__infrastructure__recurrences.rs",
+        "bytes": 8618,
+        "sha256": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences\\overdue.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__infrastructure__recurrences__overdue.rs",
+        "bytes": 3187,
+        "sha256": "9de4465cf579036aba031370b1d9dc9ae29a4292404078725a1d2d541a61bb69"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\tests\\common\\recurrence_overdue.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__tests__common__recurrence_overdue.rs",
+        "bytes": 11328,
+        "sha256": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\lib.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__src__lib.rs",
+        "bytes": 719,
+        "sha256": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\tests\\common\\mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\before-mechanical-src-tauri__tests__common__mod.rs",
+        "bytes": 3101,
+        "sha256": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-APP-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-APP-rejected-20261019.rs",
+        "bytes": 3085,
+        "sha256": "7edd71f5fa7f5bd13a9129b359127f6bce477221512053562dff2f6f2223ac8f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-app-correction-plan-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-app-correction-plan-20261019.json",
+        "bytes": 717,
+        "sha256": "4e8c1a592bf20227d9582dfebfbc388e0b5924b90459357c0fe8226aafd64568"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-DATA-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-DATA-rejected-20261019.rs",
+        "bytes": 3034,
+        "sha256": "0589dc082820a4e8f9a4730782580f1d9fa1034316c5e129622e100475aba15f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-data-correction-plan-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-data-correction-plan-20261019.json",
+        "bytes": 752,
+        "sha256": "a26508a0aed23b7c732c25710b09bf082e30bf61c7e5fde9a1f181a1339115ae"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-APP-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-QA-APP-rejected-20261019.rs",
+        "bytes": 8078,
+        "sha256": "dbf9c19919a3b09490a9afbcb1a243ff74d7f4fa6d0d62d44a239913a0ccab24"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-fixture-correction-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-fixture-correction-20261019.json",
+        "bytes": 1034,
+        "sha256": "de22ba35138568cf9a7d37d89af2a39adfb418c233df2dfd7b8a84014ae0cefb"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-APP-20261019-duration.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-QA-APP-20261019-duration.json",
+        "bytes": 397,
+        "sha256": "5f4ba7b8af003832937d6df5867a1e9f0538d96ad7c81c3534f908f880be6e23"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-SQL-20261019-duration.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-QA-SQL-20261019-duration.json",
+        "bytes": 336,
+        "sha256": "42762e6f06ff4bbbfc5b667e2ebb88a6685aa08a895c33e065a0693a3aa14ff4"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-sql-fixture-preparation-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-sql-fixture-preparation-20261019.json",
+        "bytes": 413,
+        "sha256": "1974e33369c612e5416481de7b5bad1e6b8c8ce0eb5ef2053c981726a59a2fe5"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-time-probe-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-time-probe-20261019.json",
+        "bytes": 1138,
+        "sha256": "4dbcd80b9d4e50cc6fcae0e0dfd30ef816af191dbda5e06846d17e2c7d6b9c07"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-calendar-decision-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-calendar-decision-20261019.json",
+        "bytes": 1011,
+        "sha256": "84e6edeb006663c3a924523b03569cdc5692e6ed71dd7d4592baf90f4f9e6c0a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-APP-20261019.1792404599483311300.job.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-QA-APP-20261019.1792404599483311300.job.json",
+        "bytes": 9842,
+        "sha256": "ccb4a9a68bd7f622f11dd946ab657206544af4d1f9c339a89a951a0d622670e4"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-QA-SQL-20261019.1792405927246904500.job.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\REC-011-QA-SQL-20261019.1792405927246904500.job.json",
+        "bytes": 938,
+        "sha256": "71965198a261a3b03991d62d37cdd819e2adbf58fc68dedcb56774ef490132a5"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-time-probe-20261019\\time.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\time-probe-time.rs",
+        "bytes": 289,
+        "sha256": "9199e2bccacd83c76bab141534c4f6921363ada6d7c85d76cc46c33e155b0576"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-time-probe-20261019\\time.exe",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-focal-evidence-20261019\\time-probe-time.exe",
+        "bytes": 136704,
+        "sha256": "7e070a85f5df44e70bb61eb066fe99e7385543ddb142faa0e571a6101f58e830"
+      }
+    ],
+    "review": {
+      "id": "REC-011",
+      "base": "d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+      "persona": "P-REV",
+      "reviewer": "/root/cat004_review",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "evidence": "E2",
+      "readonly": true,
+      "findings": [],
+      "conclusion": "Temporal comparison retains strict bound and100ns;adapter validates state/exactmetadata and writes state+audit inone transaction;focaltests cover times/amounts/repetition/rollback",
+      "limit": "Static review only;reviewer did not execute gates/tests;subsequent human calendar approval changes documentation only",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/tests/common/recurrence_overdue.rs": "202ed880a245bd2a3f6d0290ea6fee909c2350e37ad4d03d7215d456b4cdcb8d",
+        "src-tauri/src/lib.rs": "c11b81316f08f696cdfc2084b67c436e15c142e4f56f7ad0469be95fb5d17141",
+        "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+      }
+    },
+    "local": {
+      "id": "REC-011",
+      "base": "d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+      "personas": [
+        "P-QA",
+        "P-DOM",
+        "P-INT",
+        "P-DAT"
+      ],
+      "models": [
+        "LagunaXS2.1"
+      ],
+      "seconds": 2593.006,
+      "calls_seconds": {
+        "QA-APP": 450.601,
+        "QA-SQL": 1206.01,
+        "DOMAIN": 91.622,
+        "APP": 170.846,
+        "APP-CORRECT": 176.828,
+        "DATA": 130.6,
+        "DATA-CORRECT": 366.499
+      },
+      "local_calls": 7,
+      "qa_app_used": "partial/copiedfixturescorrectedbyroot",
+      "qa_sql_used": false,
+      "app_calls": 2,
+      "app_seconds": 347.674,
+      "app_budget": 2400,
+      "data_calls": 2,
+      "data_seconds": 497.099,
+      "data_budget": 2400,
+      "extensions": 0,
+      "local_used": true,
+      "root_production_correction": true,
+      "root_executable_correction": false,
+      "root_fixture_correction": true,
+      "mechanical": "Actualcompiledwarnings prove unusedDomainDuration/SystemTime andAPPDomainError;removedonly3unusedimportnames,trimlineends beforefmt withentiresourcewhitespace-tokenparity;SQLtokensunchanged;parent/oldcodeunchanged",
+      "mechanical_originals": [
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\mod.rs",
+          "sha256": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+          "bytes": 14140
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\overdue_epoch.rs",
+          "sha256": "aac261e77db3df7bf1d2d63490d66a8a3f73c5d51e41944475e8e89bf219021d",
+          "bytes": 904
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\domain\\overdue_epoch_tests.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\domain\\overdue_epoch_tests.rs",
+          "sha256": "81da61c529c4404120f298404496d4da64923f057dff7029c36d77088db2167e",
+          "bytes": 2609
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\application\\mark_obligation_overdue.rs",
+          "sha256": "b47d923a3a4c84a3cca69681c4a0703580ebaa63e264e0a1589c4c2efb919cdf",
+          "bytes": 2994
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\application\\mark_obligation_overdue_tests.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\application\\mark_obligation_overdue_tests.rs",
+          "sha256": "c799169724cfe02c2df09e1c32f299b64537fc8690440def482bd2d5d11b117b",
+          "bytes": 7335
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\infrastructure\\recurrences.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences.rs",
+          "sha256": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+          "bytes": 8618
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\infrastructure\\recurrences\\overdue.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\infrastructure\\recurrences\\overdue.rs",
+          "sha256": "9de4465cf579036aba031370b1d9dc9ae29a4292404078725a1d2d541a61bb69",
+          "bytes": 3187
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_overdue.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\tests\\common\\recurrence_overdue.rs",
+          "sha256": "265e93ab755e15b47d115349673d6bc6437a0112b0024c929c78a9c0de84d0df",
+          "bytes": 11328
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\src\\lib.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\src\\lib.rs",
+          "sha256": "276db301d3312321a9a3455605518fc4ef1b3ec5cef15b280bb26b5f1e402d8f",
+          "bytes": 719
+        },
+        {
+          "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-011-overdue-obligation\\Millani Artes\\src-tauri\\tests\\common\\mod.rs",
+          "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-011-before-mechanical-20261019\\src-tauri\\tests\\common\\mod.rs",
+          "sha256": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917",
+          "bytes": 3101
+        }
+      ],
+      "root_fixtures": "3domain deterministic;P-QALagunaAPP fixturepartial thenrootcorrect8to7/observationState/counts;SQLLaguna timedout0diff,roottransposedoldphysicalfixtures;noQAmodelretry",
+      "old_migrations": {
+        "src-tauri\\migrations\\002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri\\migrations\\003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri\\migrations\\004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri\\migrations\\005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri\\migrations\\006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri\\migrations\\007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "paths": {
+        "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+        "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+        "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+        "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+        "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+        "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+        "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+        "src-tauri/tests/common/recurrence_overdue.rs": "202ed880a245bd2a3f6d0290ea6fee909c2350e37ad4d03d7215d456b4cdcb8d",
+        "src-tauri/src/lib.rs": "c11b81316f08f696cdfc2084b67c436e15c142e4f56f7ad0469be95fb5d17141",
+        "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+      }
+    },
+    "runtime": [
+      {
+        "status": "stopped",
+        "pid": 119164,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 124416,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 128228,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 130708,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 126436,
+        "port11434": "closed"
+      }
+    ],
+    "scope": "Payable positivo viraOverdue sócomobservação estritamenteposterior,precisão100ns preservada. Ponteepochi128 mantém datas antigas válidas semconverterduedateparaSystemTimeWindows e mantém métodoanterior intacto. AppcapturaClockexterno1vez,valida estado/tempo/audit antes1ID/1Store,portaSystemTimeexata/snapshotcrateprivate. Filhoadapter validaalvoOverdue/centavos/realmark_overdue_ms/auditantesIO;umUPDATEguardadoDBPayable+amount/metadadosexatos/unlinked e audit atômicos,rollback+poison/préIOusável. Sóestado muda,semtemplate/movimento/valor/calendário/schema/deps/IPC;geradores/supplyanteriores preservados. Decisão humana deúltimodia/fimdiaBrasília registrada emBUSINESS_RULES.",
+    "limitations": "REC-012..015 (pagamento transacional,saída única e idempotência),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;implementação de calendário atual usaUTC-3fixo,semprovaIANA/DSThistórico,oaceitehumanofoiparapolíticaúltimodia/fimdiaBrasília",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-011",
+    "base": "d87ac7b380e39d2014c377a1f7f901f86b0f73e9",
+    "persona": "P-REV",
+    "reviewer": "/root/cat004_review",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "evidence": "E2",
+    "readonly": true,
+    "findings": [],
+    "conclusion": "Temporal comparison retains strict bound and100ns;adapter validates state/exactmetadata and writes state+audit inone transaction;focaltests cover times/amounts/repetition/rollback",
+    "limit": "Static review only;reviewer did not execute gates/tests;subsequent human calendar approval changes documentation only",
+    "sources": {
+      "src-tauri/src/domain/mod.rs": "4cad3ef7c7213e5af821ade58d5f7b0c02ac88b7e876b8daa4b73a41209acf16",
+      "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+      "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+      "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+      "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+      "src-tauri/src/infrastructure/recurrences.rs": "f49deba0d8f4e43822acc58683535e90442fc19e2f2720cd0a2b9b2c6a2c7413",
+      "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+      "src-tauri/tests/common/recurrence_overdue.rs": "202ed880a245bd2a3f6d0290ea6fee909c2350e37ad4d03d7215d456b4cdcb8d",
+      "src-tauri/src/lib.rs": "c11b81316f08f696cdfc2084b67c436e15c142e4f56f7ad0469be95fb5d17141",
+      "src-tauri/tests/common/mod.rs": "a060e74da08156b0a629145bb1dbf7dff26fc90fd4b9567d08315738d1763917"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 22,
+    "bytes": 1078827,
+    "framed_sha256": "a4f14989c780c8a47285f221ffe24763e562ebba4d13ddca793a14b952fb7b58",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 11,
+    "bytes": 1028656,
+    "framed_sha256": "dc2f3b04a53e326e3b5367d5566244dd68d5fc7be10e74312bf8dfb5f6815bc8",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 584 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 124 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 124 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 528519 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "Payable positivo viraOverdue sócomobservação estritamenteposterior,precisão100ns preservada. Ponteepochi128 mantém datas antigas válidas semconverterduedateparaSystemTimeWindows e mantém métodoanterior intacto. AppcapturaClockexterno1vez,valida estado/tempo/audit antes1ID/1Store,portaSystemTimeexata/snapshotcrateprivate. Filhoadapter validaalvoOverdue/centavos/realmark_overdue_ms/auditantesIO;umUPDATEguardadoDBPayable+amount/metadadosexatos/unlinked e audit atômicos,rollback+poison/préIOusável. Sóestado muda,semtemplate/movimento/valor/calendário/schema/deps/IPC;geradores/supplyanteriores preservados. Decisão humana deúltimodia/fimdiaBrasília registrada emBUSINESS_RULES.",
+  "preserved": "all123 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;36 focal files 438014B hashverified;WT recoverably archived",
+  "limitations": "REC-012..015 (pagamento transacional,saída única e idempotência),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;implementação de calendário atual usaUTC-3fixo,semprovaIANA/DSThistórico,oaceitehumanofoiparapolíticaúltimodia/fimdiaBrasília",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
