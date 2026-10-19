@@ -1,0 +1,1516 @@
+{
+  "id": "REC-009",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "5504bae8b2938761f0b245fe330be7e303af504b",
+  "final_sha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+  "source_ci": {
+    "run": {
+      "id": 39220204263,
+      "head_sha": "5504bae8b2938761f0b245fe330be7e303af504b",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39220204263",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T08:04:41Z",
+      "updated_at": "2026-10-19T08:15:33Z"
+    },
+    "job": {
+      "id": 117953471237,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39220204263,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          156,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          110,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          0
+        ]
+      ],
+      "new_sql_tests": 5,
+      "new_unit_tests": 9,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 262,
+          "findings": 0,
+          "seconds": 1.484,
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.16,
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.981,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.616,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.891
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "sourceSha": "5504bae8b2938761f0b245fe330be7e303af504b",
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "imageOS": "win25-vs2026",
+          "sha256": "bd73c3fa3329f5f3a902f439bfe00d9327c898554f3a44fd8dce0ed044c43c91",
+          "imageVersion": "20261007.264.1",
+          "bytes": 8536064,
+          "npmLock": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+          "node": "v24.21.0",
+          "machine": "AMD64",
+          "pe": "PE32+",
+          "cargoLock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+          "customProtocol": true,
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12171840454,
+          "name": "frontend-coverage-39220204263-1",
+          "size_in_bytes": 21917,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12171840454",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12171840454/zip",
+          "expired": false,
+          "created_at": "2026-10-19T08:07:30Z",
+          "expires_at": "2026-10-20T08:07:30Z",
+          "updated_at": "2026-10-19T08:07:30Z",
+          "digest": "sha256:5bc5302dbb82683d0ec834732190eaf1eeabe2355ca7e8e53473291910da2773",
+          "workflow_run": {
+            "id": 39220204263,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "5504bae8b2938761f0b245fe330be7e303af504b"
+          }
+        }
+      ]
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 39221657468,
+      "head_sha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/39221657468",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T08:16:57Z",
+      "updated_at": "2026-10-19T08:19:03Z"
+    },
+    "job": {
+      "id": 117958127802,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39221657468,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        }
+      ]
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_sql_tests": 0,
+      "new_unit_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 263,
+          "findings": 0,
+          "seconds": 1.208,
+          "sourceSha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-10-23",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.297,
+          "sourceSha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.794,
+          "inputSHA256": {
+            "package-lock.json": "bb9dd4c788dc028f426b4a7d7c3ef3be7ce02b5374ac555455382e9dfb52b284",
+            "package.json": "475d1d3c95ab6a79ae5944eba4c34d100e15fc890a5f21aafac687970d59484a"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1338,
+            "last-commit": "999ec89d5d3f10f20be14750ec8c2d8b44e0ac9b",
+            "last-updated": "2026-10-17T17:23:59+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.334,
+          "excepted": 2,
+          "exceptionExpiry": "2026-10-23",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "084a266dc206faf93cbdc943a4a9c27a880a2251",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    }
+  },
+  "verification_facts": {
+    "id": "REC-009",
+    "evidence": "E3",
+    "rust": {
+      "base": "c8118676fbc1e085164154d28ad4c5dca77a43c0",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/infrastructure/recurrences.rs": "39b4df1bf95395969f163a41f181077fc373f8f95545f131461280901ef56d29",
+        "src-tauri/tests/common/recurrence_variable_generation.rs": "b956f4bb5f90a98a11c2c5ca65cebfd94d61873c306838d13b15628528c9462d",
+        "src-tauri/src/lib.rs": "e293db22718816c5c3e69a5fe57cb1a34e12ff294eb5abe9c74ca70c471739a4",
+        "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.34,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-rust-gate-0-20261019.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 3.22,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-rust-gate-1-20261019.log",
+          "sha256": "648470be97da7222f8963eb8b22f3dd65a78c253fd6ffc8f9cafabf27de7154f"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 14.2,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-rust-gate-2-20261019.log",
+          "sha256": "eed48607cba923cc95c643e231e380445293d7c0f6c0385ec7a54022a24dc764"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 55.28,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-rust-gate-3-20261019.log",
+          "sha256": "b9664bbec06f27c1224007d1d99edf52a6761fe2a6cd8b27f5246f1778c3e765"
+        }
+      ]
+    },
+    "other": {
+      "base": "c8118676fbc1e085164154d28ad4c5dca77a43c0",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 3.75,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-0-20261019.log",
+          "sha256": "f06adde63e74d970b2243241008a9e7c1095b1bc8a7a03b9a2f2d6cb3caa99e7"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 0.92,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-1-20261019.log",
+          "sha256": "1e181a6ce87420cea3dbabceaf93b759daddbfafd0aaa9b3c9159a6b749cb108"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 2.31,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-2-20261019.log",
+          "sha256": "4b16bb9cb5297cf4a8c49342e55b230e89e88bdc57f6f63347b738c0fbb4b917"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 4.79,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-3-20261019.log",
+          "sha256": "fa6d7d1cce14f5cf55609049371b9aee2a7ee522d8a57617e4b405440f555166"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 3.02,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-4-20261019.log",
+          "sha256": "8b2ebb6fd6c4dee27ac59cd2394bda0e6ec8b202ffa2a2299fce93d20cf4db90"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.14,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-5-20261019.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 8.32,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-other-gate-6-20261019.log",
+          "sha256": "8ad752a596ee3048e42def0952cefdf935fc577f6c1af023c54d55cc15a1aa2c"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      156,
+      7,
+      110,
+      18
+    ],
+    "new_unit": 9,
+    "new_doctests": 0,
+    "new_sql": 5,
+    "focal": {
+      "domain/red": {
+        "id": "REC-009",
+        "phase": "domain",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/infrastructure/recurrences.rs": "db78475533eb0153f8d74b125e99bfc0c7580a0935091f7b2ed218aec69b688d",
+          "src-tauri/src/lib.rs": "a599684b3fb4a5afbaa9f8cfc6fa15194279cb587a4bc6fbe0890e3e88defaae",
+          "src-tauri/tests/common/mod.rs": "cd478d64fbeb0411724c924390ef143d7c149c69d2b25ddb28625bca371df50f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\domain\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 0.804,
+            "output": "error[E0599]: no method named `generate_obligation` found for struct `VariableRecurrence` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\variable_generation_tests.rs:7:26\n    |\n  7 | ...   let o=recurrence.generate_obligation(id,period).unwrap();let fixed=FixedRecurrence{id:[9;16],name:\"calendar reference\".into()...\n    |                        ^^^^^^^^^^^^^^^^^^^ method not found in `VariableRecurrence`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:328:1\n    |\n328 | pub struct VariableRecurrence {\n    | ----------------------------- method `generate_obligation` not found for this struct\n\nerror[E0599]: no method named `generate_obligation` found for struct `VariableRecurrence` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\variable_generation_tests.rs:13:180\n    |\n 13 | ...nto();assert!(matches!(recurrence.generate_obligation([4;16],(2026,1)),Err(DomainError::InvalidInput)));}\n    |                                      ^^^^^^^^^^^^^^^^^^^ method not found in `VariableRecurrence`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:328:1\n    |\n328 | pub struct VariableRecurrence {\n    | ----------------------------- method `generate_obligation` not found for this struct\n\nerror[E0599]: no method named `generate_obligation` found for struct `VariableRecurrence` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\variable_generation_tests.rs:17:137\n    |\n 17 | ...MAX)]{assert!(matches!(recurrence.generate_obligation([4;16],period),Err(DomainError::InvalidInput)));assert_eq!(recurrence.due_...\n    |                                      ^^^^^^^^^^^^^^^^^^^ method not found in `VariableRecurrence`\n    |\n   ::: C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\domain\\mod.rs:328:1\n    |\n328 | pub struct VariableRecurrence {\n    | ----------------------------- method `generate_obligation` not found for this struct\n\nerror: aborting due to 3 previous errors\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "domain/green": {
+        "id": "REC-009",
+        "phase": "domain",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/infrastructure/recurrences.rs": "db78475533eb0153f8d74b125e99bfc0c7580a0935091f7b2ed218aec69b688d",
+          "src-tauri/src/lib.rs": "a599684b3fb4a5afbaa9f8cfc6fa15194279cb587a4bc6fbe0890e3e88defaae",
+          "src-tauri/tests/common/mod.rs": "cd478d64fbeb0411724c924390ef143d7c149c69d2b25ddb28625bca371df50f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\domain\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 1.809,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\domain\\green\\tests.exe\" domain::variable_generation_tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.203,
+            "output": "\nrunning 3 tests\ntest domain::variable_generation_tests::invalid_periods_are_rejected_without_changing_variable_rule ... ok\ntest domain::variable_generation_tests::invalid_variable_rules_cannot_generate_obligations ... ok\ntest domain::variable_generation_tests::variable_generation_reuses_real_calendar_and_preserves_empty_value_and_metadata ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 147 filtered out; finished in 0.00s\n\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "app/red": {
+        "id": "REC-009",
+        "phase": "app",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "b6b30494bdab3ba9b450da22aa05a2cd186dc293249e885763fbd55475fe69de",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "db78475533eb0153f8d74b125e99bfc0c7580a0935091f7b2ed218aec69b688d",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "cd478d64fbeb0411724c924390ef143d7c149c69d2b25ddb28625bca371df50f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\app\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 0.355,
+            "output": "error[E0432]: unresolved imports `super::generate_variable_obligation`, `super::duration_to_epoch_millis`, `super::VariableObligationStore`, `super::GenerateVariableObligationError`\n --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\application\\generate_variable_obligation_tests.rs:1:13\n  |\n1 | use super::{generate_variable_obligation, duration_to_epoch_millis, VariableObligationStore, GenerateVariableObligationError};\n  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `GenerateVariableObligationError` in `application::generate_variable_obligation`\n  |             |                             |                         |\n  |             |                             |                         no `VariableObligationStore` in `application::generate_variable_obligation`\n  |             |                             no `duration_to_epoch_millis` in `application::generate_variable_obligation`\n  |             no `generate_variable_obligation` in `application::generate_variable_obligation`\n  |\n  = help: consider importing this module instead:\n          crate::application::generate_variable_obligation\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0432`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "app/green": {
+        "id": "REC-009",
+        "phase": "app",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "db78475533eb0153f8d74b125e99bfc0c7580a0935091f7b2ed218aec69b688d",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "cd478d64fbeb0411724c924390ef143d7c149c69d2b25ddb28625bca371df50f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\app\\green\\tests.exe\"",
+            "exit": 0,
+            "seconds": 1.498,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\app\\green\\tests.exe\" application::generate_variable_obligation::tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.211,
+            "output": "\nrunning 6 tests\ntest application::generate_variable_obligation::tests::all_public_errors_have_static_debug_display_and_no_source ... ok\ntest application::generate_variable_obligation::tests::clock_before_epoch_and_millisecond_overflow_do_not_reach_store ... ok\ntest application::generate_variable_obligation::tests::store_failure_is_single_call_and_keeps_private_details_opaque ... ok\ntest application::generate_variable_obligation::tests::identifier_failures_stop_before_clock_and_store_without_exposing_source ... ok\ntest application::generate_variable_obligation::tests::variable_obligation_uses_real_domain_and_exactly_two_ids_one_clock_one_store ... ok\ntest application::generate_variable_obligation::tests::invalid_rule_or_period_is_rejected_before_ids_clock_or_store ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 150 filtered out; finished in 0.00s\n\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/red": {
+        "id": "REC-009",
+        "phase": "sqlite",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "db78475533eb0153f8d74b125e99bfc0c7580a0935091f7b2ed218aec69b688d",
+          "src-tauri/tests/common/recurrence_variable_generation.rs": "814bbfedaad0c9ed4ae81f069b4e025a9f408d9b09d7d4b5cd5b3e4c15dc3cfe",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.501,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\tests.exe\"",
+            "exit": 1,
+            "seconds": 1.286,
+            "output": "error[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:21:222\n   |\n21 | ...,[event;16]);let o=generate_variable_obligation(&rule,(2026,month),&mut ids,&FixedClock,&mut store).unwrap();assert_eq!(ids.calls...\n   |                       ----------------------------                                         ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                       |\n   |                       required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0599]: no method named `persist_variable_obligation_with_audit` found for struct `AdapterSqliteRecurrenceStore` in the current scope\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:35:21\n   |\n35 | ...   let e=store.persist_variable_obligation_with_audit(&rule,&o,[0x61;16],1234).unwrap_err();assert!(e.source().is_none());assert!...\n   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\nhelp: there is a method `persist_fixed_obligation_with_audit` with a similar name\n   |\n35 -         let e=store.persist_variable_obligation_with_audit(&rule,&o,[0x61;16],1234).unwrap_err();assert!(e.source().is_none());assert!(!format!(\"{e:?}/{e}\").contains(&rule.name));assert_eq!(state(&open_database(&p).unwrap()),before);\n35 +         let e=store.persist_fixed_obligation_with_audit(&rule,&o,[0x61;16],1234).unwrap_err();assert!(e.source().is_none());assert!(!format!(\"{e:?}/{e}\").contains(&rule.name));assert_eq!(state(&open_database(&p).unwrap()),before);\n   |\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:37:125\n   |\n37 | ...],[0x61;16]);assert!(generate_variable_obligation(&rule,(2026,1),&mut ids,&FixedClock,&mut store).is_ok());health(&open_database(...\n   |                         ----------------------------                                     ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:45:202\n   |\n45 | ...x41;16],event);let e=generate_variable_obligation(&rule(0),(2026,1),&mut ids,&FixedClock,&mut store).err().unwrap();assert!(match...\n   |                         ----------------------------                                        ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:47:141\n   |\n47 | ...6]);assert!(matches!(generate_variable_obligation(&rule(0),(2026,2),&mut ids,&FixedClock,&mut store),Err(GenerateVariableObligati...\n   |                         ----------------------------                                        ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:48:208\n   |\n48 | ...],[0x63;16]);assert!(generate_variable_obligation(&rule(0),(2026,3),&mut ids,&FixedClock,&mut fresh).is_ok());health(&open_databa...\n   |                         ----------------------------                                        ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:55:377\n   |\n55 | ...6]);assert!(matches!(generate_variable_obligation(&rule,(2026,1),&mut ids,&FixedClock,&mut store),Err(GenerateVariableObligationE...\n   |                         ----------------------------                                     ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:61:228\n   |\n61 | ...[0x41;16],[0x61;16]);generate_variable_obligation(&rule,(2026,1),&mut ids,&FixedClock,&mut store).unwrap();drop(store);let before...\n   |                         ----------------------------                                     ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                         |\n   |                         required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror[E0277]: the trait bound `AdapterSqliteRecurrenceStore: VariableObligationStore` is not satisfied\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\common\\recurrence_variable_generation.rs:62:317\n   |\n62 | ...vent);assert!(matches!(generate_variable_obligation(&rule,period,&mut ids,&FixedClock,&mut store),Err(GenerateVariableObligationE...\n   |                           ----------------------------                                   ^^^^^^^^^^ the trait `VariableObligationStore` is not implemented for `AdapterSqliteRecurrenceStore`\n   |                           |\n   |                           required by a bound introduced by this call\n   |\nnote: required by a bound in `generate_variable_obligation`\n  --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\src\\application\\generate_variable_obligation.rs:54:40\n   |\n54 | pub fn generate_variable_obligation<S: VariableObligationStore, I: UuidGenerator, C: Clock>(\n   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `generate_variable_obligation`\n\nerror: aborting due to 9 previous errors\n\nSome errors have detailed explanations: E0277, E0599.\nFor more information about an error, try `rustc --explain E0277`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "sqlite/green": {
+        "id": "REC-009",
+        "phase": "sqlite",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "f66e8084dd0d11da86cb8c2ba2370c73e81d98c9d209fc8c7a058f592a8f3e9a",
+          "src-tauri/tests/common/recurrence_variable_generation.rs": "814bbfedaad0c9ed4ae81f069b4e025a9f408d9b09d7d4b5cd5b3e4c15dc3cfe",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\libmillani_artes.rlib\"",
+            "exit": 1,
+            "seconds": 0.504,
+            "output": "error[E0308]: mismatched types\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\src\\infrastructure\\recurrences.rs:103:26\n    |\n103 |             amount: Some(amount),\n    |                     ---- ^^^^^^ expected `i64`, found `Option<i64>`\n    |                     |\n    |                     arguments to this enum variant are incorrect\n    |\n    = note: expected type `i64`\n               found enum `Option<i64>`\nhelp: the type constructed contains `Option<i64>` due to the type of the argument passed\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\src\\infrastructure\\recurrences.rs:103:21\n    |\n103 |             amount: Some(amount),\n    |                     ^^^^^------^\n    |                          |\n    |                          this argument influences the type of `Some`\nnote: tuple variant defined here\n   --> /rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library\\core\\src\\option.rs:606:4\nhelp: consider using `Option::expect` to unwrap the `Option<i64>` value, panicking if the value is an `Option::None`\n    |\n103 |             amount: Some(amount.expect(\"REASON\")),\n    |                                +++++++++++++++++\n\nerror: lifetime may not live long enough\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\src\\infrastructure\\recurrences.rs:230:21\n    |\n156 |         operation: &str,\n    |                    - let's call the lifetime of this reference `'1`\n...\n230 |                     operation,\n    |                     ^^^^^^^^^ this usage requires that `'1` must outlive `'static`\n\nwarning: unused variable: `amount_cents`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\src\\infrastructure\\recurrences.rs:201:22\n    |\n201 |                 Some(amount_cents) => \"payable\",\n    |                      ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_amount_cents`\n    |\n    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default\n\nerror: aborting due to 2 previous errors; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0308`.\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "sqlite/green-corrected": {
+        "id": "REC-009",
+        "phase": "sqlite",
+        "mode": "green-corrected",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "6c13c79b44b93e4a5445fe6826db75ff44ffdbf6ee855e4141a6ff482a5662de",
+          "src-tauri/tests/common/recurrence_variable_generation.rs": "814bbfedaad0c9ed4ae81f069b4e025a9f408d9b09d7d4b5cd5b3e4c15dc3cfe",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-corrected\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-corrected\\libmillani_artes.rlib\"",
+            "exit": 1,
+            "seconds": 0.45,
+            "output": "error[E0609]: no field `amount_cents` on type `&VariableRecurrence`\n   --> C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-corrected\\src\\infrastructure\\recurrences.rs:137:32\n    |\n137 |             amount: recurrence.amount_cents,\n    |                                ^^^^^^^^^^^^ unknown field\n    |\n    = note: available fields are: `id`, `name`, `context`, `due_day`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0609`.\n"
+          }
+        ],
+        "result": "fail"
+      },
+      "sqlite/green-final": {
+        "id": "REC-009",
+        "phase": "sqlite",
+        "mode": "green-final",
+        "sources": {
+          "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+          "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+          "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+          "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+          "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+          "src-tauri/src/infrastructure/recurrences.rs": "29a033fecadaadd2067c9d28e56b3d2c67ed724e066fbe198c950b2f70acdcbe",
+          "src-tauri/tests/common/recurrence_variable_generation.rs": "814bbfedaad0c9ed4ae81f069b4e025a9f408d9b09d7d4b5cd5b3e4c15dc3cfe",
+          "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+          "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.709,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\tests.exe\"",
+            "exit": 0,
+            "seconds": 2.844,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\tests.exe\" common::recurrence_variable_generation:: --nocapture",
+            "exit": 0,
+            "seconds": 0.687,
+            "output": "\nrunning 5 tests\ntest common::recurrence_variable_generation::duplicate_period_or_obligation_identity_cannot_append_a_partial_generation ... ok\ntest common::recurrence_variable_generation::invalid_direct_payloads_have_no_effect_and_keep_recurrence_adapter_usable ... ok\ntest common::recurrence_variable_generation::variable_generation_commits_configuration_obligations_and_exact_audit_without_movements ... ok\ntest common::recurrence_variable_generation::existing_conflicting_recurrence_configuration_is_never_overwritten ... ok\ntest common::recurrence_variable_generation::recurrence_generation_faults_rollback_configuration_obligation_audit_and_poison_adapter ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 105 filtered out; finished in 0.42s\n\n"
+          }
+        ],
+        "result": "pass"
+      }
+    },
+    "fixed_regression": {
+      "id": "REC-009",
+      "scope": "existing5Fixedphysicaltests against shared adapter after final local correction",
+      "command": [
+        "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\tests.exe",
+        "common::recurrence_fixed_generation::",
+        "--nocapture"
+      ],
+      "seconds": 0.488,
+      "exit": 0,
+      "output": "\nrunning 5 tests\ntest common::recurrence_fixed_generation::duplicate_period_or_obligation_identity_cannot_append_a_partial_generation ... ok\ntest common::recurrence_fixed_generation::invalid_direct_payloads_have_no_effect_and_keep_recurrence_adapter_usable ... ok\ntest common::recurrence_fixed_generation::fixed_generation_commits_configuration_obligations_and_exact_audit_without_movements ... ok\ntest common::recurrence_fixed_generation::existing_conflicting_recurrence_configuration_is_never_overwritten ... ok\ntest common::recurrence_fixed_generation::recurrence_generation_faults_rollback_configuration_obligation_audit_and_poison_adapter ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 105 filtered out; finished in 0.48s\n\n",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+        "src-tauri/src/domain/variable_generation.rs": "a8fc218f90a9e7bddf1eaf096a5ad0cf8e355bdb9ae88b5d77395441f0b1ff2a",
+        "src-tauri/src/domain/variable_generation_tests.rs": "3df286d7a39778bf4b8ebba5b4e8866dec7535123925fbfd1abac944228355a5",
+        "src-tauri/src/application/generate_variable_obligation.rs": "c724a0ab6fa06e37fb4420c9c4c29f6cd292a75e9f524e707ca34bba6c5eca4e",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "acd90707dd85979bd76b11e5cea4c7054c1482f0fafa8c47be578ebc45cfd293",
+        "src-tauri/src/infrastructure/recurrences.rs": "29a033fecadaadd2067c9d28e56b3d2c67ed724e066fbe198c950b2f70acdcbe",
+        "src-tauri/tests/common/recurrence_variable_generation.rs": "814bbfedaad0c9ed4ae81f069b4e025a9f408d9b09d7d4b5cd5b3e4c15dc3cfe",
+        "src-tauri/src/lib.rs": "4fba2af57aff8b55d2c0068a100be0a48f322e369cc5e2a33737465ffed3567a",
+        "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+      }
+    },
+    "local_correction_plans": [
+      {
+        "id": "REC-009",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-rejected-20261019.rs",
+        "sha256": "f66e8084dd0d11da86cb8c2ba2370c73e81d98c9d209fc8c7a058f592a8f3e9a",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\receipt.json",
+        "findings": [
+          "E0308nestedOptionfixedconfig",
+          "operationnonstaticlifetime",
+          "unusedSomebinding"
+        ],
+        "first_call_seconds": 1103.766,
+        "initial_budget_seconds": 1200,
+        "one_extension_seconds": 1200,
+        "progress": "Actual single shared SQL transaction and both rule implementations generated;2typingerrors and1warning only;meaningful correction targeted",
+        "root_production_correction": false,
+        "static_finding": "config.amount field written but not read;use for template INSERT and existing.2 comparison per spec,keepvalidatedamount for obligation"
+      },
+      {
+        "id": "REC-009",
+        "rejected_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-rejected-second-20261019.rs",
+        "sha256": "6c13c79b44b93e4a5445fe6826db75ff44ffdbf6ee855e4141a6ff482a5662de",
+        "failed_receipt": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-corrected\\receipt.json",
+        "finding": "Localcorrection introduced variable.amount_cents nonexistent;mustNone",
+        "calls_before": 2,
+        "seconds_before": 1328.593,
+        "total_budget": 2400,
+        "remaining_seconds": 1071.407,
+        "timeout": 900,
+        "root_production_correction": false
+      }
+    ],
+    "coverage": {
+      "full": {
+        "src/domain/variable_generation.rs": {
+          "lines": {
+            "count": 17,
+            "covered": 17,
+            "percent": 100
+          },
+          "functions": {
+            "count": 1,
+            "covered": 1,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 2,
+            "covered": 2,
+            "percent": 100
+          },
+          "regions": {
+            "count": 21,
+            "covered": 21,
+            "notcovered": 0,
+            "percent": 100
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/application/generate_variable_obligation.rs": {
+          "lines": {
+            "count": 48,
+            "covered": 48,
+            "percent": 100
+          },
+          "functions": {
+            "count": 5,
+            "covered": 5,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 11,
+            "covered": 10,
+            "percent": 90.9090909090909
+          },
+          "regions": {
+            "count": 63,
+            "covered": 62,
+            "notcovered": 1,
+            "percent": 98.4126984126984
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences.rs": {
+          "lines": {
+            "count": 183,
+            "covered": 183,
+            "percent": 100
+          },
+          "functions": {
+            "count": 11,
+            "covered": 11,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 11,
+            "percent": 50
+          },
+          "regions": {
+            "count": 193,
+            "covered": 187,
+            "notcovered": 6,
+            "percent": 96.89119170984456
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/domain/variable_generation.rs": {
+          "lines": {
+            "count": 17,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 1,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 2,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 21,
+            "covered": 0,
+            "notcovered": 21,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/application/generate_variable_obligation.rs": {
+          "lines": {
+            "count": 48,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 5,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 11,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 63,
+            "covered": 0,
+            "notcovered": 63,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/recurrences.rs": {
+          "lines": {
+            "count": 183,
+            "covered": 151,
+            "percent": 82.5136612021858
+          },
+          "functions": {
+            "count": 11,
+            "covered": 10,
+            "percent": 90.9090909090909
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 10,
+            "percent": 45.45454545454545
+          },
+          "regions": {
+            "count": 193,
+            "covered": 155,
+            "notcovered": 38,
+            "percent": 80.31088082901555
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "coverage_scope": "new variable_generation module+new variable application+WHOLEsharedrecurrences adapter;control skips only3newdomain+6newapp+5newSQL;allFixedtests retained incontrol;not Rustglobal/CIcoverage;statements not measured,stable branches N/A",
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\domain\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-domain-red.json",
+        "bytes": 4470,
+        "sha256": "4ad13fe15fc4aa9e179ca66711275f06bc477c6dae8e589063f05c3d9c529468"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\domain\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-domain-green.json",
+        "bytes": 2774,
+        "sha256": "6b2bd4d2d84f203f6a3660ea4da81fbc1da8905ccf1464d2d2923c0f51626f77"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\app\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-app-red.json",
+        "bytes": 3670,
+        "sha256": "9c37c1bb715f36b8a06a3be65551515690f44df44a064ed7a8e647ddba80b4d2"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\app\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-app-green.json",
+        "bytes": 3490,
+        "sha256": "24672638c0adf52f1486cb7236af6f4bd2d8212062fa1dc1e84d8e46dc74ddd6"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-sqlite-red.json",
+        "bytes": 14727,
+        "sha256": "97d76638c272145311c7891c2022320556d9c694f59705567512ca593051184a"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-sqlite-green.json",
+        "bytes": 4944,
+        "sha256": "ac43a12d9859c6a1610feace52f1ad2d407686c412d1979cd2c73b4b0de0fb97"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-corrected\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-sqlite-green-corrected.json",
+        "bytes": 3118,
+        "sha256": "3338064bb68bcc3d089e4150582526eb488955c0c896285a0f8a02035f49682d"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\rec-009-variable-generation\\Millani Artes\\artifacts\\rec009-check\\sqlite\\green-final\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-sqlite-green-final.json",
+        "bytes": 5042,
+        "sha256": "2c3e0db74b1282b97adfadaaad79c81ab1d14ab3316564af41b6e9f6caac087e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec009-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\receipt-coverage.json",
+        "bytes": 62820,
+        "sha256": "66eef29329b84b6779ec1cafcf12525faaa118e14cd691fd24291ce648e8e501"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec009-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\full.json",
+        "bytes": 35860,
+        "sha256": "150aeb97a00f540838ba8a089c1200fdd374175946ee0d68c657e01aaaaeea9d"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\rec009-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\control.json",
+        "bytes": 35750,
+        "sha256": "1ebef05c504cc39f412e1a8a91d07140f311388a888d0774ad3a80de17256017"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-rejected-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\REC-009-DATA-rejected-20261019.rs",
+        "bytes": 8302,
+        "sha256": "f66e8084dd0d11da86cb8c2ba2370c73e81d98c9d209fc8c7a058f592a8f3e9a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-rejected-second-20261019.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\REC-009-DATA-rejected-second-20261019.rs",
+        "bytes": 8355,
+        "sha256": "6c13c79b44b93e4a5445fe6826db75ff44ffdbf6ee855e4141a6ff482a5662de"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-correction-plan-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\REC-009-DATA-correction-plan-20261019.json",
+        "bytes": 977,
+        "sha256": "0d95d937bade9b9b81581cb83753a4c85e7c41351731264569a37143dad35241"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-DATA-final-correction-plan-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\REC-009-DATA-final-correction-plan-20261019.json",
+        "bytes": 672,
+        "sha256": "82bd32957b50b34a9effcfdffabf774e57265c2aed61a2b1b20db55fd3acb0f3"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-fixed-regression-20261019.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\REC-009-focal-evidence-20261019\\REC-009-fixed-regression-20261019.json",
+        "bytes": 2264,
+        "sha256": "0d77455beba93e35856d82689f34fba877bc05a6bcb76cf6ae658b7349058f86"
+      }
+    ],
+    "review": {
+      "id": "REC-009",
+      "base": "c8118676fbc1e085164154d28ad4c5dca77a43c0",
+      "persona": "P-REV",
+      "reviewer": "/root/cat004_review",
+      "model": "gpt-6-sol",
+      "evidence": "E2",
+      "readonly": true,
+      "findings": [],
+      "limit": "Static review only; no executed tests or gates by reviewer. Calendar fixedUTC-3 is reused prior integrator default,not IANA/historical DST/human approval.",
+      "conclusion": "Variable reuses calendar/initial state,persists NULL/context with config+obligation+audit in shared transaction. Pre-IO invalid input preserves adapter,physical failure rolls back and poisons. Fixed API remains Payable with matching amount. Duplicate is error;payment and successful idempotency remain pending.",
+      "sources": {
+        "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/infrastructure/recurrences.rs": "39b4df1bf95395969f163a41f181077fc373f8f95545f131461280901ef56d29",
+        "src-tauri/tests/common/recurrence_variable_generation.rs": "b956f4bb5f90a98a11c2c5ca65cebfd94d61873c306838d13b15628528c9462d",
+        "src-tauri/src/lib.rs": "e293db22718816c5c3e69a5fe57cb1a34e12ff294eb5abe9c74ca70c471739a4",
+        "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+      }
+    },
+    "local": {
+      "id": "REC-009",
+      "base": "c8118676fbc1e085164154d28ad4c5dca77a43c0",
+      "personas": [
+        "P-DOM",
+        "P-INT",
+        "P-DAT"
+      ],
+      "model": "Laguna XS2.1",
+      "seconds": 1831.828,
+      "calls_seconds": [
+        170.927,
+        146.224,
+        1103.766,
+        224.827,
+        186.084
+      ],
+      "local_calls": 5,
+      "data_calls": 3,
+      "data_seconds": 1514.677,
+      "data_budget": 2400,
+      "one_extension_seconds": 1200,
+      "local_used": true,
+      "root_production_correction": false,
+      "root_fixture_correction": false,
+      "root_fixtures": "3domain+6app+5physicalSQLite deterministic reuse;module registration;fmt;P-DAT corrected compiler issues in2boundedfollowups,allFixedtests/hashidentical;parentdomain/calendar/docs oldcode unchanged;adapterSQL transaction nowshared by2rules",
+      "old_migrations": {
+        "src-tauri\\migrations\\002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+        "src-tauri\\migrations\\003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+        "src-tauri\\migrations\\004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+        "src-tauri\\migrations\\005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+        "src-tauri\\migrations\\006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+        "src-tauri\\migrations\\007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489"
+      },
+      "paths": {
+        "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+        "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+        "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+        "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+        "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+        "src-tauri/src/infrastructure/recurrences.rs": "39b4df1bf95395969f163a41f181077fc373f8f95545f131461280901ef56d29",
+        "src-tauri/tests/common/recurrence_variable_generation.rs": "b956f4bb5f90a98a11c2c5ca65cebfd94d61873c306838d13b15628528c9462d",
+        "src-tauri/src/lib.rs": "e293db22718816c5c3e69a5fe57cb1a34e12ff294eb5abe9c74ca70c471739a4",
+        "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+      }
+    },
+    "runtime": [
+      {
+        "status": "stopped",
+        "pid": 124052,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 129052,
+        "port11434": "closed"
+      },
+      {
+        "status": "stopped",
+        "pid": 84028,
+        "port11434": "closed"
+      }
+    ],
+    "scope": "VariableRecurrence.generate_obligation reutiliza estado AwaitingValue e calendário real existente;caso de uso valida antes dos efeitos e usa2IDs/1Clock/1Store. AdapterSqliteRecurrenceStore compartilha validação e única transação entre Fixed e Variable:template confirmado sem sobrescrita,obrigação variável awaiting_value/amountNULL/movementNULL/contextosnapshot e audit atômicos. Falha física faz rollback e inutiliza adapter;préIO inválido preserva uso. Fixed mantém API,valor positivo e testes anteriores;sem nova migration/dependência/movimento/pagamento.",
+    "limitations": "REC-010..015 (informar valor por ocorrência,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;calendário reaproveita default do integrador último dia/fim do dia UTC-3 fixo,sem IANA/DST histórico/aceite humano",
+    "cost": "não registrado"
+  },
+  "independent_review": {
+    "id": "REC-009",
+    "base": "c8118676fbc1e085164154d28ad4c5dca77a43c0",
+    "persona": "P-REV",
+    "reviewer": "/root/cat004_review",
+    "model": "gpt-6-sol",
+    "evidence": "E2",
+    "readonly": true,
+    "findings": [],
+    "limit": "Static review only; no executed tests or gates by reviewer. Calendar fixedUTC-3 is reused prior integrator default,not IANA/historical DST/human approval.",
+    "conclusion": "Variable reuses calendar/initial state,persists NULL/context with config+obligation+audit in shared transaction. Pre-IO invalid input preserves adapter,physical failure rolls back and poisons. Fixed API remains Payable with matching amount. Duplicate is error;payment and successful idempotency remain pending.",
+    "sources": {
+      "src-tauri/src/domain/mod.rs": "e0286551be247cd504a1083f00e63d40a5447f3630794afdc89c674ba2d1be2c",
+      "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+      "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+      "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+      "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+      "src-tauri/src/infrastructure/recurrences.rs": "39b4df1bf95395969f163a41f181077fc373f8f95545f131461280901ef56d29",
+      "src-tauri/tests/common/recurrence_variable_generation.rs": "b956f4bb5f90a98a11c2c5ca65cebfd94d61873c306838d13b15628528c9462d",
+      "src-tauri/src/lib.rs": "e293db22718816c5c3e69a5fe57cb1a34e12ff294eb5abe9c74ca70c471739a4",
+      "src-tauri/tests/common/mod.rs": "87369bb9665b38d6169e60b3cc0b53b99b8e4f9ab8d4d46b0a0f4f337b7acd3a"
+    }
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 20,
+    "bytes": 1024290,
+    "framed_sha256": "8e66723e91b16defe1a07bb764cea6a066e5d7bff5a8d0bf9fb7edca8fb31adf",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 11,
+    "bytes": 983916,
+    "framed_sha256": "8a5407af3502ecf0bc04215b2913533ae87b6af57e38df089766621ba241771c",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 566 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 122 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 122 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 516059 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "VariableRecurrence.generate_obligation reutiliza estado AwaitingValue e calendário real existente;caso de uso valida antes dos efeitos e usa2IDs/1Clock/1Store. AdapterSqliteRecurrenceStore compartilha validação e única transação entre Fixed e Variable:template confirmado sem sobrescrita,obrigação variável awaiting_value/amountNULL/movementNULL/contextosnapshot e audit atômicos. Falha física faz rollback e inutiliza adapter;préIO inválido preserva uso. Fixed mantém API,valor positivo e testes anteriores;sem nova migration/dependência/movimento/pagamento.",
+  "preserved": "all121 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;16 focal files 197235B hashverified;WT recoverably archived",
+  "limitations": "REC-010..015 (informar valor por ocorrência,pagamento transacional,saída única e idempotência de sucesso),UI/IPC,cobertura Rust global atual e release Windows com instalação/atualização/backup-restauração/hash/assinatura/E2E pendentes;calendário reaproveita default do integrador último dia/fim do dia UTC-3 fixo,sem IANA/DST histórico/aceite humano",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
