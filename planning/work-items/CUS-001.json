@@ -1,0 +1,26 @@
+{
+  "id": "CUS-001",
+  "title": "definir cliente mínimo",
+  "specPath": "planning/specs/CUS-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "Customer puro: id16/nameString/phoneOptionString; campos brutos sem normalização ou regras novas.",
+    "Sem Debug/Display/derives/impl/IO/SQL/deps; validações CUS002/003 e persistência CUS004/005 futuras.",
+    "RED E0432/GREEN1unit+2doctests/gates/LLVMdomain95 com controle/P-REV/CIs exatos.",
+    "Docs antespasses/nota136 preservando135/refs/mainlimpa/WT arquivada/liberação antes próximo; MetaE2E ativa."
+  ],
+  "checks": [
+    "RED/GREEN1unit2compile_fail",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota136/liberação"
+  ],
+  "agentPlan": "P-INT fixtures/reuso; P-DOM Gemma300s um scratch; P-SECtools/P-REV Sol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "CUS-001 VERIFY E3: Customer mínimo puro id/nome/telefone opcional, dados sintéticos exatos/sem Debug ou Display; 1 unit+2 compile_fail novos, Rust365+22docs/gates/security/P-REV PASS. LLVM domain95 com controle, tipo sem percentual próprio. CUS002..005/UI/IPC/E2E pendentes; CI/nota136/liberação pendentes; passesfalse/Meta ativa; fonte: handoff CUS-001."
+}

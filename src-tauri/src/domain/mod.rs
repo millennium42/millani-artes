@@ -494,6 +494,23 @@ impl Product {
     }
 }
 
+/// Customer identity with optional phone metadata.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Customer>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Customer>();
+/// ```
+pub struct Customer {
+    pub id: [u8; 16],
+    pub name: String,
+    pub phone: Option<String>,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -565,3 +582,6 @@ mod overdue_epoch_tests;
 
 #[cfg(test)]
 mod product_tests;
+
+#[cfg(test)]
+mod customer_tests;
