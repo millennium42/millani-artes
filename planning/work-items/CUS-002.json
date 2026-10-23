@@ -1,0 +1,26 @@
+{
+  "id": "CUS-002",
+  "title": "validar nome do cliente",
+  "specPath": "planning/specs/CUS-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CUS-001"
+  ],
+  "acceptanceCriteria": [
+    "Customer.validate_name usa trim().is_empty e erro opaco DomainError existente; sem mutação/normalização/regras de telefone.",
+    "Dois unitários novos: blank ASCII/Unicode e conteúdo bruto, cruzados com None/Some vazio/texto; CUS001 e demais métodos preservados.",
+    "RED E0599/GREEN3Customer, Rust367+22docs, LLVMdomain95/controle/gates/security/P-REV/CIs exatos.",
+    "Docs antespasses/nota137 preservando136/refs/mainlimpa/WT arquivada/liberação antes próximo; MetaE2E ativa."
+  ],
+  "checks": [
+    "RED/GREEN3unitCustomer (2novos)",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota137/liberação"
+  ],
+  "agentPlan": "P-INT/P-DOM transposição literal Product/P-QA reuso fixtures/P-SECtools/P-REVSol6medium;11paths;0inferências",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "CUS-002 VERIFY E3: Customer.validate_name por reuso literal Product, vazio/whitespace inválidos, conteúdo bruto preservado/telefone independente. RED/GREEN3Customer/2unit novos/Rust367+22docs/LLVMdomain95 e controle/gates/security/P-REV PASS.0inferências/runtime não iniciado. CUS003..005/UI/IPC/E2E pendentes; CI/nota137/liberação pendentes; passesfalse/Meta ativa; fonte: handoff CUS-002."
+}
