@@ -1,0 +1,1665 @@
+{
+  "id": "PRD-007",
+  "status": "released",
+  "evidence": "E3",
+  "source_sha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+  "final_sha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+  "source_ci": {
+    "run": {
+      "id": 40004684967,
+      "head_sha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40004684967",
+      "run_attempt": 1,
+      "created_at": "2026-10-23T18:36:31Z",
+      "updated_at": "2026-10-23T18:48:47Z"
+    },
+    "job": {
+      "id": 120589467184,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40004684967,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T18:36:37Z",
+          "completed_at": "2026-10-23T18:36:39Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T18:36:39Z",
+          "completed_at": "2026-10-23T18:36:47Z"
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T18:36:47Z",
+          "completed_at": "2026-10-23T18:36:50Z"
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T18:36:50Z",
+          "completed_at": "2026-10-23T18:36:54Z"
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T18:36:54Z",
+          "completed_at": "2026-10-23T18:37:01Z"
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T18:37:01Z",
+          "completed_at": "2026-10-23T18:37:01Z"
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-23T18:37:01Z",
+          "completed_at": "2026-10-23T18:37:12Z"
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-23T18:37:12Z",
+          "completed_at": "2026-10-23T18:37:18Z"
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-23T18:37:18Z",
+          "completed_at": "2026-10-23T18:37:33Z"
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-23T18:37:33Z",
+          "completed_at": "2026-10-23T18:37:33Z"
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-23T18:37:33Z",
+          "completed_at": "2026-10-23T18:37:45Z"
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-23T18:37:45Z",
+          "completed_at": "2026-10-23T18:37:53Z"
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T18:37:53Z",
+          "completed_at": "2026-10-23T18:38:29Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-23T18:38:29Z",
+          "completed_at": "2026-10-23T18:38:32Z"
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-23T18:38:32Z",
+          "completed_at": "2026-10-23T18:38:41Z"
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-23T18:38:41Z",
+          "completed_at": "2026-10-23T18:38:41Z"
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-23T18:38:41Z",
+          "completed_at": "2026-10-23T18:38:43Z"
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-23T18:38:43Z",
+          "completed_at": "2026-10-23T18:38:45Z"
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-23T18:38:45Z",
+          "completed_at": "2026-10-23T18:48:40Z"
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-23T18:48:40Z",
+          "completed_at": "2026-10-23T18:48:41Z"
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-23T18:48:41Z",
+          "completed_at": "2026-10-23T18:48:41Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-23T18:48:41Z",
+          "completed_at": "2026-10-23T18:48:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-23T18:48:43Z",
+          "completed_at": "2026-10-23T18:48:43Z"
+        }
+      ],
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40004684967/job/120589467184",
+      "run_attempt": 1,
+      "head_sha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+      "started_at": "2026-10-23T18:36:34Z",
+      "completed_at": "2026-10-23T18:48:46Z"
+    },
+    "checks": {
+      "success": 23,
+      "skipped": 0,
+      "source_sha_markers": 7,
+      "all_source_markers_exact": true,
+      "rust_counts": [
+        [
+          209,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          148,
+          0,
+          0
+        ],
+        [
+          20,
+          0,
+          0
+        ]
+      ],
+      "new_unit_tests": 7,
+      "new_sql_tests": 5,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 289,
+          "findings": 0,
+          "seconds": 1.342,
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-11-06",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.373,
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.806,
+          "inputSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "package.json": "0ae5a4d29ee47cc938f6088010577e58bc34a6784ca9f6e93019e996b86a594c"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1351,
+            "last-commit": "84d943a6deeb8cc6c6f632531aaf4f1c62275239",
+            "last-updated": "2026-10-23T16:42:16+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 12.618,
+          "excepted": 2,
+          "exceptionExpiry": "2026-11-06",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        },
+        "SAST": {
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "biome": "2.5.15",
+          "cases": 45,
+          "biomeCli": 42,
+          "powershell": 3,
+          "configSha256": "84986f2e37c479a77058373fb3b3ed1d104a5da8443213a10ae122bb0014653a",
+          "sqlRuleSha256": "947fc5153f9e7258727fc33cb3459cef8b99d4de2664ffcbea14c402add6ed25",
+          "fixtureVcsDisabledOnly": true,
+          "scratchRemoved": true,
+          "limitations": [
+            "computed eval property",
+            "Function constructor",
+            "SQL fragments/escapes",
+            "SQL-prefix UI strings rejected",
+            "Rust/backend SQL/restore"
+          ],
+          "elapsedSeconds": 5.688
+        },
+        "PHONE_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "FINANCIAL_REDACTION": {
+          "cases": 5,
+          "realTauriBuild": true,
+          "faultInjectedIo": true,
+          "earlyFailureRejected": true,
+          "panicHook": true,
+          "closedStderr": true,
+          "rawOutputPublished": false,
+          "childrenTerminated": true
+        },
+        "NATIVE": {
+          "bytes": 8536576,
+          "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+          "sourceSha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc",
+          "imageOS": "win25-vs2026",
+          "customProtocol": true,
+          "node": "v24.21.0",
+          "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+          "npmLock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+          "machine": "AMD64",
+          "pe": "PE32+",
+          "cargoLock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+          "imageVersion": "20261021.278.1",
+          "sha256": "4a7a15abcc50cd49ca45be5fa33f2ab4b3fcb5b8b7da17ee1ad95f16a1fd0a6f"
+        }
+      },
+      "artifacts": [
+        {
+          "id": 12524090834,
+          "name": "frontend-coverage-40004684967-1",
+          "size_in_bytes": 21916,
+          "url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12524090834",
+          "archive_download_url": "https://api.github.com/repos/millennium42/millani-artes/actions/artifacts/12524090834/zip",
+          "expired": false,
+          "created_at": "2026-10-23T18:38:43Z",
+          "expires_at": "2026-10-24T18:38:42Z",
+          "updated_at": "2026-10-23T18:38:43Z",
+          "digest": "sha256:51c565c701afb7f8027a142263f010363fd7d69ab24aa566490d94460800b090",
+          "workflow_run": {
+            "id": 40004684967,
+            "repository_id": 1402085201,
+            "head_repository_id": 1402085201,
+            "head_branch": "main",
+            "head_sha": "b861d473dc1b4fb26771ea7d600923a5d1b397fc"
+          }
+        }
+      ]
+    },
+    "authoritative_observation": {
+      "method": "Direct GitHub public REST metadata;immutable logs/artifacts via connector",
+      "headers": {
+        "run": {
+          "Date": "Fri, 23 Oct 2026 18:50:45 GMT",
+          "Age": null,
+          "ETag": "W/\"ce5d172c72431b3c2d240e5f1d7ec2b76ba931327dcc37b4e3db8cd752b0ea9f\"",
+          "X-GitHub-Request-Id": "F2C2:2838AF:1C9367:2D5C9C:6ADBAC85",
+          "X-RateLimit-Remaining": "52"
+        },
+        "job": {
+          "Date": "Fri, 23 Oct 2026 18:50:46 GMT",
+          "Age": null,
+          "ETag": "W/\"53ad98a997785997aff5be232fa1d414f9a6672e663ca2e0fd7eb8c6615dc681\"",
+          "X-GitHub-Request-Id": "F2C5:1AADD1:1D4178:2E1D96:6ADBAC86",
+          "X-RateLimit-Remaining": "50"
+        }
+      },
+      "metadata_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-source-public-observation-20261023.json",
+      "completion_basis": "Exact-SHA workflow completed success and all23steps final;raw job aggregate retained",
+      "job_aggregate_lag": false
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40006710522,
+      "head_sha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40006710522",
+      "run_attempt": 1,
+      "created_at": "2026-10-23T18:51:17Z",
+      "updated_at": "2026-10-23T18:53:21Z"
+    },
+    "job": {
+      "id": 120596367267,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40006710522,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T18:51:21Z",
+          "completed_at": "2026-10-23T18:51:22Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T18:51:22Z",
+          "completed_at": "2026-10-23T18:51:30Z"
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T18:51:30Z",
+          "completed_at": "2026-10-23T18:51:34Z"
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T18:51:34Z",
+          "completed_at": "2026-10-23T18:51:38Z"
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T18:51:38Z",
+          "completed_at": "2026-10-23T18:51:46Z"
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T18:51:46Z",
+          "completed_at": "2026-10-23T18:51:46Z"
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-23T18:51:46Z",
+          "completed_at": "2026-10-23T18:51:58Z"
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-23T18:51:58Z",
+          "completed_at": "2026-10-23T18:52:04Z"
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-23T18:52:04Z",
+          "completed_at": "2026-10-23T18:52:19Z"
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-23T18:52:19Z",
+          "completed_at": "2026-10-23T18:52:19Z"
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-23T18:52:19Z",
+          "completed_at": "2026-10-23T18:52:28Z"
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-23T18:52:28Z",
+          "completed_at": "2026-10-23T18:52:35Z"
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T18:52:35Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:16Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-23T18:53:16Z",
+          "completed_at": "2026-10-23T18:53:19Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-23T18:53:19Z",
+          "completed_at": "2026-10-23T18:53:19Z"
+        }
+      ],
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40006710522/job/120596367267",
+      "run_attempt": 1,
+      "head_sha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+      "started_at": "2026-10-23T18:51:20Z",
+      "completed_at": "2026-10-23T18:53:20Z"
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_unit_tests": 0,
+      "new_sql_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 290,
+          "findings": 0,
+          "seconds": 1.42,
+          "sourceSha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-11-06",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.281,
+          "sourceSha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.856,
+          "inputSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "package.json": "0ae5a4d29ee47cc938f6088010577e58bc34a6784ca9f6e93019e996b86a594c"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1351,
+            "last-commit": "84d943a6deeb8cc6c6f632531aaf4f1c62275239",
+            "last-updated": "2026-10-23T16:42:16+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 15.518,
+          "excepted": 2,
+          "exceptionExpiry": "2026-11-06",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "bba6c8035e559efac837ca8bee5ae7c9d04b93ad",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    },
+    "authoritative_observation": {
+      "method": "Direct GitHub public REST metadata;immutable logs/artifacts via connector",
+      "headers": {
+        "run": {
+          "Date": "Fri, 23 Oct 2026 18:53:24 GMT",
+          "Age": null,
+          "ETag": "W/\"49dfc39bbdc015b92741c1a90249649a0c3365c3a780ad98a9a6b30f62260c37\"",
+          "X-GitHub-Request-Id": "FED0:38FCBE:1E4EEA:2FB2D3:6ADBAD24",
+          "X-RateLimit-Remaining": "47"
+        },
+        "job": {
+          "Date": "Fri, 23 Oct 2026 18:53:25 GMT",
+          "Age": null,
+          "ETag": "W/\"43407af95db5d0b36c40cfc2c4d04e7880407165fb2a5dd3d39b2c4d41ffff72\"",
+          "X-GitHub-Request-Id": "FED2:5B857:1DE8B2:2F4C82:6ADBAD24",
+          "X-RateLimit-Remaining": "45"
+        }
+      },
+      "metadata_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-final-public-observation-20261023.json",
+      "completion_basis": "Exact-SHA workflow completed success and all23steps final;raw job aggregate retained",
+      "job_aggregate_lag": false
+    }
+  },
+  "verification_facts": {
+    "id": "PRD-007",
+    "evidence": "E3",
+    "rust": {
+      "base": "ce25c6cd61df742ec85945ef4241ad86eb3c5cbc",
+      "sources": {
+        "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+        "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+        "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+        "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+        "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+        "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+      },
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "fmt",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--",
+            "--check"
+          ],
+          "exit": 0,
+          "seconds": 0.94,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-0-20261023.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "clippy",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--all-targets",
+            "--features",
+            "tauri/custom-protocol",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit": 0,
+          "seconds": 16.26,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-1-20261023.log",
+          "sha256": "c354aa5b9c319d8851e5939c98ff85614db1e469e4aa336c35265fa3cbdd5aa5"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked"
+          ],
+          "exit": 0,
+          "seconds": 29.55,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-2-20261023.log",
+          "sha256": "4b9f367093d299a7e5b8c6f94a384ffed4c587c04932edeea311486604fc4490"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\cargo.exe",
+            "test",
+            "--manifest-path",
+            "src-tauri/Cargo.toml",
+            "--locked",
+            "--release",
+            "--features",
+            "tauri/custom-protocol"
+          ],
+          "exit": 0,
+          "seconds": 69.33,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-3-20261023.log",
+          "sha256": "66565200c0b23fb77f36c7d9abc3e8e2e602df14d38e0a0347a6e8b31c6de413"
+        }
+      ]
+    },
+    "other": {
+      "base": "ce25c6cd61df742ec85945ef4241ad86eb3c5cbc",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "quality"
+          ],
+          "exit": 0,
+          "seconds": 10.34,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-0-20261023.log",
+          "sha256": "0aec867af31d18ff1e6d2ea3e10cafa08035d07bd8419c6de8a1f3cf83317e4e"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Users\\milla\\AppData\\Local\\MillaniArtesDev\\toolchains\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exit": 0,
+          "seconds": 2.0,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-1-20261023.log",
+          "sha256": "c696965b69369ca73285f34c0dc97faf654e33f931eb0e8934121f9a8078c794"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_npm_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 11.94,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-2-20261023.log",
+          "sha256": "effc2a2c0949c6c1f586b294442fb4a593f2f2322b903d3b39e7e213836489cd"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_cargo_audit.py"
+          ],
+          "exit": 0,
+          "seconds": 6.05,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-3-20261023.log",
+          "sha256": "1888a46462fd4418f7c74263154da2b69d0d08e06f0df89a53df27bc6fbe225a"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_osv.py"
+          ],
+          "exit": 0,
+          "seconds": 2.27,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-4-20261023.log",
+          "sha256": "008905be0615dc01081f495eaf2aecfc177b64310828ded3761325fcb3b904b1"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/check_tauri_plugins.py"
+          ],
+          "exit": 0,
+          "seconds": 0.16,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-5-20261023.log",
+          "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+        },
+        {
+          "command": [
+            "C:\\Users\\milla\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "-B",
+            "scripts/test-sast.py"
+          ],
+          "exit": 0,
+          "seconds": 9.44,
+          "log": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-6-20261023.log",
+          "sha256": "35a7e93d4112f48768809ee678c86e30809ea9372e12ddcbc44891bd349968df"
+        }
+      ]
+    },
+    "counts_debug_release": [
+      209,
+      7,
+      148,
+      20
+    ],
+    "new_unit": 7,
+    "new_doctests": 0,
+    "new_sql": 5,
+    "focal": {
+      "red": {
+        "id": "PRD-007",
+        "mode": "red",
+        "sources": {
+          "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+          "src-tauri/src/application/deactivate_product.rs": "d86f838e252985d611a654f44ffbb3f7770caf92acd2acbf579a684356531c85",
+          "src-tauri/src/application/deactivate_product_tests.rs": "f08c66a963ceb6e5c51a214e01d3b1cbf09244168e27944314a05510278d60c3",
+          "src-tauri/src/infrastructure/products.rs": "7ad66728508040be4044cd4b411623ddedc71e45683a7c66fceb434670463c28",
+          "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+          "src-tauri/tests/common/product_deactivation.rs": "f25fd4f3bef3015bee83dc1876dbbc969283299929900fc7797406d3c17f662f"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\red\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.857,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\red\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\red\\sqlite-tests.exe\"",
+            "exit": 1,
+            "seconds": 1.785,
+            "output": "error[E0432]: unresolved imports `millani_artes::application::deactivate_product::deactivate_product`, `millani_artes::application::deactivate_product::DeactivateProductError`, `millani_artes::application::deactivate_product::ProductDeactivationStore`\n --> C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\common\\product_deactivation.rs:5:5\n  |\n5 |     deactivate_product, DeactivateProductError, ProductDeactivationStore,\n  |     ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^ no `ProductDeactivationStore` in `application::deactivate_product`\n  |     |                   |\n  |     |                   no `DeactivateProductError` in `application::deactivate_product`\n  |     no `deactivate_product` in `application::deactivate_product`\n\nerror[E0599]: no method named `deactivate_product_with_audit` found for struct `AdapterSqliteProductStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\common\\product_deactivation.rs:208:14\n    |\n207 |           let e = store\n    |  _________________-\n208 | |             .deactivate_product_with_audit(\n    | |_____________-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `edit_product_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\application\\edit_product.rs:9:5\n    |\n  9 | /     fn edit_product_with_audit(\n 10 | |         &mut self,\n 11 | |         id: [u8; 16],\n 12 | |         name: &str,\n...   |\n 16 | |         occurred_at_ms: i64,\n 17 | |     ) -> Result<Option<Product>, Self::Error>;\n    | |______________________________________________^\n\nerror[E0599]: no method named `deactivate_product_with_audit` found for struct `AdapterSqliteProductStore` in the current scope\n   --> C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\common\\product_deactivation.rs:238:10\n    |\n237 |       let e = store\n    |  _____________-\n238 | |         .deactivate_product_with_audit([0x11; 16], [1; 16], 1234)\n    | |_________-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\nhelp: there is a method `edit_product_with_audit` with a similar name, but with different arguments\n   --> C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\application\\edit_product.rs:9:5\n    |\n  9 | /     fn edit_product_with_audit(\n 10 | |         &mut self,\n 11 | |         id: [u8; 16],\n 12 | |         name: &str,\n...   |\n 16 | |         occurred_at_ms: i64,\n 17 | |     ) -> Result<Option<Product>, Self::Error>;\n    | |______________________________________________^\n\nerror: aborting due to 3 previous errors\n\nSome errors have detailed explanations: E0432, E0599.\nFor more information about an error, try `rustc --explain E0432`.\n"
+          }
+        ],
+        "result": "pass"
+      },
+      "green": {
+        "id": "PRD-007",
+        "mode": "green",
+        "sources": {
+          "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+          "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+          "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+          "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+          "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+          "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+        },
+        "steps": [
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\unit-tests.exe\"",
+            "exit": 0,
+            "seconds": 2.191,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\unit-tests.exe\" application::deactivate_product::tests:: --nocapture",
+            "exit": 0,
+            "seconds": 0.306,
+            "output": "\nrunning 7 tests\ntest application::deactivate_product::tests::epoch_milliseconds_accept_max_and_reject_overflow ... ok\ntest application::deactivate_product::tests::either_id_failure_prevents_clock_and_store ... ok\ntest application::deactivate_product::tests::pre_epoch_clock_prevents_store ... ok\ntest application::deactivate_product::tests::all_error_traits_are_opaque ... ok\ntest application::deactivate_product::tests::returns_stored_product_and_exact_audit_metadata ... ok\ntest application::deactivate_product::tests::store_failure_returns_store_failed ... ok\ntest application::deactivate_product::tests::store_returns_none_product_not_found ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 202 filtered out; finished in 0.00s\n\n"
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --crate-name millani_artes --crate-type rlib \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\lib.rs\" -o \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\libmillani_artes.rlib\"",
+            "exit": 0,
+            "seconds": 0.534,
+            "output": ""
+          },
+          {
+            "command": "C:\\Users\\milla\\.rustup\\toolchains\\1.99.0-x86_64-pc-windows-msvc\\bin\\rustc.exe --edition=2021 -L \"dependency=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\" --extern \"rusqlite=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\deps\\librusqlite-c199668037516cf1.rlib\" -L \"native=C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\target\\debug\\build\\libsqlite3-sys-50533247d155e29b\\out\" -C \"linker=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe\" -L \"native=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\um\\x64\" -L \"native=C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.28000.0\\ucrt\\x64\" --test \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\sqlite_harness.rs\" --extern \"millani_artes=C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\libmillani_artes.rlib\" -o \"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\sqlite-tests.exe\"",
+            "exit": 0,
+            "seconds": 3.034,
+            "output": ""
+          },
+          {
+            "command": "\"C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\sqlite-tests.exe\" common::product_deactivation:: --nocapture",
+            "exit": 0,
+            "seconds": 0.88,
+            "output": "\nrunning 5 tests\ntest common::product_deactivation::prd007_missing_product_has_no_effect_and_same_adapter_remains_usable ... ok\ntest common::product_deactivation::prd007_select_error_is_opaque_and_preserves_data_then_fresh_adapter_recovers ... ok\ntest common::product_deactivation::prd007_active_inactive_and_repeated_deactivation_preserve_metadata_and_exact_audits ... ok\ntest common::product_deactivation::prd007_invalid_audit_metadata_and_query_only_rollback_without_leaking_causes ... ok\ntest common::product_deactivation::prd007_transaction_faults_rollback_poison_adapter_and_allow_fresh_recovery ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 143 filtered out; finished in 0.60s\n\n"
+          }
+        ],
+        "result": "pass"
+      }
+    },
+    "coverage": {
+      "full": {
+        "src/application/deactivate_product.rs": {
+          "lines": {
+            "count": 38,
+            "covered": 38,
+            "percent": 100
+          },
+          "functions": {
+            "count": 4,
+            "covered": 4,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 9,
+            "covered": 7,
+            "percent": 77.77777777777779
+          },
+          "regions": {
+            "count": 52,
+            "covered": 51,
+            "notcovered": 1,
+            "percent": 98.07692307692307
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/products.rs": {
+          "lines": {
+            "count": 170,
+            "covered": 170,
+            "percent": 100
+          },
+          "functions": {
+            "count": 11,
+            "covered": 11,
+            "percent": 100
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 11,
+            "percent": 50
+          },
+          "regions": {
+            "count": 199,
+            "covered": 196,
+            "notcovered": 3,
+            "percent": 98.49246231155779
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      },
+      "control": {
+        "src/application/deactivate_product.rs": {
+          "lines": {
+            "count": 38,
+            "covered": 0,
+            "percent": 0
+          },
+          "functions": {
+            "count": 4,
+            "covered": 0,
+            "percent": 0
+          },
+          "instantiations": {
+            "count": 9,
+            "covered": 0,
+            "percent": 0
+          },
+          "regions": {
+            "count": 52,
+            "covered": 0,
+            "notcovered": 52,
+            "percent": 0
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        },
+        "src/infrastructure/products.rs": {
+          "lines": {
+            "count": 170,
+            "covered": 119,
+            "percent": 70
+          },
+          "functions": {
+            "count": 11,
+            "covered": 8,
+            "percent": 72.72727272727273
+          },
+          "instantiations": {
+            "count": 22,
+            "covered": 8,
+            "percent": 36.36363636363637
+          },
+          "regions": {
+            "count": 199,
+            "covered": 134,
+            "notcovered": 65,
+            "percent": 67.33668341708542
+          },
+          "branches": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          },
+          "mcdc": {
+            "count": 0,
+            "covered": 0,
+            "notcovered": 0,
+            "percent": 0
+          }
+        }
+      }
+    },
+    "coverage_scope": "critical new application+adapter files only; control skips new unit and SQLite entry tests; not Rust global; statements not measured; stable branches N/A; regions not statements",
+    "preservation": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\red\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\receipt-red.json",
+        "bytes": 6445,
+        "sha256": "cc5d3c918c3fcd08f40c02dd314ece1d1380b702a04e22c65a33994613efeb15"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-check\\green\\receipt.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\receipt-green.json",
+        "bytes": 6754,
+        "sha256": "6e6931f56dcfbd5e09eca612493956a67c946b75cb316fa2713b2aee0aef6d7b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\prd007-coverage\\receipt-coverage.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\receipt-coverage.json",
+        "bytes": 80884,
+        "sha256": "f553d80498c0954db2780921c2014ae47b5cc671dfe482d507caf298b03bf954"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\prd007-coverage\\full.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\full.json",
+        "bytes": 49306,
+        "sha256": "5849ae2ab61c8f0f47896655111b68b8061044daff40abed65ec6792b294b147"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\artifacts\\prd007-coverage\\control.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\control.json",
+        "bytes": 49243,
+        "sha256": "8d2c53a14b639052f7880307ed98e0f4d0b0fdae642178c55751e82f3fc84c97"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-BUILD-20261023-duration.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-BUILD-20261023-duration.json",
+        "bytes": 386,
+        "sha256": "5c2929206e82c405214b9fa230cb8309433e605c890c7a5387c4d9eafc372faa"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-BUILD-20261023.1792779830017602500.job.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-BUILD-20261023.1792779830017602500.job.json",
+        "bytes": 3802,
+        "sha256": "fc33865e95cb9b5e4811fc1002e8298378652a89cb29aee98381ce752452253c"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-BUILD-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-BUILD-20261023.json",
+        "bytes": 1860,
+        "sha256": "3666684ba851a5417537e9a097a9f7bfead98f7fde0c7e3df7aada511c87c466"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-BUILD-runtime-preflight-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-BUILD-runtime-preflight-20261023.json",
+        "bytes": 2331,
+        "sha256": "44cd70aa76b315b7cbddca1eb6e727e62dcbaa46e33f7b9e3723de06c7dd932a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-BUILD-runtime-stop-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-BUILD-runtime-stop-20261023.json",
+        "bytes": 122,
+        "sha256": "0fa9673c80690edfabd8ce73aaa1443d513f06b5f0aa864fe90aeec6e4e57c7f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-deterministic-app-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-deterministic-app-20261023.json",
+        "bytes": 602,
+        "sha256": "5369257ec6773f7aa637235aaed99062944ac4abc44ea5d2e9fc45f2b0ab8893"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-format-provenance-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-format-provenance-20261023.json",
+        "bytes": 2265,
+        "sha256": "9f674bd7988e81ba8cf040f3e68e39f519ffa86ae2ee319fe6a46e8ce597cba9"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-independent-review-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-independent-review-20261023.json",
+        "bytes": 1223,
+        "sha256": "7a60011ac479702eddbc3814fd1aaee9cd1937548e5056c95d554373977dd576"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-main-integration-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-main-integration-20261023.json",
+        "bytes": 1514,
+        "sha256": "88354050bb0b8e2768ba5c1235a263df9c8cdc0b50e126d8b869fe258c3d863b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-commands-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-commands-20261023.json",
+        "bytes": 1227,
+        "sha256": "461482f375182cd78219e65c53edc24d4d8df4b06692172ca89f3415a6367775"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gates-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gates-20261023.json",
+        "bytes": 3404,
+        "sha256": "b5d8bb1abd1bd311002b4db111e343e967cb96c75576c8c09327fe914127ac5b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-preparation-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-preparation-20261023.json",
+        "bytes": 33351,
+        "sha256": "141f60cc43a137de1347d8ae24fa13c62ae35ae399f73f8db20455c1d2b0466e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-red-stage-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-red-stage-20261023.json",
+        "bytes": 490,
+        "sha256": "346a50bc4c8778d01f2e999c37791582bd494eb7ea48ab626222469fcf85301e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gates-20261023.json",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gates-20261023.json",
+        "bytes": 2997,
+        "sha256": "e2649b056a4ce2c8d0f5995ac2669f8862775aa5807081ced6656d39b548f847"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-coverage-run-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-coverage-run-20261023.py",
+        "bytes": 5145,
+        "sha256": "365864317c5b75e3dabbcd855c77884c6b5c9199ac5b49ba1f1624057dbcf077"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-focal-20261023.py",
+        "bytes": 3042,
+        "sha256": "48bc0a567bf2a0f896d7eebfc0665792335f07151f6dc679997ed062ebd24251"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-generate-fixtures-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-generate-fixtures-20261023.py",
+        "bytes": 5994,
+        "sha256": "6b07da8d0906519b1bbee57da06c14a0c792af1d6c2db7f82ab22ac79d9eb36e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-integrate-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-integrate-20261023.py",
+        "bytes": 5024,
+        "sha256": "1fb07bc9242b3b7628d831beae0bf977bbc86b7d8bdce6d06c5ad641769f11d1"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-local-phase-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-local-phase-20261023.py",
+        "bytes": 1977,
+        "sha256": "8c718e341f33e486f914d2f32a5fdb2e6f78e2351f1ec6327930ae63c54d1713"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gates-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gates-20261023.py",
+        "bytes": 2059,
+        "sha256": "67df62642596046a4cef8dd8ced6b05cb4cc5f590fa42152e1fd909afcde7169"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-prepare-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-prepare-20261023.py",
+        "bytes": 10957,
+        "sha256": "1630f27ec0fb2bea88e1f53f0c74afa2b166407ced43ba08607f79c80ca8c9b7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-prepare-local-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-prepare-local-20261023.py",
+        "bytes": 4538,
+        "sha256": "55b9fb652d954b8f3e7951f729b63a1071294ab8f098f1f7b64e7da50f46f436"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-record-closing-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-record-closing-20261023.py",
+        "bytes": 12623,
+        "sha256": "1254a1231d499c47610f6426360c6b0e5131893d18503103a0d48085da7ae340"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-run-local-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-run-local-20261023.py",
+        "bytes": 898,
+        "sha256": "9df358f460d55d8d2e367fa9f2b72c7d72009a5c7d845849234ea0bb73c8f977"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gates-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gates-20261023.py",
+        "bytes": 2547,
+        "sha256": "6dafc91af421dcddad9863c53e7547ec8f422893801d17d2283e4aee917059ca"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-stage-red-20261023.py",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-stage-red-20261023.py",
+        "bytes": 3447,
+        "sha256": "33bb057e8c099870d6ae6c0ebbd16f78414ec584a04fb5edd73de3af68d1d7eb"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-deterministic-app-20261023.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-deterministic-app-20261023.rs",
+        "bytes": 2430,
+        "sha256": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-local-adapter-candidate-20261023.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-local-adapter-candidate-20261023.rs",
+        "bytes": 2217,
+        "sha256": "6b83a74b1ca54b395228c0a6a592bea00f4b64fd98955e91f34cba41709ff79a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-sql-tests-20261023.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-sql-tests-20261023.rs",
+        "bytes": 10455,
+        "sha256": "f25fd4f3bef3015bee83dc1876dbbc969283299929900fc7797406d3c17f662f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-unit-tests-20261023.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-unit-tests-20261023.rs",
+        "bytes": 6136,
+        "sha256": "f08c66a963ceb6e5c51a214e01d3b1cbf09244168e27944314a05510278d60c3"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-0-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-0-20261023.log",
+        "bytes": 1054,
+        "sha256": "0aec867af31d18ff1e6d2ea3e10cafa08035d07bd8419c6de8a1f3cf83317e4e"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-1-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-1-20261023.log",
+        "bytes": 421,
+        "sha256": "c696965b69369ca73285f34c0dc97faf654e33f931eb0e8934121f9a8078c794"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-2-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-2-20261023.log",
+        "bytes": 468,
+        "sha256": "effc2a2c0949c6c1f586b294442fb4a593f2f2322b903d3b39e7e213836489cd"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-3-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-3-20261023.log",
+        "bytes": 710,
+        "sha256": "1888a46462fd4418f7c74263154da2b69d0d08e06f0df89a53df27bc6fbe225a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-4-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-4-20261023.log",
+        "bytes": 558,
+        "sha256": "008905be0615dc01081f495eaf2aecfc177b64310828ded3761325fcb3b904b1"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-5-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-5-20261023.log",
+        "bytes": 72,
+        "sha256": "0662563482f4292502e17d7284161a4a631b85942470f03ea9ba67c4243cf3a2"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-other-gate-6-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-other-gate-6-20261023.log",
+        "bytes": 517,
+        "sha256": "35a7e93d4112f48768809ee678c86e30809ea9372e12ddcbc44891bd349968df"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-0-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gate-0-20261023.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-1-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gate-1-20261023.log",
+        "bytes": 160,
+        "sha256": "c354aa5b9c319d8851e5939c98ff85614db1e469e4aa336c35265fa3cbdd5aa5"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-2-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gate-2-20261023.log",
+        "bytes": 37926,
+        "sha256": "4b9f367093d299a7e5b8c6f94a384ffed4c587c04932edeea311486604fc4490"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-rust-gate-3-20261023.log",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\PRD-007-rust-gate-3-20261023.log",
+        "bytes": 37921,
+        "sha256": "66565200c0b23fb77f36c7d9abc3e8e2e602df14d38e0a0347a6e8b31c6de413"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-build\\context.txt",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\scratch-context.txt",
+        "bytes": 2733,
+        "sha256": "88cbdb96090da20b8bacf26b912c792972959d46d9140cedcc741dc830c617c5"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\artifacts\\prd007-build\\product_deactivate_impl.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\scratch-product_deactivate_impl.rs",
+        "bytes": 2217,
+        "sha256": "6b83a74b1ca54b395228c0a6a592bea00f4b64fd98955e91f34cba41709ff79a"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\0-lib.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-0-lib.rs",
+        "bytes": 829,
+        "sha256": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\1-deactivate_product.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-1-deactivate_product.rs",
+        "bytes": 2430,
+        "sha256": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\2-deactivate_product_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-2-deactivate_product_tests.rs",
+        "bytes": 6136,
+        "sha256": "f08c66a963ceb6e5c51a214e01d3b1cbf09244168e27944314a05510278d60c3"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\3-products.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-3-products.rs",
+        "bytes": 7487,
+        "sha256": "fd7b0dfbf2a63ed56c3904e59ee33834207dda067d75d3428f77e89be2f3935b"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\4-mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-4-mod.rs",
+        "bytes": 3231,
+        "sha256": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\5-product_deactivation.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\before-format-5-product_deactivation.rs",
+        "bytes": 10455,
+        "sha256": "f25fd4f3bef3015bee83dc1876dbbc969283299929900fc7797406d3c17f662f"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\src\\lib.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-lib.rs",
+        "bytes": 829,
+        "sha256": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\src\\application\\deactivate_product.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-deactivate_product.rs",
+        "bytes": 2430,
+        "sha256": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\src\\application\\deactivate_product_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-deactivate_product_tests.rs",
+        "bytes": 6156,
+        "sha256": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\src\\infrastructure\\products.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-products.rs",
+        "bytes": 7547,
+        "sha256": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\tests\\common\\mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-mod.rs",
+        "bytes": 3231,
+        "sha256": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7"
+      },
+      {
+        "source": "C:\\Users\\milla\\Documents\\Millani Artes\\src-tauri\\tests\\common\\product_deactivation.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-focal-evidence-20261023\\final-product_deactivation.rs",
+        "bytes": 10807,
+        "sha256": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+      }
+    ],
+    "review": {
+      "id": "PRD-007",
+      "persona": "P-REV",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "base": "ce25c6cd61df742ec85945ef4241ad86eb3c5cbc",
+      "sources": {
+        "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+        "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+        "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+        "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+        "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+        "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+      },
+      "findings": [],
+      "evidence": "E2 static",
+      "tests_executed": false,
+      "summary": "Independent review inspected spec, six focal paths and related Product/Category/transaction contracts. No P0/P1/P2. Metadata preserved, inactive succeeds with fresh audit, missing writes nothing, rollback poisons adapter. Sale snapshots outside scope.",
+      "cost": "não registrado"
+    },
+    "local": {
+      "id": "PRD-007",
+      "base": "ce25c6cd61df742ec85945ef4241ad86eb3c5cbc",
+      "local_calls": 1,
+      "inference_calls": 1,
+      "used_calls": 1,
+      "local_used": true,
+      "preflight_failures": 0,
+      "inference_timeouts": 0,
+      "seconds": 121.752,
+      "model": "millani-laguna:xs-2.1",
+      "persona": "P-DAT",
+      "effort": "não registrado",
+      "receipt_file": "PRD-007-BUILD-20261023.1792779830017602500.job.json",
+      "root_production_template": true,
+      "root_behavior_correction": false,
+      "root_production_correction": false,
+      "root_fixture_correction": false,
+      "root_app": "deterministic literal Category→Product application reuse",
+      "candidate_sha256": "6b83a74b1ca54b395228c0a6a592bea00f4b64fd98955e91f34cba41709ff79a",
+      "old_sources_preserved": true,
+      "paths": {
+        "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+        "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+        "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+        "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+        "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+        "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+      },
+      "cost": "não registrado"
+    },
+    "runtime": {
+      "status": "stopped",
+      "pid": 10252,
+      "port11434": "closed"
+    },
+    "format_provenance": [
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\lib.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\0-lib.rs",
+        "sha256": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\application\\deactivate_product.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\1-deactivate_product.rs",
+        "sha256": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\application\\deactivate_product_tests.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\2-deactivate_product_tests.rs",
+        "sha256": "f08c66a963ceb6e5c51a214e01d3b1cbf09244168e27944314a05510278d60c3"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\src\\infrastructure\\products.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\3-products.rs",
+        "sha256": "fd7b0dfbf2a63ed56c3904e59ee33834207dda067d75d3428f77e89be2f3935b"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\common\\mod.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\4-mod.rs",
+        "sha256": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7"
+      },
+      {
+        "source": "C:\\Users\\milla\\.codex\\worktrees\\prd-007-deactivate-product\\Millani Artes\\src-tauri\\tests\\common\\product_deactivation.rs",
+        "dest": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\PRD-007-before-format-20261023\\5-product_deactivation.rs",
+        "sha256": "f25fd4f3bef3015bee83dc1876dbbc969283299929900fc7797406d3c17f662f"
+      }
+    ],
+    "scope": "deactivate_product preserva ID, nome, descrição e preço; ativo=false inclusive já inativo, nova auditoria por chamada, 1 UUID/1 Clock checked/1 Store, NotFound e quatro erros opacos. Adapter SELECT metadados + UPDATE is_active=0 com rows==1 + product_deactivate audit na mesma transação IMMEDIATE; Ok restaura conexão e falha faz rollback/poisoner/fresh recovery. Criação/edição anteriores, domínio e sete migrations SQL 002..008 + v1 vazia preservados; sem dependência, migration, startup, UI/IPC, venda ou estoque novos.",
+    "test_scope": "7 unitários: metadados exatos Unicode/NUL, preços 0/1/MAX, portas/IDs/estado, ID fail, clock pré-epoch/overflow, NotFound, StoreFailed e quatro variantes opacas. 5 SQLite físicos: ativo/repetido/inativo com observer/reopen e uma auditoria por chamada; ausente sem efeito/reuso; cinco falhas audit/update com rollback e poison probe válido após remover fixture; evento/tempo inválidos/query_only; SELECT error com restauração de schema shape, dados financeiros/backup preservados e fresh recovery.",
+    "limitations": "Snapshots reais de venda/INV-SAL-005 dependem de SAL-008; jornadas UI/IPC, cobertura Rust global e instalador Windows com instalação/atualização/backup/restauração/hash/assinatura/E2E oficial pendentes. LLVM local mede somente linhas/funções dos dois arquivos inteiros; branches/statements/global/CI Rust coverage não medidos.",
+    "reserved_paths": [
+      "planning/specs/PRD-007.md",
+      "planning/handoffs/PRD-007.md",
+      "planning/work-items/PRD-007.json",
+      "planning/PROGRESS_LOG.md",
+      "planning/ROADMAP.md",
+      "docs/architecture/MODULE_BOUNDARIES.md",
+      "docs/quality/TEST_STRATEGY.md",
+      "docs/quality/COVERAGE_POLICY.md",
+      "docs/traceability/REQUIREMENTS_MATRIX.md",
+      "docs/architecture/DATA_MODEL.md",
+      "src-tauri/src/lib.rs",
+      "src-tauri/src/application/deactivate_product.rs",
+      "src-tauri/src/application/deactivate_product_tests.rs",
+      "src-tauri/src/infrastructure/products.rs",
+      "src-tauri/tests/common/mod.rs",
+      "src-tauri/tests/common/product_deactivation.rs"
+    ],
+    "cost": "não registrado",
+    "copied_runner_footer": "PRD006 labels in Rust/other stdout are copied labels; current commands, sources, base and receipts identify PRD007"
+  },
+  "independent_review": {
+    "id": "PRD-007",
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "base": "ce25c6cd61df742ec85945ef4241ad86eb3c5cbc",
+    "sources": {
+      "src-tauri/src/lib.rs": "fb946038898e994a5405bf85d92c80b513c9e1d4b0fdb4af1e41de8fe5d06482",
+      "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+      "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+      "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+      "src-tauri/tests/common/mod.rs": "3ed8a12de25d0dda9fa056ce923348acdf041123b2f3e6db2eae363ad282b1f7",
+      "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37"
+    },
+    "findings": [],
+    "evidence": "E2 static",
+    "tests_executed": false,
+    "summary": "Independent review inspected spec, six focal paths and related Product/Category/transaction contracts. No P0/P1/P2. Metadata preserved, inactive succeeds with fresh audit, missing writes nothing, rollback poisons adapter. Sale snapshots outside scope.",
+    "cost": "não registrado"
+  },
+  "source_scan": {
+    "exit": 0,
+    "files": 16,
+    "bytes": 1156426,
+    "framed_sha256": "a074fd545ed3653f8d5414a0342cdd6a41c0f03200c16de8c6f0d996565488c8",
+    "findings": 0
+  },
+  "final_scan": {
+    "exit": 0,
+    "files": 10,
+    "bytes": 1137908,
+    "framed_sha256": "f021ba42ac33cfacbf9d500a02d52f42f0de4f3134fdb16602ef97bb07786486",
+    "findings": 0
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 635 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 135 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 135 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 598021 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "production": "deactivate_product preserva ID, nome, descrição e preço; ativo=false inclusive já inativo, nova auditoria por chamada, 1 UUID/1 Clock checked/1 Store, NotFound e quatro erros opacos. Adapter SELECT metadados + UPDATE is_active=0 com rows==1 + product_deactivate audit na mesma transação IMMEDIATE; Ok restaura conexão e falha faz rollback/poisoner/fresh recovery. Criação/edição anteriores, domínio e sete migrations SQL 002..008 + v1 vazia preservados; sem dependência, migration, startup, UI/IPC, venda ou estoque novos.",
+  "preserved": "all134 previous note tuples, all initial preparation refs and97 historical branches/checkpoint ancestry;60 focal files 474020B hashverified;WT recoverably archived",
+  "limitations": "Snapshots reais de venda/INV-SAL-005 dependem de SAL-008; jornadas UI/IPC, cobertura Rust global e instalador Windows com instalação/atualização/backup/restauração/hash/assinatura/E2E oficial pendentes. LLVM local mede somente linhas/funções dos dois arquivos inteiros; branches/statements/global/CI Rust coverage não medidos.",
+  "meta": "active until official E2E, no pause between items",
+  "next": "re-evaluate first eligible only after release;next eligible after release",
+  "cost": "não registrado"
+}
