@@ -719,3 +719,9 @@ PRD-005 VERIFY E3:MVP07 criaçãoProductativo/validaçãonomepreçoantesportas/S
 
 
 PRD-005 done/E3/passestrue apósCI39298191906/SHA0ecf5a59905791a2eae452716c0b8c2220207246success23/0skip/7marcadores,Rust338+20docs/7unit4SQLnovos. CriaçãoProductativo/validaçõesantesportas/SQL+auditIMMEDIATE/rows1/poisoner-freshrecovery/REDGREEN/LLVM2arquivoscomcontrole/gates/security/reviewPASS;7migrationsSQL+v1vazia/domainintactos;CIfinal/nota133/liberaçãopendentes;PRD006/007(editar/desativar),vendas/snapshots/INVSAL005,UIIPC,coberturaRustglobal,releaseWindows/instalação/atualização/backuprestauração/hashassinatura/E2Eoficial pendentes. UUIDversão/uniqueness pertencem ao adapterUuidGenerator;zeroaudit/entity/timeinválidos são rejeitados porappend_audit_event e revertidosSQL. Stablebranches/statements/global/CI Rustcoverage não medidos.;Metaativa;fonte:handoffPRD-005.
+
+
+MVP-07 → PRD-006 in_progress/E3 local/passesfalse: editar Product com validação de nome/preço antes das portas,0válido/negativos inválidos,ID/ativo preservados e UPDATE+audit atômicos. Evidência executada:9unit application/edit_product_tests.rs+5SQL tests/common/product_editing.rs, gates locais e coverage focal/controle. INV-SAL-005 permanece pendente até SAL-008; não inferir E2E. Renovação humana das duas exceções Cargo/OSV e CIs/liberação pendentes. Fonte: planning/handoffs/PRD-006.md.
+
+
+PRD-006 VERIFY E3 local aprovado23out: ediçãoProduct/9unit5SQL/352Rust+20docs/LLVM2arquivos100%controle rejeitado/gates/security/reviewPASS. Vite8.3.3/Tokio1.53.3;E4somente2exceçõesWindows/hashescorrentes/antes06novUTC conforme aceite da proposta c86bf6753ee0bb8d579e74e699e4bab108222835. ProduçãoGPTfallback0saídaslocaisusadas;2P2docs corrigidos. CIs/nota134/liberação pendentes/passesfalse;INVSAL005SAL008/E2Ependentes;fonte:handoffPRD-006.

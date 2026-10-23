@@ -11,6 +11,7 @@ pub mod application {
     pub mod create_transfer;
     pub mod deactivate_category;
     pub mod edit_movement;
+    pub mod edit_product;
     pub mod generate_fixed_obligation;
     pub mod generate_variable_obligation;
     pub mod list_accounts;

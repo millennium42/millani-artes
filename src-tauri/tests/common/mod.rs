@@ -116,3 +116,5 @@ mod recurrence_payment;
 mod products_migration;
 
 mod product_creation;
+
+mod product_editing;

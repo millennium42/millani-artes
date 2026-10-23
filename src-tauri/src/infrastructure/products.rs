@@ -1,4 +1,5 @@
 use crate::application::create_product::ProductCreationStore;
+use crate::application::edit_product::ProductEditingStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::Product;
 use rusqlite::Connection;
@@ -75,6 +76,82 @@ impl ProductCreationStore for AdapterSqliteProductStore {
             Ok((connection, ())) => {
                 self.connection = Some(connection);
                 Ok(())
+            }
+            Err(_) => Err(ProductStoreError),
+        }
+    }
+}
+
+impl ProductEditingStore for AdapterSqliteProductStore {
+    type Error = ProductStoreError;
+
+    fn edit_product_with_audit(
+        &mut self,
+        id: [u8; 16],
+        name: &str,
+        description: &str,
+        suggested_price_cents: i64,
+        event_id: [u8; 16],
+        occurred_at_ms: i64,
+    ) -> Result<Option<Product>, Self::Error> {
+        let temp_product = Product {
+            id,
+            name: name.to_string(),
+            description: description.to_string(),
+            suggested_price_cents,
+            is_active: true,
+        };
+        temp_product
+            .validate_name()
+            .map_err(|_| ProductStoreError)?;
+        temp_product
+            .validate_suggested_price()
+            .map_err(|_| ProductStoreError)?;
+
+        let connection = self.connection.take().ok_or(ProductStoreError)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let is_active_result: Result<bool, rusqlite::Error> = transaction.query_row(
+                "SELECT is_active FROM main.products WHERE id = ?1",
+                rusqlite::params![id.as_slice()],
+                |row| row.get(0),
+            );
+            let is_active = match is_active_result {
+                Ok(active) => active,
+                Err(rusqlite::Error::QueryReturnedNoRows) => return Ok(None),
+                Err(_) => return Err(()),
+            };
+            let updated = transaction
+                .execute(
+                    "UPDATE main.products SET name = ?1, description = ?2, suggested_price_cents = ?3 WHERE id = ?4",
+                    rusqlite::params![name, description, suggested_price_cents, id.as_slice()],
+                )
+                .map_err(|_| ())?;
+            if updated != 1 {
+                return Err(());
+            }
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id,
+                    occurred_at_ms,
+                    operation: "product_edit",
+                    entity: "product",
+                    entity_id: id,
+                },
+            )
+            .map_err(|_| ())?;
+            Ok(Some(Product {
+                id,
+                name: name.to_string(),
+                description: description.to_string(),
+                suggested_price_cents,
+                is_active,
+            }))
+        });
+        match result {
+            Ok((connection, product)) => {
+                self.connection = Some(connection);
+                Ok(product)
             }
             Err(_) => Err(ProductStoreError),
         }

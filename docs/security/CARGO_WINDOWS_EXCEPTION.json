@@ -1,11 +1,11 @@
 {
   "approved": true,
-  "approvalRecord": "sha256:1e5a9355dfba86f52e1d3f99bb355e380353396e3602ca927a478ec9291e404f",
+  "approvalRecord": "sha256:7409480f4c6ed29e9f9645ccb8fd08a21058c8b597646ae928184f01deff8567",
   "gate": "SEC-011/cargo-audit/0.22.2",
   "target": "x86_64-pc-windows-msvc",
-  "expiresBeforeUTC": "2026-10-23",
+  "expiresBeforeUTC": "2026-11-06",
   "inputSHA256": {
-    "src-tauri/Cargo.lock": "d0de3eb6848350ed3933b862547f366067d6f0261542ec7d0b45d2c05054ff30",
+    "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
     "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
   },
   "exceptions": [
