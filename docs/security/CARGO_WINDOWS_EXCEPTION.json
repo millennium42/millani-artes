@@ -1,6 +1,6 @@
 {
   "approved": true,
-  "approvalRecord": "sha256:7409480f4c6ed29e9f9645ccb8fd08a21058c8b597646ae928184f01deff8567",
+  "approvalRecord": "sha256:df4bbb40cb4f054087bf6961a142ffff0329ae6abd1506a563f30962ab503d61",
   "gate": "SEC-011/cargo-audit/0.22.2",
   "target": "x86_64-pc-windows-msvc",
   "expiresBeforeUTC": "2026-11-06",

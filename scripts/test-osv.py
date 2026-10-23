@@ -172,12 +172,19 @@ def main():
         checkout.mkdir()
 
         def windows_checkout():
+            approval_path = gate.APPROVAL.relative_to(gate.ROOT).as_posix()
+            paths = [*config["inputSHA256"]]
+            if config["approved"]:
+                paths.append(approval_path)
             r = gate.invoke(["git", "-C", str(gate.ROOT), "-c", "core.autocrlf=true", "checkout-index",
-                             "--prefix=" + checkout.as_posix() + "/", "--", *config["inputSHA256"]])
+                             "--prefix=" + checkout.as_posix() + "/", "--", *paths])
             assert r.returncode == 0, "Isolated Git checkout failed."
             for name, digest in config["inputSHA256"].items():
                 gate.safe_path(checkout / name)
                 assert hashlib.sha256((checkout / name).read_bytes()).hexdigest() == digest
+            if config["approved"]:
+                content = (checkout / approval_path).read_bytes()
+                assert "sha256:" + hashlib.sha256(content).hexdigest() == config["approvalRecord"]
 
         case("windows-checkout-preserves-approved-byte-hashes", windows_checkout)
         proposal = deepcopy(config)

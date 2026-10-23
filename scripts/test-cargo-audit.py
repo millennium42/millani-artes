@@ -242,6 +242,20 @@ def main():
         for path in [FIXTURES, *FIXTURES.rglob("*")]:
             gate.safe_path(path)
         shutil.rmtree(FIXTURES, onexc=remove_readonly)
+    def windows_checkout():
+        config = gate.read_json(gate.EXCEPTIONS.read_bytes())
+        if not config["approved"]:
+            return
+        approval_path = gate.APPROVAL.relative_to(gate.ROOT).as_posix()
+        with gate.scratch() as checkout:
+            result = gate.invoke(["git", "-C", str(gate.ROOT), "-c", "core.autocrlf=true",
+                                  "checkout-index", "--prefix=" + checkout.as_posix() + "/",
+                                  "--", approval_path])
+            assert result.returncode == 0, "Isolated Git checkout failed."
+            content = (checkout / approval_path).read_bytes()
+            assert "sha256:" + hashlib.sha256(content).hexdigest() == config["approvalRecord"]
+
+    case("windows-checkout-preserves-approved-record-hash", windows_checkout)
     print("CARGO_AUDIT_TESTS " + json.dumps({"cases": len(cases), "realCLI": 6, "status": "pass",
                                            "seconds": round(time.perf_counter() - start, 3),
                                            "fixtureRemoved": not FIXTURES.exists()}))
