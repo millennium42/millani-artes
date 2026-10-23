@@ -2,7 +2,7 @@
   "id": "CUS-001",
   "title": "definir cliente mínimo",
   "specPath": "planning/specs/CUS-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "ARC-002"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT fixtures/reuso; P-DOM Gemma300s um scratch; P-SECtools/P-REV Sol6medium;11paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "CUS-001 VERIFY E3: Customer mínimo puro id/nome/telefone opcional, dados sintéticos exatos/sem Debug ou Display; 1 unit+2 compile_fail novos, Rust365+22docs/gates/security/P-REV PASS. LLVM domain95 com controle, tipo sem percentual próprio. CUS002..005/UI/IPC/E2E pendentes; CI/nota136/liberação pendentes; passesfalse/Meta ativa; fonte: handoff CUS-001."
+  "passes": true,
+  "notes": "CUS-001 done/E3/passestrue após CI 40013227015/SHA d498cc325cbc5c7af2957b232419b2d70ea4bf15, success23/0skip/7 marcadores, Rust365+22docs/1unit+2doctests novos. Customer mínimo puro id/nome/telefone opcional/sem Debug ou Display; RED/GREEN/LLVM domain com controle/gates/security/review PASS. Domínio anterior/migrations/deps/exceções preservados; CI final/nota136/liberação pendentes; Meta ativa. Representação não decide aceite de entrada: CUS-002/003 validam nome/telefone e CUS-004/005 implementam persistência/criação. Formato/tamanho/normalização/unicidade do telefone não decididos aqui. Vendas/INV-SAL-002, UI/IPC, cobertura Rust global e instalador/instalação/atualização/backup/restauração/hash/assinatura/E2E oficial pendentes. Customer tem zero linhas executáveis; percentual próprio não aplicável. LLVM local cobre somente domain/mod.rs inteiro; branches/statements/global/CI Rust coverage não medidos. Fonte: handoff CUS-001. Reserva ativa."
 }
