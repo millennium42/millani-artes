@@ -1,0 +1,26 @@
+{
+  "id": "PRD-007",
+  "title": "desativar produto",
+  "specPath": "planning/specs/PRD-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "PRD-005"
+  ],
+  "acceptanceCriteria": [
+    "Desativar preservando ID/nome/descrição/preço, ativo=false inclusive já inativo,1auditID/clockchecked/NotFound/4erros opacos.",
+    "Adapter SELECT metadados+UPDATEativo+auditIMMEDIATE/rows1,rollback/poisoner/fresh recovery,preservar criação/edição anteriores.",
+    "REDAPIausente/GREEN7unit5SQL/LLVM2arquivos≥95controle rejeitado/gates/security/review/CIsSHAsexatos.",
+    "Docsantespasses/nota135 preservando134/refs/branches/mainlimpa/WTarquivada/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN7unit5SQL",
+    "Rustfmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVM2arquivos95/controle/P-REV/validators/stagedscan",
+    "CIsfontefinal/nota135/liberação"
+  ],
+  "agentPlan": "P-INT reuso determinístico de app/fixtures;P-DATLaguna600s impl focal;P-SECtools/P-REVgpt6solmedium;16paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "PRD-007 VERIFY E3: desativação Product/7 unit+5 SQL/364 Rust+20 doctests/LLVM dois arquivos 100% e controle rejeitado/gates de qualidade e segurança PASS; P-REV E2 sem achados. Uma inferência local P-DAT/121,752s usada sem correção de comportamento; app por reuso determinístico de Category. CIs/nota135/liberação pendentes; passesfalse; E2E oficial pendente; fonte: handoff PRD-007."
+}

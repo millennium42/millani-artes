@@ -10,6 +10,7 @@ pub mod application {
     pub mod create_product;
     pub mod create_transfer;
     pub mod deactivate_category;
+    pub mod deactivate_product;
     pub mod edit_movement;
     pub mod edit_product;
     pub mod generate_fixed_obligation;
