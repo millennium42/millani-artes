@@ -1,0 +1,26 @@
+{
+  "id": "CUS-003",
+  "title": "validar telefone opcional do cliente",
+  "specPath": "planning/specs/CUS-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CUS-001"
+  ],
+  "acceptanceCriteria": [
+    "None válido; Some exige máscara ASCII (DD) 9XXXX-XXXX, DDD existente67, dígito móvel inicial9; texto/campos inalterados.",
+    "Quatro unit novos cobrem67válidos/33inválidos, formatos/quantidades/prefixos/Unicode em cada posição/sem panic/nomes independentes; CUS001002 intactos.",
+    "RED E0599/GREEN7Customer/Rust371+22docs/LLVMdomain95controle/gates/security/P-REV/CIs exatos.",
+    "Decisão humana registrada no produto antes da spec; docsantespasses/nota138 preservando137/refs/mainlimpa/WTarquivada/liberação antes próximo; MetaE2E ativa."
+  ],
+  "checks": [
+    "RED/GREEN7Customer (4novos)",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota138/liberação"
+  ],
+  "agentPlan": "P-INTspec/integrador/P-QAfixtures/P-DOMLaguna600simplscratch/P-SECtools/P-REVSol6medium;12paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "CUS-003 VERIFY E3: None válido/Some máscara ASCII(DD)9XXXX-XXXX/DDD67/inicial9, sem mutação/nome/IO. Regra humana no produto/fontes Anatel preservadas. RED/GREEN7Customer/4unitnovos/Rust371+22docs/LLVMdomain95controle/gates/security/P-REV PASS. Laguna timeout603,471s/0output usado; P-INT fallback; runtime encerrado. CUS004005/UI/IPC/E2E pendentes; CI/nota138/liberação pendentes; passesfalse/Metaativa; fonte: handoff CUS-003."
+}

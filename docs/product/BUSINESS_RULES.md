@@ -15,3 +15,8 @@
 
 ## Preço sugerido de produto — decisão humana de 19/10/2026
 O preço sugerido é informado em centavos inteiros e pode ser R$ 0,00. Valores negativos são rejeitados. Esta validação não altera o produto nem depende de seu nome ou estado ativo. Não foi definido limite superior adicional ao tipo i64. Registro autorizado na resposta humana da PRD-003: “Aceitar zero; rejeitar negativos”. Persistência, criação, edição e desativação seguem seus work items próprios.
+
+
+## Telefone opcional de cliente — decisão humana de 23/10/2026
+Telefone ausente é aceito. Quando informado, deve seguir exatamente o modelo `(DD) 9XXXX-XXXX`, com DDD brasileiro existente, dígitos ASCII e número móvel de nove dígitos iniciado por 9. A validação preserva o texto original, o nome e a identidade do cliente; não remove espaços, pontuação ou prefixos e não verifica se a linha existe ou está ativa. Não aceita telefone fixo de oito dígitos, prefixo de país ou formato livre neste contrato. A máscara concreta é a interpretação de implementação da decisão humana “validação completa no modelo (dd) + 9 digitos”, em resposta à pergunta CUS-003 sobre formato. Cadastro e apresentação pertencem aos seus work items.
+Referências técnicas: [plano brasileiro](https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro), [nono dígito](https://www.gov.br/anatel/pt-br/regulado/numeracao/codigos-nacionais/nono-digito) e mapa de DDDs da mesma página, consultados em 23/10/2026. A lista de 67 códigos e a evidência da leitura constam da spec CUS-003/recibo de decisão.

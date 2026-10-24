@@ -519,6 +519,37 @@ impl Customer {
             Ok(())
         }
     }
+
+    pub fn validate_phone(&self) -> Result<()> {
+        let Some(phone) = &self.phone else {
+            return Ok(());
+        };
+        let bytes = phone.as_bytes();
+        if bytes.len() != 15
+            || bytes[0] != b'('
+            || bytes[3] != b')'
+            || bytes[4] != b' '
+            || bytes[5] != b'9'
+            || bytes[10] != b'-'
+            || !bytes[1..3]
+                .iter()
+                .chain(&bytes[5..10])
+                .chain(&bytes[11..15])
+                .all(u8::is_ascii_digit)
+        {
+            return Err(DomainError::InvalidInput);
+        }
+        let ddd = (bytes[1] - b'0') * 10 + (bytes[2] - b'0');
+        if matches!(
+            ddd,
+            11..=19 | 21 | 22 | 24 | 27 | 28 | 31..=35 | 37 | 38 | 41..=49 | 51
+                | 53..=55 | 61..=69 | 71 | 73..=75 | 77 | 79 | 81..=89 | 91..=99
+        ) {
+            Ok(())
+        } else {
+            Err(DomainError::InvalidInput)
+        }
+    }
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
