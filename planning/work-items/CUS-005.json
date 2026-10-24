@@ -1,0 +1,28 @@
+{
+  "id": "CUS-005",
+  "title": "criar cliente",
+  "specPath": "planning/specs/CUS-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "CUS-002",
+    "CUS-003",
+    "CUS-004"
+  ],
+  "acceptanceCriteria": [
+    "Nome/phone validados antesportas;2IDs/1Clockchecked/1Store,camposNoneSomeexatos/cincoerrosopacos.",
+    "AdapterrevalidaantesTake/invalidreusável;INSERT3params+customer_createauditIMMEDIATE/rows1/rollback/poisoned-freshrecovery; demais dados intactos.",
+    "RED APIsausentes/GREEN7unit4SQL/Rust387+22docs/LLVM2arquivos95controle/gates/security/P-REV/CIs exatos.",
+    "Docsantespasses/nota140preservando139/refs/mainlimpa/WTfocalarquivada/liberaçãoantespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN7unit4SQLite",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVM2arquivos95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota140/liberação"
+  ],
+  "agentPlan": "P-INT-P-DOM-P-DATtransposiçãoLiteral/P-QAfixtures/P-SECtools/P-REVSol6medium;16paths;0inferências",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "CUS-005 VERIFY E3: criarCustomer name/phoneNULLSomebrutos/validarantesportas/2IDsClockchecked/INSERT+customer_createauditIMMEDIATE/rows1/invaliddiretoreusável/rollback-poisoned-freshrecovery. RED/GREEN7unit4SQL/Rust387+22docs/LLVM2arquivos95controlegates/security/P-REV PASS.8SQLanterioresintactos;0inferências/runtime. CIs/nota140/liberação pendentes;MVP09UI/clienteemvendapendente/SMK005/globalRust/instalador/E2Ependentes;passesfalse/Metaativa;fonte:handoff CUS-005."
+}

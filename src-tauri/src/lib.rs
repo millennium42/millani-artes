@@ -5,6 +5,7 @@ pub mod application {
     pub mod calculate_context_result;
     pub mod create_account;
     pub mod create_category;
+    pub mod create_customer;
     pub mod create_entry;
     pub mod create_exit;
     pub mod create_product;
@@ -25,6 +26,7 @@ pub mod application {
 pub mod infrastructure {
     pub mod accounts;
     pub mod categories;
+    pub mod customers;
     pub mod movements;
     pub mod products;
     pub mod recurrences;
