@@ -2,7 +2,7 @@
   "id": "CUS-005",
   "title": "criar cliente",
   "specPath": "planning/specs/CUS-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "CUS-002",
     "CUS-003",
@@ -23,6 +23,6 @@
   "agentPlan": "P-INT-P-DOM-P-DATtransposiçãoLiteral/P-QAfixtures/P-SECtools/P-REVSol6medium;16paths;0inferências",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "CUS-005 VERIFY E3: criarCustomer name/phoneNULLSomebrutos/validarantesportas/2IDsClockchecked/INSERT+customer_createauditIMMEDIATE/rows1/invaliddiretoreusável/rollback-poisoned-freshrecovery. RED/GREEN7unit4SQL/Rust387+22docs/LLVM2arquivos95controlegates/security/P-REV PASS.8SQLanterioresintactos;0inferências/runtime. CIs/nota140/liberação pendentes;MVP09UI/clienteemvendapendente/SMK005/globalRust/instalador/E2Ependentes;passesfalse/Metaativa;fonte:handoff CUS-005."
+  "passes": true,
+  "notes": "CUS-005 done/E3/passestrue apósCI40054116789/SHAa3020fb565cc0125d7d55f771e7df2d885648d74,success23/0skip/7marcadores,Rust387+22docs/7unit4SQLnovos. CreateCustomer validaçõesantesportas/camposNoneSome/2IDsClockchecked/INSERT+auditIMMEDIATE/rows1/rollback/poisoned-freshrecovery/opacos;REDGREEN/LLVM2arquivoscontrole/gates/security/review PASS.8SQL/domínio/produtoanterioresintactos;0inferências. CIfinal/nota140/liberação pendentes;Meta ativa. Não criaUI/IPC/listagem/edição/desativaçãodecliente/CRM/estoque/venda. ClienteemvendapendenteINV-SAL-002/jornadaMVP09/UI009/SMK005, coberturaRustglobal,instalador/instalação/atualização/backuprestauração/hashassinatura/E2Eoficial pendentes. UUIDversão/unicidade pertence ao fornecedor;MAXms/overflow testados no helper,semalegarSystemTimeMAXdoplatforma. LLVMlocal sódoisarquivosinteiros comcontroleomitenovos7unit4SQL;sembranches/statements/global/CI Rustcoverage. Custo não registrado. Fonte:handoff CUS-005. Reserva ativa."
 }
