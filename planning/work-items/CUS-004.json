@@ -1,0 +1,27 @@
+{
+  "id": "CUS-004",
+  "title": "migration de cliente",
+  "specPath": "planning/specs/CUS-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "CUS-001"
+  ],
+  "acceptanceCriteria": [
+    "009customersSTRICT idBLOB16/nomeTEXTnão vazio/phoneTEXTNULLoumaskASCII15DDD67primeiro9; duas constantesv9, sem outras APIs ou efeitos.",
+    "CincoSQLite físicos:vazio,INSERTUPDATEconstraints,upgrade8histórico+produto,rollbackledger9,colisão/duplicatav9; mutantesIDL15+mask0..9 rejeitados.",
+    "RED E0432/GREEN5novos/Rust376+22docs/LLVMdatabase95controle/gates/security/P-REV/CIs exatos.",
+    "Migrationsanterioresintactas/docsantespasses/nota139preservando138/refs/mainlimpa/WTarquivada/liberaçãoantespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN5SQLite/mutantes2",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdatabase95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota139/liberação"
+  ],
+  "agentPlan": "P-INT/P-DATDDLdeterminístico/P-QAreuso fixtures/P-SECtools/P-REVSol6medium;15paths;0inferências",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "CUS-004 VERIFY E3: migration009customersSTRICT/ID16/nome/phoneNULLoumaskASCII15DDD67,duasconstantes9/zerofunções. RED/GREEN5SQLite/vazio-upgrade8histórico-rollback-colisão/2mutantesrejeitados/Rust376+22docs/LLVMdatabase95controleTODOSSQL/gates/security/P-REV PASS;7SQLanterioresintactos.0inferências/runtime não iniciado. CUS005/UIIPC/globalRust/instalador/E2Ependentes;CI/nota139/liberação pendentes;passesfalse/Metaativa;fonte:handoff CUS-004."
+}

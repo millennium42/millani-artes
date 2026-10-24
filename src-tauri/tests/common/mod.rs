@@ -120,3 +120,5 @@ mod product_creation;
 mod product_editing;
 
 mod product_deactivation;
+
+mod customers_migration;
