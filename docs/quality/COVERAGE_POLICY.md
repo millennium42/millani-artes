@@ -472,3 +472,6 @@ SAL-001 done/E3/passestrue apósCI40147508621/SHA77468ca1aabd84daa88768fd1c03925
 
 
 SAL-002 VERIFY E3: validate_quantity inteiroi64>0, limitesMIN/-1/0 e1/2/MAX,7campos preservados;RED/GREEN3módulo2unitnovos/Rust390+24docs/LLVMdomain95controle/gates/security/P-REV PASS.0inferências. Monetários/cálculo/SQL/snapshot operacional/UI/IPC/E2E pendentes;CI/nota142/liberação pendentes;passesfalse/Metaativa;fonte:handoff SAL-002.
+
+
+SAL-002 done/E3/passestrue apósCI40148872782/SHAa06c4c81037d92b184c7c5f2579824cea10dec43,success23/0skip/7marcadores,Rust390+24docs/2unitnovos. validate_quantity inteiroi64>0/limites/preservação7campos;RED/GREEN/LLVMdomain95controle/gates/security/reviewPASS;0inferências;domínio/migrations/deps/exceções preservados;CIfinal/nota142/liberação pendentes;Metaativa. Não valida item inteiro, campos monetários ou descrição nem calcula/converte desconto percentual. SAL-003/004 e demais consumidores, snapshot operacional SAL-008/INV-SAL-005, UI/IPC, Rust global, instalador Windows/instalação/atualização/artefato/hash/assinatura/backup/restauração/E2E oficial pendentes. LLVM local cobre domain/mod.rs inteiro; controle sem domínio prova instrumentação, não causalidade isolada do método. Percentual isolado/branches/statements/global/CI Rust coverage não medidos. Fonte:handoff SAL-002.
