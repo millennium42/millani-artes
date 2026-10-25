@@ -1,0 +1,26 @@
+{
+  "id": "SAL-002",
+  "title": "validar quantidade positiva",
+  "specPath": "planning/specs/SAL-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-001"
+  ],
+  "acceptanceCriteria": [
+    "SaleItem.validate_quantity puro rejeita quantity<=0 com DomainError::InvalidInput existente, aceita1/i64MAX; preserva7campos.",
+    "Sem validar outros campos/cálculo/deps/IO/SQL; dois unitários de limites/rejeição/aceite/NoneSome.",
+    "RED E0599/GREEN3módulo/390Rust24docs/LLVMdomain95controle/gates/security/P-REV/CIs exatos.",
+    "Docs antespasses/nota142 preservando141/refs/mainlimpa/WTarquivada/liberação antespróximo;MetaE2Eativa."
+  ],
+  "checks": [
+    "RED/GREEN3unit (2novos)",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota142/liberação"
+  ],
+  "agentPlan": "P-INT/P-DOM/P-QA reuso determinístico;P-SECtools;P-REVSol6medium independente;11paths;0inferências",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-002 VERIFY E3: validate_quantity inteiroi64>0, limitesMIN/-1/0 e1/2/MAX,7campos preservados;RED/GREEN3módulo2unitnovos/Rust390+24docs/LLVMdomain95controle/gates/security/P-REV PASS.0inferências. Monetários/cálculo/SQL/snapshot operacional/UI/IPC/E2E pendentes;CI/nota142/liberação pendentes;passesfalse/Metaativa;fonte:handoff SAL-002."
+}

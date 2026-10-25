@@ -573,6 +573,16 @@ pub struct SaleItem {
     pub total_cents: i64,
 }
 
+impl SaleItem {
+    pub fn validate_quantity(&self) -> Result<()> {
+        if self.quantity <= 0 {
+            Err(DomainError::InvalidInput)
+        } else {
+            Ok(())
+        }
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
