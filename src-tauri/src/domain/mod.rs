@@ -621,13 +621,17 @@ pub enum DiscountInput {
 }
 
 pub fn validate_discount(gross_cents: i64, input: DiscountInput) -> Result<i64> {
+    validate_discount_wide(i128::from(gross_cents), input)
+}
+
+fn validate_discount_wide(gross_cents: i128, input: DiscountInput) -> Result<i64> {
     if gross_cents < 0 {
         return Err(DomainError::InvalidInput);
     }
 
     match input {
         DiscountInput::AmountCents(amount) => {
-            if amount < 0 || amount > gross_cents {
+            if amount < 0 || i128::from(amount) > gross_cents {
                 return Err(DomainError::InvalidInput);
             }
             Ok(amount)
@@ -636,11 +640,39 @@ pub fn validate_discount(gross_cents: i64, input: DiscountInput) -> Result<i64> 
             if !(0..=10000).contains(&basis_points) {
                 return Err(DomainError::InvalidInput);
             }
-            let discount = (gross_cents as i128 * basis_points as i128 + 5000) / 10000;
-            let discount = discount as i64;
-            Ok(discount)
+            let basis_points = i128::from(basis_points);
+            // Split the product so even an i128 gross cannot overflow.
+            let whole = (gross_cents / 10000) * basis_points;
+            let fraction = ((gross_cents % 10000) * basis_points + 5000) / 10000;
+            i64::try_from(whole + fraction).map_err(|_| DomainError::InvalidInput)
         }
     }
+}
+
+pub fn create_free_item(
+    id: [u8; 16],
+    description: String,
+    quantity: i64,
+    unit_price_cents: i64,
+    discount: DiscountInput,
+) -> Result<SaleItem> {
+    if description.trim().is_empty() {
+        return Err(DomainError::InvalidInput);
+    }
+    let mut item = SaleItem {
+        id,
+        product_id: None,
+        description,
+        quantity,
+        unit_price_cents,
+        discount_cents: 0,
+        total_cents: 0,
+    };
+    item.validate_quantity()?;
+    let gross = i128::from(quantity) * i128::from(unit_price_cents);
+    item.discount_cents = validate_discount_wide(gross, discount)?;
+    item.total_cents = item.calculate_total()?;
+    Ok(item)
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -723,3 +755,6 @@ mod sale_item_tests;
 
 #[cfg(test)]
 mod discount_tests;
+
+#[cfg(test)]
+mod free_item_tests;

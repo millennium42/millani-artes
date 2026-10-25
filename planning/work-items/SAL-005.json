@@ -1,0 +1,29 @@
+{
+  "id": "SAL-005",
+  "title": "aceitar item livre",
+  "specPath": "planning/specs/SAL-005.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-001",
+    "SAL-002",
+    "SAL-003",
+    "SAL-004"
+  ],
+  "acceptanceCriteria": [
+    "create_free_item puro:descrição comconteúdo preservada,id recebido,product_idNone,quantidade/preço/desconto/total validados;sem criarProduto/IO/SQL.",
+    "validate_discount mantém APIi64/callers anteriores;helperprivadowidei128 único compartilhado comfactory,meio para cima semoverflow/semfloats;desconto/líquido cabemi64.",
+    "Oito unitnovos/RED E0432 create_free_item+helperwide ausentes/GREEN8/408Rust26docs/LLVMdomain95controle/gates/security/P-REV/CIs exatos.",
+    "Docs antespasses/nota145 preservando144/refs/mainlimpa/WTarquivada/liberação antespróximo;MetaE2E ativa."
+  ],
+  "checks": [
+    "RED/GREEN8novos/oldtests intactos",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota145/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/recon;P-DOMLaguna medium600s artifact2functions;P-SECtools/P-REVSol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-005 VERIFY E3: factorylivre validado/productNone/descriçãopreservada,desconto/total corretos/helperwide/APIi64 compatível;8unitnovos/9Decimal100digits/REDGREEN/Rust408+26docs/LLVMdomain95controle/gates/security/P-REV PASS. Laguna603,293s timeout0diff/rootfallback/errodainferênciagenéricacorrigido/oldcallersintactos/runtimeoff. CI/nota145/liberação pendentes;passesfalse;Metaativa;INV-SAL006 completo eUIE2E pendentes;fonte:handoffSAL-005."
+}
