@@ -581,6 +581,27 @@ impl SaleItem {
             Ok(())
         }
     }
+
+    pub fn calculate_total(&self) -> Result<i64> {
+        self.validate_quantity()?;
+
+        if self.unit_price_cents < 0 {
+            return Err(DomainError::InvalidInput);
+        }
+
+        if self.discount_cents < 0 {
+            return Err(DomainError::InvalidInput);
+        }
+
+        let gross = (self.quantity as i128) * (self.unit_price_cents as i128);
+        let net = gross - (self.discount_cents as i128);
+
+        if net < 0 {
+            return Err(DomainError::InvalidInput);
+        }
+
+        i64::try_from(net).map_err(|_| DomainError::InvalidInput)
+    }
 }
 
 /// Discount input converted to an applied monetary snapshot.

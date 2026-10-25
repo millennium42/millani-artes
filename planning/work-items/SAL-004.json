@@ -1,0 +1,28 @@
+{
+  "id": "SAL-004",
+  "title": "calcular total do item",
+  "specPath": "planning/specs/SAL-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-001",
+    "SAL-002",
+    "SAL-003"
+  ],
+  "acceptanceCriteria": [
+    "calculate_total puro reutiliza quantidade positiva,preço/desconto não negativos e i128;líquido0..i64MAX;intermediário maiori64 aceito sefinalcouber.",
+    "Desconto já aplicado uma vez;7campos preservados/total armazenado não confiado;5unitlimites/composição;3unit e26docs anteriores intactos.",
+    "RED E0599/GREEN8/400Rust26docs/LLVMdomain95controle/gates/security/P-REV/CIs exatos.",
+    "Docs antespasses/nota144 preservando143/refs/mainlimpa/WTarquivada/liberação antespróximo;objetivoE2E íntegro."
+  ],
+  "checks": [
+    "RED/GREEN8unit (5novos)",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota144/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/contrato;P-DOMLaguna medium600s scratch;P-SECtools;P-REVSol6medium;11paths; fechamento manual25out QwenP-TRClow51,914s conferido,sem retomar Meta/sem próximoID",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-004 VERIFY E3: calculate_total i128/líquido0..i64MAX/descontoaplicado1vez/7campospreservados;5unitnovos/GREEN8/Rust400+26docs/LLVMdomain95controle/gates/security/P-REV PASS. Testes24out reutilizados porigualdade hashes25out. LagunaPDOM117,032s/QwenPTRCconferido/runtimesoff. CI/nota144/liberação pendentes;passesfalse;uma tarefa manualsemretomarMeta;SAL005nãoiniciar;fonte:handoffSAL-004."
+}
