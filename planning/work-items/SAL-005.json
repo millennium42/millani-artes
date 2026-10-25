@@ -2,7 +2,7 @@
   "id": "SAL-005",
   "title": "aceitar item livre",
   "specPath": "planning/specs/SAL-005.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-001",
     "SAL-002",
@@ -24,6 +24,6 @@
   "agentPlan": "P-INTfixtures/recon;P-DOMLaguna medium600s artifact2functions;P-SECtools/P-REVSol6medium;11paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SAL-005 VERIFY E3: factorylivre validado/productNone/descriçãopreservada,desconto/total corretos/helperwide/APIi64 compatível;8unitnovos/9Decimal100digits/REDGREEN/Rust408+26docs/LLVMdomain95controle/gates/security/P-REV PASS. Laguna603,293s timeout0diff/rootfallback/errodainferênciagenéricacorrigido/oldcallersintactos/runtimeoff. CI/nota145/liberação pendentes;passesfalse;Metaativa;INV-SAL006 completo eUIE2E pendentes;fonte:handoffSAL-005."
+  "passes": true,
+  "notes": "SAL-005 done/E3/passestrue apósCI40194173733/SHA1f9a943c230cbbe7409f56728449ef140321cd72,success23/0skip/7marcadores,Rust408+26docs/8unitnovos. Factorylivre/productNone/descriçãopreservada/desconto-totalvalidos/helperwideprivado/APIi64mantida;RED/GREEN/LLVMdomain95controle/gates/security/reviewPASS;Laguna603,293stimeout/rootfallback/correçãodecompatibilidade/oldtestsintactos/runtimeoff;domínio/migrations/deps/exceções preservados;CIfinal/nota145/liberação pendentes;Metaativa. Factory puro e product_idNone não provam criação/persistência de venda ou INV-SAL006 completo: SAL006/013 próprios;imutabilidade operacionalSAL008,UI/IPC,coberturaRustglobal,releaseWindows instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. Exigência de descrição-rótulo é escolha técnica explícita da spec por reuso do padrão de nomes,não decisão humana nova atribuída. LLVM local cobre domain/mod.rs inteiro;controle semdomínio prova instrumentação,não causalidade isolada;sem percentuaisisolados/branches/statements/global/CI Rustcoverage. Metaformal retomadaactive confirmada;manter atéE2E,sempre encerrar locais antespausa/interrupção. Fonte:handoffSAL-005. Reserva ativa."
 }
