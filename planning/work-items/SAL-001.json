@@ -1,0 +1,26 @@
+{
+  "id": "SAL-001",
+  "title": "definir item congelado",
+  "specPath": "planning/specs/SAL-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "ARC-002"
+  ],
+  "acceptanceCriteria": [
+    "SaleItem puro com id16/produto opcional/descrição própria/quantidade i64/preço-desconto-total em centavos i64.",
+    "Decisão humana quantidade inteira e desconto R$ ou percentual registrada; conversão/validação/cálculo posteriores SAL002/003/004.",
+    "Sem Debug/Display/impl/IO/SQL/deps; RED E0432/GREEN1unit2doctests/LLVMdomain95controle/gates/review/CIs exatos.",
+    "Docs antespasses/nota141 preservando140/refs/WT arquivada/main limpa/liberação antes próximo; Meta E2E ativa."
+  ],
+  "checks": [
+    "RED/GREEN1unit2compile_fail",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota141/liberação"
+  ],
+  "agentPlan": "P-INT/P-DOM reuso determinístico do tipo existente,0inferências; P-SECtools; P-REV Sol6medium independente;12paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-001 VERIFY E3: SaleItem puro7campos/quantidadeinteira/centavos/valorespróprios; decisão humana R$ ou percentual registrada. RED/GREEN1unit2compile_fail/gates/security/P-REV PASS;Rust388+24docs/LLVMdomain95controle. Validação/cálculo/SQL/imutabilidade operacional/UI/IPC/E2E pendentes;CI/nota141/liberação pendentes;passesfalse/Metaativa;fonte:handoff SAL-001."
+}

@@ -552,6 +552,27 @@ impl Customer {
     }
 }
 
+/// Sale item values owned independently of the optional product template.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::SaleItem>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::SaleItem>();
+/// ```
+pub struct SaleItem {
+    pub id: [u8; 16],
+    pub product_id: Option<[u8; 16]>,
+    pub description: String,
+    pub quantity: i64,
+    pub unit_price_cents: i64,
+    pub discount_cents: i64,
+    pub total_cents: i64,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -626,3 +647,6 @@ mod product_tests;
 
 #[cfg(test)]
 mod customer_tests;
+
+#[cfg(test)]
+mod sale_item_tests;
