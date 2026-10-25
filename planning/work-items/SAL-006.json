@@ -1,0 +1,26 @@
+{
+  "id": "SAL-006",
+  "title": "provar item livre não cria produto",
+  "specPath": "planning/specs/SAL-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-005"
+  ],
+  "acceptanceCriteria": [
+    "Factory público válido/inválido preserva catálogo vazio/semeado e todas as tabelas lógicas após observador independente/reabertura; produtoNone/campos próprios.",
+    "Dois controles reais em cópias rejeitados pelos marcadores específicos; nenhum código produtivo alterado; persistência de venda explicitamente pendente SAL013/SMK005.",
+    "RED lacuna/GREEN2/fmt/clippy/debug/release/audits/scans/LLVMdomain95controle/P-REV/CIs exatos.",
+    "Docs antespasses/nota146 preservando145/refs/WTarquivada/mainlimpa/liberação; formalresume exige controle app."
+  ],
+  "checks": [
+    "RED/GREEN2SQLite/controles insert+update",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota146/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/recon;P-QAGemma low600s dois testes;P-SECtools;P-REVSol6medium independente;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-006 VERIFY E3 parcial INV-SAL006/MVP08: catálogo/estado lógico preservados no factory público em2SQLite;controles reais COUNT/ROWS rejeitados,produtoNone;produção intacta. 410Rust+26docs/2SQLnovos/gates/security/LLVMdomain95controle/P-REV PASS;CI/nota146/liberação pendentes;passesfalse. Prova parcial INV-SAL006/MVP08 na fronteira factory/catálogo: factory puro não recebe store/conexão/caminho. Persistência de item na venda/ausência de efeitos no consumidor futuro continua SAL013/SMK005, não satisfeita aqui. UI/IPC, Rustglobal, instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVMdomain inteiro inalterado; controle0 confirma instrumentação, não causalidade isolada nem percentual dos novos testes/global/CI/branches/statements. Meta formal observada blocked, retomada depende controle humano do app; heartbeat autoriza este ID, sem reativação simulada. Custo não registrado. Fonte:handoff SAL-006."
+}

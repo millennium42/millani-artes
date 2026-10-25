@@ -124,3 +124,5 @@ mod product_deactivation;
 mod customers_migration;
 
 mod customer_creation;
+
+mod free_item_catalog;
