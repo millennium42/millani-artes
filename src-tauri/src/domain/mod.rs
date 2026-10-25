@@ -583,6 +583,45 @@ impl SaleItem {
     }
 }
 
+/// Discount input converted to an applied monetary snapshot.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::DiscountInput>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::DiscountInput>();
+/// ```
+pub enum DiscountInput {
+    AmountCents(i64),
+    PercentageBasisPoints(i64),
+}
+
+pub fn validate_discount(gross_cents: i64, input: DiscountInput) -> Result<i64> {
+    if gross_cents < 0 {
+        return Err(DomainError::InvalidInput);
+    }
+
+    match input {
+        DiscountInput::AmountCents(amount) => {
+            if amount < 0 || amount > gross_cents {
+                return Err(DomainError::InvalidInput);
+            }
+            Ok(amount)
+        }
+        DiscountInput::PercentageBasisPoints(basis_points) => {
+            if !(0..=10000).contains(&basis_points) {
+                return Err(DomainError::InvalidInput);
+            }
+            let discount = (gross_cents as i128 * basis_points as i128 + 5000) / 10000;
+            let discount = discount as i64;
+            Ok(discount)
+        }
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -660,3 +699,6 @@ mod customer_tests;
 
 #[cfg(test)]
 mod sale_item_tests;
+
+#[cfg(test)]
+mod discount_tests;

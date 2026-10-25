@@ -1,0 +1,26 @@
+{
+  "id": "SAL-003",
+  "title": "validar desconto",
+  "specPath": "planning/specs/SAL-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-001"
+  ],
+  "acceptanceCriteria": [
+    "DiscountInput valor/percentual e validate_discount bruto/input retornam centavos;0..bruto,0..10000pb;negativos inválidos,meio centavo para cima.",
+    "Sem floats/mutação/cálculo líquido/IO/SQL/deps/DebugDisplay;5unit incluindo fixtures Decimal e varredura10001pb;2docs.",
+    "RED E0432/GREEN5/395Rust26docs/LLVMdomain95controle/gates/security/P-REV/CIs exatos.",
+    "Docs antespasses/nota143 preservando142/refs/mainlimpa/WTarquivada/liberação antespróximo;objetivoE2E íntegro."
+  ],
+  "checks": [
+    "RED/GREEN5unit/2compile_fail",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota143/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/contrato;P-DOMLaguna medium600s scratch;P-SECtools;P-REVSol6medium;12paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-003 VERIFY E3: descontoR$ ou0..100%/2casas/meio centavo para cima;5unit17fixturesDecimal/10001pb×7brutos/2docsprivacidade. RED/GREEN5/Rust395+26docs/LLVMdomain95controle/gates/security/P-REV PASS.1Laguna130,6s/correção determinística/CLIrefresh/runtimeoff. Parser/cálculo líquido/SQL/snapshot operacional/UI/IPC/E2E pendentes;CI/nota143/liberação pendentes;passesfalse;objetivoE2E íntegro;Metaformalblocked;fonte:handoffSAL-003."
+}
