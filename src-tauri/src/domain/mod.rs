@@ -659,9 +659,20 @@ pub fn create_free_item(
     if description.trim().is_empty() {
         return Err(DomainError::InvalidInput);
     }
+    create_item(id, None, description, quantity, unit_price_cents, discount)
+}
+
+fn create_item(
+    id: [u8; 16],
+    product_id: Option<[u8; 16]>,
+    description: String,
+    quantity: i64,
+    unit_price_cents: i64,
+    discount: DiscountInput,
+) -> Result<SaleItem> {
     let mut item = SaleItem {
         id,
-        product_id: None,
+        product_id,
         description,
         quantity,
         unit_price_cents,
@@ -673,6 +684,28 @@ pub fn create_free_item(
     item.discount_cents = validate_discount_wide(gross, discount)?;
     item.total_cents = item.calculate_total()?;
     Ok(item)
+}
+
+pub fn create_product_item(
+    id: [u8; 16],
+    product: &Product,
+    quantity: i64,
+    unit_price_cents: i64,
+    discount: DiscountInput,
+) -> Result<SaleItem> {
+    if !product.is_active {
+        return Err(DomainError::InvalidInput);
+    }
+    product.validate_name()?;
+    product.validate_suggested_price()?;
+    create_item(
+        id,
+        Some(product.id),
+        product.description.clone(),
+        quantity,
+        unit_price_cents,
+        discount,
+    )
 }
 
 pub type Result<T> = std::result::Result<T, DomainError>;
@@ -758,3 +791,6 @@ mod discount_tests;
 
 #[cfg(test)]
 mod free_item_tests;
+
+#[cfg(test)]
+mod product_item_tests;

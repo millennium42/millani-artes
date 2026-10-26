@@ -1,0 +1,27 @@
+{
+  "id": "SAL-007",
+  "title": "criar item de produto",
+  "specPath": "planning/specs/SAL-007.md",
+  "status": "in_progress",
+  "dependencies": [
+    "PRD-005",
+    "SAL-001"
+  ],
+  "acceptanceCriteria": [
+    "Factory produto ativo/válido cria valores próprios, origemSome, descrição exata inclusive vazia; preço de lançamento explícito; sem alterar template/IO.",
+    "Reusar helper numérico preservando API/comportamento de item livre e desconto i128; zero/ambas modalidades/tiesUP/bruto largo/erros opacos.",
+    "RED/GREEN6unit/416Rust26docs/gates/security/LLVMdomain95controle/P-REV/CIs exatos.",
+    "Docs antespasses/nota147 preservando146/refs/WTarquivada/mainlimpa/liberação;Meta ativa atéE2E."
+  ],
+  "checks": [
+    "RED/GREEN6/oldtests intactos",
+    "fmt/clippy/debug/release/audit/TSquality/build/security",
+    "LLVMdomain95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota147/liberação"
+  ],
+  "agentPlan": "P-INThelper literal;P-DOMGemma low180s uma função/contexto curto;P-SECtools/P-REVSol6medium;11paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-007 VERIFY E3: create_product_item puro exige template ativo/nome e preço sugerido válidos; copia descrição exata inclusive vazia em String própria,product_idSome,id próprio e preço de lançamento explícito. Reusa validação/cálculo monetário via create_item privado extraído literalmente do factory livre; API e comportamento de create_free_item preservados. Zero/ambas modalidades/tiesUP/bruto largo e erros opacos;template inalterado em sucesso/erro. Seis unitários novos; domínio não relacionado, testes antigos, migrations/deps/exceções preservados. RED/GREEN6novos/416Rust26docs/gates/security/LLVMdomain95controle/P-REV PASS;CI/nota147/liberação pendentes;passesfalse. Preço de lançamento explícito é interpretação anunciada de sugerido, pergunta opcional sem resposta não atribuída a decisão humana; default de catálogo e edição na UI são consumidores futuros. Copiar campos próprios não prova snapshot operacional: edição real/persistência/INV-SAL005 dependem SAL008 e consumidores seguintes. UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVM local somente domain/mod.rs inteiro;controle0 prova instrumentação,não causalidade isolada/percentual de função nova/global/CI/branches/statements. Meta ativa até critério oficial;locais encerrar antespausa/interrupção. Custo não registrado. Fonte:handoff SAL-007."
+}
