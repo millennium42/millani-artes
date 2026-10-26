@@ -1,0 +1,3855 @@
+{
+  "id": "SAL-008",
+  "status": "blocked_dependency",
+  "evidence": "E2",
+  "scope": "Verified technical prerequisite reconciliation only; SAL008 functional snapshot proof NOT completed; no passestrue.",
+  "base_sha": "2b57a261a5d0e68a2f6d703003955e249ef637b1",
+  "sha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+  "ci": {
+    "run": {
+      "id": 40264415941,
+      "head_sha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40264415941",
+      "run_attempt": 1,
+      "created_at": "2026-10-26T03:30:30Z",
+      "updated_at": "2026-10-26T03:32:31Z"
+    },
+    "job": {
+      "id": 121383531848,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40264415941,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:30:34Z",
+          "completed_at": "2026-10-26T03:30:35Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:30:35Z",
+          "completed_at": "2026-10-26T03:30:45Z"
+        },
+        {
+          "name": "Validate project map against checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:30:45Z",
+          "completed_at": "2026-10-26T03:30:48Z"
+        },
+        {
+          "name": "Validate work item schema and evidence states",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:30:48Z",
+          "completed_at": "2026-10-26T03:30:52Z"
+        },
+        {
+          "name": "Validate append-only progress log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:30:52Z",
+          "completed_at": "2026-10-26T03:30:59Z"
+        },
+        {
+          "name": "Require canonical documentation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T03:30:59Z",
+          "completed_at": "2026-10-26T03:30:59Z"
+        },
+        {
+          "name": "Scan Git history for secrets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T03:30:59Z",
+          "completed_at": "2026-10-26T03:31:10Z"
+        },
+        {
+          "name": "Scan lockfiles for vulnerabilities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T03:31:10Z",
+          "completed_at": "2026-10-26T03:31:16Z"
+        },
+        {
+          "name": "Test frontend check selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T03:31:16Z",
+          "completed_at": "2026-10-26T03:31:29Z"
+        },
+        {
+          "name": "Select frontend checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T03:31:29Z",
+          "completed_at": "2026-10-26T03:31:30Z"
+        },
+        {
+          "name": "Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-26T03:31:30Z",
+          "completed_at": "2026-10-26T03:31:40Z"
+        },
+        {
+          "name": "Audit npm dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-26T03:31:40Z",
+          "completed_at": "2026-10-26T03:31:48Z"
+        },
+        {
+          "name": "Audit Cargo dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-26T03:31:48Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Check frontend quality",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Validate coverage reports",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Upload frontend coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Prepare pinned Rust",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Build Tauri production",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Verify Tauri executable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Post Set up pinned Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:27Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-26T03:32:27Z",
+          "completed_at": "2026-10-26T03:32:29Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-26T03:32:29Z",
+          "completed_at": "2026-10-26T03:32:29Z"
+        }
+      ],
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40264415941/job/121383531848",
+      "run_attempt": 1,
+      "head_sha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+      "started_at": "2026-10-26T03:30:33Z",
+      "completed_at": "2026-10-26T03:32:31Z"
+    },
+    "checks": {
+      "success": 16,
+      "skipped": 7,
+      "source_sha_markers": 5,
+      "all_source_markers_exact": true,
+      "rust_counts": [],
+      "new_unit_tests": 0,
+      "new_sql_tests": 0,
+      "evidence": {
+        "GITLEAKS": {
+          "binarySHA256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+          "commits": 315,
+          "findings": 0,
+          "seconds": 1.399,
+          "sourceSha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+          "version": "8.30.1"
+        },
+        "OSV": {
+          "binarySHA256": "e0ed7644118b717b028c249ee9d3515024e55e8510747ca08906eb96765354d6",
+          "excepted": 3,
+          "exceptionExpiry": "2026-11-06",
+          "findings": 3,
+          "lockSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+          },
+          "lockfiles": {
+            "package-lock.json": 120,
+            "src-tauri/Cargo.lock": 422
+          },
+          "packages": 542,
+          "seconds": 1.151,
+          "sourceSha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+          "unexcepted": 0,
+          "version": "2.6.0"
+        },
+        "NPM_AUDIT": {
+          "auditLevel": "high",
+          "dependencies": 120,
+          "elapsedSeconds": 0.799,
+          "inputSHA256": {
+            "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+            "package.json": "0ae5a4d29ee47cc938f6088010577e58bc34a6784ca9f6e93019e996b86a594c"
+          },
+          "node": "24.21.0",
+          "npm": "11.19.0",
+          "sourceSha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "total": 0
+          }
+        },
+        "CARGO_AUDIT": {
+          "binarySHA256": "0157f5ce1ce9fd4fb0a1f7c79af1229771d1f80b6c2613ddb0d9200a8ba73946",
+          "database": {
+            "advisory-count": 1352,
+            "last-commit": "21d909e4c8bd4e14c7aea58bf980c881a0053ab1",
+            "last-updated": "2026-10-24T10:30:13+02:00"
+          },
+          "dependencies": 422,
+          "elapsedSeconds": 14.626,
+          "excepted": 2,
+          "exceptionExpiry": "2026-11-06",
+          "ids": [
+            "RUSTSEC-2024-0370",
+            "RUSTSEC-2024-0429"
+          ],
+          "inputSHA256": {
+            "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+            "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+          },
+          "sourceSha": "915b2e86569d0b81251cc6efda5de06b65db4c85",
+          "version": "0.22.2",
+          "vulnerabilities": 0,
+          "warnings": 2
+        }
+      },
+      "artifacts": []
+    },
+    "authoritative_observation": {
+      "method": "Direct GitHub public REST metadata;immutable logs/artifacts via connector",
+      "headers": {
+        "run": {
+          "Date": "Mon, 26 Oct 2026 03:33:21 GMT",
+          "Age": null,
+          "ETag": "W/\"b241bf5b4be6b2f6266753489fcc5ff269c6c2bda1262fd39225967ecd4166d4\"",
+          "X-GitHub-Request-Id": "C63D:2C8A74:A4AD03:1209807:6ADECA01",
+          "X-RateLimit-Remaining": "41"
+        },
+        "job": {
+          "Date": "Mon, 26 Oct 2026 03:33:22 GMT",
+          "Age": null,
+          "ETag": "W/\"c70092f76c7e73c42939d9a3311365d92d118433e692db4122fb82b2ec90522f\"",
+          "X-GitHub-Request-Id": "C63F:1A653D:A3C81A:11FC43C:6ADECA02",
+          "X-RateLimit-Remaining": "39"
+        }
+      },
+      "metadata_path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-public-observation-20261026.json",
+      "completion_basis": "Exact-SHA workflow completed success and all23steps final;raw job aggregate retained",
+      "job_aggregate_lag": false
+    }
+  },
+  "validators": [
+    {
+      "name": "map",
+      "exit": 0,
+      "output": "Mapa válido: 28 fontes; 686 arquivos cobertos."
+    },
+    {
+      "name": "work",
+      "exit": 0,
+      "output": "Schema válido: 148 work items; fatos, aceite humano e CI exigem comprovantes separados."
+    },
+    {
+      "name": "states",
+      "exit": 0,
+      "output": "Declarações de evidência válidas: 148 work items; fatos/gates não comprovados por este check."
+    },
+    {
+      "name": "log",
+      "exit": 0,
+      "output": "PASS: progress log append-only; 661258 bytes históricos preservados; alvo INDEX; conteúdo não exibido."
+    },
+    {
+      "name": "diff",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "scan": {
+    "exit": 0,
+    "files": 7,
+    "bytes": 1017790,
+    "framed_sha256": "94877c4ccf4f12abb940686c5d7f65adc2d87cdf37f35bd8a4214a24e560c261",
+    "findings": 0
+  },
+  "review": {
+    "id": "SAL-008",
+    "base": "2b57a261a5d0e68a2f6d703003955e249ef637b1",
+    "paths": {
+      "planning/specs/SAL-008.md": "13b8fa124c85491243f28af6e47714c289ec36c6937024902f438473a4cc9e1e",
+      "planning/handoffs/SAL-008.md": "cbc87e891ae51cd7212e644eb5fd9755dab48cb15ff5470f6216cc5fb473e0af",
+      "planning/work-items/SAL-008.json": "bac5e5e92f4ef40c4b4ae8772e947fa079ffd402dcae1c53b487acb597c3c6fb",
+      "planning/PROGRESS_LOG.md": "151dcd3e86e5c27ac3489747e8bdd4a51950a9f3995782ba160c1d92d1182bdd",
+      "planning/ROADMAP.md": "bbba29fd0bd1e9d5ffc5b1c75b5917183764ae0aa7c767ae4c41cff979ec4614",
+      "docs/traceability/INVARIANT_TEST_MATRIX.md": "082ac3dfe1353da060062708eb3610fa314450b1bc5ed7306c7d4edc7a169987",
+      "docs/traceability/REQUIREMENTS_MATRIX.md": "632db201fbe83604663afcaf07cfb00a03458a0f79d4f2d7c491923d27d0c56f"
+    },
+    "persona": "P-REV",
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "findings": [],
+    "evidence": "E2 static actual diff review",
+    "tests_executed": false,
+    "scope": "Seven documents; only SAL008 adds SAL012; blocked/passesfalse/146done retained; full persist/edit/deactivate/reopen criterion intact; no INV005/E2E completion claimed.",
+    "cost": "não registrado"
+  },
+  "production_test_migration_dependency_hashes": {
+    "src/main.test.tsx": "f7fb72a9ec44967fa26a63f0af6e3daa1014516ab5b00dbc70ae8dc78b9bc490",
+    "src/main.tsx": "1843f350d1878cc84a632ae2b297bc006e24c498aafc1473fdc072b2ca60901a",
+    "src/styles.css": "a12aede1fdd19525a478286455fbb87ff5d4903b10f3bdfbe143446c24fac58e",
+    "src/ui/App.test.tsx": "9146287999d16eafbaa95b0d44a8990cd1d8f2a37719f9652e15e4998171b3e5",
+    "src/ui/App.tsx": "2d957a2c17a74cec60f5e79e777fb94b9d887b8a395f49bb951bddeece46f53d",
+    "src-tauri/src/lib.rs": "d94427e827c2aefc6facffe8ae573754ea7fb2f859465a890acf153bc494eb02",
+    "src-tauri/src/main.rs": "db3287314f42e2346a2a912ced5be3657e394f9174c876d004c844d7c1d1a005",
+    "src-tauri/src/security_tests.rs": "046b29043af1d7be1f00004d8ac5a0a598381b897a4cf82de6420b4310f6da50",
+    "src-tauri/src/startup_tests.rs": "dd075de1d5855108c5a908b83727b968ccfc8ccb15c1d01885cbb42daa7ce664",
+    "src-tauri/src/application/calculate_context_result.rs": "33ea627d08bf09092b73bc245daa37c5a2e78e4813f56d66925e6bbc19f2395c",
+    "src-tauri/src/application/calculate_context_result_tests.rs": "ea69639afd085cd2b2c815796226a598a1fb8ee8fb9be8f61384bb82aa6eaeb5",
+    "src-tauri/src/application/create_account.rs": "f286925bfeab7111f43a751a11232b93508234a5b0b48e5d241e7f0f3256bd2c",
+    "src-tauri/src/application/create_account_tests.rs": "28e6ae9ab8517ebb3ae290bea97d78ad707e03dd95e7498b907639d0bbfe1bad",
+    "src-tauri/src/application/create_category.rs": "82ac1e9276329ece05f2c351e5d7562877c988889bc1bba7de4e6e36415fffb8",
+    "src-tauri/src/application/create_category_tests.rs": "09f0e20b7da2468cc9e9b28d20355779de8299668f74b87392a9d424dd857a4f",
+    "src-tauri/src/application/create_customer.rs": "968789bda55e6a6cf8c083c3b2d49f17e90778f5d8ac16083856e0c8bfb8826f",
+    "src-tauri/src/application/create_customer_tests.rs": "51db58d44071e0e3e59bc003aa2bb5f895c93b9ee91f952a1615c0839dd42241",
+    "src-tauri/src/application/create_entry.rs": "58e7c320d06ed88772967c65bd6cdd045d416640ab01c386de78d30ebe1e198f",
+    "src-tauri/src/application/create_entry_tests.rs": "0b76da095e8a73b30f7a0d4364440ef8d54ef63450543081d415484ed4cc526f",
+    "src-tauri/src/application/create_exit.rs": "b9eba578df1c20983f98c56675cdc5d869582892ab49a35bea26845a785f97fe",
+    "src-tauri/src/application/create_exit_tests.rs": "40c23e01402e41f645a2250c1d53ad2a8311c08419afffe22b4463cf4b210c52",
+    "src-tauri/src/application/create_product.rs": "2ec8f6e062adcaa618be4750fdb9b103bb727d0f5fc94219453218fefece9d30",
+    "src-tauri/src/application/create_product_tests.rs": "b66f1e24c0c6ce98528818841f4e0ef514ff21da2db2d236c2a714f5294e558a",
+    "src-tauri/src/application/create_transfer.rs": "1177d04c8a4efe69dc3549835ec877ad3d0d484d34a8af09ea0a585114687975",
+    "src-tauri/src/application/create_transfer_tests.rs": "bcb815e52cb868229950ff983353c71193d997ad8506903241998b77d706b4f0",
+    "src-tauri/src/application/deactivate_category.rs": "276063f3b81412e43a53a053faab60108766d2a3242eb242d58053921cd227b2",
+    "src-tauri/src/application/deactivate_category_tests.rs": "f063ab3192c54d6cc288990f1b64876115a7ef4a2b1b0bbac1230d8a542366af",
+    "src-tauri/src/application/deactivate_product.rs": "5191aca5aa65866f54851ba234dd9083f4c4e41dabe30768b8a1b1b71824b8f6",
+    "src-tauri/src/application/deactivate_product_tests.rs": "cd709895796909d5753f63f6c1bfa460e0119a30ca82c3e5e864abda20eba023",
+    "src-tauri/src/application/edit_movement.rs": "027e5d08baf79ead9200c64d73fbb1287497ac1dc549e5d6b30b4b2b6a1d5f97",
+    "src-tauri/src/application/edit_movement_tests.rs": "f37959b92223b8cb3210d35ed3e0eaf7e512a0152a53e4f915912494ff7f6eab",
+    "src-tauri/src/application/edit_product.rs": "fb8c891a543a4575746fc6cf202f8cb4ed010f904f0c29dd7ae01fcdf2682bc3",
+    "src-tauri/src/application/edit_product_tests.rs": "4cfb55884afdfc52ca77f39f4b095a30f0548834ce160a393692afa9e77b7b66",
+    "src-tauri/src/application/generate_fixed_obligation.rs": "3647c538ceb59bc8322932e45940f3dbd3d73b5955763a6410e7b195feed27cd",
+    "src-tauri/src/application/generate_fixed_obligation_tests.rs": "e1d5ca31b74f82a1e0e43e5e7e152edefe0a86fb2b31fa25a005a78fc7a960f7",
+    "src-tauri/src/application/generate_variable_obligation.rs": "e088049cdb97146f0203d2c5b22f568811e1e83e7b77fe006e974910313a3e7f",
+    "src-tauri/src/application/generate_variable_obligation_tests.rs": "33a9e30740babfb08e61bd2f4bf675c48be6f63ab8e0b5f08f791850614b9632",
+    "src-tauri/src/application/list_accounts.rs": "942d94eb237ef74fe586c77ee0621509d90ca786ffc81fd78ac05d0e00c6c3b9",
+    "src-tauri/src/application/list_accounts_tests.rs": "088752a6d69ca0d8428e09abc91af07f0182f9ff7ff81ac4ad48f7b4619555f6",
+    "src-tauri/src/application/list_movements.rs": "01976fe44e6e07f77231eb417e366a5f9191a07c38117c296df90b5dba99c706",
+    "src-tauri/src/application/list_movements_tests.rs": "5dda89c8691ac9a45654d95550c703c3ebaa33c17bff7f96b5b8dcc391b4020c",
+    "src-tauri/src/application/mark_obligation_overdue.rs": "80d2e61d1608948e2478cccc909c7080efa878481a4b29cf25c6b7e9c75d6a78",
+    "src-tauri/src/application/mark_obligation_overdue_tests.rs": "0bb600ff9c69cc25c972d2805d6eedac03abc00dfbca1a48779371748495c02b",
+    "src-tauri/src/application/mod.rs": "3842ab88119edf368d4ad1d6cef22125d8d40c6996d304dc0372ba75ae7a8415",
+    "src-tauri/src/application/pay_recurrence.rs": "f5ba0882087c7972e29f9315fc5cc9b7d57ddf1da0b35f90b977bd3c240801cc",
+    "src-tauri/src/application/pay_recurrence_tests.rs": "44548fdb8cd4148101ae8bb705d99306bf7cebcdbd5cc9d7a204c7ccd14a3569",
+    "src-tauri/src/application/rename_category.rs": "d1c62678859e9400f52d60b9c23b145cbbbfd9948738adddec9eb88921638a5e",
+    "src-tauri/src/application/rename_category_tests.rs": "2b5038cf0e8487b96f0a44eab769f2b72534aec5502e0878ac2ebded670ac253",
+    "src-tauri/src/application/supply_obligation_amount.rs": "832c007e09cee998952193ec6e7078b07b8be0e560e9785de6a7086516b47443",
+    "src-tauri/src/application/supply_obligation_amount_tests.rs": "f6cbe7ed006b446f533c6f33b515252cd5d1c4ec94f0e0f9fddc46ffe5d6d479",
+    "src-tauri/src/domain/awaiting_value_tests.rs": "05b51218bae4e54f917168f3fb37a2d2417805121529d739dd6390bc6a49e7f1",
+    "src-tauri/src/domain/balance_tests.rs": "ae5fae4ec6766c28e9a4350c2560472488c3053038cdac9c0b69acc8a6ac7c95",
+    "src-tauri/src/domain/customer_tests.rs": "301e96fc49f8ea060553a37d5d3dfd36748addd462d7734d768c1a39f0b4ef5b",
+    "src-tauri/src/domain/discount_tests.rs": "117a789230a8117089d98fa677f683805f71eda2ee8e6f348f8945e26867f9bb",
+    "src-tauri/src/domain/entry_tests.rs": "d9c4e244a2b38b4099879de0ed5ccc9b1c4bea25ae0c3abde6b4a4bc63211c3f",
+    "src-tauri/src/domain/exit_tests.rs": "b544b14848a503c69833cc88ab338ed82f82281b284b2968831148a2ead030ec",
+    "src-tauri/src/domain/fixed_generation_tests.rs": "d758042f3de5a241bd9261b2ecfaa23f8476554e11e3d9f33f1fa092d2d398a6",
+    "src-tauri/src/domain/fixed_recurrence_tests.rs": "e25df444a66f189d74bc8426aadc778b04a6f79d5796dcb3b9539f09aaf44f5b",
+    "src-tauri/src/domain/free_item_tests.rs": "637fa07ff5967d5189138b8d1557357c9baf0539acea1c27ae69a8c7cb48fc3c",
+    "src-tauri/src/domain/mod.rs": "2fd3cfb8547b988e2627140c004480282f194f7d237ce53e385a4d4cfa9bf949",
+    "src-tauri/src/domain/obligation_amount.rs": "74a13ef5cd98401d6718daa024f6fff29658d9c90ffe4f031bebfa5d4be4bc5d",
+    "src-tauri/src/domain/obligation_amount_tests.rs": "403ae5306bb2506cbdce516c860f2fa114562fa09966c707f6210cad034d4569",
+    "src-tauri/src/domain/overdue_epoch.rs": "739facc63f7a6f201300f7a64d1ff2891175f216c3fbfcff3fe70fb806981566",
+    "src-tauri/src/domain/overdue_epoch_tests.rs": "2ce97e04bc04f5d758b1dd118f846819d9272d8e932ad8f1c95cab77d11b1138",
+    "src-tauri/src/domain/overdue_state_tests.rs": "8e392dbe193c41173632deecef44189ef07100f6f02b15e8bcd12cf6d1f16cd8",
+    "src-tauri/src/domain/paid_state_tests.rs": "22fdd864db09fa530aeb128e8ecb68b395d0849638f7671e5f5347040a7fdad3",
+    "src-tauri/src/domain/payable_state_tests.rs": "6319d34b8145c87122bcb37290c1762b34c4d6ff84b40578c9038947e8078ca2",
+    "src-tauri/src/domain/ports.rs": "4932d81a1e04d57b3dd7fc8ac209fdd85ba91f37cde2c5907a3ac83fd339afb2",
+    "src-tauri/src/domain/ports_tests.rs": "a7ad6de2a1d140288b102693c7fb0477539d573b17afd333e3a1010046e30ae0",
+    "src-tauri/src/domain/product_item_tests.rs": "276c7d70e1d7077826e4ba8151a1e345d7e81517c8181fc6fd6fd0e1cde0b2f7",
+    "src-tauri/src/domain/product_tests.rs": "dc086f56f8f819ae4d1370a0b3a9c380434ab2f5d864813b61d34673c46f6ca7",
+    "src-tauri/src/domain/result_effect_tests.rs": "04757aa9de9423efaa1ab3ef025179dbe339e3a431b3928030559173deb45d1a",
+    "src-tauri/src/domain/sale_item_tests.rs": "5af6839601554af7846f0c7fb68b6c7790905bc5ce3094d2856cc3b82fad9358",
+    "src-tauri/src/domain/tests.rs": "807414b9ba239178304af6136d21a588b5999fdbc56684e580da220341c331a7",
+    "src-tauri/src/domain/transfer_tests.rs": "c3f058f4447f36359c48b241b917b516903c6adc76e7e345438b10aab4305811",
+    "src-tauri/src/domain/variable_generation.rs": "b06032f4b178c3f7d9f9e60453caf4fded18871e67a1688a823b37cc2601b078",
+    "src-tauri/src/domain/variable_generation_tests.rs": "786bf8b91e642a48e00f73803838434453581cb7112bdb3806addcd6f5d55391",
+    "src-tauri/src/domain/variable_recurrence_tests.rs": "03d1ef05954069bf4c2f7fa462aecfd795c3136948e9d5afb1ee27c5ad76b63e",
+    "src-tauri/src/infrastructure/accounts.rs": "921fba851d5be61d9dbed3d760a10bdbb01fce30bb17b45e9cef2499723aa1b1",
+    "src-tauri/src/infrastructure/categories.rs": "0b33ceabc71ebdaef653fadb5df2e2629f805e844503bbf17ecc12a48b63a2c5",
+    "src-tauri/src/infrastructure/customers.rs": "46e1fdfe282551fa2138511eeab2818ad2b6e2af4e874399e7781fc2250aac21",
+    "src-tauri/src/infrastructure/database.rs": "7f1b3669ff53635d3869c0a6a0792224f4e8cdeb7dab62b672fc936704d94c4e",
+    "src-tauri/src/infrastructure/mod.rs": "0709872f97c5b497e26b4210338736d5a3d3e99e4059851c6603dd0a3093aeda",
+    "src-tauri/src/infrastructure/movements.rs": "b70dce45db9f0ab30b41d45df105a6682744c93cbfae0680464cd199df638f68",
+    "src-tauri/src/infrastructure/products.rs": "2c5b6bdbb8ffddf6796f5bd55122c3d41fbc7c7eee20a1e38b06ce9f302fa954",
+    "src-tauri/src/infrastructure/recurrences.rs": "958b11d4e69adbd8b4958239b1c8dcc88fc90e2141d3950407cefd84f988b817",
+    "src-tauri/src/infrastructure/recurrences/amount.rs": "29c5377567723ef4b00c32ef3542ee364b29b6a23edbcda9b6913b0edecaf902",
+    "src-tauri/src/infrastructure/recurrences/overdue.rs": "a99a722e30f953252eb59831dfdb1cee392f1a6866763eada63fb04a8479b723",
+    "src-tauri/src/infrastructure/recurrences/payment.rs": "7c6af4cd05c1aac1ee34b44d33c568cfba1eed3ee61f72726ed74a1bbdfba017",
+    "src-tauri/tests/sqlite_harness.rs": "e872240cb1ed42d0b7360190e21f3cd4edf1bbecef4afb6e3ac42fa63627d176",
+    "src-tauri/tests/common/balance_calculation.rs": "1ab0eed7ac0fd333ea60cce59d763cc4166bb729d621da35af3861575b5fbfe8",
+    "src-tauri/tests/common/category_creation.rs": "7f2b656d5772ae8b2bca54bf725e42ed09c86ed3535edefe0ff4f10fbd980e91",
+    "src-tauri/tests/common/category_deactivation.rs": "4ff1b1fc61d4510be088c13595dfce88089a5fd9754dd15d8ea6f0d0181b137c",
+    "src-tauri/tests/common/category_history.rs": "12d1fb1d97a7f7d43a6a5e3a95dc8fe30e94a6b17698d16d2ef5bbf00862cdd1",
+    "src-tauri/tests/common/category_rename.rs": "37564193e664a245e25995861e6611fde87cf92fec818e752aff50d399668998",
+    "src-tauri/tests/common/context_result.rs": "3b4cc027760f0180d5f18ff43a3fb430dfd868bc13e8ede9914bcf8bb14abe28",
+    "src-tauri/tests/common/customers_migration.rs": "1dca9050e7a5bbc51d068b8c6beaf3c6abe8e6a9415659ec92838dc28ae96a17",
+    "src-tauri/tests/common/customer_creation.rs": "e75b86934447206ff2f223a69a8f3a02e69adf699cda7b7770b0d650c6e99d28",
+    "src-tauri/tests/common/entry_failures.rs": "6827b7c6d222d685517be720326d6eff2bb526baa9981ce1893bcaa1a61586f3",
+    "src-tauri/tests/common/entry_persistence.rs": "738adf4d51bbf04e2a613716eb8709cdd5d9ee75e22f7263d07afa782f019a63",
+    "src-tauri/tests/common/exit_failures.rs": "59655a5a39ffd6b434fb06b050a7cb16ef987ae5e9813d0a646d66ff43232fb2",
+    "src-tauri/tests/common/exit_persistence.rs": "3708b1432e16b654be48f81dd894ff92a0ce020688ac6df8b244c9701bdf8366",
+    "src-tauri/tests/common/free_item_catalog.rs": "cde54ad5c0777b32334a875862d2b5e0f53897231c7559c933e2b6cf2532644e",
+    "src-tauri/tests/common/initial_balance_revenue.rs": "befa4c98d46aeb60c66d066e4b3a7ba07bceb12ae6f244cc44628c67af8ecda7",
+    "src-tauri/tests/common/list_accounts.rs": "9d2db10b24cb436a05708bc5e2f14afd471ab0985533e3597e1e86112228ab24",
+    "src-tauri/tests/common/list_accounts_errors.rs": "2bb4736725dfc8d6bc6a907281ebfddad85697d76c2582c1227c351ed2b40eb6",
+    "src-tauri/tests/common/mod.rs": "955f1cc93c8e8cfc62b4a6e2ddbbafef1af19adfe2847ecb8e807437a612b35c",
+    "src-tauri/tests/common/movements_constraints.rs": "6217b32f88d357a0103118f071768243d7890a1cf2b089f5a0cb323fd6e8aafd",
+    "src-tauri/tests/common/movements_migration.rs": "a4d15dd155e582aae7780cb00521ff45e2d26d02e78a1de16f85b9e7464e0f7c",
+    "src-tauri/tests/common/movement_editing.rs": "8d7e0ef3316ed931d3a84e9954f6dfacf5f5d8cc128885124cb1cdf04f81a6fe",
+    "src-tauri/tests/common/movement_edit_audit.rs": "9f6622430ce5e9d7b6ab6a27aca0df240cf4280237dcfb8a05d3ffbc90b82068",
+    "src-tauri/tests/common/movement_reading.rs": "f3a7dc519e807f6f21293cf0d753385bd1ba9dbdd24b5bc8167ad2075525cf36",
+    "src-tauri/tests/common/products_migration.rs": "2be96f8179d271df1d38e9432889b93e6101e149f560a8855a19e5efb4895797",
+    "src-tauri/tests/common/product_creation.rs": "35f7341e55e1b7e1bdb255fce78ed5d86972e5ef9ea9a55a4e140a3a141ccfd9",
+    "src-tauri/tests/common/product_deactivation.rs": "8d07fc610ec666a25df76c36802f860f311eadefd2ef7900df14dc83596dfb37",
+    "src-tauri/tests/common/product_editing.rs": "e085f05a9682848e0b4a0fddabf65c0ada2c3d076b90340bd1d9ee97ef5cc753",
+    "src-tauri/tests/common/recurrences_migration.rs": "72fe5d5dd3b79c6a49a2159ab6b6b96e6552bd16646b02af4f47f88800132549",
+    "src-tauri/tests/common/recurrence_amount.rs": "0a2121e2e58a227903778bfeed4662d3465d45f5bf17591b343d9f12f59282ed",
+    "src-tauri/tests/common/recurrence_fixed_generation.rs": "b97bc58ec6314e1a75ff164be8ec4b05809431720860feadf23d81a650f97d99",
+    "src-tauri/tests/common/recurrence_overdue.rs": "202ed880a245bd2a3f6d0290ea6fee909c2350e37ad4d03d7215d456b4cdcb8d",
+    "src-tauri/tests/common/recurrence_payment.rs": "f1aa973f77b5d030ef530a8aa8165ab358d29b556c378e72adcf632470da26eb",
+    "src-tauri/tests/common/recurrence_variable_generation.rs": "b956f4bb5f90a98a11c2c5ca65cebfd94d61873c306838d13b15628528c9462d",
+    "src-tauri/tests/common/transfer_persistence.rs": "51be1ff4dd0aa7b53391718123fb1a28f751c601c4069b462521161ecc461c86",
+    "src-tauri/tests/common/transfer_rollback.rs": "7365b2b667fd60674ba437b00cad4dadea498c9feb47aa6193d2ea1fc4afc1cf",
+    "src-tauri/tests/fixtures/db006-upgrade-v1.sql": "24f48571f76049f8c2dad767fc7cc5d1ad7dbc3fc7378ea4d21ad869ed10be55",
+    "src-tauri/migrations/002-audit-event.sql": "37bf08a289a76966478fce2c354a17afdd422c4689d69c219b93bd9c7f342c25",
+    "src-tauri/migrations/003-accounts.sql": "50cbfaa23524047513f458de4356ac1e8d9939fd55e6dccff0ef791afe6ce21b",
+    "src-tauri/migrations/004-categories.sql": "a89982266625c5503f65aab0d95dc8d9d1dab6be6b668c1ba41481fd9bc337ea",
+    "src-tauri/migrations/005-movements.sql": "301d261ec8151a2a60d4f9e26bffea9ef5d90c9c12b41bc0dd024d5ff1eb974c",
+    "src-tauri/migrations/006-movement-categories.sql": "f75ab4989376acf617d38a7ba18a1b7596ce8ca14f05b95d257668a2233bae20",
+    "src-tauri/migrations/007-recurrences.sql": "9299abf2f63db78745fec7c35634b9bc2bd8d359175d98d8a99ed5b74bdaf489",
+    "src-tauri/migrations/008-products.sql": "6348e3c5a52fb6abdfd9892cfed1e5ba6fecd7daac8d7e96f4db769b6f15c5f8",
+    "src-tauri/migrations/009-customers.sql": "a7c7f9e4f52d470b568fce6c753118577e1978cbb699790fc3116019fa11766f",
+    "package.json": "0ae5a4d29ee47cc938f6088010577e58bc34a6784ca9f6e93019e996b86a594c",
+    "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+    "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+    "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+    "docs/security/CARGO_WINDOWS_EXCEPTION.json": "0d41c2ace1f749078e2b35a19825a61c5440fdc90d3e0e6821140186a09f2c05",
+    "docs/security/CARGO_WINDOWS_APPROVAL.json": "df4bbb40cb4f054087bf6961a142ffff0329ae6abd1506a563f30962ab503d61",
+    "docs/security/OSV_WINDOWS_EXCEPTION.json": "14d23b3046b331e60a23ee6dcac60256c6e3cb1af30dda2f6bc5436adcae94a6",
+    "docs/security/OSV_WINDOWS_APPROVAL.json": "4b2daf3a120b8687effbccd15e2de13f2cf07bc34ef7c1b8b10232b9447b7cf4"
+  },
+  "roadmap_before": [
+    [
+      "DOC-002",
+      []
+    ],
+    [
+      "DOC-003",
+      [
+        "DOC-002"
+      ]
+    ],
+    [
+      "DOC-004",
+      [
+        "DOC-002"
+      ]
+    ],
+    [
+      "DOC-005",
+      [
+        "DOC-004"
+      ]
+    ],
+    [
+      "GOV-001",
+      [
+        "DOC-003"
+      ]
+    ],
+    [
+      "GOV-002",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-003",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-004",
+      [
+        "GOV-002"
+      ]
+    ],
+    [
+      "GOV-005",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-006",
+      [
+        "GOV-005"
+      ]
+    ],
+    [
+      "GOV-007",
+      [
+        "GOV-006"
+      ]
+    ],
+    [
+      "GOV-008",
+      [
+        "GOV-005",
+        "GOV-006"
+      ]
+    ],
+    [
+      "GOV-009",
+      [
+        "GOV-008"
+      ]
+    ],
+    [
+      "PLN-001",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "PLN-002",
+      [
+        "PLN-001"
+      ]
+    ],
+    [
+      "PLN-003",
+      [
+        "PLN-001"
+      ]
+    ],
+    [
+      "PLN-004",
+      [
+        "PLN-003"
+      ]
+    ],
+    [
+      "PLN-005",
+      [
+        "GOV-005"
+      ]
+    ],
+    [
+      "TRC-001",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-002",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-003",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-004",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-005",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-006",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "PLN-006",
+      [
+        "PLN-002",
+        "TRC-005"
+      ]
+    ],
+    [
+      "INF-001",
+      [
+        "DOC-003"
+      ]
+    ],
+    [
+      "INF-002",
+      [
+        "INF-001"
+      ]
+    ],
+    [
+      "INF-003",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "INF-004",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "INF-005",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-006",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-007",
+      [
+        "INF-006"
+      ]
+    ],
+    [
+      "INF-008",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-009",
+      [
+        "INF-005",
+        "INF-006",
+        "INF-008"
+      ]
+    ],
+    [
+      "INF-010",
+      [
+        "INF-009"
+      ]
+    ],
+    [
+      "INF-011",
+      [
+        "INF-002",
+        "INF-003"
+      ]
+    ],
+    [
+      "INF-012",
+      [
+        "INF-011"
+      ]
+    ],
+    [
+      "INF-013",
+      [
+        "INF-007",
+        "INF-010"
+      ]
+    ],
+    [
+      "INF-014",
+      [
+        "INF-010",
+        "INF-011"
+      ]
+    ],
+    [
+      "INF-015",
+      [
+        "INF-012"
+      ]
+    ],
+    [
+      "SEC-001",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-002",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-003",
+      [
+        "GOV-002"
+      ]
+    ],
+    [
+      "SEC-004",
+      [
+        "SEC-001"
+      ]
+    ],
+    [
+      "SEC-005",
+      [
+        "SEC-004"
+      ]
+    ],
+    [
+      "SEC-006",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-007",
+      [
+        "SEC-006",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-008",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-009",
+      [
+        "SEC-008",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-010",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-011",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-012",
+      [
+        "SEC-010",
+        "SEC-011",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-013",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-014",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "SEC-015",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "ARC-001",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "ARC-002",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "ARC-003",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "ARC-004",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "ARC-005",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "DB-001",
+      [
+        "INF-006"
+      ]
+    ],
+    [
+      "DB-002",
+      [
+        "DB-001"
+      ]
+    ],
+    [
+      "DB-003",
+      [
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-004",
+      [
+        "DB-003"
+      ]
+    ],
+    [
+      "DB-005",
+      [
+        "DB-004"
+      ]
+    ],
+    [
+      "DB-006",
+      [
+        "DB-004"
+      ]
+    ],
+    [
+      "DB-007",
+      [
+        "DB-006"
+      ]
+    ],
+    [
+      "DB-008",
+      [
+        "DB-003"
+      ]
+    ],
+    [
+      "DB-009",
+      [
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-010",
+      [
+        "DB-009"
+      ]
+    ],
+    [
+      "DB-011",
+      [
+        "ARC-004",
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-012",
+      [
+        "DB-011"
+      ]
+    ],
+    [
+      "DB-013",
+      [
+        "DB-011"
+      ]
+    ],
+    [
+      "DB-014",
+      [
+        "DB-013"
+      ]
+    ],
+    [
+      "FIN-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "FIN-002",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-003",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-004",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-005",
+      [
+        "FIN-004"
+      ]
+    ],
+    [
+      "FIN-006",
+      [
+        "DB-005",
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-007",
+      [
+        "FIN-006"
+      ]
+    ],
+    [
+      "FIN-008",
+      [
+        "FIN-002",
+        "FIN-003",
+        "FIN-004",
+        "FIN-006"
+      ]
+    ],
+    [
+      "FIN-009",
+      [
+        "FIN-008"
+      ]
+    ],
+    [
+      "CAT-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "CAT-002",
+      [
+        "CAT-001"
+      ]
+    ],
+    [
+      "CAT-003",
+      [
+        "DB-005",
+        "CAT-001"
+      ]
+    ],
+    [
+      "CAT-004",
+      [
+        "CAT-002",
+        "CAT-003"
+      ]
+    ],
+    [
+      "CAT-005",
+      [
+        "CAT-004"
+      ]
+    ],
+    [
+      "CAT-006",
+      [
+        "CAT-004"
+      ]
+    ],
+    [
+      "CAT-007",
+      [
+        "CAT-006"
+      ]
+    ],
+    [
+      "FIN-010",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "FIN-011",
+      [
+        "FIN-010"
+      ]
+    ],
+    [
+      "FIN-012",
+      [
+        "FIN-001",
+        "CAT-001",
+        "FIN-010"
+      ]
+    ],
+    [
+      "FIN-013",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-014",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-015",
+      [
+        "DB-005",
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-016",
+      [
+        "FIN-015"
+      ]
+    ],
+    [
+      "FIN-017",
+      [
+        "FIN-013",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-018",
+      [
+        "FIN-014",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-019",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-020",
+      [
+        "FIN-019"
+      ]
+    ],
+    [
+      "FIN-021",
+      [
+        "FIN-019",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-022",
+      [
+        "FIN-021"
+      ]
+    ],
+    [
+      "FIN-023",
+      [
+        "FIN-021",
+        "DB-012"
+      ]
+    ],
+    [
+      "FIN-024",
+      [
+        "FIN-004",
+        "FIN-017",
+        "FIN-018",
+        "FIN-021"
+      ]
+    ],
+    [
+      "FIN-025",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "FIN-026",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "FIN-027",
+      [
+        "FIN-017",
+        "FIN-018",
+        "FIN-022"
+      ]
+    ],
+    [
+      "FIN-028",
+      [
+        "FIN-017",
+        "FIN-018",
+        "DB-013"
+      ]
+    ],
+    [
+      "FIN-029",
+      [
+        "FIN-028",
+        "DB-014"
+      ]
+    ],
+    [
+      "FIN-030",
+      [
+        "FIN-028",
+        "FIN-025"
+      ]
+    ],
+    [
+      "REC-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "REC-002",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "REC-003",
+      [
+        "REC-002"
+      ]
+    ],
+    [
+      "REC-004",
+      [
+        "REC-001",
+        "REC-002"
+      ]
+    ],
+    [
+      "REC-005",
+      [
+        "REC-004"
+      ]
+    ],
+    [
+      "REC-006",
+      [
+        "REC-004",
+        "ARC-003"
+      ]
+    ],
+    [
+      "REC-007",
+      [
+        "DB-005",
+        "REC-001"
+      ]
+    ],
+    [
+      "REC-008",
+      [
+        "REC-007",
+        "REC-004"
+      ]
+    ],
+    [
+      "REC-009",
+      [
+        "REC-007",
+        "REC-003"
+      ]
+    ],
+    [
+      "REC-010",
+      [
+        "REC-009"
+      ]
+    ],
+    [
+      "REC-011",
+      [
+        "REC-008",
+        "REC-006"
+      ]
+    ],
+    [
+      "REC-012",
+      [
+        "REC-010",
+        "FIN-018",
+        "DB-011"
+      ]
+    ],
+    [
+      "REC-013",
+      [
+        "REC-012"
+      ]
+    ],
+    [
+      "REC-014",
+      [
+        "REC-012",
+        "DB-012"
+      ]
+    ],
+    [
+      "REC-015",
+      [
+        "REC-012"
+      ]
+    ],
+    [
+      "PRD-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "PRD-002",
+      [
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-003",
+      [
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-004",
+      [
+        "DB-005",
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-005",
+      [
+        "PRD-002",
+        "PRD-003",
+        "PRD-004"
+      ]
+    ],
+    [
+      "PRD-006",
+      [
+        "PRD-005"
+      ]
+    ],
+    [
+      "PRD-007",
+      [
+        "PRD-005"
+      ]
+    ],
+    [
+      "CUS-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "CUS-002",
+      [
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-003",
+      [
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-004",
+      [
+        "DB-005",
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-005",
+      [
+        "CUS-002",
+        "CUS-003",
+        "CUS-004"
+      ]
+    ],
+    [
+      "SAL-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "SAL-002",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-003",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-004",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-005",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-006",
+      [
+        "SAL-005"
+      ]
+    ],
+    [
+      "SAL-007",
+      [
+        "PRD-005",
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-008",
+      [
+        "PRD-006",
+        "SAL-007"
+      ]
+    ],
+    [
+      "SAL-009",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-010",
+      [
+        "DB-005",
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-011",
+      [
+        "SAL-010",
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-012",
+      [
+        "SAL-007",
+        "SAL-010",
+        "SAL-011"
+      ]
+    ],
+    [
+      "SAL-013",
+      [
+        "SAL-005",
+        "SAL-010",
+        "SAL-011"
+      ]
+    ],
+    [
+      "SAL-014",
+      [
+        "SAL-012"
+      ]
+    ],
+    [
+      "SAL-015",
+      [
+        "SAL-004",
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-016",
+      [
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-017",
+      [
+        "SAL-016"
+      ]
+    ],
+    [
+      "SAL-018",
+      [
+        "SAL-017",
+        "CUS-005"
+      ]
+    ],
+    [
+      "SAL-019",
+      [
+        "SAL-017"
+      ]
+    ],
+    [
+      "SAL-020",
+      [
+        "SAL-012",
+        "SAL-013",
+        "SAL-015",
+        "SAL-017",
+        "DB-011"
+      ]
+    ],
+    [
+      "SAL-021",
+      [
+        "SAL-020",
+        "FIN-024"
+      ]
+    ],
+    [
+      "SAL-022",
+      [
+        "SAL-020",
+        "DB-012"
+      ]
+    ],
+    [
+      "RCV-001",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "RCV-002",
+      [
+        "DB-005",
+        "RCV-001"
+      ]
+    ],
+    [
+      "RCV-003",
+      [
+        "RCV-002",
+        "SAL-017"
+      ]
+    ],
+    [
+      "RCV-004",
+      [
+        "RCV-003"
+      ]
+    ],
+    [
+      "RCV-005",
+      [
+        "RCV-001"
+      ]
+    ],
+    [
+      "RCV-006",
+      [
+        "RCV-005",
+        "FIN-017",
+        "DB-011"
+      ]
+    ],
+    [
+      "RCV-007",
+      [
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-008",
+      [
+        "RCV-007",
+        "FIN-024"
+      ]
+    ],
+    [
+      "RCV-009",
+      [
+        "RCV-004",
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-010",
+      [
+        "RCV-004",
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-011",
+      [
+        "RCV-006",
+        "DB-012"
+      ]
+    ],
+    [
+      "RET-001",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "RET-002",
+      [
+        "RET-001",
+        "SAL-012"
+      ]
+    ],
+    [
+      "RET-003",
+      [
+        "RET-002"
+      ]
+    ],
+    [
+      "RET-004",
+      [
+        "DB-005",
+        "RET-001"
+      ]
+    ],
+    [
+      "RET-005",
+      [
+        "RET-004",
+        "RET-002"
+      ]
+    ],
+    [
+      "RET-006",
+      [
+        "RET-005",
+        "RCV-004"
+      ]
+    ],
+    [
+      "RET-007",
+      [
+        "RET-005"
+      ]
+    ],
+    [
+      "RET-008",
+      [
+        "RET-007",
+        "FIN-018"
+      ]
+    ],
+    [
+      "RET-009",
+      [
+        "RET-008"
+      ]
+    ],
+    [
+      "RET-010",
+      [
+        "RET-008",
+        "DB-011"
+      ]
+    ],
+    [
+      "RET-011",
+      [
+        "RET-010",
+        "FIN-024"
+      ]
+    ],
+    [
+      "RET-012",
+      [
+        "RET-010",
+        "RCV-010"
+      ]
+    ],
+    [
+      "RET-013",
+      [
+        "RET-010",
+        "DB-012"
+      ]
+    ],
+    [
+      "DSH-001",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "DSH-002",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "DSH-003",
+      [
+        "FIN-017"
+      ]
+    ],
+    [
+      "DSH-004",
+      [
+        "FIN-018"
+      ]
+    ],
+    [
+      "DSH-005",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "DSH-006",
+      [
+        "RCV-004"
+      ]
+    ],
+    [
+      "DSH-007",
+      [
+        "REC-008"
+      ]
+    ],
+    [
+      "DSH-008",
+      [
+        "FIN-027"
+      ]
+    ],
+    [
+      "DSH-009",
+      [
+        "FIN-027"
+      ]
+    ],
+    [
+      "DSH-010",
+      [
+        "DSH-001",
+        "DSH-009"
+      ]
+    ],
+    [
+      "UI-001",
+      [
+        "INF-002",
+        "ARC-001"
+      ]
+    ],
+    [
+      "UI-002",
+      [
+        "UI-001"
+      ]
+    ],
+    [
+      "UI-003",
+      [
+        "UI-001",
+        "FIN-008"
+      ]
+    ],
+    [
+      "UI-004",
+      [
+        "UI-001",
+        "CAT-004"
+      ]
+    ],
+    [
+      "UI-005",
+      [
+        "UI-001",
+        "FIN-017"
+      ]
+    ],
+    [
+      "UI-006",
+      [
+        "UI-001",
+        "FIN-018"
+      ]
+    ],
+    [
+      "UI-007",
+      [
+        "UI-001",
+        "FIN-021"
+      ]
+    ],
+    [
+      "UI-008",
+      [
+        "UI-001",
+        "PRD-005"
+      ]
+    ],
+    [
+      "UI-009",
+      [
+        "UI-001",
+        "CUS-005"
+      ]
+    ],
+    [
+      "UI-010",
+      [
+        "UI-001",
+        "SAL-020"
+      ]
+    ],
+    [
+      "UI-011",
+      [
+        "UI-001",
+        "RCV-010"
+      ]
+    ],
+    [
+      "UI-012",
+      [
+        "UI-001",
+        "REC-015"
+      ]
+    ],
+    [
+      "UI-013",
+      [
+        "UI-001",
+        "RET-013"
+      ]
+    ],
+    [
+      "UI-014",
+      [
+        "UI-001",
+        "DSH-010"
+      ]
+    ],
+    [
+      "UI-015",
+      [
+        "UI-005",
+        "UI-006",
+        "UI-007"
+      ]
+    ],
+    [
+      "UI-016",
+      [
+        "UI-002",
+        "UI-014"
+      ]
+    ],
+    [
+      "BKP-001",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "BKP-002",
+      [
+        "BKP-001"
+      ]
+    ],
+    [
+      "BKP-003",
+      [
+        "BKP-002",
+        "SEC-003"
+      ]
+    ],
+    [
+      "BKP-004",
+      [
+        "SEC-001"
+      ]
+    ],
+    [
+      "BKP-005",
+      [
+        "DB-011",
+        "BKP-001",
+        "BKP-002",
+        "BKP-004"
+      ]
+    ],
+    [
+      "BKP-006",
+      [
+        "BKP-005"
+      ]
+    ],
+    [
+      "BKP-007",
+      [
+        "BKP-005",
+        "ARC-003"
+      ]
+    ],
+    [
+      "BKP-008",
+      [
+        "BKP-001"
+      ]
+    ],
+    [
+      "BKP-009",
+      [
+        "BKP-004",
+        "BKP-008"
+      ]
+    ],
+    [
+      "BKP-010",
+      [
+        "BKP-008",
+        "DB-002"
+      ]
+    ],
+    [
+      "BKP-011",
+      [
+        "BKP-010"
+      ]
+    ],
+    [
+      "BKP-012",
+      [
+        "BKP-010"
+      ]
+    ],
+    [
+      "BKP-013",
+      [
+        "BKP-011",
+        "BKP-012"
+      ]
+    ],
+    [
+      "BKP-014",
+      [
+        "BKP-013"
+      ]
+    ],
+    [
+      "UI-017",
+      [
+        "UI-001",
+        "BKP-014"
+      ]
+    ],
+    [
+      "SMK-001",
+      [
+        "INF-011"
+      ]
+    ],
+    [
+      "SMK-002",
+      [
+        "SMK-001",
+        "DB-005"
+      ]
+    ],
+    [
+      "SMK-003",
+      [
+        "SMK-002",
+        "UI-003",
+        "UI-004"
+      ]
+    ],
+    [
+      "SMK-004",
+      [
+        "SMK-003",
+        "UI-005",
+        "UI-006",
+        "UI-007"
+      ]
+    ],
+    [
+      "SMK-005",
+      [
+        "SMK-004",
+        "UI-008",
+        "UI-009",
+        "UI-010"
+      ]
+    ],
+    [
+      "SMK-006",
+      [
+        "SMK-005",
+        "UI-011"
+      ]
+    ],
+    [
+      "SMK-007",
+      [
+        "SMK-006",
+        "UI-012"
+      ]
+    ],
+    [
+      "SMK-008",
+      [
+        "SMK-007",
+        "UI-013"
+      ]
+    ],
+    [
+      "SMK-009",
+      [
+        "SMK-008",
+        "UI-014"
+      ]
+    ],
+    [
+      "SMK-010",
+      [
+        "SMK-009",
+        "UI-017"
+      ]
+    ],
+    [
+      "REL-001",
+      [
+        "INF-014",
+        "SMK-001"
+      ]
+    ],
+    [
+      "REL-002",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-003",
+      [
+        "REL-002"
+      ]
+    ],
+    [
+      "REL-004",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-005",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-006",
+      [
+        "SMK-010",
+        "UI-016"
+      ]
+    ],
+    [
+      "REL-007",
+      [
+        "SMK-010",
+        "TRC-001",
+        "TRC-004"
+      ]
+    ],
+    [
+      "REL-008",
+      [
+        "REL-006",
+        "REL-007"
+      ]
+    ],
+    [
+      "REL-009",
+      [
+        "REL-008"
+      ]
+    ],
+    [
+      "REL-010",
+      [
+        "REL-003",
+        "REL-004",
+        "REL-005",
+        "REL-009"
+      ]
+    ]
+  ],
+  "roadmap_after": [
+    [
+      "DOC-002",
+      []
+    ],
+    [
+      "DOC-003",
+      [
+        "DOC-002"
+      ]
+    ],
+    [
+      "DOC-004",
+      [
+        "DOC-002"
+      ]
+    ],
+    [
+      "DOC-005",
+      [
+        "DOC-004"
+      ]
+    ],
+    [
+      "GOV-001",
+      [
+        "DOC-003"
+      ]
+    ],
+    [
+      "GOV-002",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-003",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-004",
+      [
+        "GOV-002"
+      ]
+    ],
+    [
+      "GOV-005",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "GOV-006",
+      [
+        "GOV-005"
+      ]
+    ],
+    [
+      "GOV-007",
+      [
+        "GOV-006"
+      ]
+    ],
+    [
+      "GOV-008",
+      [
+        "GOV-005",
+        "GOV-006"
+      ]
+    ],
+    [
+      "GOV-009",
+      [
+        "GOV-008"
+      ]
+    ],
+    [
+      "PLN-001",
+      [
+        "GOV-001"
+      ]
+    ],
+    [
+      "PLN-002",
+      [
+        "PLN-001"
+      ]
+    ],
+    [
+      "PLN-003",
+      [
+        "PLN-001"
+      ]
+    ],
+    [
+      "PLN-004",
+      [
+        "PLN-003"
+      ]
+    ],
+    [
+      "PLN-005",
+      [
+        "GOV-005"
+      ]
+    ],
+    [
+      "TRC-001",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-002",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-003",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-004",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-005",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "TRC-006",
+      [
+        "DOC-005"
+      ]
+    ],
+    [
+      "PLN-006",
+      [
+        "PLN-002",
+        "TRC-005"
+      ]
+    ],
+    [
+      "INF-001",
+      [
+        "DOC-003"
+      ]
+    ],
+    [
+      "INF-002",
+      [
+        "INF-001"
+      ]
+    ],
+    [
+      "INF-003",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "INF-004",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "INF-005",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-006",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-007",
+      [
+        "INF-006"
+      ]
+    ],
+    [
+      "INF-008",
+      [
+        "INF-004"
+      ]
+    ],
+    [
+      "INF-009",
+      [
+        "INF-005",
+        "INF-006",
+        "INF-008"
+      ]
+    ],
+    [
+      "INF-010",
+      [
+        "INF-009"
+      ]
+    ],
+    [
+      "INF-011",
+      [
+        "INF-002",
+        "INF-003"
+      ]
+    ],
+    [
+      "INF-012",
+      [
+        "INF-011"
+      ]
+    ],
+    [
+      "INF-013",
+      [
+        "INF-007",
+        "INF-010"
+      ]
+    ],
+    [
+      "INF-014",
+      [
+        "INF-010",
+        "INF-011"
+      ]
+    ],
+    [
+      "INF-015",
+      [
+        "INF-012"
+      ]
+    ],
+    [
+      "SEC-001",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-002",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-003",
+      [
+        "GOV-002"
+      ]
+    ],
+    [
+      "SEC-004",
+      [
+        "SEC-001"
+      ]
+    ],
+    [
+      "SEC-005",
+      [
+        "SEC-004"
+      ]
+    ],
+    [
+      "SEC-006",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-007",
+      [
+        "SEC-006",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-008",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-009",
+      [
+        "SEC-008",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-010",
+      [
+        "INF-003"
+      ]
+    ],
+    [
+      "SEC-011",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-012",
+      [
+        "SEC-010",
+        "SEC-011",
+        "INF-010"
+      ]
+    ],
+    [
+      "SEC-013",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "SEC-014",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "SEC-015",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "ARC-001",
+      [
+        "INF-002"
+      ]
+    ],
+    [
+      "ARC-002",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "ARC-003",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "ARC-004",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "ARC-005",
+      [
+        "ARC-001"
+      ]
+    ],
+    [
+      "DB-001",
+      [
+        "INF-006"
+      ]
+    ],
+    [
+      "DB-002",
+      [
+        "DB-001"
+      ]
+    ],
+    [
+      "DB-003",
+      [
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-004",
+      [
+        "DB-003"
+      ]
+    ],
+    [
+      "DB-005",
+      [
+        "DB-004"
+      ]
+    ],
+    [
+      "DB-006",
+      [
+        "DB-004"
+      ]
+    ],
+    [
+      "DB-007",
+      [
+        "DB-006"
+      ]
+    ],
+    [
+      "DB-008",
+      [
+        "DB-003"
+      ]
+    ],
+    [
+      "DB-009",
+      [
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-010",
+      [
+        "DB-009"
+      ]
+    ],
+    [
+      "DB-011",
+      [
+        "ARC-004",
+        "DB-002"
+      ]
+    ],
+    [
+      "DB-012",
+      [
+        "DB-011"
+      ]
+    ],
+    [
+      "DB-013",
+      [
+        "DB-011"
+      ]
+    ],
+    [
+      "DB-014",
+      [
+        "DB-013"
+      ]
+    ],
+    [
+      "FIN-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "FIN-002",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-003",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-004",
+      [
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-005",
+      [
+        "FIN-004"
+      ]
+    ],
+    [
+      "FIN-006",
+      [
+        "DB-005",
+        "FIN-001"
+      ]
+    ],
+    [
+      "FIN-007",
+      [
+        "FIN-006"
+      ]
+    ],
+    [
+      "FIN-008",
+      [
+        "FIN-002",
+        "FIN-003",
+        "FIN-004",
+        "FIN-006"
+      ]
+    ],
+    [
+      "FIN-009",
+      [
+        "FIN-008"
+      ]
+    ],
+    [
+      "CAT-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "CAT-002",
+      [
+        "CAT-001"
+      ]
+    ],
+    [
+      "CAT-003",
+      [
+        "DB-005",
+        "CAT-001"
+      ]
+    ],
+    [
+      "CAT-004",
+      [
+        "CAT-002",
+        "CAT-003"
+      ]
+    ],
+    [
+      "CAT-005",
+      [
+        "CAT-004"
+      ]
+    ],
+    [
+      "CAT-006",
+      [
+        "CAT-004"
+      ]
+    ],
+    [
+      "CAT-007",
+      [
+        "CAT-006"
+      ]
+    ],
+    [
+      "FIN-010",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "FIN-011",
+      [
+        "FIN-010"
+      ]
+    ],
+    [
+      "FIN-012",
+      [
+        "FIN-001",
+        "CAT-001",
+        "FIN-010"
+      ]
+    ],
+    [
+      "FIN-013",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-014",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-015",
+      [
+        "DB-005",
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-016",
+      [
+        "FIN-015"
+      ]
+    ],
+    [
+      "FIN-017",
+      [
+        "FIN-013",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-018",
+      [
+        "FIN-014",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-019",
+      [
+        "FIN-012"
+      ]
+    ],
+    [
+      "FIN-020",
+      [
+        "FIN-019"
+      ]
+    ],
+    [
+      "FIN-021",
+      [
+        "FIN-019",
+        "FIN-015",
+        "DB-011"
+      ]
+    ],
+    [
+      "FIN-022",
+      [
+        "FIN-021"
+      ]
+    ],
+    [
+      "FIN-023",
+      [
+        "FIN-021",
+        "DB-012"
+      ]
+    ],
+    [
+      "FIN-024",
+      [
+        "FIN-004",
+        "FIN-017",
+        "FIN-018",
+        "FIN-021"
+      ]
+    ],
+    [
+      "FIN-025",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "FIN-026",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "FIN-027",
+      [
+        "FIN-017",
+        "FIN-018",
+        "FIN-022"
+      ]
+    ],
+    [
+      "FIN-028",
+      [
+        "FIN-017",
+        "FIN-018",
+        "DB-013"
+      ]
+    ],
+    [
+      "FIN-029",
+      [
+        "FIN-028",
+        "DB-014"
+      ]
+    ],
+    [
+      "FIN-030",
+      [
+        "FIN-028",
+        "FIN-025"
+      ]
+    ],
+    [
+      "REC-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "REC-002",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "REC-003",
+      [
+        "REC-002"
+      ]
+    ],
+    [
+      "REC-004",
+      [
+        "REC-001",
+        "REC-002"
+      ]
+    ],
+    [
+      "REC-005",
+      [
+        "REC-004"
+      ]
+    ],
+    [
+      "REC-006",
+      [
+        "REC-004",
+        "ARC-003"
+      ]
+    ],
+    [
+      "REC-007",
+      [
+        "DB-005",
+        "REC-001"
+      ]
+    ],
+    [
+      "REC-008",
+      [
+        "REC-007",
+        "REC-004"
+      ]
+    ],
+    [
+      "REC-009",
+      [
+        "REC-007",
+        "REC-003"
+      ]
+    ],
+    [
+      "REC-010",
+      [
+        "REC-009"
+      ]
+    ],
+    [
+      "REC-011",
+      [
+        "REC-008",
+        "REC-006"
+      ]
+    ],
+    [
+      "REC-012",
+      [
+        "REC-010",
+        "FIN-018",
+        "DB-011"
+      ]
+    ],
+    [
+      "REC-013",
+      [
+        "REC-012"
+      ]
+    ],
+    [
+      "REC-014",
+      [
+        "REC-012",
+        "DB-012"
+      ]
+    ],
+    [
+      "REC-015",
+      [
+        "REC-012"
+      ]
+    ],
+    [
+      "PRD-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "PRD-002",
+      [
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-003",
+      [
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-004",
+      [
+        "DB-005",
+        "PRD-001"
+      ]
+    ],
+    [
+      "PRD-005",
+      [
+        "PRD-002",
+        "PRD-003",
+        "PRD-004"
+      ]
+    ],
+    [
+      "PRD-006",
+      [
+        "PRD-005"
+      ]
+    ],
+    [
+      "PRD-007",
+      [
+        "PRD-005"
+      ]
+    ],
+    [
+      "CUS-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "CUS-002",
+      [
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-003",
+      [
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-004",
+      [
+        "DB-005",
+        "CUS-001"
+      ]
+    ],
+    [
+      "CUS-005",
+      [
+        "CUS-002",
+        "CUS-003",
+        "CUS-004"
+      ]
+    ],
+    [
+      "SAL-001",
+      [
+        "ARC-002"
+      ]
+    ],
+    [
+      "SAL-002",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-003",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-004",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-005",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-006",
+      [
+        "SAL-005"
+      ]
+    ],
+    [
+      "SAL-007",
+      [
+        "PRD-005",
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-008",
+      [
+        "PRD-006",
+        "SAL-007",
+        "SAL-012"
+      ]
+    ],
+    [
+      "SAL-009",
+      [
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-010",
+      [
+        "DB-005",
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-011",
+      [
+        "SAL-010",
+        "SAL-001"
+      ]
+    ],
+    [
+      "SAL-012",
+      [
+        "SAL-007",
+        "SAL-010",
+        "SAL-011"
+      ]
+    ],
+    [
+      "SAL-013",
+      [
+        "SAL-005",
+        "SAL-010",
+        "SAL-011"
+      ]
+    ],
+    [
+      "SAL-014",
+      [
+        "SAL-012"
+      ]
+    ],
+    [
+      "SAL-015",
+      [
+        "SAL-004",
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-016",
+      [
+        "SAL-009"
+      ]
+    ],
+    [
+      "SAL-017",
+      [
+        "SAL-016"
+      ]
+    ],
+    [
+      "SAL-018",
+      [
+        "SAL-017",
+        "CUS-005"
+      ]
+    ],
+    [
+      "SAL-019",
+      [
+        "SAL-017"
+      ]
+    ],
+    [
+      "SAL-020",
+      [
+        "SAL-012",
+        "SAL-013",
+        "SAL-015",
+        "SAL-017",
+        "DB-011"
+      ]
+    ],
+    [
+      "SAL-021",
+      [
+        "SAL-020",
+        "FIN-024"
+      ]
+    ],
+    [
+      "SAL-022",
+      [
+        "SAL-020",
+        "DB-012"
+      ]
+    ],
+    [
+      "RCV-001",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "RCV-002",
+      [
+        "DB-005",
+        "RCV-001"
+      ]
+    ],
+    [
+      "RCV-003",
+      [
+        "RCV-002",
+        "SAL-017"
+      ]
+    ],
+    [
+      "RCV-004",
+      [
+        "RCV-003"
+      ]
+    ],
+    [
+      "RCV-005",
+      [
+        "RCV-001"
+      ]
+    ],
+    [
+      "RCV-006",
+      [
+        "RCV-005",
+        "FIN-017",
+        "DB-011"
+      ]
+    ],
+    [
+      "RCV-007",
+      [
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-008",
+      [
+        "RCV-007",
+        "FIN-024"
+      ]
+    ],
+    [
+      "RCV-009",
+      [
+        "RCV-004",
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-010",
+      [
+        "RCV-004",
+        "RCV-006"
+      ]
+    ],
+    [
+      "RCV-011",
+      [
+        "RCV-006",
+        "DB-012"
+      ]
+    ],
+    [
+      "RET-001",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "RET-002",
+      [
+        "RET-001",
+        "SAL-012"
+      ]
+    ],
+    [
+      "RET-003",
+      [
+        "RET-002"
+      ]
+    ],
+    [
+      "RET-004",
+      [
+        "DB-005",
+        "RET-001"
+      ]
+    ],
+    [
+      "RET-005",
+      [
+        "RET-004",
+        "RET-002"
+      ]
+    ],
+    [
+      "RET-006",
+      [
+        "RET-005",
+        "RCV-004"
+      ]
+    ],
+    [
+      "RET-007",
+      [
+        "RET-005"
+      ]
+    ],
+    [
+      "RET-008",
+      [
+        "RET-007",
+        "FIN-018"
+      ]
+    ],
+    [
+      "RET-009",
+      [
+        "RET-008"
+      ]
+    ],
+    [
+      "RET-010",
+      [
+        "RET-008",
+        "DB-011"
+      ]
+    ],
+    [
+      "RET-011",
+      [
+        "RET-010",
+        "FIN-024"
+      ]
+    ],
+    [
+      "RET-012",
+      [
+        "RET-010",
+        "RCV-010"
+      ]
+    ],
+    [
+      "RET-013",
+      [
+        "RET-010",
+        "DB-012"
+      ]
+    ],
+    [
+      "DSH-001",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "DSH-002",
+      [
+        "FIN-024"
+      ]
+    ],
+    [
+      "DSH-003",
+      [
+        "FIN-017"
+      ]
+    ],
+    [
+      "DSH-004",
+      [
+        "FIN-018"
+      ]
+    ],
+    [
+      "DSH-005",
+      [
+        "SAL-020"
+      ]
+    ],
+    [
+      "DSH-006",
+      [
+        "RCV-004"
+      ]
+    ],
+    [
+      "DSH-007",
+      [
+        "REC-008"
+      ]
+    ],
+    [
+      "DSH-008",
+      [
+        "FIN-027"
+      ]
+    ],
+    [
+      "DSH-009",
+      [
+        "FIN-027"
+      ]
+    ],
+    [
+      "DSH-010",
+      [
+        "DSH-001",
+        "DSH-009"
+      ]
+    ],
+    [
+      "UI-001",
+      [
+        "INF-002",
+        "ARC-001"
+      ]
+    ],
+    [
+      "UI-002",
+      [
+        "UI-001"
+      ]
+    ],
+    [
+      "UI-003",
+      [
+        "UI-001",
+        "FIN-008"
+      ]
+    ],
+    [
+      "UI-004",
+      [
+        "UI-001",
+        "CAT-004"
+      ]
+    ],
+    [
+      "UI-005",
+      [
+        "UI-001",
+        "FIN-017"
+      ]
+    ],
+    [
+      "UI-006",
+      [
+        "UI-001",
+        "FIN-018"
+      ]
+    ],
+    [
+      "UI-007",
+      [
+        "UI-001",
+        "FIN-021"
+      ]
+    ],
+    [
+      "UI-008",
+      [
+        "UI-001",
+        "PRD-005"
+      ]
+    ],
+    [
+      "UI-009",
+      [
+        "UI-001",
+        "CUS-005"
+      ]
+    ],
+    [
+      "UI-010",
+      [
+        "UI-001",
+        "SAL-020"
+      ]
+    ],
+    [
+      "UI-011",
+      [
+        "UI-001",
+        "RCV-010"
+      ]
+    ],
+    [
+      "UI-012",
+      [
+        "UI-001",
+        "REC-015"
+      ]
+    ],
+    [
+      "UI-013",
+      [
+        "UI-001",
+        "RET-013"
+      ]
+    ],
+    [
+      "UI-014",
+      [
+        "UI-001",
+        "DSH-010"
+      ]
+    ],
+    [
+      "UI-015",
+      [
+        "UI-005",
+        "UI-006",
+        "UI-007"
+      ]
+    ],
+    [
+      "UI-016",
+      [
+        "UI-002",
+        "UI-014"
+      ]
+    ],
+    [
+      "BKP-001",
+      [
+        "SEC-003"
+      ]
+    ],
+    [
+      "BKP-002",
+      [
+        "BKP-001"
+      ]
+    ],
+    [
+      "BKP-003",
+      [
+        "BKP-002",
+        "SEC-003"
+      ]
+    ],
+    [
+      "BKP-004",
+      [
+        "SEC-001"
+      ]
+    ],
+    [
+      "BKP-005",
+      [
+        "DB-011",
+        "BKP-001",
+        "BKP-002",
+        "BKP-004"
+      ]
+    ],
+    [
+      "BKP-006",
+      [
+        "BKP-005"
+      ]
+    ],
+    [
+      "BKP-007",
+      [
+        "BKP-005",
+        "ARC-003"
+      ]
+    ],
+    [
+      "BKP-008",
+      [
+        "BKP-001"
+      ]
+    ],
+    [
+      "BKP-009",
+      [
+        "BKP-004",
+        "BKP-008"
+      ]
+    ],
+    [
+      "BKP-010",
+      [
+        "BKP-008",
+        "DB-002"
+      ]
+    ],
+    [
+      "BKP-011",
+      [
+        "BKP-010"
+      ]
+    ],
+    [
+      "BKP-012",
+      [
+        "BKP-010"
+      ]
+    ],
+    [
+      "BKP-013",
+      [
+        "BKP-011",
+        "BKP-012"
+      ]
+    ],
+    [
+      "BKP-014",
+      [
+        "BKP-013"
+      ]
+    ],
+    [
+      "UI-017",
+      [
+        "UI-001",
+        "BKP-014"
+      ]
+    ],
+    [
+      "SMK-001",
+      [
+        "INF-011"
+      ]
+    ],
+    [
+      "SMK-002",
+      [
+        "SMK-001",
+        "DB-005"
+      ]
+    ],
+    [
+      "SMK-003",
+      [
+        "SMK-002",
+        "UI-003",
+        "UI-004"
+      ]
+    ],
+    [
+      "SMK-004",
+      [
+        "SMK-003",
+        "UI-005",
+        "UI-006",
+        "UI-007"
+      ]
+    ],
+    [
+      "SMK-005",
+      [
+        "SMK-004",
+        "UI-008",
+        "UI-009",
+        "UI-010"
+      ]
+    ],
+    [
+      "SMK-006",
+      [
+        "SMK-005",
+        "UI-011"
+      ]
+    ],
+    [
+      "SMK-007",
+      [
+        "SMK-006",
+        "UI-012"
+      ]
+    ],
+    [
+      "SMK-008",
+      [
+        "SMK-007",
+        "UI-013"
+      ]
+    ],
+    [
+      "SMK-009",
+      [
+        "SMK-008",
+        "UI-014"
+      ]
+    ],
+    [
+      "SMK-010",
+      [
+        "SMK-009",
+        "UI-017"
+      ]
+    ],
+    [
+      "REL-001",
+      [
+        "INF-014",
+        "SMK-001"
+      ]
+    ],
+    [
+      "REL-002",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-003",
+      [
+        "REL-002"
+      ]
+    ],
+    [
+      "REL-004",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-005",
+      [
+        "REL-001"
+      ]
+    ],
+    [
+      "REL-006",
+      [
+        "SMK-010",
+        "UI-016"
+      ]
+    ],
+    [
+      "REL-007",
+      [
+        "SMK-010",
+        "TRC-001",
+        "TRC-004"
+      ]
+    ],
+    [
+      "REL-008",
+      [
+        "REL-006",
+        "REL-007"
+      ]
+    ],
+    [
+      "REL-009",
+      [
+        "REL-008"
+      ]
+    ],
+    [
+      "REL-010",
+      [
+        "REL-003",
+        "REL-004",
+        "REL-005",
+        "REL-009"
+      ]
+    ]
+  ],
+  "canonical_count": 245,
+  "done": 146,
+  "preserved_done": true,
+  "next": "SAL-009",
+  "meta": "active",
+  "formal_goal_observation": {
+    "goal": {
+      "threadId": "01a14cf3-f764-7d50-a659-5fbb485e800b",
+      "objective": "Concluir o Millani Artes ponta a ponta, seguindo as fontes canônicas e o roteamento econômico Codex/trabalhadores locais, um work item por vez após FIN-017, mantendo a Meta ativa até comprovar e documentar o critério oficial E2E: jornadas UI/IPC, regras financeiras, persistência, cobertura global e release Windows com instalação/atualização, artefato, hash/assinatura e CI remoto no SHA exato.",
+      "status": "active",
+      "tokensUsed": 11151561,
+      "timeUsedSeconds": 113743,
+      "createdAt": 1792296008,
+      "updatedAt": 1792985612
+    },
+    "remainingTokens": null,
+    "completionBudgetReport": null
+  },
+  "final_local_shutdown": {
+    "id": "SAL-008",
+    "observed_utc": "2026-10-26T03:33:36.984313+00:00",
+    "controller_stop": {
+      "status": "already_stopped"
+    },
+    "final_engine_inventory": [],
+    "final_worker_inventory": [],
+    "final_candidate_listeners": [],
+    "gpu_lock_absent": true,
+    "local_ai_stopped": true,
+    "goal_status_observed": "active",
+    "goal_not_paused_by_integrator": true,
+    "next": "SAL-009"
+  },
+  "local_inference_calls": 0,
+  "preservation": [
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-finish-local-shutdown-20261026.py",
+      "bytes": 2083,
+      "sha256": "b38371aeea10e3d6cbebb66b8e7fb9a03ad61b4764041c7126616ee6952fc175"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-publish-before-newfiles-fix-20261026.py",
+      "bytes": 3076,
+      "sha256": "56eabbf08d0f176225aff2841cae6e7ef4a0ed6119f518bb418c3aeabbe6e895"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-publish-dependency-20261026.py",
+      "bytes": 3076,
+      "sha256": "56eabbf08d0f176225aff2841cae6e7ef4a0ed6119f518bb418c3aeabbe6e895"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-publish-dependency-corrected-20261026.py",
+      "bytes": 3083,
+      "sha256": "396e69cf2231b198e58e24b9f6cebb62d710dbf49e15c23e11ff2948ac6a8dd7"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-reconcile-20261026.py",
+      "bytes": 11608,
+      "sha256": "ca6bd2e4d62eb39daec902016f3f667bde4d7f8a497b776d4bd9fc817a762c19"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-verify-dependency-20261026.py",
+      "bytes": 6087,
+      "sha256": "311c2afe38744cfa0f660bebfbd0932fcb6590c84b568f67913caabcaf673c62"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-watch-dependency-ci-20261026.py",
+      "bytes": 2825,
+      "sha256": "122e79472b7a272ed8f2344f7a1b848a9ad4cf30bd2f148e46c8d576378aff93"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-CI-20261026.json",
+      "bytes": 10246,
+      "sha256": "2c6ae64b68dfc53047e250c0c6d2327fc0d7236a941f130247ad3f72eaddb0a0"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-diff-review-20261026.json",
+      "bytes": 1205,
+      "sha256": "a8eb70fbd9698378e9f3b4513217b8d1d731632728173f34605627ceef93f7a5"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-observations-20261026.json",
+      "bytes": 39176,
+      "sha256": "a64c137dbcccd469c9fbc3f8cd1c63cf47d25e5aa37941f144253c3fac30c475"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-preparation-20261026.json",
+      "bytes": 77643,
+      "sha256": "e3b36f3a1bcb574ce8691cf0176fcc387ac3e3d261294efd90a2e46302fcab42"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-public-observation-20261026.json",
+      "bytes": 22783,
+      "sha256": "7006668396b69b80e5b3cc4cf2f39fcca2b86ceb4e78fb1728804d1cd76e2262"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-publication-20261026.json",
+      "bytes": 1339,
+      "sha256": "0f21aa9f2e9380f29de689c8c7ed67667f499afd7be4ecae81cb11890ed9ada5"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-publication-before-newfiles-fix-20261026.json",
+      "bytes": 1227,
+      "sha256": "797372892ed4baedc98d9b353f35c4302483f3b90586cd4a68b904902cabaaaf"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-dependency-review-20261026.json",
+      "bytes": 486,
+      "sha256": "046a1d9099a33707888d271b6751639486579e09bb20c642644d74d52563619f"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-finish-local-shutdown-20261026.json",
+      "bytes": 388,
+      "sha256": "10fa6947f7d637cb7cbb0fa1c2f012f0107755ffa400420e3666f4ad440b552c"
+    },
+    {
+      "path": "C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\SAL-008-meta-dependency-observation-20261026.json",
+      "bytes": 703,
+      "sha256": "c212f86ce552275c200f919d6299b3953a36a80329538383c0003591c71516bc"
+    }
+  ],
+  "previous147notes_preserved": true,
+  "initial_heads_preserved": true,
+  "original97branches_preserved": true,
+  "publication_correction": "First local commit omitted3newdocs; unpublished guarded amend included all7, full affected validators/stagedscan rerun, one atomic commit pushed; failed receipt/script retained.",
+  "limitations": "SAL008 and INV-SAL005 remain unproved until SAL012 production persistence/read path exists; UI/IPC/globalRust/installer/install/update/hash/signature/E2E pending. Docs CI does not execute416Rust26doctests; those belong SAL007 source SHA d078d15a462911e1c210316bf0e3d924a6a4cde3 only.",
+  "cost": "não registrado"
+}
