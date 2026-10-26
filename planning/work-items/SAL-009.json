@@ -2,7 +2,7 @@
   "id": "SAL-009",
   "title": "definir venda",
   "specPath": "planning/specs/SAL-009.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-001"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INTreuso literal de tipos/metadados,0inferências locais;P-SECtools/P-REVSol6medium;11paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SAL-009 VERIFY E3: Sale representa id opaco16,statusOpen/Finalized eVec<SaleItem> próprios. Dois unitários verificam identidade/ordem/7campos de dois itens criados pelas factories reais (produto+livre),independência do template apósdrop,IDs0/MAX/ambosestados/coleçãovazia. Dois compile_fail privacidadeSale semDebug/Display. Sem métodos/algoritmo/derive/totalcache/campos futuros/IO/SQL/deps;domínio não relacionado/testes antigos/migrations/deps/exceções preservados. RED/GREEN2unit2docsnovos/418Rust28docs/gates/security/LLVMdomain95controle/P-REV PASS;0inferências;CI/nota149/liberação pendentes;passesfalse. Representação não aprova finalização vazia/transições nem prova validação/cálculo/pagamentos/pendência/persistência: SAL010..020 próprios. INV-SAL005/SAL008 exigeSAL012 e leitura após edição/desativação/reabertura;continua blocked/passesfalse. UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. Sale/SaleStatus têm zero linhas executáveis/sem percentual próprio;LLVMdomain inteiro comcontrole0 não écausalidadeisolada/global/CI/branches/statements. USER_JOURNEYS jornada3 já prevêajustepreçoSAL007,semnovoaceitehumano. Metaativa;custonão registrado. Fonte:handoff SAL-009."
+  "passes": true,
+  "notes": "SAL-009 done/E3/passestrue apósCI40265642848/SHAfdbcda5f3ffd20650be8b1e805e3e8600460903b,success23/0skip/7marcadores,418Rust+28docs/2unit2docsnovos. Sale representa id opaco16,statusOpen/Finalized eVec<SaleItem> próprios. Dois unitários verificam identidade/ordem/7campos de dois itens criados pelas factories reais (produto+livre),independência do template apósdrop,IDs0/MAX/ambosestados/coleçãovazia. Dois compile_fail privacidadeSale semDebug/Display. Sem métodos/algoritmo/derive/totalcache/campos futuros/IO/SQL/deps;domínio não relacionado/testes antigos/migrations/deps/exceções preservados. CIfinal/nota149/liberação pendentes. Representação não aprova finalização vazia/transições nem prova validação/cálculo/pagamentos/pendência/persistência: SAL010..020 próprios. INV-SAL005/SAL008 exigeSAL012 e leitura após edição/desativação/reabertura;continua blocked/passesfalse. UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. Sale/SaleStatus têm zero linhas executáveis/sem percentual próprio;LLVMdomain inteiro comcontrole0 não écausalidadeisolada/global/CI/branches/statements. USER_JOURNEYS jornada3 já prevêajustepreçoSAL007,semnovoaceitehumano. Metaativa;custonão registrado. Fonte:handoff SAL-009. Reserva ativa."
 }
