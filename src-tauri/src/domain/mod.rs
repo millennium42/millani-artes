@@ -708,6 +708,29 @@ pub fn create_product_item(
     )
 }
 
+/// Sale lifecycle metadata; transitions belong to their application operations.
+pub enum SaleStatus {
+    Open,
+    Finalized,
+}
+
+/// Sale identity, lifecycle metadata, and owned item snapshots.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Sale>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Sale>();
+/// ```
+pub struct Sale {
+    pub id: [u8; 16],
+    pub status: SaleStatus,
+    pub items: Vec<SaleItem>,
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -794,3 +817,6 @@ mod free_item_tests;
 
 #[cfg(test)]
 mod product_item_tests;
+
+#[cfg(test)]
+mod sale_tests;
