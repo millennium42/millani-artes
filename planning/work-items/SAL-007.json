@@ -2,7 +2,7 @@
   "id": "SAL-007",
   "title": "criar item de produto",
   "specPath": "planning/specs/SAL-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "PRD-005",
     "SAL-001"
@@ -22,6 +22,6 @@
   "agentPlan": "P-INThelper literal;P-DOMGemma low180s uma função/contexto curto;P-SECtools/P-REVSol6medium;11paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SAL-007 VERIFY E3: create_product_item puro exige template ativo/nome e preço sugerido válidos; copia descrição exata inclusive vazia em String própria,product_idSome,id próprio e preço de lançamento explícito. Reusa validação/cálculo monetário via create_item privado extraído literalmente do factory livre; API e comportamento de create_free_item preservados. Zero/ambas modalidades/tiesUP/bruto largo e erros opacos;template inalterado em sucesso/erro. Seis unitários novos; domínio não relacionado, testes antigos, migrations/deps/exceções preservados. RED/GREEN6novos/416Rust26docs/gates/security/LLVMdomain95controle/P-REV PASS;CI/nota147/liberação pendentes;passesfalse. Preço de lançamento explícito é interpretação anunciada de sugerido, pergunta opcional sem resposta não atribuída a decisão humana; default de catálogo e edição na UI são consumidores futuros. Copiar campos próprios não prova snapshot operacional: edição real/persistência/INV-SAL005 dependem SAL008 e consumidores seguintes. UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVM local somente domain/mod.rs inteiro;controle0 prova instrumentação,não causalidade isolada/percentual de função nova/global/CI/branches/statements. Meta ativa até critério oficial;locais encerrar antespausa/interrupção. Custo não registrado. Fonte:handoff SAL-007."
+  "passes": true,
+  "notes": "SAL-007 done/E3/passestrue apósCI40262115383/SHAd078d15a462911e1c210316bf0e3d924a6a4cde3,success23/0skip/7marcadores,416Rust+26docs/6unitnovos. create_product_item puro exige template ativo/nome e preço sugerido válidos; copia descrição exata inclusive vazia em String própria,product_idSome,id próprio e preço de lançamento explícito. Reusa validação/cálculo monetário via create_item privado extraído literalmente do factory livre; API e comportamento de create_free_item preservados. Zero/ambas modalidades/tiesUP/bruto largo e erros opacos;template inalterado em sucesso/erro. Seis unitários novos; domínio não relacionado, testes antigos, migrations/deps/exceções preservados. CIfinal/nota147/liberação pendentes. Preço de lançamento explícito é interpretação anunciada de sugerido, pergunta opcional sem resposta não atribuída a decisão humana; default de catálogo e edição na UI são consumidores futuros. Copiar campos próprios não prova snapshot operacional: edição real/persistência/INV-SAL005 dependem SAL008 e consumidores seguintes. UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVM local somente domain/mod.rs inteiro;controle0 prova instrumentação,não causalidade isolada/percentual de função nova/global/CI/branches/statements. Meta ativa até critério oficial;locais encerrar antespausa/interrupção. Custo não registrado. Fonte:handoff SAL-007. Reserva ativa."
 }
