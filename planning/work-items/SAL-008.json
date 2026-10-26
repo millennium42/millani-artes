@@ -1,0 +1,26 @@
+{
+  "id": "SAL-008",
+  "title": "provar snapshot imutável",
+  "specPath": "planning/specs/SAL-008.md",
+  "status": "blocked",
+  "dependencies": [
+    "PRD-006",
+    "SAL-007",
+    "SAL-012"
+  ],
+  "acceptanceCriteria": [
+    "Via produção persistir item vendido descriçãoA/qtd2/preço1500/desconto0/total3000; editar templateB1700/desativar e reabrir banco preserva snapshot e valores próprios.",
+    "Provar catálogo realmente B/1700/inativo e ausência de recálculo por produto vivo, sem INSERT de snapshot ou tabela sintética substituindo fluxo de produção.",
+    "Testes/gates/security/review/CIs exatos e rastreabilidade do invariante completo antespassestrue; depende SAL012 fechado."
+  ],
+  "checks": [
+    "Planejado: teste Unit/SQLite via operação e leitura de produção, edição/desativação/reabertura reais",
+    "Planejado: gates proporcionais ao diff e cobertura com controle",
+    "Atual: grafo acíclico/245IDs/outras244tuplas iguais/146done preservados;mapa/schema/estados/log/diff/stagedscan/CI documental exata/nota148"
+  ],
+  "agentPlan": "P-INTreplanejamento técnico determinístico;P-REVSol6medium read-only;7paths documentais;0inferências locais;implementação futura apósSAL012",
+  "evidence": "E2",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Bloqueio técnico SAL012 ausente; critério funcional intacto/teste de snapshot persistido não registrado. Apenas RECON/ajuste do grafo; evidência de CI documental e liberação de reserva em refs/notes/evidence no SHA. Próximo elegível após reconciliação verificada:SAL009. Metaativa; custo não registrado."
+}

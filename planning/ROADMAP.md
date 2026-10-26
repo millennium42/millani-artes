@@ -170,7 +170,7 @@ FIN-001 executor done/E3 após CI de entrega `38444911363` no SHA `31af12adcf8be
 - SAL-005 — aceitar item livre ← SAL-001
 - SAL-006 — provar item livre não cria produto ← SAL-005
 - SAL-007 — criar item de produto ← PRD-005, SAL-001
-- SAL-008 — provar snapshot imutável ← PRD-006, SAL-007
+- SAL-008 — provar snapshot imutável ← PRD-006, SAL-007, SAL-012
 - SAL-009 — definir venda ← SAL-001
 - SAL-010 — migration de venda ← DB-005, SAL-009
 - SAL-011 — migration de item ← SAL-010, SAL-001
