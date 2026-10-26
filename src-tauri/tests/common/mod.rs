@@ -130,3 +130,5 @@ mod free_item_catalog;
 mod sales_migration;
 
 mod sale_items_migration;
+
+mod product_item_addition;

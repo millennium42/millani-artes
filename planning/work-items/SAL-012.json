@@ -1,0 +1,28 @@
+{
+  "id": "SAL-012",
+  "title": "adicionar item de produto",
+  "specPath": "planning/specs/SAL-012.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-007",
+    "SAL-010",
+    "SAL-011"
+  ],
+  "acceptanceCriteria": [
+    "Criar venda aberta com primeiro produto ou acrescentar a existente aberta por aplicação real; snapshot validado de produto atual na transação, preço escolhido e ambos descontos.",
+    "Header/item/audit IMMEDIATE atômicos, ordem checked, rejeições sem efeitos, rollback/poisoner/fresh recovery; leitura persistida consistente e completa sem catálogo vivo.",
+    "RED/GREEN/unitSQLite/money/falhas/coverage2arquivos95controle/gates/security/review/CIsSHAsexatos.",
+    "Docsantespasses/nota152 preservando151/refs/branches/mainlimpa/WTarquivada; SAL008 e E2E não antecipados."
+  ],
+  "checks": [
+    "RED/GREEN aplicação+SQLite físicos",
+    "Rust fmt/clippy/debug/release/audit; TSquality/build/scans",
+    "LLVMapp+adapter95controle/P-REV/validators/stagedscan",
+    "CIsfontefinal/nota152/liberação"
+  ],
+  "agentPlan": "P-INT escritor único;P-DATLaguna medium adapter600s;P-DOM/P-REVgpt6solmedium independente;P-SECtools;16paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-012 | VERIFY local aprovado | E3 | Adição via aplicação real: None inicia venda aberta com primeiro item; Some exige existente aberta. Produto atual validado e snapshot próprio/preço escolhido/desconto R$ ou%/ordem checked/header+item+audit na mesma transação IMMEDIATE. Leitura por ID em snapshot DEFERRED decodifica todos os itens ordenados sem catálogo vivo/resultado parcial. Dinheiro largo/zero/meio-centavo reutiliza domínio. Rejeições sem efeitos/reuso; falhas SQL/audit/rows/IDs/lock/query-only/collisions rollback e poisoner/fresh recovery. Sem alteração de caixa/catálogo/migrations/domínio/deps/testes anteriores. REDAPIausente/GREEN5unit10SQL/controleauditoria rejeitado;445Rust257lib7bin181SQL+28docs/1WebViewignored debug/release;fmt/clippy/audits/TSquality/build/security/P-REV/LLVM2arquivos95controle PASS. P-DATLaguna2calls 704.4490000000001s: inicial inválido e correção timeout semdiff; ambas rejeitadas, adapter corrigido pelo integrador. P2position negativa reproduzido9pass1fail/corrigido/GREEN5unit10SQL/P-REVconfirmou. Windows SystemTime máximo/transição sub100ns não são fixtures portáveis: limites i64 testados diretamente em Duration e préEpoch em1ms. Recibos/fracassos originais preservados foraWT;82arquivos/745163B. Docsantespassesfalse;CIs/nota152/arquivoWT/liberação pendentes. SAL-008/INV-SAL-005 histórico após edição/desativação/reabertura continua seu ID próprio; testes presentes provam produtor/leitor e snapshot sem catálogo, não fecham aquele critério. Finalização/recebimentos/UI/IPC/Rustglobal/releaseWindows instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVM local somente linhas/funções dos2arquivos inteiros, sem global/CI/statements/branches. Meta ativa; encerrar locais antespausa/interrupção; custo não registrado."
+}

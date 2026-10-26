@@ -2,6 +2,7 @@
 pub mod database;
 pub mod domain;
 pub mod application {
+    pub mod add_product_item;
     pub mod calculate_context_result;
     pub mod create_account;
     pub mod create_category;
@@ -30,4 +31,5 @@ pub mod infrastructure {
     pub mod movements;
     pub mod products;
     pub mod recurrences;
+    pub mod sales;
 }
