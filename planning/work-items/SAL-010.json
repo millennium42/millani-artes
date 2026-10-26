@@ -1,0 +1,27 @@
+{
+  "id": "SAL-010",
+  "title": "migration de venda",
+  "specPath": "planning/specs/SAL-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "SAL-009"
+  ],
+  "acceptanceCriteria": [
+    "Migrationv10 main.salesSTRICT2campos idBLOB16PK eestado textualopen/finalized,semdefaults/dados extras;migrationsaplicadas imutáveis.",
+    "Banco vazio/upgradepreserva8tabelas/schema/ledger e reabre;roundtrip/INSERTUPDATEconstraints/rollbackapósDDLretry/colisão/versãorepetida.",
+    "RED/GREEN5SQL/2controlesreais/423Rust28docs/gates/security/LLVMdatabase95controle/P-REV/CIs exatos.",
+    "Docs antespasses/nota150 preservando149/refs/245tuplas/mainlimpa/WTarquivada/liberação;Meta ativa."
+  ],
+  "checks": [
+    "RED/GREEN5SQL/controlesIDeestado",
+    "fmt/clippy/debug/release/audits/TSquality/build/security",
+    "LLVMdatabase95/controle/review/validators/stagedscan",
+    "CIsfontefinal/nota150/liberação"
+  ],
+  "agentPlan": "P-INTfixtures/transposiçãoconstantes;P-DATLaguna medium240s SQLcurto apósGemmafalhos;P-SECtools/P-REVSol6medium;13paths",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SAL-010 VERIFY E3: Migration nova010/main.salesSTRICT comidBLOB16NOTNULLPK eestadoTEXTNOTNULL limitado às chavesopen/finalized,semdefaults/FK/índiceextra/campos futuros. Rustsomente2constsde versão10/includeSQL;executor/domínio/migrations002..009/testes antigos/deps/exceções intactos. CincoSQLite reais: shapeexato/roundtripestadosIDs0MAX/reopen;INSERTUPDATEconstraintsNULL/types/IDs/estados/NUL/Unicode/duplicata semmutação;upgradev9semeadopreserva8tabelas/schema/ledger;rollbackapósDDLporfalhaledger+retry;colisãonome/versãorepetida. Controles SQL sóemcópias aceitamID15/paid e oráculos rejeitam com marcadores0/1,exit101. RED/GREEN5SQLnovos/2controles/423Rust28docs/gates/security/LLVMdatabase95controle/P-REV PASS;Laguna61.216sSQLusadosemcorreçãocomportamento/runtimeoff;CI/nota150/liberação pendentes;passesfalse. Schema/constraints/upgrade/rollback não provam CRUD de venda,persistência de itens,finalização/recebimentos/INV-SAL005/SAL008. SAL011/012 e demais consumidores próprios;UI/IPC,Rustglobal,instalador/instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. FixturesSQLde dados antigos são preparação de migration,não fluxo deprodução. DDLnãoaprova finalização vazia/transições. SQL/constantes sem percentual próprio;LLVMlocal somente database.rsinteiro,controle0 prova instrumentação,não causalidadeisolada/global/CI/branches/statements. Metaativa atéE2E;locais encerrar antespausa/interrupção;custonão registrado. Fonte:handoff SAL-010."
+}

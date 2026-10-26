@@ -126,3 +126,5 @@ mod customers_migration;
 mod customer_creation;
 
 mod free_item_catalog;
+
+mod sales_migration;

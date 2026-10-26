@@ -335,6 +335,9 @@ pub const PRODUCTS_MIGRATION_SQL: &str = include_str!("../../migrations/008-prod
 pub const CUSTOMERS_MIGRATION_VERSION: u32 = 9;
 pub const CUSTOMERS_MIGRATION_SQL: &str = include_str!("../../migrations/009-customers.sql");
 
+pub const SALES_MIGRATION_VERSION: u32 = 10;
+pub const SALES_MIGRATION_SQL: &str = include_str!("../../migrations/010-sales.sql");
+
 pub struct AuditEvent {
     pub event_id: [u8; 16],
     pub occurred_at_ms: i64,
