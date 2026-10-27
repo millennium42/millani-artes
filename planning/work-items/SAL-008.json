@@ -2,7 +2,7 @@
   "id": "SAL-008",
   "title": "provar snapshot imutável",
   "specPath": "planning/specs/SAL-008.md",
-  "status": "blocked",
+  "status": "in_progress",
   "dependencies": [
     "PRD-006",
     "SAL-007",
@@ -14,13 +14,14 @@
     "Testes/gates/security/review/CIs exatos e rastreabilidade do invariante completo antespassestrue; depende SAL012 fechado."
   ],
   "checks": [
-    "Planejado: teste Unit/SQLite via operação e leitura de produção, edição/desativação/reabertura reais",
-    "Planejado: gates proporcionais ao diff e cobertura com controle",
-    "Atual: grafo acíclico/245IDs/outras244tuplas iguais/146done preservados;mapa/schema/estados/log/diff/stagedscan/CI documental exata/nota148"
+    "GREEN1SQLite/4fixtures via produção real e reopen;2controles semânticos em cópias",
+    "Rustfmt/clippy/debug/release;stagedscan/review/validators",
+    "Coverage e checks sem inputs alterados herdados com hashes/proveniência explícitos;CI fonte e final novos SHAsexatos",
+    "Nota153 preservando152/refs/branches/mainlimpa/WTarquivada"
   ],
-  "agentPlan": "P-INTreplanejamento técnico determinístico;P-REVSol6medium read-only;7paths documentais;0inferências locais;implementação futura apósSAL012",
-  "evidence": "E2",
+  "agentPlan": "P-INTfixture/integrador;P-QAGemma low300s1função scratch;P-REVSol6medium independente/P-SECtools;11paths",
+  "evidence": "E3",
   "humanGateRequired": false,
   "passes": false,
-  "notes": "Bloqueio técnico SAL012 ausente; critério funcional intacto/teste de snapshot persistido não registrado. Apenas RECON/ajuste do grafo; evidência de CI documental e liberação de reserva em refs/notes/evidence no SHA. Próximo elegível após reconciliação verificada:SAL009. Metaativa; custo não registrado."
+  "notes": "SAL-008 | VERIFY local aprovado | E3 | INV-SAL005 backend: create_product/add_product_item/read_sale reais; catálogo editado B1700/desativado pelas aplicações reais, conferido no retorno e SQL; releituras e fechamento/reabertura preservam7campos próprios/id/status/ordem. Um SQLite com4fixtures A2x1500=3000,UnicodeNUL/preçoescolhido1250/10%=125/net1125,vazio0,wide2MAX-dMAX=MAX. Oráculos literais; contas/movimentos/ledger intactos/+4audits. Mutantes live-catalog e catalog-noop rejeitados101. Produção/migrations/deps/testes anteriores intactos, sóhook/teste novo. GREEN1SQLite/4fixtures/2mutantesREJECT;446Rust257lib7bin182SQL+28docs/1WebViewignored debug/release;fmt/clippy/P-REV PASS. GemmaP-QA1call304.005s timeout0diff/rejeitado; função implementada pelo integrador. Produção main rawhashintacta; WTCRLF/LF equivalente documentado. Evidências35arquivos/243221B preservados foraWT. Docsantespassesfalse;CIs/nota153/liberação pendentes. Prova backend de snapshot persistido; SMK005/UI/IPC,finalização/recebimentos/pendências/itemlivre persistido,cobertura Rust global e releaseWindows instalação/atualização/artefato/hash/assinatura/backuprestauração/E2E oficial pendentes. LLVM SAL012 app39/39linhas4/4fn,sales131/131linhas10/10fn100% e controlehistórico0 herdados por hashes iguais: não execução nova/incremento/causalidade SAL008/global/CI/statements/branches. TS/security/plugin47inputs canônicos iguais, recibosS12 herdados com origem explícita; stagedscan e CI novo atuais. Metaativa; encerrar locais antespausa/interrupção; custo não registrado."
 }
