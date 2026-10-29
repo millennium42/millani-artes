@@ -1,0 +1,112 @@
+{
+  "id": "SAL-013",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "064c4417ee74ff04fd001e47331af3d3d11edc05",
+  "final_sha": "6215c80e04e9a92b7087737eb416cfa2ee12212c",
+  "source_ci": {
+    "run": {
+      "id": 40893617138,
+      "run_attempt": 1,
+      "head_sha": "064c4417ee74ff04fd001e47331af3d3d11edc05",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40893617138",
+      "created_at": "2026-10-29T14:39:08Z",
+      "updated_at": "2026-10-29T14:51:10Z"
+    },
+    "job": {
+      "id": 123516676455,
+      "name": "validate",
+      "run_id": 40893617138,
+      "head_sha": "064c4417ee74ff04fd001e47331af3d3d11edc05",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "product_checks": [
+      "frontend quality and coverage",
+      "Cargo/npm audits and OSV scan",
+      "Tauri production build",
+      "cargo test --release --locked",
+      "PE AMD64 custom-protocol verification",
+      "full Git history Gitleaks scan"
+    ]
+  },
+  "final_ci": {
+    "run": {
+      "id": 40896237855,
+      "run_attempt": 1,
+      "head_sha": "6215c80e04e9a92b7087737eb416cfa2ee12212c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40896237855",
+      "created_at": "2026-10-29T14:54:54Z",
+      "updated_at": "2026-10-29T14:56:55Z"
+    },
+    "job": {
+      "id": 123525986444,
+      "name": "validate",
+      "run_id": 40896237855,
+      "head_sha": "6215c80e04e9a92b7087737eb416cfa2ee12212c",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "note": "Documentation-only closure commit. Source and product checks passed on source_sha; no code or lockfile changes followed."
+  },
+  "local_verification": {
+    "rust": "fmt, clippy -D warnings, complete debug/release suites and doctests passed",
+    "sqlite": "4 unit tests and 6 physical-file integration tests passed, including rollback, poison/recovery, ordering, snapshots, collisions, lock/query-only, TEMP shadowing, catalog/cash invariants",
+    "llvm_focal": {
+      "toolchain": "Rust 1.99.0 / LLVM 23.1.1",
+      "full": {
+        "add_free_item.rs": "33/33 lines, 2/2 functions",
+        "sales.rs": "183/183 lines, 12/12 functions"
+      },
+      "sal012_only_control": {
+        "add_free_item.rs": "0/33 lines, 0/2 functions",
+        "sales.rs": "158/183 lines, 11/12 functions; rejects both >=95% gates"
+      },
+      "limits": "Local focal lines/functions only; no Rust global, branch, statement, or CI coverage claim."
+    },
+    "security": {
+      "cargo_audit": "422 dependencies, 0 vulnerabilities, 2 pre-approved warnings",
+      "osv": "542 packages, 4 excepted findings, 0 unexcepted",
+      "npm_audit": "120 dependencies, 0 vulnerabilities",
+      "gitleaks": "16 fixtures passed; staged source diff 66.56 KB with 0 findings; source CI history scan passed"
+    },
+    "frontend": "Pinned Node 24.21.0/npm 11.19.0; npm run quality, build, and audit passed.",
+    "documents": "153 work items valid; evidence state check valid; append-only progress check passed with 682827 historical bytes preserved; final CI repeated repository validators."
+  },
+  "review": {
+    "result": "pass",
+    "findings": []
+  },
+  "refs": {
+    "notes_before": 153,
+    "notes_after": 154,
+    "main_sha": "6215c80e04e9a92b7087737eb416cfa2ee12212c",
+    "notes_ref_before": "98551cd3f85aa9adbded2852b44e401d6f6cdde0",
+    "preserved": "All 153 existing evidence notes retained; only main and refs/notes/evidence were pushed."
+  },
+  "limitations": [
+    "No UI/IPC or official E2E proof; UI-010 and SMK-005 remain pending.",
+    "No global Rust coverage claim.",
+    "No installer, installation/upgrade, backup/restore, hash, or signature claim."
+  ],
+  "next": "Do not start SAL-014 as part of this closeout."
+}
