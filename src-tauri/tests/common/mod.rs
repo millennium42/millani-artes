@@ -131,6 +131,8 @@ mod sales_migration;
 
 mod sale_items_migration;
 
+mod receivables_migration;
+
 mod product_item_addition;
 
 mod product_snapshot;

@@ -1,0 +1,29 @@
+{
+  "id": "RCV-002",
+  "title": "migration de recebível",
+  "specPath": "planning/specs/RCV-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "RCV-001"
+  ],
+  "acceptanceCriteria": [
+    "A migration versionada 12 cria somente main.receivables STRICT com id, sale_id, amount_cents, customer_id e due_at_ms, com IDs BLOB16, principal positivo, unique sale_id e FKs NO ACTION para sales/customers.",
+    "Banco vazio e upgrade v11 são testados; upgrade preserva schema, fixtures e ledger anteriores, e o ledger final é contínuo de 1 a 12.",
+    "Round-trip/reopen preserva IDs, i64::MAX do principal e i64::MIN do vencimento; constraints e FKs rejeitam entradas/mutações inválidas sem alterar o estado.",
+    "Falha ao registrar versão após DDL reverte schema/ledger e permite retry; conflito de nome ou versão não deixa migration parcial.",
+    "Migrations 001–011, movimento/caixa, entidades, dependências e callers anteriores permanecem inalterados; esta migration não prova finalização nem invariantes financeiras.",
+    "Docs, matrices, work item, handoff e log append-only coerentes; gates Rust/security/validators/review e CIs de fonte/final nos SHAs exatos passam; nota de evidência publicada preserva os mappings prévios."
+  ],
+  "checks": [
+    "RED-GREEN no módulo de migration do sqlite_harness usando SQLite real e fixtures sintéticas.",
+    "Rust 1.99 pinned: fmt --check, locked all-target Clippy -D warnings, cargo test debug/release e doctests.",
+    "Cargo audit/OSV aplicáveis, Gitleaks staged/histórico/fixtures, mapa/gitignore/evidence/work-item/progress/Tauri validators e revisão do diff.",
+    "CI fonte no SHA do código e CI documental final no SHA exato, nota refs/notes/evidence preservando mappings prévios, main/origin/main limpas."
+  ],
+  "agentPlan": "P-INT único escritor/integrador; sem subagentes. Reserva: RCV-002/P-INT/base e0714d8238f055699da9b0f24e0520c99a76acb9; paths exatos listados em planning/specs/RCV-002.md; escrita sequencial; liberar após CI final no SHA exato e nota publicada.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Implementação e execução local E3 em 2026-10-29; passes:false até os gates de entrega. RED reproduziu falha pelas constantes ausentes; GREEN migration SQLite 7/7. Rust 1.99 debug/release: 273 testes de biblioteca, 7/8 integração (1 WebView2 ignored), 200 SQLite e 36 doctests por modo passaram antes da correção final do fixture; depois, RCV-002 focal passou 7/7. fmt e Clippy locked -D warnings passaram. OSV 39/39 fixtures e scan no HEAD-base e0714d8238f055699da9b0f24e0520c99a76acb9: 542 pacotes, 4 findings cobertos pela aprovação humana até 2026-11-06, zero fora; repetir no commit RCV-002. Gitleaks 16/16 fixtures; scan no HEAD-base e0714d8238f055699da9b0f24e0520c99a76acb9 percorreu 732 commits sem achados, mas não incluiu o diff RCV-002; repetir no commit. Cargo audit 48/48 casos, 6 chamadas CLI real; gate online Cargo aguarda commit-fonte limpo. Validadores locais mapa (28/745), gitignore (28/4), evidence (25 fixtures/161 itens), work items (72 fixtures/161 itens), progress log (26 fixtures) e Tauri (37 fixtures/2 CLI, gate sem plugins) passaram; check append-only staged passou preservando 707317 bytes. Review interno identificou a falta de prova de que venda open é aceita; fixture corrigida e RCV-002 passou 7/7, sem achado impeditivo restante. Review não independente; Cargo audit real, CIs exatos e nota pendentes. Ver spec/handoff para limites; não iniciar RCV-003."
+}

@@ -4,9 +4,9 @@ Entidades previstas: `account`, `category`, `financial_movement`, `recurrence`, 
 
 Dinheiro será inteiro em centavos (ADR-013); valores agregados são consultas/projeções. Chaves, constraints, índices e migrations concretos ficam para `DB-*`, depois de uma spec e testes de banco vazio/upgrade.
 
-## Receivable — RCV-001
+## Receivable — RCV-001/002
 
-Um recebível inicial contém identidade própria, vínculo único à venda e um `SalePending` com o principal original, cliente e instante de vencimento. Recebimentos são registros separados; o saldo devido será projetado do principal menos o histórico, sem coluna de saldo restante. RCV-002 define as constraints físicas; RCV-003 grava o recebível dentro da transação de finalização SAL-020.
+Um recebível inicial contém identidade própria, vínculo único à venda e um `SalePending` com o principal original, cliente e instante de vencimento. A migration RCV-002 cria `main.receivables` STRICT v12: `id` BLOB16 PK, `sale_id` BLOB16 único/FK para `sales`, `amount_cents` INTEGER positivo, `customer_id` BLOB16/FK para `customers` e `due_at_ms` INTEGER. As FKs usam `NO ACTION`; sem defaults, saldo restante, status, contexto, recibos ou movimentos. Recebimentos são registros separados; o saldo devido será projetado do principal menos o histórico, sem coluna de saldo restante. A migration prova somente constraints físicas; RCV-003 fará a gravação dentro da transação de finalização SAL-020. Ver [spec RCV-002](../../planning/specs/RCV-002.md).
 
 
 DB-013 implementa `audit_event` técnico com IDs opacos de 16 bytes, instante Unix ms UTC e tags estáticas de operação/entidade. Não armazena payload financeiro nem prova invariantes financeiras; detalhes e limites em [spec](../../planning/specs/DB-013.md).
