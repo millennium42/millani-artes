@@ -2,7 +2,7 @@
   "id": "SAL-014",
   "title": "remover item de venda aberta",
   "specPath": "planning/specs/SAL-014.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-012"
   ],
@@ -22,6 +22,6 @@
   "agentPlan": "P-INT escritor único; sem delegação/paralelismo; revisão GPT focal. Base 6215c80e04e9a92b7087737eb416cfa2ee12212c; paths exatos reservados na spec/handoff; liberar após CI final e nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Implementação SAL-014 local em E3; status ainda in_progress e passes=false. Base main/origin SHA 6215c80e04e9a92b7087737eb416cfa2ee12212c; CI final SAL-013 40896237855 passou nessa base, CI fonte SAL-013 40893617138 passou no SHA 064c4417ee74ff04fd001e47331af3d3d11edc05. RED foi observado antes da função/helper; 3 unitários, 5 SQLite físicos e suítes Rust debug/release passaram. fmt, clippy, scripts pinados de Cargo Audit/OSV, validators documentais e staged Gitleaks (64,08 KB, zero findings) passaram; coverage focal e controle negativo registrados no handoff. Revisão focal local sem achados bloqueadores. Limite herdado do helper: commit failure não tem recuperação prometida e não foi injetado. Ainda pendentes: commit/push, CI fonte e final nos SHAs exatos, nota refs/notes/evidence e conferência de refs. Não iniciar SAL-015."
+  "passes": true,
+  "notes": "Candidato de fechamento SAL-014 E3. Base main/origin SHA 6215c80e04e9a92b7087737eb416cfa2ee12212c; source CI run 40904513161/job 123555495977 passou 23/23 steps sem skips no SHA 48a92d1ea62bbad5843539d708587896562559b7. 3 unitários, 5 SQLite físicos, suítes Rust debug/release, fmt, clippy, scripts pinados Cargo Audit/OSV, validators documentais, staged Gitleaks (64,60 KB, zero findings), coverage focal e controle negativo passaram; revisão sem achados bloqueadores. O workflow documental final e a nota refs/notes/evidence do SHA candidato ainda precisam passar/publicar para liberar; o run/note definitivos serão registrados como evidência externa. Limite herdado: commit failure não tem recuperação prometida e não foi injetado. Não iniciar SAL-015."
 }

@@ -2355,3 +2355,9 @@ SAL-014 | REVIEW/VERIFY local | E3 | Revisão do fluxo e testes sem achados bloq
 SAL-014 | errata de contagem | E3 | Nos registros TEST/SECURITY, leia a suíte binária como 7 testes aprovados e 1 ignorado; total de 8 testes binários.
 
 SAL-014 | staged secret scan e validators | E3 | Work item/schema/evidência válidos para 154 itens; 72 casos sintéticos do validator de work items e 26 casos do log passaram; append-only preservou 683564 bytes da base. Gitleaks 8.30.1 stdin no diff staged (64,08 KB), zero findings, incluindo sem confiar em comentários `gitleaks:allow`. `git diff --cached --check` passou. CI, commit/push e nota de evidência ainda pendentes.
+
+SAL-014 | errata staged scan | E3 | Após a atualização do registro de gate, a varredura staged final do candidato de origem foi repetida: 64,60 KB, zero findings. A contagem 64,08 KB acima é a primeira medição, não substitui esta medição final.
+
+SAL-014 | CI fonte aprovado | E3 | Commit fonte/documentos `48a92d1ea62bbad5843539d708587896562559b7`: run `40904513161`, job `123555495977`, attempt 1, 23/23 steps success, 0 skips. Build Tauri de produção, auditorias, frontend, validações e varredura GitHub passaram. CI final do candidato e nota `refs/notes/evidence` ainda pendentes.
+
+SAL-014 | candidato de fechamento documental | E3 | Especificação, matriz, arquitetura, estratégia, coverage, handoff, log append-only e work item registram escopo/evidência local e CI fonte; status done/passes:true no candidato. A liberação depende do CI final no SHA documental e nota que preserve as 154 evidências existentes; não iniciar SAL-015.
