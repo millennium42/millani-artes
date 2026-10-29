@@ -2,7 +2,7 @@
   "id": "RCV-002",
   "title": "migration de recebível",
   "specPath": "planning/specs/RCV-002.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "DB-005",
     "RCV-001"
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT único escritor/integrador; sem subagentes. Reserva: RCV-002/P-INT/base e0714d8238f055699da9b0f24e0520c99a76acb9; paths exatos listados em planning/specs/RCV-002.md; escrita sequencial; liberar após CI final no SHA exato e nota publicada.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Implementação e execução local E3 em 2026-10-29; passes:false até os gates de entrega. RED reproduziu falha pelas constantes ausentes; GREEN migration SQLite 7/7. Rust 1.99 debug/release: 273 testes de biblioteca, 7/8 integração (1 WebView2 ignored), 200 SQLite e 36 doctests por modo passaram antes da correção final do fixture; depois, RCV-002 focal passou 7/7. fmt e Clippy locked -D warnings passaram. OSV 39/39 fixtures e scan no HEAD-base e0714d8238f055699da9b0f24e0520c99a76acb9: 542 pacotes, 4 findings cobertos pela aprovação humana até 2026-11-06, zero fora; repetir no commit RCV-002. Gitleaks 16/16 fixtures; scan no HEAD-base e0714d8238f055699da9b0f24e0520c99a76acb9 percorreu 732 commits sem achados, mas não incluiu o diff RCV-002; repetir no commit. Cargo audit 48/48 casos, 6 chamadas CLI real; gate online Cargo aguarda commit-fonte limpo. Validadores locais mapa (28/745), gitignore (28/4), evidence (25 fixtures/161 itens), work items (72 fixtures/161 itens), progress log (26 fixtures) e Tauri (37 fixtures/2 CLI, gate sem plugins) passaram; check append-only staged passou preservando 707317 bytes. Review interno identificou a falta de prova de que venda open é aceita; fixture corrigida e RCV-002 passou 7/7, sem achado impeditivo restante. Review não independente; Cargo audit real, CIs exatos e nota pendentes. Ver spec/handoff para limites; não iniciar RCV-003."
+  "passes": true,
+  "notes": "Implementação E3 em 2026-10-29. RED reproduziu falha pelas constantes ausentes; GREEN migration SQLite 7/7. Rust 1.99 debug/release: 273 testes de biblioteca, 7/8 integração (1 WebView2 ignored), 200 SQLite e 36 doctests por modo passaram antes da correção final do fixture; depois, RCV-002 focal passou 7/7. fmt e Clippy locked -D warnings passaram. OSV 39/39 fixtures e scan no commit dffbc13216a1453446de258852c24aab5c318fca: 542 pacotes (120 npm/422 Cargo), 4 findings cobertos pela aprovação humana até 2026-11-06, zero fora. Gitleaks 16/16 fixtures; scan no commit dffbc13216a1453446de258852c24aab5c318fca percorreu 733 commits incluindo RCV-002, zero achados. Cargo audit 48/48 casos, 6 chamadas CLI real; Cargo Audit no commit limpo dffbc13216a1453446de258852c24aab5c318fca: 422 dependências, zero vulnerabilidades e dois warnings excetuados até 2026-11-06. Validadores locais mapa (28/745), gitignore (28/4), evidence (25 fixtures/161 itens), work items (72 fixtures/161 itens), progress log (26 fixtures) e Tauri (37 fixtures/2 CLI, gate sem plugins) passaram; check append-only staged passou preservando 707317 bytes. Review interno identificou a falta de prova de que venda open é aceita; fixture corrigida e RCV-002 passou 7/7, sem achado impeditivo restante. Review não independente. Source CI run 40960185135/job 123750615167 passou 23/23/0 skips no SHA dffbc13216a1453446de258852c24aab5c318fca. O CI documental final no SHA de fechamento e o recibo refs/notes/evidence com preservação dos mappings encerram a liberação; limites em spec/handoff."
 }
