@@ -1,0 +1,30 @@
+{
+  "id": "RCV-003",
+  "title": "criar recebível pendente na transação do chamador",
+  "specPath": "planning/specs/RCV-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "RCV-002",
+    "SAL-017"
+  ],
+  "acceptanceCriteria": [
+    "persist_receivable_in_transaction recebe a transação SQLite existente, persiste exatamente um Receivable e uma auditoria na mesma transação; o helper não faz BEGIN/COMMIT próprio.",
+    "Principal não positivo falha antes de qualquer consulta; venda ausente ou aberta não recebe dívida; cliente e unicidade são impostos pelas FKs/UNIQUE existentes.",
+    "Falha de auditoria após mudança de venda e inserção do recebível reverte todos os writes quando o chamador propaga o erro; fixtures de SQLite são sintéticas e baseadas em arquivo.",
+    "Sucesso preserva os termos literais após reopen, escreve apenas main, não cria movimento/entrada nem altera conta/saldo/contexto; erros ocultam detalhes do SQLite.",
+    "Spec, work item, handoff, roadmap, matrizes e progress log append-only correspondem ao escopo focal; não afirmar finalização completa, UI/IPC ou E2E.",
+    "Rust fmt, locked all-target Clippy -D warnings, debug/release/doctests, audit, Gitleaks, validators, revisão independente e CIs fonte/final no SHA exato passam; nota publicada preserva mappings anteriores antes de liberar SAL-020."
+  ],
+  "checks": [
+    "RED reproduzido no commit de testes d8dc42621c6ac7ef9e2042701ded7c31f8e5d0da: import esperado infrastructure::receivables ausente antes da implementação.",
+    "GREEN focal: seis testes SQLite em arquivo passaram, cobrindo reopen literal/auditoria/ausência de movimento, principal inválido, venda ausente/aberta/status inválido, FK/UNIQUE, auditoria com rollback externo e TEMP shadow.",
+    "Rust fmt --check e locked all-target Clippy -D warnings passaram; suíte debug e release passaram com 206 testes e 36 doctests por perfil.",
+    "Gitleaks 8.30.1: zero findings; Cargo Audit 0.22.2: 422 dependências, zero vulnerabilidades e dois avisos aprovados; OSV 2.6.0: 542 pacotes, quatro findings excetuados e zero fora. Exceções válidas até 2026-11-06. Repetir scans no commit-fonte final.",
+    "P-REV independente GPT Sol 6 medium: sem achados P0/P1/P2. Validators, source CI e CI documental final nos SHAs exatos, nota preservando mappings e alinhamento main/origin/main ainda pendentes."
+  ],
+  "agentPlan": "P-INT integra e reproduz. P-QA/Gemma recebeu somente os testes reservados, mas terminou em timeout sem diff utilizável; recibo externo preservado. P-INT escreveu e integrou testes e helper. P-DAT/Laguna não foi acionado. P-REV independente GPT Sol 6 medium revisou o diff e não encontrou P0/P1/P2. Nenhum worker marca passes, commita ou publica.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "RCV-003 segue in_progress/E3/passes:false. P-QA timeout sem diff; executor e Gemma encerrados e porta local 11434 confirmada fechada. RED/GREEN e gates Rust locais passaram. P-REV independente sem P0/P1/P2. Cargo Audit/Gitleaks/OSV precisam de nova execução no commit-fonte final; validators, CIs e nota de evidência pendentes. SAL-020 ainda bloqueado. Contexto Casa/Fábrica individual por pagamento inicial foi decidido pela usuária e está registrado em BUSINESS_RULES.md."
+}
