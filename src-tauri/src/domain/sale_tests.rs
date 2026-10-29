@@ -1,6 +1,6 @@
 use super::{
     create_free_item, create_product_item, DiscountInput, DomainError, Product, Sale, SaleItem,
-    SaleStatus,
+    SalePayment, SaleStatus,
 };
 
 fn check(
@@ -83,6 +83,26 @@ fn sal009_preserves_identity_both_states_and_empty_collection_as_metadata() {
         assert_eq!(matches!(&sale.status, SaleStatus::Finalized), finalized);
         assert_eq!(matches!(&sale.status, SaleStatus::Open), !finalized);
     }
+}
+
+#[test]
+fn sal016_preserves_each_payment_account_amount_and_order() {
+    let payments = Vec::from([
+        SalePayment {
+            account_id: [0x51; 16],
+            amount_cents: 500,
+        },
+        SalePayment {
+            account_id: [0x52; 16],
+            amount_cents: 1000,
+        },
+    ]);
+
+    assert_eq!(payments.len(), 2);
+    assert_eq!(payments[0].account_id, [0x51; 16]);
+    assert_eq!(payments[0].amount_cents, 500);
+    assert_eq!(payments[1].account_id, [0x52; 16]);
+    assert_eq!(payments[1].amount_cents, 1000);
 }
 
 #[test]

@@ -714,6 +714,22 @@ pub enum SaleStatus {
     Finalized,
 }
 
+/// One initial payment allocation; later receipts belong to the receivable flow.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::SalePayment>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::SalePayment>();
+/// ```
+pub struct SalePayment {
+    pub account_id: [u8; 16],
+    pub amount_cents: i64,
+}
+
 /// Sale identity, lifecycle metadata, and owned item snapshots.
 ///
 /// ```compile_fail
