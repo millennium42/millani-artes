@@ -16,15 +16,15 @@
     "Rust fmt, locked all-target Clippy -D warnings, debug/release/doctests, audit, Gitleaks, validators, revisão independente e CIs fonte/final no SHA exato passam; nota publicada preserva mappings anteriores antes de liberar SAL-020."
   ],
   "checks": [
-    "Baseline no SHA 2347451a88f184f5897ba578219f0187e1f4888a: cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness (200/200).",
-    "RED/GREEN no módulo RCV-003 do sqlite_harness, incluindo sucesso/reopen, rejeições/sem mutação, FK/UNIQUE, TEMP shadow e rollback auditado.",
-    "Rust 1.99 pinned: cargo fmt --check, cargo clippy --locked --all-targets -- -D warnings, cargo test debug/release, doctests e cargo audit.",
-    "Gitleaks staged/histórico/fixtures; validators de mapa, gitignore, evidence, work items, progress log append-only e Tauri; review P-REV independente.",
-    "Source CI e CI documental final no SHA exato; nota refs/notes/evidence preserva os 164 mappings anteriores; main/origin/main limpas e handoff libera SAL-020."
+    "RED reproduzido no commit de testes d8dc42621c6ac7ef9e2042701ded7c31f8e5d0da: import esperado infrastructure::receivables ausente antes da implementação.",
+    "GREEN focal: seis testes SQLite em arquivo passaram, cobrindo reopen literal/auditoria/ausência de movimento, principal inválido, venda ausente/aberta/status inválido, FK/UNIQUE, auditoria com rollback externo e TEMP shadow.",
+    "Rust fmt --check e locked all-target Clippy -D warnings passaram; suíte debug e release passaram com 206 testes e 36 doctests por perfil.",
+    "Gitleaks 8.30.1: zero findings; Cargo Audit 0.22.2: 422 dependências, zero vulnerabilidades e dois avisos aprovados; OSV 2.6.0: 542 pacotes, quatro findings excetuados e zero fora. Exceções válidas até 2026-11-06. Repetir scans no commit-fonte final.",
+    "P-REV independente GPT Sol 6 medium: sem achados P0/P1/P2. Validators, source CI e CI documental final nos SHAs exatos, nota preservando mappings e alinhamento main/origin/main ainda pendentes."
   ],
-  "agentPlan": "P-INT integra, reproduz, corrige, revisa e registra. P-QA/Gemma recebe apenas os testes do sqlite_harness; depois P-DAT/Laguna recebe somente lib.rs e o novo módulo de persistência. Chamadas locais sequenciais em worktree gerenciada isolada e com paths disjuntos. Revisão adversarial independente P-REV/GPT Sol 6 medium. Não usar subagentes nativos adicionais; nenhum worker marca passes, commita ou publica.",
-  "evidence": "E2",
+  "agentPlan": "P-INT integra e reproduz. P-QA/Gemma recebeu somente os testes reservados, mas terminou em timeout sem diff utilizável; recibo externo preservado. P-INT escreveu e integrou testes e helper. P-DAT/Laguna não foi acionado. P-REV independente GPT Sol 6 medium revisou o diff e não encontrou P0/P1/P2. Nenhum worker marca passes, commita ou publica.",
+  "evidence": "E3",
   "humanGateRequired": false,
   "passes": false,
-  "notes": "SPEC/RECON em 2026-10-29 na base 2347451a88f184f5897ba578219f0187e1f4888a; sem implementação RCV-003 ainda. RCV-002 liberação foi revalidada em notas: 164 mappings, 163 anteriores preservados pelo hash 95C7F94584778108F7FD22CA84E9625B6EF7DBC3EF8699B033ADE414C6E09969; source CI 40960185135 23/23/0 skips; CI final 40962573310 16/23 e 7 skips esperados; refs/main alinhadas. Próximo: testes RED. SAL-020 continua bloqueado até liberação completa de RCV-003."
+  "notes": "RCV-003 segue in_progress/E3/passes:false. P-QA timeout sem diff; executor e Gemma encerrados e porta local 11434 confirmada fechada. RED/GREEN e gates Rust locais passaram. P-REV independente sem P0/P1/P2. Cargo Audit/Gitleaks/OSV precisam de nova execução no commit-fonte final; validators, CIs e nota de evidência pendentes. SAL-020 ainda bloqueado. Contexto Casa/Fábrica individual por pagamento inicial foi decidido pela usuária e está registrado em BUSINESS_RULES.md."
 }

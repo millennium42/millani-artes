@@ -32,6 +32,7 @@ pub mod infrastructure {
     pub mod customers;
     pub mod movements;
     pub mod products;
+    pub mod receivables;
     pub mod recurrences;
     pub mod sales;
 }
