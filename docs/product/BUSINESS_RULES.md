@@ -10,6 +10,9 @@
 - Dashboard projeta a fonte de verdade, sem agregados editáveis.
 - Escritas financeiras compostas são atômicas e deixam histórico técnico suficiente para diagnóstico.
 
+## Contexto de pagamentos iniciais de venda — decisão humana de 29/10/2026
+Cada pagamento inicial de uma venda tem seu próprio contexto Casa/Fábrica, escolhido separadamente para classificar a entrada correspondente. Pagamentos da mesma venda podem usar contextos diferentes. Decisão registrada na resposta humana durante a reconciliação de SAL-020.
+
 - Vencimento mensal: quando o dia escolhido não existir, usar o último dia do mês; considerar o vencimento até o fim do dia no horário de Brasília. Decisão humana registrada em 19/10/2026, na resposta à pergunta de calendário durante REC-011.
 
 

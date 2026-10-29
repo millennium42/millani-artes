@@ -182,15 +182,17 @@ FIN-001 executor done/E3 após CI de entrega `38444911363` no SHA `31af12adcf8be
 - SAL-017 — definir pendência ← SAL-016
 - SAL-018 — exigir cliente pendente ← SAL-017, CUS-005
 - SAL-019 — exigir vencimento pendente ← SAL-017
-- SAL-020 — finalizar venda transacional ← SAL-012, SAL-013, SAL-015, SAL-017, DB-011
+- RCV-001 — definir conta a receber ← SAL-017
+- RCV-002 — migration de recebível ← DB-005, RCV-001
+- RCV-003 — criar recebível pendente ← RCV-002, SAL-017
+- SAL-020 — finalizar venda transacional ← SAL-012, SAL-013, SAL-015, SAL-017, DB-011, RCV-003
 - SAL-021 — provar pendência sem saldo ← SAL-020, FIN-024
 - SAL-022 — provar rollback de venda ← SAL-020, DB-012
 
+RCV-001 a RCV-003 foram antecipados do B6 em 29/10/2026. A rastreabilidade de MVP-08 exige que o devido, cliente e vencimento persistam junto da finalização; devolver somente `SalePending` em memória deixaria a venda encerrada sem cobrança consultável. RCV-003 será uma operação transacional reutilizável dentro do finalizador. RCV-004 em diante permanecem no B6.
+
 ## B6 — Recebimentos, devoluções e dashboard
 
-- RCV-001 — definir conta a receber ← SAL-020
-- RCV-002 — migration de recebível ← DB-005, RCV-001
-- RCV-003 — criar recebível pendente ← RCV-002, SAL-017
 - RCV-004 — calcular saldo devido ← RCV-003
 - RCV-005 — definir recebimento parcial ← RCV-001
 - RCV-006 — registrar recebimento ← RCV-005, FIN-017, DB-011

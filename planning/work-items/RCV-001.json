@@ -1,0 +1,27 @@
+{
+  "id": "RCV-001",
+  "title": "definir conta a receber",
+  "specPath": "planning/specs/RCV-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-017"
+  ],
+  "acceptanceCriteria": [
+    "Receivable define somente id [u8;16], sale_id [u8;16] e pending SalePending; pending preserva valor principal, cliente e vencimento sem derivar saldo atual.",
+    "Um teste preserva todos os campos nos limites dos tipos; compile-fail doctests impedem Debug e Display.",
+    "Nenhuma lógica/validação/SQL/migration/dependência/efeito financeiro é introduzida; entidades e callers anteriores permanecem intactos.",
+    "Roadmap posiciona RCV-001/002/003 antes de SAL-020 para que o recebível exista dentro da finalização atômica; docs/matrizes/log/handoff são coerentes.",
+    "Gates Rust/security/review/validators, CI fonte do código e CI documental final nos SHAs exatos passam; nota publicada preserva os mappings prévios antes de liberar RCV-002."
+  ],
+  "checks": [
+    "RED/GREEN focal do tipo e preservação integral dos campos; doctests compile_fail Debug/Display.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, cargo test debug/release/doctest e cargo audit/OSV.",
+    "Coverage Rust focal conforme policy sem alegação global; Gitleaks staged/histórico; validators de mapa/work-item/evidence/progress; revisão adversarial do diff.",
+    "CI fonte com gates de produto no SHA de código e CI documental final no SHA exato, nota refs/notes/evidence preservando mappings prévios e main limpa antes de RCV-002."
+  ],
+  "agentPlan": "P-INT único escritor/integrador; sem subagentes. RCV-001 altera somente tipo passivo e teste de domínio, registra a correção do grafo exigida pela atomicidade de MVP-08 e não inicia RCV-002 antes da liberação completa.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON iniciados em 2026-10-29. Base main/origin fa8a06db50913e0bc7499bf8267692ca494cf857; refs/notes/evidence local/remota 2080ed810f328343e60f919866c2f93936ba6ae4 com 162 mappings. A nota SAL-019 confirma done/E3, source CI 40944207392 no SHA 3ca42696d21252ecafcb911c769c9fc96313a079, final CI 40946691966 no SHA desta base e preservação dos 161 mappings anteriores. RCV-001/002/003 foram antecipados para antes de SAL-020 porque MVP-08 exige principal, cliente e vencimento persistidos na transação final; devolução transitória deixaria cobrança não consultável. RED reproduzido, teste focal GREEN 1/1 e 2 doctests compile_fail. Rust debug/release: 273 biblioteca, 7/8 integração (1 WebView2 ignorado), 193 SQLite, 36 doctests; fmt/clippy passam. Coverage e Cargo Audit/OSV passam conforme spec. Gitleaks staged 22.61 KB/0, história 728 commits/0, fixtures 16/16 serial; o primeiro fixture concorrente dividiu scratch com o scan histórico e a repetição serial passou. Validators de mapa/gitignore/evidence/work-item/progress/Tauri passam. Review P-INT final sem achado impeditivo, não independente. Work item permanece in_progress/E3/passes:false até CI fonte/documental nos SHAs exatos e nota nova preservando os 162 mappings."
+}

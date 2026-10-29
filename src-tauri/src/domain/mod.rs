@@ -742,6 +742,23 @@ pub struct SalePending {
     pub due_at_ms: i64,
 }
 
+/// The original amount due for a finalized sale; later receipts project its remaining balance.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::Receivable>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::Receivable>();
+/// ```
+pub struct Receivable {
+    pub id: [u8; 16],
+    pub sale_id: [u8; 16],
+    pub pending: SalePending,
+}
+
 /// One initial payment allocation; later receipts belong to the receivable flow.
 ///
 /// ```compile_fail
@@ -874,3 +891,6 @@ mod product_item_tests;
 
 #[cfg(test)]
 mod sale_tests;
+
+#[cfg(test)]
+mod receivable_tests;
