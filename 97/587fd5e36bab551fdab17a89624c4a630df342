@@ -1,0 +1,37 @@
+{
+  "id": "SAL-018",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "5ff8ffcf8e4afc48a68e78d414c0890f2d19e0c0",
+  "final_sha": "97587fd5e36bab551fdab17a89624c4a630df342",
+  "source_ci": {
+    "run": {"id": 40938003801, "workflow": "Documentation", "event": "push", "run_attempt": 1, "head_sha": "5ff8ffcf8e4afc48a68e78d414c0890f2d19e0c0", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40938003801"},
+    "job": {"id": 123673582129, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 23, "steps_skipped": 0}
+  },
+  "final_ci": {
+    "run": {"id": 40940472980, "workflow": "Documentation", "event": "push", "run_attempt": 1, "head_sha": "97587fd5e36bab551fdab17a89624c4a630df342", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40940472980"},
+    "job": {"id": 123682225910, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7},
+    "skipped": ["Install locked frontend dependencies", "Check frontend quality", "Validate coverage reports", "Upload frontend coverage", "Prepare pinned Rust", "Build Tauri production", "Verify Tauri executable"],
+    "scope": "Documentation-only closure run; all seven product steps passed in source CI on source_sha."
+  },
+  "local_verification": {
+    "red": "Focused build failed with E0560/E0609 before customer_id existed.",
+    "green": "domain::sale_tests 9/9; three SalePending compile_fail doctests 3/3, including omission of required customer_id; field test preserves all 16 bytes and 1500 cents.",
+    "rust": "Pinned Rust 1.99.0 MSVC: cargo fmt --check, locked all-target Clippy -D warnings, full debug and release suites passed; each had 271 unit, 7/8 integration (1 WebView2 ignored), 193 SQLite and 33 doctests, zero failures.",
+    "llvm": "Rust 1.99.0/LLVM 23.1.1: domain/mod.rs full/control 320/320 lines and 31/31 functions; sale_tests full 199/199 lines and 10/10 functions versus control 190/199 and 9/10 after filtering only SAL-018. Branches unreported; no causal coverage percentage for a passive field.",
+    "security": "Cargo Audit 0.22.2 gate: 48 fixtures, 6 CLI invocations, 422 dependencies, zero vulnerabilities and 2 existing exceptions through 2026-11-06; manifest/lock hashes unchanged. Gitleaks 8.30.1: 16 fixtures, 721-commit history and staged source patch 34.99 KB had zero findings; post-source-CI staged documentation patch 19.60 KB also had zero findings.",
+    "validators": "Project map 28 sources/733 files; gitignore 28 ignored/4 preserved; evidence-state 25 fixtures/158 valid; work items 72 fixtures/158 schema-valid; progress fixtures 26 and append-only historic bytes preserved (699146 bytes after source commit).",
+    "review": "P-INT adversarial focal review found no blocking issue; no independent second review.",
+    "dependencies": "No dependency or lockfile change; no customer validation, SQLite access, FK, persistence, sale finalization, receipt, cash/balance effect, UI or IPC added."
+  },
+  "refs": {
+    "notes_before": 160,
+    "notes_after": 161,
+    "notes_ref_before": "3e5c3ce1767a4b5917c9c6973e120eb6f5248e1f",
+    "preserved_mapping_set_sha256": "ED008FFC8DCEB8D441F42BA6C983BA8D600FD073D7FCB701BCCD52A1A1F2E924",
+    "final_sha": "97587fd5e36bab551fdab17a89624c4a630df342",
+    "preserved": "All 160 prior evidence mappings must remain byte-for-byte equivalent; this note adds only SAL-018."
+  },
+  "limitations": ["customer_id is structurally required and preserved, but its referential existence is not proven", "SQLite, foreign-key, transaction rollback, finalization, due date, cash, UI/IPC, smoke and E2E remain for their own work items", "the seven skipped documentation-CI product steps are covered by the successful source CI on source_sha"],
+  "next": "SAL-018 released after final CI and note-ref verification; SAL-019 is the next eligible item."
+}
