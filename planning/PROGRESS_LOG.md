@@ -2437,3 +2437,5 @@ RCV-003 | SPEC/RECON | E2 | Próximo item elegível de B5, dependências RCV-002
 RCV-003 | SECURITY/VERIFY | E3 | Scans exatos no SHA c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b: Gitleaks 740 commits/0 findings; Cargo Audit 422 deps/0 vulnerabilidades/2 avisos aprovados; OSV 542 pacotes/4 exceções/0 fora. Validadores locais aprovados; revisão P-REV sem P0/P1/P2.
 
 RCV-003 | CI fonte | E3 | Push run 40972757498/job 123793272870 passou 23/23/0 skips no SHA exato c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b; Tauri Windows custom-protocol e suites release passaram. CI documental final, nota preservando mappings e liberação SAL-020 pendentes.
+
+RCV-003 | VERIFY/CI documental | E3 | CI de main no SHA f1d95dfb2adf2e536ba95f2b782d89d35bda2fa3, run 40974790968/job 123800036427, success 16/23 com sete etapas de produto/build omitidas pelo diff documental. Source CI exato c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b, run 40972757498, 23/23/0 skips. O fechamento no main terá CI próprio e nota refs/notes/evidence preservando os 164 mappings anteriores, hash-base 5CB8FE87C88982065BE5FBFCF4B0A54611F30089731780AAE10FFA7947B059EF.
