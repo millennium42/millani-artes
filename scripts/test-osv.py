@@ -208,7 +208,7 @@ def main():
             renew_synthetic_approval()
             write_proposal()
             allowed, expiry = gate.load_exceptions(blobs)
-            assert len(allowed) == 3 and expiry == proposal["expiresBeforeUTC"]
+            assert len(allowed) == 4 and expiry == proposal["expiresBeforeUTC"]
             results.append({"case": "proposal-synthetic-approval-boundary", "status": "pass", "expectedFailure": None})
             proposal["expiresBeforeUTC"] = "2099-01-01"
             write_proposal()
