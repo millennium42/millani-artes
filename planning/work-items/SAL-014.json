@@ -1,0 +1,27 @@
+{
+  "id": "SAL-014",
+  "title": "remover item de venda aberta",
+  "specPath": "planning/specs/SAL-014.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-012"
+  ],
+  "acceptanceCriteria": [
+    "Caso de uso remove por sale_id/item_id apenas de venda aberta, gera evento e Unix ms checked e apresenta erros estáticos.",
+    "SQLite físico apaga exatamente o item pertencente à venda e grava sale_item_remove atomicamente; cabeçalho permanece aberto, mesmo vazio, e a ordem restante é preservada.",
+    "Rejeições não mutam; falhas DELETE/audit/rows revertem e poisoner; controles cobrem query-only, lock, TEMP, ID cruzado e invariantes de caixa/catálogo.",
+    "Gates Rust/security/documentais, coverage focal com controle negativo e review aprovados; matriz, docs, log append-only e handoff atualizados antes de passes=true.",
+    "CI remoto verde no SHA fonte/final exato e nota publicada preservando notas; não iniciar SAL-015 antes do fechamento."
+  ],
+  "checks": [
+    "RED/GREEN unitário e integração SQLite de arquivo, reopen, ordem, venda vazia, rejeições e rollback/poisoner",
+    "cargo fmt --check; clippy --all-targets --features tauri/custom-protocol -- -D warnings; cargo test debug e release",
+    "cargo audit/OSV, validators documentais, staged Gitleaks e review focal",
+    "LLVM linhas/funções dos arquivos Rust afetados com controle negativo; CI fonte/final exato"
+  ],
+  "agentPlan": "P-INT escritor único; sem delegação/paralelismo; revisão GPT focal. Base 6215c80e04e9a92b7087737eb416cfa2ee12212c; paths exatos reservados na spec/handoff; liberar após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Implementação SAL-014 local em E3; status ainda in_progress e passes=false. Base main/origin SHA 6215c80e04e9a92b7087737eb416cfa2ee12212c; CI final SAL-013 40896237855 passou nessa base, CI fonte SAL-013 40893617138 passou no SHA 064c4417ee74ff04fd001e47331af3d3d11edc05. RED foi observado antes da função/helper; 3 unitários, 5 SQLite físicos e suítes Rust debug/release passaram. fmt, clippy, scripts pinados de Cargo Audit/OSV, validators documentais e staged Gitleaks (64,08 KB, zero findings) passaram; coverage focal e controle negativo registrados no handoff. Revisão focal local sem achados bloqueadores. Limite herdado do helper: commit failure não tem recuperação prometida e não foi injetado. Ainda pendentes: commit/push, CI fonte e final nos SHAs exatos, nota refs/notes/evidence e conferência de refs. Não iniciar SAL-015."
+}

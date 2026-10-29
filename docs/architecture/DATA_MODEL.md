@@ -318,3 +318,7 @@ SAL-012 | CI fonte aprovado / critérios satisfeitos | E3 | SHA1817edc0611f7fc54
 ## SAL-013 — snapshot de item livre (E3 local)
 
 Sem migration ou alteração de schema. A linha existente em main.sale_items conserva product_id=NULL, descrição, quantidade, preço, desconto e total próprios; uma venda nova, item e evento de auditoria compartilham uma transação. Reabertura por read_sale confirma ordem e snapshot. Teste de arquivo SQLite conferiu que catálogo, movimentos e contas não mudam. UI/IPC e finalização ficam fora desta tarefa; veja [handoff](../../planning/handoffs/SAL-013.md).
+
+## SAL-014 — remoção de item da venda aberta (E3 local)
+
+Sem migration ou alteração de schema. A operação apaga de `main.sale_items` somente a linha vinculada ao par `(sale_id, item_id)` quando `main.sales.status='open'`; a remoção e o evento `sale_item_remove`/`sale_item` entram na mesma transação. O cabeçalho continua aberto mesmo sem itens, posições remanescentes não são compactadas e a próxima inclusão usa o `MAX(position)+1` já existente. Testes SQLite físicos confirmam reopen/read e nenhuma mudança em catálogo, contas ou movimentos. Não foi introduzido total armazenado ou regra de finalização; veja [handoff](../../planning/handoffs/SAL-014.md).

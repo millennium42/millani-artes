@@ -556,3 +556,7 @@ SAL-008 | CI fonte aprovado em 1aebfb4/run40883828192: OSV39 fixtures/scan, audi
 ## SAL-013 — persistência de item livre
 
 Quatro testes unitários cobrem orquestração, IDs, relógio e erros; seis testes SQLite usam arquivo físico, fluxo real de aplicação, reopen/read, texto Unicode/NUL/CRLF, descontos/limites, ausência de efeitos no catálogo/caixa, rejeições sem escrita, posição máxima, colisões, query-only, lock, rollback, poisoner e recuperação. A suíte Rust completa passou em debug e release; UI/IPC/E2E oficial não foram executados por estarem fora do escopo SAL-013. Evidência local e limites: [handoff](../../planning/handoffs/SAL-013.md).
+
+## SAL-014 — remoção de item de venda aberta
+
+Três testes unitários cobrem encaminhamento de IDs/Unix ms, ID/relógio inválido e erros opacos. Cinco testes SQLite em arquivo cobrem ordem com lacuna, venda aberta vazia, append por posição máxima, reopen/read, auditoria exata, efeitos em catálogo/contas/movimentos, venda ausente/finalizada, item ausente/cruzado, DELETE/audit abortado ou ignorado, colisão de evento, query-only, writer lock, TEMP shadow e recuperação com conexão nova. Rust debug e release passaram (264 unitários, 7 testes binários passaram, 1 ignorado, 193 SQLite e 28 doctests em cada modo); fmt e Clippy `-D warnings` passaram. Scripts locais pinados de Cargo Audit e OSV passaram. UI/IPC/E2E oficial e cobertura global não foram executados; evidência e limites: [handoff](../../planning/handoffs/SAL-014.md).

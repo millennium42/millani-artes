@@ -299,3 +299,7 @@ SAL-012 | CI fonte aprovado / critérios satisfeitos | E3 | SHA1817edc0611f7fc54
 ## SAL-013 — item livre persistido (E3 local)
 
 application::add_free_item usa as portas Clock/UuidGenerator e FreeItemStore; AdapterSqliteSaleStore implementa o contrato e compartilha a unidade transacional/auditoria de SAL-012. O caminho livre reutiliza create_free_item e não consulta o catálogo. Header novo, item e evento sale_item_add são gravados atomicamente. Não há ligação com UI, IPC ou startup. Fonte e limites: [spec](../../planning/specs/SAL-013.md) e [handoff](../../planning/handoffs/SAL-013.md). CI fonte `40893617138` passou no SHA `064c4417ee74ff04fd001e47331af3d3d11edc05`; UI/IPC permanecem nos work items próprios.
+
+## SAL-014 — remoção de item persistido (E3 local)
+
+`application::remove_sale_item` gera o ID e horário do evento pelas portas existentes e chama a porta isolada `SaleItemRemovalStore`, sem ampliar o contrato consumido por SAL-012. `AdapterSqliteSaleStore` valida venda aberta e vínculo `(sale_id,item_id)`, apaga exatamente uma linha e registra auditoria na transação IMMEDIATE existente; rejeições de negócio mantêm a conexão e falhas operacionais descartam-na. Acesso a `main` é qualificado e parametrizado. Sem UI, IPC, startup ou cálculo de total; detalhes e limites: [spec](../../planning/specs/SAL-014.md) e [handoff](../../planning/handoffs/SAL-014.md).

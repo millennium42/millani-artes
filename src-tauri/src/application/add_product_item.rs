@@ -33,6 +33,7 @@ pub enum SaleError {
     ClockFailed,
     SaleNotFound,
     SaleNotOpen,
+    SaleItemNotFound,
     ProductNotFound,
     InvalidItem,
     PositionExhausted,

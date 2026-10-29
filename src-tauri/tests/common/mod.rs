@@ -134,3 +134,4 @@ mod sale_items_migration;
 mod product_item_addition;
 
 mod product_snapshot;
+mod sale_item_removal;

@@ -167,6 +167,7 @@ fn sal013_store_failure_and_errors_remain_opaque() {
         SaleError::ClockFailed,
         SaleError::SaleNotFound,
         SaleError::SaleNotOpen,
+        SaleError::SaleItemNotFound,
         SaleError::ProductNotFound,
         SaleError::InvalidItem,
         SaleError::PositionExhausted,

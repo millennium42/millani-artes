@@ -1,5 +1,6 @@
 use crate::application::add_free_item::{FreeItemStore, FreeItemWrite};
 use crate::application::add_product_item::{ProductItemWrite, SaleError, SaleStore};
+use crate::application::remove_sale_item::{RemoveSaleItemWrite, SaleItemRemovalStore};
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{
     create_free_item, create_product_item, DiscountInput, Product, Sale, SaleItem, SaleStatus,
@@ -246,5 +247,70 @@ impl FreeItemStore for AdapterSqliteSaleStore {
             event_id: write.event_id,
             occurred_at_ms: write.occurred_at_ms,
         })
+    }
+}
+
+impl SaleItemRemovalStore for AdapterSqliteSaleStore {
+    fn remove_sale_item_with_audit(&mut self, write: RemoveSaleItemWrite) -> Result<(), SaleError> {
+        let connection = self.connection.take().ok_or(SaleError::StoreFailed)?;
+        let result = execute_write_transaction(
+            connection,
+            |transaction| -> Result<Result<(), SaleError>, ()> {
+                let status: Option<String> = transaction
+                    .query_row(
+                        "SELECT status FROM main.sales WHERE id=?1",
+                        params![write.sale_id.as_slice()],
+                        |row| row.get(0),
+                    )
+                    .optional()
+                    .map_err(|_| ())?;
+                match status.as_deref() {
+                    None => return Ok(Err(SaleError::SaleNotFound)),
+                    Some("open") => (),
+                    Some(_) => return Ok(Err(SaleError::SaleNotOpen)),
+                }
+
+                let item_exists: Option<i64> = transaction
+                    .query_row(
+                        "SELECT 1 FROM main.sale_items WHERE sale_id=?1 AND id=?2",
+                        params![write.sale_id.as_slice(), write.item_id.as_slice()],
+                        |row| row.get(0),
+                    )
+                    .optional()
+                    .map_err(|_| ())?;
+                if item_exists.is_none() {
+                    return Ok(Err(SaleError::SaleItemNotFound));
+                }
+                if transaction
+                    .execute(
+                        "DELETE FROM main.sale_items WHERE sale_id=?1 AND id=?2",
+                        params![write.sale_id.as_slice(), write.item_id.as_slice()],
+                    )
+                    .map_err(|_| ())?
+                    != 1
+                {
+                    return Err(());
+                }
+                append_audit_event(
+                    transaction,
+                    &AuditEvent {
+                        event_id: write.event_id,
+                        occurred_at_ms: write.occurred_at_ms,
+                        operation: "sale_item_remove",
+                        entity: "sale_item",
+                        entity_id: write.item_id,
+                    },
+                )
+                .map_err(|_| ())?;
+                Ok(Ok(()))
+            },
+        );
+        match result {
+            Ok((connection, outcome)) => {
+                self.connection = Some(connection);
+                outcome
+            }
+            Err(_) => Err(SaleError::StoreFailed),
+        }
     }
 }
