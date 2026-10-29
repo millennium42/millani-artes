@@ -2,7 +2,7 @@
   "id": "RCV-001",
   "title": "definir conta a receber",
   "specPath": "planning/specs/RCV-001.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-017"
   ],
@@ -22,6 +22,6 @@
   "agentPlan": "P-INT único escritor/integrador; sem subagentes. RCV-001 altera somente tipo passivo e teste de domínio, registra a correção do grafo exigida pela atomicidade de MVP-08 e não inicia RCV-002 antes da liberação completa.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SPEC/RECON iniciados em 2026-10-29. Base main/origin fa8a06db50913e0bc7499bf8267692ca494cf857; refs/notes/evidence local/remota 2080ed810f328343e60f919866c2f93936ba6ae4 com 162 mappings. A nota SAL-019 confirma done/E3, source CI 40944207392 no SHA 3ca42696d21252ecafcb911c769c9fc96313a079, final CI 40946691966 no SHA desta base e preservação dos 161 mappings anteriores. RCV-001/002/003 foram antecipados para antes de SAL-020 porque MVP-08 exige principal, cliente e vencimento persistidos na transação final; devolução transitória deixaria cobrança não consultável. RED reproduzido, teste focal GREEN 1/1 e 2 doctests compile_fail. Rust debug/release: 273 biblioteca, 7/8 integração (1 WebView2 ignorado), 193 SQLite, 36 doctests; fmt/clippy passam. Coverage e Cargo Audit/OSV passam conforme spec. Gitleaks staged 22.61 KB/0, história 728 commits/0, fixtures 16/16 serial; o primeiro fixture concorrente dividiu scratch com o scan histórico e a repetição serial passou. Validators de mapa/gitignore/evidence/work-item/progress/Tauri passam. Review P-INT final sem achado impeditivo, não independente. RCV-001 source CI `40952358733`/job `123723487078` passou 23/23 sem skips no SHA `122630ac230fbc818c8cbe04928177649f2cd8e3`. Work item permanece in_progress/E3/passes:false até CI documental final e nota nova preservando os 162 mappings."
+  "passes": true,
+  "notes": "Candidato de fechamento em 2026-10-29. Base `fa8a06db50913e0bc7499bf8267692ca494cf857`; refs/notes/evidence local/remota `2080ed810f328343e60f919866c2f93936ba6ae4`, 162 mappings. Nota SAL-019 confirma done/E3: source CI 40944207392 no SHA 3ca42696d21252ecafcb911c769c9fc96313a079, final CI 40946691966 no SHA fa8a06db50913e0bc7499bf8267692ca494cf857, preservando 161 mappings. RCV-001/002/003 foram antecipados para antes de SAL-020 pela atomicidade de MVP-08. RED reproduzido; teste focal 1/1 e 2 doctests compile_fail. Rust debug/release: 273 biblioteca, 7/8 integração (1 WebView2 ignorado), 193 SQLite, 36 doctests; fmt/clippy, Cargo Audit, OSV e coverage passam conforme spec. Gitleaks staged/histórico/fixtures sem findings; validators de mapa/gitignore/evidence/work-item/progress/Tauri passam; review P-INT sem achado impeditivo, não independente. Source CI `40952358733`/job `123723487078`, 23/23/0 skips no SHA `122630ac230fbc818c8cbe04928177649f2cd8e3`. CI documental candidato `40954718045`, 16/23 com 7 skips de produto, no SHA `6e127333ad06498593f5b1a53280be74f763579d`. Esta atualização cria um novo SHA de fechamento: seu CI documental exato e a nota de evidência que preserva os 162 mappings devem ser verificados antes de iniciar RCV-002."
 }
