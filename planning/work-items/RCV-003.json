@@ -1,0 +1,30 @@
+{
+  "id": "RCV-003",
+  "title": "criar recebível pendente na transação do chamador",
+  "specPath": "planning/specs/RCV-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "RCV-002",
+    "SAL-017"
+  ],
+  "acceptanceCriteria": [
+    "persist_receivable_in_transaction recebe a transação SQLite existente, persiste exatamente um Receivable e uma auditoria na mesma transação; o helper não faz BEGIN/COMMIT próprio.",
+    "Principal não positivo falha antes de qualquer consulta; venda ausente ou aberta não recebe dívida; cliente e unicidade são impostos pelas FKs/UNIQUE existentes.",
+    "Falha de auditoria após mudança de venda e inserção do recebível reverte todos os writes quando o chamador propaga o erro; fixtures de SQLite são sintéticas e baseadas em arquivo.",
+    "Sucesso preserva os termos literais após reopen, escreve apenas main, não cria movimento/entrada nem altera conta/saldo/contexto; erros ocultam detalhes do SQLite.",
+    "Spec, work item, handoff, roadmap, matrizes e progress log append-only correspondem ao escopo focal; não afirmar finalização completa, UI/IPC ou E2E.",
+    "Rust fmt, locked all-target Clippy -D warnings, debug/release/doctests, audit, Gitleaks, validators, revisão independente e CIs fonte/final no SHA exato passam; nota publicada preserva mappings anteriores antes de liberar SAL-020."
+  ],
+  "checks": [
+    "Baseline no SHA 2347451a88f184f5897ba578219f0187e1f4888a: cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness (200/200).",
+    "RED/GREEN no módulo RCV-003 do sqlite_harness, incluindo sucesso/reopen, rejeições/sem mutação, FK/UNIQUE, TEMP shadow e rollback auditado.",
+    "Rust 1.99 pinned: cargo fmt --check, cargo clippy --locked --all-targets -- -D warnings, cargo test debug/release, doctests e cargo audit.",
+    "Gitleaks staged/histórico/fixtures; validators de mapa, gitignore, evidence, work items, progress log append-only e Tauri; review P-REV independente.",
+    "Source CI e CI documental final no SHA exato; nota refs/notes/evidence preserva os 164 mappings anteriores; main/origin/main limpas e handoff libera SAL-020."
+  ],
+  "agentPlan": "P-INT integra, reproduz, corrige, revisa e registra. P-QA/Gemma recebe apenas os testes do sqlite_harness; depois P-DAT/Laguna recebe somente lib.rs e o novo módulo de persistência. Chamadas locais sequenciais em worktree gerenciada isolada e com paths disjuntos. Revisão adversarial independente P-REV/GPT Sol 6 medium. Não usar subagentes nativos adicionais; nenhum worker marca passes, commita ou publica.",
+  "evidence": "E2",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON em 2026-10-29 na base 2347451a88f184f5897ba578219f0187e1f4888a; sem implementação RCV-003 ainda. RCV-002 liberação foi revalidada em notas: 164 mappings, 163 anteriores preservados pelo hash 95C7F94584778108F7FD22CA84E9625B6EF7DBC3EF8699B033ADE414C6E09969; source CI 40960185135 23/23/0 skips; CI final 40962573310 16/23 e 7 skips esperados; refs/main alinhadas. Próximo: testes RED. SAL-020 continua bloqueado até liberação completa de RCV-003."
+}
