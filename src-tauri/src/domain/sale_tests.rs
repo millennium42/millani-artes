@@ -107,8 +107,23 @@ fn sal016_preserves_each_payment_account_amount_and_order() {
 
 #[test]
 fn sal017_preserves_pending_remainder_in_cents() {
-    let pending = SalePending { amount_cents: 1500 };
+    let pending = SalePending {
+        amount_cents: 1500,
+        customer_id: [0x17; 16],
+    };
 
+    assert_eq!(pending.amount_cents, 1500);
+}
+
+#[test]
+fn sal018_preserves_required_customer_id_for_pending_sale() {
+    let customer_id = [0x61; 16];
+    let pending = SalePending {
+        amount_cents: 1500,
+        customer_id,
+    };
+
+    assert_eq!(pending.customer_id, customer_id);
     assert_eq!(pending.amount_cents, 1500);
 }
 

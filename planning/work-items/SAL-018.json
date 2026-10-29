@@ -1,0 +1,27 @@
+{
+  "id": "SAL-018",
+  "title": "exigir cliente pendente",
+  "specPath": "planning/specs/SAL-018.md",
+  "status": "done",
+  "dependencies": [
+    "SAL-017",
+    "CUS-005"
+  ],
+  "acceptanceCriteria": [
+    "SalePending mantém amount_cents i64 e exige customer_id [u8; 16]; um teste preserva os bytes do ID e o valor em centavos.",
+    "Um compile_fail confirma que omitir customer_id impede construir a pendência; Debug/Display continuam indisponíveis.",
+    "Sem validar/existir cliente no banco, persistência, mudança em Sale/Customer, cálculo ou efeito financeiro; callers anteriores atualizados sem quebrar.",
+    "Spec, handoff, matrizes e log append-only; gates Rust/security/review/validators; CIs fonte/final exatos e nota preservando as 160 notas anteriores antes de liberar SAL-019."
+  ],
+  "checks": [
+    "RED/GREEN focal; compile_fail de campo obrigatório, Debug e Display.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, cargo test debug/release e cargo audit.",
+    "LLVM focal conforme policy; staged Gitleaks; validators de mapa/work item/evidence/progress; revisão do diff e limites.",
+    "CI fonte e final verdes nos SHAs exatos; nota preserva 160 mappings; main limpa e handoff libera SAL-018 antes de SAL-019."
+  ],
+  "agentPlan": "P-INT único escritor, sem delegação; reserva SAL-018 na base 4879436e051d7df85647982d5edeaca65633a60a: planning/specs/SAL-018.md; planning/handoffs/SAL-018.md; planning/work-items/SAL-018.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Liberar somente após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato local done/E3 em 2026-10-29. SAL-017 liberado no SHA 4879436e051d7df85647982d5edeaca65633a60a por CI fonte 40931498362, CI documental final 40934009985 e nota remota preservando 159/160. CUS-005 liberado pela nota do SHA f10b4346182f1fea49b7372d339ed560bc39842e; CI final 40055133757 success. Baseline pinned Rust 1.99.0 domain::sale_tests 8/8. Artefatos SAL-018 criados a partir do roadmap, primeiro item elegível. RED E0560/E0609; GREEN focal9/9, doctests compile_fail3/3; fmt/clippy/debug/release pass (271 unit,7/8 integration,1 ignored,193 SQLite,33 doctests). LLVM1.99/23.1.1 domain/mod.rs full/control320/320 lines,31/31 functions; sale_tests199/199,10/10 vs control190/199,9/10 after one test filtered; branches unreported. Cargo Audit0.22.2 gate48 fixtures/6 CLI real/422 deps/0 vulnerabilities/2 approved exceptions to 2026-11-06; manifest/lock hashes unchanged. Gitleaks8.30.1 fixtures16/16, history721 commits/0 findings, patch staged34.99KB/0 findings. Validators map/gitignore/evidence/work items/progress passed (158 items, historical progress bytes696690). Review focal P-INT sem achados bloqueadores; sem revisão independente. Campo prova presença estrutural, não existência referencial, SQLite, finalização ou efeitos financeiros. CI fonte/final, nota preservando160 mappings e liberação final pendentes; SAL-019 não iniciado."
+}
