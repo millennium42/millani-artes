@@ -191,6 +191,8 @@ FIN-001 executor done/E3 após CI de entrega `38444911363` no SHA `31af12adcf8be
 
 RCV-001 a RCV-003 foram antecipados do B6 em 29/10/2026. A rastreabilidade de MVP-08 exige que o devido, cliente e vencimento persistam junto da finalização; devolver somente `SalePending` em memória deixaria a venda encerrada sem cobrança consultável. RCV-003 será uma operação transacional reutilizável dentro do finalizador. RCV-004 em diante permanecem no B6.
 
+RCV-001 | CI fonte aprovado / fechamento documental pendente | E3 | SHA `122630ac230fbc818c8cbe04928177649f2cd8e3`, run `40952358733`, job `123723487078`: success, 23/23 passos, 0 skips. Work item permanece `in_progress`/`passes:false` até CI documental final e nota de evidência; não iniciar RCV-002 antes da liberação.
+
 ## B6 — Recebimentos, devoluções e dashboard
 
 - RCV-004 — calcular saldo devido ← RCV-003
