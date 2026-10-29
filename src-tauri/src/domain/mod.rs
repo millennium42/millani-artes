@@ -714,6 +714,21 @@ pub enum SaleStatus {
     Finalized,
 }
 
+/// The unreceived remainder of a sale; it does not represent cash or a receipt.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::SalePending>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::SalePending>();
+/// ```
+pub struct SalePending {
+    pub amount_cents: i64,
+}
+
 /// One initial payment allocation; later receipts belong to the receivable flow.
 ///
 /// ```compile_fail

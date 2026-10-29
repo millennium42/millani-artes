@@ -1,0 +1,25 @@
+{
+  "id": "SAL-017",
+  "title": "definir pendência",
+  "specPath": "planning/specs/SAL-017.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-016"
+  ],
+  "acceptanceCriteria": [
+    "SalePending contém somente amount_cents i64 e preserva literalmente o residual sem adicionar cálculo ou efeito financeiro.",
+    "O tipo não implementa Debug nem Display; Sale, SaleStatus, SalePayment e o estado persistido permanecem intocados.",
+    "Spec, work item, handoff, matrizes, progress log append-only, gates Rust/security/review, CI exatos e nota preservando as 159 evidências anteriores antes da liberação."
+  ],
+  "checks": [
+    "RED/GREEN focal e dois doctests compile_fail para privacidade Debug/Display; testes SAL anteriores permanecem verdes.",
+    "Rust: fmt, clippy locked -D warnings, suites debug/release e cargo audit; coverage Rust conforme policy sem percentual causal para tipo sem lógica.",
+    "Validators de mapa/work-item/evidence/progress; append-only; staged Gitleaks; locks/dependências/schema/exceções intactos; revisão focal P-INT registrada.",
+    "CI fonte e final verdes nos SHAs exatos; nota preserva 159 mappings; main limpa e handoff libera SAL-017 antes de SAL-018."
+  ],
+  "agentPlan": "P-INT único escritor, sem delegação; reserva desde 88f43078d4b5f2b262acbf8157a90e856f1f9e24: planning/specs/SAL-017.md; planning/handoffs/SAL-017.md; planning/work-items/SAL-017.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Liberar após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local em 2026-10-29; permanece in_progress/passes:false até CI fonte/final e nota. RED focal E0432 antes do tipo; GREEN 1/1. Fmt e Clippy locked -D warnings passaram; suites debug/release passaram (270 unitários, 7/8 integração, uma WebView2 ignorada, 193 SQLite, 32 doctests). LLVM 1.99.0/23.1.1: mod.rs full/control 320/320 linhas,31/31 funções; sale_tests.rs full187/187 e9/9 versus controle183/187 e8/9; nenhum contador branch; SalePending não tem lógica executável. Cargo Audit0.22.2: fixtures48 (6 CLI real),422 deps,0 vulnerabilidades,2 avisos sob exceções vigentes até 2026-11-06; manifests/lock sem diff. Gitleaks8.30.1: fixtures16/16, histórico718 commits/0 achados e patch staged sem achados; uma colisão entre os dois scanners paralelos foi confirmada no scratch compartilhado e os fixtures passaram na execução serial. Validators mapa28/730, gitignore/evidence/work-items/progress/plugins passaram; a primeira contagem de arquivos incluía __pycache__ temporário já removido. Review focal P-INT sem P0/P1/P2; sem revisão independente. CI fonte/final e nota-preservação159 pendentes. Limites: não prova cálculo do residual, cliente/vencimento, entrada, saldo, persistência ou atomicidade."
+}

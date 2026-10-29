@@ -1,6 +1,6 @@
 use super::{
     create_free_item, create_product_item, DiscountInput, DomainError, Product, Sale, SaleItem,
-    SalePayment, SaleStatus,
+    SalePayment, SalePending, SaleStatus,
 };
 
 fn check(
@@ -103,6 +103,13 @@ fn sal016_preserves_each_payment_account_amount_and_order() {
     assert_eq!(payments[0].amount_cents, 500);
     assert_eq!(payments[1].account_id, [0x52; 16]);
     assert_eq!(payments[1].amount_cents, 1000);
+}
+
+#[test]
+fn sal017_preserves_pending_remainder_in_cents() {
+    let pending = SalePending { amount_cents: 1500 };
+
+    assert_eq!(pending.amount_cents, 1500);
 }
 
 #[test]
