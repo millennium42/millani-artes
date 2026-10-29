@@ -1,6 +1,6 @@
 # SAL-008 — avaliação de GHSA-qwgh-2vcv-g2f7
 
-Status atual (2026-10-29): a usuária aprovou explicitamente a exceção delimitada abaixo. O registro canônico está ativo para OSV; CI de origem e CI final após a ativação ainda pendentes. SAL-008 permanece in_progress, passes:false até CI final, nota153 e conferência de refs.
+Status atual (2026-10-29): a usuária aprovou explicitamente a exceção delimitada abaixo. O registro canônico está ativo para OSV. CI de origem verde no SHA `1aebfb4277d3f31992860be4b0df9ff930ac3ac9` (run `40883828192`, job `123482109146`); CI final no commit de fechamento e nota153 ainda pendentes. A documentação registra `done`/`passes:true` como candidata, sujeita ao CI final e à conferência das refs.
 
 Histórico: o CI fonte40588569031/job122486496727 falhou no OSV no SHAe9da06b0c40190d7fe88aa66afcbf09f4133a3c1 antes da decisão humana. Naquele SHA nenhuma dependência, lockfile, scanner, threshold ou exceção vigente havia sido alterada.
 
@@ -12,7 +12,7 @@ Cargo.lock resolve somente block-buffer0.10.4, através de digest0.10.7/sha2 0.1
 
 Dois testes auxiliares executados contra o rlib em cache identificado pelo dep-info como0.10.4, três posições de cursor por teste, passaram após catch_unwind em callbacks de digest_blocks/set_data. O cursor permaneceu válido e o reset funcionou. Essa execução não foi Miri/ASan, não prova segurança de memória geral e não descarta outros defeitos. Revisão independente Sol6medium E2 confirmou a não aplicabilidade deste mecanismo específico; não executou testes nem aprovou uma exceção.
 
-O scan OSV real foi reproduzido sem suprimir nada e continuou falhando, identificando exatamente crates.io/block-buffer/0.10.4/GHSA-qwgh-2vcv-g2f7. A classificação técnica é falso positivo de faixa para esta combinação, sustentada pelo mantenedor e pelo código travado, sujeita à decisão humana para qualquer supressão local.
+Na análise anterior à decisão humana, o scan OSV real foi reproduzido sem suprimir nada e continuou falhando, identificando exatamente crates.io/block-buffer/0.10.4/GHSA-qwgh-2vcv-g2f7. A classificação técnica é falso positivo de faixa para esta combinação, sustentada pelo mantenedor e pelo código travado; a usuária aprovou posteriormente somente a exceção delimitada nesta página.
 
 ## Proposta exata
 
@@ -39,4 +39,4 @@ A política [DEPENDENCY_SECURITY.md](DEPENDENCY_SECURITY.md) diz: “Achados exi
 
 A proposta JSON permanece como snapshot do rascunho original (approved:false, approvalRecord:null); ela não é o registro canônico ativo. As exceções anteriores glib e proc-macro-error e o gate cargo-audit permanecem inalterados. Não há supressão para outra versão, advisory, ecossistema, alvo ou hash.
 
-Teste de snapshot SAL008/4fixtures, dois mutantes,446Rust+28doctests e review permanecem aprovados localmente nos inputs de código/lock inalterados. O CI fonte aprovado e CI final no SHA exato, nota153 e liberação ainda serão registrados. UI/IPC, cobertura global e release/E2E oficiais continuam pendentes. Recibos e fontes auxiliares preservados na pasta operacional SAL-008-*20261027.
+Teste de snapshot SAL008/4fixtures, dois mutantes,446Rust+28doctests e review permanecem aprovados localmente nos inputs de código/lock inalterados. Os validadores de docs/OSV/Gitleaks/cargo-audit e as auditorias npm/Cargo, frontend quality/coverage, build Tauri, testes Rust release e verificação PE passaram no CI de origem [40883828192](https://github.com/millennium42/millani-artes/actions/runs/40883828192), no SHA exato acima. CI final e nota153 ainda pendentes. UI/IPC, cobertura Rust global e release/E2E oficiais continuam pendentes. Recibos e fontes auxiliares preservados na pasta operacional SAL-008-*20261027.

@@ -2,7 +2,7 @@
   "id": "SAL-008",
   "title": "provar snapshot imutável",
   "specPath": "planning/specs/SAL-008.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "PRD-006",
     "SAL-007",
@@ -22,6 +22,6 @@
   "agentPlan": "P-INTfixture/integrador;P-QAGemma low300s1função scratch;P-REVSol6medium independente/P-SECtools;11paths",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SAL-008 | aprovacao humana E4 registrada em 2026-10-29 para OSV somente crates.io/block-buffer/0.10.4/GHSA-qwgh-2vcv-g2f7, alvo x86_64-pc-windows-msvc, Cargo.lock/Cargo.toml hashes aprovados, expiracao antes de 2026-11-06 UTC. Registro ativo com digest de escopo e approvalRecord vinculados. Scan/checks locais e CI de origem/final ainda pendentes; manter passes=false. E3 snapshot backend e gates Rust de codigo inalterado preservados; UI/IPC, jornada E2E oficial, cobertura global e release continuam fora do fechamento SAL-008."
+  "passes": true,
+  "notes": "SAL-008 | CI fonte aprovado / criterios satisfeitos | E3 | SHA1aebfb4277d3f31992860be4b0df9ff930ac3ac9,run40883828192/job123482109146/attempt1:success; build Tauri, testes Rust release, verificacao PE AMD64, npm audit, cargo audit, frontend quality e coverage passaram. Registro humano E4 limita OSV a crates.io/block-buffer/0.10.4/GHSA-qwgh-2vcv-g2f7, alvo x86_64-pc-windows-msvc, hashes Cargo.lock/Cargo.toml aprovados e expiracao antes de 2026-11-06 UTC; digest e approvalRecord vinculados, excecoes antigas preservadas. Scan local OSV39 casos + findings4/excepted4/unexcepted0; Gitleaks16 casos + 0 findings em 700 commits; cargo-audit48 casos + 0 vulnerabilidades. CI final neste candidato e nota153 pendentes. Snapshot E3 backend; UI/IPC, jornada E2E oficial, cobertura Rust global e release continuam fora do fechamento SAL-008."
 }
