@@ -1,0 +1,29 @@
+{
+  "id": "SAL-015",
+  "title": "calcular total da venda",
+  "specPath": "planning/specs/SAL-015.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-004",
+    "SAL-009"
+  ],
+  "acceptanceCriteria": [
+    "Sale::calculate_total(&self) retorna a soma em centavos dos totais líquidos calculados dos SaleItem existentes, sem campo/cache de total em Sale.",
+    "A soma vazia é zero; total exatamente i64::MAX é aceito; overflow ou item inválido retorna DomainError::InvalidInput sem wrap, saturação ou panic.",
+    "A projeção usa o cálculo puro SAL-004, aplica o desconto monetário já convertido uma vez e não consulta catálogo, lê nem altera total_cents armazenado ou outros campos.",
+    "Testes exercitam soma canônica de produto+item livre, desconto, vazio, limite/overflow e erro de item; demais testes, lockfiles, schema, persistência e efeitos financeiros permanecem intactos.",
+    "Spec, matrizes, handoff e log append-only; gates Rust/security/review; CI fonte/final em SHAs exatos e nota Git preservando evidências anteriores antes da liberação."
+  ],
+  "checks": [
+    "RED focal: teste de Sale::calculate_total falha antes da implementação; GREEN cobre soma, vazio, desconto, i64::MAX, overflow e item inválido.",
+    "Rust: fmt, clippy -D warnings, testes debug e release locked, cargo audit; sem reduzir thresholds.",
+    "LLVM coverage do domínio: linhas/funções >=95% e controle sem domínio rejeitado; não alegar coverage global, statements ou branches.",
+    "Docs/security: map/work-item/evidence/progress validators, fixtures OSV/Gitleaks/cargo-audit, staged secret scan do candidato, hashes de dependências inalterados e revisão focal P-INT registrada.",
+    "CI fonte e final verdes nos SHAs exatos; nota de evidência preserva os 157 mapeamentos atuais; main limpa e handoff antes do próximo item."
+  ],
+  "agentPlan": "P-INT único escritor, sem delegação. Reserva SAL-015 desde a base 7ae66da4009e2b0d6dd32a757451aa5969210bbe: planning/specs/SAL-015.md; planning/handoffs/SAL-015.md; planning/work-items/SAL-015.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Liberar somente após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON E2 foi registrado antes da edição. Implementação e quatro testes SAL-015 concluídos; RED E0599 e GREEN 4/4 observados. Fmt/clippy/debug/release/Cargo Audit/OSV/Gitleaks/LLVM focal passaram; staged scan do patch de 8 paths sem findings. Detalhes, comandos, métricas e limites no handoff/spec. E3 local não é UI/IPC/SQLite/smoke/E2E. Revisão focal P-INT sem P0/P1/P2; sem revisão por segundo agente. Validators passaram; pendem commit fonte, CI fonte/final em SHAs exatos e nota preservando 157 mapeamentos. Manter in_progress/passes:false até fechar esses gates. SAL-004/SAL-009 done/E3/passes:true; SAL-016 não iniciar antes do fechamento."
+}

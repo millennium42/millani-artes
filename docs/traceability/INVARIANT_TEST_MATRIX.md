@@ -52,7 +52,9 @@ Vínculo [MVP-02..06/financeiro](REQUIREMENTS_MATRIX.md#mvp-02-a-mvp-06--finance
 
 ## Comercial — testes planejados
 
-Vínculo [MVP07..11/comercial](REQUIREMENTS_MATRIX.md#mvp-07-a-mvp-11--comercial-rastreabilidade-planejada), detalhe localTRC-003 de nove IDs existentes; contagem canônica17 e detalhes anteriores preservados. **Planejado/E0 produto**: testes/comandos/saídas/coverage/CI não registrados; auditE3 estrutural não prova semântica/comportamento. Fontes: [invariantes](../product/INVARIANTS.md), [negócio](../product/BUSINESS_RULES.md), [snapshot](../architecture/adr/ADR-010-sale-snapshot.md), [venda≠caixa](../architecture/adr/ADR-011-sale-not-receipt.md).
+Vínculo [MVP07..11/comercial](REQUIREMENTS_MATRIX.md#mvp-07-a-mvp-11--comercial-rastreabilidade-planejada), detalhe localTRC-003 de nove IDs existentes; contagem canônica17 e detalhes anteriores preservados. Os invariantes listados abaixo continuam planejados/E0 para o comportamento SQLite, interface, smoke e jornada completa; auditE3 estrutural não prova semântica/comportamento. Fontes: [invariantes](../product/INVARIANTS.md), [negócio](../product/BUSINESS_RULES.md), [snapshot](../architecture/adr/ADR-010-sale-snapshot.md), [venda≠caixa](../architecture/adr/ADR-011-sale-not-receipt.md).
+
+SAL-015 tem evidência E3 somente para a projeção pura de domínio `Sale::calculate_total`: soma linhas líquidas, aceita coleção vazia e limite `i64`, rejeita overflow/item inválido e não lê o snapshot armazenado. LLVM local no módulo mediu 320/320 linhas e 31/31 funções; o controle sem os testes da venda caiu a 3/320 linhas e 1/31 função. Isso não promove INV-SAL-005 nem prova persistência/reabertura, SQLite, UI/IPC, SMK-005 ou E2E.
 
 | invariante | unit futuro / oráculo | SQLite futuro / oráculo | executores concretos | smoke futuro / prova pendente |
 |---|---|---|---|---|

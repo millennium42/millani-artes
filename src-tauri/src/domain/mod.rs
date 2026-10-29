@@ -731,6 +731,16 @@ pub struct Sale {
     pub items: Vec<SaleItem>,
 }
 
+impl Sale {
+    pub fn calculate_total(&self) -> Result<i64> {
+        self.items.iter().try_fold(0_i64, |total, item| {
+            total
+                .checked_add(item.calculate_total()?)
+                .ok_or(DomainError::InvalidInput)
+        })
+    }
+}
+
 pub type Result<T> = std::result::Result<T, DomainError>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
