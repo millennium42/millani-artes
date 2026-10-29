@@ -1,0 +1,125 @@
+{
+  "id": "RCV-003",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b",
+  "final_sha": "585bcdd7c0f9421f974052bf673b8754a1cf62e7",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/1",
+    "https://github.com/millennium42/millani-artes/pull/2",
+    "https://github.com/millennium42/millani-artes/pull/3"
+  ],
+  "source_ci": {
+    "run": {
+      "id": 40972757498,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40972757498"
+    },
+    "job": {
+      "id": 123793272870,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "library_passed": 273,
+      "integration_passed": 7,
+      "integration_ignored": 1,
+      "sqlite_harness_passed": 206,
+      "doctests_passed": 36
+    },
+    "native_evidence": {
+      "source_sha": "c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b",
+      "bytes": 8536576,
+      "sha256": "eb1fed9f7c69edcef436642d548f856f8525a2867ddec609a8435ce389199647",
+      "machine": "AMD64",
+      "pe": "PE32+",
+      "custom_protocol": true,
+      "rustc": "1.99.0",
+      "cargo": "1.99.0"
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40975542664,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "585bcdd7c0f9421f974052bf673b8754a1cf62e7",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40975542664"
+    },
+    "job": {
+      "id": 123802534847,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "local": {
+    "rust": {
+      "focused_tests_passed": 6,
+      "debug_tests_passed": 206,
+      "debug_doctests_passed": 36,
+      "release_tests_passed": 206,
+      "release_doctests_passed": 36,
+      "fmt_check": "pass",
+      "clippy_locked_all_targets_d_warnings": "pass"
+    },
+    "scans_on_source_sha": {
+      "gitleaks": {"version": "8.30.1", "commits": 740, "findings": 0},
+      "cargo_audit": {"version": "0.22.2", "dependencies": 422, "vulnerabilities": 0, "approved_warnings": 2, "exception_expiry": "2026-11-06"},
+      "osv": {"version": "2.6.0", "packages": 542, "approved_exceptions": 4, "unexcepted_findings": 0, "exception_expiry": "2026-11-06"}
+    },
+    "validators": {
+      "project_map": "28 sources/750 files; pass",
+      "work_items": "162 items/72 fixtures; pass",
+      "evidence_states": "162 items/25 fixtures; pass",
+      "progress_log": "26 fixtures; append-only; historical prefix 713362 bytes preserved",
+      "tauri": "37 fixtures/2 CLI cases; zero plugins; pass",
+      "gitignore": "28 ignored artifacts/4 sources preserved; pass"
+    },
+    "independent_review": "P-REV GPT Sol 6 medium: no P0/P1/P2 findings",
+    "local_worker": "P-QA/Gemma timed out at 1200 seconds without a diff; runtime stopped, no loaded model or listener 11434"
+  },
+  "refs": {
+    "notes_ref_before": "68ac474ac029ea9493bba3c805fcbfd2cc07c4b5",
+    "notes_before": 164,
+    "notes_after": 165,
+    "mapping_set_sha256_before": "5CB8FE87C88982065BE5FBFCF4B0A54611F30089731780AAE10FFA7947B059EF",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 164 prior evidence mappings are unchanged; this note adds the RCV-003 mapping for final_sha"
+  },
+  "limitations": [
+    "E3 proves only the backend persistence operation; it does not prove UI/IPC, smoke, E2E, or full sale-finalization behavior.",
+    "The caller must propagate errors for transaction rollback; a caller that ignores an error can commit partial work.",
+    "The two approved Cargo Audit warnings and four OSV exceptions expire 2026-11-06.",
+    "P-QA/Gemma timed out without a usable diff; P-INT implemented and reproduced the tests."
+  ],
+  "human_decisions": {
+    "implementation_plan_approval": "explicit",
+    "SAL-020_context": "one independent Casa/Fabrica context per initial payment"
+  },
+  "next": "SAL-020 is next after this receipt; every initial sale payment gets its own Casa/Fabrica context."
+}
