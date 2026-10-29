@@ -1,0 +1,104 @@
+{
+  "id": "SAL-014",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+  "final_sha": "9911eafd1032643d070a70f79f073bb5fb165f28",
+  "source_ci": {
+    "run": {
+      "id": 40904513161,
+      "run_attempt": 1,
+      "head_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40904513161",
+      "created_at": "2026-10-29T15:43:54Z",
+      "updated_at": "2026-10-29T15:56:29Z"
+    },
+    "job": {
+      "id": 123555495977,
+      "name": "validate",
+      "run_id": 40904513161,
+      "head_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40907086485,
+      "name": "Documentation",
+      "run_attempt": 1,
+      "head_sha": "9911eafd1032643d070a70f79f073bb5fb165f28",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40907086485",
+      "created_at": "2026-10-29T15:59:27Z",
+      "updated_at": "2026-10-29T16:01:06Z"
+    },
+    "job": {
+      "id": 123564706528,
+      "name": "validate",
+      "run_id": 40907086485,
+      "head_sha": "9911eafd1032643d070a70f79f073bb5fb165f28",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "note": "Documentation-only closure commit; source and product checks passed on source_sha."
+  },
+  "local_verification": {
+    "red": "Focal test failed to compile before the function and checked time conversion helper were implemented.",
+    "rust": "cargo fmt --check; clippy -D warnings; full cargo test debug and release passed: 264 unit tests, 7 binary tests passed and 1 ignored, 193 SQLite integration tests, 28 doctests in each mode.",
+    "sqlite": "3 focal unit tests and 5 physical-file SQLite tests; removal order/gaps/empty open sale, append position, audit atomicity, business rejections, rollback, connection poison/recovery, query-only, writer lock, TEMP shadow, account/movement/catalog invariants.",
+    "llvm_focal": {
+      "toolchain": "Rust 1.99.0 / LLVM 23.1.1",
+      "full": {
+        "remove_sale_item_rs": "22/22 lines, 2/2 functions",
+        "sales_rs": "235/235 lines, 16/16 functions"
+      },
+      "control_sal012_sal013_only": {
+        "sales_rs": "183/235 lines (77.87%), 12/16 functions (75%)"
+      },
+      "sha256": {
+        "remove_sale_item_rs": "B509C1BA7292BF93F5437EDAB5B8A291A9DD4C4CA24D9E48DA416FFB7339536F",
+        "sales_rs": "8AE4E87CEA83BF27EA42CF392F075173A4442826B87ECB6EB1FBAEA38667C656"
+      },
+      "limits": "Local focal lines/functions only; no branches/statements/global Rust coverage or CI coverage claim."
+    },
+    "security": {
+      "cargo_audit": "422 dependencies; 0 vulnerabilities; 2 approved warnings.",
+      "osv": "542 packages; 4 excepted findings; 0 unexcepted findings. Existing hash/target-bound Windows exception remains temporary and expires before 2026-11-06 UTC.",
+      "staged_gitleaks": "Gitleaks 8.30.1 with gitleaks:allow comments not trusted: source candidate diff 64.60 KB, 0 findings; final docs diff 15.27 KB, 0 findings.",
+      "ci": "Source CI passed npm/Cargo audits, OSV and full Git history secret scan."
+    },
+    "documents": "Work item/evidence validators passed for 154 items; work-item validator tests 72 cases passed; progress-log tests 26 cases passed; append-only checks passed locally and in final CI.",
+    "review": "No blocking code or test findings."
+  },
+  "refs": {
+    "notes_before": 154,
+    "notes_after": 155,
+    "main_sha": "9911eafd1032643d070a70f79f073bb5fb165f28",
+    "notes_ref_before": "2ff53f0a371f70d42f783a170a43cc6e0633220c",
+    "preserved": "All 154 prior evidence note mappings verified unchanged; only main and refs/notes/evidence were pushed."
+  },
+  "limitations": [
+    "No UI/IPC, official E2E, global Rust coverage, branch/statement coverage, installer, backup/restore, or signature claim.",
+    "The shared transaction helper does not promise recovery after COMMIT failure; this case was not fault-injected. Rollback tests cover operation failures before commit."
+  ],
+  "next": "SAL-015 remains unstarted."
+}
