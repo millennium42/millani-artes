@@ -1,0 +1,82 @@
+{
+  "id": "SAL-019",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "3ca42696d21252ecafcb911c769c9fc96313a079",
+  "final_sha": "fa8a06db50913e0bc7499bf8267692ca494cf857",
+  "source_ci": {
+    "run": {
+      "id": 40944207392,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "3ca42696d21252ecafcb911c769c9fc96313a079",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40944207392"
+    },
+    "job": {
+      "id": 123695148658,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40946691966,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "fa8a06db50913e0bc7499bf8267692ca494cf857",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40946691966"
+    },
+    "job": {
+      "id": 123703800690,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "scope": "Documentation-only closure run; the seven product steps passed in the source CI on source_sha."
+  },
+  "local_verification": {
+    "red": "Focused compile failed with E0560/E0609 before due_at_ms existed.",
+    "green": "domain::sale_tests 10/10; four SalePending doctests passed, including compile_fail for missing customer, missing due_at_ms, Debug, and Display.",
+    "rust": "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, debug and release suites passed; 272 unit, 7/8 integration (one WebView2 ignored), 193 SQLite, 34 doctests.",
+    "coverage": "LLVM 23.1.1: full134/control133 with only SAL019 test filtered; domain/mod.rs 320/320 lines and31/31 functions both; sale_tests.rs full213/213 and11/11, control201/213 and10/11; branches unreported, not interpreted.",
+    "cargo_audit": "Cargo Audit0.22.2; 48 fixtures/6 CLI; 422 dependencies; 0 vulnerabilities; 2 existing exceptions through 2026-11-06.",
+    "gitleaks": "Gitleaks8.30.1; fixtures16/16; history724 commits/0 findings; final staged docs correction18.39KB/0 findings; binary SHA256 17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c.",
+    "validators": "Map28 sources/736 files; gitignore28 ignored/4 preserved; evidence25 fixtures/159 items; work items72 fixtures/159; progress26 fixtures with 702978 historic bytes preserved for final correction; plugin ADR37 fixtures/2 CLI; append-only and diff checks passed.",
+    "review": "Focal P-INT adversarial review found no P0/P1/P2; not an independent review.",
+    "note_count": "Before SAL019, refs/notes/evidence contained161 mappings; SAL018 note confirms notes_before160 and notes_after161. This note preserves all161 and adds only SAL019."
+  },
+  "refs": {
+    "notes_before": 161,
+    "notes_after": 162,
+    "notes_ref_before": "7fa6ae2bf37a0d774604c639356c9df78019ecea",
+    "preserved_mapping_set_sha256": "291A6FB1BF5A83AB0443CDB5B6C030EB6A3CB11E57A3B849C034E0027377A877",
+    "final_sha": "fa8a06db50913e0bc7499bf8267692ca494cf857",
+    "preserved": "All 161 prior evidence mappings remain byte-for-byte equivalent; this note adds only SAL-019."
+  },
+  "limitations": [
+    "INV-SAL-003 is partial structural evidence only; date validation/calendar/timezone, customer referential existence, SQLite persistence, sale finalization/cash/rollback, UI/IPC, smoke, E2E, and full invariants remain unproved."
+  ],
+  "next": "SAL-019 released after final CI and note-ref verification; SAL-020 is the next eligible B5 item."
+}
