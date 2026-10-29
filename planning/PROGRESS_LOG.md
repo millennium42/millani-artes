@@ -2382,3 +2382,5 @@ SAL-016 | validators locais e npm audit | E3 | Mapa28fontes/727arquivos, gitigno
 SAL-016 | esclarecimento de coverage | E3 | `llvm-cov` não reportou contadores de branches; isso significa não medido, não coverage 0% nem 100%. `domain/mod.rs` full/control coincide; a execução nova mensurável está em `sale_tests.rs`. Sem lógica executável em `SalePayment`.
 
 SAL-016 | Gitleaks staged inicial | E3 | O primeiro diff staged de 8 paths, 33,77 KB, passou no Gitleaks 8.30.1 por stdin com zero achados.
+
+SAL-016 | CI fonte aprovado | E3 | SHA fonte `a9fa042c0c23c226d4926dbb0856432529bef577`, run `40924698324`, job `123626969425`, attempt1 `completed/success`, 23/23 passos verdes, 0 skips. Validators, Gitleaks histórico, OSV, npm/Cargo audit, frontend quality/coverage, build Tauri produção, verificação PE AMD64 e Rust release passaram. Work item candidato done/E3/passes:true; CI documental final e nota preservando 158 mappings pendentes; não iniciar SAL-017.

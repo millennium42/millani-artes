@@ -2,7 +2,7 @@
   "id": "SAL-016",
   "title": "definir pagamento parcial",
   "specPath": "planning/specs/SAL-016.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-009"
   ],
@@ -22,6 +22,6 @@
   "agentPlan": "P-INT único escritor, sem delegação. Reserva SAL-016 desde base cb724e77807d348363bac0fc0375b023aa534a2b: planning/specs/SAL-016.md; planning/handoffs/SAL-016.md; planning/work-items/SAL-016.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Liberar somente após CI final e nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "B5 até SAL-015 está fechado; SAL-009..012 liberados nas notas Git 149..152, com CI final 40266861817, 40330179396, 40341774141 e 40379775418. Fonte canônica permite várias alocações recebidas por contas escolhidas e exige que só o efetivamente recebido aumente caixa. RED focal falhou com E0432; GREEN 1/1 cobre contas 0x51/0x52, 500/1000 centavos e ordem. SalePayment é input transitório, sem campo em Sale ou persistência. Fmt/clippy -D warnings e suites Rust debug/release passaram; release: 269 unitários, 7/8 integração (um WebView2 ignorado), 193 SQLite, 30 doctests. LLVM full/control em domain/mod.rs: 320/320 linhas, 31/31 funções ambos; nenhum contador de branch; teste SAL-016 adiciona cobertura em sale_tests.rs (full 183/183, 8/8; controle 166/183, 7/8). Cargo Audit fixtures42+48, scan422 deps/0 vulnerabilidades/2 avisos aprovados; OSV fixtures39, 542 pacotes/4 excetuados/0 outros; npm fixtures40,120 deps/0 vulns; Gitleaks fixtures16 e staged 33,77 KB/0 achados. Validators locais passaram; revisão sem P0/P1/P2. check-progress-log entre commits, CI fonte/final e nota ainda pendentes; passes:false. Não iniciar SAL-017 antes da liberação SAL-016."
+  "passes": true,
+  "notes": "Candidato done/E3/passes:true após gates locais e CI fonte no SHA a9fa042c0c23c226d4926dbb0856432529bef577: run 40924698324, job 123626969425, attempt 1, success 23/23, 0 skips. CI final documental e nota em refs/notes/evidence ainda pendentes; não liberar nem iniciar SAL-017 antes deles. B5 até SAL-015 está fechado; SAL-009..012 liberados nas notas Git 149..152, com CI final 40266861817, 40330179396, 40341774141 e 40379775418. Fonte canônica permite várias alocações recebidas por contas escolhidas e exige que só o efetivamente recebido aumente caixa. RED focal falhou com E0432; GREEN 1/1 cobre contas 0x51/0x52, 500/1000 centavos e ordem. SalePayment é input transitório, sem campo em Sale ou persistência. Fmt/clippy -D warnings e suites Rust debug/release passaram; release: 269 unitários, 7/8 integração (um WebView2 ignorado), 193 SQLite, 30 doctests. LLVM full/control em domain/mod.rs: 320/320 linhas, 31/31 funções ambos; nenhum contador de branch; teste SAL-016 adiciona cobertura em sale_tests.rs (full 183/183, 8/8; controle 166/183, 7/8). Cargo Audit fixtures42+48, scan422 deps/0 vulnerabilidades/2 avisos aprovados; OSV fixtures39, 542 pacotes/4 excetuados/0 outros; npm fixtures40,120 deps/0 vulns; Gitleaks fixtures16 e staged 33,77 KB/0 achados. Validators locais passaram; revisão sem P0/P1/P2."
 }
