@@ -1,0 +1,115 @@
+{
+  "id": "SAL-008",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "1aebfb4277d3f31992860be4b0df9ff930ac3ac9",
+  "source_ci": {
+    "run": 40883828192,
+    "job": 123482109146,
+    "attempt": 1,
+    "head_sha": "1aebfb4277d3f31992860be4b0df9ff930ac3ac9",
+    "conclusion": "success",
+    "product_checks": [
+      "Tauri production build",
+      "Rust release tests",
+      "PE AMD64",
+      "OSV and cargo-audit",
+      "npm audit",
+      "frontend quality and coverage",
+      "Gitleaks",
+      "documentation validators"
+    ]
+  },
+  "sal008_final_sha": "bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17",
+  "sal008_final_ci": {
+    "run": 40886435465,
+    "job": 123491288533,
+    "attempt": 1,
+    "head_sha": "bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17",
+    "conclusion": "success",
+    "note": "Documentation-only final run; product checks were skipped and were covered by source CI."
+  },
+  "reconciliation_sha": "7ae66da4009e2b0d6dd32a757451aa5969210bbe",
+  "reconciliation_ci": {
+    "run": 40910786608,
+    "job": 123577865572,
+    "attempt": 1,
+    "head_sha": "7ae66da4009e2b0d6dd32a757451aa5969210bbe",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7,
+    "checks": [
+      "project map",
+      "work-item schema/evidence",
+      "append-only progress log",
+      "canonical docs",
+      "Git history secret scan",
+      "lockfile scan",
+      "npm audit",
+      "Cargo audit"
+    ]
+  },
+  "human_approval": {
+    "date": "2026-10-29",
+    "decision": "Tem minha aprovação humana explicita",
+    "approval_scope_sha256": "9bca56f8cb316f24d6230414e87ac5982698afc184cc93f955ef28b15e2316f9",
+    "approval_record_sha256": "sha256:013ecac48a74e24aa2a86513a924f5fb850dac89301d502c6d0fb2ce67cf07f8",
+    "package": "crates.io/block-buffer/0.10.4",
+    "advisory": "GHSA-qwgh-2vcv-g2f7",
+    "target": "x86_64-pc-windows-msvc",
+    "expires_before_utc": "2026-11-06",
+    "input_sha256": {
+      "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+      "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+    },
+    "preserved_old_exceptions": [
+      "glib 0.18.5 / GHSA-wrw7-89jp-8q8g / RUSTSEC-2024-0429",
+      "proc-macro-error 1.0.4 / RUSTSEC-2024-0370"
+    ],
+    "original_proposal_snapshot": {
+      "approved": false,
+      "approvalRecord": null
+    }
+  },
+  "local_checks": {
+    "project_map": "28 sources, 721 files",
+    "evidence_states": "25 fixtures; 154 items valid",
+    "work_items": "72 fixtures; 154 items valid",
+    "progress_log": "26 fixtures; append-only preserved 687636 historical bytes",
+    "osv_synthetic": "39 cases passed",
+    "git_diff_check": "passed",
+    "gitleaks_local": "not run; executable unavailable; exact-SHA remote scan passed"
+  },
+  "external_revalidation": {
+    "date": "2026-10-29",
+    "maintainer_range": ">=0.11.0,<0.12.1",
+    "osv_aggregate_introduced": "0",
+    "advisory_database_pr": "https://github.com/github/advisory-database/pull/10698",
+    "pr_status": "open"
+  },
+  "note_153": {
+    "target_sha": "bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17",
+    "note_object_sha": "253876bf927a3441d998016f11c6ebeeef4fd3db",
+    "preserved": true
+  },
+  "refs": {
+    "main_sha": "7ae66da4009e2b0d6dd32a757451aa5969210bbe",
+    "notes_before": 156,
+    "notes_after": 157,
+    "previous_mappings_unchanged": true
+  },
+  "changed_files": [
+    "docs/security/SAL-008-OSV-REVALIDATION.md",
+    "docs/traceability/INVARIANT_TEST_MATRIX.md",
+    "docs/traceability/REQUIREMENTS_MATRIX.md",
+    "planning/PROGRESS_LOG.md",
+    "planning/handoffs/SAL-008.md",
+    "planning/specs/SAL-008.md",
+    "planning/work-items/SAL-008.json"
+  ],
+  "limits": [
+    "E3 is backend snapshot evidence only; UI/IPC, SMK-005, official E2E, global Rust coverage, and Windows release are not proven.",
+    "Remove the temporary OSV exception after upstream correction or renew before expiry."
+  ]
+}
