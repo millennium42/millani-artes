@@ -2,7 +2,7 @@
   "id": "SAL-017",
   "title": "definir pendência",
   "specPath": "planning/specs/SAL-017.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-016"
   ],
@@ -20,6 +20,6 @@
   "agentPlan": "P-INT único escritor, sem delegação; reserva desde 88f43078d4b5f2b262acbf8157a90e856f1f9e24: planning/specs/SAL-017.md; planning/handoffs/SAL-017.md; planning/work-items/SAL-017.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Liberar após CI final e nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "E3 local em 2026-10-29; permanece in_progress/passes:false até CI fonte/final e nota. RED focal E0432 antes do tipo; GREEN 1/1. Fmt e Clippy locked -D warnings passaram; suites debug/release passaram (270 unitários, 7/8 integração, uma WebView2 ignorada, 193 SQLite, 32 doctests). LLVM 1.99.0/23.1.1: mod.rs full/control 320/320 linhas,31/31 funções; sale_tests.rs full187/187 e9/9 versus controle183/187 e8/9; nenhum contador branch; SalePending não tem lógica executável. Cargo Audit0.22.2: fixtures48 (6 CLI real),422 deps,0 vulnerabilidades,2 avisos sob exceções vigentes até 2026-11-06; manifests/lock sem diff. Gitleaks8.30.1: fixtures16/16, histórico718 commits/0 achados e patch staged sem achados; uma colisão entre os dois scanners paralelos foi confirmada no scratch compartilhado e os fixtures passaram na execução serial. Validators mapa28/730, gitignore/evidence/work-items/progress/plugins passaram; a primeira contagem de arquivos incluía __pycache__ temporário já removido. Review focal P-INT sem P0/P1/P2; sem revisão independente. CI fonte/final e nota-preservação159 pendentes. Limites: não prova cálculo do residual, cliente/vencimento, entrada, saldo, persistência ou atomicidade."
+  "passes": true,
+  "notes": "Candidato done/E3/passes:true em 2026-10-29; CI fonte passou e a liberação ainda depende do CI documental final e da nota Git, que registrará o fechamento e preservará os 159 mapeamentos anteriores. CI fonte: SHA efdf14ffa13069b7334e42f088caa7c92c464811, run 40931498362, job 123650809732, attempt1 completed/success, 23/23 steps success, 0 skips; inclui scan de histórico/lockfiles, quality/coverage frontend, build Tauri produção e verificação do executável. RED focal E0432 antes do tipo; GREEN 1/1. Fmt e Clippy locked -D warnings passaram; suites debug/release passaram (270 unitários, 7/8 integração, uma WebView2 ignorada, 193 SQLite, 32 doctests). LLVM 1.99.0/23.1.1: mod.rs full/control 320/320 linhas,31/31 funções; sale_tests.rs full187/187 e9/9 versus controle183/187 e8/9; nenhum contador branch; SalePending não tem lógica executável. Cargo Audit0.22.2: fixtures48 (6 CLI real),422 deps,0 vulnerabilidades,2 avisos sob exceções vigentes até 2026-11-06; manifests/lock sem diff. Gitleaks8.30.1: fixtures16/16, histórico718 commits/0 achados e patch staged sem achados; uma colisão entre os dois scanners paralelos foi confirmada no scratch compartilhado e os fixtures passaram na execução serial. Validators mapa28/730, gitignore/evidence/work-items/progress/plugins passaram; a primeira contagem de arquivos incluía __pycache__ temporário já removido. Review focal P-INT sem P0/P1/P2; sem revisão independente. Limites: não prova cálculo do residual, cliente/vencimento, entrada, saldo, persistência ou atomicidade; não iniciar SAL-018 antes da liberação final."
 }
