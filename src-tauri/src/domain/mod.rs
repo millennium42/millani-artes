@@ -714,7 +714,7 @@ pub enum SaleStatus {
     Finalized,
 }
 
-/// The unreceived remainder of a sale with a required customer identity; it is not cash or a receipt.
+/// The unreceived remainder of a sale with a required customer and due instant; it is not cash or a receipt.
 ///
 /// ```compile_fail
 /// fn require_debug<T: std::fmt::Debug>() {}
@@ -729,9 +729,17 @@ pub enum SaleStatus {
 /// ```compile_fail
 /// let _pending = millani_artes::domain::SalePending { amount_cents: 1500 };
 /// ```
+///
+/// ```compile_fail
+/// let _pending = millani_artes::domain::SalePending {
+///     amount_cents: 1500,
+///     customer_id: [0x61; 16],
+/// };
+/// ```
 pub struct SalePending {
     pub amount_cents: i64,
     pub customer_id: [u8; 16],
+    pub due_at_ms: i64,
 }
 
 /// One initial payment allocation; later receipts belong to the receivable flow.

@@ -110,6 +110,7 @@ fn sal017_preserves_pending_remainder_in_cents() {
     let pending = SalePending {
         amount_cents: 1500,
         customer_id: [0x17; 16],
+        due_at_ms: 1_800_000_000_000,
     };
 
     assert_eq!(pending.amount_cents, 1500);
@@ -121,8 +122,24 @@ fn sal018_preserves_required_customer_id_for_pending_sale() {
     let pending = SalePending {
         amount_cents: 1500,
         customer_id,
+        due_at_ms: 1_800_000_000_000,
     };
 
+    assert_eq!(pending.customer_id, customer_id);
+    assert_eq!(pending.amount_cents, 1500);
+}
+
+#[test]
+fn sal019_preserves_required_due_at_ms_for_pending_sale() {
+    let customer_id = [0x61; 16];
+    let due_at_ms = 1_800_000_000_000_i64;
+    let pending = SalePending {
+        amount_cents: 1500,
+        customer_id,
+        due_at_ms,
+    };
+
+    assert_eq!(pending.due_at_ms, due_at_ms);
     assert_eq!(pending.customer_id, customer_id);
     assert_eq!(pending.amount_cents, 1500);
 }

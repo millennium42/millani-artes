@@ -1,0 +1,26 @@
+{
+  "id": "SAL-019",
+  "title": "exigir vencimento pendente",
+  "specPath": "planning/specs/SAL-019.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-017"
+  ],
+  "acceptanceCriteria": [
+    "SalePending mantém amount_cents e customer_id e exige due_at_ms i64; teste preserva literalmente o instante, o ID e os centavos.",
+    "Compile_fail omite somente due_at_ms mantendo customer_id; falhas de construção sem cliente, Debug e Display continuam protegidas.",
+    "Sem validar/converter data, fuso, calendário ou faixa, sem SQLite/persistência, finalização, cálculo ou efeito financeiro; callers anteriores atualizados.",
+    "Spec, handoff, matrizes e log append-only; gates Rust/security/review/validators; CIs fonte/final exatos e nota preservando 161 mappings antes de SAL-020."
+  ],
+  "checks": [
+    "Baseline 9/9; RED/GREEN focal; compile_fail de vencimento obrigatório e regressão dos três compile_fail anteriores.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, cargo test debug/release/doctest e cargo audit.",
+    "LLVM focal conforme policy; Gitleaks staged/histórico; validators de mapa/work item/evidence/progress; revisão do diff e limites.",
+    "CI fonte e final nos SHAs exatos; nota preserva 161 mappings; main limpa e handoff libera SAL-019 antes de SAL-020."
+  ],
+  "agentPlan": "P-INT único escritor, sem delegação; reserva SAL-019 na base 97587fd5e36bab551fdab17a89624c4a630df342: planning/specs/SAL-019.md; planning/handoffs/SAL-019.md; planning/work-items/SAL-019.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Dependência formal conforme roadmap: SAL-017; SAL-018 está liberado na base. Liberar somente após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON começou em E2 na base limpa 97587fd5e36bab551fdab17a89624c4a630df342; SAL017/018 estavam done/E3/passes:true e a nota SAL018 preservava 161 mappings. Implementado campo estrutural obrigatório due_at_ms:i64; RED E0560/E0609, GREEN domain::sale_tests 10/10, quatro doctests SalePending com compile_fail, fmt, Clippy -D warnings, suites debug/release (272 unit, 7/8 integration com 1 WebView2 ignorada, 193 SQLite, 34 doctests) passaram. LLVM1.99/23.1.1 full 134/controle133 com só o teste SAL019 filtrado: mod.rs 320/320 linhas e31/31 funções; sale_tests.rs full213/213 e11/11 versus control201/213 e10/11; branches não reportados. Cargo Audit 422 deps/0 vulnerabilidades/2 exceções existentes; Gitleaks fixtures16/16 e história724 commits/0 achados. Validators finais passaram: mapa28/736, gitignore28/4, evidence25/159, work-items72/159, progress26/699708B e Tauri plugins37/gate PASS. Revisão focal P-INT sem P0/P1/P2, não independente. Scan Gitleaks staged37.97KB/0 achados antes do recibo final; repetição do scan e CIs fonte/final/nota preservando161 mappings pendentes; passes:false; SAL020 não iniciado."
+}
