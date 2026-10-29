@@ -2,7 +2,7 @@
   "id": "SAL-019",
   "title": "exigir vencimento pendente",
   "specPath": "planning/specs/SAL-019.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-017"
   ],
@@ -21,6 +21,6 @@
   "agentPlan": "P-INT único escritor, sem delegação; reserva SAL-019 na base 97587fd5e36bab551fdab17a89624c4a630df342: planning/specs/SAL-019.md; planning/handoffs/SAL-019.md; planning/work-items/SAL-019.json; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs. Dependência formal conforme roadmap: SAL-017; SAL-018 está liberado na base. Liberar somente após CI final e nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "SPEC/RECON começou em E2 na base limpa 97587fd5e36bab551fdab17a89624c4a630df342; SAL017/018 estavam done/E3/passes:true e a nota SAL018 preservava 161 mappings. Implementado campo estrutural obrigatório due_at_ms:i64; RED E0560/E0609, GREEN domain::sale_tests 10/10, quatro doctests SalePending com compile_fail, fmt, Clippy -D warnings, suites debug/release (272 unit, 7/8 integration com 1 WebView2 ignorada, 193 SQLite, 34 doctests) passaram. LLVM1.99/23.1.1 full 134/controle133 com só o teste SAL019 filtrado: mod.rs 320/320 linhas e31/31 funções; sale_tests.rs full213/213 e11/11 versus control201/213 e10/11; branches não reportados. Cargo Audit 422 deps/0 vulnerabilidades/2 exceções existentes; Gitleaks fixtures16/16 e história724 commits/0 achados. Validators finais passaram: mapa28/736, gitignore28/4, evidence25/159, work-items72/159, progress26/699708B e Tauri plugins37/gate PASS. Revisão focal P-INT sem P0/P1/P2, não independente. Scan Gitleaks staged37.97KB/0 achados antes do recibo final; repetição do scan e CIs fonte/final/nota preservando161 mappings pendentes; passes:false; SAL020 não iniciado."
+  "passes": true,
+  "notes": "Candidato local done/E3/passes:true após CI fonte em 2026-10-29; liberação segue bloqueada até CI documental final e nota preservar os 162 mappings-base. Implementado campo estrutural obrigatório due_at_ms:i64; RED E0560/E0609, GREEN domain::sale_tests 10/10, quatro doctests SalePending com compile_fail, fmt, Clippy -D warnings, suites debug/release (272 unit, 7/8 integration com 1 WebView2 ignorada, 193 SQLite, 34 doctests) passaram. LLVM1.99/23.1.1 full134/controle133 com só o teste SAL019 filtrado: mod.rs320/320 linhas,31/31 funções; sale_tests full213/213,11/11 versus control201/213,10/11; branches não medidos. Cargo Audit 422 deps/0 vulnerabilidades/2 exceções existentes; Gitleaks fixtures16/16, história724 commits/0 e diff staged38.19KB/0 achados; scan final confirmou o patch antes deste recibo. Validators: mapa28/736, gitignore28/4, evidence25/159, work-items72/159, progress26/699708B, Tauri plugins37/gate PASS. Review P-INT sem P0/P1/P2, não independente. CI fonte SHA3ca42696d21252ecafcb911c769c9fc96313a079 run40944207392/job123695148658, success23/23/0 skips. INV-SAL-003 somente parcial estrutural; calendário/fuso, referência, persistência, finalização/caixa/rollback, UI/IPC, smoke e E2E não provados. CI documental final e nota preservando162 mappings pendentes; SAL020 bloqueado até liberação final."
 }
