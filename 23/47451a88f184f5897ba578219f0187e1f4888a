@@ -1,0 +1,85 @@
+{
+  "id": "RCV-002",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "dffbc13216a1453446de258852c24aab5c318fca",
+  "final_sha": "2347451a88f184f5897ba578219f0187e1f4888a",
+  "source_ci": {
+    "run": {
+      "id": 40960185135,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "dffbc13216a1453446de258852c24aab5c318fca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40960185135"
+    },
+    "job": {
+      "id": 123750615167,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40962573310,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "2347451a88f184f5897ba578219f0187e1f4888a",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40962573310"
+    },
+    "job": {
+      "id": 123758867701,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "scope": "Documentation-only closure run; source_ci passed product, security, build, executable verification, and Rust release suite on source_sha."
+  },
+  "human_decision": "The user explicitly selected one Casa/Fabrica context per initial sale payment on 2026-10-29; SAL-020 owns implementation of this rule.",
+  "local_verification": {
+    "red": "The focused harness first failed to compile because the migration constants were missing; implementation restored compilation.",
+    "green": "Seven RCV-002 SQLite migration tests passed on the final source, including v12 empty DB, exact STRICT schema, bounds/reopen, invalid writes without mutation, FK restrictions, v11 upgrade preservation, rollback/retry, collisions, and an open-sale round trip.",
+    "rust": "Pinned Rust 1.99 full debug and release suites each passed 273 library tests, 7/8 integration tests (one WebView2-dependent test ignored), 200 SQLite tests, and 36 doctests. The final open-sale fixture change was followed by a focused 7/7 run; source_ci also ran the full release suite on source_sha. fmt and locked all-target Clippy -D warnings passed before that test-data-only adjustment.",
+    "cargo_audit": "Cargo Audit 0.22.2 on source_sha: 422 dependencies, zero vulnerabilities, two approved warnings (RUSTSEC-2024-0370 and RUSTSEC-2024-0429), exact lock and manifest hashes, expiry 2026-11-06.",
+    "osv": "OSV-Scanner 2.6.0 on source_sha: 542 packages (120 npm, 422 Cargo), four findings exactly excepted under the scoped human approval, zero unexcepted; expiry 2026-11-06. The package-lock and Cargo.lock hashes were checked.",
+    "gitleaks": "Gitleaks 8.30.1 on source_sha scanned 733 reachable commits including RCV-002 with zero findings; 16 guard fixtures passed.",
+    "validators": "Project map 28 sources/745 files; gitignore 28 ignored/four source lockfiles preserved; evidence 25 fixtures/161 declarations; work items 72 fixtures/161 items; progress-log 26 fixtures and append-only validation preserving 710617 prior bytes; Tauri 37 fixtures/two CLI cases and gate with zero plugins.",
+    "review": "Internal adversarial review found that the contract did not yet prove that the physical schema permits an open sale. The round-trip fixture was changed to status open and all seven focused tests passed. No blocking finding remains; review was not independent."
+  },
+  "refs": {
+    "notes_ref_before": "89bb522c9e437ab8ba6afcda9ee18cf75a190519",
+    "notes_before": 163,
+    "notes_after": 164,
+    "mapping_set_sha256_before": "95C7F94584778108F7FD22CA84E9625B6EF7DBC3EF8699B033ADE414C6E09969",
+    "prior_162_mapping_set_sha256": "FF3C1A5334B9C0507D264BC99E71745EF38D73C3D9C9F4195D7B28AD4408094F",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF.",
+    "preserved": "All 163 prior evidence mappings were verified and preserved; this note adds only the RCV-002 mapping for final_sha."
+  },
+  "limitations": [
+    "RCV-002 proves only physical SQLite schema and migration behavior. It does not add the application persistence/finalization path; RCV-003 owns the write operation.",
+    "This migration does not prove cash invariants, due calculation, UI/IPC, smoke, or E2E. INV-SAL-001/002/003 remain incomplete.",
+    "The Cargo and OSV exceptions are limited to the approved hashes and x86_64-pc-windows-msvc target and expire 2026-11-06."
+  ],
+  "next": "After this exact-SHA receipt, RCV-003 is next. SAL-020 must implement one Casa/Fabrica context per initial payment, per the user's explicit decision."
+}
