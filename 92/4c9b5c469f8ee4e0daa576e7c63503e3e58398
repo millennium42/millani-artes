@@ -1,0 +1,85 @@
+{
+  "id": "SAL-014",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+  "final_sha": "924c9b5c469f8ee4e0daa576e7c63503e3e58398",
+  "supersedes_documentary_candidate_sha": "9911eafd1032643d070a70f79f073bb5fb165f28",
+  "reconciliation": "Corrects stale pending language in SAL-014 work item, spec and handoff; Rust source is unchanged.",
+  "source_ci": {
+    "run": {
+      "id": 40904513161,
+      "run_attempt": 1,
+      "head_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40904513161",
+      "created_at": "2026-10-29T15:43:54Z",
+      "updated_at": "2026-10-29T15:56:29Z"
+    },
+    "job": {
+      "id": 123555495977,
+      "name": "validate",
+      "run_id": 40904513161,
+      "head_sha": "48a92d1ea62bbad5843539d708587896562559b7",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40908169677,
+      "name": "Documentation",
+      "run_attempt": 1,
+      "head_sha": "924c9b5c469f8ee4e0daa576e7c63503e3e58398",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40908169677",
+      "created_at": "2026-10-29T16:05:50Z",
+      "updated_at": "2026-10-29T16:07:45Z"
+    },
+    "job": {
+      "id": 123568532173,
+      "name": "validate",
+      "run_id": 40908169677,
+      "head_sha": "924c9b5c469f8ee4e0daa576e7c63503e3e58398",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "note": "Documentation-only reconciliation; product/source checks remain green on source_sha."
+  },
+  "local_verification": {
+    "inherited_source": "Rust source is byte-identical to source_sha; local source checks and coverage remain those recorded in the previous SAL-014 evidence note.",
+    "documents": "Work item/schema/evidence validators passed for 154 items; 72 work-item validator cases passed; progress-log append-only check preserved 687217 historical bytes from prior SHA 9911eafd1032643d070a70f79f073bb5fb165f28.",
+    "staged_gitleaks": "Gitleaks 8.30.1 scanned the 8.28 KB documentary correction diff with zero findings, including not trusting gitleaks:allow comments.",
+    "diff_check": "git diff --cached --check passed."
+  },
+  "refs": {
+    "notes_before": 155,
+    "notes_after": 156,
+    "main_sha": "924c9b5c469f8ee4e0daa576e7c63503e3e58398",
+    "notes_ref_before": "5986eba5581c9489054836c6ed5bd20f09b48a5c",
+    "preserves_previous_sal014_note": "9911eafd1032643d070a70f79f073bb5fb165f28",
+    "preserved": "All 155 existing evidence note mappings verified unchanged; this correction adds one note."
+  },
+  "limitations": [
+    "No UI/IPC, official E2E, global Rust coverage, branch/statement coverage, installer, backup/restore, or signature claim.",
+    "The shared transaction helper does not promise recovery after COMMIT failure; this case was not fault-injected. Rollback tests cover operation failures before commit."
+  ],
+  "next": "SAL-015 is the next pending B5 item and was not started as part of this SAL-014 closeout."
+}
