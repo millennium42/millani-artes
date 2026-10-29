@@ -1,0 +1,93 @@
+{
+  "id": "RCV-001",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "122630ac230fbc818c8cbe04928177649f2cd8e3",
+  "final_sha": "e0714d8238f055699da9b0f24e0520c99a76acb9",
+  "source_ci": {
+    "run": {
+      "id": 40952358733,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "122630ac230fbc818c8cbe04928177649f2cd8e3",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40952358733"
+    },
+    "job": {
+      "id": 123723487078,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "candidate_document_ci": {
+    "run_id": 40954718045,
+    "head_sha": "6e127333ad06498593f5b1a53280be74f763579d",
+    "conclusion": "success",
+    "steps_passed": 16,
+    "steps_skipped": 7,
+    "note": "Candidate documentation CI before final work-item status; superseded by final_ci on final_sha."
+  },
+  "final_ci": {
+    "run": {
+      "id": 40955347891,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "e0714d8238f055699da9b0f24e0520c99a76acb9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40955347891"
+    },
+    "job": {
+      "id": 123733898841,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "scope": "Documentation-only closure run; source_ci passed product/build gates on source_sha."
+  },
+  "human_decision": "One Casa/Fábrica context per initial SalePayment, recorded by the user on 2026-10-29; SAL-020 must implement this per-payment rule.",
+  "local_verification": {
+    "red": "Focused test compile failed with E0432 unresolved import super::Receivable before the type was added.",
+    "green": "domain::receivable_tests passed 1/1; two compile_fail doctests reject Debug and Display.",
+    "rust": "Pinned Rust 1.99: fmt --check and locked all-target Clippy -D warnings passed. Debug and release each passed 273 library tests, 7/8 integration tests (one WebView2-dependent test ignored), 193 SQLite tests, and 36 doctests.",
+    "coverage": "Rust 1.99/LLVM 23.1.1 domain/mod.rs full/control: 320/320 lines, 31/31 functions, 430/431 regions. receivable_tests.rs full: 17/17 lines, 1/1 function, 12/12 regions; negative control: 0/17 lines and 0/1 functions. Branches unmeasured.",
+    "cargo_audit": "Cargo Audit 0.22.2: 422 dependencies, zero vulnerabilities, two pre-existing exceptions through 2026-11-06.",
+    "osv": "OSV-Scanner 2.6.0: 542 packages, four exceptions, zero unexcepted findings; exceptions expire 2026-11-06.",
+    "gitleaks": "Pinned Gitleaks 8.30.1 staged scan 8.34 KB/zero findings; history scan 728 commits/zero findings; 16 guard fixtures passed serially. The first concurrent fixture attempt collided on shared scratch with the history scan; serial rerun passed.",
+    "validators": "Project map 28 sources/740 files; gitignore 28 ignored/four preserved; evidence and work-item validators 160 items; append-only progress validator preserved 706887 prior bytes; 72 work-item fixtures, 26 progress-log fixtures, 37 Tauri plugin fixtures/two CLI cases passed.",
+    "review": "P-INT adversarial self-review found no P0/P1/P2; review was not independent."
+  },
+  "refs": {
+    "notes_ref_before": "2080ed810f328343e60f919866c2f93936ba6ae4",
+    "notes_before": 162,
+    "notes_after": 163,
+    "preserved_mapping_set_sha256": "FF3C1A5334B9C0507D264BC99E71745EF38D73C3D9C9F4195D7B28AD4408094F",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF.",
+    "preserved": "All 162 prior evidence mappings are preserved; this note adds only the RCV-001 mapping for final_sha."
+  },
+  "limitations": [
+    "This passive type does not enforce customer/sale existence, positive principal, or unique sale linkage; RCV-002/003 own physical constraints and persistence.",
+    "It does not calculate remaining balance, record receipts, or alter cash. INV-SAL-001/002/003 remain incomplete.",
+    "No UI/IPC, smoke, or official E2E proof is claimed."
+  ],
+  "next": "RCV-002 is next; begin only after this note and the 163-mapping remote refs are verified."
+}
