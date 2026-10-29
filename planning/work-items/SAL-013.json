@@ -2,7 +2,7 @@
   "id": "SAL-013",
   "title": "adicionar item livre à venda",
   "specPath": "planning/specs/SAL-013.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "SAL-005",
     "SAL-010",
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT único escritor; GPT integrador revisa extremos/diff; sem delegação/paralelismo. Base bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17; paths exatos reservados na spec e handoff; liberar após CI final e nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Iniciado após reconfirmar SAL-005/010/011/012 fechados e CI baseline no SHA bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17. Run 40886435465 verde nesse SHA, documental e com Rust pulado por seletor; run fonte 40883828192 verde no SHA 1aebfb4277d3f31992860be4b0df9ff930ac3ac9. Toolchain local Rust 1.99.0/MSVC com rustfmt/clippy/llvm-tools disponível via C:\\Users\\milla\\.cargo\\bin. Evidência E3 local produzida e verificada; fmt/clippy/debug/release, cobertura focal full/controle, scans de dependências, fixtures, npm quality/build e staged diff Gitleaks 8.30.1 (66.56 KB, 0 findings) passaram. Revisão final, commit, CI remoto nos SHAs fonte/final, scan de histórico e nota de evidência pendentes."
+  "passes": true,
+  "notes": "SAL-013 implementado e fechado em E3. Código fonte SHA 064c4417ee74ff04fd001e47331af3d3d11edc05: GitHub Actions run 40893617138, job 123516676455, attempt 1, success; os 23 passos passaram, incluindo auditorias, qualidade/cobertura frontend, build Tauri de produção, cargo test --release --locked e verificação PE AMD64/custom-protocol. Fechamento documental no SHA deste work item é validado pelo CI exato registrado na nota refs/notes/evidence após sucesso. Local: fmt/clippy/debug/release/doctests, quatro unitários e seis SQLite físicos, cobertura LLVM focal com controle negativo rejeitado, scans Cargo/OSV/npm/Gitleaks, npm quality/build e validators. Revisão final sem achados que bloqueiem. O item não altera dependências, locks, migrations, domínio, caixa, UI ou IPC. UI-010, SMK-005, E2E oficial e cobertura Rust global continuam pendentes em seus próprios escopos."
 }
