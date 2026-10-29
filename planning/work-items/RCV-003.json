@@ -2,7 +2,7 @@
   "id": "RCV-003",
   "title": "criar recebível pendente na transação do chamador",
   "specPath": "planning/specs/RCV-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "RCV-002",
     "SAL-017"
@@ -21,11 +21,12 @@
     "Rust fmt --check e locked all-target Clippy -D warnings passaram; suíte debug e release passaram com 206 testes e 36 doctests por perfil.",
     "Scans no SHA exato c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b: Gitleaks 8.30.1, 740 commits, zero findings; Cargo Audit 0.22.2, 422 dependências, zero vulnerabilidades e dois avisos aprovados; OSV 2.6.0, 542 pacotes, quatro exceções e zero achados não excepcionados. Exceções até 2026-11-06.",
     "P-REV independente GPT Sol 6 medium: sem achados P0/P1/P2. Validadores locais passaram: mapa 28 fontes/750 arquivos; work items e evidências 162; 72 e 25 fixtures; progress log append-only preservou 711495 bytes; Tauri 37 fixtures/2 CLI cases, zero plugins.",
-    "CI fonte exato: GitHub Actions run 40972757498/job 123793272870, evento push, attempt 1, success 23/23/0 skips no SHA c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b. Build Windows Tauri/PE32+ AMD64 com custom protocol e suíte release: 273 biblioteca, 7/8 integração (1 ignorado), 206 SQLite e 36 doctests passaram."
+    "CI fonte exato: GitHub Actions run 40972757498/job 123793272870, evento push, attempt 1, success 23/23/0 skips no SHA c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b. Build Windows Tauri/PE32+ AMD64 com custom protocol e suíte release: 273 biblioteca, 7/8 integração (1 ignorado), 206 SQLite e 36 doctests passaram.",
+    "CI documental final pré-fechamento: GitHub Actions push run 40974790968/job 123800036427, success 16/23; sete etapas de produto/build foram corretamente omitidas no SHA documental f1d95dfb2adf2e536ba95f2b782d89d35bda2fa3. O commit de encerramento terá CI documental exato próprio."
   ],
   "agentPlan": "P-INT integra e reproduz. P-QA/Gemma recebeu somente os testes reservados, mas terminou em timeout sem diff utilizável; recibo externo preservado. P-INT escreveu e integrou testes e helper. P-DAT/Laguna não foi acionado. P-REV independente GPT Sol 6 medium revisou o diff e não encontrou P0/P1/P2. Nenhum worker marca passes, commita ou publica.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "RCV-003 permanece in_progress/E3/passes:false enquanto aguarda o CI documental final no SHA de liberação e publicação da nota refs/notes/evidence preservando os 164 mappings anteriores. Source CI, scans exatos, revisão e validadores locais passaram. SAL-020 continua bloqueado até o fechamento. Um contexto Casa/Fábrica por pagamento inicial foi decidido pela usuária e está registrado em docs/product/BUSINESS_RULES.md."
+  "passes": true,
+  "notes": "RCV-003 concluído como E3 da operação backend. Source CI exato c8e1d1936e2ef5f78ba4d7b653ec08c171568e9b passou 23/23/0 skips; CI documental em f1d95dfb2adf2e536ba95f2b782d89d35bda2fa3 passou 16/23 com sete omissões esperadas. A nota de liberação em refs/notes/evidence deve anexar o SHA final após seu CI e preservar os 164 mappings anteriores (hash 5CB8FE87C88982065BE5FBFCF4B0A54611F30089731780AAE10FFA7947B059EF). SAL-020 é o próximo item, condicionado à nota. Limites: sem UI/IPC, smoke ou E2E. Contexto Casa/Fábrica por pagamento inicial decidido pela usuária."
 }
