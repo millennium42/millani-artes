@@ -1,0 +1,97 @@
+{
+  "id": "SAL-015",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "8c72cfd9a812af1cca07db93f6cdc079a6496402",
+  "final_sha": "cb724e77807d348363bac0fc0375b023aa534a2b",
+  "source_ci": {
+    "run": {
+      "id": 40915881244,
+      "name": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "8c72cfd9a812af1cca07db93f6cdc079a6496402",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40915881244",
+      "created_at": "2026-10-29T16:52:49Z",
+      "updated_at": "2026-10-29T17:03:37Z"
+    },
+    "job": {
+      "id": 123595844362,
+      "name": "validate",
+      "run_id": 40915881244,
+      "head_sha": "8c72cfd9a812af1cca07db93f6cdc079a6496402",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40918790836,
+      "name": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "cb724e77807d348363bac0fc0375b023aa534a2b",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/millennium42/millani-artes/actions/runs/40918790836",
+      "created_at": "2026-10-29T17:10:39Z",
+      "updated_at": "2026-10-29T17:12:37Z"
+    },
+    "job": {
+      "id": 123606074182,
+      "name": "validate",
+      "run_id": 40918790836,
+      "head_sha": "cb724e77807d348363bac0fc0375b023aa534a2b",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "skipped": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ],
+    "note": "Documentation-only closure run; seven product/frontend build steps were skipped by the workflow selector. Source CI on source_sha ran all 23 steps, including Tauri production build, release tests, and executable verification."
+  },
+  "local_verification": {
+    "red": "Focal test failed with E0599 before implementation; final SAL-015 tests passed 4/4.",
+    "rust": "Rust 1.99 MSVC: fmt, locked clippy -D warnings, full debug and release suites passed; each suite had 268 library, 7 binary plus 1 WebView2-ignored, 193 SQLite, and 28 doctests.",
+    "llvm_focal": {
+      "toolchain": "Rust 1.99.0 / LLVM 23.1.1",
+      "full": "domain/mod.rs 130/130 tests, 320/320 lines, 31/31 functions, 430/431 regions; Sale::calculate_total observed 6 calls.",
+      "control": "Unrelated test only: 3/320 lines, 1/31 functions, method not called; both 95 percent gates rejected.",
+      "limits": "Stable toolchain rejected branch coverage option; no branches, statements, global Rust coverage, or CI coverage claim."
+    },
+    "security": {
+      "cargo_audit": "Cargo Audit 0.22.2: 422 dependencies, 0 vulnerabilities, 2 warnings within existing approved exceptions.",
+      "osv": "OSV 2.6.0: 542 packages, 4 findings covered by existing approved exceptions, 0 unexcepted; existing target/hash-bound block-buffer 0.10.4 exception remains unchanged and expires before 2026-11-06 UTC.",
+      "gitleaks": "Gitleaks 8.30.1: 16 fixtures; pre-source history scan over 712 commits clean; staged source patch and 21.33 KB staged documentation patch had 0 findings; both source and final CI ran history scan."
+    },
+    "documents": "Project map 28 sources/724 files; work item/evidence checks valid for 155 items; work-item fixtures 72; evidence fixtures 25; progress-log fixtures 26; append-only check preserved 689441 prior bytes; git diff checks clean.",
+    "review": "P-INT integrator focal review found no P0/P1/P2; not an independent second-agent review.",
+    "dependencies": "Cargo manifests, Cargo.lock, npm lockfile, schema, migrations, dependencies, exception records, and financial side effects unchanged."
+  },
+  "refs": {
+    "notes_before": 157,
+    "notes_after": 158,
+    "notes_ref_before": "2b55c032250b81c5e22957ee7ae46052719eaca8",
+    "main_sha": "cb724e77807d348363bac0fc0375b023aa534a2b",
+    "preserved": "All 157 prior evidence note mappings must remain byte-for-byte identical; only the new SAL-015 mapping is added to refs/notes/evidence."
+  },
+  "limitations": [
+    "Evidence covers pure domain projection only; no persisted sale snapshot/reopen, sale SQLite flow, UI/IPC, SMK-005, installation, or official E2E claim.",
+    "The existing temporary OSV exception remains narrowly scoped to its approved identity, target, and hashes; expiry is before 2026-11-06 UTC."
+  ],
+  "next": "SAL-016 may begin only after the final CI run and evidence note are verified on the matching remote refs."
+}
