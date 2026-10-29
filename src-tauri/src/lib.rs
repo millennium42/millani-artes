@@ -2,6 +2,7 @@
 pub mod database;
 pub mod domain;
 pub mod application {
+    pub mod add_free_item;
     pub mod add_product_item;
     pub mod calculate_context_result;
     pub mod create_account;

@@ -1,5 +1,6 @@
 use super::entry_persistence::{FixedClock, FixedIds};
 use super::TempDirectory;
+use millani_artes::application::add_free_item::{add_free_item, FreeItemInput};
 use millani_artes::application::add_product_item::{
     add_product_item, read_sale, ProductItemInput, SaleError,
 };
@@ -121,6 +122,39 @@ fn add(
         s,
     )
     .unwrap()
+}
+
+fn free_input(
+    sale: Option<u8>,
+    description: &str,
+    quantity: i64,
+    price: i64,
+    discount: DiscountInput,
+) -> FreeItemInput {
+    FreeItemInput {
+        sale_id: sale.map(|id| [id; 16]),
+        description: description.into(),
+        quantity,
+        unit_price_cents: price,
+        discount,
+    }
+}
+
+fn add_free(
+    store: &mut AdapterSqliteSaleStore,
+    sale: Option<u8>,
+    seed: u8,
+    description: &str,
+    quantity: i64,
+    price: i64,
+    discount: DiscountInput,
+) -> Result<millani_artes::application::add_free_item::AddedFreeItem, SaleError> {
+    add_free_item(
+        free_input(sale, description, quantity, price, discount),
+        &mut Ids { next: seed },
+        &FixedClock,
+        store,
+    )
 }
 
 #[test]
@@ -609,4 +643,436 @@ fn sal012_sql_lookup_failures_rollback_and_read_header_errors_are_opaque() {
             );
         }
     }
+}
+
+#[test]
+fn sal013_free_item_persists_snapshot_order_audit_and_no_catalog_or_cash_effects() {
+    let (_d, p) = setup();
+    let description = "  Serviço 'Á'\0 🧵\r\n  ";
+    let before = state(&open_database(&p).unwrap());
+    let mut store = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+    let first = add_free(
+        &mut store,
+        None,
+        0x50,
+        description,
+        2,
+        1500,
+        DiscountInput::AmountCents(300),
+    )
+    .unwrap();
+    assert_eq!(first.sale_id, [0x50; 16]);
+    assert_eq!(first.item.id, [0x51; 16]);
+    assert_eq!(first.item.product_id, None);
+    assert_eq!(first.item.description, description);
+    assert_eq!(first.item.discount_cents, 300);
+    assert_eq!(first.item.total_cents, 2700);
+    let second = add_free(
+        &mut store,
+        Some(0x50),
+        0x53,
+        "Serviço",
+        1,
+        5,
+        DiscountInput::PercentageBasisPoints(1000),
+    )
+    .unwrap();
+    assert_eq!(second.sale_id, [0x50; 16]);
+    assert_eq!(second.item.id, [0x53; 16]);
+    assert_eq!(second.item.product_id, None);
+    assert_eq!(
+        [second.item.discount_cents, second.item.total_cents],
+        [1, 4]
+    );
+    drop(store);
+
+    let mut reopened = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+    let sale = read_sale(&mut reopened, [0x50; 16]).unwrap().unwrap();
+    assert!(matches!(sale.status, SaleStatus::Open));
+    assert_eq!(sale.items.len(), 2);
+    assert_eq!(sale.items[0].id, [0x51; 16]);
+    assert_eq!(sale.items[0].product_id, None);
+    assert_eq!(sale.items[0].description, description);
+    assert_eq!(sale.items[0].total_cents, 2700);
+    assert_eq!(sale.items[1].id, [0x53; 16]);
+    assert_eq!(sale.items[1].product_id, None);
+    assert_eq!(sale.items[1].description, "Serviço");
+    assert_eq!(sale.items[1].total_cents, 4);
+
+    let c = open_database(&p).unwrap();
+    health(&c);
+    let after = state(&c);
+    for table in [0, 1, 2, 3, 5, 6, 7] {
+        assert_eq!(after[table], before[table], "TABLE_{table}_CHANGED");
+    }
+    assert_eq!(after[4].len(), before[4].len() + 2, "AUDIT_COUNT");
+    assert_eq!(after[8].len(), before[8].len() + 1, "SALE_COUNT");
+    assert_eq!(after[9].len(), before[9].len() + 2, "SALE_ITEM_COUNT");
+    assert_eq!(
+        rows(
+            &c,
+            "SELECT product_id FROM main.sale_items WHERE sale_id=x'50505050505050505050505050505050' ORDER BY position"
+        ),
+        vec![vec![Value::Null], vec![Value::Null]]
+    );
+    for (event, item) in [(0x52, 0x51), (0x54, 0x53)] {
+        assert_eq!(
+            rows(&c, &format!(
+                "SELECT occurred_at_ms,operation,entity,entity_id FROM main.audit_event WHERE event_id=x'{}'",
+                format!("{event:02x}").repeat(16)
+            )),
+            vec![vec![
+                Value::Integer(1234),
+                Value::Text("sale_item_add".into()),
+                Value::Text("sale_item".into()),
+                Value::Blob(vec![item; 16]),
+            ]]
+        );
+    }
+}
+
+#[test]
+fn sal013_free_item_zero_ties_and_wide_amounts_roundtrip() {
+    let (_d, p) = setup();
+    let before = state(&open_database(&p).unwrap());
+    let mut store = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+    for (seed, quantity, price, discount, expected_discount, expected_total) in [
+        (0x60, 1, 0, DiscountInput::AmountCents(0), 0, 0),
+        (0x70, 1, 5, DiscountInput::PercentageBasisPoints(1000), 1, 4),
+        (
+            0x80,
+            2,
+            i64::MAX,
+            DiscountInput::AmountCents(i64::MAX),
+            i64::MAX,
+            i64::MAX,
+        ),
+    ] {
+        let added = add_free(&mut store, None, seed, "Livre", quantity, price, discount).unwrap();
+        assert_eq!(added.item.product_id, None);
+        assert_eq!(added.item.discount_cents, expected_discount);
+        assert_eq!(added.item.total_cents, expected_total);
+        let sale = read_sale(&mut store, [seed; 16]).unwrap().unwrap();
+        assert_eq!(sale.items[0].description, "Livre");
+        assert_eq!(sale.items[0].total_cents, expected_total);
+    }
+    drop(store);
+    let c = open_database(&p).unwrap();
+    health(&c);
+    let after = state(&c);
+    assert_eq!(after[6], before[6], "PRODUCT_CATALOG_CHANGED");
+    assert_eq!(after[3], before[3], "MOVEMENTS_CHANGED");
+    assert_eq!(after[1], before[1], "ACCOUNTS_CHANGED");
+}
+
+#[test]
+fn sal013_invalid_items_missing_closed_sales_and_max_position_have_no_write() {
+    let (_d, p) = setup();
+    let mut store = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+    add_free(
+        &mut store,
+        None,
+        0x40,
+        "Original",
+        1,
+        1000,
+        DiscountInput::AmountCents(0),
+    )
+    .unwrap();
+    let before = state(&open_database(&p).unwrap());
+    for (seed, description, quantity, price, discount) in [
+        (0x60, " \t\u{2003}", 1, 1000, DiscountInput::AmountCents(0)),
+        (0x63, "Livre", 0, 1000, DiscountInput::AmountCents(0)),
+        (0x66, "Livre", 1, -1, DiscountInput::AmountCents(0)),
+        (0x69, "Livre", 1, 1000, DiscountInput::AmountCents(1001)),
+        (
+            0x6c,
+            "Livre",
+            1,
+            1000,
+            DiscountInput::PercentageBasisPoints(10001),
+        ),
+    ] {
+        assert_eq!(
+            add_free(
+                &mut store,
+                Some(0x40),
+                seed,
+                description,
+                quantity,
+                price,
+                discount
+            )
+            .err(),
+            Some(SaleError::InvalidItem)
+        );
+        assert_eq!(state(&open_database(&p).unwrap()), before);
+    }
+    assert_eq!(
+        add_free(
+            &mut store,
+            None,
+            0x80,
+            "",
+            1,
+            1000,
+            DiscountInput::AmountCents(0)
+        )
+        .err(),
+        Some(SaleError::InvalidItem)
+    );
+    assert_eq!(state(&open_database(&p).unwrap()), before);
+    assert_eq!(
+        add_free(
+            &mut store,
+            Some(0xfe),
+            0x83,
+            "Livre",
+            1,
+            1000,
+            DiscountInput::AmountCents(0)
+        )
+        .err(),
+        Some(SaleError::SaleNotFound)
+    );
+    assert_eq!(state(&open_database(&p).unwrap()), before);
+
+    let c = open_database(&p).unwrap();
+    c.execute(
+        "UPDATE main.sales SET status='finalized' WHERE id=?1",
+        params![[0x40u8; 16].as_slice()],
+    )
+    .unwrap();
+    drop(c);
+    let closed_before = state(&open_database(&p).unwrap());
+    assert_eq!(
+        add_free(
+            &mut store,
+            Some(0x40),
+            0x86,
+            "Livre",
+            1,
+            1000,
+            DiscountInput::AmountCents(0)
+        )
+        .err(),
+        Some(SaleError::SaleNotOpen)
+    );
+    assert_eq!(state(&open_database(&p).unwrap()), closed_before);
+    health(&open_database(&p).unwrap());
+
+    let (_d, p) = setup();
+    let mut store = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+    add_free(
+        &mut store,
+        None,
+        0x40,
+        "Original",
+        1,
+        1000,
+        DiscountInput::AmountCents(0),
+    )
+    .unwrap();
+    let c = open_database(&p).unwrap();
+    c.execute(
+        "UPDATE main.sale_items SET position=?1 WHERE sale_id=?2",
+        params![i64::MAX, [0x40u8; 16].as_slice()],
+    )
+    .unwrap();
+    drop(c);
+    let before = state(&open_database(&p).unwrap());
+    assert_eq!(
+        add_free(
+            &mut store,
+            Some(0x40),
+            0x90,
+            "Outro",
+            1,
+            1000,
+            DiscountInput::AmountCents(0)
+        )
+        .err(),
+        Some(SaleError::PositionExhausted)
+    );
+    assert_eq!(state(&open_database(&p).unwrap()), before);
+}
+
+#[test]
+fn sal013_sqlite_item_and_audit_failures_rollback_poison_and_recover() {
+    for (trigger, sql) in [
+        (
+            "fail_free_item",
+            "CREATE TRIGGER fail_free_item BEFORE INSERT ON sale_items BEGIN SELECT RAISE(ABORT,'PRIVATE'); END;",
+        ),
+        (
+            "fail_free_audit",
+            "CREATE TRIGGER fail_free_audit BEFORE INSERT ON audit_event WHEN NEW.operation='sale_item_add' BEGIN SELECT RAISE(ABORT,'PRIVATE'); END;",
+        ),
+    ] {
+        let (_d, p) = setup();
+        let c = open_database(&p).unwrap();
+        c.execute_batch(sql).unwrap();
+        let before = state(&c);
+        let mut store = AdapterSqliteSaleStore::new(c);
+        assert_eq!(
+            add_free(
+                &mut store,
+                None,
+                0x40,
+                "Novo",
+                1,
+                1000,
+                DiscountInput::AmountCents(0)
+            )
+            .err(),
+            Some(SaleError::StoreFailed)
+        );
+        assert_eq!(
+            add_free(
+                &mut store,
+                None,
+                0x50,
+                "Poisonado",
+                1,
+                1000,
+                DiscountInput::AmountCents(0)
+            )
+            .err(),
+            Some(SaleError::StoreFailed)
+        );
+        drop(store);
+        let observer = open_database(&p).unwrap();
+        health(&observer);
+        assert_eq!(state(&observer), before, "{trigger}_PARTIAL_WRITE");
+        observer.execute_batch(&format!("DROP TRIGGER main.{trigger}")).unwrap();
+        drop(observer);
+        let mut fresh = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+        add_free(
+            &mut fresh,
+            None,
+            0x60,
+            "Recuperado",
+            1,
+            1000,
+            DiscountInput::AmountCents(0),
+        )
+        .unwrap();
+        drop(fresh);
+        assert_eq!(load(&p, 0x60).items[0].description, "Recuperado");
+        health(&open_database(&p).unwrap());
+    }
+}
+
+#[test]
+fn sal013_collisions_query_only_and_lock_leave_all_tables_intact() {
+    for fault in [
+        "sale_collision",
+        "item_collision",
+        "audit_collision",
+        "query_only",
+        "locked",
+    ] {
+        let (_d, p) = setup();
+        let mut initial = AdapterSqliteSaleStore::new(open_database(&p).unwrap());
+        add_free(
+            &mut initial,
+            None,
+            0x30,
+            "Original",
+            1,
+            1000,
+            DiscountInput::AmountCents(0),
+        )
+        .unwrap();
+        drop(initial);
+
+        let c = open_database(&p).unwrap();
+        let before = state(&c);
+        let lock = if fault == "locked" {
+            let l = open_database(&p).unwrap();
+            l.execute_batch("BEGIN IMMEDIATE").unwrap();
+            Some(l)
+        } else {
+            None
+        };
+        if fault == "query_only" {
+            c.pragma_update(None, "query_only", true).unwrap();
+        }
+        c.busy_timeout(std::time::Duration::ZERO).unwrap();
+        let mut store = AdapterSqliteSaleStore::new(c);
+        struct FaultIds {
+            values: std::vec::IntoIter<[u8; 16]>,
+        }
+        impl millani_artes::domain::ports::UuidGenerator for FaultIds {
+            type Error = ();
+            fn generate(&mut self) -> Result<[u8; 16], ()> {
+                Ok(self.values.next().unwrap())
+            }
+        }
+        let (sale_id, ids) = match fault {
+            "sale_collision" => (None, vec![[0x30; 16], [0x50; 16], [0x51; 16]]),
+            "item_collision" => (Some([0x30; 16]), vec![[0x31; 16], [0x50; 16]]),
+            "audit_collision" => (Some([0x30; 16]), vec![[0x50; 16], [0x32; 16]]),
+            "query_only" => (None, vec![[0x60; 16], [0x61; 16], [0x62; 16]]),
+            "locked" => (None, vec![[0x70; 16], [0x71; 16], [0x72; 16]]),
+            _ => unreachable!(),
+        };
+        let mut ids = FaultIds {
+            values: ids.into_iter(),
+        };
+        assert_eq!(
+            add_free_item(
+                free_input(
+                    sale_id.map(|id| id[0]),
+                    "Livre",
+                    1,
+                    1000,
+                    DiscountInput::AmountCents(0),
+                ),
+                &mut ids,
+                &FixedClock,
+                &mut store,
+            )
+            .err(),
+            Some(SaleError::StoreFailed),
+            "{fault}"
+        );
+        drop(lock);
+        drop(store);
+        let observer = open_database(&p).unwrap();
+        health(&observer);
+        assert_eq!(state(&observer), before, "{fault}_PARTIAL_WRITE");
+    }
+}
+
+#[test]
+fn sal013_writes_main_snapshot_even_when_temp_tables_shadow_sales_objects() {
+    let (_d, p) = setup();
+    let c = open_database(&p).unwrap();
+    c.execute_batch(
+        "CREATE TEMP TABLE sales(id BLOB,status TEXT); CREATE TEMP TABLE products(id BLOB); CREATE TEMP TABLE sale_items(id BLOB); CREATE TEMP TABLE audit_event(event_id BLOB);",
+    )
+    .unwrap();
+    let before = state(&c);
+    let mut store = AdapterSqliteSaleStore::new(c);
+    add_free(
+        &mut store,
+        None,
+        0x40,
+        "Livre",
+        1,
+        1000,
+        DiscountInput::AmountCents(0),
+    )
+    .unwrap();
+    drop(store);
+    let sale = load(&p, 0x40);
+    assert_eq!(sale.items.len(), 1);
+    assert_eq!(sale.items[0].product_id, None);
+    assert_eq!(sale.items[0].description, "Livre");
+    let c = open_database(&p).unwrap();
+    let after = state(&c);
+    assert_eq!(after[6], before[6], "PRODUCT_CATALOG_CHANGED");
+    assert_eq!(after[4].len(), before[4].len() + 1, "MAIN_AUDIT_MISSING");
+    health(&c);
 }

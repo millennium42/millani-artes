@@ -1,0 +1,29 @@
+{
+  "id": "SAL-013",
+  "title": "adicionar item livre à venda",
+  "specPath": "planning/specs/SAL-013.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-005",
+    "SAL-010",
+    "SAL-011"
+  ],
+  "acceptanceCriteria": [
+    "Caso de uso adiciona item livre novo/existente com IDs e Unix ms checked; item persistido tem product_id=NULL e snapshot próprio.",
+    "SQLite físico grava header opcional, item e uma auditoria atomicamente; rejeições não mutam e falhas operacionais revertem/poisoner.",
+    "Reopen/read preserva ordem/descrição/valores; produtos e movimentos ficam iguais; controles de erro e coverage LLVM >=95 com controle rejeitado.",
+    "Gates Rust/security/documentais e review aprovados; matriz, docs, log append-only e handoff atualizados antes de passes=true.",
+    "CI remoto verde no SHA fonte/final exato e nota de evidência publicada preservando notas; não iniciar SAL-014 antes do fechamento."
+  ],
+  "checks": [
+    "RED/GREEN unitário e integração SQLite de arquivo, reopen, catálogo/caixa intactos e rollback/poisoner",
+    "cargo fmt --check; clippy --all-targets --features tauri/custom-protocol -- -D warnings; cargo test debug e release",
+    "cargo audit/OSV, npm quality/build se seletor exigir, validators documentais, staged Gitleaks e review",
+    "LLVM linhas/funções de add_free_item.rs e sales.rs com controle negativo; CI remoto no SHA final"
+  ],
+  "agentPlan": "P-INT único escritor; GPT integrador revisa extremos/diff; sem delegação/paralelismo. Base bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17; paths exatos reservados na spec e handoff; liberar após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Iniciado após reconfirmar SAL-005/010/011/012 fechados e CI baseline no SHA bfe94b4a79cd978f0e096ec85bfbcdbb7e88ac17. Run 40886435465 verde nesse SHA, documental e com Rust pulado por seletor; run fonte 40883828192 verde no SHA 1aebfb4277d3f31992860be4b0df9ff930ac3ac9. Toolchain local Rust 1.99.0/MSVC com rustfmt/clippy/llvm-tools disponível via C:\\Users\\milla\\.cargo\\bin. Evidência E3 local produzida e verificada; fmt/clippy/debug/release, cobertura focal full/controle, scans de dependências, fixtures, npm quality/build e staged diff Gitleaks 8.30.1 (66.56 KB, 0 findings) passaram. Revisão final, commit, CI remoto nos SHAs fonte/final, scan de histórico e nota de evidência pendentes."
+}
