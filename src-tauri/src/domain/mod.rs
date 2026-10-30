@@ -775,6 +775,25 @@ impl Receivable {
     }
 }
 
+/// The account, amount, and context supplied for a later receivable payment.
+///
+/// This is passive input data; recording the receipt and creating its financial movement belong to a later use case.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::ReceivableReceipt>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::ReceivableReceipt>();
+/// ```
+pub struct ReceivableReceipt {
+    pub account_id: [u8; 16],
+    pub amount_cents: i64,
+    pub context: Context,
+}
+
 /// One initial payment allocation with its own account, amount and Casa/Fábrica context; later receipts belong to the receivable flow.
 ///
 /// ```compile_fail

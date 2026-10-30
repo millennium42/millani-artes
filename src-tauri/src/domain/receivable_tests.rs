@@ -79,7 +79,7 @@ fn rcv004_accepts_i64_max_and_rejects_invalid_amounts() {
 
 #[test]
 fn rcv005_preserves_receipt_account_amount_context_and_order() {
-    let receipts = vec![
+    let receipts = [
         ReceivableReceipt {
             account_id: [0x51; 16],
             amount_cents: 500,
