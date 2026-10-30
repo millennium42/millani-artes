@@ -1,0 +1,239 @@
+{
+  "id": "SAL-020",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "8c2347f8a358ff14bd5a41b89afc432c018c13ec",
+  "final_sha": "73d75299b2cc286cad3e09b8285172b05b14136b",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/4",
+    "https://github.com/millennium42/millani-artes/pull/5"
+  ],
+  "source_ci": {
+    "run": {
+      "id": 40980902637,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "8c2347f8a358ff14bd5a41b89afc432c018c13ec",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40980902637"
+    },
+    "job": {
+      "id": 123820423677,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "tested_merge_sha": "c4040c30533d9cfe41a9edb853eb3e6382539af8",
+    "release_tests": {
+      "library_passed": 278,
+      "integration_passed": 7,
+      "integration_ignored": 1,
+      "sqlite_harness_passed": 211,
+      "doctests_passed": 36
+    },
+    "native_evidence": {
+      "source_sha": "c4040c30533d9cfe41a9edb853eb3e6382539af8",
+      "bytes": 8536576,
+      "sha256": "fc5052f89c8be28dfab85da160a40e1079910b464e01499a7b6b63e972a78687",
+      "machine": "AMD64",
+      "pe": "PE32+",
+      "custom_protocol": true,
+      "rustc": "1.99.0",
+      "cargo": "1.99.0",
+      "node": "v24.21.0",
+      "npm_lock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+      "cargo_lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+    }
+  },
+  "code_ci": {
+    "run": {
+      "id": 40981957710,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "1e2fb5561f37cb7636c631739192eb3a5f0e68fd",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40981957710"
+    },
+    "job": {
+      "id": 123823885662,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "library_passed": 278,
+      "integration_passed": 7,
+      "integration_ignored": 1,
+      "sqlite_harness_passed": 211,
+      "doctests_passed": 36
+    },
+    "native_evidence": {
+      "source_sha": "1e2fb5561f37cb7636c631739192eb3a5f0e68fd",
+      "bytes": 8536576,
+      "sha256": "e64eab31eb9aaa6550b23b3688eb60d2bf94a4ebec3491ff359f09d109f52d76",
+      "machine": "AMD64",
+      "pe": "PE32+",
+      "custom_protocol": true,
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+      "node": "v24.21.0",
+      "image_os": "win25-vs2026",
+      "image_version": "20261021.278.1",
+      "npm_lock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+      "cargo_lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40984449923,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "73d75299b2cc286cad3e09b8285172b05b14136b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40984449923"
+    },
+    "job": {
+      "id": 123832064546,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "commits": 361,
+      "findings": 0,
+      "source_sha": "73d75299b2cc286cad3e09b8285172b05b14136b",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c"
+    },
+    "append_only": {
+      "historical_bytes_preserved": 715956
+    }
+  },
+  "local": {
+    "rust": {
+      "debug": {
+        "library_passed": 278,
+        "sqlite_harness_passed": 211,
+        "doctests_passed": 36
+      },
+      "release": {
+        "library_passed": 278,
+        "sqlite_harness_passed": 211,
+        "doctests_passed": 36
+      },
+      "fmt_check": "pass",
+      "clippy_locked_all_targets_d_warnings": "pass",
+      "tauri_build": {
+        "bytes": 8533504,
+        "sha256": "c161837a6c322abdacf23f40254586073760701d8ea154a5947fea9afc79b0b6",
+        "machine": "AMD64",
+        "pe": "PE32+",
+        "custom_protocol": true
+      },
+      "focused_coverage": {
+        "finalize_sale_rs": {
+          "lines": "61/61",
+          "functions": "4/4",
+          "control_without_sal020_tests": "0/61 lines, 0/4 functions"
+        },
+        "sales_rs": {
+          "lines": "338/340",
+          "functions": "21/21",
+          "control_without_sal020_tests": "243/340 lines, 17/21 functions"
+        },
+        "other_changed_files": [
+          "add_product_item.rs 39/39 lines, 4/4 functions",
+          "domain/mod.rs 320/320 lines, 31/31 functions",
+          "movements.rs 278/279 lines, 22/22 functions"
+        ],
+        "branch_counters": "not reported by LLVM stable"
+      }
+    },
+    "frontend": {
+      "quality": "pass",
+      "tests_passed": 3,
+      "files": 2,
+      "typescript_coverage": "100%"
+    },
+    "security": {
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2,
+        "exception_expiry": "2026-11-06"
+      },
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "approved_exceptions": 4,
+        "unexcepted_findings": 0,
+        "exception_expiry": "2026-11-06"
+      },
+      "npm_audit": {
+        "dependencies": 120,
+        "vulnerabilities": 0
+      },
+      "sast_fixtures_passed": 45,
+      "gitleaks_staged_findings": 0,
+      "gitleaks_local_history": {
+        "source_sha": "1646391aa3fbf56b680a2474df86e4dbad70708a",
+        "commits": 748,
+        "findings": 0
+      },
+      "gitleaks_staged_bytes": 6424
+    },
+    "validators": {
+      "project_map": "28 sources/756 files, pass",
+      "work_items": "163 valid, 72 fixtures pass",
+      "evidence_states": "163 valid, 25 fixtures pass",
+      "progress_log_append_only": "PASS, 715956 historical bytes preserved",
+      "progress_log_fixtures_passed": 26,
+      "gitignore_fixtures": "28 ignored, 4 protected"
+    },
+    "review": "Internal adversarial review by integrator; no independent review."
+  },
+  "refs": {
+    "notes_ref_before": "bc81de5020e9f36360184f5b65a25e7d8da1a3cc",
+    "notes_before": 165,
+    "notes_after": 166,
+    "mapping_set_sha256_before": "EFF429759A5CB78994FD2CE025B9F8C3C8900C3CF0BFB20284FE6B0FBCC7F055",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 165 prior evidence mappings are unchanged; this adds the SAL-020 mapping for final_sha."
+  },
+  "limitations": [
+    "E3 proves this backend finalization path only; it does not prove UI/IPC, E2E, balance projection, installation, or product journeys.",
+    "LLVM stable did not report Rust branch counters, and focused line/function percentages are not global Rust coverage.",
+    "The two approved Cargo Audit warnings and four OSV exceptions expire 2026-11-06.",
+    "The SAST fixture suite covers frontend and PowerShell rules, not SQL Rust/backend."
+  ],
+  "human_decisions": {
+    "implementation_plan_approval": "explicit human approval",
+    "SAL_020_context": "one independent Casa/Fabrica Context per initial payment"
+  },
+  "next": "SAL-021 is next after this evidence note is verified; SAL-022 follows SAL-021 and DB-012."
+}
