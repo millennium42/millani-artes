@@ -1,0 +1,165 @@
+{
+  "id": "DB-012",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "03042f6f980ae90f4c74ad989d3dc6c6c7a19a01",
+  "final_sha": "c535ff9eb8a5157cb0f74a13bf3a87915924d970",
+  "documentation_pr": {
+    "number": 8,
+    "url": "https://github.com/millennium42/millani-artes/pull/8",
+    "head_sha": "c030e21eb994e51d914dba2505db9e8eb4aecd3e"
+  },
+  "source_ci": {
+    "run": {
+      "id": 38400843616,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "03042f6f980ae90f4c74ad989d3dc6c6c7a19a01",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/38400843616"
+    },
+    "job": {
+      "id": 115307765311,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "sqlite_harness_passed": 31,
+      "db012_cases_passed": 5
+    }
+  },
+  "code_ci": {
+    "run": {
+      "id": 40987994913,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "95e227291a7b2a70ce439f86595aad1610c542ae",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40987994913"
+    },
+    "job": {
+      "id": 123843410389,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "library_passed": 278,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_harness_passed": 212,
+      "doctests_passed": 36
+    },
+    "security": {
+      "gitleaks": {
+        "commits": 363,
+        "findings": 0
+      },
+      "cargo_audit": {
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2,
+        "exception_expiry": "2026-11-06"
+      },
+      "osv": {
+        "packages": 542,
+        "approved_exceptions": 4,
+        "unexcepted_findings": 0,
+        "exception_expiry": "2026-11-06"
+      }
+    }
+  },
+  "local_verification": {
+    "base_sha": "9515eeadfeffdd22b0b858ae8b83f21d084e63c4",
+    "focused_test": {
+      "filter": "db012_",
+      "passed": 5,
+      "failed": 0
+    },
+    "validators": {
+      "work_items": "164 valid",
+      "evidence_states": "164 valid",
+      "project_map": "28 sources, 759 files",
+      "progress_log_append_only": "PASS, 720350 historical bytes preserved",
+      "git_diff_check": "PASS"
+    }
+  },
+  "documentation_pr_ci": {
+    "run": {
+      "id": 40991497515,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "c030e21eb994e51d914dba2505db9e8eb4aecd3e",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40991497515"
+    },
+    "job": {
+      "id": 123854725513,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_steps": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    },
+    "warning": "actions/checkout reported Node.js 20 deprecation and was forced to Node.js 24; check succeeded."
+  },
+  "final_ci": {
+    "run": {
+      "id": 40991715329,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "c535ff9eb8a5157cb0f74a13bf3a87915924d970",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40991715329"
+    },
+    "job": {
+      "id": 123855427867,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_steps": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "refs": {
+    "notes_ref_before": "d029556d14bee9d409c3afaef34edb3991c06c82",
+    "notes_before": 167,
+    "notes_after": 168,
+    "mapping_set_sha256_before": "7010403F134D7D9F1BC8CED006701ACB6AB0E1F50ED277F4BB32B74BD271E5C2",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 167 prior evidence mappings are unchanged; this adds the DB-012 mapping for final_sha."
+  },
+  "limitations": [
+    "E3 covers five SQLite infrastructure scenarios and the tested configuration; it does not prove power loss, WAL, panic-abort, global recovery, or failed physical ROLLBACK.",
+    "INV-FIN-006 and INV-FIN-007 remain E0 for product consumers; no financial consumer or audit_event path was exercised.",
+    "The inherited E4 scope expired on 2026-10-23. Current main code CI audits reported two approved Cargo warnings and four approved OSV exceptions expiring 2026-11-06.",
+    "One WebView2-dependent binary check remains ignored in the main code CI."
+  ],
+  "human_decisions": {
+    "implementation_plan_approval": "explicit human approval"
+  },
+  "next": "SAL-022 is the next B5 item and may start after this final note is pushed and verified."
+}
