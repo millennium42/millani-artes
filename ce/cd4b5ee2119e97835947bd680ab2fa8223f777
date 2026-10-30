@@ -1,0 +1,192 @@
+{
+  "id": "RCV-007",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "a0b39d96eeec0fc8523284cb6cb9462c0ec5cdf9",
+  "main_source_sha": "fa17c836e64da7088b555efa25e29a3fdd638a38",
+  "final_sha": "cecd4b5ee2119e97835947bd680ab2fa8223f777",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/14",
+    "https://github.com/millennium42/millani-artes/pull/15"
+  ],
+  "source_ci": [
+    {
+      "run": {
+        "id": 41121374610,
+        "workflow": "Documentation",
+        "event": "pull_request",
+        "head_sha": "a0b39d96eeec0fc8523284cb6cb9462c0ec5cdf9",
+        "tested_merge_sha": "242dbf16db22f4baf2dd3e93f51c6762d1c5a806",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41121374610"
+      },
+      "job": {
+        "id": 124288115793,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    },
+    {
+      "run": {
+        "id": 41123334768,
+        "workflow": "Documentation",
+        "event": "push",
+        "head_sha": "fa17c836e64da7088b555efa25e29a3fdd638a38",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41123334768"
+      },
+      "job": {
+        "id": 124295322775,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    }
+  ],
+  "final_ci": {
+    "pull_request": {
+      "run": {
+        "id": 41127955434,
+        "workflow": "Documentation",
+        "event": "pull_request",
+        "head_sha": "e89f92911ff31a3e64199f6cf0b3bdcca2124209",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41127955434"
+      },
+      "job": {
+        "id": 124311222475,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "warnings": [
+        "actions/checkout targets Node 20 and was forced to run on Node 24."
+      ]
+    },
+    "main_push": {
+      "run": {
+        "id": 41128339021,
+        "workflow": "Documentation",
+        "event": "push",
+        "head_sha": "cecd4b5ee2119e97835947bd680ab2fa8223f777",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41128339021"
+      },
+      "job": {
+        "id": 124312527561,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "validators": {
+        "project_map": "pass; 28 sources, 778 files",
+        "work_items": "pass; 169 valid items and 72 fixtures",
+        "evidence_states": "pass; 169 valid items and 25 fixtures",
+        "progress_log": "pass; 26 fixtures; 729360 historical bytes preserved",
+        "tauri_plugins": "pass; 37 fixtures; 0 plugins and 0 ADR records"
+      },
+      "scans": {
+        "gitleaks": {
+          "version": "8.30.1",
+          "commits": 387,
+          "findings": 0
+        },
+        "osv": {
+          "version": "2.6.0",
+          "packages": 542,
+          "findings": 3,
+          "excepted": 3,
+          "unexcepted": 0,
+          "exception_expiry": "2026-11-06"
+        },
+        "npm_audit": {
+          "version": "11.19.0",
+          "dependencies": 120,
+          "vulnerabilities": 0
+        },
+        "cargo_audit": {
+          "version": "0.22.2",
+          "dependencies": 422,
+          "vulnerabilities": 0,
+          "approved_warnings": 2,
+          "exception_expiry": "2026-11-06"
+        }
+      },
+      "product_steps_skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ],
+      "skip_reason": "The change was documentation-only; the existing frontend check selector required no product checks."
+    }
+  },
+  "local": {
+    "rust": {
+      "focused_rcv007_sqlite_tests": "5/5 passed",
+      "debug": {
+        "library": "286 passed",
+        "integration": "7/8 with 1 WebView test ignored",
+        "sqlite_integration": "225 passed",
+        "doctests": "38 passed"
+      },
+      "release": {
+        "library": "286 passed",
+        "integration": "7/8 with 1 WebView test ignored",
+        "sqlite_integration": "225 passed",
+        "doctests": "38 passed"
+      },
+      "fmt_check": "pass",
+      "clippy_locked_all_targets_d_warnings": "pass"
+    },
+    "coverage": {
+      "app": "55/55 lines, 3/3 functions, 65/66 regions",
+      "adapter_method": "27/27 lines, 31/32 regions",
+      "closure": "21/21 lines, 22/22 regions",
+      "constructor": "5/5 lines, 3/3 regions",
+      "branch_or_global_coverage": "not claimed"
+    },
+    "validators": {
+      "project_map": "28 sources, 778 files; pass",
+      "work_items": "169; pass",
+      "work_item_fixtures": "72; pass",
+      "evidence_states": "169; pass",
+      "evidence_state_fixtures": "25; pass",
+      "progress_log_fixtures": "26; pass",
+      "progress_log_append_only": "pass; 729360 historical bytes preserved",
+      "gitignore": "28 ignored artifacts; pass",
+      "tauri_plugin_fixtures": "37; pass",
+      "tauri_plugins": "0 plugins, 0 ADR records; pass",
+      "git_diff_check": "pass"
+    }
+  },
+  "independent_review": "P-REV GPT-6 Luna max read-only review found no P0/P1/P2 findings in the new RCV-007 tests; reviewer did not execute checks.",
+  "warnings": [
+    "Non-failing GitHub Actions warning: actions/checkout targets Node 20 but ran on Node 24.",
+    "Approved Cargo and OSV exceptions expire on 2026-11-06."
+  ],
+  "limitations": [
+    "E3 proves persisted financial-entry creation and its transaction/audit behavior in the caller-provided transaction.",
+    "The account balance increase is not proven by RCV-007; RCV-008 owns that proof.",
+    "No UI/IPC, SMK/E2E, global coverage, or full consumer rollback is claimed; RCV-011 owns the consumer rollback proof.",
+    "Frontend, coverage and production Rust build steps were skipped in the final main CI because the documented change did not select product checks."
+  ],
+  "local_models": "No local models or local routing were used.",
+  "refs": {
+    "notes_ref_before": "99819774bd40983c8251f6f3e3f04b12736f3741",
+    "notes_before": 172,
+    "notes_after": 173,
+    "mapping_set_sha256_before": "808994f4e8af6cdc7831c4ec4951d5f11dfc206e0b8817ebfc3b4f32bc311990",
+    "hash_method": "SHA-256 over ordinal-sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 172 prior mappings remain unchanged; this note adds only RCV-007 for final_sha."
+  },
+  "next": "RCV-008; B7 not started"
+}
