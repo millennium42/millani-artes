@@ -185,7 +185,7 @@ FIN-001 executor done/E3 após CI de entrega `38444911363` no SHA `31af12adcf8be
 - RCV-001 — definir conta a receber ← SAL-017
 - RCV-002 — migration de recebível ← DB-005, RCV-001
 - RCV-003 — criar recebível pendente ← RCV-002, SAL-017
-- SAL-020 — finalizar venda transacional ← SAL-012, SAL-013, SAL-015, SAL-017, DB-011, RCV-003
+- SAL-020 — finalizar venda transacional ← SAL-012, SAL-013, SAL-015, SAL-017, SAL-018, SAL-019, DB-011, RCV-003
 - SAL-021 — provar pendência sem saldo ← SAL-020, FIN-024
 - SAL-022 — provar rollback de venda ← SAL-020, DB-012
 

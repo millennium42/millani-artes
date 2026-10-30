@@ -16,6 +16,7 @@ pub mod application {
     pub mod deactivate_product;
     pub mod edit_movement;
     pub mod edit_product;
+    pub mod finalize_sale;
     pub mod generate_fixed_obligation;
     pub mod generate_variable_obligation;
     pub mod list_accounts;

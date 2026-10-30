@@ -759,7 +759,7 @@ pub struct Receivable {
     pub pending: SalePending,
 }
 
-/// One initial payment allocation; later receipts belong to the receivable flow.
+/// One initial payment allocation with its own account, amount and Casa/Fábrica context; later receipts belong to the receivable flow.
 ///
 /// ```compile_fail
 /// fn require_debug<T: std::fmt::Debug>() {}
@@ -773,6 +773,7 @@ pub struct Receivable {
 pub struct SalePayment {
     pub account_id: [u8; 16],
     pub amount_cents: i64,
+    pub context: Context,
 }
 
 /// Sale identity, lifecycle metadata, and owned item snapshots.
