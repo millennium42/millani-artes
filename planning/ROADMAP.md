@@ -200,7 +200,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 ## B6 — Recebimentos, devoluções e dashboard
 
 - RCV-004 — calcular saldo devido ← RCV-003 | done/E3/passes:true; PR #10 integrada; source CI PR `41007593262` e source CI main `41008609009` verdes nos SHAs exatos; CI documental final e recibo `refs/notes/evidence` vinculados ao SHA de fechamento; próximo: RCV-005
-- RCV-005 — definir recebimento parcial ← RCV-001 | in_progress/E3 focal; RED E0432 e GREEN focal 4/4, doctests 38/38, Rust debug/release 281 biblioteca + 7/8 binários (1 ignorado) + 213 SQLite + 38 doctests, fmt/Clippy e P-REV aprovados; Cargo Audit/OSV aprovados sob exceções existentes; Gitleaks no commit, validators, CI fonte/final e nota pendentes; próximo: continuar RCV-005
+- RCV-005 — definir recebimento parcial ← RCV-001 | done/E3/passes:true; PR #11 integrada; source CI PR `41016382822` (23/23, 0 skips) no SHA `eaa658b47a7cd56d18b1ee66e353ac0ea815d0a0` e source CI main `41017865857` (23/23, 0 skips) no SHA `aa00a2726c5486b616de596af7715b9ae08cf604`; CI documental final e nota exatos vinculados ao SHA de fechamento em `refs/notes/evidence`, preservando os 170 mappings anteriores e acrescentando RCV-005; próximo: RCV-006
 - RCV-006 — registrar recebimento ← RCV-005, FIN-017, DB-011
 - RCV-007 — criar entrada pelo recebimento ← RCV-006
 - RCV-008 — provar uma conta aumentada ← RCV-007, FIN-024
