@@ -1,0 +1,46 @@
+{
+  "id": "RCV-004",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "cb7de4a7153846e5a9e0bca81eb10f2ac03347be",
+  "final_sha": "30d974e44bd56953b6806c064c7ada4fc1baa24e",
+  "pull_requests": ["https://github.com/millennium42/millani-artes/pull/10"],
+  "source_ci": [
+    {
+      "run": {"id": 41007593262, "workflow": "Documentation", "event": "pull_request", "run_attempt": 1, "head_sha": "cb7de4a7153846e5a9e0bca81eb10f2ac03347be", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/41007593262"},
+      "job": {"id": 123905898199, "name": "validate", "status": "completed", "conclusion": "success"}
+    },
+    {
+      "run": {"id": 41008609009, "workflow": "Documentation", "event": "push", "run_attempt": 1, "head_sha": "13eb0ff335e625d691fee41ece010d13cdb177e4", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/41008609009"},
+      "job": {"id": 123909122534, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 23, "steps_skipped": 0},
+      "native_evidence": {"source_sha": "13eb0ff335e625d691fee41ece010d13cdb177e4", "bytes": 8536576, "sha256": "8de676c05f3213b30747f2de230955458152fc88f8d41d22d1a08231647ccd1c", "machine": "AMD64", "pe": "PE32+", "custom_protocol": true, "rustc": "1.99.0", "cargo": "1.99.0", "node": "v24.21.0", "npm_lock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19", "cargo_lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"}
+    }
+  ],
+  "final_ci": {
+    "run": {"id": 41011779247, "workflow": "Documentation", "event": "push", "run_attempt": 1, "head_sha": "30d974e44bd56953b6806c064c7ada4fc1baa24e", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/41011779247", "duration": "1m56s"},
+    "job": {"id": 123919051980, "name": "validate", "status": "completed", "conclusion": "success", "duration": "1m53s", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7, "skipped": ["Install locked frontend dependencies", "Check frontend quality", "Validate coverage reports", "Upload frontend coverage", "Prepare pinned Rust", "Build Tauri production", "Verify Tauri executable"]},
+    "warnings": ["GitHub reported a non-failing warning: actions/checkout v4 was forced to Node.js 24 because Node.js 20 is deprecated."]
+  },
+  "local": {
+    "rust": {"version": "1.99.0", "fmt_check": "pass", "clippy_locked_all_targets_d_warnings": "pass", "focused_tests_passed": 2, "debug_tests_passed": 536, "debug_ignored": 1, "release_tests_passed": 536, "release_ignored": 1, "doctests_per_profile": 36},
+    "coverage": {"tool": "LLVM 23.1.1", "source": "src-tauri/src/domain/mod.rs", "lines": "328/328", "functions": "32/32", "new_method_counter_full": 11, "new_method_counter_control": 0, "control_lines": "320/328", "control_functions": "31/32", "regions": "438/439", "branches": "not available on stable; no branch coverage claim"},
+    "scans": {"candidate_sha": "cb7de4a7153846e5a9e0bca81eb10f2ac03347be", "cargo_audit": {"version": "0.22.2", "dependencies": 422, "vulnerabilities": 0, "approved_warnings": 2, "exception_expiry": "2026-11-06"}, "osv": {"version": "2.6.0", "packages": 542, "approved_exceptions": 4, "unexcepted_findings": 0, "exception_expiry": "2026-11-06"}, "gitleaks": {"version": "8.30.1", "commits": 762, "findings": 0}, "source_main_and_final_documentation_scanners": "passed in exact-SHA CI runs", "exceptions_changed": false},
+    "validators": {"project_map": "28 sources/765 files; pass", "work_items": "166 items/72 fixtures; pass", "evidence_states": "166 items/25 fixtures; pass", "progress_log": "26 fixtures; append-only; 723065 historical bytes preserved", "gitignore": "28 ignored artifacts/4 sources preserved; pass", "tauri": "37 fixtures/2 CLI cases/0 plugins; pass", "git_diff_check": "pass"},
+    "independent_review": "P-REV gpt-6-sol medium: no P0/P1/P2 findings; reviewer did not execute checks.",
+    "local_worker": "P-TRC read attempt ended needs_gpt/ValueError and produced a diff despite read-only mode; rejected patch preserved outside repository; no output used as evidence; local inference runtime stopped and no process/listener on 11434."
+  },
+  "refs": {
+    "notes_ref_before": "f5815e3c68819037d605538606198cd885a9c810",
+    "notes_before": 169,
+    "notes_after": 170,
+    "mapping_set_sha256_before": "6B2FCD150962CF8B7EDBCE0DE4567D9F02C5AC385865C7C00D216A96DEC858C2",
+    "hash_method": "SHA-256 over ordinal-sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 169 prior mappings remain unchanged; this note adds only RCV-004 for final_sha."
+  },
+  "limitations": [
+    "Pure domain projection only: no persisted aggregation, receipt/refund write, financial movement/account-balance effect, rollback, UI/IPC, smoke, E2E, or global coverage proof.",
+    "Approved Cargo Audit/OSV exceptions remain unchanged and expire 2026-11-06.",
+    "The seven product/frontend/build CI steps listed above were skipped by the documentation-only workflow."
+  ],
+  "next": "RCV-005; do not start B7."
+}
