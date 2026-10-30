@@ -5,6 +5,8 @@ use millani_artes::application::finalize_sale::{
     finalize_sale, FinalizeSaleInput, FinalizeSaleWrite, FinalizedSale, PendingSaleTerms,
     SaleFinalizationStore, SalePaymentWrite,
 };
+use millani_artes::application::list_accounts::list_accounts;
+use millani_artes::application::list_movements::list_movements;
 use millani_artes::database::{
     execute_versioned_migration, open_database, schema_version, ACCOUNTS_MIGRATION_SQL,
     AUDIT_EVENT_MIGRATION_SQL, CATEGORIES_MIGRATION_SQL, CUSTOMERS_MIGRATION_SQL,
@@ -14,7 +16,10 @@ use millani_artes::database::{
 };
 use millani_artes::domain::ports::{Clock, UuidGenerator};
 use millani_artes::domain::{Context, DiscountInput, Movement, MovementKind, SalePayment};
-use millani_artes::infrastructure::sales::AdapterSqliteSaleStore;
+use millani_artes::infrastructure::{
+    accounts::AdapterSqliteAccountStore, movements::AdapterSqliteMovementStore,
+    sales::AdapterSqliteSaleStore,
+};
 use rusqlite::{params, types::Value, Connection};
 use std::path::{Path, PathBuf};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
@@ -673,4 +678,115 @@ fn sal020_invalid_sale_snapshot_and_missing_foreign_keys_roll_back() {
     let reopened = open_database(&path).unwrap();
     assert_eq!(snapshot(&reopened), before);
     assert_healthy(&reopened);
+}
+
+#[test]
+fn sal021_pending_receivables_do_not_increase_account_balances() {
+    let (_directory, path) = setup();
+    let account_a = [0x52; 16];
+    let account_b = [0x53; 16];
+    let untouched = [0x54; 16];
+    let unpaid_sale = [0x42; 16];
+    let partial_sale = [0x43; 16];
+    let connection = open_database(&path).unwrap();
+    insert_account(&connection, account_a, 100);
+    insert_account(&connection, account_b, 200);
+    insert_account(&connection, untouched, 300);
+    insert_customer(&connection, CUSTOMER);
+    drop(connection);
+    add_sale(&path, unpaid_sale, 3000, 0x31);
+    add_sale(&path, partial_sale, 3000, 0x41);
+
+    let mut store = AdapterSqliteSaleStore::new(open_database(&path).unwrap());
+    let unpaid = run_finalization_with_seed(
+        &mut store,
+        input(
+            unpaid_sale,
+            Vec::new(),
+            Some(PendingSaleTerms {
+                customer_id: CUSTOMER,
+                due_at_ms: DUE_AT_MS,
+            }),
+        ),
+        0x70,
+    )
+    .unwrap();
+    assert_eq!(
+        [unpaid.total_cents, unpaid.paid_cents, unpaid.pending_cents],
+        [3000, 0, 3000]
+    );
+    let partial = run_finalization_with_seed(
+        &mut store,
+        input(
+            partial_sale,
+            vec![
+                payment(account_a, 500, Context::Home),
+                payment(account_b, 1000, Context::Factory),
+            ],
+            Some(PendingSaleTerms {
+                customer_id: CUSTOMER,
+                due_at_ms: DUE_AT_MS,
+            }),
+        ),
+        0x80,
+    )
+    .unwrap();
+    assert_eq!(
+        [
+            partial.total_cents,
+            partial.paid_cents,
+            partial.pending_cents
+        ],
+        [3000, 1500, 1500]
+    );
+    drop(store);
+
+    let reopened = open_database(&path).unwrap();
+    assert_healthy(&reopened);
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT sale_id,amount_cents FROM main.receivables ORDER BY sale_id"
+        ),
+        vec![
+            vec![Value::Blob(unpaid_sale.to_vec()), Value::Integer(3000)],
+            vec![Value::Blob(partial_sale.to_vec()), Value::Integer(1500)],
+        ]
+    );
+    assert_eq!(
+        rows(&reopened, "SELECT count(*) FROM main.movements"),
+        vec![vec![Value::Integer(2)]]
+    );
+
+    let accounts = list_accounts(&AdapterSqliteAccountStore::new(
+        open_database(&path).unwrap(),
+    ))
+    .unwrap();
+    let movement_reader = open_database(&path).unwrap();
+    movement_reader
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let movements = list_movements(&AdapterSqliteMovementStore::new(movement_reader)).unwrap();
+    assert_eq!(movements.len(), 2);
+    assert!(movements.iter().any(|movement| {
+        matches!(movement.kind, MovementKind::Entry { account_id } if account_id == account_a)
+            && matches!(movement.context, Context::Home)
+    }));
+    assert!(movements.iter().any(|movement| {
+        matches!(movement.kind, MovementKind::Entry { account_id } if account_id == account_b)
+            && matches!(movement.context, Context::Factory)
+    }));
+
+    for (id, initial, expected) in [
+        (account_a, 100, 600),
+        (account_b, 200, 1200),
+        (untouched, 300, 300),
+    ] {
+        let account = accounts
+            .iter()
+            .find(|account| account.id == id)
+            .expect("account reader returned fixture account");
+        assert_eq!(account.initial_balance_cents, initial);
+        assert_eq!(account.balance_cents(&movements), Ok(expected));
+    }
 }
