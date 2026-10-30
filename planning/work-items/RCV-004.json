@@ -2,7 +2,7 @@
   "id": "RCV-004",
   "title": "calcular saldo devido do recebível",
   "specPath": "planning/specs/RCV-004.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": ["RCV-003"],
   "acceptanceCriteria": [
     "Receivable calcula saldo devido pelo principal original menos o agregado já aplicado, sem armazenar saldo restante.",
@@ -15,11 +15,11 @@
     "RED unitário focal antes do método; GREEN focal depois da implementação.",
     "Rust 1.99 pinned: fmt --check, locked all-target Clippy -D warnings e cargo test debug/release/doctests.",
     "Cargo Audit, OSV, Gitleaks e validators de mapa, work item, evidência, progress log e Tauri conforme policy.",
-    "Review adversarial do diff; CI de fonte e final no SHA exato; nota refs/notes/evidence preserva todos os mappings anteriores."
+    "Review adversarial do diff; source CI PR/main e CI final no SHA exato; nota refs/notes/evidence preserva os 169 mappings anteriores."
   ],
-  "agentPlan": "P-INT único escritor/integrador; sem delegados por ser cálculo puro focal e sem paralelismo independente; reserva/base/paths completos em planning/specs/RCV-004.md.",
+  "agentPlan": "P-INT único escritor/integrador. P-REV independente gpt-6-sol medium comparou o diff com a spec e retornou sem achados P0/P1/P2. P-TRC/Qwen 3.5 9B Q4_K_M low read-only foi tentado; a chamada válida terminou needs_gpt/ValueError e deixou diff no handoff, detectado e rejeitado pela auditoria; saída não usada. Primeira chamada foi rejeitada por schema read/test_command antes da inferência. Tokens não registrados. Recibo externo RCV-004.1793339525267939200.job.json; patch bruto em C:\\Users\\milla\\Documents\\Pesquisa Modelos Locais\\2026-10-15\\operacao\\RCV-004.P-TRC-read-audit-rejected.patch. Servidor encerrado e ausência de Ollama/listener confirmada.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "RECON: base remota efde578b9a5313d430b8c0cbff2f3bc2eacec2a9; RCV-001/002/003 e dependências confirmados. Baseline no SHA da base: 534 passed, 1 ignored. RED focal reproduzido por método ausente; GREEN 2/2. Após implementação: fmt e Clippy locked -D warnings passaram; debug e release passaram cada um com 536 passed, 1 ignored; doctests 36/36. LLVM 1.99/23.1.1 focal domain/mod.rs 328/328 linhas e 32/32 funções; controle sem rcv004_ 320/328 e 31/32; branches stable indisponíveis. Reports finais em artifacts/rcv-004-coverage-final2-20261030, hashes na spec/handoff. Auditoria/scans/validators no SHA candidato, CI fonte/final e nota de evidência pendentes; passes permanece false."
+  "passes": true,
+  "notes": "RECON base `efde578b9a5313d430b8c0cbff2f3bc2eacec2a9`; RCV-001/002/003 e dependências confirmados. Baseline 534 passed/1 ignored; RED reproduzido por método ausente; GREEN 2/2. fmt, Clippy locked -D warnings, debug/release (536 passed/1 ignored cada) e doctests 36/36 passaram. LLVM 1.99/23.1.1 em domain/mod.rs: full 328/328 linhas, 32/32 funções, 438/439 regiões; controle 320/328, 31/32; sem branch coverage. Hashes dos reports na spec/handoff. Scans candidato cb7de4a: Cargo Audit 422/0 vuln/2 warnings approved; OSV 542/4 exceções/0 não excepcionados; Gitleaks 762 commits/0 findings; validade até 2026-11-06, sem alteração de exceções. Validators locais e CI da PR 41007593262/job 123905898199 passaram no SHA cb7de4a. Após merge PR #10, CI push main 41008609009/job 123909122534 passou no SHA 13eb0ff; build Tauri e verificação PE32+ AMD64/custom-protocol passaram. P-REV independente sem achados P0/P1/P2. CI documental final no SHA de fechamento e nota de evidência preservando os 169 mappings estão registrados em refs/notes/evidence. Limites: cálculo puro, agregado fornecido pelo chamador; sem agregação persistida, movimento, saldo por conta, rollback, UI/IPC, smoke/E2E ou coverage global."
 }
