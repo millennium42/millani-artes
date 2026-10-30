@@ -759,6 +759,22 @@ pub struct Receivable {
     pub pending: SalePending,
 }
 
+impl Receivable {
+    /// Projects the amount still due after the caller's cumulative recorded reductions.
+    /// `applied_cents` is not a new payment amount.
+    /// shortcut: caller supplies the aggregate, revisit when receipt and return history readers exist.
+    pub fn remaining_due_cents(&self, applied_cents: i64) -> Result<i64> {
+        if self.pending.amount_cents <= 0
+            || applied_cents < 0
+            || applied_cents > self.pending.amount_cents
+        {
+            return Err(DomainError::InvalidInput);
+        }
+
+        Ok(self.pending.amount_cents - applied_cents)
+    }
+}
+
 /// One initial payment allocation with its own account, amount and Casa/Fábrica context; later receipts belong to the receivable flow.
 ///
 /// ```compile_fail
