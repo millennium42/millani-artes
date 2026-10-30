@@ -61,6 +61,10 @@ Quatro testes físicos verificam sucesso e resultado pós-commit, visibilidade e
 
 Cinco testes físicos `db012_*` passaram em debug/release. Root confirmou fmt/clippy, Rust44/44 e release31/31 (SQLite3.53.2); harness SHA-256 `7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4`. RED mutado detectou snapshot alterado após callback errar; fonte de produção foi restaurada ao hash DB-011. Exit86 verificou hot journal DELETE e recuperação no reopen. Review E2 sem P0/P1/P2, sem conferir hash/testes/scans. CI entrega `38400843616` e harness remoto31/31 confirmados; validators PASS. Gitleaks final de entrega 11 paths/45.749B/0 findings. Este registro antecede o CI documental final; a nota Git no SHA final confirma a liberação. Ver [spec](../../planning/specs/DB-012.md) e [handoff](../../planning/handoffs/DB-012.md).
 
+## SAL-022 — rollback no commit do finalizador
+
+`sal022_deferred_foreign_key_commit_failure_rolls_back_every_finalization_write` usa o finalizador SQLite real, dois pagamentos (um para conta ausente) e residual válido com `defer_foreign_keys=ON`. A chamada expõe somente `SaleError::StoreFailed`; após reopen, seis tabelas permanecem iguais e o banco passa schema/integrity/FK/autocommit. Prova E3 de um cenário de commit do consumidor, separada do rollback genérico DB-012 e das quatro falhas SQL já cobertas por SAL-020; não prova outros consumidores, UI/IPC ou E2E. Teste e suites debug/release passaram; gates remotos e receipt final são registrados na evidência Git.
+
 
 ## DB-014 — auditoria na unidade
 

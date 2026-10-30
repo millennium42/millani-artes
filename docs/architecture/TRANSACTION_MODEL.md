@@ -35,6 +35,8 @@ Transação não garante idempotência, não é retry automático e não protege
 
 DB-012 adicionou cinco provas SQLite físicas: rejeição sem escrita, erro de constraint após DDL/gravações, COMMIT rejeitado por FK deferred, panic unwind e recuperação após exit86 com hot journal DELETE. Root confirmou fmt/clippy, Rust44/44, release31/31 e Cargo/OSV; harness final SHA-256 `7bf3b01606b6a1d99ced6dc38280f75f1b7c8de6aec859847392a0d4254b32f4`. CI entrega `38400843616` passou 23/23; remote harness31/31, cinco casos PASS. Review E2 sem P0/P1/P2, limitada ao diff. Isso prova infraestrutura nos cenários exercitados, não INV-FIN-006/007 em consumidores nem power loss/WAL/recovery global. Este registro antecede o CI documental final; a nota Git no SHA final confirma a liberação.
 
+SAL-022 acrescenta um caso E3 do consumidor: finalização file-backed de venda parcial com FK de conta deferred, falha no commit, erro sanitizado e snapshot completo preservado após reopen. Não amplia a prova para outros consumidores nem altera o estado global E0/parcial de INV-FIN-006/007; CI e SHA final constam no recibo Git.
+
 
 DB-013 implementa append de evento na transação emprestada; testes locais e CI de entrega no SHA final passaram, incluindo rejeição de inserção ignorada. Não prova que escrita financeira e evento sejam atômicos juntos; DB-014 permanece responsável. CI documental e nota74 pendentes; ver [spec](../../planning/specs/DB-013.md) e [handoff](../../planning/handoffs/DB-013.md).
 

@@ -560,6 +560,60 @@ fn sal020_sql_failures_roll_back_every_finalization_write() {
 }
 
 #[test]
+fn sal022_deferred_foreign_key_commit_failure_rolls_back_every_finalization_write() {
+    let (_directory, path) = setup();
+    let connection = open_database(&path).unwrap();
+    insert_account(&connection, ACCOUNT, 100);
+    insert_customer(&connection, CUSTOMER);
+    drop(connection);
+
+    let sale_id = [0x49; 16];
+    add_sale(&path, sale_id, 3000, 0x31);
+
+    let connection = open_database(&path).unwrap();
+    connection
+        .pragma_update(None, "defer_foreign_keys", true)
+        .unwrap();
+    assert_eq!(
+        connection
+            .pragma_query_value(None, "defer_foreign_keys", |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    let before = snapshot(&connection);
+    let mut store = AdapterSqliteSaleStore::new(connection);
+    let error = run_finalization(
+        &mut store,
+        input(
+            sale_id,
+            vec![
+                payment(ACCOUNT, 500, Context::Home),
+                payment([0x52; 16], 1000, Context::Factory),
+            ],
+            Some(PendingSaleTerms {
+                customer_id: CUSTOMER,
+                due_at_ms: DUE_AT_MS,
+            }),
+        ),
+    )
+    .err()
+    .expect("deferred foreign key violation must fail the sale commit");
+    assert_eq!(error, SaleError::StoreFailed);
+    assert_eq!(format!("{error}"), "sale operation failed");
+    assert_eq!(format!("{error:?}"), "StoreFailed");
+    assert!(std::error::Error::source(&error).is_none());
+    drop(store);
+
+    let reopened = open_database(&path).unwrap();
+    assert_eq!(
+        snapshot(&reopened),
+        before,
+        "deferred commit failure partially finalized the sale"
+    );
+    assert_healthy(&reopened);
+}
+
+#[test]
 fn sal020_invalid_sale_snapshot_and_missing_foreign_keys_roll_back() {
     let (_directory, path) = setup();
     let connection = open_database(&path).unwrap();
