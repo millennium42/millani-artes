@@ -1,0 +1,30 @@
+{
+  "id": "RCV-007",
+  "title": "criar entrada financeira pelo recebimento",
+  "specPath": "planning/specs/RCV-007.md",
+  "status": "in_progress",
+  "dependencies": ["RCV-006"],
+  "acceptanceCriteria": [
+    "O caso de uso valida valor positivo antes de efeitos e cria movimento Entry com conta, centavos e contexto do ReceivableReceipt.",
+    "O adapter rejeita tipo, conta, centavos ou contexto divergentes antes de consumir conexão ou iniciar transação.",
+    "A infraestrutura grava recibo, entrada e seus dois audit_event na mesma execute_write_transaction e só devolve sucesso após commit.",
+    "Teste SQLite file-backed comprova persistência e reopen de recebimento parcial, entrada e auditorias estáticas correspondentes.",
+    "Falha sintética no INSERT do recibo e no audit_event da entrada não deixa gravações parciais após reopen.",
+    "Sem migration, schema, dependência, UI/IPC, escrita de saldo ou alegação de saldo projetado, E2E ou cobertura global.",
+    "Todas as provas, scanners, validadores, revisão read-only e CI remoto no SHA final estão registradas antes de passes:true."
+  ],
+  "checks": [
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+    "cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets -- -D warnings",
+    "cargo test --manifest-path src-tauri/Cargo.toml e cargo test --manifest-path src-tauri/Cargo.toml --release",
+    "testes focais de record_receivable_receipt e rcv007_ no harness SQLite",
+    "cargo audit, OSV-Scanner, Gitleaks e coverage Rust crítica com controle proporcional",
+    "validadores do mapa, work items, estados de evidência, progress log append-only, gitignore e plugins Tauri",
+    "CI remoto source e fechamento no SHA exato; P-REV read-only GPT-6 Luna max"
+  ],
+  "agentPlan": "P-INT único escritor; P-REV independente GPT-6 Luna max, read-only após diff; sem modelos locais, workers locais ou roteamento local. Reserva: RCV-007/Integrator/work/rcv-007-register-entry/base ea7f6cbf1700ec866369779640fbd1e7082563aa/paths da spec e handoff; src-tauri/src/application/record_receivable_receipt.rs; src-tauri/src/lib.rs; src-tauri/src/infrastructure/receivables.rs; src-tauri/tests/common/receivable_receipt.rs; docs/architecture/TRANSACTION_MODEL.md; docs/security/SECURITY_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; docs/traceability/INVARIANT_TEST_MATRIX.md; planning/ROADMAP.md; planning/PROGRESS_LOG.md; leitura read-only dos demais callers e políticas; sem conflitos paralelos; liberar RCV-008 somente após CI final no SHA exato e nota preservando os mappings.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON/RED concluídos; RED E0432 repetido antes de BUILD. O caso de uso e adapter foram implementados; cinco testes focais rcv007_, suites Rust debug/release (286 biblioteca, 7/8 integração com 1 WebView2 ignorado, 225 SQLite, 38 doctests por modo), fmt e Clippy locked -D warnings passaram após a correção P2. Coverage crítica LLVM: application 55/55 linhas, 3/3 funções, 65/66 regiões; método composto do adapter 27/27 linhas, 31/32 regiões; closure 21/21 linhas e 22/22 regiões; constructor 5/5 linhas, 3/3 regiões; controles sem RCV-007 em 0 linhas nos alvos. Branch/global coverage não alegadas. P-REV GPT-6 Luna max read-only final não encontrou P0/P1/P2 nos testes novos e não executou checks. Scans no SHA fonte 9940b884: Cargo Audit 422 deps/0 vulnerabilidades/2 avisos aprovados até 2026-11-06; OSV 542 pacotes/3 exceções/0 fora; Gitleaks 777 commits/0; npm 120 deps/0 (Node 24.21/npm 11.19). Validadores locais passaram. Revalidação no SHA 47d968526e029d3c0de19cfbda198aed4cb5373f: Cargo Audit 422/0/2, OSV 542/3/0, Gitleaks 778/0 e npm 120/0; exceções vigentes sem alteração. O run source 41118326841 foi cancelado pelo timeout configurado de 15 minutos durante a suíte release, sem falha de teste registrada; o timeout foi elevado a 30 minutos sem remover gates. Run source 41120643470 verificou merge SHA 6848c59740e913d1360a0145ac037b598d09f5f2 e falhou no fixture test-ci-audits.py: a asserção CI job shape ainda exigia timeout 15, antes do Cargo Audit real; Cargo, frontend e Rust posteriores foram pulados. Fixture corrigido para exigir 30 e preservar a detecção de continue-on-error; 42 casos locais passaram. Nova CI source após a correção está pendente.  CI main, fechamento/CI final no SHA exato e nota ainda pendentes; passes permanece false. RCV-001/002/003 e RCV-006 seguem preservados. Sem prova de saldo projetado, RCV-011, RET, DSH ou B7."
+}

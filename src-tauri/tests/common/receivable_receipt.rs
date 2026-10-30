@@ -1,4 +1,8 @@
 use super::TempDirectory;
+use millani_artes::application::record_receivable_receipt::{
+    record_receivable_receipt, ReceivableReceiptRecordingStore, ReceivableReceiptWrite,
+    RecordReceivableReceiptError,
+};
 use millani_artes::database::{
     execute_versioned_migration, execute_write_transaction, open_database, schema_version,
     MigrationError, TransactionError, ACCOUNTS_MIGRATION_SQL, AUDIT_EVENT_MIGRATION_SQL,
@@ -7,12 +11,15 @@ use millani_artes::database::{
     RECEIPTS_MIGRATION_VERSION, RECEIVABLES_MIGRATION_SQL, RECURRENCES_MIGRATION_SQL,
     SALES_MIGRATION_SQL, SALE_ITEMS_MIGRATION_SQL,
 };
-use millani_artes::domain::{Context, ReceivableReceipt};
+use millani_artes::domain::ports::{Clock, UuidGenerator};
+use millani_artes::domain::{Context, Movement, MovementKind, ReceivableReceipt};
 use millani_artes::infrastructure::receivables::{
-    persist_receivable_receipt_in_transaction, ReceivableReceiptStoreError,
+    persist_receivable_receipt_in_transaction, AdapterSqliteReceivableReceiptStore,
+    ReceivableReceiptStoreError,
 };
 use rusqlite::{params, types::Value, Connection};
 use std::path::Path;
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 const ACCOUNT_A: [u8; 16] = [1; 16];
 const ACCOUNT_B: [u8; 16] = [2; 16];
@@ -125,6 +132,308 @@ fn receipt(account_id: [u8; 16], amount_cents: i64, context: Context) -> Receiva
         account_id,
         amount_cents,
         context,
+    }
+}
+
+struct ReceiptIds {
+    values: [[u8; 16]; 4],
+    calls: usize,
+}
+
+impl ReceiptIds {
+    fn new() -> Self {
+        Self {
+            values: [[0x31; 16], [0x32; 16], [0x33; 16], [0x34; 16]],
+            calls: 0,
+        }
+    }
+}
+
+impl UuidGenerator for ReceiptIds {
+    type Error = &'static str;
+
+    fn generate(&mut self) -> Result<[u8; 16], Self::Error> {
+        let id = self
+            .values
+            .get(self.calls)
+            .copied()
+            .ok_or("UUID_SOURCE_EXHAUSTED")?;
+        self.calls += 1;
+        Ok(id)
+    }
+}
+
+struct ReceiptClock(SystemTime);
+
+impl Clock for ReceiptClock {
+    fn now(&self) -> SystemTime {
+        self.0
+    }
+}
+
+#[test]
+fn rcv007_records_receipt_entry_and_both_audits_together() {
+    let (_directory, path) = setup("rcv007-success.sqlite", 3000);
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_099));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+    let movement = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_B, 1000, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .expect("RECEIPT_ENTRY_RECORD_FAILED");
+
+    assert_eq!(movement.id, [0x33; 16]);
+    assert_eq!(movement.amount_cents, 1000);
+    assert!(matches!(
+        &movement.kind,
+        MovementKind::Entry { account_id } if *account_id == ACCOUNT_B
+    ));
+    assert!(matches!(&movement.context, Context::Factory));
+    assert_eq!(ids.calls, 4);
+
+    let reopened = open_database(&path).expect("RCV007_REOPEN_FAILED");
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT id,receivable_id,account_id,amount_cents,context FROM main.receipts"
+        ),
+        vec![vec![
+            Value::Blob(vec![0x31; 16]),
+            Value::Blob(RECEIVABLE_ID.to_vec()),
+            Value::Blob(ACCOUNT_B.to_vec()),
+            Value::Integer(1000),
+            Value::Text("factory".into()),
+        ]]
+    );
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT id,kind,amount_cents,context,account_id FROM main.movements"
+        ),
+        vec![vec![
+            Value::Blob(vec![0x33; 16]),
+            Value::Text("entry".into()),
+            Value::Integer(1000),
+            Value::Text("factory".into()),
+            Value::Blob(ACCOUNT_B.to_vec()),
+        ]]
+    );
+    assert_eq!(
+        rows(&reopened, "SELECT event_id,occurred_at_ms,operation,entity,entity_id FROM main.audit_event ORDER BY event_id"),
+        vec![
+            vec![
+                Value::Blob(vec![0x32; 16]),
+                Value::Integer(1_800_000_000_099),
+                Value::Text("receivable_receipt_create".into()),
+                Value::Text("receipt".into()),
+                Value::Blob(vec![0x31; 16]),
+            ],
+            vec![
+                Value::Blob(vec![0x34; 16]),
+                Value::Integer(1_800_000_000_099),
+                Value::Text("movement_entry_create".into()),
+                Value::Text("movement".into()),
+                Value::Blob(vec![0x33; 16]),
+            ],
+        ]
+    );
+}
+
+#[test]
+fn rcv007_receipt_insert_failure_rolls_back_without_partial_writes() {
+    let (_directory, path) = setup("rcv007-receipt-failure.sqlite", 3000);
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    connection
+        .execute_batch(
+            "CREATE TRIGGER main.rcv007_fail_receipt BEFORE INSERT ON main.receipts BEGIN SELECT RAISE(ABORT, 'SYNTHETIC_RCV007_RECEIPT_FAILURE'); END;",
+        )
+        .expect("RCV007_TRIGGER_CREATE_FAILED");
+    drop(connection);
+
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_100));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+    let error = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_A, 1000, Context::Home),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .err()
+    .expect("receipt insert failure must cancel the operation");
+    assert_eq!(error, RecordReceivableReceiptError::StoreFailed);
+    assert!(!error.to_string().contains("SYNTHETIC_RCV007"));
+
+    let reopened = open_database(&path).expect("RCV007_RECEIPT_FAILURE_REOPEN_FAILED");
+    assert!(rows(&reopened, "SELECT * FROM main.receipts").is_empty());
+    assert!(rows(&reopened, "SELECT * FROM main.movements").is_empty());
+    assert!(rows(&reopened, "SELECT * FROM main.audit_event").is_empty());
+}
+
+#[test]
+fn rcv007_entry_audit_failure_rolls_back_receipt_entry_and_events() {
+    let (_directory, path) = setup("rcv007-audit-failure.sqlite", 3000);
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    connection
+        .execute_batch(
+            "CREATE TRIGGER main.rcv007_fail_entry_audit BEFORE INSERT ON main.audit_event WHEN NEW.operation='movement_entry_create' BEGIN SELECT RAISE(ABORT, 'SYNTHETIC_RCV007_AUDIT_FAILURE'); END;",
+        )
+        .expect("RCV007_TRIGGER_CREATE_FAILED");
+    drop(connection);
+
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_100));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+    let error = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_A, 1000, Context::Home),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .err()
+    .expect("entry audit failure must cancel the operation");
+    assert_eq!(error, RecordReceivableReceiptError::StoreFailed);
+    assert!(!error.to_string().contains("SYNTHETIC_RCV007"));
+
+    let reopened = open_database(&path).expect("RCV007_FAILURE_REOPEN_FAILED");
+    assert!(rows(&reopened, "SELECT * FROM main.receipts").is_empty());
+    assert!(rows(&reopened, "SELECT * FROM main.movements").is_empty());
+    assert!(rows(&reopened, "SELECT * FROM main.audit_event").is_empty());
+}
+
+#[test]
+fn rcv007_missing_or_excess_receivable_creates_no_receipt_entry_or_audit() {
+    for (name, receivable_id, amount_cents, expected_error) in [
+        (
+            "rcv007-missing.sqlite",
+            [0xee; 16],
+            1000,
+            RecordReceivableReceiptError::ReceivableNotFound,
+        ),
+        (
+            "rcv007-excess.sqlite",
+            RECEIVABLE_ID,
+            3001,
+            RecordReceivableReceiptError::AmountExceedsDue,
+        ),
+    ] {
+        let (_directory, path) = setup(name, 3000);
+        let mut ids = ReceiptIds::new();
+        let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_101));
+        let mut store = AdapterSqliteReceivableReceiptStore::new(
+            open_database(&path).expect("DATABASE_OPEN_FAILED"),
+        );
+        let error = record_receivable_receipt(
+            receivable_id,
+            receipt(ACCOUNT_A, amount_cents, Context::Home),
+            &mut ids,
+            &clock,
+            &mut store,
+        )
+        .err()
+        .expect("invalid receivable operation must fail");
+        assert_eq!(error, expected_error);
+
+        let reopened = open_database(&path).expect("RCV007_REJECTION_REOPEN_FAILED");
+        assert!(rows(&reopened, "SELECT * FROM main.receipts").is_empty());
+        assert!(rows(&reopened, "SELECT * FROM main.movements").is_empty());
+        assert!(rows(&reopened, "SELECT * FROM main.audit_event").is_empty());
+    }
+}
+
+#[test]
+fn rcv007_rejects_inconsistent_writes_and_nonpositive_amount_before_writes() {
+    let cases = [
+        (
+            "rcv007-nonpositive-amount.sqlite",
+            receipt(ACCOUNT_A, 0, Context::Home),
+            MovementKind::Entry {
+                account_id: ACCOUNT_A,
+            },
+            0,
+            Context::Home,
+        ),
+        (
+            "rcv007-account-mismatch.sqlite",
+            receipt(ACCOUNT_A, 1000, Context::Home),
+            MovementKind::Entry {
+                account_id: ACCOUNT_B,
+            },
+            1000,
+            Context::Home,
+        ),
+        (
+            "rcv007-amount-mismatch.sqlite",
+            receipt(ACCOUNT_A, 1000, Context::Home),
+            MovementKind::Entry {
+                account_id: ACCOUNT_A,
+            },
+            1001,
+            Context::Home,
+        ),
+        (
+            "rcv007-context-mismatch.sqlite",
+            receipt(ACCOUNT_A, 1000, Context::Factory),
+            MovementKind::Entry {
+                account_id: ACCOUNT_A,
+            },
+            1000,
+            Context::Home,
+        ),
+        (
+            "rcv007-kind-mismatch.sqlite",
+            receipt(ACCOUNT_A, 1000, Context::Home),
+            MovementKind::Exit {
+                account_id: ACCOUNT_A,
+            },
+            1000,
+            Context::Home,
+        ),
+    ];
+
+    for (name, receipt, kind, amount_cents, context) in cases {
+        let (_directory, path) = setup(name, 3000);
+        let movement = Movement {
+            id: [0x33; 16],
+            kind,
+            amount_cents,
+            context,
+        };
+        let mut store = AdapterSqliteReceivableReceiptStore::new(
+            open_database(&path).expect("DATABASE_OPEN_FAILED"),
+        );
+        for _ in 0..2 {
+            let error = store
+                .persist_receipt_and_entry(ReceivableReceiptWrite {
+                    receivable_id: RECEIVABLE_ID,
+                    receipt_id: [0x31; 16],
+                    receipt: &receipt,
+                    receipt_event_id: [0x32; 16],
+                    movement: &movement,
+                    movement_event_id: [0x34; 16],
+                    occurred_at_ms: 1_800_000_000_102,
+                })
+                .expect_err("receipt and entry must match");
+            assert_eq!(error, RecordReceivableReceiptError::InvalidInput);
+        }
+
+        drop(store);
+        let reopened = open_database(&path).expect("RCV007_MISMATCH_REOPEN_FAILED");
+        assert!(rows(&reopened, "SELECT * FROM main.receipts").is_empty());
+        assert!(rows(&reopened, "SELECT * FROM main.movements").is_empty());
+        assert!(rows(&reopened, "SELECT * FROM main.audit_event").is_empty());
     }
 }
 

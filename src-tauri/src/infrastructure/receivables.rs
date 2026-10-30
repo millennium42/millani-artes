@@ -1,6 +1,11 @@
+use crate::application::record_receivable_receipt::{
+    ReceivableReceiptRecordingStore, ReceivableReceiptWrite, RecordReceivableReceiptError,
+};
+use crate::database::execute_write_transaction;
 use crate::database::{append_audit_event, AuditEvent};
-use crate::domain::{Context, Receivable, ReceivableReceipt, SalePending};
-use rusqlite::{params, OptionalExtension, Transaction};
+use crate::domain::{Context, MovementKind, Receivable, ReceivableReceipt, SalePending};
+use crate::infrastructure::movements::persist_entry_in_transaction;
+use rusqlite::{params, Connection, OptionalExtension, Transaction};
 use std::error::Error;
 use std::fmt;
 
@@ -184,4 +189,91 @@ pub fn persist_receivable_receipt_in_transaction(
         },
     )
     .map_err(|_| ReceivableReceiptStoreError::StoreFailed)
+}
+
+pub struct AdapterSqliteReceivableReceiptStore {
+    connection: Option<Connection>,
+}
+
+impl AdapterSqliteReceivableReceiptStore {
+    pub fn new(connection: Connection) -> Self {
+        Self {
+            connection: Some(connection),
+        }
+    }
+}
+
+impl ReceivableReceiptRecordingStore for AdapterSqliteReceivableReceiptStore {
+    fn persist_receipt_and_entry(
+        &mut self,
+        write: ReceivableReceiptWrite<'_>,
+    ) -> Result<(), RecordReceivableReceiptError> {
+        let account_matches = match &write.movement.kind {
+            MovementKind::Entry { account_id } => account_id == &write.receipt.account_id,
+            _ => false,
+        };
+        let context_matches = matches!(
+            (&write.receipt.context, &write.movement.context),
+            (Context::Home, Context::Home) | (Context::Factory, Context::Factory)
+        );
+        if !account_matches
+            || write.movement.amount_cents != write.receipt.amount_cents
+            || !context_matches
+        {
+            return Err(RecordReceivableReceiptError::InvalidInput);
+        }
+
+        let connection = self
+            .connection
+            .take()
+            .ok_or(RecordReceivableReceiptError::StoreFailed)?;
+        let result =
+            execute_write_transaction(
+                connection,
+                |transaction| -> Result<
+                    Result<(), RecordReceivableReceiptError>,
+                    RecordReceivableReceiptError,
+                > {
+                    match persist_receivable_receipt_in_transaction(
+                        transaction,
+                        write.receivable_id,
+                        write.receipt_id,
+                        write.receipt,
+                        write.receipt_event_id,
+                        write.occurred_at_ms,
+                    ) {
+                        Ok(()) => (),
+                        Err(ReceivableReceiptStoreError::InvalidAmount) => {
+                            return Ok(Err(RecordReceivableReceiptError::InvalidInput));
+                        }
+                        Err(ReceivableReceiptStoreError::ReceivableNotFound) => {
+                            return Ok(Err(RecordReceivableReceiptError::ReceivableNotFound));
+                        }
+                        Err(ReceivableReceiptStoreError::AmountExceedsDue) => {
+                            return Ok(Err(RecordReceivableReceiptError::AmountExceedsDue));
+                        }
+                        Err(ReceivableReceiptStoreError::StoreFailed) => {
+                            return Err(RecordReceivableReceiptError::StoreFailed);
+                        }
+                    }
+
+                    persist_entry_in_transaction(
+                        transaction,
+                        write.movement,
+                        write.movement_event_id,
+                        write.occurred_at_ms,
+                    )
+                    .map_err(|_| RecordReceivableReceiptError::StoreFailed)?;
+                    Ok(Ok(()))
+                },
+            );
+
+        match result {
+            Ok((connection, outcome)) => {
+                self.connection = Some(connection);
+                outcome
+            }
+            Err(_) => Err(RecordReceivableReceiptError::StoreFailed),
+        }
+    }
 }

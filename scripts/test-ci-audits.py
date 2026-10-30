@@ -29,11 +29,13 @@ CHILDREN = {"Audit npm dependencies": ["test-npm-audit.py", "check_npm_audit.py"
                                         "test-cargo-audit.py", "check_cargo_audit.py"]}
 MESSAGES = ["npm audit fixtures failed.", "npm audit gate failed.", "Cargo audit preparation failed.",
             "CI audit fixtures failed.", "Cargo audit fixtures failed.", "Cargo audit gate failed."]
+CI_TIMEOUT_MINUTES = 30
 
 
 def workflow(text):
     # ponytail: validate this workflow's restricted shape; use a YAML parser if its structure grows.
-    header = "jobs:\n  validate:\n    runs-on: windows-latest\n    timeout-minutes: 15\n    steps:\n"
+    header = ("jobs:\n  validate:\n    runs-on: windows-latest\n"
+              f"    timeout-minutes: {CI_TIMEOUT_MINUTES}\n    steps:\n")
     assert text.count(header) == 1 and len(re.findall(r"(?m)^jobs:", text)) == 1, "CI job shape"
     tail = text.split(header)[1]
     blocks = re.split(r"(?m)^      - ", tail)
@@ -99,7 +101,8 @@ def main():
     optimized = subprocess.run([sys.executable, "-O", "-B", str(Path(__file__).resolve())], capture_output=True)
     assert optimized.returncode == 1 and b"OPTIMIZE_DENIED" in optimized.stderr
     cases.append("optimized-tests-denied")
-    mutations = [text.replace("    timeout-minutes: 15", "    continue-on-error: true\n    timeout-minutes: 15"),
+    mutations = [text.replace(f"    timeout-minutes: {CI_TIMEOUT_MINUTES}",
+                              f"    continue-on-error: true\n    timeout-minutes: {CI_TIMEOUT_MINUTES}"),
                  text.replace("      - name: Set up pinned Node\n", "      - name: Set up pinned Node\n        if: false\n")]
     for name in CHILDREN:
         for setting in ("if: steps.frontend.outputs.required == 'true'", "if: always()", "continue-on-error: true"):
