@@ -1,0 +1,156 @@
+{
+  "id": "SAL-022",
+  "title": "provar rollback da finalização de venda em falha de commit",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "9fa01aa1f7b64a456bf3e17bfc5aed9271576bc8",
+  "final_sha": "efde578b9a5313d430b8c0cbff2f3bc2eacec2a9",
+  "documentation_pr": {
+    "number": 9,
+    "url": "https://github.com/millennium42/millani-artes/pull/9",
+    "head_sha": "9fa01aa1f7b64a456bf3e17bfc5aed9271576bc8",
+    "merge_sha": "efde578b9a5313d430b8c0cbff2f3bc2eacec2a9"
+  },
+  "source_ci": {
+    "run": {
+      "id": 40993249339,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "9fa01aa1f7b64a456bf3e17bfc5aed9271576bc8",
+      "tested_merge_sha": "5c7404b09e9c3ceb0f3b090e74af03b49e3a7142",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40993249339"
+    },
+    "job": {
+      "id": 123860370291,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "library_passed": 278,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_harness_passed": 213,
+      "doctests_passed": 36
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 40994299630,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "efde578b9a5313d430b8c0cbff2f3bc2eacec2a9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/40994299630"
+    },
+    "job": {
+      "id": 123863718995,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "release_tests": {
+      "library_passed": 278,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_harness_passed": 213,
+      "doctests_passed": 36
+    },
+    "security": {
+      "gitleaks": {
+        "version": "8.30.1",
+        "commits": 369,
+        "findings": 0
+      },
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2,
+        "exception_expiry": "2026-11-06"
+      },
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "findings": 4,
+        "approved_exceptions": 4,
+        "unexcepted_findings": 0,
+        "exception_expiry": "2026-11-06"
+      }
+    },
+    "native_build": {
+      "source_sha": "efde578b9a5313d430b8c0cbff2f3bc2eacec2a9",
+      "bytes": 8536576,
+      "sha256": "2e4b4630de99e1344a39f7a6537b4b28394787b87d38ada1345d429a90fad37c",
+      "machine": "AMD64",
+      "pe": "PE32+",
+      "custom_protocol": true,
+      "rustc": "1.99.0",
+      "cargo": "1.99.0",
+      "node": "24.21.0",
+      "image_os": "win25-vs2026",
+      "image_version": "20261021.278.1"
+    }
+  },
+  "local_verification": {
+    "base_sha": "c535ff9eb8a5157cb0f74a13bf3a87915924d970",
+    "focused_tests": {
+      "sal022_deferred_foreign_key_commit_failure_rolls_back_every_finalization_write": "1 passed",
+      "sal020_sql_failures_roll_back_every_finalization_write": "1 passed"
+    },
+    "rust_debug_and_release_each": {
+      "library_passed": 278,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_harness_passed": 213,
+      "doctests_passed": 36
+    },
+    "checks": [
+      "cargo fmt --check passed",
+      "locked all-target Clippy with -D warnings passed",
+      "Cargo Audit: 422 dependencies, zero vulnerabilities, two approved warnings expiring 2026-11-06",
+      "OSV: 542 packages, four approved exceptions, zero unexcepted findings",
+      "Gitleaks: 758 commits scanned before the PR commit, zero findings",
+      "work item and evidence validators: 165 valid",
+      "project map: 28 sources, 762 files",
+      "progress log append-only: 721190 historical bytes preserved",
+      "git diff --check passed"
+    ],
+    "production_or_migration_changes": 0
+  },
+  "review": {
+    "scope": "primary self-review of the focused test and reserved diff",
+    "independent_review": false
+  },
+  "refs": {
+    "notes_ref_before": "b01679c8d51026ca5e4fe2b63b9f30dc3e887e9a",
+    "notes_before": 168,
+    "mapping_set_sha256_before": "A28629859E451896789BE41EBC0D5F1DF8276709E0E617CFEB9B74163AC39996",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "notes_after": 169,
+    "preserved": "All 168 previous mappings must remain byte-for-byte identical; this adds only the SAL-022 mapping for final_sha."
+  },
+  "b5_inventory": {
+    "items": ["SAL-008", "SAL-009", "SAL-010", "SAL-011", "SAL-012"],
+    "recorded_state": "all done/E3/passes:true",
+    "release_notes_in_roadmap": "SAL-008 note 153; SAL-009 through SAL-012 notes 149 through 152",
+    "skipped_items": []
+  },
+  "limitations": [
+    "E3 proves one file-backed sale-finalizer rollback when a deferred account foreign key rejects commit; it does not establish rollback for every consumer or global INV-FIN-006/007 coverage.",
+    "No UI/IPC, smoke, official E2E, installation, update, signing, or backup/restore check was performed for SAL-022.",
+    "One WebView2-dependent binary test remains ignored in CI.",
+    "Two Cargo warnings and four approved OSV exceptions expire 2026-11-06.",
+    "No independent review was performed; the focused diff received primary self-review."
+  ],
+  "human_decisions": {
+    "implementation_plan_approval": "explicit human approval",
+    "payment_context_choice": "one context per payment; Casa and Fábrica exercised separately"
+  },
+  "next": "SAL-022 release note closes the current B5 item; no subsequent item was started."
+}
