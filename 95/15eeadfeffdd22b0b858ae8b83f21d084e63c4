@@ -1,0 +1,58 @@
+{
+  "id": "SAL-021",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "c4d189bc92c9b42a1062c7a17c36bd133b4cc693",
+  "final_sha": "9515eeadfeffdd22b0b858ae8b83f21d084e63c4",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/6",
+    "https://github.com/millennium42/millani-artes/pull/7"
+  ],
+  "source_ci": {
+    "run": {"id": 40986958594, "workflow": "Documentation", "event": "pull_request", "head_sha": "c4d189bc92c9b42a1062c7a17c36bd133b4cc693", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40986958594"},
+    "job": {"id": 123840109074, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 23, "steps_skipped": 0}
+  },
+  "code_ci": {
+    "run": {"id": 40987994913, "workflow": "Documentation", "event": "push", "head_sha": "95e227291a7b2a70ce439f86595aad1610c542ae", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40987994913"},
+    "job": {"id": 123843410389, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 23, "steps_skipped": 0},
+    "release_tests": {"library_passed": 278, "binary_passed": 7, "binary_ignored": 1, "sqlite_harness_passed": 212, "doctests_passed": 36},
+    "native_evidence": {"source_sha": "95e227291a7b2a70ce439f86595aad1610c542ae", "bytes": 8536576, "sha256": "a63050a19519c9af040f5559fc2e87982db866991868e17f2dc26120fda71710", "machine": "AMD64", "pe": "PE32+", "custom_protocol": true},
+    "security": {"cargo_audit": {"dependencies": 422, "vulnerabilities": 0, "approved_warnings": 2, "exception_expiry": "2026-11-06"}, "osv": {"packages": 542, "approved_exceptions": 4, "unexcepted_findings": 0, "exception_expiry": "2026-11-06"}, "gitleaks": {"commits": 363, "findings": 0}}
+  },
+  "documentation_pr_ci": {
+    "run": {"id": 40989584970, "workflow": "Documentation", "event": "pull_request", "head_sha": "486b3d309d2c3e0cc1b53bce65ed3311109e43ec", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40989584970"},
+    "job": {"id": 123848480082, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7, "skipped_steps": ["Install locked frontend dependencies", "Check frontend quality", "Validate coverage reports", "Upload frontend coverage", "Prepare pinned Rust", "Build Tauri production", "Verify Tauri executable"]}
+  },
+  "final_ci": {
+    "run": {"id": 40989853743, "workflow": "Documentation", "event": "push", "head_sha": "9515eeadfeffdd22b0b858ae8b83f21d084e63c4", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/40989853743"},
+    "job": {"id": 123849338240, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7, "skipped_steps": ["Install locked frontend dependencies", "Check frontend quality", "Validate coverage reports", "Upload frontend coverage", "Prepare pinned Rust", "Build Tauri production", "Verify Tauri executable"]}
+  },
+  "local_verification": {
+    "focused_test": {"name": "sal021_pending_receivables_do_not_increase_account_balances", "passed": 1, "failed": 0},
+    "baseline_test": {"name": "sal020_finalizes_per_payment_context_atomically_and_uses_main_tables", "passed": 1, "failed": 0},
+    "rust": {"fmt": "pass", "clippy_locked_all_targets_d_warnings": "pass", "debug": {"library_passed": 278, "binary_passed": 7, "binary_ignored": 1, "sqlite_harness_passed": 212, "doctests_passed": 36}, "release": {"library_passed": 278, "binary_passed": 7, "binary_ignored": 1, "sqlite_harness_passed": 212, "doctests_passed": 36}},
+    "cargo_audit": {"version": "0.22.2", "dependencies": 422, "vulnerabilities": 0, "approved_warnings": 2, "exception_expiry": "2026-11-06"},
+    "gitleaks": {"version": "8.30.1", "source_sha": "c4d189bc92c9b42a1062c7a17c36bd133b4cc693", "commits": 751, "findings": 0},
+    "osv": {"version": "2.6.0", "packages": 542, "approved_exceptions": 4, "unexcepted_findings": 0, "exception_expiry": "2026-11-06"},
+    "validators": {"work_items": "164 valid", "evidence_states": "164 valid", "project_map": "28 sources/759 files", "progress_log_append_only": "PASS; 719767 historical bytes preserved", "git_diff_check": "pass"}
+  },
+  "refs": {
+    "notes_ref_before": "a0ddcabb84fac5796cc1801232b6bfd5700d78e6",
+    "notes_before": 166,
+    "notes_after": 167,
+    "mapping_set_sha256_before": "5EB0E57478A57C285B3D618305087818137E844A06D759C7BE1173E9461016C5",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 166 prior evidence mappings are unchanged; this adds the SAL-021 mapping for final_sha."
+  },
+  "limitations": [
+    "E3 proves the backend pending-receivable and balance path only; it does not prove UI/IPC, smoke, E2E, or a complete product journey.",
+    "One WebView2-dependent binary check remains ignored.",
+    "The focal review was internal and not independent.",
+    "Two approved Cargo Audit warnings and four OSV exceptions expire 2026-11-06."
+  ],
+  "human_decisions": {
+    "implementation_plan_approval": "explicit human approval",
+    "SAL_021_payment_context": "one Casa/Fabrica Context per payment"
+  },
+  "next": "SAL-022 follows SAL-021 and starts only after DB-012 is confirmed."
+}
