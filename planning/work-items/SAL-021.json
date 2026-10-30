@@ -1,0 +1,28 @@
+{
+  "id": "SAL-021",
+  "title": "provar pendência sem saldo",
+  "specPath": "planning/specs/SAL-021.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-020",
+    "FIN-024"
+  ],
+  "acceptanceCriteria": [
+    "Finalizar venda de 3000 sem pagamentos cria recebível de 3000, nenhum movimento e mantém os saldos iniciais após reabrir SQLite.",
+    "Finalizar outra venda de 3000 com entradas 500 na conta A/Casa e 1000 na B/Fábrica cria recebível de 1500 e somente duas entradas reais.",
+    "Após reabrir, list_accounts/list_movements reais alimentam Account::balance_cents; A aumenta 500, B aumenta 1000 e a terceira conta permanece igual.",
+    "Spec, matrizes, roadmap, handoff e log append-only são coerentes; nenhuma produção, migration, dependência ou UI/IPC é alterada.",
+    "Fmt, locked Clippy, Rust debug/release/doctests, Cargo Audit, scanners, validators, revisão focal e CI fonte/final exatos passam; nota refs/notes/evidence preserva mappings anteriores antes de SAL-022."
+  ],
+  "checks": [
+    "Baseline: teste file-backed de finalização SAL-020 passou 1/1; cobertura SAL-021 ausente antes da mudança.",
+    "GREEN focal SQLite com finalização real, recebíveis, reopen, leitores FIN-024 e saldos literais.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, cargo test debug/release/doctests e Cargo Audit.",
+    "Scanners e validators locais passam; revisão focal concluída. CI fonte/final no SHA exato e nota publicada sem perder mappings existentes."
+  ],
+  "agentPlan": "P-INT: uma prova de integração e atualização documental; sem delegação e sem dependência nova.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "E3 local; prova-only, sem RED de produto nem mudança de produção. Baseline focal SAL-020 1/1; teste SAL-021 1/1. Rust debug/release: cada modo 278 biblioteca, 7/8 binário (1 WebView2 ignorado), 212 SQLite, 36 doctests; fmt e Clippy locked passaram. Cargo Audit 0.22.2: 422 dependências, 0 vulnerabilidades, 2 avisos aprovados até 2026-11-06. Gitleaks 8.30.1 na base 73d75299: 750 commits, 0 achados; OSV 2.6.0: 542 pacotes, 4 achados todos cobertos por exceções aprovadas, 0 fora. Work item/evidência válidos (164 itens), mapa 28 fontes/759 arquivos, log append-only preserva 716842 bytes. SAL-020 e FIN-024 têm notas E3 liberadas; SAL-009–012 nas notas149–152 e SAL-008 na nota153. CI fonte/final e nota SAL-021 ainda pendentes; backend somente, sem UI/IPC/smoke/E2E ou revisão independente."
+}
