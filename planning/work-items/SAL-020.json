@@ -1,0 +1,36 @@
+{
+  "id": "SAL-020",
+  "title": "finalizar venda com pagamentos e pendência atômicos",
+  "specPath": "planning/specs/SAL-020.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-012",
+    "SAL-013",
+    "SAL-015",
+    "SAL-017",
+    "SAL-018",
+    "SAL-019",
+    "DB-011",
+    "RCV-003"
+  ],
+  "acceptanceCriteria": [
+    "SalePayment requer Context próprio por pagamento conforme decisão humana registrada; SAL-016 é reconciliado como contrato histórico ampliado.",
+    "Finalizador lê venda/snapshots e valida valores na mesma transação IMMEDIATE; rejeita ausente, fechada, vazia, linha inválida, pagamento não positivo, overflow e excesso sem persistência.",
+    "Cada pagamento inicial cria movimento de entrada e audit próprios, na conta/contexto/valor/ordem informados, sem editar saldo inicial nem criar tabela de pagamento.",
+    "Residual positivo exige customer_id/due_at_ms e cria um único recebível com residual calculado e audit; residual zero não cria recebível e rejeita termos excedentes.",
+    "Mudança open→finalized, entradas, recebível e auditorias são uma unidade atômica; falha SQL/audit/FK reverte tudo e erro sanitizado.",
+    "SQLite em arquivo prova parcial 3000=500+1000+1500, quitação, residual sem pagamento, FKs, reopen, TEMP shadow e efeitos exclusivos em movimentos/recebível/audit.",
+    "Docs, matrizes, roadmap, work item, SAL-016 addendum, handoffs e log append-only coerentes; fmt/clippy/debug/release/audit/security/validators/review e CI fonte/final exatos passam; nota preserva mappings anteriores antes de SAL-021."
+  ],
+  "checks": [
+    "RED antes de implementar; unitários de validação/orquestração e SQLite físico com oráculos literais.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings, cargo test debug/release/doctests e cargo audit.",
+    "Coverage focal com controle quando reproduzível; Gitleaks staged/histórico, OSV/Cargo Audit, validators e revisão adversarial.",
+    "CI de fonte no SHA de código e CI documental final nos SHAs exatos; nota refs/notes/evidence preserva mapping set; liberar somente depois."
+  ],
+  "agentPlan": "P-INT único escritor e integrador, sem delegação; reserva desde 585bcdd7c0f9421f974052bf673b8754a1cf62e7 nos paths exatos de planning/specs/SAL-020.md; planning/work-items/SAL-020.json; planning/handoffs/SAL-020.md; planning/specs/SAL-016.md; planning/handoffs/SAL-016.md; planning/work-items/SAL-016.json; planning/ROADMAP.md; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; docs/security/SECURITY_TEST_MATRIX.md; src-tauri/src/lib.rs; src-tauri/src/domain/mod.rs; src-tauri/src/domain/sale_tests.rs; src-tauri/src/application/add_product_item.rs; src-tauri/src/application/finalize_sale.rs; src-tauri/src/application/finalize_sale_tests.rs; src-tauri/src/infrastructure/movements.rs; src-tauri/src/infrastructure/sales.rs; src-tauri/tests/sqlite_harness.rs; src-tauri/tests/common/mod.rs; src-tauri/tests/common/sale_finalization.rs. Reserva até CI final exato, nota preservada e liberação no handoff.; 00-MAPA-DO-PROJETO.md",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "VERIFY local em 2026-10-29: RED E0432 precedeu implementação; 4 unitários e 5 SQLite file-backed SAL-020 passaram. Rust debug/release com custom-protocol: 278 lib + 211 SQLite + 36 doctests em cada modo; fmt/clippy, build Tauri PE32+ AMD64 e frontend quality TS 100% passaram. Coverage LLVM focal com controle: finalize_sale.rs 61/61 linhas e 4/4 funções (controle 0/61, 0/4); sales.rs 338/340 e 21/21 (controle 243/340, 17/21); add_product_item.rs 39/39 e 4/4; domain/mod.rs 320/320 e 31/31; movements.rs 278/279 e 22/22. Stable LLVM não mediu branches. Cargo Audit 422/0 vulnerabilidades/2 avisos aprovados; gate pinned passou; invocação manual separada teve aviso de atualização do índice; OSV 542/4 exceções aprovadas/0 fora, expiry 2026-11-06; npm 120/0; SAST 45 casos. Validators e revisão interna passaram; sem revisão independente. Gitleaks staged 0 achados; scan de histórico, CI fonte/final exatos, nota preservada e liberação pendentes; SAL-021/022 bloqueados."
+}

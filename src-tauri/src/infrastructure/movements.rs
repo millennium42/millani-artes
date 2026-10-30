@@ -5,7 +5,7 @@ use crate::application::edit_movement::MovementEditingStore;
 use crate::application::list_movements::MovementReadStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Context, Movement, MovementKind};
-use rusqlite::Connection;
+use rusqlite::{Connection, Transaction};
 use std::fmt;
 
 pub struct MovementStoreError;
@@ -100,6 +100,43 @@ impl AdapterSqliteMovementStore {
     }
 }
 
+pub(crate) fn persist_entry_in_transaction(
+    transaction: &Transaction<'_>,
+    movement: &Movement,
+    event_id: [u8; 16],
+    occurred_at_ms: i64,
+) -> Result<(), ()> {
+    let account_id = match &movement.kind {
+        MovementKind::Entry { account_id } => account_id,
+        _ => return Err(()),
+    };
+    movement.validate_entry().map_err(|_| ())?;
+    let context = match &movement.context {
+        Context::Home => "home",
+        Context::Factory => "factory",
+    };
+    let inserted = transaction
+        .execute(
+            "INSERT INTO main.movements (id, kind, amount_cents, context, account_id) VALUES (?1, 'entry', ?2, ?3, ?4)",
+            rusqlite::params![movement.id.as_slice(), movement.amount_cents, context, account_id.as_slice()],
+        )
+        .map_err(|_| ())?;
+    if inserted != 1 {
+        return Err(());
+    }
+    append_audit_event(
+        transaction,
+        &AuditEvent {
+            event_id,
+            occurred_at_ms,
+            operation: "movement_entry_create",
+            entity: "movement",
+            entity_id: movement.id,
+        },
+    )
+    .map_err(|_| ())
+}
+
 impl EntryCreationStore for AdapterSqliteMovementStore {
     type Error = MovementStoreError;
 
@@ -109,35 +146,14 @@ impl EntryCreationStore for AdapterSqliteMovementStore {
         event_id: [u8; 16],
         occurred_at_ms: i64,
     ) -> Result<(), Self::Error> {
-        let account_id = match &movement.kind {
-            MovementKind::Entry { account_id } => account_id,
+        match &movement.kind {
+            MovementKind::Entry { .. } => (),
             _ => return Err(MovementStoreError),
-        };
+        }
         movement.validate_entry().map_err(|_| MovementStoreError)?;
         let connection = self.connection.take().ok_or(MovementStoreError)?;
         let result = execute_write_transaction(connection, |transaction| {
-            let context = match &movement.context {
-                Context::Home => "home",
-                Context::Factory => "factory",
-            };
-            let inserted = transaction.execute(
-                "INSERT INTO main.movements (id, kind, amount_cents, context, account_id) VALUES (?1, 'entry', ?2, ?3, ?4)",
-                rusqlite::params![movement.id.as_slice(), movement.amount_cents, context, account_id.as_slice()],
-            ).map_err(|_| ())?;
-            if inserted != 1 {
-                return Err(());
-            }
-            append_audit_event(
-                transaction,
-                &AuditEvent {
-                    event_id,
-                    occurred_at_ms,
-                    operation: "movement_entry_create",
-                    entity: "movement",
-                    entity_id: movement.id,
-                },
-            )
-            .map_err(|_| ())
+            persist_entry_in_transaction(transaction, movement, event_id, occurred_at_ms)
         });
         match result {
             Ok((connection, ())) => {

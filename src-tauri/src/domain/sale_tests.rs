@@ -1,6 +1,6 @@
 use super::{
-    create_free_item, create_product_item, DiscountInput, DomainError, Product, Sale, SaleItem,
-    SalePayment, SalePending, SaleStatus,
+    create_free_item, create_product_item, Context, DiscountInput, DomainError, Product, Sale,
+    SaleItem, SalePayment, SalePending, SaleStatus,
 };
 
 fn check(
@@ -91,10 +91,12 @@ fn sal016_preserves_each_payment_account_amount_and_order() {
         SalePayment {
             account_id: [0x51; 16],
             amount_cents: 500,
+            context: Context::Home,
         },
         SalePayment {
             account_id: [0x52; 16],
             amount_cents: 1000,
+            context: Context::Factory,
         },
     ]);
 
@@ -103,6 +105,32 @@ fn sal016_preserves_each_payment_account_amount_and_order() {
     assert_eq!(payments[0].amount_cents, 500);
     assert_eq!(payments[1].account_id, [0x52; 16]);
     assert_eq!(payments[1].amount_cents, 1000);
+    assert!(matches!(&payments[0].context, Context::Home));
+    assert!(matches!(&payments[1].context, Context::Factory));
+}
+
+#[test]
+fn sal020_context_is_selected_per_payment_even_for_the_same_account() {
+    let payments = Vec::from([
+        SalePayment {
+            account_id: [0x51; 16],
+            amount_cents: 500,
+            context: Context::Home,
+        },
+        SalePayment {
+            account_id: [0x51; 16],
+            amount_cents: 1000,
+            context: Context::Factory,
+        },
+    ]);
+
+    assert_eq!(payments[0].account_id, payments[1].account_id);
+    assert_eq!(
+        [payments[0].amount_cents, payments[1].amount_cents],
+        [500, 1000]
+    );
+    assert!(matches!(&payments[0].context, Context::Home));
+    assert!(matches!(&payments[1].context, Context::Factory));
 }
 
 #[test]
