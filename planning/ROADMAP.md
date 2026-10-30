@@ -200,7 +200,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 ## B6 — Recebimentos, devoluções e dashboard
 
 - RCV-004 — calcular saldo devido ← RCV-003 | done/E3/passes:true; PR #10 integrada; source CI PR `41007593262` e source CI main `41008609009` verdes nos SHAs exatos; CI documental final e recibo `refs/notes/evidence` vinculados ao SHA de fechamento; próximo: RCV-005
-- RCV-005 — definir recebimento parcial ← RCV-001
+- RCV-005 — definir recebimento parcial ← RCV-001 | in_progress/E0; spec/work item/handoff criados em 30d974e; baseline relacionado 3/3 + 1/1; implementação e gates pendentes; próximo: continuar RCV-005
 - RCV-006 — registrar recebimento ← RCV-005, FIN-017, DB-011
 - RCV-007 — criar entrada pelo recebimento ← RCV-006
 - RCV-008 — provar uma conta aumentada ← RCV-007, FIN-024
