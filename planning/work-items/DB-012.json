@@ -11,7 +11,7 @@
     "RED focal demonstra sensibilidade: trocar rollback por commit apenas para o caso de erro do callback faz o teste detectar snapshot alterado após o callback retornar erro, mesmo se API ainda retorna OperationFailed; fonte original SHA-256 fbf2d6d274091ea65f444e88e639c411e332930f83a3f530abd607444d13fdbe é restaurada byte a byte antes dos checks finais.",
     "Os 26 testes anteriores do harness permanecem byte-prefix intactos; nenhuma alteração de produção final, dependências, workflow, schema, migrations, flags de produção ou caminhos fora da reserva; testes podem configurar suas flags SQLite locais.",
     "Documentar que rollback real falho ou sem gatilho estável/prova física limita a conclusão: conexão descartada, sem promessa de restauração ou retry. Exit 86 não prova power loss, panic-abort, WAL nem recovery global.",
-    "Executor fecha E3, review E2, segurança, validators e CI de entrega no SHA exato; CI final e nota73 preservando 72 notas/blobs/modos/3 refs, Git limpo e liberação da reserva são gates documentais posteriores."
+    "Executor fecha E3, review E2, segurança, validators e CI de entrega no SHA exato; CI final e nota de evidência preservando todos os mappings e refs publicados antes do fechamento, Git limpo e liberação da reserva são gates documentais posteriores."
   ],
   "checks": [
     "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
