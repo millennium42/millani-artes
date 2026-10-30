@@ -1,0 +1,25 @@
+{
+  "id": "RCV-005",
+  "title": "definir recebimento parcial",
+  "specPath": "planning/specs/RCV-005.md",
+  "status": "in_progress",
+  "dependencies": ["RCV-001"],
+  "acceptanceCriteria": [
+    "ReceivableReceipt é tipo passivo com exatamente account_id [u8; 16], amount_cents i64 e context Context.",
+    "Teste preserva literalmente conta, centavos, contexto e ordem de duas entradas sem somar nem calcular devido.",
+    "O tipo não valida, persiste, lança movimento, altera saldo, fecha recebível ou introduz dependência.",
+    "Spec, work item, handoff, roadmap, matrizes e progress log append-only refletem apenas esta representação e seus limites.",
+    "RED/GREEN, fmt, Clippy, Rust debug/release/doctests, Cargo Audit/scans, validators, P-REV, CI de origem/final e nota exata passam antes de liberar RCV-006."
+  ],
+  "checks": [
+    "Baseline relacionado antes da edição: receivable_tests 3/3 e sal016_ 1/1; RED deve falhar pelo tipo ausente; GREEN verifica os campos e ordem.",
+    "Rust 1.99 pinned: fmt --check, Clippy locked all-targets -D warnings e cargo test debug/release/doctests.",
+    "Cargo Audit, OSV, Gitleaks e validators de mapa, work item, estados E3, progress log append-only, gitignore e Tauri conforme policy.",
+    "Review adversarial independente P-REV contra a spec; CI fonte e final no SHA exato e nota refs/notes/evidence preservando mappings anteriores."
+  ],
+  "agentPlan": "P-INT único integrador, escritor e executor; nenhum modelo local conforme instrução humana vigente. P-REV GPT Sol 6 medium independente após o diff. Um ID por vez; não iniciar RCV-006 até CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Item/spec/handoff não existiam no checkout limpo 30d974e44bd56953b6806c064c7ada4fc1baa24e; criados a partir do roadmap e das fontes canônicas BUSINESS_RULES, USER_JOURNEYS, INVARIANTS, ADR-011/013/017/018 e DATA_MODEL. RCV-001 e RCV-004 estão liberados; o grafo declarado depende de RCV-001. Baseline anterior à edição passou receivable_tests 3/3 e sal016_ 1/1. RED focal foi reproduzido com E0432 pelo símbolo ausente. P-INT implementou apenas ReceivableReceipt passivo e ajustou o fixture para array após finding real de Clippy; GREEN focal 4/4, doctests 38/38, Rust debug/release 281 lib + 7/8 binários (1 ignorado) + 213 SQLite + 38 doctests por perfil, fmt e Clippy locked -D warnings passaram. Cargo Audit 0.22.2: 422 dependências, 0 vulnerabilidades e 2 avisos aprovados até 2026-11-06; OSV 2.6.0: 542 pacotes, 4 exceções aprovadas e 0 fora, no SHA-base 4fbb03d293276b6537212ee9d72b3af4c2642d8b com hashes aprovados; reexecutar após commit fonte. P-REV independente GPT Sol 6 medium sem achados, sem executar checks. Implementação não agrega, valida, persiste, cria movimento nem altera saldo. Gitleaks, validators, source/final CI, nota e liberação pendentes."
+}

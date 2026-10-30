@@ -1,4 +1,4 @@
-use super::{Receivable, SalePending};
+use super::{Context, Receivable, ReceivableReceipt, SalePending};
 
 #[test]
 fn rcv001_preserves_receivable_identity_and_initial_pending_terms() {
@@ -75,4 +75,27 @@ fn rcv004_accepts_i64_max_and_rejects_invalid_amounts() {
         receivable(-1).remaining_due_cents(0),
         Err(super::DomainError::InvalidInput)
     );
+}
+
+#[test]
+fn rcv005_preserves_receipt_account_amount_context_and_order() {
+    let receipts = [
+        ReceivableReceipt {
+            account_id: [0x51; 16],
+            amount_cents: 500,
+            context: Context::Home,
+        },
+        ReceivableReceipt {
+            account_id: [0x52; 16],
+            amount_cents: 1000,
+            context: Context::Factory,
+        },
+    ];
+
+    assert_eq!(receipts[0].account_id, [0x51; 16]);
+    assert_eq!(receipts[0].amount_cents, 500);
+    assert!(matches!(&receipts[0].context, Context::Home));
+    assert_eq!(receipts[1].account_id, [0x52; 16]);
+    assert_eq!(receipts[1].amount_cents, 1000);
+    assert!(matches!(&receipts[1].context, Context::Factory));
 }
