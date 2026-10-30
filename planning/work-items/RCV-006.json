@@ -1,0 +1,26 @@
+{
+  "id": "RCV-006",
+  "title": "Persistir recibo vinculado a recebível dentro da transação do chamador",
+  "specPath": "planning/specs/RCV-006.md",
+  "status": "in_progress",
+  "dependencies": ["RCV-005", "FIN-017", "DB-011"],
+  "acceptanceCriteria": [
+    "Migration aditiva v13 cria main.receipts STRICT com identidade, vínculo ao recebível, conta, centavos positivos e contexto existente; sem saldo, status, timestamp comercial ou defaults.",
+    "Helper transacional preserva os campos de ReceivableReceipt, valida valor e devido atual dentro da transação e grava recibo e audit_event juntos com SQL parametrizado e erros sanitizados.",
+    "Teste SQLite prova banco vazio, upgrade v12, constraints, FKs NO ACTION, reopen, preservação literal, agregado de recibos, auditoria e ausência de escrita parcial.",
+    "Helper não abre nem confirma transação, não cria movimento e não oferece um caso de uso de recebimento sem entrada; RCV-007 integrará ambos antes de commit.",
+    "Spec, work item, handoff, modelo de dados, transaction model, roadmap, matrizes e log append-only registram evidência e limites exatos; todos os gates locais e CI remoto final são demonstrados antes de passes:true."
+  ],
+  "checks": [
+    "RED focal importa os novos símbolos ausentes e falha antes de BUILD.",
+    "Rust 1.99 pinned: cargo fmt --check; cargo clippy --locked --all-targets -- -D warnings; cargo test debug/release com doctests.",
+    "Testes SQLite reais: migration v1-v13 em banco vazio, upgrade populado v12-v13, constraints, FK, reopen, recibo/auditoria, agregação, erros, rollback pela unidade e shadowing.",
+    "Cargo Audit, OSV, Gitleaks, cobertura Rust proporcional e validators documentais/security exigidos; P-REV independente read-only.",
+    "CI source e CI documental final em SHAs exatos; recibo refs/notes/evidence preserva todos os mappings anteriores."
+  ],
+  "agentPlan": "P-INT único integrador, escritor e executor; sem modelo local ou roteamento local. P-REV independente gpt-6-luna max, somente leitura após diff. Reserva RCV-006 sobre os paths exatos listados em planning/specs/RCV-006.md; liberação somente após CI final exato e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "SPEC/RECON sobre origin/main 99ecbe2a69600990ee51f407827dc615d8045574; dependências reconciliadas por recibos/CI. Baseline: 4 unitários + 15 SQLite passaram. RED E0432 esperado. GREEN focal final cargo test --manifest-path src-tauri/Cargo.toml rcv006_: 7/7 SQLite; as duas falhas iniciais eram fixtures e foram corrigidas. Debug/release: 281 lib, 7/8 bin (1 ignorado), 220 SQLite e 38 doctests; fmt e Clippy passam. Cobertura causal Rust 1.99/LLVM 23.1.1 no helper: 68/68 linhas, 65/70 regiões; controle sem RCV-006: 0/68 linhas; branches não disponíveis em stable. P-REV read-only do teste RAISE(IGNORE) concluído sem P0/P1; P2 de registro focal 6/6 foi corrigido com rerun 7/7, reviewer não executou checks. Project-map, schema de work items, fixtures de mapa/work-items, append-only e test-progress-log (26 fixtures; não valida semântica do log) passam. Scanners, CI fonte/final exatos e nota pendentes. passes:false."
+}

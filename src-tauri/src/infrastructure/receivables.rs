@@ -1,5 +1,5 @@
 use crate::database::{append_audit_event, AuditEvent};
-use crate::domain::Receivable;
+use crate::domain::{Context, Receivable, ReceivableReceipt, SalePending};
 use rusqlite::{params, OptionalExtension, Transaction};
 use std::error::Error;
 use std::fmt;
@@ -75,4 +75,113 @@ pub fn persist_receivable_in_transaction(
         },
     )
     .map_err(|_| ReceivableStoreError::StoreFailed)
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum ReceivableReceiptStoreError {
+    InvalidAmount,
+    ReceivableNotFound,
+    AmountExceedsDue,
+    StoreFailed,
+}
+
+impl fmt::Display for ReceivableReceiptStoreError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(match self {
+            Self::InvalidAmount => "receipt amount is invalid",
+            Self::ReceivableNotFound => "receivable could not be found",
+            Self::AmountExceedsDue => "receipt amount exceeds the due balance",
+            Self::StoreFailed => "receipt could not be stored",
+        })
+    }
+}
+
+impl Error for ReceivableReceiptStoreError {}
+
+/// Persists a receipt and its technical audit event in the caller's write transaction.
+/// It deliberately does not create the financial entry or control commit; RCV-007 composes
+/// both writes in one application-owned transaction.
+pub fn persist_receivable_receipt_in_transaction(
+    transaction: &Transaction<'_>,
+    receivable_id: [u8; 16],
+    receipt_id: [u8; 16],
+    receipt: &ReceivableReceipt,
+    event_id: [u8; 16],
+    occurred_at_ms: i64,
+) -> Result<(), ReceivableReceiptStoreError> {
+    if receipt.amount_cents <= 0 {
+        return Err(ReceivableReceiptStoreError::InvalidAmount);
+    }
+
+    let (sale_id, principal_cents, customer_id, due_at_ms, applied_cents) = transaction
+        .query_row(
+            "SELECT r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms, COALESCE(SUM(receipt.amount_cents), 0) FROM main.receivables AS r LEFT JOIN main.receipts AS receipt ON receipt.receivable_id = r.id WHERE r.id = ?1 GROUP BY r.id, r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms",
+            [receivable_id.as_slice()],
+            |row| {
+                Ok((
+                    row.get::<_, Vec<u8>>(0)?,
+                    row.get::<_, i64>(1)?,
+                    row.get::<_, Vec<u8>>(2)?,
+                    row.get::<_, i64>(3)?,
+                    row.get::<_, i64>(4)?,
+                ))
+            },
+        )
+        .optional()
+        .map_err(|_| ReceivableReceiptStoreError::StoreFailed)?
+        .ok_or(ReceivableReceiptStoreError::ReceivableNotFound)?;
+
+    let sale_id: [u8; 16] = sale_id
+        .try_into()
+        .map_err(|_| ReceivableReceiptStoreError::StoreFailed)?;
+    let customer_id: [u8; 16] = customer_id
+        .try_into()
+        .map_err(|_| ReceivableReceiptStoreError::StoreFailed)?;
+    let receivable = Receivable {
+        id: receivable_id,
+        sale_id,
+        pending: SalePending {
+            amount_cents: principal_cents,
+            customer_id,
+            due_at_ms,
+        },
+    };
+    let due_cents = receivable
+        .remaining_due_cents(applied_cents)
+        .map_err(|_| ReceivableReceiptStoreError::StoreFailed)?;
+    if receipt.amount_cents > due_cents {
+        return Err(ReceivableReceiptStoreError::AmountExceedsDue);
+    }
+
+    let context = match &receipt.context {
+        Context::Home => "home",
+        Context::Factory => "factory",
+    };
+    let inserted = transaction
+        .execute(
+            "INSERT INTO main.receipts (id, receivable_id, account_id, amount_cents, context) VALUES (?1, ?2, ?3, ?4, ?5)",
+            params![
+                receipt_id.as_slice(),
+                receivable_id.as_slice(),
+                receipt.account_id.as_slice(),
+                receipt.amount_cents,
+                context,
+            ],
+        )
+        .map_err(|_| ReceivableReceiptStoreError::StoreFailed)?;
+    if inserted != 1 {
+        return Err(ReceivableReceiptStoreError::StoreFailed);
+    }
+
+    append_audit_event(
+        transaction,
+        &AuditEvent {
+            event_id,
+            occurred_at_ms,
+            operation: "receivable_receipt_create",
+            entity: "receipt",
+            entity_id: receipt_id,
+        },
+    )
+    .map_err(|_| ReceivableReceiptStoreError::StoreFailed)
 }
