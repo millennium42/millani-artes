@@ -1,0 +1,29 @@
+{
+  "id": "SAL-022",
+  "title": "provar rollback da finalização de venda",
+  "specPath": "planning/specs/SAL-022.md",
+  "status": "done",
+  "dependencies": [
+    "SAL-020",
+    "SAL-021",
+    "DB-012"
+  ],
+  "acceptanceCriteria": [
+    "Um teste SQLite file-backed usa o finalizador real e FK deferred para provocar falha no commit após a operação de venda, pagamentos e recebível.",
+    "A chamada retorna SaleError::StoreFailed com mensagem pública genérica e sem causa SQLite exposta.",
+    "Após descartar o adapter e reabrir o banco, o snapshot completo de contas, venda, itens, movimentos, recebíveis e audit_event é idêntico ao baseline; integrity_check, FK check, schema e autocommit passam.",
+    "Nenhum código de produção, schema, migration, dependência, API ou UI/IPC muda; a prova não duplica o harness genérico de DB-012.",
+    "Spec, matrizes, roadmap, handoff e log append-only refletem o escopo; fmt, Clippy locked, Rust debug/release/doctests, audit, scanners, validators e revisão focal passam; CI fonte/final nos SHAs exatos e nota Git preservando mappings liberam a próxima tarefa."
+  ],
+  "checks": [
+    "Baseline: sal020_sql_failures_roll_back_every_finalization_write passou 1/1 no SHA c535ff9eb8a5157cb0f74a13bf3a87915924d970.",
+    "Teste focal SAL-022 confirma FK deferred, erro sanitizado, igualdade do snapshot após reopen e saúde do SQLite.",
+    "Rust 1.99 pinned: fmt, locked all-target Clippy -D warnings e cargo test debug/release/doctests; auditar dependências.",
+    "Scanners e validators locais, revisão focal, CI da PR e CI main em SHAs exatos; CI documental final e nota refs/notes/evidence preservando os mappings anteriores."
+  ],
+  "agentPlan": "P-INT único escritor/integrador nesta worktree; prova-only no teste existente, sem delegação, worker local ou nova dependência.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Executor E3 local concluído: teste SAL-022 1/1; debug/release cada um 278 biblioteca, 7/8 binário (1 WebView2 ignorado), 213 SQLite e 36 doctests; fmt/Clippy/Audit/OSV/Gitleaks e validators passaram (165 work items válidos; mapa 28 fontes/762 arquivos; progress log append-only 721190 bytes; diff-check). Nenhuma produção ou migration mudou. CI fonte/final e nota de release são gates remotos separados da execução local; o recibo do SHA final registra seus resultados e preserva os 168 mappings anteriores."
+}
