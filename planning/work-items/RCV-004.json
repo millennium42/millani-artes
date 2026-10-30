@@ -1,0 +1,25 @@
+{
+  "id": "RCV-004",
+  "title": "calcular saldo devido do recebível",
+  "specPath": "planning/specs/RCV-004.md",
+  "status": "in_progress",
+  "dependencies": ["RCV-003"],
+  "acceptanceCriteria": [
+    "Receivable calcula saldo devido pelo principal original menos o agregado já aplicado, sem armazenar saldo restante.",
+    "Testes cobrem saldo integral, parcial, quitado, i64::MAX e rejeitam principal inválido, agregado negativo ou agregado acima do principal.",
+    "O cálculo é puro e não muda persistência, movimentos, contas, migrations, dependências nem callers anteriores.",
+    "Spec, work item, handoff, roadmap, matrizes e progress log append-only refletem o comportamento e os limites demonstrados.",
+    "Rust fmt, Clippy locked -D warnings, debug/release/doctests, audit/scans, validators, review, CI fonte/final em SHAs exatos e nota preservando mappings anteriores passam antes da liberação."
+  ],
+  "checks": [
+    "RED unitário focal antes do método; GREEN focal depois da implementação.",
+    "Rust 1.99 pinned: fmt --check, locked all-target Clippy -D warnings e cargo test debug/release/doctests.",
+    "Cargo Audit, OSV, Gitleaks e validators de mapa, work item, evidência, progress log e Tauri conforme policy.",
+    "Review adversarial do diff; CI de fonte e final no SHA exato; nota refs/notes/evidence preserva todos os mappings anteriores."
+  ],
+  "agentPlan": "P-INT único escritor/integrador; sem delegados por ser cálculo puro focal e sem paralelismo independente; reserva/base/paths completos em planning/specs/RCV-004.md.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "RECON: base remota efde578b9a5313d430b8c0cbff2f3bc2eacec2a9; RCV-001/002/003 e dependências confirmados. Baseline no SHA da base: 534 passed, 1 ignored. RED focal reproduzido por método ausente; GREEN 2/2. Após implementação: fmt e Clippy locked -D warnings passaram; debug e release passaram cada um com 536 passed, 1 ignored; doctests 36/36. LLVM 1.99/23.1.1 focal domain/mod.rs 328/328 linhas e 32/32 funções; controle sem rcv004_ 320/328 e 31/32; branches stable indisponíveis. Reports finais em artifacts/rcv-004-coverage-final2-20261030, hashes na spec/handoff. Auditoria/scans/validators no SHA candidato, CI fonte/final e nota de evidência pendentes; passes permanece false."
+}

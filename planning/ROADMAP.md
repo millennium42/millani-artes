@@ -199,7 +199,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 
 ## B6 — Recebimentos, devoluções e dashboard
 
-- RCV-004 — calcular saldo devido ← RCV-003
+- RCV-004 — calcular saldo devido ← RCV-003 | executor E3 local; scans, validators, review, CI exato e nota pendentes; não liberado
 - RCV-005 — definir recebimento parcial ← RCV-001
 - RCV-006 — registrar recebimento ← RCV-005, FIN-017, DB-011
 - RCV-007 — criar entrada pelo recebimento ← RCV-006
