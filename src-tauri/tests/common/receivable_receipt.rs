@@ -143,14 +143,17 @@ fn receipt(account_id: [u8; 16], amount_cents: i64, context: Context) -> Receiva
 }
 
 struct ReceiptIds {
-    values: [[u8; 16]; 4],
+    values: [[u8; 16]; 8],
     calls: usize,
 }
 
 impl ReceiptIds {
     fn new() -> Self {
         Self {
-            values: [[0x31; 16], [0x32; 16], [0x33; 16], [0x34; 16]],
+            values: [
+                [0x31; 16], [0x32; 16], [0x33; 16], [0x34; 16], [0x35; 16], [0x36; 16], [0x37; 16],
+                [0x38; 16],
+            ],
             calls: 0,
         }
     }
@@ -401,6 +404,81 @@ fn rcv007_entry_audit_failure_rolls_back_receipt_entry_and_events() {
     assert!(rows(&reopened, "SELECT * FROM main.receipts").is_empty());
     assert!(rows(&reopened, "SELECT * FROM main.movements").is_empty());
     assert!(rows(&reopened, "SELECT * FROM main.audit_event").is_empty());
+}
+
+#[test]
+fn rcv009_rejects_over_remaining_due_after_partial_receipt_without_new_writes() {
+    let (_directory, path) = setup("rcv009-overdue.sqlite", 3000);
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_111));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+
+    record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_B, 1000, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .expect("RCV009_INITIAL_PARTIAL_RECEIPT_FAILED");
+
+    let before_connection = open_database(&path).expect("RCV009_BEFORE_REOPEN_FAILED");
+    let before_receipts = rows(
+        &before_connection,
+        "SELECT * FROM main.receipts ORDER BY id",
+    );
+    let before_movements = rows(
+        &before_connection,
+        "SELECT * FROM main.movements ORDER BY id",
+    );
+    let before_audits = rows(
+        &before_connection,
+        "SELECT * FROM main.audit_event ORDER BY event_id",
+    );
+    let principal_cents = before_connection
+        .query_row(
+            "SELECT amount_cents FROM main.receivables WHERE id = ?1",
+            params![RECEIVABLE_ID],
+            |row| row.get::<_, i64>(0),
+        )
+        .expect("RCV009_PRINCIPAL_READ_FAILED");
+    assert_eq!(principal_cents, 3000);
+    assert_eq!(before_receipts.len(), 1);
+    assert_eq!(before_receipts[0][3], Value::Integer(1000));
+    assert_eq!(principal_cents - 1000, 2000);
+    assert_eq!(before_movements.len(), 1);
+    assert_eq!(before_audits.len(), 2);
+    drop(before_connection);
+
+    let error = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_A, 2001, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .err()
+    .expect("RCV009_OVERDUE_RECEIPT_WAS_ACCEPTED");
+    assert_eq!(error, RecordReceivableReceiptError::AmountExceedsDue);
+
+    let reopened = open_database(&path).expect("RCV009_AFTER_REOPEN_FAILED");
+    assert_eq!(
+        rows(&reopened, "SELECT * FROM main.receipts ORDER BY id",),
+        before_receipts
+    );
+    assert_eq!(
+        rows(&reopened, "SELECT * FROM main.movements ORDER BY id",),
+        before_movements
+    );
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT * FROM main.audit_event ORDER BY event_id",
+        ),
+        before_audits
+    );
 }
 
 #[test]
