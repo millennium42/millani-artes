@@ -1,0 +1,204 @@
+{
+  "id": "RCV-008",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "58785e5fc12f3b95660447fc5f5a57b186af1b78",
+  "final_sha": "1b1a4a2b974e2d27fb3e4f40bef33ccf7e49e266",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/16",
+    "https://github.com/millennium42/millani-artes/pull/18",
+    "https://github.com/millennium42/millani-artes/pull/19"
+  ],
+  "implementation_ci": {
+    "source": {
+      "run": 41157245729,
+      "job": 124406632796,
+      "head_sha": "7ea2a6dd82fb77e95125a856f8b6638af199273d",
+      "conclusion": "success"
+    },
+    "main": {
+      "run": 41158097659,
+      "job": 124409272320,
+      "head_sha": "70eda16958c3ea1908beb294f56fcf31f8682a3f",
+      "conclusion": "success"
+    }
+  },
+  "closeout_source_ci": {
+    "run": 41212213523,
+    "job": 124569381133,
+    "head_sha": "a50f58f5631e579199dd35e212102b59696cc67c",
+    "tested_merge_sha": "051779e19ee5da2dd0e0ab76a9dfa46130420959",
+    "event": "pull_request",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7
+  },
+  "final_ci": {
+    "run": {
+      "id": 41214627141,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "1b1a4a2b974e2d27fb3e4f40bef33ccf7e49e266",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41214627141"
+    },
+    "job": {
+      "id": 124576462763,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "code_evidence": {
+    "focused_test": "rcv008_receipt_increases_only_selected_account_balance_after_reopen",
+    "focused_passed": 1,
+    "local_rust_debug_release_each": {
+      "passed": 557,
+      "ignored": 1
+    },
+    "local_doctests_each": 38,
+    "fmt": "pass",
+    "clippy_locked_all_targets_d_warnings": "pass",
+    "implementation_main_release_tests": {
+      "library_passed": 286,
+      "integration_passed": 7,
+      "integration_ignored": 1,
+      "sqlite_passed": 226,
+      "doctests_passed": 38
+    }
+  },
+  "scans_on_final_sha": {
+    "gitleaks": {
+      "version": "8.30.1",
+      "commits": 395,
+      "findings": 0
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered_by_approved_exceptions": 3,
+      "unexcepted": 0,
+      "exception_expiry": "2026-11-06"
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "approved_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ],
+      "exception_expiry": "2026-11-06"
+    },
+    "npm_audit": {
+      "version": "11.19.0",
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    }
+  },
+  "local_validators": {
+    "pwsh": "7.6.5",
+    "project_map": "28 sources/781 files pass",
+    "gitignore": "28 ignored/4 preserved pass",
+    "evidence": "25 fixtures/170 items pass",
+    "work_items": "72 fixtures/170 items pass",
+    "tauri_plugins": "37 fixtures/2 CLI cases and gate pass",
+    "progress_log": "26 fixtures pass; append-only preserved 733416 bytes",
+    "final_targeted_after_handoff_wording_edit": "work item schema, append-only, git diff check passed"
+  },
+  "independent_review": {
+    "persona": "P-REV GPT-6 Luna max",
+    "result": "no P0/P1/P2 findings after correcting the status-sync SHA mismatch",
+    "checks_executed": false,
+    "scope": "read-only review of seven item files and prior evidence note; reviewer did not independently inspect CI"
+  },
+  "refs": {
+    "notes_ref_before": "951fc5aed78bc78de4597a98e1c518973fd324c2",
+    "notes_before": 174,
+    "mapping_set_sha256_before": "4438f97bc2dbf3ea6d76d7e6f77edb6bd9817d0121584eb17e4e25fa3c9fda62",
+    "hash_method": "SHA-256 over git notes list lines in target-commit order joined with LF and no trailing LF",
+    "notes_after": 175,
+    "preserved": "All 174 existing mappings are unchanged; this note adds the RCV-008 status-sync receipt to the exact final SHA"
+  },
+  "human_decisions": {
+    "continuation_authorization": "Liberado on 2026-10-31; authorization only, not execution evidence"
+  },
+  "limitations": [
+    "The final status-sync CI is document-only: 16 of 23 steps passed and the seven listed frontend/build product steps were skipped by the selector. Implementation code/test gates are evidenced by the separate source/main CI and prior RCV-008 receipt.",
+    "The focal backend proof does not prove UI/IPC, smoke, E2E, global coverage, or complete INV-FIN-004; RCV-011 rollback and other consumers remain pending.",
+    "No production code, schema, migration, dependency, or test file changed in this status-sync. Approved Cargo/OSV exceptions remain unchanged and expire on 2026-11-06."
+  ],
+  "next": "RCV-009 may start after this exact-SHA CI and evidence mapping are confirmed; B7 remains unstarted.",
+  "implementation_source_sha": "7ea2a6dd82fb77e95125a856f8b6638af199273d",
+  "status_sync_source_sha": "58785e5fc12f3b95660447fc5f5a57b186af1b78",
+  "prior_closeout_ci": {
+    "run": {
+      "id": 41212468666,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "a03d4a44658a4dc93d1dc51c3f6e0ad072bea8c9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41212468666"
+    },
+    "job": {
+      "id": 124570147383,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "status_sync_source_ci": {
+    "run": 41214137630,
+    "job": 124575026000,
+    "event": "pull_request",
+    "head_sha": "58785e5fc12f3b95660447fc5f5a57b186af1b78",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7
+  },
+  "status_sync_local_validators": {
+    "pwsh": "7.6.5",
+    "project_map": "28 sources/781 files pass; fixtures pass",
+    "gitignore": "28 ignored/4 preserved pass",
+    "evidence": "25 fixtures/170 items pass",
+    "work_items": "72 fixtures/170 items pass",
+    "tauri_plugins": "37 fixtures/2 CLI cases and gate pass",
+    "progress_log": "26 fixtures pass; append-only preserved 735113 bytes",
+    "frontend_selector": "20 fixtures pass; current document-only selection false",
+    "git_diff_check": "pass"
+  }
+}
