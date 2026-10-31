@@ -1,0 +1,398 @@
+{
+  "id": "RCV-010",
+  "status": "done",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "414c6877032cbf9bdaea6f2aee0a37444ea32e76",
+  "candidate_source_sha": "dbe100d67ded2c5a1377dc8132e2195eb65e63bb",
+  "final_sha": "bf29f7ee48ec41f0dddacc81968427834956c580",
+  "closeout_date_utc": "2026-10-31",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/23",
+    "https://github.com/millennium42/millani-artes/pull/24",
+    "https://github.com/millennium42/millani-artes/pull/25",
+    "https://github.com/millennium42/millani-artes/pull/26",
+    "https://github.com/millennium42/millani-artes/pull/27",
+    "https://github.com/millennium42/millani-artes/pull/28",
+    "https://github.com/millennium42/millani-artes/pull/29",
+    "https://github.com/millennium42/millani-artes/pull/30"
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 30,
+      "run": 41249520112,
+      "job": 124679910528,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41249520112",
+      "event": "pull_request",
+      "head_sha": "dbe100d67ded2c5a1377dc8132e2195eb65e63bb",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "final_main": {
+      "run": 41249795611,
+      "job": 124680727457,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41249795611",
+      "event": "push",
+      "head_sha": "bf29f7ee48ec41f0dddacc81968427834956c580",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "document_only_skips": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ]
+  },
+  "focal_test": {
+    "name": "rcv010_full_receipt_closes_projected_due_after_reopen",
+    "result": "passed",
+    "count": 1,
+    "scenario": "SQLite file-backed: principal 3000; receipt 1000, reopen and due 2000; receipt 2000, reopen and due 0; two receipt rows, two financial entries, four audit events; no persisted status"
+  },
+  "implementation_ci": {
+    "source": {
+      "pr": 23,
+      "run": 41228742366,
+      "job": 124618283764,
+      "event": "pull_request",
+      "head_sha": "414c6877032cbf9bdaea6f2aee0a37444ea32e76",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "main": {
+      "run": 41229958201,
+      "job": 124621923803,
+      "event": "push",
+      "head_sha": "26171761b4533fd25148885f96f3b9b4cbd52c56",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "prior_status_sync_ci": {
+    "previous": {
+      "pr": 24,
+      "source": {
+        "run": 41232183602,
+        "job": 124628497970,
+        "event": "pull_request",
+        "head_sha": "cc5bf45d28872de60c8e6b0d19b3858b2a6b6b50",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41232402364,
+        "job": 124629134607,
+        "event": "push",
+        "head_sha": "de263f379c62eb5ac7395d0ac0d455fee6662d22",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "pr25_candidate": {
+      "pr": 25,
+      "source": {
+        "run": 41234012804,
+        "job": 124633866238,
+        "event": "pull_request",
+        "head_sha": "091f26a40c9bbf18072e68f712c36072b1dbbe56",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41234399827,
+        "job": 124635031392,
+        "event": "push",
+        "head_sha": "e7bb7cb98838ae37e1eb4772ac9f6b0a044b965c",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "document_only_skips": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    },
+    "corrective_pr26": {
+      "source": {
+        "run": 41235621505,
+        "job": 124638671237,
+        "event": "pull_request",
+        "head_sha": "85b5f9d053e489b3a50ccdca1e68436ccf89837b",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41235810605,
+        "job": 124639238206,
+        "event": "push",
+        "head_sha": "6d09999d358a0e2bb0dc9fb59f494e038f6f6c9d",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "corrected_status_pr27": {
+      "source": {
+        "run": 41236660200,
+        "job": 124641768607,
+        "event": "pull_request",
+        "head_sha": "fd3a57108f6f3214cbe30e13ae5e457c3e1312be",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41236851243,
+        "job": 124642329312,
+        "event": "push",
+        "head_sha": "d37791c8e25b233d9b9a638ba95c8133eb40a823",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "final_closeout": {
+      "pr": 28,
+      "source": {
+        "run": 41237301933,
+        "job": 124643647860,
+        "event": "pull_request",
+        "head_sha": "188d087c565a69ec96260c904bd5ae689bb3f98b",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41237471039,
+        "job": 124644158749,
+        "event": "push",
+        "head_sha": "35db95128cd0a329281dff5ebbb70714a818e573",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "document_only_skips": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    },
+    "corrective_pr29": {
+      "source": {
+        "pr": 29,
+        "run": 41238664839,
+        "job": 124647706989,
+        "event": "pull_request",
+        "head_sha": "36ef9e28813cf7c40657ac3ed15e9bb42f30f2f4",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7,
+        "document_only_skips": [
+          "Install locked frontend dependencies",
+          "Check frontend quality",
+          "Validate coverage reports",
+          "Upload frontend coverage",
+          "Prepare pinned Rust",
+          "Build Tauri production",
+          "Verify Tauri executable"
+        ]
+      },
+      "main": {
+        "run": 41238853448,
+        "job": 124648285196,
+        "event": "push",
+        "head_sha": "2ca43a25581d348742153048a5182244fe4df083",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7,
+        "document_only_skips": [
+          "Install locked frontend dependencies",
+          "Check frontend quality",
+          "Validate coverage reports",
+          "Upload frontend coverage",
+          "Prepare pinned Rust",
+          "Build Tauri production",
+          "Verify Tauri executable"
+        ]
+      }
+    }
+  },
+  "local_rust": {
+    "toolchain": "Windows x64 MSVC; Rust/Cargo 1.99.0; LLVM 23.1.1",
+    "fmt": "passed",
+    "clippy_locked_all_targets_d_warnings": "passed",
+    "debug": {
+      "library_tests": 286,
+      "binary_tests_passed": 7,
+      "binary_tests_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration_tests": 228,
+      "doctests": 38
+    },
+    "release": {
+      "library_tests": 286,
+      "binary_tests_passed": 7,
+      "binary_tests_total": 8,
+      "sqlite_integration_tests": 228,
+      "doctests": 38
+    }
+  },
+  "security": {
+    "prior_implementation_scans": {
+      "dependency_scans_source_sha": "1d237a8fac7145459b32f8c2ef6fac559bdeba50",
+      "unchanged_inputs": "No production, schema, migration, dependency, lockfile, or financial-data changes for RCV-010; exact main documentation CI also passed Cargo, OSV and npm audit steps.",
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2
+      },
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "covered_findings": 3,
+        "outside_exceptions": 0
+      },
+      "gitleaks": {
+        "version": "8.30.1",
+        "source_sha": "091f26a40c9bbf18072e68f712c36072b1dbbe56",
+        "history_commits": 811,
+        "findings": 0
+      },
+      "npm_audit": {
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "dependencies": 120,
+        "vulnerabilities": 0
+      },
+      "approved_exceptions": {
+        "approved": true,
+        "expires_before_utc": "2026-11-06",
+        "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+        "cargo_toml_sha256": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+        "renewed_or_suppressed": false
+      },
+      "latest_closeout_ci": {
+        "run": 41238853448,
+        "head_sha": "2ca43a25581d348742153048a5182244fe4df083",
+        "conclusion": "success",
+        "cargo_audit": "passed",
+        "osv": "passed",
+        "npm_audit": "passed",
+        "gitleaks_history": "passed",
+        "source_and_main_status_sync_scans": "passed; no production, schema, migration, dependency or lockfile changes"
+      }
+    },
+    "release_ci_scanners": "Cargo audit, OSV lockfile scan, npm audit and Git history Gitleaks steps passed in both source and final-main Documentation runs.",
+    "approved_exceptions": {
+      "approved": true,
+      "target": "x86_64-pc-windows-msvc",
+      "expires_before_utc": "2026-11-06",
+      "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+      "cargo_toml_sha256": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+      "renewed_or_suppressed": false
+    }
+  },
+  "local_document_validators": {
+    "powershell": "7.6.5",
+    "work_items": "172 valid; 72 fixtures passed",
+    "evidence_states": "172 valid; 25 fixtures passed",
+    "project_map": "28 sources / 787 files; tests passed",
+    "gitignore": "28 ignored artifacts / 4 preserved sources; tests passed",
+    "progress_log": "26 fixtures passed; 753427 historical bytes preserved append-only against origin/main 2ca43a25581d348742153048a5182244fe4df083",
+    "gitleaks": {
+      "version": "8.30.1",
+      "scope": "11 candidate files",
+      "findings": 0
+    },
+    "git_diff_check": "passed",
+    "rust_tests": "not rerun for this documentation-only closeout; implementation E3 receipt preserved"
+  },
+  "reviews": {
+    "p_rev": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "result": "No P0/P1/P2 after reviewing the 11-path candidate diff, policy authorization, current-state consistency, RCV-009 receipt and preserved note mappings.",
+      "review_base_sha": "2ca43a25581d348742153048a5182244fe4df083",
+      "checks_executed": false,
+      "ci_or_note_independently_verified": false,
+      "post_review_tracked_delta": "Only the append-only review result and current status wording were recorded; no product logic, business rule, dependency or gate criteria changed."
+    }
+  },
+  "prior_candidate_closeout": {
+    "sha": "2ca43a25581d348742153048a5182244fe4df083",
+    "status": "in_progress",
+    "evidence": "E3",
+    "passes": false,
+    "note_mappings": 180,
+    "purpose": "Historical candidate/status-sync receipt retained unchanged on its original SHA."
+  },
+  "release_procedure": "B6-only candidate/release sequence authorized by the user on 2026-10-31: candidate done/E3/passes:true does not release dependents; release is established by P-REV, exact source/final-main CI and this evidence note on the final main SHA.",
+  "refs": {
+    "notes_ref_before": "464a83528f692d942bccd9c1e0acaf1f012a7d5f",
+    "remote_notes_ref_before": "464a83528f692d942bccd9c1e0acaf1f012a7d5f",
+    "mappings_before": 180,
+    "mapping_set_sha256_before": "f76da25ffdb718cc825935039aed85913942bbb380a88a258d89d89fff463f4f",
+    "remote_mappings_before": 180,
+    "remote_mapping_set_sha256_before": "f76da25ffdb718cc825935039aed85913942bbb380a88a258d89d89fff463f4f",
+    "mappings_after": 181,
+    "preservation": "All 180 existing local and remote mappings remain unchanged; this adds only the RCV-010 mapping on final_sha bf29f7ee48ec41f0dddacc81968427834956c580."
+  },
+  "final_release_state": {
+    "status": "done",
+    "evidence": "E3",
+    "passes": true,
+    "final_sha": "bf29f7ee48ec41f0dddacc81968427834956c580",
+    "source_ci": 41249520112,
+    "final_main_ci": 41249795611,
+    "note_mappings": 181,
+    "next": "RCV-011 may start; B7 remains unstarted"
+  },
+  "current_state": "RCV-010 released by the complete evidence note attached to the exact final main SHA; RCV-011 is next; B7 remains unstarted.",
+  "gate_order_resolution": "The user delegated the B6 procedure choice on 2026-10-31. Candidate status and release status are separate; the note on the exact main SHA closes the release gate without changing the tree.",
+  "limitations": [
+    "Source and final-main CI are document-only: 16/23 steps passed and seven frontend/coverage/Rust build steps were skipped by the selector; this is not full-product CI or E2E.",
+    "The existing focal SQLite file-backed E3 test and Rust implementation gates are preserved from prior receipts and were not rerun in this documentation-only PR.",
+    "No production behavior, schema, migration, dependency, lockfile or financial data changed in this closeout.",
+    "No SAST was run locally; the Documentation workflow has no dedicated SAST step.",
+    "The focal backend test does not prove UI/IPC, account-balance behavior, RCV-011 rollback, returns/refunds, dashboard, SMK/E2E, global coverage or Windows release."
+  ],
+  "next": "RCV-011 may start after this final note is verified; B7 remains unstarted."
+}
