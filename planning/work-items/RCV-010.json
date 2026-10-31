@@ -2,7 +2,7 @@
   "id": "RCV-010",
   "title": "fechar recebível integral",
   "specPath": "planning/specs/RCV-010.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "RCV-004",
     "RCV-006"
@@ -24,6 +24,6 @@
   "agentPlan": "P-INT GPT-6 Luna max: único escritor e executor; P-REV GPT-6 Luna max read-only após diff estável, serial. Sem modelos locais ou roteamento local. Base limpa origin/main 1d237a8fac7145459b32f8c2ef6fac559bdeba50. Reserva exata: planning/specs/RCV-010.md; planning/work-items/RCV-010.json; planning/handoffs/RCV-010.md; planning/ROADMAP.md; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/tests/common/receivable_receipt.rs. Liberar apenas após CI final e mapping novo na nota.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Contrato E2: principal menos recibos históricos; modelo não persiste saldo restante ou status. Baseline RCV-007 e teste focal RCV-010 passaram 1/1; suites Rust, scans Cargo/OSV/Gitleaks/npm, Gitleaks staged e validadores locais passaram. PR #23 source CI run 41228742366/check 124618283764 passou 23/23 no head 414c6877032cbf9bdaea6f2aee0a37444ea32e76; push CI run 41229958201/job 124621923803 passou 23/23 no SHA main 26171761b4533fd25148885f96f3b9b4cbd52c56. P-REV encontrou P1 no candidato `done/passes:true` antes do CI/nota do status-sync; estado corrigido para `in_progress/passes:false`. Primeira revisao read-only do diff corrigido sem P0/P1/P2; follow-ups P-REV encontraram dois P2: RCV-010 substituia a evidencia RCV-009 na matriz de requisitos e a linha-resumo INV-SAL-004 perdeu cinco colunas/relacoes; ambas as linhas foram restauradas de origin/main; P-REV re-review apos restaurar ambas as linhas: sem P0/P1/P2; confirmou in_progress/passes:false e CI exato/nota pendentes. Os CI citados são anteriores e não validam este SHA; CI source/main exatos e nota preservando176 mappings pendentes. RCV-011 bloqueado."
+  "passes": true,
+  "notes": "Contrato E2: principal menos recibos históricos; modelo não persiste saldo restante ou status. Teste focal file-backed rcv010_full_receipt_closes_projected_due_after_reopen passou1/1; Rust fmt, Clippy, debug/release/doctests passaram (286 biblioteca,7/8 binários com1 ignorado,228 SQLite,38 doctests em cada perfil). Implementação: PR #23 source run41228742366/job124618283764 success23/23 no head414c6877032cbf9bdaea6f2aee0a37444ea32e76; main push41229958201/job124621923803 success23/23 no SHA26171761b4533fd25148885f96f3b9b4cbd52c56. Status-sync: PR #24 source run41232183602/job124628497970 success16/23 (7 skips document-only) no head cc5bf45d28872de60c8e6b0d19b3858b2a6b6b50; main push41232402364/job124629134607 success16/23 (7 skips) no SHA final de263f379c62eb5ac7395d0ac0d455fee6662d22. Nota refs/notes/evidence ref ca6582746552c54730ca351f0fae10813f69a8ce preserva176 mappings (hash antes 92f5e7cde317366bbd1b162028dea74fd4dbedd85e69706563c5eccb49db0dd7) e adiciona somente RCV-010 no SHA de263, total177. P-REV GPT-6 Luna max: diff corrigido e nota sem P0/P1/P2. Exceções Cargo/OSV aprovadas até2026-11-06, hashes lock/TOML verificados, sem renovação/supressão. SAST local não executado; workflow documental omite 7 etapas frontend/coverage/Rust-build. Limites: não prova UI/IPC, saldo por conta, rollback RCV-011, devoluções, dashboard, SMK/E2E, cobertura global ou release Windows. RCV-011 próximo; B7 não iniciado."
 }
