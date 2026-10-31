@@ -16,7 +16,9 @@ use millani_artes::database::{
     SALES_MIGRATION_SQL, SALE_ITEMS_MIGRATION_SQL,
 };
 use millani_artes::domain::ports::{Clock, UuidGenerator};
-use millani_artes::domain::{Context, Movement, MovementKind, ReceivableReceipt};
+use millani_artes::domain::{
+    Context, Movement, MovementKind, Receivable, ReceivableReceipt, SalePending,
+};
 use millani_artes::infrastructure::receivables::{
     persist_receivable_receipt_in_transaction, AdapterSqliteReceivableReceiptStore,
     ReceivableReceiptStoreError,
@@ -478,6 +480,88 @@ fn rcv009_rejects_over_remaining_due_after_partial_receipt_without_new_writes() 
             "SELECT * FROM main.audit_event ORDER BY event_id",
         ),
         before_audits
+    );
+}
+
+#[test]
+fn rcv010_full_receipt_closes_projected_due_after_reopen() {
+    let (_directory, path) = setup("rcv010-full-receipt.sqlite", 3000);
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_111));
+    let receivable = Receivable {
+        id: RECEIVABLE_ID,
+        sale_id: SALE_ID,
+        pending: SalePending {
+            amount_cents: 3000,
+            customer_id: CUSTOMER_ID,
+            due_at_ms: 1_800_000_000_000,
+        },
+    };
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+
+    record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_B, 1000, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .expect("RCV010_PARTIAL_RECEIPT_FAILED");
+
+    let partial = open_database(&path).expect("RCV010_PARTIAL_REOPEN_FAILED");
+    let (principal_cents, applied_cents) = partial
+        .query_row(
+            "SELECT receivable.amount_cents, COALESCE(SUM(receipt.amount_cents), 0) FROM main.receivables AS receivable LEFT JOIN main.receipts AS receipt ON receipt.receivable_id = receivable.id WHERE receivable.id = ?1 GROUP BY receivable.id, receivable.amount_cents",
+            [RECEIVABLE_ID.as_slice()],
+            |row| Ok((row.get::<_, i64>(0)?, row.get::<_, i64>(1)?)),
+        )
+        .expect("RCV010_PARTIAL_DUE_READ_FAILED");
+    assert_eq!(principal_cents, 3000);
+    assert_eq!(applied_cents, 1000);
+    assert_eq!(receivable.remaining_due_cents(applied_cents), Ok(2000));
+    drop(partial);
+
+    record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_B, 2000, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .expect("RCV010_FINAL_RECEIPT_FAILED");
+    drop(store);
+
+    let reopened = open_database(&path).expect("RCV010_FINAL_REOPEN_FAILED");
+    let (principal_cents, applied_cents) = reopened
+        .query_row(
+            "SELECT receivable.amount_cents, COALESCE(SUM(receipt.amount_cents), 0) FROM main.receivables AS receivable LEFT JOIN main.receipts AS receipt ON receipt.receivable_id = receivable.id WHERE receivable.id = ?1 GROUP BY receivable.id, receivable.amount_cents",
+            [RECEIVABLE_ID.as_slice()],
+            |row| Ok((row.get::<_, i64>(0)?, row.get::<_, i64>(1)?)),
+        )
+        .expect("RCV010_FINAL_DUE_READ_FAILED");
+
+    assert_eq!(principal_cents, 3000);
+    assert_eq!(applied_cents, 3000);
+    assert_eq!(receivable.remaining_due_cents(applied_cents), Ok(0));
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT amount_cents FROM main.receipts ORDER BY amount_cents",
+        ),
+        vec![vec![Value::Integer(1000)], vec![Value::Integer(2000)],]
+    );
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT amount_cents FROM main.movements ORDER BY amount_cents",
+        ),
+        vec![vec![Value::Integer(1000)], vec![Value::Integer(2000)],]
+    );
+    assert_eq!(
+        rows(&reopened, "SELECT event_id FROM main.audit_event").len(),
+        4
     );
 }
 
