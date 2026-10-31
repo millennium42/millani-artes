@@ -1,0 +1,28 @@
+{
+  "id": "RCV-009",
+  "title": "rejeitar excesso recebido após parcela persistida",
+  "specPath": "planning/specs/RCV-009.md",
+  "status": "in_progress",
+  "dependencies": [
+    "RCV-004",
+    "RCV-006"
+  ],
+  "acceptanceCriteria": [
+    "Em SQLite file-backed, receber 1000 de principal 3000 e rejeitar tentativa 2001 sobre devido restante 2000 com AmountExceedsDue.",
+    "Após reopen, todas as colunas de recibos, movimentos e auditorias da parcela válida permanecem idênticas ao snapshot anterior à rejeição; a tentativa não adiciona linhas.",
+    "Não alterar produção, schema, migration, lockfile ou dependência; não introduzir regra de negócio.",
+    "Atualizar artefatos de rastreabilidade e evidência antes de passes:true; RCV-010 só inicia após este item liberado."
+  ],
+  "checks": [
+    "cargo fmt --check e cargo clippy --locked --all-targets -- -D warnings",
+    "Teste focal rcv009_ e suites Rust debug/release/doctests",
+    "Cargo Audit, OSV, Gitleaks e demais scanners/regras existentes; validar exceções sem renová-las",
+    "Validadores de work items, evidência, roadmap/matrizes, progress log append-only e diff",
+    "Review P-REV GPT-6 Luna max read-only e CI remoto source/final nos SHAs exatos; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor; P-REV GPT-6 Luna max read-only após diff; sem modelos locais ou roteamento local. Base origin/main 1b1a4a2b974e2d27fb3e4f40bef33ccf7e49e266; branch codex/rcv-009-reject-overreceipt; paths reservados: spec, work item, handoff, roadmap, progress log, matrizes e src-tauri/tests/common/receivable_receipt.rs; integração serial após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Em 2026-10-31, teste SQLite file-backed rcv009_rejects_over_remaining_due_after_partial_receipt_without_new_writes passou 1/1: principal persistido3000, parcela persistida1000, devido restante2000; tentativa2001 retorna AmountExceedsDue; SELECT * compara todas as colunas de receipts, movements e audit_event após reopen. Cargo fmt --check, Clippy locked --all-targets -D warnings e testes debug/release/doctests passaram: 286 biblioteca, 7/8 binários (um ignorado), 227 SQLite e 38 doctests em cada modo. A primeira execução focal exauriu ReceiptIds de quatro IDs; fixture ampliado para oito, mantendo os quatro anteriores, e sequência final passou. Validadores passaram: mapa28 fontes/784 arquivos; gitignore28/4; evidência/work items171; progress log26 fixtures e append-only preservando736336 bytes; seleção frontend20; plugins37 fixtures/2 CLI e gate pass; Gitleaks16 fixtures; OSV39; npm audit40; Cargo Audit48; CI audits42; SAST45. O primeiro harness npm não aceitou Node do sistema24.19; com Node24.21/npm11.19 em PATH de processo, passou40 fixtures, sem mudar PATH permanente. Scans pós-commit no SHA fonte 10c3a4d9155e5291ae8e037aa6a1578b548faf13 passaram: Cargo Audit 0.22.2 422 dependências/0 vulnerabilidades/2 avisos aprovados; OSV 2.6.0 542 pacotes/3 findings cobertos/0 fora; Gitleaks 8.30.1 794 commits/0 findings e scan direto do arquivo 0; npm audit 11.19.0/Node 24.21.0 120 dependências/0 vulnerabilidades. Exceções aprovadas inalteradas, validade até 2026-11-06. Nenhum código de produção, schema, migration, lockfile ou dependência foi alterado. P-REV GPT-6 Luna max read-only revisou o diff estável sem achados P0/P1/P2; no re-review do delta documental pós-scan também não encontrou P0/P1/P2; não executou checks nem verificou os outputs dos scanners independentemente. CI remoto source/final no SHA exato, nota e liberação ainda pendentes; status in_progress/passes:false permanece. RCV-004/006/008 continuam confirmados por recibos prévios; não há avanço a RCV-010."
+}
