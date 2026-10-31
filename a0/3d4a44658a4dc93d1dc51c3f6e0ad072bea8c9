@@ -1,0 +1,144 @@
+{
+  "id": "RCV-008",
+  "status": "done",
+  "evidence": "E3",
+  "source_sha": "7ea2a6dd82fb77e95125a856f8b6638af199273d",
+  "final_sha": "a03d4a44658a4dc93d1dc51c3f6e0ad072bea8c9",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/16",
+    "https://github.com/millennium42/millani-artes/pull/18"
+  ],
+  "implementation_ci": {
+    "source": {
+      "run": 41157245729,
+      "job": 124406632796,
+      "head_sha": "7ea2a6dd82fb77e95125a856f8b6638af199273d",
+      "conclusion": "success"
+    },
+    "main": {
+      "run": 41158097659,
+      "job": 124409272320,
+      "head_sha": "70eda16958c3ea1908beb294f56fcf31f8682a3f",
+      "conclusion": "success"
+    }
+  },
+  "closeout_source_ci": {
+    "run": 41212213523,
+    "job": 124569381133,
+    "head_sha": "a50f58f5631e579199dd35e212102b59696cc67c",
+    "tested_merge_sha": "051779e19ee5da2dd0e0ab76a9dfa46130420959",
+    "event": "pull_request",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7
+  },
+  "final_ci": {
+    "run": {
+      "id": 41212468666,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "a03d4a44658a4dc93d1dc51c3f6e0ad072bea8c9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41212468666"
+    },
+    "job": {
+      "id": 124570147383,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "code_evidence": {
+    "focused_test": "rcv008_receipt_increases_only_selected_account_balance_after_reopen",
+    "focused_passed": 1,
+    "local_rust_debug_release_each": {
+      "passed": 557,
+      "ignored": 1
+    },
+    "local_doctests_each": 38,
+    "fmt": "pass",
+    "clippy_locked_all_targets_d_warnings": "pass",
+    "implementation_main_release_tests": {
+      "library_passed": 286,
+      "integration_passed": 7,
+      "integration_ignored": 1,
+      "sqlite_passed": 226,
+      "doctests_passed": 38
+    }
+  },
+  "scans_on_final_sha": {
+    "gitleaks": {
+      "version": "8.30.1",
+      "commits": 393,
+      "findings": 0
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered_by_approved_exceptions": 3,
+      "unexcepted": 0,
+      "exception_expiry": "2026-11-06"
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "exception_expiry": "2026-11-06"
+    },
+    "npm_audit": {
+      "version": "11.19.0",
+      "node": "24.21.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    }
+  },
+  "local_validators": {
+    "pwsh": "7.6.5",
+    "project_map": "28 sources/781 files pass",
+    "gitignore": "28 ignored/4 preserved pass",
+    "evidence": "25 fixtures/170 items pass",
+    "work_items": "72 fixtures/170 items pass",
+    "tauri_plugins": "37 fixtures/2 CLI cases and gate pass",
+    "progress_log": "26 fixtures pass; append-only preserved 733416 bytes",
+    "final_targeted_after_handoff_wording_edit": "work item schema, append-only, git diff check passed"
+  },
+  "independent_review": {
+    "persona": "P-REV GPT-6 Luna max",
+    "result": "no P0/P1/P2 findings after validator-gate wording correction",
+    "checks_executed": false
+  },
+  "refs": {
+    "notes_ref_before": "ab8d54f94fb2b3315437466c441438953fab180d",
+    "notes_before": 173,
+    "notes_after": 174,
+    "mapping_set_sha256_before": "b8414ea14b9b13af47683ff40142fb2f60a976a790c6b9492593a57e92852cb8",
+    "hash_method": "SHA-256 over git notes list lines in target-commit order joined with LF and no trailing LF",
+    "preserved": "All 173 existing evidence mappings are unchanged; this note adds only RCV-008 for final_sha"
+  },
+  "human_decisions": {
+    "continuation_authorization": "Liberado on 2026-10-31; authorization only, not execution evidence"
+  },
+  "limitations": [
+    "The final closeout CI is document-only: it passed documentation validators and security scans and skipped the seven listed frontend/build product steps; implementation code/test gates are evidenced by the separate source/main CI above.",
+    "The focal backend proof does not prove UI/IPC, smoke, E2E, global coverage, or complete INV-FIN-004; RCV-011 rollback and other consumers remain pending.",
+    "No production code, schema, migration, or dependency changed in this closeout."
+  ],
+  "next": "RCV-009 may proceed only after the tracked work item, roadmap, matrices, progress log, and handoff record this verified receipt."
+}
