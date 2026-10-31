@@ -1,0 +1,178 @@
+{
+  "id": "RCV-009",
+  "status": "done",
+  "evidence": "E3",
+  "implementation_source_sha": "10c3a4d9155e5291ae8e037aa6a1578b548faf13",
+  "final_sha": "1d237a8fac7145459b32f8c2ef6fac559bdeba50",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/20",
+    "https://github.com/millennium42/millani-artes/pull/21",
+    "https://github.com/millennium42/millani-artes/pull/22"
+  ],
+  "implementation_ci": {
+    "source": {
+      "run": 41219876166,
+      "job": 124592035766,
+      "event": "pull_request",
+      "head_sha": "5905dd6c575b33d669344b98222f7b79ef664ec1",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "main": {
+      "run": 41221440081,
+      "job": 124596649104,
+      "event": "push",
+      "head_sha": "2f8f9dbd01e1dbaa4b054e19ccce75d9735552c0",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "document_closeout_ci": {
+    "initial_closeout_in_progress": {
+      "source": {
+        "pr": 21,
+        "run": 41223370140,
+        "job": 124602347237,
+        "head_sha": "2597e47cd94fda1cf98f40ce52dc39f83c5548d7",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41223578287,
+        "job": 124602974243,
+        "head_sha": "45ff9e1e6d6ffe44104d796aac9e940a918484fb",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "final_status_sync": {
+      "source": {
+        "pr": 22,
+        "run": 41223989102,
+        "job": 124604197459,
+        "head_sha": "850e49bfc3db831e612d5d1d550f2f6a7a9c07ec",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "main": {
+        "run": 41224186470,
+        "job": 124604773964,
+        "head_sha": "1d237a8fac7145459b32f8c2ef6fac559bdeba50",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "document_only_skips": [
+      "Install locked frontend dependencies",
+      "Check frontend quality",
+      "Validate coverage reports",
+      "Upload frontend coverage",
+      "Prepare pinned Rust",
+      "Build Tauri production",
+      "Verify Tauri executable"
+    ]
+  },
+  "focal_test": {
+    "name": "rcv009_rejects_over_remaining_due_after_partial_receipt_without_new_writes",
+    "result": "passed",
+    "count": 1,
+    "scenario": "SQLite file-backed; principal 3000; persisted receipt 1000; reject 2001 over remaining 2000 with AmountExceedsDue; snapshots of all receipts, movements, and audit_event columns unchanged after reopen."
+  },
+  "local_rust": {
+    "toolchain": "Rust/Cargo 1.99.0; LLVM 23.1.1; MSVC x64",
+    "fmt": "pass",
+    "clippy_locked_all_targets_d_warnings": "pass",
+    "debug": {
+      "library_passed": 286,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_passed": 227,
+      "doctests_passed": 38
+    },
+    "release": {
+      "library_passed": 286,
+      "binary_passed": 7,
+      "binary_ignored": 1,
+      "sqlite_passed": 227,
+      "doctests_passed": 38
+    }
+  },
+  "security_scans_source_sha": {
+    "sha": "10c3a4d9155e5291ae8e037aa6a1578b548faf13",
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "approved_ids": ["RUSTSEC-2024-0370", "RUSTSEC-2024-0429"]
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered_by_approved_exceptions": 3,
+      "unexcepted": 0
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "commits": 794,
+      "findings": 0,
+      "changed_test_file_findings": 0
+    },
+    "npm_audit": {
+      "version": "11.19.0",
+      "node": "24.21.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    },
+    "approved_exceptions": {
+      "count": 4,
+      "unchanged": true,
+      "expires": "2026-11-06"
+    }
+  },
+  "local_document_validators": {
+    "powershell": "7.6.5",
+    "project_map": "28 sources/784 files pass",
+    "gitignore": "28 ignored/4 preserved pass",
+    "evidence": "25 fixtures/171 items pass",
+    "work_items": "72 fixtures/171 items pass",
+    "progress_log": "26 fixtures pass; append-only preserved 741121 historical bytes against origin/main 45ff9e1",
+    "git_diff_check": "pass"
+  },
+  "reviews": {
+    "corrected_preclose_review": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "result": "no P0/P1/P2 after correcting premature status",
+      "checks_executed": false,
+      "ci_or_note_independently_verified": false
+    },
+    "final_status_sync_review": "pending"
+  },
+  "refs": {
+    "notes_ref_before": "9103e28c11a339b22593a86c0f420f4290ba2467",
+    "mappings_before": 175,
+    "mapping_set_sha256_before": "c82673b0f136e15d99dc1314b2a368037118262758aba7cafe763d358db440dd",
+    "mappings_after": 176,
+    "preservation": "All 175 existing mappings must remain unchanged; this note adds only the RCV-009 mapping on final_sha."
+  },
+  "limitations": [
+    "No production behavior, schema, migration, dependency, lockfile, UI/IPC, or financial data changed for RCV-009.",
+    "The focal test does not prove RCV-010/011, returns/refunds, dashboard, UI/IPC, SMK/E2E, global coverage, or release.",
+    "Final status-sync CI was document-only: 16/23 steps passed and seven frontend/build steps were skipped by the selector; implementation code/test gates have separate source/main CI and local Rust evidence."
+  ],
+  "next": "RCV-010 remains blocked until this exact-SHA note is pushed and final P-REV confirms it."
+}
