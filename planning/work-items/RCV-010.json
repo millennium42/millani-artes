@@ -25,5 +25,5 @@
   "evidence": "E3",
   "humanGateRequired": false,
   "passes": false,
-  "notes": "Contrato E2: principal menos recibos históricos; modelo não persiste saldo restante ou status. Baseline RCV-007 e teste focal RCV-010 passaram 1/1; suites Rust, scans Cargo/OSV/Gitleaks/npm, Gitleaks staged e validadores locais passaram. P-REV, CI remoto source/final no SHA final e nota de evidência ainda pendentes; passes permanece false."
+  "notes": "Contrato E2: principal menos recibos históricos; modelo não persiste saldo restante ou status. Baseline RCV-007 e teste focal RCV-010 passaram 1/1; suites Rust, scans Cargo/OSV/Gitleaks/npm, Gitleaks staged e validadores locais passaram. P-REV do diff pré-CI sem P0/P1/P2; revisão da atualização de fechamento pendente. PR #23 source CI run 41226805785/check 124612548400 passou 23/23 no head bbd977cd8db350db336028bfc49f1027b102185e, sem skips. CI main/status-sync no SHA final e nota de evidência ainda pendentes; passes permanece false."
 }
