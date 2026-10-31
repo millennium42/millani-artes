@@ -1,0 +1,23 @@
+{
+  "id": "RCV-008",
+  "title": "provar uma conta aumentada",
+  "specPath": "planning/specs/RCV-008.md",
+  "status": "in_progress",
+  "dependencies": ["RCV-007", "FIN-024"],
+  "acceptanceCriteria": [
+    "Após RCV-007 real e reopen SQLite, list_accounts, list_movements e Account::balance_cents provam que a conta escolhida aumenta exatamente 1000 centavos.",
+    "Uma segunda conta sintética permanece inalterada; não calcular saldo por SQL nem usar mock.",
+    "Não alterar produção, schema, migration, lockfile ou dependência; manter INV-FIN-004 parcial globalmente."
+  ],
+  "checks": [
+    "Baseline RCV-007/FIN-024 focal e novo teste rcv008_ file-backed.",
+    "cargo fmt --check; cargo clippy --locked --all-targets -- -D warnings; testes Rust debug/release/doctests; cargo audit.",
+    "Scans Cargo/OSV/Gitleaks/npm, SAST e npm quality/coverage com runtimes fixados; validators proporcionais; review P-REV GPT-6 Luna max read-only.",
+    "CI fonte/final nos SHAs exatos; nota refs/notes/evidence preserva mappings antes de passes:true."
+  ],
+  "agentPlan": "P-INT único escritor; P-REV GPT-6 Luna max read-only após diff; sem escrita paralela, modelos locais ou roteamento local; reserva e paths exatos na spec/handoff.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Em 2026-10-30, a usuária autorizou iniciar após responder 'Liberado' ao bloqueio documental de FIN-024. Essa autorização não prova CI final/nota FIN-024 nem substitui gates de RCV-008. E3 local: teste SQLite focal e suites debug/release (557 testes aprovados, 1 ignorado em cada); fmt/Clippy, audits Cargo/OSV, npm audit/SAST/quality, Gitleaks e validators locais aprovados. Gitleaks cobriu histórico da base cecd4b5/783 commits, não o diff local; scan do CI source após commit pendente. Npm: 120 dependências/0 vulnerabilidades; Vitest 2 arquivos/3 testes, cobertura do escopo atual 100% (4 linhas/1 função/2 branches). Findings/avisos Cargo/OSV permanecem reportados e dentro do prazo 2026-11-06; sem renovação. P-REV GPT-6 Luna max inicial sem achados; revisão delta encontrou P2 documental (handoff dizia review pendente), corrigido pelo Integrador; confirmação read-only final recebida, sem novos achados (E2; reviewer não executou checks; custo/tokens não registrado). CI fonte/final em SHAs exatos, nota de evidência e liberação pendentes; passes=false."
+}
