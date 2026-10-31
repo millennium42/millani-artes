@@ -1,7 +1,11 @@
 use super::TempDirectory;
-use millani_artes::application::record_receivable_receipt::{
-    record_receivable_receipt, ReceivableReceiptRecordingStore, ReceivableReceiptWrite,
-    RecordReceivableReceiptError,
+use millani_artes::application::{
+    list_accounts::list_accounts,
+    list_movements::list_movements,
+    record_receivable_receipt::{
+        record_receivable_receipt, ReceivableReceiptRecordingStore, ReceivableReceiptWrite,
+        RecordReceivableReceiptError,
+    },
 };
 use millani_artes::database::{
     execute_versioned_migration, execute_write_transaction, open_database, schema_version,
@@ -16,6 +20,9 @@ use millani_artes::domain::{Context, Movement, MovementKind, ReceivableReceipt};
 use millani_artes::infrastructure::receivables::{
     persist_receivable_receipt_in_transaction, AdapterSqliteReceivableReceiptStore,
     ReceivableReceiptStoreError,
+};
+use millani_artes::infrastructure::{
+    accounts::AdapterSqliteAccountStore, movements::AdapterSqliteMovementStore,
 };
 use rusqlite::{params, types::Value, Connection};
 use std::path::Path;
@@ -243,6 +250,89 @@ fn rcv007_records_receipt_entry_and_both_audits_together() {
             ],
         ]
     );
+}
+
+#[test]
+fn rcv008_receipt_increases_only_selected_account_balance_after_reopen() {
+    let (_directory, path) = setup("rcv008-account-balance.sqlite", 3000);
+    let before_accounts = list_accounts(&AdapterSqliteAccountStore::new(
+        open_database(&path).expect("RCV008_BASELINE_DATABASE_OPEN_FAILED"),
+    ))
+    .expect("RCV008_BASELINE_ACCOUNTS_READ_FAILED");
+    let before_connection = open_database(&path).expect("RCV008_BASELINE_MOVEMENTS_OPEN_FAILED");
+    before_connection
+        .pragma_update(None, "query_only", true)
+        .expect("RCV008_BASELINE_QUERY_ONLY_FAILED");
+    let before_movements = list_movements(&AdapterSqliteMovementStore::new(before_connection))
+        .expect("RCV008_BASELINE_MOVEMENTS_READ_FAILED");
+    assert!(before_movements.is_empty());
+
+    let before_a = before_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_A)
+        .expect("RCV008_ACCOUNT_A_MISSING")
+        .balance_cents(&before_movements)
+        .expect("RCV008_ACCOUNT_A_BASELINE_BALANCE_FAILED");
+    let before_b = before_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_B)
+        .expect("RCV008_ACCOUNT_B_MISSING")
+        .balance_cents(&before_movements)
+        .expect("RCV008_ACCOUNT_B_BASELINE_BALANCE_FAILED");
+    assert_eq!(before_a, 100);
+    assert_eq!(before_b, 200);
+
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_099));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("RCV008_DATABASE_OPEN_FAILED"),
+    );
+    let recorded = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_B, 1000, Context::Factory),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .expect("RCV008_RECEIPT_RECORD_FAILED");
+    drop(store);
+
+    let after_accounts = list_accounts(&AdapterSqliteAccountStore::new(
+        open_database(&path).expect("RCV008_REOPEN_ACCOUNTS_FAILED"),
+    ))
+    .expect("RCV008_REOPEN_ACCOUNTS_READ_FAILED");
+    let after_connection = open_database(&path).expect("RCV008_REOPEN_MOVEMENTS_FAILED");
+    after_connection
+        .pragma_update(None, "query_only", true)
+        .expect("RCV008_REOPEN_QUERY_ONLY_FAILED");
+    let after_movements = list_movements(&AdapterSqliteMovementStore::new(after_connection))
+        .expect("RCV008_REOPEN_MOVEMENTS_READ_FAILED");
+
+    assert_eq!(after_movements.len(), 1);
+    assert_eq!(after_movements[0].id, recorded.id);
+    assert_eq!(after_movements[0].amount_cents, 1000);
+    assert!(matches!(
+        &after_movements[0].kind,
+        MovementKind::Entry { account_id } if *account_id == ACCOUNT_B
+    ));
+    assert!(matches!(&after_movements[0].context, Context::Factory));
+
+    let after_a = after_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_A)
+        .expect("RCV008_REOPEN_ACCOUNT_A_MISSING")
+        .balance_cents(&after_movements)
+        .expect("RCV008_ACCOUNT_A_FINAL_BALANCE_FAILED");
+    let after_b = after_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_B)
+        .expect("RCV008_REOPEN_ACCOUNT_B_MISSING")
+        .balance_cents(&after_movements)
+        .expect("RCV008_ACCOUNT_B_FINAL_BALANCE_FAILED");
+
+    assert_eq!(after_a, before_a);
+    assert_eq!(after_b - before_b, 1000);
+    assert_eq!(after_b, 1200);
 }
 
 #[test]
