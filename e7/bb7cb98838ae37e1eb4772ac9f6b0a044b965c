@@ -163,7 +163,7 @@
     "p_rev": {
       "persona": "P-REV",
       "model": "GPT-6 Luna max",
-      "result": "Final P-REV review of the merged SHA and this receipt pending.",
+      "result": "P-REV GPT-6 Luna max read-only reviewed merged SHA e7bb7cb98838ae37e1eb4772ac9f6b0a044b965c and its receipt. Found P1: closeout artifacts still cited PR #24/de263 and the 177-mapping note as final; found P2: this receipt review result remained pending. Corrective status-sync PR #26 keeps RCV-010 in_progress/passes:false until exact-SHA CI, receipt and final review; RCV-011 remains blocked.",
       "checks_executed": false
     }
   },
