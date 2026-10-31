@@ -2,7 +2,7 @@
 
 IA executa trabalho mecânico, não redefine silenciosamente escopo, regras financeiras, segurança, arquitetura, thresholds ou gates. Classifique alegações: E0 hipótese, E1 fonte identificada, E2 fonte verificada, E3 execução verificada, E4 aceite humano. Código, mock ou build não são E3 por si.
 
-Para cada tarefa: fixe o comportamento observável; inspecione o estado; escreva o teste RED quando aplicável; implemente o mínimo; verifique testes, segurança e revisão contra a spec; registre aprendizados. P0/P1 bloqueiam conclusão. `passes=true` exige CI remoto verde no SHA atual; sem execução remota registrada, mantenha `passes=false`.
+Para cada tarefa: fixe o comportamento observável; inspecione o estado; escreva o teste RED quando aplicável; implemente o mínimo; verifique testes, segurança e revisão contra a spec; registre aprendizados. P0/P1 bloqueiam conclusão. Em B6, `done/E3/passes:true` pode representar o candidato depois dos critérios, checks locais e segurança; o campo não libera dependentes. P-REV, CI remoto verde no SHA final de `main` e nota em `refs/notes/evidence` nesse SHA são gates de liberação. Não registre como liberado nem inicie o próximo item antes da nota completa. Outros fluxos continuam exigindo todos os gates antes de `passes:true`.
 
 A hierarquia de autoridade está em [AGENTS.md](../AGENTS.md). Ordem de leitura e mapa de áreas orientam navegação, não precedência. Spec ou work item não pode dispensar um gate exigido por fonte superior; registre o conflito e siga a decisão humana ou fonte canônica aplicável.
 
