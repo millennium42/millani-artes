@@ -1,0 +1,29 @@
+{
+  "id": "RCV-010",
+  "title": "fechar recebível integral",
+  "specPath": "planning/specs/RCV-010.md",
+  "status": "in_progress",
+  "dependencies": [
+    "RCV-004",
+    "RCV-006"
+  ],
+  "acceptanceCriteria": [
+    "Em SQLite file-backed, registrar parcela1000 sobre principal3000 e depois receber exatamente os2000 restantes pelo caso de uso e adapter existentes.",
+    "Após reopen, principal permanece3000, os dois recibos somam3000 e Receivable::remaining_due_cents projeta zero.",
+    "A gravação final persiste o recibo, a Entry correspondente e as duas auditorias estáticas do fluxo composto.",
+    "Não alterar produção, schema, migration, lockfile ou dependência, nem criar status persistido de fechamento.",
+    "Atualizar artefatos de rastreabilidade, log append-only e handoff; só liberar RCV-011 com CI final exato e nota de evidência preservando mappings anteriores."
+  ],
+  "checks": [
+    "Teste focal rcv010_ em SQLite file-backed; cargo fmt --check e cargo clippy --locked --all-targets -- -D warnings",
+    "Suites Rust debug/release/doctests e Cargo Audit sem reduzir thresholds",
+    "OSV-Scanner, Gitleaks, npm audit e demais scanners/validadores aplicáveis; revisar hashes e validade das exceções sem renová-las",
+    "Validadores de mapa, work items, estados de evidência, roadmap/matrizes, log append-only e diff",
+    "P-REV GPT-6 Luna max read-only; CI remoto source/final no SHA exato e nota refs/notes/evidence com preservação dos mappings"
+  ],
+  "agentPlan": "P-INT GPT-6 Luna max: único escritor e executor; P-REV GPT-6 Luna max read-only após diff estável, serial. Sem modelos locais ou roteamento local. Base limpa origin/main 1d237a8fac7145459b32f8c2ef6fac559bdeba50. Reserva exata: planning/specs/RCV-010.md; planning/work-items/RCV-010.json; planning/handoffs/RCV-010.md; planning/ROADMAP.md; planning/PROGRESS_LOG.md; docs/traceability/INVARIANT_TEST_MATRIX.md; docs/traceability/REQUIREMENTS_MATRIX.md; src-tauri/tests/common/receivable_receipt.rs. Liberar apenas após CI final e mapping novo na nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Contrato E2: principal menos recibos históricos; modelo não persiste saldo restante ou status. Baseline RCV-007 e teste focal RCV-010 passaram 1/1; suites Rust, scans Cargo/OSV/Gitleaks/npm, Gitleaks staged e validadores locais passaram. P-REV, CI remoto source/final no SHA final e nota de evidência ainda pendentes; passes permanece false."
+}
