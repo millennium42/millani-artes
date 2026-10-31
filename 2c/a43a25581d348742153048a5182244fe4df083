@@ -294,7 +294,7 @@
     "p_rev": {
       "persona": "P-REV",
       "model": "GPT-6 Luna max",
-      "result": "P-REV final review of the corrected PR#29 final note is pending; do not release RCV-010 or begin RCV-011 before this review.",
+      "result": "P-REV GPT-6 Luna max read-only final review of the seven corrected artifacts and this note at SHA 2ca43a25581d348742153048a5182244fe4df083 found no P0/P1/P2. It confirmed the exact PR#29 source/main CI and mapping preservation. The reviewer did not execute checks. The literal gate-order conflict remains, so no RCV-010 release recommendation.",
       "checks_executed": false
     }
   },
