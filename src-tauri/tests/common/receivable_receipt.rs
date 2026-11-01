@@ -409,6 +409,83 @@ fn rcv007_entry_audit_failure_rolls_back_receipt_entry_and_events() {
 }
 
 #[test]
+fn rcv011_deferred_commit_failure_rolls_back_receipt_entry_and_events() {
+    let (_directory, path) = setup("rcv011-deferred-commit-failure.sqlite", 3000);
+    let connection = open_database(&path).expect("RCV011_DATABASE_OPEN_FAILED");
+    assert_eq!(
+        rows(&connection, "PRAGMA main.foreign_keys"),
+        vec![vec![Value::Integer(1)]]
+    );
+    connection
+        .execute_batch(
+            "CREATE TABLE main.rcv011_commit_fault (
+                id INTEGER PRIMARY KEY CHECK (id = 1),
+                missing_account_id BLOB NOT NULL,
+                FOREIGN KEY (missing_account_id) REFERENCES accounts (id)
+                    DEFERRABLE INITIALLY DEFERRED
+            ) STRICT;
+            CREATE TRIGGER main.rcv011_defer_final_commit_failure
+            AFTER INSERT ON main.audit_event
+            WHEN NEW.operation = 'movement_entry_create'
+            BEGIN
+                INSERT INTO rcv011_commit_fault (id, missing_account_id)
+                VALUES (1, X'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+            END;",
+        )
+        .expect("RCV011_COMMIT_FAULT_SETUP_FAILED");
+
+    let snapshot = |connection: &Connection| {
+        vec![
+            rows(connection, "SELECT * FROM main.accounts ORDER BY id"),
+            rows(connection, "SELECT * FROM main.sales ORDER BY id"),
+            rows(connection, "SELECT * FROM main.sale_items ORDER BY id"),
+            rows(connection, "SELECT * FROM main.receivables ORDER BY id"),
+            rows(connection, "SELECT * FROM main.receipts ORDER BY id"),
+            rows(connection, "SELECT * FROM main.movements ORDER BY id"),
+            rows(
+                connection,
+                "SELECT * FROM main.audit_event ORDER BY event_id",
+            ),
+            rows(
+                connection,
+                "SELECT * FROM main.rcv011_commit_fault ORDER BY id",
+            ),
+        ]
+    };
+    let before = snapshot(&connection);
+    drop(connection);
+
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_111));
+    let mut store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("RCV011_OPERATION_DATABASE_OPEN_FAILED"),
+    );
+    let error = record_receivable_receipt(
+        RECEIVABLE_ID,
+        receipt(ACCOUNT_A, 1000, Context::Home),
+        &mut ids,
+        &clock,
+        &mut store,
+    )
+    .err()
+    .expect("deferred commit failure must cancel the receipt and entry");
+    assert_eq!(error, RecordReceivableReceiptError::StoreFailed);
+    assert_eq!(error.to_string(), "receipt and entry could not be stored");
+    assert_eq!(ids.calls, 4);
+    drop(store);
+
+    let reopened = open_database(&path).expect("RCV011_REOPEN_FAILED");
+    assert_eq!(snapshot(&reopened), before);
+    assert!(reopened.is_autocommit());
+    assert_eq!(schema_version(&reopened, 13).unwrap(), 13);
+    assert_eq!(
+        rows(&reopened, "PRAGMA main.integrity_check"),
+        vec![vec![Value::Text("ok".into())]]
+    );
+    assert!(rows(&reopened, "PRAGMA main.foreign_key_check").is_empty());
+}
+
+#[test]
 fn rcv009_rejects_over_remaining_due_after_partial_receipt_without_new_writes() {
     let (_directory, path) = setup("rcv009-overdue.sqlite", 3000);
     let mut ids = ReceiptIds::new();

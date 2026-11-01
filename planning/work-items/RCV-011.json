@@ -1,0 +1,31 @@
+{
+  "id": "RCV-011",
+  "title": "provar rollback do consumidor de recebimento",
+  "specPath": "planning/specs/RCV-011.md",
+  "status": "done",
+  "dependencies": [
+    "RCV-006",
+    "DB-012"
+  ],
+  "acceptanceCriteria": [
+    "Um teste SQLite file-backed chama record_receivable_receipt e AdapterSqliteReceivableReceiptStore com entrada válida; trigger de teste injeta FK deferred no audit_event final para falhar no COMMIT.",
+    "A falha retorna somente RecordReceivableReceiptError::StoreFailed com mensagem pública sanitizada.",
+    "Após descartar o adapter e reabrir, snapshots de contas, vendas/itens, recebíveis, recibos, movimentos, audit_event e fault table são idênticos; schema 13, autocommit, integrity_check e foreign_key_check passam.",
+    "Nenhuma produção, migration, schema version, dependência, regra de negócio, API ou UI/IPC muda; RCV-007 e DB-012 mantêm seus escopos.",
+    "Spec, matrizes, roadmap, handoff e log append-only concordam; gates Rust, audit/scanners, validators e revisão passam; CI source/final em SHAs exatos e nota com mappings preservados liberam o próximo ID."
+  ],
+  "checks": [
+    "cargo test --manifest-path src-tauri/Cargo.toml --test sqlite_harness rcv011_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+    "cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets -- -D warnings",
+    "cargo test --manifest-path src-tauri/Cargo.toml e cargo test --manifest-path src-tauri/Cargo.toml --release",
+    "Node 24.21.0/npm 11.19.0: npm ci, scripts/test-sast.py (45 casos) e npm run quality (format/lint/typecheck/coverage); Cargo Audit, OSV-Scanner, Gitleaks e npm audit conforme jobs existentes; sem renovar/suprimir exceções",
+    "Validadores work items, evidence states, mapa, gitignore, plugins e progress log append-only",
+    "P-REV read-only GPT-6 Luna max; CI source e CI final de main no SHA exato; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT/integrador único escritor GPT-6 Luna max; P-REV GPT-6 Luna max somente leitura após estabilizar diff; sem agentes locais, inferência local ou roteamento local; paths de escrita: planning/specs/RCV-011.md, planning/work-items/RCV-011.json, planning/handoffs/RCV-011.md, planning/ROADMAP.md, planning/PROGRESS_LOG.md, docs/architecture/TRANSACTION_MODEL.md, docs/quality/TEST_STRATEGY.md, docs/security/SECURITY_TEST_MATRIX.md, docs/traceability/INVARIANT_TEST_MATRIX.md, docs/traceability/REQUIREMENTS_MATRIX.md e src-tauri/tests/common/receivable_receipt.rs; base bf29f7ee48ec41f0dddacc81968427834956c580; reserva até CI final e nota exata.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true após critérios, testes, SECURITY e validadores locais; isso não libera dependentes. RED reproduzido por mutação que separou recibo/auditoria da entrada/auditoria: teste detectou snapshot parcial após reopen; produção restaurada ao blob-base 9ea5b56246f543a708bd19402934b061ac6fc379. GREEN focal 1/1; fmt, Clippy locked, Rust debug/release/doctests passaram (286 library, 7/8 binários com um WebView2/frontend/Tauri custom protocol ignorado, 229 SQLite, 38 doctests por modo). Node 24.21.0/npm 11.19.0: npm ci, 45 casos test-sast.py, format/lint/typecheck e coverage passaram (2 arquivos frontend, 3 testes; coverage reportada 100% nesses arquivos). OSV 542/3 cobertos/0 fora; Cargo Audit 422/0 vulnerabilidades/2 avisos aprovados; npm audit 120/0; exceções sem alteração, vigentes até 2026-11-06. Work-items72 fixtures/173 válidos; evidence25/173; project-map28/790; gitignore28/4; Tauri plugins37 fixtures+2 CLI; progress fixtures26 e append-only base prefix preservado. Gitleaks fixture 16/16 e histórico 828 commits/0 findings em worktree limpa isolada no SHA bf29f7ee48ec41f0dddacc81968427834956c580; rerun no checkout bloqueado por GITLEAKS_SCRATCH_EXISTS no scratch RCV-010 preservado; protect --staged após sincronizar os 11 paths encontrou 0 achados. RCV-010 release verificado na nota do SHA bf29f7ee48ec41f0dddacc81968427834956c580; recibos RCV-001/002/003 preservados. P-REV inicial GPT-6 Luna max read-only sem P0/P1/P2/P3 (não executou checks); re-review GPT-6 Luna max dos 11 paths corrigidos sem P0/P1/P2/P3 (revisor não executou checks); CI remoto source/final exatos e nota RCV-011 ainda pendentes; não iniciar RET-001 ou B7 antes da liberação final. O P-REV identificou P2 porque o índice executor INV-FIN-006 não listava RCV-011; a matriz foi corrigida e o P-REV final dos 11 paths staged não encontrou P0/P1/P2/P3. Sem mudança de produção/schema/migration/dependência."
+}
