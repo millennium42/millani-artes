@@ -1,0 +1,31 @@
+{
+  "id": "RET-001",
+  "title": "definir devolução por item",
+  "specPath": "planning/specs/RET-001.md",
+  "status": "in_progress",
+  "dependencies": [
+    "SAL-020"
+  ],
+  "acceptanceCriteria": [
+    "SaleReturnItem público contém exatamente sale_item_id [u8; 16] e quantity i64 e é exposto por millani_artes::domain.",
+    "Teste focal preserva literalmente identidade opaca da linha vendida e quantidade inteira; doctests preservam as restrições de traits dos tipos passivos existentes.",
+    "Não há cálculo/validação de disponibilidade ou excesso, valor monetário, reembolso, redução de dívida, persistência, auditoria, estoque ou mudança de produção/schema/migration/dependência/API/UI/IPC.",
+    "Spec, handoff, roadmap, log append-only, matrizes e estratégia de testes concordam sobre o limite de representação passiva.",
+    "Rust fmt/Clippy/debug/release/doctests, Cargo Audit e scanners aplicáveis, validadores, P-REV, CI source/final em SHAs exatos e nota preservando mappings liberam RET-002."
+  ],
+  "checks": [
+    "RED/GREEN: cargo test --locked --manifest-path src-tauri/Cargo.toml --lib ret001_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --release --features tauri/custom-protocol",
+    "Cargo Audit, OSV, Gitleaks and applicable npm/security gates without threshold or exception changes",
+    "work item/evidence/project-map/gitignore/progress-log validators and append-only comparison",
+    "P-REV read-only GPT-6 Luna max; remote source/final-main CI on exact SHAs; refs/notes/evidence preservation"
+  ],
+  "agentPlan": "P-INT único escritor/checker/committer GPT-6 Luna max conforme instrução humana; sem modelo local/inferência/roteamento local. P-REV GPT-6 Luna max read-only após diff estável; sem edição paralela. Reserva: RET-001; base 4b3664ff01bc9e0ef9cddeb7116d5630b38ec059; paths exatos em planning/specs/RET-001.md; só liberar RET-002 após CI final exato e nota preservando mappings.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Item/spec/handoff ausentes na base limpa; criados conforme roadmap e fontes canônicas. SAL-020 liberado pela nota E3 no SHA 73d75299b2cc286cad3e09b8285172b05b14136b (CI final 40984449923 no SHA exato). Base limpa main/origin/main 4b3664ff01bc9e0ef9cddeb7116d5630b38ec059. RED detectou E0432 antes da declaração; teste focal passou 1/1; dois doctests compile-fail preservam ausência de Debug/Display. Fmt e Clippy locked passaram; suites completas debug e release passaram cada uma com 287 library, 7 testes binários aprovados, 1 ignorado por WebView2/frontend/Tauri, 229 SQLite e 40 doctests. Cargo Audit 422 deps/0 vulnerabilidades/2 avisos aprovados; OSV 542 pacotes/3 findings cobertos/0 fora; fixtures Cargo Audit48, OSV39, Gitleaks16 aprovados; exceções existentes sem alteração, validade até 2026-11-06. Validadores locais: work items 72 fixtures/174 válidos; evidence states 25 fixtures/174 válidos; project map 28 fontes/794 arquivos; gitignore 28 artefatos/4 fontes-lock preservados; progress log 26 fixtures e 765871 bytes de prefixo preservados. Gitleaks latest recorded staged scan 8.30.1: 10 paths/~28.15KB/0 findings; the final staged result will be bound in the evidence note; rerun after any later staged content change; rerun after any later staged content change; rerun after any later staged edit or append; repetir após último append. Histórico Gitleaks no candidato ainda pendente por artifacts/sec007-check preservado de RCV-010 no checkout original; fixture isolada passou sem claim de scan histórico. P-REV GPT-6 Luna max read-only apontou P2 documental, corrigido; follow-up confirmou sem P0/P1/P2, e a revisao do diff final sincronizado sera vinculada a nota. CI source/final exatos e nota ainda pendentes. Tipo não valida/calcula nem causa efeitos; sem migration/dependência/API/UI/IPC. RET-002 bloqueado; B7 não iniciado."
+}
