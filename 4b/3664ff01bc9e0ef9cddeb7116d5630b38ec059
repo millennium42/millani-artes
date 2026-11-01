@@ -1,0 +1,153 @@
+{
+  "id": "RCV-011",
+  "status": "done",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "f9f1038a4112be4e5b95e515cd3ac80985e829d8",
+  "candidate_source_sha": "f9f1038a4112be4e5b95e515cd3ac80985e829d8",
+  "final_sha": "4b3664ff01bc9e0ef9cddeb7116d5630b38ec059",
+  "closeout_date_utc": "2026-11-01",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/31"
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 31,
+      "run": 41268865007,
+      "job": 124737286001,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41268865007",
+      "event": "pull_request",
+      "head_sha": "f9f1038a4112be4e5b95e515cd3ac80985e829d8",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "final_main": {
+      "run": 41269532926,
+      "job": 124739253508,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41269532926",
+      "event": "push",
+      "head_sha": "4b3664ff01bc9e0ef9cddeb7116d5630b38ec059",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "focal_test": {
+    "name": "rcv011_deferred_commit_failure_rolls_back_receipt_entry_and_events",
+    "result": "passed",
+    "count": 1,
+    "scenario": "SQLite file-backed actual use case and adapter; deferred FK fault injected by final audit event and exposed at COMMIT. After drop/reopen, account, sale/item, receivable, receipt, movement, audit and fault-table snapshots equal baseline; schema v13, autocommit, integrity_check and foreign_key_check pass; only sanitized RecordReceivableReceiptError::StoreFailed returned."
+  },
+  "local_rust": {
+    "fmt": "passed",
+    "clippy_locked_all_targets_d_warnings": "passed",
+    "debug": {
+      "library": 286,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 38
+    },
+    "release": {
+      "library": 286,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 38
+    },
+    "red_mutation": "Split-commit mutation detected after reopen; production restored to base blob 9ea5b56246f543a708bd19402934b061ac6fc379."
+  },
+  "security": {
+    "cargo_audit": {
+      "packages": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2
+    },
+    "osv": {
+      "packages": 542,
+      "findings": 3,
+      "covered_by_existing_approved_exceptions": 3,
+      "outside_exceptions": 0
+    },
+    "npm_audit": {
+      "packages": 120,
+      "vulnerabilities": 0
+    },
+    "approved_exceptions": {
+      "approved": true,
+      "expires_before_utc": "2026-11-06",
+      "renewed_or_suppressed": false
+    },
+    "gitleaks": {
+      "fixtures": "16/16 passed",
+      "isolated_history": {
+        "commits": 828,
+        "findings": 0,
+        "base_sha": "bf29f7ee48ec41f0dddacc81968427834956c580"
+      },
+      "checkout_history_scan": "not completed because GITLEAKS_SCRATCH_EXISTS from preserved RCV-010 scratch; isolated clean-worktree scan used",
+      "final_staged": {
+        "version": "8.30.1",
+        "paths": 11,
+        "bytes": 46015,
+        "findings": 0,
+        "exit_code": 0
+      }
+    },
+    "frontend": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "npm_ci": "passed",
+      "sast_fixtures": 45,
+      "quality": "format/lint/typecheck/coverage passed; 2 files, 3 tests, 100% scoped reported coverage"
+    }
+  },
+  "local_document_validators": {
+    "work_items": "72 fixtures; 173 valid",
+    "evidence_states": "25 fixtures; 173 valid",
+    "project_map": "28 sources / 790 files; passed",
+    "gitignore": "28 ignored / 4 preserved; passed",
+    "progress_log": "26 fixtures; append-only prefix preserved; final staged scan followed final appended line",
+    "plugins": "37 fixtures + 2 CLI; passed",
+    "git_diff_check": "passed"
+  },
+  "reviews": {
+    "p_rev": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "result": "Final read-only review of 11 staged paths found no P0/P1/P2/P3; prior INV-FIN-006 index P2 and stale staged-scan P3 were corrected.",
+      "checks_executed": false
+    }
+  },
+  "refs": {
+    "notes_ref_before": "1334776f4e49555972198341687270c73d573eb3",
+    "remote_notes_ref_before": "1334776f4e49555972198341687270c73d573eb3",
+    "mappings_before": 181,
+    "remote_mappings_before": 181,
+    "mappings_after": 182,
+    "preservation": "All 181 prior local mappings exactly matched the captured baseline and remote notes ref before this addition; only the RCV-011 mapping for the exact final SHA is added."
+  },
+  "final_release_state": {
+    "status": "done",
+    "evidence": "E3",
+    "passes": true,
+    "final_sha": "4b3664ff01bc9e0ef9cddeb7116d5630b38ec059",
+    "source_ci": 41268865007,
+    "final_main_ci": 41269532926,
+    "note_mappings": 182,
+    "next": "RET-001 may start; B7 remains unstarted"
+  },
+  "current_state": "RCV-011 released by this evidence note on exact final main SHA; RCV-001/002/003 and RCV-010 receipts preserved; RET-001 next; B7 unstarted.",
+  "limitations": [
+    "E3 proves deferred COMMIT rollback for this SQLite file-backed receipt consumer only; not physical rollback failure, power loss/WAL recovery or other consumers.",
+    "No UI/IPC, SMK/E2E, global coverage/security or Windows release proof claimed. One binary test ignored for WebView2/frontend/Tauri custom protocol.",
+    "Local checkout Gitleaks history scan blocked by preserved RCV-010 scratch; isolated clean-worktree scan passed.",
+    "Four existing OSV exceptions and two approved Cargo warnings unchanged through 2026-11-06."
+  ],
+  "next": "RET-001 may start now; B7 remains unstarted."
+}
