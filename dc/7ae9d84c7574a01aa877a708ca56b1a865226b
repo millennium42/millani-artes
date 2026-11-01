@@ -1,0 +1,164 @@
+{
+  "id": "RET-001",
+  "status": "done",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "b988663341b7d8bc79510435e9431a50ebd006fe",
+  "implementation_candidate_sha": "ac715d34318c5aeee3edcc333f2490c322f32289",
+  "candidate_source_sha": "d9dcb96f9ef3456112646d725f516d2b082c8ad4",
+  "final_sha": "dc7ae9d84c7574a01aa877a708ca56b1a865226b",
+  "closeout_date_utc": "2026-11-01",
+  "pull_requests": [
+    "https://github.com/millennium42/millani-artes/pull/32",
+    "https://github.com/millennium42/millani-artes/pull/34"
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 34,
+      "run": 41348955540,
+      "job": 124974752012,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41348955540",
+      "event": "pull_request",
+      "head_sha": "d9dcb96f9ef3456112646d725f516d2b082c8ad4",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    },
+    "final_main": {
+      "run": 41349158911,
+      "job": 124975373352,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41349158911",
+      "event": "push",
+      "head_sha": "dc7ae9d84c7574a01aa877a708ca56b1a865226b",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "focal_test": {
+    "name": "ret001_preserves_sale_item_id_and_quantity",
+    "result": "passed",
+    "count": 1,
+    "red": "Before declaration, the focused Rust test failed with E0432 for missing SaleReturnItem; after declaration, the focused test passed.",
+    "scenario": "Preserves two opaque sale-item IDs and literal integer quantities. Two compile-fail doctests preserve the existing passive-type trait constraints; this is representation evidence only."
+  },
+  "local_rust": {
+    "fmt": "passed",
+    "clippy_locked_all_targets_d_warnings": "passed",
+    "execution_sha": "ac715d34318c5aeee3edcc333f2490c322f32289",
+    "debug": {
+      "library": 287,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40,
+      "passed_total": 563
+    },
+    "release": {
+      "library": 287,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40,
+      "passed_total": 563
+    },
+    "scope": "Prior E3 evidence on the unchanged implementation merged by PR #32; one binary test ignored because WebView2/frontend/Tauri custom protocol was unavailable."
+  },
+  "security": {
+    "cargo_audit": {
+      "version": "0.22.2",
+      "source_sha": "96d6e2723a6f637dbda1899a035bc3471cab8517",
+      "packages": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "warning_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ],
+      "lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+    },
+    "osv": {
+      "version": "2.6.0",
+      "source_sha": "96d6e2723a6f637dbda1899a035bc3471cab8517",
+      "packages": 542,
+      "findings": 3,
+      "covered_by_existing_approved_exceptions": 3,
+      "outside_exceptions": 0,
+      "lock_sha256": {
+        "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      }
+    },
+    "npm_audit": {
+      "local": "not run; documentation-only candidate and lockfiles unchanged",
+      "source_ci_step": "passed",
+      "final_main_ci_step": "passed",
+      "counts": "not recorded"
+    },
+    "approved_exceptions": {
+      "approved": true,
+      "expires_before_utc": "2026-11-06",
+      "renewed_or_suppressed": false
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "final_staged": {
+        "paths": 8,
+        "bytes": 22515,
+        "findings": 0,
+        "exit_code": 0
+      },
+      "source_ci_history_step": "passed",
+      "final_main_ci_history_step": "passed",
+      "integration_fixture": "GITLEAKS_SCRATCH_EXISTS before scan due to preserved artifacts/sec007-check; no secret finding. Pinned scanner/fixture suite passed 16/16 in isolated clean worktree."
+    }
+  },
+  "local_document_validators": {
+    "work_items": "72 fixtures; 174 valid",
+    "evidence_states": "25 fixtures; 174 valid",
+    "project_map": "28 sources / 794 files; passed",
+    "gitignore": "28 ignored / 4 source-lockfiles preserved; passed",
+    "progress_log": "26 fixtures; append-only prefix preserved 780629 bytes",
+    "append_only_check": "passed against HEAD/INDEX",
+    "git_diff_check": "passed"
+  },
+  "reviews": {
+    "p_rev": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "result": "Final read-only review of the stabilized eight-path candidate found no P0/P1/P2/P3.",
+      "checks_executed": false
+    }
+  },
+  "refs": {
+    "notes_ref_before": "2a31e3d297229d7a090b1be172aace89a336b70c",
+    "remote_notes_ref_before": "2a31e3d297229d7a090b1be172aace89a336b70c",
+    "mappings_before": 182,
+    "remote_mappings_before": 182,
+    "mappings_after": 183,
+    "preservation": "All 182 prior note mappings matched local and remote before this addition; only the RET-001 mapping for the exact final main SHA is added."
+  },
+  "final_release_state": {
+    "status": "done",
+    "evidence": "E3",
+    "passes": true,
+    "final_sha": "dc7ae9d84c7574a01aa877a708ca56b1a865226b",
+    "source_ci": 41348955540,
+    "final_main_ci": 41349158911,
+    "note_mappings": 183,
+    "next": "RET-002 may start after this exact-SHA evidence note is verified; B7 remains unstarted."
+  },
+  "current_state": "RET-001 released by this evidence note on exact final main SHA dc7ae9d84c7574a01aa877a708ca56b1a865226b; RCV-001..003 receipts and the prior 182 evidence mappings are preserved; RET-002 is next; B7 is unstarted.",
+  "limitations": [
+    "This item proves only passive SaleReturnItem identity/quantity representation; it does not prove availability, excess rejection, persistence, debt reduction, refund, account selection/effect, audit, transaction, or rollback.",
+    "No UI/IPC, SMK/E2E, global coverage, or Windows release proof is claimed. One binary test was ignored because WebView2/frontend/Tauri custom protocol was unavailable.",
+    "The integration checkout's Gitleaks fixture was interrupted before scanning by preserved scratch; isolated fixture verification and remote source/final history scans passed.",
+    "Two existing Cargo warnings and three OSV findings remain covered by existing approvals expiring 2026-11-06; none were renewed or suppressed."
+  ],
+  "next": "RET-002 may start; B7 remains unstarted."
+}
