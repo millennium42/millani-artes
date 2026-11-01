@@ -602,6 +602,21 @@ impl SaleItem {
 
         i64::try_from(net).map_err(|_| DomainError::InvalidInput)
     }
+
+    pub fn available_return_quantity(&self, returns: &[SaleReturnItem]) -> Result<i64> {
+        self.validate_quantity()?;
+
+        returns
+            .iter()
+            .filter(|returned| returned.sale_item_id == self.id)
+            .try_fold(self.quantity, |available, returned| {
+                if returned.quantity < 0 || returned.quantity > available {
+                    return Err(DomainError::InvalidInput);
+                }
+
+                Ok(available - returned.quantity)
+            })
+    }
 }
 
 /// A returned quantity tied to the identity of its sold item snapshot.
