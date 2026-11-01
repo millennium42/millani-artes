@@ -1,0 +1,34 @@
+{
+  "id": "RET-002",
+  "title": "calcular quantidade disponível",
+  "specPath": "planning/specs/RET-002.md",
+  "status": "done",
+  "dependencies": [
+    "RET-001",
+    "SAL-012"
+  ],
+  "acceptanceCriteria": [
+    "SaleItem calcula quantidade vendida menos as quantidades de devolução vinculadas ao mesmo sale_item_id; registros de outras linhas são ignorados.",
+    "Sem devolução, devolução parcial e integral retornam, respectivamente, a quantidade vendida, o restante e zero; o cálculo não muta as entradas.",
+    "Quantidade vendida não positiva, devolução correspondente negativa ou histórico acima da quantidade vendida retorna DomainError::InvalidInput sem resultado negativo.",
+    "Só altera o domínio e teste focal; não adiciona persistência, migration, dívida, reembolso, movimento, conta, auditoria, UI/IPC ou dependência.",
+    "Spec, work item, handoff, roadmap, matrizes e estratégia de testes descrevem os limites iguais; progress log é append-only e recibos prévios são preservados.",
+    "RED/GREEN, fmt, Clippy, Rust debug/release/doctests, coverage Rust focal, SECURITY e validadores passam antes de candidato done/E3/passes:true.",
+    "P-REV, CI source/final em SHAs exatos e nota de evidência preservando mappings anteriores liberam RET-003."
+  ],
+  "checks": [
+    "RED e GREEN: cargo test --locked --manifest-path src-tauri/Cargo.toml --lib ret002_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --release --features tauri/custom-protocol",
+    "Cargo Audit, OSV, Gitleaks; Rust line coverage of the domain method and toolchain branch limitation, if any",
+    "work-item/evidence/project-map/gitignore/progress-log validators and append-only comparison",
+    "Release only: P-REV GPT-6 Luna max; source and final-main CI on exact SHAs; refs/notes/evidence preservation"
+  ],
+  "agentPlan": "P-INT single writer, tester, integrator and committer GPT-6 Luna max, no local models/inference; branch codex/ret002-calculate-available-quantity on clean origin/main dc7ae9d84c7574a01aa877a708ca56b1a865226b; reserved paths are in planning/specs/RET-002.md. P-REV GPT-6 Luna max read-only after diff stabilization. No parallel implementation.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "done/E3/passes:true somente como candidato B6, após testes funcionais, SECURITY e validadores locais; não libera RET-003. SPEC/RECON em base limpa origin/main dc7ae9d84c7574a01aa877a708ca56b1a865226b; RET-001 liberado por nota final nesse SHA (183 mappings) e SAL-012 pela nota ad75c2179f4f247ddc9b50e8a99b174831d58f77; mappings RCV-001/002/003 preservados. RED E0599 antes da implementação; GREEN focal 2/2, incluindo zero, parcial, integral, ID alheio, entradas inválidas, i64::MAX e ausência de mutação. Cargo fmt/Clippy/debug/release passaram; por perfil 289 biblioteca, 7 binários, 1 ignorado, 229 SQLite e 40 doctests. LLVM focal 12/12 linhas e 19/19 regiões; controle RET-001 0/12; branches não disponíveis no Rust stable. npm build/quality passaram sem mudança TS. SECURITY/fixtures locais: Cargo Audit 422/0 vulnerabilidades/2 avisos aprovados, OSV 542/3 findings cobertos/0 fora, Gitleaks 840 commits/0 findings; exceções inalteradas, expiram 2026-11-06. Fixtures Gitleaks16/OSV39/Cargo Audit48/CI audits42; mapa 28 fontes/797 arquivos, gitignore 28/4, work-item/evidence 175, progress-log fixtures 26 e append-only 784907 bytes passaram. Gitleaks protect --staged passou no índice pré-status-sync em 10 paths/26329 bytes/0 findings; repetir após esta sincronização. P-REV, CI source/final exatos e nota preservando 183 mappings ainda liberam RET-003. Candidato não é release; B7 não iniciado."
+}
