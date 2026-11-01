@@ -2,7 +2,7 @@
   "id": "RET-003",
   "title": "rejeitar devolução acima da quantidade disponível",
   "specPath": "planning/specs/RET-003.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": [
     "RET-002"
   ],
@@ -21,13 +21,13 @@
     "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
     "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
     "cargo test --locked --manifest-path src-tauri/Cargo.toml --release --features tauri/custom-protocol",
-    "Cargo Audit, OSV-Scanner e Gitleaks sem alterações de thresholds ou exceções; npm audit conforme CI",
+    "Cargo Audit, OSV-Scanner e Gitleaks sem alterações de thresholds ou exceções; npm audit conforme CI; npm run quality quando exigido pelo seletor frontend (format/lint/typecheck/test/coverage)",
     "Coverage Rust focal do método, testes/fixtures/validadores work-item/evidence/map/gitignore/progress e comparação append-only",
     "Release: P-REV GPT-6 Luna max read-only; CI source/final main em SHAs exatos; nota refs/notes/evidence preservando mappings"
   ],
   "agentPlan": "P-INT único escritor, executor, integrador e committer GPT-6 Luna max; sem modelos/inferência/roteamento local. P-REV GPT-6 Luna max independente e read-only no diff final antes do CI. Branch codex/ret003-reject-excess-return sobre origin/main 306537fe739f029d9c7e1a75577de81524665bca; reserva exata e condição de liberação em planning/specs/RET-003.md.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "Reserva iniciada em base limpa origin/main 306537fe739f029d9c7e1a75577de81524665bca. Dependência RET-002 liberada no mesmo SHA por nota e CI remoto; a nota informa 184 mappings e preservação dos 183 anteriores, incluindo RCV-001/002/003. A main CI run 41357783763/job 125001468446 passou 23/23 no SHA exato 306537fe739f029d9c7e1a75577de81524665bca (o SHA incorreto previamente registrado foi corrigido). RED/GREEN focal, fmt, Clippy, suites completas Rust debug/release/doctests e coverage focal passaram; escopo e limites estão em planning/specs/RET-003.md. Testes de append-only passaram preservando 790621 bytes anteriores; SECURITY completa, P-REV, CI source/final do candidato e nota RET-003 ainda pendem. A sincronização documental RET-002 limita-se aos estados factuais no handoff/matrizes, sem refazer implementação ou gates do item anterior."
+  "passes": true,
+  "notes": "Reserva iniciada em base limpa origin/main 306537fe739f029d9c7e1a75577de81524665bca. Dependência RET-002 liberada no mesmo SHA por nota e CI remoto; a nota informa 184 mappings e preservação dos 183 anteriores, incluindo RCV-001/002/003. A main CI run 41357783763/job 125001468446 passou 23/23 no SHA exato 306537fe739f029d9c7e1a75577de81524665bca. RED/GREEN focal, fmt, Clippy, suites completas Rust debug/release/doctests, coverage focal, npm build/quality, SECURITY de dependências/histórico e validadores locais passaram no commit 8fc9853fb0f0660d62836a6a93d579453f9ea658; medição e limites constam na spec/handoff. npm run quality passou format/lint/typecheck e Vitest2 arquivos/3 testes, coverage frontend5/5 statements,2/2 branches,1/1 função,4/4 linhas; não representa cobertura global nem Rust. SECURITY: Cargo Audit0.22.2 422 deps/0 vuln/2 avisos aprovados; OSV2.6.0 542 pacotes/3 findings cobertos/0 fora; Gitleaks8.30.1 history846/0; npm audit120/0. Quatro exceções aprovadas permanecem sem alteração e expiram2026-11-06; locks/manifests sem mudança. Gitleaks protect --staged passou sem findings no tree `d98b5e4b21bb75ae19daffe6b36aab31b23e0b91` (8 paths/46535 bytes de diff). O recibo desta verificação altera o índice; repetir staged e validadores antes do commit final. Este é somente candidato local done/E3/passes:true; não libera RET-004. P-REV, CI source/final exatos e nota preservando184 mappings pendem. A sincronização documental RET-002 limita-se aos estados factuais no handoff/matrizes, sem refazer implementação ou gates do item anterior."
 }
