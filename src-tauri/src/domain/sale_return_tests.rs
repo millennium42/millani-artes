@@ -83,6 +83,15 @@ fn ret002_rejects_invalid_return_quantities_and_history() {
         Err(DomainError::InvalidInput)
     );
 
+    let excessive_history = [
+        ret002_return(sale_item.id, 1),
+        ret002_return(sale_item.id, 2),
+    ];
+    assert_eq!(
+        sale_item.available_return_quantity(&excessive_history),
+        Err(DomainError::InvalidInput)
+    );
+
     for quantity in [i64::MIN, -1, 0] {
         let invalid_sale_item = ret002_sale_item(quantity);
         assert_eq!(
