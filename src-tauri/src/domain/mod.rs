@@ -604,6 +604,24 @@ impl SaleItem {
     }
 }
 
+/// A returned quantity tied to the identity of its sold item snapshot.
+///
+/// Quantity availability and financial effects belong to later return operations.
+///
+/// ```compile_fail
+/// fn require_debug<T: std::fmt::Debug>() {}
+/// require_debug::<millani_artes::domain::SaleReturnItem>();
+/// ```
+///
+/// ```compile_fail
+/// fn require_display<T: std::fmt::Display>() {}
+/// require_display::<millani_artes::domain::SaleReturnItem>();
+/// ```
+pub struct SaleReturnItem {
+    pub sale_item_id: [u8; 16],
+    pub quantity: i64,
+}
+
 /// Discount input converted to an applied monetary snapshot.
 ///
 /// ```compile_fail
@@ -930,3 +948,6 @@ mod sale_tests;
 
 #[cfg(test)]
 mod receivable_tests;
+
+#[cfg(test)]
+mod sale_return_tests;
