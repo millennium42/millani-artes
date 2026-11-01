@@ -1,0 +1,33 @@
+{
+  "id": "RET-003",
+  "title": "rejeitar devolução acima da quantidade disponível",
+  "specPath": "planning/specs/RET-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "RET-002"
+  ],
+  "acceptanceCriteria": [
+    "SaleItem::validate_return_quantity aceita apenas quantidade positiva não superior à quantidade disponível calculada pelo RET-002; entradas inválidas retornam DomainError::InvalidInput.",
+    "Para venda de 2 com 1 devolvida, solicitação 1 é aceita e solicitação 2 é rejeitada; sem histórico, quantidade vendida é aceita e acima do vendido é rejeitada.",
+    "Solicitação sem disponibilidade, quantidade de venda inválida e histórico correspondente inválido são rejeitados; outras linhas não afetam a chamada e entradas não são mutadas.",
+    "Mudança restrita ao domínio e teste focal; não cria persistência, migration, efeitos financeiros, auditoria, API de aplicação, UI/IPC ou dependência.",
+    "Spec, work item, handoff, roadmap, matrizes, estratégia e progress log concordam; histórico append-only e recibos anteriores permanecem preservados.",
+    "RED/GREEN, fmt, Clippy, Rust debug/release/doctests, coverage focal, SECURITY e validadores passam antes de done/E3/passes:true candidato.",
+    "P-REV, CI source/final em SHAs exatos e nota em refs/notes/evidence preservando mappings anteriores liberam RET-004."
+  ],
+  "checks": [
+    "RED/GREEN focal: cargo test --locked --manifest-path src-tauri/Cargo.toml --lib ret003_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --release --features tauri/custom-protocol",
+    "Cargo Audit, OSV-Scanner e Gitleaks sem alterações de thresholds ou exceções; npm audit conforme CI",
+    "Coverage Rust focal do método, testes/fixtures/validadores work-item/evidence/map/gitignore/progress e comparação append-only",
+    "Release: P-REV GPT-6 Luna max read-only; CI source/final main em SHAs exatos; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor, executor, integrador e committer GPT-6 Luna max; sem modelos/inferência/roteamento local. P-REV GPT-6 Luna max independente e read-only no diff final antes do CI. Branch codex/ret003-reject-excess-return sobre origin/main 306537fe739f029d9c7e1a75577de81524665bca; reserva exata e condição de liberação em planning/specs/RET-003.md.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Reserva iniciada em base limpa origin/main 306537fe739f029d9c7e1a75577de81524665bca. Dependência RET-002 liberada no mesmo SHA por nota e CI remoto; a nota informa 184 mappings e preservação dos 183 anteriores, incluindo RCV-001/002/003. A main CI run 41357783763/job 125001468446 passou 23/23 no SHA exato 306537fe739f029d9c7e1a75577de81524665bca (o SHA incorreto previamente registrado foi corrigido). RED/GREEN focal, fmt, Clippy, suites completas Rust debug/release/doctests e coverage focal passaram; escopo e limites estão em planning/specs/RET-003.md. Testes de append-only passaram preservando 790621 bytes anteriores; SECURITY completa, P-REV, CI source/final do candidato e nota RET-003 ainda pendem. A sincronização documental RET-002 limita-se aos estados factuais no handoff/matrizes, sem refazer implementação ou gates do item anterior."
+}
