@@ -1,0 +1,194 @@
+{
+  "id": "RET-002",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "3ecf767633756ad9c2c4acc725fc2d42ab4795df",
+  "implementation_candidate_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+  "candidate_source_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+  "final_sha": "306537fe739f029d9c7e1a75577de81524665bca",
+  "closeout_date_utc": "2026-11-01T22:49:10Z",
+  "pull_requests": [
+    {
+      "number": 35,
+      "url": "https://github.com/millennium42/millani-artes/pull/35",
+      "head_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+      "base_sha": "dc7ae9d84c7574a01aa877a708ca56b1a865226b",
+      "merge_sha": "306537fe739f029d9c7e1a75577de81524665bca",
+      "merged": true
+    }
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 35,
+      "run": 41356604768,
+      "job": 124997900619,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41356604768",
+      "event": "pull_request",
+      "head_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "final_main": {
+      "run": 41357783763,
+      "job": 125001468446,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41357783763",
+      "event": "push",
+      "head_sha": "306537fe739f029d9c7e1a75577de81524665bca",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "focal_test": {
+    "name": "ret002_ focused tests",
+    "result": "passed",
+    "count": 2,
+    "red": "Before implementation the focused tests failed with E0599 because SaleItem::available_return_quantity did not exist.",
+    "scenario": "Empty, zero, partial and full returns; matching/unrelated sale_item_id; negative, excessive and cumulatively excessive returns (sold 2, returns 1+2); invalid sold quantity; i64::MAX."
+  },
+  "local_rust": {
+    "fmt": "passed",
+    "clippy_locked_all_targets_d_warnings": "passed",
+    "execution_sha": "3ecf767633756ad9c2c4acc725fc2d42ab4795df",
+    "debug": {
+      "library": 289,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40
+    },
+    "release": {
+      "library": 289,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40
+    },
+    "candidate_code_unchanged": "Candidate e1718bb changes documentation only; local Rust source/test execution remains applicable.",
+    "ignored_reason": "WebView2 unavailable."
+  },
+  "coverage_rust_focal": {
+    "toolchain": "Rust stable 1.99.0; LLVM 23.1.1",
+    "method_lines": "12/12",
+    "method_and_closure_regions": "19/19",
+    "control_ret001_lines": "0/12",
+    "branches": "not measured; stable rejected -Zcoverage-options=branch with nightly required",
+    "module_source_sha256": "CC7D02CE62116939E37AE125CAF6A78E18E0BDBFD992587C9607C116E5CB09D4",
+    "test_source_sha256": "6A74E796A3DFF9573C3EED5C60F3EA4D7661FF8B3E57EE8F8EBCC522C7D3960B",
+    "scope": "No global, whole-module or CI coverage claim."
+  },
+  "security": {
+    "cargo_audit": {
+      "version": "0.22.2",
+      "source_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+      "packages": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "warning_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ],
+      "input_sha256": {
+        "src-tauri/Cargo.toml": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+        "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      }
+    },
+    "osv": {
+      "version": "2.6.0",
+      "source_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+      "packages": 542,
+      "findings": 3,
+      "covered_by_existing_approved_exceptions": 3,
+      "outside_exceptions": 0,
+      "exception_expiry": "2026-11-06",
+      "lock_sha256": {
+        "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      }
+    },
+    "npm_audit": {
+      "local": "not run",
+      "source_ci_step": "passed in run 41356604768",
+      "final_main_ci_step": "passed in run 41357783763",
+      "local_counts": "not recorded; package-lock unchanged"
+    },
+    "approved_exceptions": {
+      "approved": true,
+      "expires_before_utc": "2026-11-06",
+      "renewed_or_suppressed": false
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "history": {
+        "source_sha": "e1718bba28fad1597de1321d300de97a73b74c40",
+        "commits": 843,
+        "findings": 0
+      },
+      "final_staged": {
+        "tree_sha": "ee2484d3bf82fe91263e92f0702b6b9b928e63de",
+        "paths": 6,
+        "bytes_scanned_approx": 10610,
+        "findings": 0,
+        "exit_code": 0
+      },
+      "source_ci_history_step": "passed",
+      "final_main_ci_history_step": "passed"
+    }
+  },
+  "local_document_validators": {
+    "work_items": "175; passed",
+    "evidence_states": "175; passed",
+    "work_item_fixtures": "72; passed",
+    "evidence_state_fixtures": "25; passed",
+    "project_map": "28 sources / 797 files; passed",
+    "gitignore": "28 ignored / 4 source-lockfiles preserved; passed",
+    "progress_log_fixtures": "26; passed",
+    "append_only_check": "passed; 784907 historical bytes preserved against origin/main",
+    "git_diff_check": "passed",
+    "environment": "PowerShell 7.6.5"
+  },
+  "reviews": {
+    "p_rev": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "final_tree_sha": "ee2484d3bf82fe91263e92f0702b6b9b928e63de",
+      "base_sha": "dc7ae9d84c7574a01aa877a708ca56b1a865226b",
+      "result": "Final read-only review of the exact final tree found no P0/P1/P2/P3; two earlier documentation P2s and the cumulative return overflow test gap were corrected.",
+      "checks_executed": false
+    }
+  },
+  "refs": {
+    "notes_ref_before": "d2f669fad9de2198c3a977513dd239301d001077",
+    "remote_notes_ref_before": "d2f669fad9de2198c3a977513dd239301d001077",
+    "mappings_before": 183,
+    "remote_mappings_before": 183,
+    "mapping_list_sha256_before": "09db75f33922b62fb584775964aa4cd8718fc9aa8affabb393cc0a03f336356e",
+    "mappings_after": 184,
+    "preservation": "All 183 local and remote mappings matched exactly before this note was added. The unchanged 183 mappings are preserved; only RET-002 for the exact final main SHA is added."
+  },
+  "final_release_state": {
+    "status": "released",
+    "evidence": "E3",
+    "passes": true,
+    "final_sha": "306537fe739f029d9c7e1a75577de81524665bca",
+    "source_ci": 41356604768,
+    "final_main_ci": 41357783763,
+    "note_mappings": 184,
+    "next": "RET-003"
+  },
+  "current_state": "RET-002 released by this E3 evidence note on exact final main SHA 306537fe739f029d9c7e1a75577de81524665bca; the previous 183 mappings including RCV-001..003 are preserved; RET-003 is next; B7 is unstarted.",
+  "limitations": [
+    "This item proves only the pure available-return-quantity projection over records supplied by the caller; it does not load or validate persisted history or authorize a return.",
+    "No return persistence/migration, debt reduction, refund, account effect, audit/transaction rollback, UI/IPC, SMK/E2E, global coverage, Windows release or branch coverage percentage is claimed.",
+    "One binary Rust test was ignored because WebView2 was unavailable.",
+    "Two Cargo Audit warnings and three OSV findings remain covered by existing approvals expiring 2026-11-06; no approval was renewed or suppressed."
+  ],
+  "next": "RET-003 — reject return quantity above remaining availability; start only after this note is verified. B7 remains unstarted."
+}
