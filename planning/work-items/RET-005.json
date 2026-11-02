@@ -1,0 +1,30 @@
+{
+  "id": "RET-005",
+  "title": "registrar devolução parcial com validação transacional da quantidade disponível",
+  "specPath": "planning/specs/RET-005.md",
+  "status": "in_progress",
+  "dependencies": ["RET-002", "RET-003", "RET-004"],
+  "acceptanceCriteria": [
+    "A aplicação registra um evento para linha existente com quantidade inteira positiva, usando os ports existentes para IDs e timestamp.",
+    "A infraestrutura lê item e histórico persistido sob BEGIN IMMEDIATE e reaproveita RET-003 para rejeitar quantidade acima do restante.",
+    "Cada sucesso grava exatamente um registro de devolução e um audit_event na mesma transação, retornando apenas após commit.",
+    "Entrada inválida, item inexistente, excesso ou falha de armazenamento não deixam gravação parcial.",
+    "SQLite file-backed após reopen preserva devoluções parciais sucessivas; competição pela última unidade não excede a quantidade vendida.",
+    "Contas, movimentos, recebíveis e recibos permanecem idênticos; nenhuma regra de dívida, reembolso ou cancelamento é implementada."
+  ],
+  "checks": [
+    "cargo fmt --all -- --check",
+    "cargo clippy --locked --all-targets --all-features -- -D warnings",
+    "cargo test --locked",
+    "cargo test --locked --test sqlite_harness ret005_",
+    "cargo test --locked --release --test sqlite_harness ret005_",
+    "cargo audit e scanners de segurança existentes, sem suprimir findings ou alterar exceções",
+    "coverage de linhas Rust e branches quando suportadas pelo toolchain; registrar limites reais",
+    "Gitleaks staged, validadores locais, P-REV read-only, CI remoto source/final e nota exata preservando evidence mappings"
+  ],
+  "agentPlan": "P-INT único escritor/executor/integrador/committer; GPT-6 Luna max solicitado, efetivo não registrado; sem modelos locais, inferência ou roteamento local. P-REV independente read-only, sem escrita paralela. Reserva: branch codex/ret005-record-partial-return sobre origin/main dce4e46ba0b89808e2934dc256958cfd39c3490d; paths exatos em planning/specs/RET-005.md; liberação após CI final em main e nota de evidência.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Implementação e gates locais/SECURITY concluídos; item in_progress/E3/passes:false, não liberado conforme regra humana de exigir todos os gates antes de passes:true. Base limpa origin/main dce4e46ba0b89808e2934dc256958cfd39c3490d; dependências RET-002/003/004 liberadas, RET-003 adicionado à dependência técnica porque sua API é reutilizada. RED reproduzido antes do BUILD por imports ausentes. Cargo fmt/clippy passaram; cargo test --locked: 580 pass/1 ignorado; focal unitário 4/4; SQLite file-backed 6/6; harness release 6/6. Cobertura local focal: aplicação 151/151 linhas, 12/12 funções; adaptador 86/86 linhas, 5/5 funções; branches não instrumentáveis no Rust stable, sem alegação global. SECURITY: Cargo Audit 0.22.2, 422 deps/0 vulnerabilidades/2 avisos cobertos; OSV 2.6.0, 542 pacotes/3 findings aprovados/0 fora; Gitleaks 8.30.1, 871 commits/0 achados e fixtures 16/16. P-REV GPT-6 Luna max read-only no tree 7d11362831773193601bf1daf2ead68b2a7c445c/base dce4e46ba0b89808e2934dc256958cfd39c3490d: P0=0/P1=0/P2=1/P3=1, sem checks. P2: recibos E3 sem tree/SHA; P3: commit de transação sem escrita sem rationale. Comentário/spec explicam equivalência de estado persistido. Gitleaks staged 8.30.1 no tree 7d113: comando protect --staged --redact=100 --no-banner --no-color --exit-code 1; 12 paths/~48135 bytes/0 achados; binário SHA256 17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c. Reteste E3 local no source tree a5a448919f5abe130e2c146d35bdada46899c8e1, em 2026-11-02, Rust 1.99.0 stable: cargo fmt --all -- --check PASS; cargo clippy --locked --all-targets --all-features -- -D warnings PASS; cargo test --locked 580 pass/1 ignored/0 fail (295 library, 7 binary, 238 SQLite, 40 doctests); cargo test --locked --release --test sqlite_harness ret005_ 6/6. Coverage LLVM 23.1.1 usando 4 unit e 6 SQLite: application 151/151 linhas,12/12 funções,175/181 regiões (96.69%); adapter 86/86 linhas,5/5 funções,97/112 regiões (86.61%); branches zero instrumentados no stable. Estes resultados ligam-se ao tree citado; sem alegação global. O primeiro P-REV exigiu essa identidade E3; re-review final permanece pendente. Gitleaks staged final será repetido após estes recibos e seu tree/command/version/escopo será guardado no commit e na nota de evidência. Exceções inalteradas, expiram 2026-11-06. File-backed prova parciais sucessivas/reopen, excesso, corrida pela última unidade, rollback de auditoria e snapshots financeiros inalterados. Validadores finais passaram. Ainda pendem o Gitleaks staged final do tree revisado, P-REV, CI remoto source/final em SHAs exatos e nota refs/notes/evidence preservando mappings; RET-006/007 bloqueados até liberação e B7 não iniciado. Sem UI/IPC, efeitos financeiros posteriores, E2E ou coverage global. Modelo solicitado GPT-6 Luna max, efetivo não registrado; sem modelos locais/inferência/roteamento local."
+}
