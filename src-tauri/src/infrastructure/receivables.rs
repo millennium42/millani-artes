@@ -120,7 +120,7 @@ pub fn persist_receivable_receipt_in_transaction(
 
     let (sale_id, principal_cents, customer_id, due_at_ms, applied_cents) = transaction
         .query_row(
-            "SELECT r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms, COALESCE(SUM(receipt.amount_cents), 0) FROM main.receivables AS r LEFT JOIN main.receipts AS receipt ON receipt.receivable_id = r.id WHERE r.id = ?1 GROUP BY r.id, r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms",
+            "SELECT r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms, COALESCE(SUM(receipt.amount_cents), 0) + COALESCE((SELECT SUM(returned.debt_reduction_cents) FROM main.sale_return_items AS returned JOIN main.sale_items AS item ON item.id = returned.sale_item_id WHERE item.sale_id = r.sale_id), 0) FROM main.receivables AS r LEFT JOIN main.receipts AS receipt ON receipt.receivable_id = r.id WHERE r.id = ?1 GROUP BY r.id, r.sale_id, r.amount_cents, r.customer_id, r.due_at_ms",
             [receivable_id.as_slice()],
             |row| {
                 Ok((

@@ -1,0 +1,30 @@
+{
+  "id": "RET-006",
+  "title": "reduzir dívida por devolução e reservar excedente para reembolso posterior",
+  "specPath": "planning/specs/RET-006.md",
+  "status": "done",
+  "dependencies": [
+    "RET-005",
+    "RCV-004",
+    "RCV-009"
+  ],
+  "acceptanceCriteria": [
+    "O valor de cada retorno usa rateio cumulativo meio-para-cima do total líquido congelado, sem perda de centavos.",
+    "A transação reduz primeiro o devido aberto e persiste o excedente como reservado para RET-007, sem movimento ou saldo de conta.",
+    "A gravação de retorno, redução de dívida e audit_event é atômica; RCV-009 passa a rejeitar valor acima do devido já reduzido.",
+    "Migration v15 aditiva preenche histórico v14 em transação única, passa em banco vazio/upgrade e reverte integralmente diante de histórico inválido ou falha.",
+    "Testes unitários e SQLite file-backed cobrem rateio, dívida/sem dívida/excedente, limite de recebimento, snapshots financeiros e rollback após reopen.",
+    "Spec, decisão humana, work item, handoff, matrizes, roadmap e progress log append-only registram somente evidência verificada; B7 não é iniciado."
+  ],
+  "checks": [
+    "RED focal em cálculo, migration e devolução/recebimento antes do BUILD; GREEN e testes file-backed após.",
+    "Rust pinned fmt, Clippy locked -D warnings, cargo test --locked, harness focal debug e release.",
+    "Cargo audit, OSV, Gitleaks staged/history, validadores de mapa/work item/evidência/progress e Tauri conforme políticas atuais.",
+    "P-REV read-only; CI remoto source/final no SHA exato e nota refs/notes/evidence preservando mappings antes de liberar."
+  ],
+  "agentPlan": "P-INT único escritor/executor/integrador/committer; GPT-6 Luna max solicitado pela usuária, efetivo não registrado; sem modelos, inferência ou roteamento local. P-REV independente read-only após candidato. Reserva e paths exatos em planning/specs/RET-006.md; liberação só após CI final em main e nota de evidência.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "CANDIDATO E3 LOCAL — critérios funcionais, checks locais e SECURITY concluídos; não liberado. RET-007 permanece bloqueado até P-REV, CI remoto final em main e nota refs/notes/evidence. Base/origin/main 1fcede170e530c174c1a8b2c92e7f86c0301147c; dependências RET-005, RCV-004 e RCV-009 liberadas; nota anterior preserva 188 mappings incluindo RCV-001/002/003. Decisões E4 de 02/11/2026: rateio pro rata cumulativo, dívida primeiro, excedente reservado a RET-007. Rust 1.99.0: fmt/Clippy passaram; cargo test --locked 590 passou/1 ignorado; release unitário 1/1 e SQLite ret006_ 9/9. Coverage LLVM 23.1.1 focal: domain 375/375 linhas, 39/39 funções, 502/504 regiões; database 401/408 linhas, 34/34 funções; receivables 187/197 linhas, 8/9 funções; sale_returns 135/135 linhas, 7/7 funções. Branch/global coverage não alegadas. Cargo Audit 0.22.2 422 deps/0 vulnerabilidades/2 avisos aprovados; OSV 2.6.0 542 pacotes/3 findings cobertos/0 fora; Gitleaks history base 876 commits/0 findings; staged passou em 19 paths no tree 02581699fe33b806228ad5a99495e9a17f6c29c6, após os recibos anteriores, e será repetido no tree final congelado. Exceções sem alteração/renovação, expiram 2026-11-06. Erro corrigido: fixture RCV-011 esperava schema v13 após setup v15. Limites: UI/IPC, smoke/E2E, startup migration, branches e cobertura global não demonstrados."
+}
