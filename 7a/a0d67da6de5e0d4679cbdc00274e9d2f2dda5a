@@ -1,0 +1,204 @@
+{
+  "id": "RET-003",
+  "status": "verified_pending_status_close",
+  "evidence": "E3",
+  "passes": false,
+  "implementation_source_sha": "faa25bd014e6dc07452b887034afedff3440e66c",
+  "implementation_candidate_sha": "5ea83da065945713790c660afffd819d289ba305",
+  "candidate_source_sha": "04824074ad9caa2afa65aeba9eaefce95c1e8d5c",
+  "candidate_tree_sha": "e31532da2ff5d7c087b6c13291d0ebc5f54e12d9",
+  "final_sha": "7aa0d67da6de5e0d4679cbdc00274e9d2f2dda5a",
+  "closeout_date_utc": "2026-11-02T01:56:31Z",
+  "pull_requests": [
+    {
+      "number": 37,
+      "url": "https://github.com/millennium42/millani-artes/pull/37",
+      "head_sha": "04824074ad9caa2afa65aeba9eaefce95c1e8d5c",
+      "base_sha": "514117224d6211a819f62e8a3949fae35fcbe623",
+      "merge_sha": "7aa0d67da6de5e0d4679cbdc00274e9d2f2dda5a",
+      "merged": true
+    }
+  ],
+  "release_ci": {
+    "implementation_source": {
+      "run": 41370577968,
+      "job": 125039972810,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41370577968",
+      "event": "pull_request",
+      "head_sha": "5ea83da065945713790c660afffd819d289ba305",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "scope": "includes implementation Rust build/tests, frontend quality/coverage, npm/Cargo/OSV audits, Gitleaks history and Tauri executable"
+    },
+    "source": {
+      "pr": 37,
+      "run": 41374573912,
+      "job": 125051927351,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41374573912",
+      "event": "pull_request",
+      "head_sha": "04824074ad9caa2afa65aeba9eaefce95c1e8d5c",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_steps": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ],
+      "scope": "docs-only selector; no product/source/test files changed"
+    },
+    "final_main": {
+      "run": 41374841480,
+      "job": 125052730423,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41374841480",
+      "event": "push",
+      "head_sha": "7aa0d67da6de5e0d4679cbdc00274e9d2f2dda5a",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_steps": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ],
+      "scope": "docs-only selector; no product/source/test files changed"
+    }
+  },
+  "focal_test": {
+    "name": "cargo test --locked --manifest-path src-tauri/Cargo.toml --lib ret003_",
+    "result": "passed",
+    "count": 2,
+    "red": "Before implementation the focused tests failed with E0599 because SaleItem::validate_return_quantity did not exist.",
+    "scenarios": "Accept 1 and reject 2 after sold 2/returned 1; accept sold quantity with no history; reject excess, nonpositive/invalid sale/history and no availability; ignore unrelated rows; inputs remain unchanged."
+  },
+  "local_rust": {
+    "execution_sha": "not registered",
+    "implementation_source_unchanged_since_execution": true,
+    "fmt": "passed",
+    "clippy_locked_all_targets_custom_protocol_warnings_denied": "passed",
+    "debug": {
+      "library": 291,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40
+    },
+    "release": {
+      "library": 291,
+      "binary_passed": 7,
+      "binary_total": 8,
+      "binary_ignored": 1,
+      "sqlite_integration": 229,
+      "doctests": 40
+    },
+    "ignored_reason": "WebView2 unavailable"
+  },
+  "coverage_rust_focal": {
+    "toolchain": "Rust stable 1.99.0; LLVM 23.1.1",
+    "method_lines": "10/10",
+    "method_functions": "1/1",
+    "method_regions": "11/11",
+    "branch_coverage": "not measured; stable rejected -Zcoverage-options=branch because nightly is required",
+    "global_coverage": "not measured"
+  },
+  "frontend": {
+    "build": "passed on implementation candidate",
+    "quality": "passed on implementation candidate",
+    "vitest": "2 files, 3 tests",
+    "coverage_scope": "existing frontend files only; 5/5 statements, 2/2 branches, 1/1 function, 4/4 lines; not global"
+  },
+  "security": {
+    "source_ci_41370577968": {
+      "gitleaks_history": "passed",
+      "osv_lockfiles": "passed",
+      "npm_audit_pinned": "passed",
+      "cargo_audit": "passed"
+    },
+    "docs_source_ci_41374573912": {
+      "gitleaks_history": "passed",
+      "osv_lockfiles": "passed",
+      "npm_audit_pinned": "passed",
+      "cargo_audit": "passed"
+    },
+    "docs_final_main_ci_41374841480": {
+      "gitleaks_history": "passed",
+      "osv_lockfiles": "passed",
+      "npm_audit_pinned": "passed",
+      "cargo_audit": "passed"
+    },
+    "local_npm_audit": "not completed; NPM_NODE_VERSION_INVALID stopped before analysis because host Node24.19.0/npm11.17.0 differs from pin Node24.21.0/npm11.19.0; not a vulnerability finding",
+    "approved_exceptions": {
+      "state": "approved and unchanged",
+      "expires_before_utc": "2026-11-06",
+      "renewed_or_suppressed": false
+    },
+    "gitleaks_staged": {
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "tree_sha": "e31532da2ff5d7c087b6c13291d0ebc5f54e12d9",
+      "paths": 8,
+      "bytes_scanned_approx": 12831,
+      "findings": 0,
+      "exit_code": 0
+    }
+  },
+  "local_document_validators": {
+    "project_map": "28 sources / 800 files; passed",
+    "work_items": "176; passed",
+    "evidence_states": "176; passed",
+    "work_item_fixtures": "72; passed",
+    "evidence_state_fixtures": "25; passed",
+    "progress_log_fixtures": "26; passed",
+    "append_only": "passed; 803608 historical bytes preserved against origin/main",
+    "git_diff_check": "passed",
+    "environment": "PowerShell 7"
+  },
+  "reviews": {
+    "p_rev": {
+      "persona": "P-REV",
+      "model": "GPT-6 Luna max",
+      "final_tree_sha": "e31532da2ff5d7c087b6c13291d0ebc5f54e12d9",
+      "base_sha": "514117224d6211a819f62e8a3949fae35fcbe623",
+      "result": "Read-only review found no P0/P1/P2/P3.",
+      "checks_executed": false
+    }
+  },
+  "refs": {
+    "notes_ref_before": "3f7f06ed5fb675b41396d90d92c5845164e9a62e",
+    "mappings_before": 184,
+    "mapping_list_sha256_before": "c607bd2d17210a5cc45efef2f35d6d9a501bb2d0cf388d6d2a005b6f544e29e0",
+    "mappings_after": 185,
+    "preservation": "All 184 prior mappings were verified unchanged, including RCV-001/002/003 and RET-001/002. This note adds only RET-003 evidence for the exact main SHA listed above."
+  },
+  "final_release_state": {
+    "status": "verified_candidate_not_released",
+    "evidence": "E3",
+    "passes": false,
+    "final_sha": "7aa0d67da6de5e0d4679cbdc00274e9d2f2dda5a",
+    "source_ci": 41374573912,
+    "final_main_ci": 41374841480,
+    "note_mappings": 185,
+    "next": "User requires status passes:true only after CI and corresponding evidence note. After this candidate note, sync the tracked work item to the final status, then run P-REV/source/final CI and publish the final release note on the resulting exact main SHA before unblocking RET-004."
+  },
+  "current_state": "RET-003 functional criteria and prior implementation gates are proven; the documentation-only candidate's exact source and final-main CI passed with 7 selector skips each. This note records the gates but does not release the item because the tracked work item remains in_progress/E3/passes:false.",
+  "limitations": [
+    "The current candidate changes documentation/status records only. It does not prove additional product behavior.",
+    "The docs-only source and final-main runs skipped frontend dependency install/quality/coverage/upload, pinned Rust setup, Tauri production build and executable verification. The implementation source run 41370577968 passed all 23 steps on exact code SHA 5ea83da; no source/test changes followed.",
+    "Focal behavior does not prove persisted history freshness, SQLite return/refund/account effects, audit rollback, UI/IPC, SMK/E2E, global coverage or release installer.",
+    "Local npm audit stopped before analysis on a host runtime mismatch; remote pinned npm audit passed."
+  ],
+  "next": "Keep RET-004 blocked. B7 is not started."
+}
