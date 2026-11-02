@@ -1,0 +1,105 @@
+{
+  "id": "RET-005",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "647c1b45210ac4112094ebb90d906d16b6c55737",
+  "implementation_candidate_sha": "647c1b45210ac4112094ebb90d906d16b6c55737",
+  "candidate_tree_sha": "ef2f90deae37225cf3aad2c40ac50adf2b4b0a37",
+  "final_sha": "ff892693768cab7055fbeb8a75b08117f8529543",
+  "closeout_date_utc": "2026-11-02T06:36:53Z",
+  "pull_requests": [
+    {
+      "number": 41,
+      "url": "https://github.com/millennium42/millani-artes/pull/41",
+      "head_sha": "647c1b45210ac4112094ebb90d906d16b6c55737",
+      "base_sha": "dce4e46ba0b89808e2934dc256958cfd39c3490d",
+      "merge_sha": "ff892693768cab7055fbeb8a75b08117f8529543",
+      "merge_method": "rebase"
+    }
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 41,
+      "run": 41397822728,
+      "job": 125122887258,
+      "head_sha": "647c1b45210ac4112094ebb90d906d16b6c55737",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "final_main": {
+      "run": 41399413644,
+      "job": 125127746458,
+      "head_sha": "ff892693768cab7055fbeb8a75b08117f8529543",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "local_rust": {
+    "execution_tree_sha": "a5a448919f5abe130e2c146d35bdada46899c8e1",
+    "toolchain": "Rust 1.99.0 stable",
+    "fmt": "passed",
+    "clippy_locked_all_targets_all_features_warnings_denied": "passed",
+    "debug": "580 passed, 1 ignored, 0 failed; 295 library, 7 binary passed, 238 SQLite harness, 40 doctests",
+    "release_focal": "cargo test --locked --release --test sqlite_harness ret005_: 6/6 passed"
+  },
+  "coverage_rust_focal": {
+    "tool": "LLVM 23.1.1",
+    "application": "151/151 lines, 12/12 functions, 175/181 regions (96.69%)",
+    "adapter": "86/86 lines, 5/5 functions, 97/112 regions (86.61%)",
+    "branches": "stable toolchain did not provide branch counters",
+    "global_coverage": "not measured"
+  },
+  "security": {
+    "cargo_audit": "0.22.2; 422 dependencies; 0 vulnerabilities; 2 approved warnings",
+    "osv": "2.6.0; 542 packages; 3 covered findings; 0 uncovered",
+    "approved_exceptions": "unchanged, not renewed or suppressed; expire 2026-11-06",
+    "gitleaks_history": "8.30.1; 871 commits; 0 findings",
+    "gitleaks_staged": "8.30.1; tree ef2f90deae37225cf3aad2c40ac50adf2b4b0a37; 12 paths; about 53187 bytes; 0 findings; binary SHA256 17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+    "gitleaks_fixtures": "16/16 passed"
+  },
+  "local_document_validators": {
+    "project_map": "28 sources / 811 files; passed",
+    "work_items": "178 valid; 72 fixtures",
+    "evidence_states": "178 valid; 25 fixtures",
+    "progress_log_fixtures": 26,
+    "gitignore_fixtures": "28 ignored artifacts / 4 protected sources; passed",
+    "append_only": "passed; 811854 historical bytes preserved",
+    "git_diff_check": "passed"
+  },
+  "review": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "647c1b45210ac4112094ebb90d906d16b6c55737",
+    "tree_sha": "ef2f90deae37225cf3aad2c40ac50adf2b4b0a37",
+    "base_sha": "dce4e46ba0b89808e2934dc256958cfd39c3490d",
+    "result": "P0=0/P1=0/P2=0/P3=0",
+    "checks_executed": false
+  },
+  "refs": {
+    "notes_ref_before": "bd84c8289f3b2ae524255063febb178dfa0826cd",
+    "mappings_before": 187,
+    "mapping_list_sha256_before": "21a23ba347ad16946c1e0d74d2f370334bed5678e01e2368556c1d922b00ef23",
+    "mapping_list_sha256_algorithm": "SHA256 of sorted git notes list lines '<note-blob> <target-commit>' joined by LF without trailing LF",
+    "mappings_after": 188,
+    "preservation": "All 187 prior mappings were compared byte-for-byte after addition; zero removed or changed. This note adds RET-005 to exact final main SHA."
+  },
+  "final_release_state": {
+    "status": "released",
+    "evidence": "E3",
+    "passes": true,
+    "final_sha": "ff892693768cab7055fbeb8a75b08117f8529543",
+    "source_ci": 41397822728,
+    "final_main_ci": 41399413644,
+    "note_mappings": 188,
+    "next": "Synchronize tracked RET-005 status, then inspect/release the next pending B6 item; B7 remains unstarted."
+  },
+  "limitations": [
+    "Persistent return recording only; no debt reduction, refund, account selection or movement, or paid-sale cancellation.",
+    "No UI/IPC, E2E workflow, global or branch coverage, installer release or behavior beyond acceptance criteria is claimed."
+  ]
+}
