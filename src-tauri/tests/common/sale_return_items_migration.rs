@@ -316,3 +316,272 @@ fn ret004_migration_rolls_back_partial_ddl_and_allows_retry() {
     assert_health(&connection, 14);
     assert_return_item_schema(&connection);
 }
+
+#[test]
+fn ret006_financial_migration_backfills_discounted_returns_and_preserves_receipts() {
+    let directory = TempDirectory::new();
+    let path = directory.path().join("ret006-financial-upgrade.sqlite");
+    let connection = migrate_v14(v13(&path));
+    let sale_id = [31_u8; 16];
+    let sale_item_id = [32_u8; 16];
+    let customer_id = [51_u8; 16];
+    let account_id = [52_u8; 16];
+    let receivable_id = [53_u8; 16];
+    let receipt_id = [54_u8; 16];
+    let first_return_id = [61_u8; 16];
+    let second_return_id = [62_u8; 16];
+
+    seed_sale_item(&connection, &sale_id, &sale_item_id);
+    connection.execute(
+        "UPDATE main.sale_items SET unit_price_cents=117, discount_cents=51, total_cents=300 WHERE id=?1",
+        [sale_item_id.as_slice()],
+    ).unwrap();
+    connection
+        .execute(
+            "INSERT INTO main.customers (id,name,phone) VALUES (?1,'Legacy customer',NULL)",
+            [customer_id.as_slice()],
+        )
+        .unwrap();
+    connection.execute(
+        "INSERT INTO main.accounts (id,name,account_type,initial_balance_cents) VALUES (?1,'Legacy account','cash',0)",
+        [account_id.as_slice()],
+    ).unwrap();
+    connection.execute(
+        "INSERT INTO main.receivables (id,sale_id,amount_cents,customer_id,due_at_ms) VALUES (?1,?2,200,?3,1800000000000)",
+        params![receivable_id.as_slice(), sale_id.as_slice(), customer_id.as_slice()],
+    ).unwrap();
+    connection.execute(
+        "INSERT INTO main.receipts (id,receivable_id,account_id,amount_cents,context) VALUES (?1,?2,?3,50,'home')",
+        params![receipt_id.as_slice(), receivable_id.as_slice(), account_id.as_slice()],
+    ).unwrap();
+
+    assert_eq!(
+        insert_return_item(&connection, &first_return_id, &sale_item_id, 1).unwrap(),
+        1
+    );
+    assert_eq!(
+        insert_return_item(&connection, &second_return_id, &sale_item_id, 1).unwrap(),
+        1
+    );
+    for (index, return_id) in [first_return_id, second_return_id].into_iter().enumerate() {
+        connection.execute(
+            "INSERT INTO main.audit_event (event_id,occurred_at_ms,operation,entity,entity_id) VALUES (?1,?2,'sale_return_item_create','sale_return_item',?3)",
+            params![([71 + index as u8; 16]).as_slice(), index as i64, return_id.as_slice()],
+        ).unwrap();
+    }
+    let prior_returns = rows(
+        &connection,
+        "SELECT id,sale_item_id,quantity FROM main.sale_return_items ORDER BY rowid",
+    );
+    let prior_accounts = rows(&connection, "SELECT * FROM main.accounts ORDER BY id");
+    let prior_movements = rows(&connection, "SELECT * FROM main.movements ORDER BY id");
+    let prior_receipts = rows(&connection, "SELECT * FROM main.receipts ORDER BY id");
+    let prior_audit = rows(
+        &connection,
+        "SELECT * FROM main.audit_event ORDER BY event_id",
+    );
+    drop(connection);
+
+    let connection = millani_artes::database::execute_sale_return_financials_migration(
+        open_database(&path).unwrap(),
+    )
+    .unwrap();
+    assert_eq!(schema_version(&connection, 15).unwrap(), 15);
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT id,sale_item_id,quantity,return_amount_cents,debt_reduction_cents FROM main.sale_return_items ORDER BY rowid",
+        ),
+        vec![
+            vec![Value::Blob(first_return_id.to_vec()), Value::Blob(sale_item_id.to_vec()), Value::Integer(1), Value::Integer(100), Value::Integer(100)],
+            vec![Value::Blob(second_return_id.to_vec()), Value::Blob(sale_item_id.to_vec()), Value::Integer(1), Value::Integer(100), Value::Integer(50)],
+        ]
+    );
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT id,sale_item_id,quantity FROM main.sale_return_items ORDER BY rowid"
+        ),
+        prior_returns
+    );
+    assert_eq!(
+        rows(&connection, "SELECT * FROM main.receipts ORDER BY id"),
+        prior_receipts
+    );
+    assert_eq!(
+        rows(&connection, "SELECT * FROM main.accounts ORDER BY id"),
+        prior_accounts
+    );
+    assert_eq!(
+        rows(&connection, "SELECT * FROM main.movements ORDER BY id"),
+        prior_movements
+    );
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT * FROM main.audit_event ORDER BY event_id"
+        ),
+        prior_audit
+    );
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT r.amount_cents - COALESCE((SELECT SUM(x.amount_cents) FROM main.receipts AS x WHERE x.receivable_id=r.id),0) - COALESCE((SELECT SUM(sri.debt_reduction_cents) FROM main.sale_return_items AS sri JOIN main.sale_items AS si ON si.id=sri.sale_item_id WHERE si.sale_id=r.sale_id),0) FROM main.receivables AS r",
+        ),
+        vec![vec![Value::Integer(0)]],
+    );
+    assert!(connection.is_autocommit());
+    assert_eq!(
+        rows(&connection, "PRAGMA main.integrity_check"),
+        vec![vec![Value::Text("ok".into())]]
+    );
+    assert!(rows(&connection, "PRAGMA main.foreign_key_check").is_empty());
+}
+#[test]
+fn ret006_financial_migration_upgrades_an_empty_v14_database() {
+    let directory = TempDirectory::new();
+    let path = directory.path().join("ret006-financial-empty.sqlite");
+    let connection =
+        millani_artes::database::execute_sale_return_financials_migration(migrate_v14(v13(&path)))
+            .unwrap();
+
+    assert_eq!(schema_version(&connection, 15).unwrap(), 15);
+    let columns = {
+        let mut statement = connection
+            .prepare("PRAGMA main.table_xinfo('sale_return_items')")
+            .unwrap();
+        statement
+            .query_map([], |row| row.get::<_, String>(1))
+            .unwrap()
+            .collect::<rusqlite::Result<Vec<_>>>()
+            .unwrap()
+    };
+    assert_eq!(
+        columns,
+        [
+            "id",
+            "sale_item_id",
+            "quantity",
+            "return_amount_cents",
+            "debt_reduction_cents"
+        ]
+    );
+    assert!(rows(&connection, "SELECT * FROM main.sale_return_items").is_empty());
+    assert_eq!(
+        rows(&connection, "PRAGMA main.integrity_check"),
+        vec![vec![Value::Text("ok".into())]]
+    );
+}
+
+#[test]
+fn ret006_financial_columns_reject_negative_or_excessive_reductions() {
+    let directory = TempDirectory::new();
+    let path = directory.path().join("ret006-financial-constraints.sqlite");
+    let connection = migrate_v14(v13(&path));
+    let sale_id = [31_u8; 16];
+    let sale_item_id = [32_u8; 16];
+    seed_sale_item(&connection, &sale_id, &sale_item_id);
+    let connection =
+        millani_artes::database::execute_sale_return_financials_migration(connection).unwrap();
+
+    for (return_id, amount_cents, debt_reduction_cents) in [
+        ([71_u8; 16], -1, 0),
+        ([72_u8; 16], 1, -1),
+        ([73_u8; 16], 1, 2),
+    ] {
+        assert!(connection.execute(
+            "INSERT INTO main.sale_return_items (id,sale_item_id,quantity,return_amount_cents,debt_reduction_cents) VALUES (?1,?2,1,?3,?4)",
+            params![return_id.as_slice(), sale_item_id.as_slice(), amount_cents, debt_reduction_cents],
+        ).is_err());
+    }
+    assert!(rows(&connection, "SELECT * FROM main.sale_return_items").is_empty());
+    assert!(connection.is_autocommit());
+}
+
+#[test]
+fn ret006_financial_migration_rolls_back_ddl_and_retries_after_backfill_failure() {
+    let directory = TempDirectory::new();
+    let path = directory.path().join("ret006-financial-rollback.sqlite");
+    let connection = migrate_v14(v13(&path));
+    let sale_id = [31_u8; 16];
+    let sale_item_id = [32_u8; 16];
+    let return_id = [63_u8; 16];
+    seed_sale_item(&connection, &sale_id, &sale_item_id);
+    insert_return_item(&connection, &return_id, &sale_item_id, 1).unwrap();
+    connection.execute_batch(
+        "CREATE TRIGGER main.ret006_abort_backfill BEFORE UPDATE ON sale_return_items BEGIN SELECT RAISE(ABORT,'synthetic migration failure'); END;",
+    ).unwrap();
+    drop(connection);
+
+    assert!(matches!(
+        millani_artes::database::execute_sale_return_financials_migration(
+            open_database(&path).unwrap(),
+        ),
+        Err(MigrationError::ApplyFailed),
+    ));
+    let connection = open_database(&path).unwrap();
+    assert_health(&connection, 14);
+    assert_return_item_schema(&connection);
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT id,sale_item_id,quantity FROM main.sale_return_items ORDER BY rowid"
+        ),
+        vec![vec![
+            Value::Blob(return_id.to_vec()),
+            Value::Blob(sale_item_id.to_vec()),
+            Value::Integer(1)
+        ]],
+    );
+    connection
+        .execute("DROP TRIGGER main.ret006_abort_backfill", [])
+        .unwrap();
+    drop(connection);
+
+    let connection = millani_artes::database::execute_sale_return_financials_migration(
+        open_database(&path).unwrap(),
+    )
+    .unwrap();
+    assert_eq!(schema_version(&connection, 15).unwrap(), 15);
+    assert!(connection.is_autocommit());
+}
+
+#[test]
+fn ret006_financial_migration_rejects_over_returned_history_without_mutation() {
+    let directory = TempDirectory::new();
+    let path = directory
+        .path()
+        .join("ret006-financial-invalid-history.sqlite");
+    let connection = migrate_v14(v13(&path));
+    let sale_id = [31_u8; 16];
+    let sale_item_id = [32_u8; 16];
+    let first_return_id = [63_u8; 16];
+    let second_return_id = [64_u8; 16];
+    seed_sale_item(&connection, &sale_id, &sale_item_id);
+    insert_return_item(&connection, &first_return_id, &sale_item_id, 2).unwrap();
+    insert_return_item(&connection, &second_return_id, &sale_item_id, 2).unwrap();
+    let prior_schema = schema_snapshot(&connection);
+    let prior_returns = rows(
+        &connection,
+        "SELECT id,sale_item_id,quantity FROM main.sale_return_items ORDER BY rowid",
+    );
+    drop(connection);
+
+    assert!(matches!(
+        millani_artes::database::execute_sale_return_financials_migration(
+            open_database(&path).unwrap(),
+        ),
+        Err(MigrationError::ApplyFailed),
+    ));
+    let connection = open_database(&path).unwrap();
+    assert_health(&connection, 14);
+    assert_return_item_schema(&connection);
+    assert_eq!(schema_snapshot(&connection), prior_schema);
+    assert_eq!(
+        rows(
+            &connection,
+            "SELECT id,sale_item_id,quantity FROM main.sale_return_items ORDER BY rowid"
+        ),
+        prior_returns
+    );
+}

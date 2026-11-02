@@ -66,6 +66,8 @@ fn setup(name: &str, sold_quantity: i64) -> (TempDirectory, PathBuf) {
     ] {
         connection = execute_versioned_migration(connection, version, sql).unwrap();
     }
+    connection =
+        millani_artes::database::execute_sale_return_financials_migration(connection).unwrap();
     connection
         .execute(
             "INSERT INTO main.accounts(id,name,account_type,initial_balance_cents) VALUES(?1,'Conta sintética','cash',900)",
@@ -300,5 +302,176 @@ fn ret005_concurrent_writers_do_not_return_more_than_the_last_available_unit() {
     let reopened = open_database(&path).unwrap();
     assert_eq!(count(&reopened, "sale_return_items"), 1);
     assert_eq!(audit_count(&reopened), 1);
+    assert_eq!(matching_audit_count(&reopened), 1);
+}
+
+#[test]
+fn ret006_reduces_open_debt_and_reserves_return_value_without_financial_outflow() {
+    let (_directory, path) = setup("ret006-debt-first.sqlite", 3);
+    let customer_id = [0x61_u8; 16];
+    let receivable_id = [0x62_u8; 16];
+    let connection = open_database(&path).unwrap();
+    connection
+        .execute(
+            "INSERT INTO main.customers (id,name,phone) VALUES (?1,'Customer',NULL)",
+            [customer_id.as_slice()],
+        )
+        .unwrap();
+    connection.execute(
+        "INSERT INTO main.receivables (id,sale_id,amount_cents,customer_id,due_at_ms) VALUES (?1,?2,150,?3,1800000000000)",
+        params![receivable_id.as_slice(), SALE_ID.as_slice(), customer_id.as_slice()],
+    ).unwrap();
+    drop(connection);
+
+    record(&path, SALE_ITEM_ID, 1, 0x71).unwrap();
+    record(&path, SALE_ITEM_ID, 1, 0x81).unwrap();
+    let reopened = open_database(&path).unwrap();
+    let mut statement = reopened
+        .prepare(
+            "SELECT quantity,return_amount_cents,debt_reduction_cents FROM main.sale_return_items ORDER BY rowid",
+        )
+        .unwrap();
+    let returns = statement
+        .query_map([], |row| {
+            Ok((
+                row.get::<_, i64>(0)?,
+                row.get::<_, i64>(1)?,
+                row.get::<_, i64>(2)?,
+            ))
+        })
+        .unwrap()
+        .collect::<rusqlite::Result<Vec<_>>>()
+        .unwrap();
+    assert_eq!(returns, vec![(1, 100, 100), (1, 100, 50)],);
+    assert_eq!(
+        reopened.query_row(
+            "SELECT amount_cents - (SELECT SUM(debt_reduction_cents) FROM main.sale_return_items) FROM main.receivables WHERE id=?1",
+            [receivable_id.as_slice()],
+            |row| row.get::<_, i64>(0),
+        ).unwrap(),
+        0,
+    );
+    assert_eq!(
+        reopened
+            .query_row(
+                "SELECT initial_balance_cents FROM main.accounts WHERE id=?1",
+                [ACCOUNT_ID.as_slice()],
+                |row| row.get::<_, i64>(0),
+            )
+            .unwrap(),
+        900,
+    );
+    assert_eq!(count(&reopened, "movements"), 0);
+    assert_eq!(count(&reopened, "receipts"), 0);
+    assert_eq!(matching_audit_count(&reopened), 2);
+}
+
+#[test]
+fn ret006_reserves_full_return_value_when_no_receivable_exists() {
+    let (_directory, path) = setup("ret006-no-receivable.sqlite", 3);
+    record(&path, SALE_ITEM_ID, 1, 0x71).unwrap();
+    let reopened = open_database(&path).unwrap();
+    assert_eq!(
+        reopened
+            .query_row(
+                "SELECT return_amount_cents,debt_reduction_cents FROM main.sale_return_items",
+                [],
+                |row| Ok((row.get::<_, i64>(0)?, row.get::<_, i64>(1)?)),
+            )
+            .unwrap(),
+        (100, 0),
+    );
+    assert_eq!(count(&reopened, "movements"), 0);
+    assert_eq!(count(&reopened, "receipts"), 0);
+    assert_eq!(
+        reopened
+            .query_row(
+                "SELECT initial_balance_cents FROM main.accounts WHERE id=?1",
+                [ACCOUNT_ID.as_slice()],
+                |row| row.get::<_, i64>(0),
+            )
+            .unwrap(),
+        900,
+    );
+}
+
+#[test]
+fn ret006_concurrent_return_and_receipt_never_apply_more_than_open_debt() {
+    let (_directory, path) = setup("ret006-return-receipt-race.sqlite", 3);
+    let customer_id = [0x61_u8; 16];
+    let receivable_id = [0x62_u8; 16];
+    let connection = open_database(&path).unwrap();
+    connection
+        .execute(
+            "INSERT INTO main.customers (id,name,phone) VALUES (?1,'Customer',NULL)",
+            [customer_id.as_slice()],
+        )
+        .unwrap();
+    connection
+        .execute(
+            "INSERT INTO main.receivables (id,sale_id,amount_cents,customer_id,due_at_ms) VALUES (?1,?2,300,?3,1800000000000)",
+            params![receivable_id.as_slice(), SALE_ID.as_slice(), customer_id.as_slice()],
+        )
+        .unwrap();
+    drop(connection);
+
+    let barrier = Arc::new(Barrier::new(3));
+    let return_path = path.clone();
+    let return_barrier = Arc::clone(&barrier);
+    let return_worker = thread::spawn(move || {
+        let mut store = AdapterSqliteSaleReturnStore::new(open_database(&return_path).unwrap());
+        let mut ids = Sequence(0x41);
+        return_barrier.wait();
+        record_sale_return(SALE_ITEM_ID, 2, &mut ids, &FixedClock, &mut store)
+    });
+
+    let receipt_path = path.clone();
+    let receipt_barrier = Arc::clone(&barrier);
+    let receipt_worker = thread::spawn(move || {
+        let mut store =
+            millani_artes::infrastructure::receivables::AdapterSqliteReceivableReceiptStore::new(
+                open_database(&receipt_path).unwrap(),
+            );
+        let mut ids = Sequence(0x51);
+        receipt_barrier.wait();
+        millani_artes::application::record_receivable_receipt::record_receivable_receipt(
+            receivable_id,
+            millani_artes::domain::ReceivableReceipt {
+                account_id: ACCOUNT_ID,
+                amount_cents: 150,
+                context: millani_artes::domain::Context::Home,
+            },
+            &mut ids,
+            &FixedClock,
+            &mut store,
+        )
+    });
+    barrier.wait();
+
+    assert!(return_worker.join().unwrap().is_ok());
+    let receipt_result = receipt_worker.join().unwrap();
+    let receipt_succeeded = receipt_result.is_ok();
+    assert!(receipt_succeeded || matches!(
+        receipt_result,
+        Err(millani_artes::application::record_receivable_receipt::RecordReceivableReceiptError::AmountExceedsDue)
+    ));
+
+    let reopened = open_database(&path).unwrap();
+    let (principal_cents, receipt_cents, debt_reduction_cents) = reopened
+        .query_row(
+            "SELECT r.amount_cents,COALESCE((SELECT SUM(x.amount_cents) FROM main.receipts AS x WHERE x.receivable_id=r.id),0),COALESCE((SELECT SUM(returned.debt_reduction_cents) FROM main.sale_return_items AS returned JOIN main.sale_items AS item ON item.id=returned.sale_item_id WHERE item.sale_id=r.sale_id),0) FROM main.receivables AS r WHERE r.id=?1",
+            [receivable_id.as_slice()],
+            |row| Ok((row.get::<_, i64>(0)?, row.get::<_, i64>(1)?, row.get::<_, i64>(2)?)),
+        )
+        .unwrap();
+    assert_eq!(principal_cents, 300);
+    assert!(receipt_cents + debt_reduction_cents <= principal_cents);
+    assert_eq!(receipt_cents, if receipt_succeeded { 150 } else { 0 });
+    assert_eq!(
+        debt_reduction_cents,
+        if receipt_succeeded { 150 } else { 200 }
+    );
+    assert_eq!(count(&reopened, "receipts"), i64::from(receipt_succeeded));
+    assert_eq!(count(&reopened, "movements"), i64::from(receipt_succeeded));
     assert_eq!(matching_audit_count(&reopened), 1);
 }

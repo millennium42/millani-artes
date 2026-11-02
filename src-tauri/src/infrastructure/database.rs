@@ -1,5 +1,7 @@
-use rusqlite::OptionalExtension;
+use crate::domain::{Receivable, SaleItem, SalePending};
+use rusqlite::{params, OptionalExtension};
 use rusqlite::{Connection, OpenFlags, Transaction, TransactionBehavior};
+use std::collections::HashMap;
 use std::error::Error;
 use std::fmt;
 use std::path::Path;
@@ -278,6 +280,15 @@ pub fn execute_versioned_migration(
     version: u32,
     sql: &'static str,
 ) -> Result<Connection, MigrationError> {
+    execute_versioned_migration_with(connection, version, sql, |_| Ok(()))
+}
+
+fn execute_versioned_migration_with(
+    connection: Connection,
+    version: u32,
+    sql: &'static str,
+    after_sql: impl FnOnce(&Transaction<'_>) -> Result<(), MigrationError>,
+) -> Result<Connection, MigrationError> {
     if version == 0 {
         return Err(MigrationError::InvalidVersion);
     }
@@ -294,6 +305,7 @@ pub fn execute_versioned_migration(
         transaction
             .execute_batch(sql)
             .map_err(|_| MigrationError::ApplyFailed)?;
+        after_sql(transaction)?;
         transaction
             .execute(
                 "INSERT INTO main.schema_migration(version) VALUES (?1)",
@@ -348,6 +360,139 @@ pub const RECEIPTS_MIGRATION_SQL: &str = include_str!("../../migrations/013-rece
 pub const SALE_RETURN_ITEMS_MIGRATION_VERSION: u32 = 14;
 pub const SALE_RETURN_ITEMS_MIGRATION_SQL: &str =
     include_str!("../../migrations/014-sale-return-items.sql");
+pub const SALE_RETURN_FINANCIALS_MIGRATION_VERSION: u32 = 15;
+pub const SALE_RETURN_FINANCIALS_MIGRATION_SQL: &str =
+    include_str!("../../migrations/015-sale-return-financials.sql");
+
+pub fn execute_sale_return_financials_migration(
+    connection: Connection,
+) -> Result<Connection, MigrationError> {
+    execute_versioned_migration_with(
+        connection,
+        SALE_RETURN_FINANCIALS_MIGRATION_VERSION,
+        SALE_RETURN_FINANCIALS_MIGRATION_SQL,
+        backfill_sale_return_financials,
+    )
+}
+
+fn backfill_sale_return_financials(transaction: &Transaction<'_>) -> Result<(), MigrationError> {
+    let receivables = {
+        let mut statement = transaction
+            .prepare(
+                "SELECT r.id,r.sale_id,r.amount_cents,r.customer_id,r.due_at_ms,COALESCE(SUM(receipt.amount_cents),0) FROM main.receivables AS r LEFT JOIN main.receipts AS receipt ON receipt.receivable_id=r.id GROUP BY r.id,r.sale_id,r.amount_cents,r.customer_id,r.due_at_ms ORDER BY r.rowid",
+            )
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        let rows = statement
+            .query_map([], |row| {
+                Ok((
+                    row.get::<_, Vec<u8>>(0)?,
+                    row.get::<_, Vec<u8>>(1)?,
+                    row.get::<_, i64>(2)?,
+                    row.get::<_, Vec<u8>>(3)?,
+                    row.get::<_, i64>(4)?,
+                    row.get::<_, i64>(5)?,
+                ))
+            })
+            .map_err(|_| MigrationError::ApplyFailed)?
+            .collect::<rusqlite::Result<Vec<_>>>()
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        rows
+    };
+    let mut due_by_sale = HashMap::with_capacity(receivables.len());
+    for (id, sale_id, principal_cents, customer_id, due_at_ms, receipt_cents) in receivables {
+        let sale_id = migration_id(sale_id)?;
+        let receivable = Receivable {
+            id: migration_id(id)?,
+            sale_id,
+            pending: SalePending {
+                amount_cents: principal_cents,
+                customer_id: migration_id(customer_id)?,
+                due_at_ms,
+            },
+        };
+        let due_cents = receivable
+            .remaining_due_cents(receipt_cents)
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        if due_by_sale.insert(sale_id, due_cents).is_some() {
+            return Err(MigrationError::ApplyFailed);
+        }
+    }
+
+    let return_count: i64 = transaction
+        .query_row("SELECT COUNT(*) FROM main.sale_return_items", [], |row| {
+            row.get(0)
+        })
+        .map_err(|_| MigrationError::ApplyFailed)?;
+    let returns = {
+        let mut statement = transaction
+            .prepare(
+                "SELECT returned.id,returned.sale_item_id,item.sale_id,returned.quantity,item.quantity,item.total_cents FROM main.sale_return_items AS returned JOIN main.sale_items AS item ON item.id=returned.sale_item_id ORDER BY returned.rowid",
+            )
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        let rows = statement
+            .query_map([], |row| {
+                Ok((
+                    row.get::<_, Vec<u8>>(0)?,
+                    row.get::<_, Vec<u8>>(1)?,
+                    row.get::<_, Vec<u8>>(2)?,
+                    row.get::<_, i64>(3)?,
+                    row.get::<_, i64>(4)?,
+                    row.get::<_, i64>(5)?,
+                ))
+            })
+            .map_err(|_| MigrationError::ApplyFailed)?
+            .collect::<rusqlite::Result<Vec<_>>>()
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        rows
+    };
+    if i64::try_from(returns.len()).map_err(|_| MigrationError::ApplyFailed)? != return_count {
+        return Err(MigrationError::ApplyFailed);
+    }
+
+    let mut returned_by_item = HashMap::new();
+    for (return_id, sale_item_id, sale_id, quantity, sold_quantity, total_cents) in returns {
+        let return_id = migration_id(return_id)?;
+        let sale_item_id = migration_id(sale_item_id)?;
+        let sale_id = migration_id(sale_id)?;
+        let prior_quantity = *returned_by_item.get(&sale_item_id).unwrap_or(&0);
+        let item = SaleItem {
+            id: sale_item_id,
+            product_id: None,
+            description: String::new(),
+            quantity: sold_quantity,
+            unit_price_cents: 0,
+            discount_cents: 0,
+            total_cents,
+        };
+        let return_amount_cents = item
+            .cumulative_return_amount_cents(prior_quantity, quantity)
+            .map_err(|_| MigrationError::ApplyFailed)?;
+        let cumulative_quantity = prior_quantity
+            .checked_add(quantity)
+            .filter(|&value| value <= sold_quantity)
+            .ok_or(MigrationError::ApplyFailed)?;
+        returned_by_item.insert(sale_item_id, cumulative_quantity);
+
+        let due_cents = due_by_sale.entry(sale_id).or_insert(0);
+        let debt_reduction_cents = return_amount_cents.min(*due_cents);
+        *due_cents -= debt_reduction_cents;
+        if transaction
+            .execute(
+                "UPDATE main.sale_return_items SET return_amount_cents=?1,debt_reduction_cents=?2 WHERE id=?3",
+                params![return_amount_cents, debt_reduction_cents, return_id.as_slice()],
+            )
+            .map_err(|_| MigrationError::ApplyFailed)?
+            != 1
+        {
+            return Err(MigrationError::ApplyFailed);
+        }
+    }
+    Ok(())
+}
+
+fn migration_id(bytes: Vec<u8>) -> Result<[u8; 16], MigrationError> {
+    bytes.try_into().map_err(|_| MigrationError::ApplyFailed)
+}
 
 pub struct AuditEvent {
     pub event_id: [u8; 16],

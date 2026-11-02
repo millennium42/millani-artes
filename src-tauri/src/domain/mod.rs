@@ -630,6 +630,30 @@ impl SaleItem {
 
         Ok(())
     }
+
+    /// Uses cumulative rounded totals so successive partial returns sum to the frozen line total.
+    pub fn cumulative_return_amount_cents(
+        &self,
+        prior_returned_quantity: i64,
+        quantity: i64,
+    ) -> Result<i64> {
+        self.validate_quantity()?;
+        if self.total_cents < 0 || prior_returned_quantity < 0 || quantity <= 0 {
+            return Err(DomainError::InvalidInput);
+        }
+
+        let cumulative_quantity = prior_returned_quantity
+            .checked_add(quantity)
+            .filter(|&value| value <= self.quantity)
+            .ok_or(DomainError::InvalidInput)?;
+        let total = i128::from(self.total_cents);
+        let denominator = i128::from(self.quantity);
+        let rounded_total = |returned_quantity: i64| {
+            (total * i128::from(returned_quantity) + denominator / 2) / denominator
+        };
+        i64::try_from(rounded_total(cumulative_quantity) - rounded_total(prior_returned_quantity))
+            .map_err(|_| DomainError::InvalidInput)
+    }
 }
 
 /// A returned quantity tied to the identity of its sold item snapshot.

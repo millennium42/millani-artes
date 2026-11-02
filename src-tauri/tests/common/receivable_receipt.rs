@@ -79,6 +79,18 @@ fn migrate_to_v13(path: &Path) -> Connection {
     apply_receipts_migration(connection)
 }
 
+fn migrate_to_v15(path: &Path) -> Connection {
+    let connection = migrate_to_v13(path);
+    let connection = execute_versioned_migration(
+        connection,
+        14,
+        millani_artes::database::SALE_RETURN_ITEMS_MIGRATION_SQL,
+    )
+    .expect("SALE_RETURN_ITEMS_MIGRATION_FAILED");
+    millani_artes::database::execute_sale_return_financials_migration(connection)
+        .expect("SALE_RETURN_FINANCIALS_MIGRATION_FAILED")
+}
+
 fn apply_receipts_migration(connection: Connection) -> Connection {
     assert_eq!(RECEIPTS_MIGRATION_VERSION, 13);
     execute_versioned_migration(
@@ -130,7 +142,7 @@ fn seed(connection: &Connection, amount_cents: i64) {
 fn setup(name: &str, amount_cents: i64) -> (TempDirectory, std::path::PathBuf) {
     let directory = TempDirectory::new();
     let path = directory.path().join(name);
-    let connection = migrate_to_v13(&path);
+    let connection = migrate_to_v15(&path);
     seed(&connection, amount_cents);
     drop(connection);
     (directory, path)
@@ -477,7 +489,7 @@ fn rcv011_deferred_commit_failure_rolls_back_receipt_entry_and_events() {
     let reopened = open_database(&path).expect("RCV011_REOPEN_FAILED");
     assert_eq!(snapshot(&reopened), before);
     assert!(reopened.is_autocommit());
-    assert_eq!(schema_version(&reopened, 13).unwrap(), 13);
+    assert_eq!(schema_version(&reopened, 15).unwrap(), 15);
     assert_eq!(
         rows(&reopened, "PRAGMA main.integrity_check"),
         vec![vec![Value::Text("ok".into())]]
@@ -1346,4 +1358,63 @@ fn rcv006_failed_migration_rolls_back_ddl_and_version_then_retries() {
     .expect("MIGRATION_RETRY_FAILED");
     assert_eq!(schema_version(&upgraded, 13).unwrap(), 13);
     assert!(rows(&upgraded, "PRAGMA main.foreign_key_check").is_empty());
+}
+
+#[test]
+fn ret006_receipt_cap_uses_debt_reduced_by_persisted_return() {
+    let (_directory, path) = setup("ret006-receipt-cap.sqlite", 3000);
+    let item_id = [0x21; 16];
+    let connection = open_database(&path).expect("DATABASE_OPEN_FAILED");
+    connection.execute(
+        "INSERT INTO main.sale_items (id,sale_id,position,product_id,description,quantity,unit_price_cents,discount_cents,total_cents) VALUES (?1,?2,0,NULL,'Returned item',3,1000,0,3000)",
+        rusqlite::params![item_id.as_slice(), SALE_ID.as_slice()],
+    ).expect("SALE_ITEM_INSERT_FAILED");
+    drop(connection);
+
+    let mut ids = ReceiptIds::new();
+    let clock = ReceiptClock(UNIX_EPOCH + Duration::from_millis(1_800_000_000_111));
+    let mut return_store =
+        millani_artes::infrastructure::sale_returns::AdapterSqliteSaleReturnStore::new(
+            open_database(&path).expect("DATABASE_OPEN_FAILED"),
+        );
+    millani_artes::application::record_sale_return::record_sale_return(
+        item_id,
+        1,
+        &mut ids,
+        &clock,
+        &mut return_store,
+    )
+    .expect("SALE_RETURN_FAILED");
+
+    let mut receipt_store = AdapterSqliteReceivableReceiptStore::new(
+        open_database(&path).expect("DATABASE_OPEN_FAILED"),
+    );
+    assert!(matches!(
+        record_receivable_receipt(
+            RECEIVABLE_ID,
+            receipt(ACCOUNT_A, 2001, Context::Home),
+            &mut ids,
+            &clock,
+            &mut receipt_store,
+        ),
+        Err(RecordReceivableReceiptError::AmountExceedsDue),
+    ));
+    drop(receipt_store);
+
+    let reopened = open_database(&path).expect("DATABASE_REOPEN_FAILED");
+    assert_eq!(
+        rows(&reopened, "SELECT amount_cents FROM main.receipts"),
+        Vec::<Vec<Value>>::new()
+    );
+    assert_eq!(
+        rows(&reopened, "SELECT amount_cents FROM main.movements"),
+        Vec::<Vec<Value>>::new()
+    );
+    assert_eq!(
+        rows(
+            &reopened,
+            "SELECT operation FROM main.audit_event ORDER BY occurred_at_ms"
+        ),
+        vec![vec![Value::Text("sale_return_item_create".into())]],
+    );
 }

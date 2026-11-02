@@ -152,3 +152,51 @@ fn ret003_accepts_full_return_and_rejects_nonpositive_or_excess_requests() {
         Err(DomainError::InvalidInput)
     );
 }
+
+#[test]
+fn ret006_cumulatively_prorates_discounted_total_without_losing_cents_or_overflowing() {
+    let mut item = ret002_sale_item(3);
+    item.unit_price_cents = 350;
+    item.discount_cents = 49;
+    item.total_cents = 1001;
+
+    let first = item.cumulative_return_amount_cents(0, 1).unwrap();
+    let second = item.cumulative_return_amount_cents(1, 1).unwrap();
+    let last = item.cumulative_return_amount_cents(2, 1).unwrap();
+    assert_eq!([first, second, last], [334, 333, 334]);
+    assert_eq!(first + second + last, item.total_cents);
+
+    let mut half_cent = ret002_sale_item(2);
+    half_cent.total_cents = 1;
+    assert_eq!(half_cent.cumulative_return_amount_cents(0, 1), Ok(1));
+    assert_eq!(half_cent.cumulative_return_amount_cents(1, 1), Ok(0));
+
+    let mut negative_total = ret002_sale_item(2);
+    negative_total.total_cents = -1;
+    assert_eq!(
+        negative_total.cumulative_return_amount_cents(0, 1),
+        Err(DomainError::InvalidInput)
+    );
+    for prior_quantity in [i64::MIN, -1] {
+        assert_eq!(
+            item.cumulative_return_amount_cents(prior_quantity, 1),
+            Err(DomainError::InvalidInput)
+        );
+    }
+    for quantity in [i64::MIN, -1, 0] {
+        assert_eq!(
+            item.cumulative_return_amount_cents(0, quantity),
+            Err(DomainError::InvalidInput)
+        );
+    }
+
+    let mut maximum = ret002_sale_item(3);
+    maximum.total_cents = i64::MAX;
+    let rounded = |quantity: i64| ((i128::from(i64::MAX) * i128::from(quantity) + 1) / 3) as i64;
+    assert_eq!(maximum.cumulative_return_amount_cents(0, 1), Ok(rounded(1)));
+    assert_eq!(
+        maximum.cumulative_return_amount_cents(1, 2),
+        Ok(i64::MAX - rounded(1))
+    );
+    assert!(maximum.cumulative_return_amount_cents(3, 1).is_err());
+}
