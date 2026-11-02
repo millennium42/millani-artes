@@ -1,0 +1,143 @@
+{
+  "id": "RET-006",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "implementation_source_sha": "c1e7156ff1a4e3a80cba8de5da0af764ba0418f3",
+  "implementation_candidate_sha": "c1e7156ff1a4e3a80cba8de5da0af764ba0418f3",
+  "candidate_tree_sha": "32b6062f06c9fe67f2a1f64f21ba97b6db8d6408",
+  "final_sha": "09a0a7a5b0b7a3649b0c8f8d942c569254884409",
+  "closeout_date_utc": "2026-11-02T15:46:42Z",
+  "pull_requests": [
+    {
+      "merge_sha": "09a0a7a5b0b7a3649b0c8f8d942c569254884409",
+      "base_sha": "1fcede170e530c174c1a8b2c92e7f86c0301147c",
+      "state": "merged",
+      "number": 43,
+      "head_sha": "c1e7156ff1a4e3a80cba8de5da0af764ba0418f3",
+      "url": "https://github.com/millennium42/millani-artes/pull/43",
+      "merge_method": "squash"
+    }
+  ],
+  "release_ci": {
+    "source": {
+      "pr": 43,
+      "head_sha": "c1e7156ff1a4e3a80cba8de5da0af764ba0418f3",
+      "steps_skipped": 0,
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41466184761",
+      "run": 41466184761,
+      "conclusion": "success",
+      "steps_total": 23,
+      "attempt": 1,
+      "steps_passed": 23,
+      "job": 125347584218
+    },
+    "final_main": {
+      "job": 125355557922,
+      "head_sha": "09a0a7a5b0b7a3649b0c8f8d942c569254884409",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41468495649",
+      "run": 41468495649,
+      "conclusion": "success",
+      "steps_total": 23,
+      "attempt": 1,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "local_rust": {
+    "first_failure": "Shared RCV-011 fixture expectation still said schema v13 after setup moved to v15; assertion corrected and full suite rerun successfully.",
+    "migration": "v15 empty database, v14 upgrade, invalid-history/failure rollback and retry exercised",
+    "toolchain": "Rust 1.99.0 stable",
+    "clippy": "--locked --all-targets --all-features -- -D warnings: pass",
+    "cargo_test": "--locked: 590 passed, 1 ignored",
+    "fmt": "pass",
+    "release_focal": "unit 1/1; SQLite ret006_ 9/9"
+  },
+  "coverage_rust_focal": {
+    "tool": "LLVM 23.1.1",
+    "sale_returns": "135/135 lines; 7/7 functions",
+    "global_coverage": "not claimed",
+    "branch_coverage": "unavailable on stable",
+    "receivables": "187/197 lines; 8/9 functions",
+    "database": "401/408 lines; 34/34 functions",
+    "domain": "375/375 lines; 39/39 functions; 502/504 regions"
+  },
+  "security": {
+    "npm_audit": "CI source and final-main jobs passed; no dependency manifest/lock changed.",
+    "osv": {
+      "findings": 3,
+      "covered_by_approved_exceptions": 3,
+      "uncovered": 0,
+      "version": "2.6.0",
+      "exception_expiry": "2026-11-06",
+      "exceptions_changed_or_renewed": false,
+      "packages": 542
+    },
+    "gitleaks": {
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "version": "8.30.1",
+      "fixtures": "16/16 passed",
+      "staged_tree": "32b6062f06c9fe67f2a1f64f21ba97b6db8d6408",
+      "source_history": "877 commits, 0 findings",
+      "staged_scan": "19 paths, approximately 66904 bytes, 0 findings"
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "approved_warnings": 2,
+      "vulnerabilities": 0,
+      "dependencies": 422
+    },
+    "exceptions": {
+      "verified_date_utc": "2026-11-02",
+      "approval_files": "OSV_WINDOWS_APPROVAL.json and CARGO_WINDOWS_APPROVAL.json",
+      "inputs_match_current_lock_manifest": true,
+      "manifest_sha256": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+      "lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+    }
+  },
+  "local_document_validators": {
+    "progress_append_only": "HEAD to INDEX passed; historical 818370 bytes preserved",
+    "project_map": "28 sources/815 files",
+    "gitignore": "28 ignored/4 protected",
+    "fixtures": "project-map, evidence, work-items, gitignore and progress passed",
+    "work_items_and_evidence": "179 valid"
+  },
+  "review": {
+    "base_sha": "1fcede170e530c174c1a8b2c92e7f86c0301147c",
+    "checks_executed": false,
+    "model": "GPT-6 Luna max",
+    "tree_sha": "32b6062f06c9fe67f2a1f64f21ba97b6db8d6408",
+    "scope": "independent read-only review of candidate",
+    "candidate_sha": "c1e7156ff1a4e3a80cba8de5da0af764ba0418f3",
+    "result": "P0=0/P1=0/P2=0/P3=0",
+    "persona": "P-REV"
+  },
+  "human_decisions": [
+    "Return allocation: cumulative pro-rata with half-up cent rounding from frozen net item total.",
+    "Apply return value to open debt first; reserve excess for RET-007 without refund or account movement in RET-006."
+  ],
+  "refs": {
+    "mapping_list_sha256_before": "0029aa191d620b35d6712c4e5b3aec7d7547ec185d3cb732afda6aee6921753f",
+    "mappings_before": 188,
+    "mappings_after": 189,
+    "notes_ref_before": "5f57987cdc4e7a8edef8a901b395886aca0b3be5",
+    "preservation": "After adding this note, all 188 prior mappings were compared by canonical mapping-list hash; none removed or changed. This note is the only new mapping and targets the exact final main SHA.",
+    "mapping_list_sha256_algorithm": "SHA256 of sorted git notes list lines '<note-blob> <target-commit>' joined by LF without trailing LF"
+  },
+  "final_release_state": {
+    "next": "RET-007 may start after remote note verification; B7 remains unstarted.",
+    "source_ci": 41466184761,
+    "note_mappings": 189,
+    "final_main_ci": 41468495649,
+    "passes": true,
+    "evidence": "E3",
+    "status": "released",
+    "final_sha": "09a0a7a5b0b7a3649b0c8f8d942c569254884409"
+  },
+  "limitations": [
+    "No UI/IPC or E2E workflow is claimed.",
+    "No global or branch coverage is claimed.",
+    "Migration startup behavior beyond the migration harness and acceptance criteria is not claimed.",
+    "No local models or inference routing were used."
+  ]
+}
