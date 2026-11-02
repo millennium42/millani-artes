@@ -2605,3 +2605,6 @@ RET-003 | CORRECT reconciliação de gates 2026-11-02 | E3 | Registros correntes
 
 
 2026-11-02 — RET-003 — P-REV final read-only on tree 1e13ee4: sem P0/P1/P2/P3. Source CI 41370577968/job 125039972810 passou 23/23 no SHA 5ea83da; final-main CI 41371968678/job 125044154635 passou 23/23 no SHA 514117224. Npm audit local parou antes da análise por runtime fora do pin; npm audit remoto pinado passou. refs/notes/evidence preserva 184 mappings, incluindo RCV-001/002/003; nota RET-003 ainda ausente. Esta conferência encontrou handoff/matrizes/roadmap/work item ainda com snapshot de gates anterior. A sincronização documental permanece in_progress/E3/passes:false e exige novos P-REV/CI source/final nos SHAs corrigidos e nota correspondente; RET-004 bloqueado, B7 não iniciado.
+
+
+2026-11-02 — RET-003 — após CI source PR37 41374573912 e CI final-main 41374841480 (16/23 cada; sete skips docs-only), nota candidata foi adicionada ao SHA7aa0d67, elevando mappings de184 para185 sem alterar os anteriores. Só depois do CI e nota, work item atualizado para done/E3/passes:true candidato, não liberado. O commit de status exige P-REV, novo CI source/final exato e nota final preservando185 mappings; RET-004 bloqueado, B7 não iniciado.
