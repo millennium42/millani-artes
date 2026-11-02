@@ -345,6 +345,9 @@ pub const RECEIVABLES_MIGRATION_VERSION: u32 = 12;
 pub const RECEIVABLES_MIGRATION_SQL: &str = include_str!("../../migrations/012-receivables.sql");
 pub const RECEIPTS_MIGRATION_VERSION: u32 = 13;
 pub const RECEIPTS_MIGRATION_SQL: &str = include_str!("../../migrations/013-receipts.sql");
+pub const SALE_RETURN_ITEMS_MIGRATION_VERSION: u32 = 14;
+pub const SALE_RETURN_ITEMS_MIGRATION_SQL: &str =
+    include_str!("../../migrations/014-sale-return-items.sql");
 
 pub struct AuditEvent {
     pub event_id: [u8; 16],
