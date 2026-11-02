@@ -141,3 +141,12 @@ CUS-004 VERIFY E3: migration009customersSTRICT/ID16/nome/phoneNULLoumaskASCII15D
 
 
 CUS-004 done/E3/passestrue apósCI40051436747/SHAc37983da2d3c588807bd0e1f6b312471455ae680,success23/0skip/7marcadores,Rust376+22docs/5SQLnovos. Migration009customersSTRICT/phoneopcionalmaskDDDaprovados/2constv9/zerofunções;vazio/upgrade8histórico/rollback9/colisão/constraints/mutantes/LLVMdatabasecontrole/gates/security/review PASS;7SQLanterioresintactos. CIfinal/nota139/liberação pendentes;Meta ativa. SQLname<>empty segue Product/NULsafe, não implementa trimUnicode do domínioCUS002. Phoneassegura sintaxe/DDD, não linha ativa ou titularidade. Constantes/SQLsempercentualexecutável próprio; LLVMdatabase inteiro mede executores existentes, controle sem TODOSSQLite prova instrumentação. SemRustglobal/CI/SQLpercent/statements/branchesstable. CUS005/criação/clienteemvendapendente/UIIPC/vendas/instalador/instalação/atualização/backuprestauração/hashassinatura/E2Eoficial pendentes. Nove versões significam oitoSQLfísicos maisv1vazia. Fonte:handoff CUS-004.
+
+
+## RET-004 — itens devolvidos (migration 14; E3 local candidata)
+
+A migration 014-sale-return-items.sql cria somente main.sale_return_items: id e sale_item_id BLOB com16bytes, quantity INTEGER positiva, STRICT, FK sale_items(id) com NO ACTION e índice não unique por item. As constantes públicas registram versão14/SQL; não há runner de migração automática de produto nem política agregada de devolução nesta tarefa. Três testes file-backed passaram para cadeia nova1..14, upgrade v13/reopen com história de vendas preservada, constraints/múltiplos eventos e rollback da tabela/ledger após colisão seguido de retry.
+
+Fmt, Clippy locked, Rust debug (291/8/232/40) e harness release (232/232) passaram. Cargo Audit e OSV passaram com zero vulnerabilidades/finding fora; dois avisos Cargo e três findings OSV seguem cobertos pelas exceções humanas vigentes até2026-11-06, sem renovação. O perfil WebView2 que causou uma falha ambiental foi removido somente após conferir caminho, reparse points e processos; a suíte integral repetida passou.
+
+Este registro não prova gravação pelo consumidor, soma/devolução disponível, reembolso, redução de dívida, seleção de conta, audit_event de negócio, UI/IPC, startup, smoke/E2E, coverage global nem liberação. Gitleaks staged e validadores locais passaram; P-REV, CI exata e nota refs/notes/evidence pendem; RET-005 permanece bloqueado. Veja a spec RET-004 e o handoff RET-004.

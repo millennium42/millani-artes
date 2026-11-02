@@ -1,0 +1,34 @@
+{
+  "id": "RET-004",
+  "title": "migration de devolução por item",
+  "specPath": "planning/specs/RET-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "DB-005",
+    "RET-001"
+  ],
+  "acceptanceCriteria": [
+    "Migration versionada 14 adiciona somente sale_return_items com id BLOB de 16 bytes, sale_item_id BLOB de 16 bytes e quantity INTEGER positiva, STRICT, FK NO ACTION para sale_items(id) e índice não unique por sale_item_id.",
+    "SQLite file-backed novo aplica versões 1..13 e 14, com ledger contíguo, estrutura/índice/constraints corretos, autocommit, integrity_check=ok e foreign_key_check vazio.",
+    "Upgrade file-backed da versão 13 preserva objetos e dados de sales/sale_items e permanece íntegro em v14 após fechar e reabrir.",
+    "Constraints rejeitam ID malformado/duplicado, sale_item inexistente e quantity não positiva; múltiplos eventos válidos do mesmo sale_item_id permanecem distintos.",
+    "Falha induzida depois de CREATE TABLE prova rollback sem versão, tabela ou índice parcial; retry depois de remover a colisão aplica a migration uma vez.",
+    "Fmt, Clippy locked, Rust debug, harness release, Cargo Audit, OSV, Gitleaks staged, validadores locais, review P-REV e CI source/final nos SHAs exatos passam sem nova dependência, mudança de lock ou alteração de exceções.",
+    "Roadmap, handoff, matrizes, estratégia, MIGRATIONS e log append-only registram evidências/limites; só liberar depois da nota refs/notes/evidence no SHA final e preservação dos mappings."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol -- --include-ignored --nocapture",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness --features tauri/custom-protocol -- --nocapture",
+    "rtk proxy python -X utf8 -B scripts/check_cargo_audit.py",
+    "rtk proxy python -X utf8 -B scripts/check_osv.py",
+    "Gitleaks protect --staged; project-map, work-items, evidence-states, progress-log fixtures e append-only validators",
+    "P-REV read-only; CI source e final-main em SHAs exatos; nota preservando mappings anteriores"
+  ],
+  "agentPlan": "P-INT único escritor/checker/committer, GPT Luna max solicitado, sem modelos locais/roteamento local. P-REV read-only independente na fase REVIEW. Reserva ativa em planning/specs/RET-004.md: base 097f88cc41795068ab962f7649d6dfd3e32760b6, branch codex/ret004-return-migration e paths exatos; liberar após CI final e nota.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Base reconfirmada em origin/main/HEAD 097f88cc41795068ab962f7649d6dfd3e32760b6; nota RET-003 atual liberada E3 neste SHA, preserva185 mappings e totaliza186; source CI PR38 41376410697 e final-main41376670773 success, 16/23 cada com sete skips docs-only; P-REV final sem P0-P3. RET-004 RED focal confirmou falta de migration v14. Após corrigir fixtures que poderiam falhar por PK duplicado em vez da constraint alvo, fmt e diff-check, Clippy locked, debug (291 library, 8 binários, 232 SQLite, 40 doctests) e harness release232/232 passaram. Cargo Audit0.22.2:422 deps,0 vulnerabilidades,2 avisos cobertos; OSV2.6.0:542 pacotes,3 cobertos,0 fora. Exceções continuam aprovadas, sem alteração, expiram antes de 2026-11-06; locks/manifests intactos. O perfil temporário SEC-002/WebView2 causou uma tentativa falha; após validar/remover somente o perfil criado neste worktree, suíte integral repetida passou. Gitleaks staged8.30.1 passou sem findings no tree1eb1396963e526e76d4a260c8b224452dcc0187f (~40.6KB); mapa28/805, work-items/evidence177, fixtures72/25/26, gitignore28/4 e append-only804775 bytes passaram. P-REV RET-004, CI source/final exatos e nota preservando186 mappings pendem; RET-005 bloqueado, B7 não iniciado."
+}
