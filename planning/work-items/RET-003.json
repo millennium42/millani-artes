@@ -2,7 +2,7 @@
   "id": "RET-003",
   "title": "rejeitar devolução acima da quantidade disponível",
   "specPath": "planning/specs/RET-003.md",
-  "status": "done",
+  "status": "in_progress",
   "dependencies": [
     "RET-002"
   ],
@@ -28,6 +28,6 @@
   "agentPlan": "P-INT único escritor, executor, integrador e committer GPT-6 Luna max; sem modelos/inferência/roteamento local. P-REV GPT-6 Luna max independente e read-only: modelo/esforço solicitado explicitamente pela usuária nesta conversa em 2026-11-01 ('Use gpt luna max; sem modelos locais/roteamento'), exceção humana à rota padrão P-REV GPT-6 Sol medium; não houve high prévio e o motivo/evidência ficam registrados na spec e neste work item. Branch codex/ret003-reject-excess-return sobre origin/main 306537fe739f029d9c7e1a75577de81524665bca; reserva exata e condição de liberação em planning/specs/RET-003.md.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": true,
-  "notes": "Base limpa origin/main 306537fe739f029d9c7e1a75577de81524665bca; RET-002 liberado e nota preserva183 mappings anteriores (184 total), incluindo RCV-001/002/003. Implementação pura e testes focais RET-003 executados; Rust fmt/Clippy/debug/release/doctests, coverage, npm build/quality, fixtures e validadores passaram; nenhuma alteração de código/testes desde esses gates. P-REV inicial e follow-up GPT-6 Luna max E2 no candidato e02c8b51fe5c060c82cf81a8b808aa07e4bec20c encontraram P2/P3 documentais, corrigidos sem falha funcional. SECURITY no SHA b52c8861e126c7de08415b3e1c660b69da7b4056: Cargo Audit0.22.2 422 deps/0 vulnerabilidades/2 avisos cobertos; OSV2.6.0 542 pacotes/3 findings cobertos/0 fora; Gitleaks8.30.1 histórico849 commits/0 findings e staged tree2c5171055799b42f187077a9c0ea8d1434ed8b44,8 paths/44054 patch bytes/~11126 scan bytes/0 findings; exceções sem alteração até2026-11-06. NPM audit local não produziu resultado: o wrapper parou antes do scan com NPM_NODE_VERSION_INVALID; host Node24.19.0/npm11.17.0 diverge de .node-version24.21.0 e npm11.19.0 requerido. O resultado NPM120/0 do SHA anterior e02 é histórico, não prova b52; exigir npm audit verde no CI source/final exato. Candidato local done/E3/passes:true, ainda não liberado; P-REV final, CI source/final e nota preservando184 mappings pendem; RET-004 bloqueado, B7 não iniciado."
+  "passes": false,
+  "notes": "Base limpa origin/main 306537fe739f029d9c7e1a75577de81524665bca; RET-002 liberado e nota preserva183 mappings anteriores (184 total), incluindo RCV-001/002/003. Implementação pura e testes focais RET-003 executados; Rust fmt/Clippy/debug/release/doctests, coverage, npm build/quality, fixtures e validadores passaram; código/testes não mudaram desde esses gates. P-REV encontrou três P2 documentais, sem falha funcional; correções sincronizadas, re-review final pendente. SECURITY no último commit dc30e7920e8b8599c681974497a14975516ce340 antes da correção documental atual: Cargo Audit0.22.2 422 deps/0 vuln/2 avisos cobertos; OSV2.6.0 542 pacotes/3 findings cobertos/0 fora; Gitleaks8.30.1 histórico850 commits/0. Staged tree f7acac190df826d33a4523fd24f744cfc2349df2,8 paths/40746 patch bytes/~9419 scan bytes/0 findings pertence ao commit anterior; repetir após correção atual. Exceções sem alteração até2026-11-06. NPM audit local parou antes do scan com NPM_NODE_VERSION_INVALID; host Node24.19.0/npm11.17.0 diverge do pin24.21.0/npm11.19.0; CI source/final exatos devem passar. Item in_progress/E3/passes:false até staged/review/CI/nota preservando184 mappings; RET-004 bloqueado, B7 não iniciado."
 }
