@@ -24,6 +24,7 @@ pub mod application {
     pub mod mark_obligation_overdue;
     pub mod pay_recurrence;
     pub mod record_receivable_receipt;
+    pub mod record_sale_return;
     pub mod remove_sale_item;
     pub mod rename_category;
     pub mod supply_obligation_amount;
@@ -36,5 +37,6 @@ pub mod infrastructure {
     pub mod products;
     pub mod receivables;
     pub mod recurrences;
+    pub mod sale_returns;
     pub mod sales;
 }
