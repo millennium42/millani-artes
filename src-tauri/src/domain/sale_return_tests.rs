@@ -100,3 +100,55 @@ fn ret002_rejects_invalid_return_quantities_and_history() {
         );
     }
 }
+
+#[test]
+fn ret003_rejects_requested_quantity_above_available_without_mutation() {
+    let sale_item = ret002_sale_item(2);
+    let returns = [
+        ret002_return(sale_item.id, 1),
+        ret002_return([0x42; 16], i64::MAX),
+    ];
+
+    assert_eq!(sale_item.validate_return_quantity(1, &returns), Ok(()));
+    assert_eq!(
+        sale_item.validate_return_quantity(2, &returns),
+        Err(DomainError::InvalidInput)
+    );
+    assert_eq!(sale_item.quantity, 2);
+    assert_eq!(returns[0].quantity, 1);
+    assert_eq!(returns[1].quantity, i64::MAX);
+}
+
+#[test]
+fn ret003_accepts_full_return_and_rejects_nonpositive_or_excess_requests() {
+    let sale_item = ret002_sale_item(2);
+
+    assert_eq!(sale_item.validate_return_quantity(2, &[]), Ok(()));
+    assert_eq!(
+        sale_item.validate_return_quantity(3, &[]),
+        Err(DomainError::InvalidInput)
+    );
+    for quantity in [i64::MIN, -1, 0] {
+        assert_eq!(
+            sale_item.validate_return_quantity(quantity, &[]),
+            Err(DomainError::InvalidInput)
+        );
+    }
+
+    let invalid_sale_item = ret002_sale_item(0);
+    assert_eq!(
+        invalid_sale_item.validate_return_quantity(1, &[]),
+        Err(DomainError::InvalidInput)
+    );
+
+    let fully_returned = [ret002_return(sale_item.id, 2)];
+    assert_eq!(
+        sale_item.validate_return_quantity(1, &fully_returned),
+        Err(DomainError::InvalidInput)
+    );
+    let invalid_history = [ret002_return(sale_item.id, 3)];
+    assert_eq!(
+        sale_item.validate_return_quantity(1, &invalid_history),
+        Err(DomainError::InvalidInput)
+    );
+}

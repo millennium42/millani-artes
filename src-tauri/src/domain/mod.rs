@@ -617,6 +617,19 @@ impl SaleItem {
                 Ok(available - returned.quantity)
             })
     }
+
+    /// Validates a return request against the prior return records supplied by the caller.
+    pub fn validate_return_quantity(
+        &self,
+        quantity: i64,
+        returns: &[SaleReturnItem],
+    ) -> Result<()> {
+        if quantity <= 0 || quantity > self.available_return_quantity(returns)? {
+            return Err(DomainError::InvalidInput);
+        }
+
+        Ok(())
+    }
 }
 
 /// A returned quantity tied to the identity of its sold item snapshot.
