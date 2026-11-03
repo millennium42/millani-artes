@@ -1,0 +1,33 @@
+# DB-011 — liberação documental
+
+Status: RELEASED. A implementação executável permanece done / E3 / passes=true; esta nota fecha a reconciliação documental e libera a dependência após os recibos listados.
+
+## SHA e integração
+
+SHA final de main: 80f67536ade3d0bcbd6d031f280909a829627a21; tree: f669351e7d9dd71673b8c1c23e5c9e25cb990961. PR #49 foi squash-merged a partir de 76f031b1ef09b07584e48bf97cf4f26138232567. Branch remota do candidato: codex/db011-evidence-reconcile.
+
+## Provas CI e implementação
+
+- Implementação DB-011: run 38394130462, job 115284940750, SHA de código 803ca4cf85ac56b135e9ce10509c7d97b1a8f6aa, success 23/23, 0 skipped. Este é o recibo E3 da implementação.
+- CI documental de origem: run 41694277367, job 126120584688, SHA 76f031b1ef09b07584e48bf97cf4f26138232567, PR, attempt 1, success; 16 success, 7 skipped.
+- CI documental final em main: run 41694876370, job 126122646130, SHA exato 80f67536ade3d0bcbd6d031f280909a829627a21, push, attempt 1, success; 16 success, 7 skipped. Foram skipped: instalação de dependências frontend, qualidade frontend, coverage, upload de coverage, preparação Rust, build Tauri e verificação do executável. O CI final é documental/security; esses skips não provam testes de produto.
+- Run histórico 38397098609, SHA 0c0660cf5abe9b1e51a5067c49c11e7364069764, foi success documental com 16 success/7 skipped. A nota vinculada àquele SHA declara que a nota72 de liberação ainda não havia sido publicada; não é prova de liberação.
+- A prova E3 de implementação é histórica e permanece no SHA/run acima; esta reconciliação não alterou código ou migrations.
+
+## Review, checks locais e segurança
+
+P-REV independente GPT Luna max: sem P0/P1/P2. Evidência E2, limitada à leitura textual; o revisor não reproduziu checks nem verificou independentemente refs/notas. Root verificou as refs e a preservação dos mappings.
+
+No candidato/tree desta nota: git diff --check; progress append-only preservando 832849 bytes e 26 fixtures; 182 work items válidos e 72 fixtures; 182 declarações de evidência válidas e 25 fixtures; mapa de projeto 28 fontes/826 arquivos e teste correspondente; gitignore 28 artefatos/4 fontes preservados. Gitleaks 8.30.1 verificou 895 commits alcançáveis no candidato, 0 findings. CI de PR e push final também passaram os passos de documentação, secrets e lockfile audit.
+
+As exceções de dependências aprovadas existentes não foram alteradas nem renovadas; expiram em 2026-11-06. O scan de lockfiles da CI terminou success. A alteração é somente documental.
+
+## Preservação das notas
+
+Antes desta nota, refs/notes/evidence estava em 4a8e5c5a6f683f47fe6b78e3e9e3ffc2476e637a, com 193 mappings. A comparação anterior confirmou 71/71 mappings e blobs da base dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19 presentes e idênticos. Esta publicação acrescenta exatamente um mapping para o SHA final de main e deve preservar todos os 193 mappings preexistentes e seus blobs; o total esperado após publicação é 194.
+
+## Limites e estado
+
+Esta nota prova a correção da atribuição de evidências, os checks documentais e a CI documental no SHA final; não representa nova execução financeira, UI/IPC, E2E, release de instalador ou cobertura global. O recibo original 38397098609 e os skips estão explicitados acima.
+
+DB-011 está liberado após a verificação pós-push de main, branch, notes ref, mappings e Git limpo. A dependência documental deixa de bloquear a sequência de B6; não iniciar B7.
