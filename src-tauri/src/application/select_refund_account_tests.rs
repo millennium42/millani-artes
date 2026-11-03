@@ -26,6 +26,22 @@ fn seleciona_exatamente_a_conta_escolhida() {
 }
 
 #[test]
+fn permite_reembolso_em_conta_diferente_da_conta_usada_na_venda() {
+    let accounts = [
+        account([1; 16], "Conta original", AccountType::Cash),
+        account([2; 16], "Conta de reembolso", AccountType::BankPix),
+    ];
+
+    let selected = select_refund_account([2; 16], &accounts)
+        .expect("a different listed account must be selectable");
+
+    assert_eq!(selected.id, [2; 16]);
+    assert_ne!(selected.id, accounts[0].id);
+    assert_eq!(selected.name, "Conta de reembolso");
+    assert_eq!(accounts[0].id, [1; 16]);
+}
+
+#[test]
 fn rejeita_conta_ausente_ou_opcoes_vazias() {
     let accounts = [account([1; 16], "Caixa", AccountType::Cash)];
 

@@ -1,0 +1,29 @@
+{
+  "id": "RET-009",
+  "title": "Permitir conta de reembolso diferente da conta original",
+  "specPath": "planning/specs/RET-009.md",
+  "status": "done",
+  "dependencies": [
+    "RET-008"
+  ],
+  "acceptanceCriteria": [
+    "Teste unitário inclui a conta de pagamento original e uma segunda conta disponível, seleciona explicitamente a segunda e prova que o ID retornado difere do original.",
+    "Testes existentes de seleção exata e rejeição de ID ausente ou opções vazias continuam passando.",
+    "Nenhum movimento, reembolso, alteração de saldo/dívida/devolução, auditoria, migration, regra de UI ou dependência nova é introduzida; RET-010 mantém a validação referencial/transacional.",
+    "Spec, matrizes, roadmap, progress log append-only e handoff registram a prova focal e seus limites; gates Rust, SECURITY e validadores locais passam.",
+    "done/E3/passes:true representa somente candidato após gates locais; RET-010 continua bloqueado até P-REV, CI remoto no SHA final exato e nota refs/notes/evidence status=released preservando mappings."
+  ],
+  "checks": [
+    "cargo test --locked select_refund_account",
+    "cargo fmt --all -- --check; cargo clippy --locked --all-targets --all-features -- -D warnings",
+    "cargo test --locked --quiet em debug e release",
+    "cargo audit --locked; OSV-Scanner; npm audit; fixtures dos scanners; Gitleaks staged/history",
+    "Validadores de mapa, gitignore, work items, estados de evidência e progress log append-only",
+    "P-REV read-only, CI source/final-main em SHAs exatos e nota refs/notes/evidence para liberação"
+  ],
+  "agentPlan": "P-INT único escritor no worktree limpo codex/ret009-different-refund-account-clean, base origin/main 765b20706f3bdedbe451a31b8d5541f41717b526; usuária solicitou GPT Luna max e proibiu modelos locais/roteamento local, modelo/esforço efetivos da sessão não registrados; sem delegação ou escrita paralela; P-REV read-only antes do CI final; reserva e gates de liberação na spec/handoff.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato concluído após teste focal 3/3, fmt, Clippy, suites Rust debug/release 593 pass/1 ignored por perfil, SECURITY, Gitleaks staged/history e validadores documentais. O comportamento já existia no helper e RED não se aplica sem restrição artificial. Exceções humanas permanecem válidas até 2026-11-06, sem renovação. Candidato não liberado: P-REV, CI source/final-main no SHA exato e nota released pendem; RET-010 bloqueado. Prova somente seleção em memória; sem saída/saldo, SQLite, UI/IPC, E2E ou coverage global; B7 não iniciado."
+}
