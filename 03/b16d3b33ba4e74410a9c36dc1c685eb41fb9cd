@@ -1,0 +1,96 @@
+{
+  "id": "RET-010",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "Documentary reconciliation of the previously released RET-010 implementation; no product code changed.",
+  "release_sha": "03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd",
+  "release_tree": "0a225227a777f4746672d49960e01c85d2e42fd1",
+  "pr": {
+    "method": "squash",
+    "merge_sha": "03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd",
+    "number": 51,
+    "state": "merged",
+    "url": "https://github.com/millennium42/millani-artes/pull/51",
+    "head_sha": "aa0c7d054c05d5bd32cf06b17131ae1bf8d1b318"
+  },
+  "implementation_release": {
+    "source_passed": 23,
+    "source_skipped": 0,
+    "pr": 50,
+    "final_skipped": 0,
+    "sha": "f9133c47424f1503dfd670d325ddbe36705778f6",
+    "source_run": 41719444911,
+    "source_sha": "366d180d60cce50d2501807ff64152446f50c8a4",
+    "final_passed": 23,
+    "final_sha": "f9133c47424f1503dfd670d325ddbe36705778f6",
+    "tree": "0de179aecc16fa8a04ec2a485c3f99c708892f72",
+    "final_main_run": 41721866797
+  },
+  "ci": {
+    "source": {
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41732930824",
+      "steps_total": 23,
+      "job": 126254652692,
+      "run": 41732930824,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "sha": "aa0c7d054c05d5bd32cf06b17131ae1bf8d1b318"
+    },
+    "final_main": {
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41733333257",
+      "steps_total": 23,
+      "job": 126256038026,
+      "run": 41733333257,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "sha": "03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd"
+    }
+  },
+  "p_rev": {
+    "checks_run": false,
+    "persona": "P-REV",
+    "base": "f9133c47424f1503dfd670d325ddbe36705778f6",
+    "effort": "max",
+    "independent": true,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "note": "Read-only review of exact final documentary candidate; no tests, scanners, CI or local routing.",
+    "tree": "0a225227a777f4746672d49960e01c85d2e42fd1",
+    "model": "gpt-6-luna"
+  },
+  "local": {
+    "gitignore": "28 ignored; 4 preserved",
+    "project_map": "28 sources; 834 files",
+    "fixtures": {
+      "evidence": 25,
+      "work_items": 72,
+      "progress_log": 26
+    },
+    "work_items_valid": 183,
+    "diff_check": "passed",
+    "progress_log": "append-only; 843382 historical bytes preserved",
+    "evidence_valid": 183,
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_findings": 0
+    }
+  },
+  "mapping_baseline": {
+    "ref": "385bd5c43a7b02b8bf72a7185ed9fb9820c4b472",
+    "count": 195
+  },
+  "mappings_after": 196,
+  "mapping_verification": "All 195 prior target/blob mappings preserved byte-for-byte; one new mapping added for this release SHA.",
+  "scope": "Documentation-only synchronization; src-tauri tree unchanged from the implementation release.",
+  "limitations": [
+    "Source and final-main sync CI each passed 16/23 steps; seven frontend/Tauri steps were skipped and do not prove product behavior.",
+    "The implementation release at f9133c47424f1503dfd670d325ddbe36705778f6 remains supported by exact source/final-main CI with 23/23 and zero skips.",
+    "This sync adds no new proof for account balance RET-011, sale cancellation RET-012, rollback RET-013, UI/IPC, smoke/E2E, global coverage, or Windows release."
+  ]
+}
