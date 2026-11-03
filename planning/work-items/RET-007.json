@@ -2,7 +2,7 @@
   "id": "RET-007",
   "title": "Definir reembolso parcial limitado ao saldo reservado",
   "specPath": "planning/specs/RET-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": ["RET-005", "RET-006"],
   "acceptanceCriteria": [
     "A regra E4 autoriza parcelas explícitas somente até o saldo de excedente reservado por RET-006 para a mesma devolução por item.",
@@ -25,6 +25,6 @@
   "agentPlan": "P-INT único escritor em codex/ret007-define-refund, base 09a0a7a5b0b7a3649b0c8f8d942c569254884409; paths exatos na spec, sem escrita paralela; modelo/esforço efetivos do integrador não registrados; P-REV read-only GPT-6 Luna max obrigatório; sem modelos locais; reserva libera somente após CI final e nota remota.",
   "evidence": "E3",
   "humanGateRequired": true,
-  "passes": false,
-  "notes": "Decisão E4 da usuária em 02/11/2026 permite reembolsos parciais até o saldo reservado restante por devolução de item. Validadores documentais e scans de dependências/Gitleaks histórico passaram; o P-REV inicial apontou inconsistência de status/recibo, corrigida para in_progress/passes:false. A nota de evidência de liberação registrará o Gitleaks staged e P-REV finais junto dos CIs exatos; até lá, nenhum resultado de revisão/CI é alegado. Fluxos executáveis permanecem RET-008 a RET-013."
+  "passes": true,
+  "notes": "Candidato done/E3/passes:true após os gates comprovados na main SHA d222c003ee5f261f524c7960cfb40a7e3e19beee e nota candidata publicada: CI source 41571132842/16 de 23 e CI final-main 41571356581/16 de 23, ambos com 7 etapas frontend/build omitidas; P-REV final sem P0/P1/P2; validadores e segurança registrados. Esta alteração registra o passe depois desses comprovantes; este novo SHA ainda exige CI final e nota released antes de liberar RET-008. A regra é E4 da usuária em 02/11/2026: parcelas até o saldo reservado restante por devolução de item. Fluxos executáveis permanecem RET-008 a RET-013."
 }
