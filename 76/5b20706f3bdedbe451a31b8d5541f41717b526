@@ -1,0 +1,151 @@
+{
+  "id": "RET-008",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "No new business rule; explicit account selection follows the existing chosen-account requirement and does not create a financial effect.",
+  "release_sha": "765b20706f3bdedbe451a31b8d5541f41717b526",
+  "release_tree": "b954b66f1c4ca2bf647755bfcff8a64f7c133650",
+  "implementation_commit": "c6240ad927def3c45a4317ce4d9dff1708ebe8f3",
+  "status_sync_commit": "a9135cdbea92152578a3afb9172fbd97b11c11fc",
+  "pr": {
+    "url": "https://github.com/millennium42/millani-artes/pull/47",
+    "head_sha": "a9135cdbea92152578a3afb9172fbd97b11c11fc",
+    "state": "merged",
+    "method": "squash",
+    "merge_sha": "765b20706f3bdedbe451a31b8d5541f41717b526",
+    "number": 47
+  },
+  "ci": {
+    "source": {
+      "run": 41641984958,
+      "sha": "a9135cdbea92152578a3afb9172fbd97b11c11fc",
+      "job": 125937529881,
+      "steps_total": 23,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41641984958"
+    },
+    "final_main": {
+      "run": 41642433703,
+      "sha": "765b20706f3bdedbe451a31b8d5541f41717b526",
+      "job": 125939062018,
+      "steps_total": 23,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41642433703"
+    },
+    "implementation_full": {
+      "source": {
+        "run": 41633004035,
+        "sha": "c6240ad927def3c45a4317ce4d9dff1708ebe8f3",
+        "job": 125907045467,
+        "steps_total": 23,
+        "steps_skipped": 0,
+        "steps_passed": 23,
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41633004035"
+      },
+      "final_main": {
+        "run": 41636244173,
+        "sha": "d6bfe0adab7289b5408899bacefd7a078ae7b3cb",
+        "job": 125918218820,
+        "steps_total": 23,
+        "steps_skipped": 0,
+        "steps_passed": 23,
+        "conclusion": "success",
+        "url": "https://github.com/millennium42/millani-artes/actions/runs/41636244173"
+      }
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "tree": "b954b66f1c4ca2bf647755bfcff8a64f7c133650",
+    "base": "d6bfe0adab7289b5408899bacefd7a078ae7b3cb",
+    "checks_run": false,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "effort": "max",
+    "model": "gpt-6-luna",
+    "note": "Final read-only review after correcting one prior P2 about candidate completion versus release gates; no P0/P1/P2 findings."
+  },
+  "local": {
+    "work_items": "181 valid",
+    "evidence": "181 valid",
+    "progress_fixtures": 26,
+    "append_only_bytes_preserved": 830101,
+    "project_map": "28 sources; 823 files",
+    "gitignore": "28 ignored; 4 protected",
+    "fixtures": {
+      "work_items": 72,
+      "evidence": 25,
+      "progress_log": 26,
+      "tauri_plugins": 37,
+      "gitleaks": 16,
+      "cargo_audit": 48,
+      "osv": 39,
+      "npm_audit": 40
+    },
+    "rust": {
+      "tree": "2cbfaff54331082afa552a1ffed9712db28ca5bf",
+      "toolchain": "1.99.0",
+      "fmt": "passed",
+      "clippy_d_warnings": "passed",
+      "focused_tests": "2/2 passed",
+      "debug": "passed; 298 unit, 7/8 integration (one WebView2 ignored), 247 SQLite, 40 additional",
+      "release": "passed; 298 unit, 7/8 integration (one WebView2 ignored), 247 SQLite, 40 additional"
+    },
+    "gitleaks_staged": {
+      "tree": "b954b66f1c4ca2bf647755bfcff8a64f7c133650",
+      "version": "8.30.1",
+      "bytes": 4953,
+      "findings": 0
+    },
+    "gitleaks_history": {
+      "source_sha": "a9135cdbea92152578a3afb9172fbd97b11c11fc",
+      "version": "8.30.1",
+      "commits": 889,
+      "findings": 0
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered": 3,
+      "uncovered": 0,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    }
+  },
+  "mapping_baseline": {
+    "sorted_lines_sha256": "263DD1D881044FE5EBA843DE88D95AECE4724CDDBDDE756413D841762274A4E0",
+    "count": 191,
+    "ref": "620e6375e5450e2da210e12ab5936347073c8685"
+  },
+  "mappings_after": 192,
+  "limitations": [
+    "E3 proves the pure in-memory account selection only; no refund movement, account balance change, debt effect, audit write, transaction, or rollback was executed.",
+    "RET-009 through RET-013, UI/IPC, smoke/E2E, and global coverage remain unproven and must not be inferred from this item.",
+    "The status-sync CI intentionally skipped seven frontend/build steps because the PR changed documentation only; the full implementation source and final-main CI runs listed above passed 23/23 without skips.",
+    "Cargo Audit and OSV approvals were not renewed and expire on 2026-11-06."
+  ]
+}
