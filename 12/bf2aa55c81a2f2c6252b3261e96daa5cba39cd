@@ -1,0 +1,128 @@
+{
+  "id": "RET-009",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "RET-009 proves explicit selection of a listed refund account different from the original sale-payment account; no financial effect is created by this item.",
+  "release_sha": "12bf2aa55c81a2f2c6252b3261e96daa5cba39cd",
+  "release_tree": "5b20a36f2cf12d20663f21e03fa4ba3c158d4533",
+  "implementation_commit": "019a7a64c2b732f8ef753601029af5cbd495a514",
+  "pr": {
+    "url": "https://github.com/millennium42/millani-artes/pull/48",
+    "head_sha": "019a7a64c2b732f8ef753601029af5cbd495a514",
+    "state": "merged",
+    "method": "squash",
+    "merge_sha": "12bf2aa55c81a2f2c6252b3261e96daa5cba39cd",
+    "number": 48
+  },
+  "ci": {
+    "source": {
+      "run": 41647888540,
+      "sha": "019a7a64c2b732f8ef753601029af5cbd495a514",
+      "job": 125957954301,
+      "steps_total": 23,
+      "steps_skipped": 0,
+      "steps_passed": 23,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41647888540"
+    },
+    "final_main": {
+      "run": 41649980476,
+      "sha": "12bf2aa55c81a2f2c6252b3261e96daa5cba39cd",
+      "job": 125965254759,
+      "steps_total": 23,
+      "steps_skipped": 0,
+      "steps_passed": 23,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41649980476"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "independent": true,
+    "tree": "5b20a36f2cf12d20663f21e03fa4ba3c158d4533",
+    "base": "765b20706f3bdedbe451a31b8d5541f41717b526",
+    "checks_run": true,
+    "checks": [
+      "git diff --check: passed"
+    ],
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "note": "Independent read-only review of the frozen base-to-merge diff found no P0/P1/P2. It confirmed the test selects a listed account whose ID differs from the original account and that the evidence claims only in-memory selection. No local model or routing was used."
+  },
+  "local": {
+    "tree": "5b20a36f2cf12d20663f21e03fa4ba3c158d4533",
+    "project_map": "28 sources; 826 files",
+    "gitignore": "28 ignored; 4 protected",
+    "work_items": "182 valid",
+    "evidence": "182 valid",
+    "fixtures": {
+      "work_items": 72,
+      "evidence": 25,
+      "progress_log": 26,
+      "cargo_audit": 48,
+      "osv": 39,
+      "npm_audit": 40
+    },
+    "append_only_bytes_preserved": 830614,
+    "rust": {
+      "toolchain": "1.99.0",
+      "focused_tests": "3/3 passed",
+      "fmt": "passed",
+      "clippy_d_warnings": "passed",
+      "debug": "593 passed; 1 WebView2 test ignored",
+      "release": "593 passed; 1 WebView2 test ignored",
+      "initial_path_failure": "Cargo was absent from initial PATH; checks were repeated with the pinned toolchain PATH set for that process only."
+    },
+    "gitleaks_staged": {
+      "version": "8.30.1",
+      "paths": 8,
+      "findings": 0
+    },
+    "gitleaks_history": {
+      "source_sha": "019a7a64c2b732f8ef753601029af5cbd495a514",
+      "version": "8.30.1",
+      "commits": 891,
+      "findings": 0
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered": 3,
+      "uncovered": 0,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    }
+  },
+  "mapping_baseline": {
+    "sorted_lines_sha256": "96E0622C222225263745E97064BC6A5990138558D06AF65B44AF361AED7D46D5",
+    "count": 192,
+    "ref": "6cb3f7063ec087807e8ef9b38913c2d584e06faf"
+  },
+  "mappings_after": 193,
+  "limitations": [
+    "E3 proves the pure in-memory account selection only; it does not prove refund movement, reduced account balance, debt change, audit write, SQLite validation, transaction atomicity, rollback, UI/IPC, smoke/E2E, global coverage, or Windows release acceptance.",
+    "The final-main workflow passed all 23 steps, including production build and executable verification. The source workflow also passed all 23 steps.",
+    "Cargo Audit and OSV findings remain covered by existing approvals that expire on 2026-11-06; no exception was renewed."
+  ]
+}
