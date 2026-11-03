@@ -375,6 +375,20 @@ pub fn execute_sale_return_financials_migration(
     )
 }
 
+pub const SALE_RETURN_REFUNDS_MIGRATION_VERSION: u32 = 16;
+pub const SALE_RETURN_REFUNDS_MIGRATION_SQL: &str =
+    include_str!("../../migrations/016-sale-return-refunds.sql");
+
+pub fn execute_sale_return_refunds_migration(
+    connection: Connection,
+) -> Result<Connection, MigrationError> {
+    execute_versioned_migration(
+        connection,
+        SALE_RETURN_REFUNDS_MIGRATION_VERSION,
+        SALE_RETURN_REFUNDS_MIGRATION_SQL,
+    )
+}
+
 fn backfill_sale_return_financials(transaction: &Transaction<'_>) -> Result<(), MigrationError> {
     let receivables = {
         let mut statement = transaction

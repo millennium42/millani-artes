@@ -1,0 +1,36 @@
+{
+  "id": "RET-010",
+  "title": "Criar saída de reembolso ligada à devolução por item",
+  "specPath": "planning/specs/RET-010.md",
+  "status": "done",
+  "dependencies": [
+    "RET-008",
+    "RET-009",
+    "DB-011"
+  ],
+  "acceptanceCriteria": [
+    "Registrar parcela explícita em centavos somente até o saldo reservado da mesma devolução por item, abatendo dívida e reembolsos confirmados anteriores.",
+    "Persistir saída, vínculo ao item devolvido e audit_event na mesma transação SQLite; validar conta por FK dentro da transação.",
+    "Persistir tipo exit, conta escolhida e Context Casa/Fábrica explícito, sem inferência de contexto ou restrição por conta original.",
+    "Rejeitar amount inválido, devolução ausente, conta ausente e valor além da reserva sem escrita parcial observável.",
+    "Migration 016 aditiva passa em cadeia completa desde banco vazio e upgrade de v15 preservando dados; constraints, FKs e trigger de proteção passam.",
+    "Testes cobrindo parcelas sucessivas, limite por item, audit/vínculos, rejeições/reopen, concorrência, migration e proteção a edição genérica passam.",
+    "Spec, handoff, roadmap e matrizes refletem prova e limites; progress log permanece append-only; SECURITY, validadores e gates Rust passam.",
+    "done/E3/passes:true é somente candidato até P-REV, CI source/final-main nos SHAs exatos e nota de evidência liberada preservando mappings."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness sale_return_refunds",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness sale_return_refunds_migration",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml em debug e release",
+    "cargo audit --locked, OSV-Scanner, npm audit, Gitleaks staged/history e fixtures existentes",
+    "Validadores de mapa, gitignore, work items, estados de evidência e progress log append-only",
+    "P-REV read-only, CI source/final-main em SHAs exatos e nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor; P-REV independente GPT Luna max read-only no candidato final, conforme pedido humano; sem modelo local ou roteamento local. Base origin/main 80f67536ade3d0bcbd6d031f280909a829627a21. Custo/telemetria do modelo-raiz: não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true, ainda não released. E3 reproduzido pelo integrador no tree de código/testes 982aafebd2508370d4c3389681e79e19355939d5, branch codex/ret010-cancel-paid-sale sobre base 80f67536ade3d0bcbd6d031f280909a829627a21. Rust/Cargo 1.99.0: fmt e Clippy locked -D warnings passaram; Rust debug/release exit0 em cada perfil com 301 biblioteca, 7/8 binários (1 WebView2 ignorado), 253 SQLite e 40 doctests, sem falhas; inclui RET-010, migration banco vazio/upgrade v15 e proteção do vínculo. SECURITY: Cargo Audit 0.22.2 422 deps/0 vulnerabilidades/2 warnings aprovados; OSV 2.6.0 542 pacotes/3 cobertos/0 fora; npm Node 24.21.0/npm 11.19.0 120 deps/0 vulnerabilidades; fixtures Cargo/OSV/npm/Gitleaks 48/39/40/16; Gitleaks histórico 898 commits/0 e staged no tree testado 0 findings. Exceções humanas Cargo/OSV vigentes até 2026-11-06, hashes exatos, sem renovação. Validadores em tree 982: mapa28/834, gitignore28/4, work-items/evidência183, fixtures72/25/26, append-only preservou836911 bytes. P-REV inicial: 0 P0/P1 de produto/transação/segurança e 2 P2 de evidência; corrigidos ao identificar o tree e alinhar os gates. Fmt inicial sem manifest falhou e comando correto passou; primeiro parse do staged recebeu linha informativa antes do JSON e foi repetido com nível fatal, 0 findings. Fixture Gitleaks paralela antiga falhou no probe clean sem diagnóstico; causa não determinada, execução sequencial atual 16/16 passou. P-REV final, CI remota source/final-main nos SHAs exatos e nota released ainda pendem; RET-011 segue bloqueado. Limites: sem saldo projetado, RET-012 cancelamento, RET-013 rollback focal, UI/IPC, retry/idempotência, smoke/E2E ou coverage global; B7 não iniciado."
+}

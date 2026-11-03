@@ -136,6 +136,8 @@ mod receivable_receipt;
 mod receivables_migration;
 mod sale_return_items_migration;
 mod sale_return_recording;
+mod sale_return_refunds;
+mod sale_return_refunds_migration;
 
 mod product_item_addition;
 

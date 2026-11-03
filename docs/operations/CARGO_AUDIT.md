@@ -17,9 +17,9 @@ A [configuração](../security/CARGO_WINDOWS_EXCEPTION.json) e o [registro próp
 - glib 0.18.5: unsound / RUSTSEC-2024-0429;
 - proc-macro-error 1.0.4: unmaintained / RUSTSEC-2024-0370;
 - gate SEC-011/cargo-audit/0.22.2, target x86_64-pc-windows-msvc, hashes exatos de Cargo.lock e Cargo.toml;
-- expiração em 2026-10-23 às 00h UTC: 22/10/2026 às 21h de Brasília, sem renovação automática.
+- validade antes de 2026-11-06 UTC, após revalidação humana de 2026-10-23 documentada em PRD-006-SECURITY-REVALIDATION.md; sem renovação automática.
 
-ScopeSHA256: 5bbcd9f74bb6d831b11ecd337df33cb487e05637d6daa247ced096f7a081cca8. Somente estes warnings podem ser dispensados; vulnerabilidades, outros warnings ou inputs diferentes continuam bloqueados. A aprovação OSV SEC-009 não ativa esta proposta.
+ScopeSHA256: 4741323d5774eaa101b5ccaf8a03123eeeb64f1238d89169eb7c44b24eb2d3f2; approval and inputs in CARGO_WINDOWS_APPROVAL.json and CARGO_WINDOWS_EXCEPTION.json. Somente estes warnings podem ser dispensados; vulnerabilidades, outros warnings ou inputs diferentes continuam bloqueados. A aprovação OSV SEC-009 não ativa esta proposta.
 
 O registro ativo exige a mensagem humana literal “execução temporaria aprovada, siga com a meta em modo economia de tokens” e referência no formato “Codex user reply to SEC-011 proposal <SHA de 40 caracteres>”. O Integrador registra somente a resposta humana realmente recebida à proposta publicada. O checker valida frase, formato, scopehash e conteúdo do registro; a origem humana é evidência do chat e do histórico de revisão, sem autenticação criptográfica por este script. Texto sintético, recusa e referência de fixture são rejeitados em produção.
 

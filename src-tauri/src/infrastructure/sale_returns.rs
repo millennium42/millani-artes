@@ -1,8 +1,11 @@
+use crate::application::record_sale_refund::{
+    RecordSaleRefundError, SaleRefundRecordingStore, SaleRefundWrite,
+};
 use crate::application::record_sale_return::{
     RecordSaleReturnError, RecordSaleReturnWrite, SaleReturnRecordingStore,
 };
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
-use crate::domain::{Receivable, SaleItem, SalePending, SaleReturnItem};
+use crate::domain::{Context, MovementKind, Receivable, SaleItem, SalePending, SaleReturnItem};
 use rusqlite::{params, Connection, OptionalExtension};
 
 pub struct AdapterSqliteSaleReturnStore {
@@ -172,6 +175,96 @@ impl SaleReturnRecordingStore for AdapterSqliteSaleReturnStore {
                 outcome
             }
             Err(_) => Err(RecordSaleReturnError::StoreFailed),
+        }
+    }
+}
+
+pub struct AdapterSqliteSaleRefundStore {
+    connection: Option<Connection>,
+}
+
+impl AdapterSqliteSaleRefundStore {
+    pub fn new(connection: Connection) -> Self {
+        Self {
+            connection: Some(connection),
+        }
+    }
+}
+
+impl SaleRefundRecordingStore for AdapterSqliteSaleRefundStore {
+    fn persist_refund_with_audit(
+        &mut self,
+        write: SaleRefundWrite<'_>,
+    ) -> Result<(), RecordSaleRefundError> {
+        let account_id = match &write.movement.kind {
+            MovementKind::Exit { account_id } => *account_id,
+            _ => return Err(RecordSaleRefundError::InvalidInput),
+        };
+        write
+            .movement
+            .validate_exit()
+            .map_err(|_| RecordSaleRefundError::InvalidInput)?;
+        let connection = self
+            .connection
+            .take()
+            .ok_or(RecordSaleRefundError::StoreFailed)?;
+        let result = execute_write_transaction(connection, |transaction| {
+            let reservation = transaction
+                .query_row(
+                    "SELECT returned.return_amount_cents,returned.debt_reduction_cents,COALESCE((SELECT SUM(movement.amount_cents) FROM main.sale_return_refunds AS refund JOIN main.movements AS movement ON movement.id=refund.movement_id WHERE refund.sale_return_item_id=returned.id),0) FROM main.sale_return_items AS returned WHERE returned.id=?1",
+                    params![write.return_item_id.as_slice()],
+                    |row| Ok((row.get::<_, i64>(0)?,row.get::<_, i64>(1)?,row.get::<_, i64>(2)?)),
+                )
+                .optional()
+                .map_err(|_| RecordSaleRefundError::StoreFailed)?;
+            let Some((return_amount_cents, debt_reduction_cents, refunded_cents)) = reservation
+            else {
+                return Ok(Err(RecordSaleRefundError::ReturnItemNotFound));
+            };
+            let reserved_cents = return_amount_cents
+                .checked_sub(debt_reduction_cents)
+                .ok_or(RecordSaleRefundError::StoreFailed)?;
+            let available_cents = reserved_cents.saturating_sub(refunded_cents).max(0);
+            if write.movement.amount_cents > available_cents {
+                return Ok(Err(RecordSaleRefundError::AmountExceedsAvailable));
+            }
+
+            let context = match &write.movement.context {
+                Context::Home => "home",
+                Context::Factory => "factory",
+            };
+            if transaction.execute(
+                "INSERT INTO main.movements(id,kind,amount_cents,context,account_id) VALUES(?1,'exit',?2,?3,?4)",
+                params![write.movement.id.as_slice(),write.movement.amount_cents,context,account_id.as_slice()],
+            ).map_err(|_| RecordSaleRefundError::StoreFailed)? != 1 {
+                return Err(RecordSaleRefundError::StoreFailed);
+            }
+            if transaction.execute(
+                "INSERT INTO main.sale_return_refunds(movement_id,sale_return_item_id) VALUES(?1,?2)",
+                params![write.movement.id.as_slice(),write.return_item_id.as_slice()],
+            ).map_err(|_| RecordSaleRefundError::StoreFailed)? != 1 {
+                return Err(RecordSaleRefundError::StoreFailed);
+            }
+            append_audit_event(
+                transaction,
+                &AuditEvent {
+                    event_id: write.audit_event_id,
+                    occurred_at_ms: write.occurred_at_ms,
+                    operation: "sale_return_refund_create",
+                    entity: "movement",
+                    entity_id: write.movement.id,
+                },
+            )
+            .map_err(|_| RecordSaleRefundError::StoreFailed)?;
+            Ok(Ok(()))
+        });
+
+        match result {
+            Ok((connection, outcome)) => {
+                self.connection = Some(connection);
+                outcome
+            }
+            Err(_) => Err(RecordSaleRefundError::StoreFailed),
         }
     }
 }
