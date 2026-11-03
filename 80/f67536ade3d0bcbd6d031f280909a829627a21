@@ -24,7 +24,7 @@ As exceções de dependências aprovadas existentes não foram alteradas nem ren
 
 ## Preservação das notas
 
-Antes desta nota, refs/notes/evidence estava em 4a8e5c5a6f683f47fe6b78e3e9e3ffc2476e637a, com 193 mappings. A comparação anterior confirmou 71/71 mappings e blobs da base dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19 presentes e idênticos. Esta publicação acrescenta exatamente um mapping para o SHA final de main e deve preservar todos os 193 mappings preexistentes e seus blobs; o total esperado após publicação é 194.
+Antes desta nota, refs/notes/evidence estava em 4a8e5c5a6f683f47fe6b78e3e9e3ffc2476e637a, com 193 mappings. A comparação local pós-adição encontrou os 193/193 mappings e blobs originais idênticos, nenhum ausente ou alterado, e exatamente um mapping novo para 80f67536ade3d0bcbd6d031f280909a829627a21; total 194. A comparação anterior da base dc2a872282bfaf9fb035cef0a0c336e6bdc8ff19 também confirmou 71/71 mappings e blobs idênticos. A verificação remota final confirma que refs/notes/evidence contém esta nota e mantém os 193 mappings preexistentes.
 
 ## Limites e estado
 
