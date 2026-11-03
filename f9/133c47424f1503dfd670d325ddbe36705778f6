@@ -1,0 +1,123 @@
+{
+  "id": "RET-010",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "Cria saída financeira do reembolso vinculado à devolução por item, dentro do saldo reservado, atomicamente com vínculo e auditoria.",
+  "release_sha": "f9133c47424f1503dfd670d325ddbe36705778f6",
+  "release_tree": "0de179aecc16fa8a04ec2a485c3f99c708892f72",
+  "implementation_commit": "366d180d60cce50d2501807ff64152446f50c8a4",
+  "pr": {
+    "url": "https://github.com/millennium42/millani-artes/pull/50",
+    "head_sha": "366d180d60cce50d2501807ff64152446f50c8a4",
+    "state": "merged",
+    "method": "squash",
+    "merge_sha": "f9133c47424f1503dfd670d325ddbe36705778f6",
+    "number": 50
+  },
+  "ci": {
+    "source": {
+      "run": 41719444911,
+      "sha": "366d180d60cce50d2501807ff64152446f50c8a4",
+      "job": 126208014667,
+      "steps_total": 23,
+      "steps_skipped": 0,
+      "steps_passed": 23,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41719444911"
+    },
+    "final_main": {
+      "run": 41721866797,
+      "sha": "f9133c47424f1503dfd670d325ddbe36705778f6",
+      "job": 126216442834,
+      "steps_total": 23,
+      "steps_skipped": 0,
+      "steps_passed": 23,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41721866797"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "independent": true,
+    "tree": "0de179aecc16fa8a04ec2a485c3f99c708892f72",
+    "base": "80f67536ade3d0bcbd6d031f280909a829627a21",
+    "checks_run": false,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "note": "Read-only P-REV of the candidate tree. The reviewer did not run tests, scanners, CI or revalidate remote refs. No local models or routing were used."
+  },
+  "local": {
+    "code_test_tree": "982aafebd2508370d4c3389681e79e19355939d5",
+    "release_tree": "0de179aecc16fa8a04ec2a485c3f99c708892f72",
+    "code_tree_unchanged": "src-tauri diff between tested and release trees is empty",
+    "rust": {
+      "toolchain": "1.99.0",
+      "fmt": "passed",
+      "clippy_d_warnings": "passed",
+      "debug": "301 library, 253 SQLite, 40 doctests; 7/8 binaries passed and 1 WebView2 test ignored",
+      "release": "301 library, 253 SQLite, 40 doctests; 7/8 binaries passed and 1 WebView2 test ignored",
+      "failures": 0
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered": 3,
+      "uncovered": 0,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "history_source_sha": "80f67536ade3d0bcbd6d031f280909a829627a21",
+      "history_commits": 898,
+      "history_findings": 0,
+      "staged_bytes": 129901,
+      "staged_findings": 0
+    },
+    "fixtures": {
+      "work_items": 72,
+      "evidence": 25,
+      "progress_log": 26,
+      "cargo_audit": 48,
+      "osv": 39,
+      "npm_audit": 40,
+      "gitleaks": 16
+    },
+    "work_items_valid": 183,
+    "evidence_valid": 183,
+    "append_only_bytes_preserved": 836911,
+    "project_map": "28 sources; 834 files",
+    "gitignore": "28 ignored; 4 protected"
+  },
+  "mapping_baseline": {
+    "count": 194,
+    "ref": "240d2e23c5faf2e0b3b120351eac85111a6e260d"
+  },
+  "mappings_after": 195,
+  "limitations": [
+    "This item proves persisted refund outflow creation linked to the return; it does not prove aggregate/account balance projection (RET-011), paid-sale cancellation (RET-012), focused rollback proof (RET-013), UI/IPC, retry/idempotency, smoke/E2E, global coverage, or Windows release acceptance.",
+    "The source PR and exact final-main push CI each passed all 23 steps, including frontend quality, coverage validation, Rust production build and executable verification; neither CI run skipped a step.",
+    "Cargo Audit and OSV findings remain covered by existing approvals expiring 2026-11-06; no exception was renewed."
+  ]
+}
