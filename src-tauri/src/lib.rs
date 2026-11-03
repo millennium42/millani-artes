@@ -27,6 +27,7 @@ pub mod application {
     pub mod record_sale_return;
     pub mod remove_sale_item;
     pub mod rename_category;
+    pub mod select_refund_account;
     pub mod supply_obligation_amount;
 }
 pub mod infrastructure {
