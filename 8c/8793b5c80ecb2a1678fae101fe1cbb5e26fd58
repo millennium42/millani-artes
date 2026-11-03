@@ -1,0 +1,108 @@
+{
+  "id": "RET-007",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "E4 human decision: allow explicit partial refunds up to the reserved balance remaining for the same returned-item record",
+  "release_sha": "8c8793b5c80ecb2a1678fae101fe1cbb5e26fd58",
+  "release_tree": "a329a57ef57830098c343100ae39e51e847cf6f5",
+  "implementation_commit": "13cff26d387f87b1f3c12b9375ffe12166b43309",
+  "status_sync_commit": "43a870e59052ad03d27c095403eba154c564eabc",
+  "pr": {
+    "url": "https://github.com/millennium42/millani-artes/pull/45",
+    "head_sha": "43a870e59052ad03d27c095403eba154c564eabc",
+    "state": "merged",
+    "method": "squash",
+    "merge_sha": "8c8793b5c80ecb2a1678fae101fe1cbb5e26fd58",
+    "number": 45
+  },
+  "ci": {
+    "source": {
+      "run": 41572108201,
+      "sha": "43a870e59052ad03d27c095403eba154c564eabc",
+      "job": 125707160716,
+      "steps_total": 23,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41572108201"
+    },
+    "final_main": {
+      "run": 41572381580,
+      "sha": "8c8793b5c80ecb2a1678fae101fe1cbb5e26fd58",
+      "job": 125708033018,
+      "steps_total": 23,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41572381580"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "tree": "a329a57ef57830098c343100ae39e51e847cf6f5",
+    "base": "d222c003ee5f261f524c7960cfb40a7e3e19beee",
+    "checks_run": false,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "effort": "max",
+    "note": "Independent read-only review found no P0/P1/P2; reviewer did not execute checks.",
+    "model": "gpt-6-luna"
+  },
+  "local": {
+    "work_items": "72 fixtures; 180 valid",
+    "evidence": "25 fixtures; 180 valid",
+    "progress_fixtures": 26,
+    "append_only_bytes_preserved": 824210,
+    "project_map": "28 sources; 818 files",
+    "gitignore": "28 ignored; 4 protected",
+    "gitleaks_staged": {
+      "tree": "a329a57ef57830098c343100ae39e51e847cf6f5",
+      "version": "8.30.1",
+      "bytes": 3269,
+      "findings": 0
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "covered": 3,
+      "uncovered": 0,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "exception_expiry": "2026-11-06",
+      "renewed": false
+    },
+    "npm_audit": {
+      "dependencies": 120,
+      "vulnerabilities": 0,
+      "node": "24.21.0",
+      "npm": "11.19.0"
+    },
+    "gitleaks_history": {
+      "version": "8.30.1",
+      "commits": 879,
+      "findings": 0
+    }
+  },
+  "mapping_baseline": {
+    "sorted_lines_sha256": "2F4743644046095E02D94A31D75DC288F8D717D99396A2F4EC35DDDB46BFB30B",
+    "count": 190,
+    "ref": "4deda0c96b449512bcb9829548170243c294623a"
+  },
+  "mappings_after": 191,
+  "limitations": [
+    "Documentation/product-contract item only; no refund execution, account movement, audit transaction, cancellation or rollback was tested.",
+    "Frontend/build quality, UI/IPC, smoke/E2E and global coverage were not run; seven frontend/build CI steps were skipped for this documentation-only change.",
+    "Approved OSV/Cargo exceptions remain unchanged and expire 2026-11-06."
+  ]
+}
