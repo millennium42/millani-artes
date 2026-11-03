@@ -1,8 +1,11 @@
 use super::TempDirectory;
 use millani_artes::application::record_sale_refund::{record_sale_refund, RecordSaleRefundError};
+use millani_artes::application::{list_accounts::list_accounts, list_movements::list_movements};
 use millani_artes::database::*;
 use millani_artes::domain::ports::{Clock, UuidGenerator};
 use millani_artes::domain::{Context, Movement};
+use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+use millani_artes::infrastructure::movements::AdapterSqliteMovementStore;
 use millani_artes::infrastructure::sale_returns::AdapterSqliteSaleRefundStore;
 use rusqlite::{params, Connection};
 use std::path::{Path, PathBuf};
@@ -138,6 +141,66 @@ fn ret010_records_partials_caps_each_item_and_persists_chosen_exit_context_and_a
     );
     assert_eq!(count(&c,"SELECT count(*) FROM main.audit_event WHERE operation='sale_return_refund_create' AND entity='movement'"),3);
     assert_eq!(count(&c,"SELECT count(*) FROM main.audit_event e JOIN main.sale_return_refunds x ON e.entity_id=x.movement_id WHERE e.operation='sale_return_refund_create'"),3);
+}
+
+#[test]
+fn ret011_refund_reduces_only_the_explicit_account() {
+    let (_dir, path) = setup("ret011-account-balance.sqlite");
+    assert_ne!(ACCOUNT_A, ACCOUNT_B);
+
+    let before_accounts = list_accounts(&AdapterSqliteAccountStore::new(
+        open_database(&path).unwrap(),
+    ))
+    .unwrap();
+    let before_connection = open_database(&path).unwrap();
+    before_connection
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let before_movements =
+        list_movements(&AdapterSqliteMovementStore::new(before_connection)).unwrap();
+    let account_a_before = before_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_A)
+        .unwrap()
+        .balance_cents(&before_movements)
+        .unwrap();
+    let account_b_before = before_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_B)
+        .unwrap()
+        .balance_cents(&before_movements)
+        .unwrap();
+    assert_eq!((account_a_before, account_b_before), (2500, 100));
+
+    refund(&path, RET2, ACCOUNT_B, 500, Context::Factory, 0x71).unwrap();
+
+    let after_accounts = list_accounts(&AdapterSqliteAccountStore::new(
+        open_database(&path).unwrap(),
+    ))
+    .unwrap();
+    let after_connection = open_database(&path).unwrap();
+    after_connection
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let after_movements =
+        list_movements(&AdapterSqliteMovementStore::new(after_connection)).unwrap();
+    let account_a_after = after_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_A)
+        .unwrap()
+        .balance_cents(&after_movements)
+        .unwrap();
+    let account_b_after = after_accounts
+        .iter()
+        .find(|account| account.id == ACCOUNT_B)
+        .unwrap()
+        .balance_cents(&after_movements)
+        .unwrap();
+
+    assert_eq!(after_accounts.len(), 2);
+    assert_eq!((account_a_after, account_b_after), (2500, -400));
+    assert_eq!(account_a_after - account_a_before, 0);
+    assert_eq!(account_b_after - account_b_before, -500);
 }
 
 #[test]

@@ -1,0 +1,33 @@
+{
+  "id": "RET-011",
+  "title": "Provar que o reembolso reduz exatamente a conta escolhida",
+  "specPath": "planning/specs/RET-011.md",
+  "status": "done",
+  "dependencies": [
+    "RET-010",
+    "FIN-024"
+  ],
+  "acceptanceCriteria": [
+    "Usar o arquivo SQLite físico e o registro real de reembolso de RET-010.",
+    "Reabrir o banco e ler contas/movimentos pelos leitores reais; derivar saldo com Account::balance_cents.",
+    "Provar A=2500 antes/depois e delta zero; provar B=100 antes, B=-400 depois e delta -500 após reembolso de 500 centavos escolhido explicitamente para B.",
+    "Provar que A e B são distintas e que nenhuma conta ou saldo materializado é criado.",
+    "Não alterar lógica de produção, migration, dependência, regras de produto ou UI.",
+    "Sincronizar spec, handoff, roadmap, matrizes e progress log append-only, mantendo gates e limites honestos.",
+    "Tratar done/E3/passes:true somente como candidato B6 até P-REV, CI remoto nos SHAs exatos e nota de evidência liberarem o item."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret010_records_partials_caps_each_item_and_persists_chosen_exit_context_and_audit",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret011_refund_reduces_only_the_explicit_account",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml em debug e release",
+    "Cargo Audit, OSV-Scanner, Gitleaks staged e validadores de mapa, work items, evidência e progress log append-only",
+    "P-REV independente read-only; CI source e final-main nos SHAs exatos; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT/root único escritor; P-REV GPT Luna max independente read-only antes do CI final; sem modelos locais/roteamento local. Reserva ativa na spec, base origin/main 03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd, oito paths exatos; qualquer ampliação registrada antes da escrita. Uso/custo atribuível não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Candidato B6 done/E3/passes:true; ainda não liberado. Prova focal local: baseline RET-010 1/1 sem saldo; novo RET-011 1/1; debug/release: biblioteca 301/301, binário 7/8 (um ignorado), SQLite 254/254 e doctests 40/40, sem falhas; fmt/Clippy -D warnings. Coverage somente domain/mod.rs: 375/375 linhas, 39/39 funções; branches stable não medidos; sem claim global. SECURITY: Cargo Audit 422/0 vulnerabilidades/2 warnings aprovados; OSV 542/3 cobertos/0 fora; npm 120/0; fixtures Gitleaks 16/16. Gitleaks staged intermediário 25.395 bytes/0 achados; repetir no índice após sincronizar os recibos finais. Validadores mapa28/837, gitignore28/4, work-items/evidência184, fixtures72/25/26; append-only preserva844531 bytes. P-REV, CI remoto source/final-main exatos e nota de liberação pendem; RET-012 bloqueado."
+}
