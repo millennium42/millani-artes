@@ -11,7 +11,7 @@
     "Testes existentes de seleção exata e rejeição de ID ausente ou opções vazias continuam passando.",
     "Nenhum movimento, reembolso, alteração de saldo/dívida/devolução, auditoria, migration, regra de UI ou dependência nova é introduzida; RET-010 mantém a validação referencial/transacional.",
     "Spec, matrizes, roadmap, progress log append-only e handoff registram a prova focal e seus limites; gates Rust, SECURITY e validadores locais passam.",
-    "done/E3/passes:true representa somente candidato após gates locais; RET-010 continua bloqueado até P-REV, CI remoto no SHA final exato e nota refs/notes/evidence status=released preservando mappings."
+    "done/E3/passes:true só é liberado após gates locais; P-REV, CI source/final-main em SHAs exatos e nota refs/notes/evidence status=released preservando mappings. Esses gates foram concluídos no SHA 12bf2aa55c81a2f2c6252b3261e96daa5cba39cd; RET-010 está in_progress/E2/passes:false após dois P2 de evidência; não liberado."
   ],
   "checks": [
     "cargo test --locked select_refund_account",
@@ -25,5 +25,5 @@
   "evidence": "E3",
   "humanGateRequired": false,
   "passes": true,
-  "notes": "Candidato concluído após teste focal 3/3, fmt, Clippy, suites Rust debug/release 593 pass/1 ignored por perfil, SECURITY, Gitleaks staged/history e validadores documentais. O comportamento já existia no helper e RED não se aplica sem restrição artificial. Exceções humanas permanecem válidas até 2026-11-06, sem renovação. Candidato não liberado: P-REV, CI source/final-main no SHA exato e nota released pendem; RET-010 bloqueado. Prova somente seleção em memória; sem saída/saldo, SQLite, UI/IPC, E2E ou coverage global; B7 não iniciado."
+  "notes": "Liberado E3 após teste focal 3/3, fmt, Clippy, suites Rust debug/release 593 pass/1 ignored por perfil, SECURITY, Gitleaks staged/history e validadores locais. O comportamento já existia no helper e RED não se aplica sem restrição artificial. Nota refs/notes/evidence confirma status=released no SHA 12bf2aa55c81a2f2c6252b3261e96daa5cba39cd (PR #48 squash); source run 41647888540 no SHA 019a7a64c2b732f8ef753601029af5cbd495a514 e final-main run 41649980476 no SHA final passaram 23/23, 0 skips, com P-REV sem P0/P1/P2. A nota preserva 192 mappings e totaliza 193. As exceções Cargo/OSV aprovadas permanecem sem renovação até 2026-11-06. Prova somente seleção em memória; sem saída/saldo, SQLite, UI/IPC, E2E ou coverage global. RET-010 voltou a in_progress/E2/passes:false após P-REV apontar dois P2, sem nota de liberação; B7 não iniciado."
 }

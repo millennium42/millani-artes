@@ -24,6 +24,7 @@ pub mod application {
     pub mod mark_obligation_overdue;
     pub mod pay_recurrence;
     pub mod record_receivable_receipt;
+    pub mod record_sale_refund;
     pub mod record_sale_return;
     pub mod remove_sale_item;
     pub mod rename_category;
