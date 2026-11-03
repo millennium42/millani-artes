@@ -1,0 +1,115 @@
+{
+  "id": "RET-007",
+  "status": "candidate",
+  "evidence": "E3",
+  "passes": false,
+  "decision": "E4 human decision: allow explicit partial refunds up to the reserved balance remaining for the same returned-item record",
+  "candidate_sha": "d222c003ee5f261f524c7960cfb40a7e3e19beee",
+  "candidate_tree": "914c6ea66cc77a8285e060fe113231eb478fa0e2",
+  "implementation_commit": "13cff26d387f87b1f3c12b9375ffe12166b43309",
+  "base_sha": "09a0a7a5b0b7a3649b0c8f8d942c569254884409",
+  "pr": [
+    {
+      "url": "https://github.com/millennium42/millani-artes/pull/44",
+      "head_sha": "13cff26d387f87b1f3c12b9375ffe12166b43309",
+      "state": "merged",
+      "method": "squash",
+      "merge_sha": "d222c003ee5f261f524c7960cfb40a7e3e19beee",
+      "number": 44
+    }
+  ],
+  "ci": {
+    "source": {
+      "run": 41571132842,
+      "sha": "13cff26d387f87b1f3c12b9375ffe12166b43309",
+      "steps_total": 23,
+      "job": 125704021875,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41571132842"
+    },
+    "final_main": {
+      "run": 41571356581,
+      "sha": "d222c003ee5f261f524c7960cfb40a7e3e19beee",
+      "steps_total": 23,
+      "job": 125704731387,
+      "steps_skipped": 7,
+      "steps_passed": 16,
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41571356581"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "tree": "914c6ea66cc77a8285e060fe113231eb478fa0e2",
+    "checks_run": false,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "effort": "max",
+    "note": "An initial P2 status/receipt mismatch was corrected; final re-review found no P0/P1/P2.",
+    "model": "gpt-6-luna",
+    "base": "09a0a7a5b0b7a3649b0c8f8d942c569254884409"
+  },
+  "local": {
+    "work_items": "72 fixtures; 180 valid",
+    "gitignore": "28 ignored; 4 protected",
+    "project_map": "28 sources; 818 files",
+    "gitleaks_staged": {
+      "tree": "914c6ea66cc77a8285e060fe113231eb478fa0e2",
+      "version": "8.30.1",
+      "bytes": 24132,
+      "findings": 0
+    },
+    "osv": {
+      "findings": 3,
+      "renewed": false,
+      "unexcepted": 0,
+      "packages": 542,
+      "excepted": 3,
+      "exception_expiry": "2026-11-06",
+      "version": "2.6.0"
+    },
+    "npm_audit": {
+      "dependencies": 120,
+      "vulnerabilities": 0,
+      "node": "24.21.0",
+      "npm": "11.19.0"
+    },
+    "gitleaks_history": {
+      "version": "8.30.1",
+      "commits": 879,
+      "findings": 0
+    },
+    "progress_fixtures": 26,
+    "append_only_bytes_preserved": 822089,
+    "cargo_audit": {
+      "vulnerabilities": 0,
+      "renewed": false,
+      "dependencies": 422,
+      "exception_expiry": "2026-11-06",
+      "version": "0.22.2",
+      "approved_warnings": 2
+    },
+    "fixtures": {
+      "npm_audit": 40,
+      "osv": 39,
+      "gitleaks": 16,
+      "cargo_audit": 48
+    },
+    "evidence": "25 fixtures; 180 valid"
+  },
+  "mapping_baseline": {
+    "sorted_lines_sha256": "535ebae4ee9df82c3b71899b5dc07b91920f6d98ce20c3aeb59203a3460cf01f",
+    "count": 189,
+    "ref": "6beedae56aad6f2c84f186e827983006167d846a"
+  },
+  "limitations": [
+    "Documentation/product contract only; no executable refund, account movement, audit transaction, cancellation or rollback was tested.",
+    "Frontend/build quality, UI/IPC, smoke/E2E and global coverage were skipped/not in scope.",
+    "This is a candidate evidence note, not the release note; passes remains false and RET-008 is blocked."
+  ]
+}
