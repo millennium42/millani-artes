@@ -898,3 +898,7 @@ A regra inicial recebeu nota released em `fc01ca3d3b2fc955646061244c4adfe70a5f1a
 ## RET-012 — reconciliação vigente de segurança e revisão
 
 Candidato de código 40394836c9c3988b2c8e2e645ce74d66e8c2ddb9/tree 56f10298717bbaa18bc829e02d5d7ab4d8396a40: Cargo Audit 0.22.2, 422 dependências, zero vulnerabilidades e dois avisos previamente aprovados; OSV-Scanner 2.6.0, 542 pacotes, três findings cobertos e zero não excepcionados; npm audit 11.19.0 com Node 24.21.0, 120 dependências e zero vulnerabilidades. Tentativa npm inicial parou antes do scan por NPM_NODE_VERSION_INVALID; repetição pinada passou. Exceções expiram em 06/11/2026, sem renovação/supressão; hashes aprovados conferem. Gitleaks 8.30.1 staged: 11 paths/34639 bytes/zero achados, receipt no metadata do commit; histórico merge-inclusive: 919 commits/17546602 bytes/zero achados. P-REV R5 read-only registrou 0/0/3/0 achados P0/P1/P2/P3, todos documentais, corrigidos nesta reconciliação. P-REV final, CI source/final-main exatos e nota released pendem; não há alegação de fechamento global de INV-FIN-005/006/007.
+
+### RET-012 — P-REV/CI source do candidato 36ec6f2
+
+P-REV GPT-6 Luna max read-only no SHA 36ec6f2df237930e7d5a8975a0835c309aca0d2f/tree 46df4d333827900df5076997735332bbb852b590: P0/P1/P2/P3=0/0/0/0. CI source run 41922138266 terminou success com 23 etapas e nenhum skip. A alteração documental que registra esses recibos cria um novo candidato; gates source/final-main e nota released desse novo fechamento continuam pendentes.
