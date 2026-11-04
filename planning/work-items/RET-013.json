@@ -1,0 +1,22 @@
+{
+  "id": "RET-013",
+  "title": "Provar rollback após escrita parcial no cancelamento de venda",
+  "specPath": "planning/specs/RET-013.md",
+  "status": "done",
+  "dependencies": ["RET-010", "DB-012", "RET-012"],
+  "acceptanceCriteria": [
+    "Falhar após movimento de reembolso escrito e antes do vínculo/auditoria; após reopen, preservar integralmente estado, saldos derivados e histórico sem escrita parcial."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret013_",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret012_",
+    "cargo fmt, locked all-target/all-feature Clippy -D warnings e suíte Rust debug/release",
+    "Cargo Audit, OSV, Gitleaks staged/history, npm audit aplicável e fixtures/validadores documentais",
+    "P-REV read-only; CI source/final-main no SHA exato; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor/executor; P-REV independente read-only GPT-6 Luna max; sem modelos locais, roteamento local ou escrita paralela; telemetria não registrada.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Work item, spec e handoff RET-013 n\u00e3o existiam na base; criados a partir do roadmap, matrizes, invariantes, TRANSACTION_MODEL e handoff RET-012. Depend\u00eancia RET-012 adicionada porque este item exercita seu consumidor real. Aprova\u00e7\u00e3o humana de 04/11 registrada em RET-012 e n\u00e3o redefinida aqui. RET-012 ser\u00e1 apenas reconciliado documentalmente \u00e0 nota released j\u00e1 existente; seus testes/implementa\u00e7\u00e3o n\u00e3o ser\u00e3o repetidos. Candidate B6 only: functional criteria, Rust gates, SECURITY and applicable documentation validators passed locally on the current tree. RET-013 focal GREEN 1/1; RET-012 regression 12/12; debug/release 302 unit, 7 bin (1 ignored), 267 SQLite, 40 doctests; Cargo Audit 422 deps/0 vulnerabilities/2 approved warnings, OSV 542 packages/3 covered/0 outside, npm audit 120 deps/0 vulnerabilities, Gitleaks history 918 commits/0 findings. No production, migration, manifest or lockfile change. Release still requires final staged Gitleaks receipt, independent P-REV on exact candidate, source/final-main CI on exact SHAs and note publication. No UI/IPC, E2E, global coverage or B7 claim. P-REV R1 encontrou dois P2 documentais e um P3 no oraculo; estados released e atribuicao dos CIs foram reconciliados, e o limite do erro sanitizado esta registrado na spec, handoff e matriz. Re-review read-only do candidato corrigido permanece gate. P-REV R2 confirmou as correcoes RCV-011 e do limite P3, mas encontrou duas linhas resumo antigas na REQUIREMENTS_MATRIX (RET-011/012 ainda candidatas); ambas foram atualizadas com os recibos released. Re-review R3 do novo tree pendente. P-REV R3 encontrou P0/P1/P2=0 e um P3 documental: a linha de executores que resume alteracoes de conta omitia RET-012; incluido. P-REV R4 read-only no tree 691129e931253aa557f43203219656e5da0e8404 contra fc01ca3d3b2fc955646061244c4adfe70a5f1ae8 teve P0/P1/P2/P3=0; confirmou os estados, CIs e limites, sem executar checks. Gitleaks staged nesse tree cobriu 50.203 bytes/0 findings. O registro desta revisao muda os documentos; validadores, Gitleaks staged e P-REV do tree atualizado permanecem obrigatorios antes do CI source/final e nota released."
+}
