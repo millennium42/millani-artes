@@ -1,0 +1,103 @@
+{
+  "id": "RET-011",
+  "status": "released",
+  "evidence": "E3",
+  "passes": true,
+  "decision": "Reconciled the RET-011 candidate with independent P-REV and successful source/final-main CI; no tracked files changed after the final CI run.",
+  "release_sha": "eccc7292792d00bcf448c1c747507aa2fb65c248",
+  "release_tree": "39aea0b27deb4ddc1878be68584c70bc113ed96c",
+  "pr": {
+    "method": "squash",
+    "merge_sha": "eccc7292792d00bcf448c1c747507aa2fb65c248",
+    "number": 52,
+    "state": "merged",
+    "url": "https://github.com/millennium42/millani-artes/pull/52",
+    "head_sha": "9a9524b9c8f3afd5ef0b301211bbee7607955345",
+    "base_sha": "03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd"
+  },
+  "implementation_release": {
+    "source_passed": 23,
+    "source_skipped": 0,
+    "pr": 52,
+    "final_skipped": 0,
+    "sha": "eccc7292792d00bcf448c1c747507aa2fb65c248",
+    "source_run": 41833380604,
+    "source_sha": "9a9524b9c8f3afd5ef0b301211bbee7607955345",
+    "final_passed": 23,
+    "final_sha": "eccc7292792d00bcf448c1c747507aa2fb65c248",
+    "tree": "39aea0b27deb4ddc1878be68584c70bc113ed96c",
+    "final_main_run": 41835676400
+  },
+  "ci": {
+    "source": {
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41833380604",
+      "steps_total": 23,
+      "job": 126585970376,
+      "run": 41833380604,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "sha": "9a9524b9c8f3afd5ef0b301211bbee7607955345"
+    },
+    "final_main": {
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41835676400",
+      "steps_total": 23,
+      "job": 126593826536,
+      "run": 41835676400,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "sha": "eccc7292792d00bcf448c1c747507aa2fb65c248"
+    }
+  },
+  "p_rev": {
+    "checks_run": false,
+    "persona": "P-REV",
+    "effort": "max",
+    "independent": true,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "note": "Read-only review of the exact candidate tree; seven RET-011 artifacts and the test blob were inspected. No tests, scanners or CI were run by the reviewer.",
+    "tree": "39aea0b27deb4ddc1878be68584c70bc113ed96c",
+    "model": "gpt-6-luna"
+  },
+  "local": {
+    "gitignore": "28 ignored; 4 preserved",
+    "project_map": "28 sources; 837 files",
+    "fixtures": {
+      "evidence": 25,
+      "work_items": 72,
+      "progress_log": 26
+    },
+    "work_items_valid": 184,
+    "evidence_valid": 184,
+    "diff_check": "passed",
+    "progress_log": "append-only; historical bytes preserved against main",
+    "gitleaks": {
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "command": "protect --staged --redact --no-banner",
+      "tree": "39aea0b27deb4ddc1878be68584c70bc113ed96c",
+      "staged_bytes": 10228,
+      "exit_code": 0,
+      "staged_findings": 0
+    },
+    "rust": "RET-010 baseline 1/1; RET-011 focal 1/1; fmt and Clippy passed; debug/release suites: 301 library, 7/8 binaries (one WebView ignored), 254 SQLite and 40 doctests; zero failures",
+    "security": "Cargo Audit 422 dependencies/0 vulnerabilities/2 approved warnings; OSV 542 packages/3 covered/0 outside; npm 120 dependencies/0 vulnerabilities; exemptions remain valid through 2026-11-06"
+  },
+  "mapping_baseline": {
+    "ref": "3ba74df0bd0adcf6ed53a4a6572e8f68481b0357",
+    "count": 196
+  },
+  "mappings_after": 197,
+  "mapping_verification": "All 196 prior target/blob mappings were preserved byte-for-byte; one mapping was added for this release SHA.",
+  "scope": "Focused Rust integration proof that refunding 500 cents decreases only the explicitly selected account B from 100 to -400 while account A remains 2500; no production code, migration or dependency changed.",
+  "limitations": [
+    "The deterministic SQLite test proves the selected account balance from persisted movements; it does not prove UI/IPC, smoke/E2E, dashboard behavior, Windows installation or broader release acceptance.",
+    "Local coverage was limited to src-tauri/src/domain/mod.rs (375/375 lines, 39/39 functions); global and branch coverage are not claimed.",
+    "This release closes RET-011 only; RET-012 and the remainder of B6 remain unstarted or pending their own serial gates. B7 was not started."
+  ]
+}
