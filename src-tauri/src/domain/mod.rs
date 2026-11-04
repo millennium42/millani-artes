@@ -782,6 +782,7 @@ pub fn create_product_item(
 pub enum SaleStatus {
     Open,
     Finalized,
+    Cancelled,
 }
 
 /// The unreceived remainder of a sale with a required customer and due instant; it is not cash or a receipt.

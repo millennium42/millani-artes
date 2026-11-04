@@ -27,9 +27,15 @@ fn setup() -> (TempDirectory, PathBuf) {
         (9, CUSTOMERS_MIGRATION_SQL),
         (10, SALES_MIGRATION_SQL),
         (11, SALE_ITEMS_MIGRATION_SQL),
+        (12, RECEIVABLES_MIGRATION_SQL),
+        (13, RECEIPTS_MIGRATION_SQL),
+        (14, SALE_RETURN_ITEMS_MIGRATION_SQL),
     ] {
         c = execute_versioned_migration(c, v, sql).unwrap();
     }
+    c = execute_sale_return_financials_migration(c).unwrap();
+    c = execute_sale_return_refunds_migration(c).unwrap();
+    c = execute_sale_cancellations_migration(c).unwrap();
     let mut products = AdapterSqliteProductStore::new(c);
     for (id, description, price) in [(0x11, "  Descrição\0 🧵\r\n  ", 1500), (0x12, "", 0)] {
         create_product(
@@ -99,7 +105,7 @@ fn state(c: &Connection) -> Vec<Vec<Vec<Value>>> {
 }
 fn health(c: &Connection) {
     assert!(c.is_autocommit());
-    assert_eq!(schema_version(c, 11).unwrap(), 11);
+    assert_eq!(schema_version(c, 17).unwrap(), 17);
     assert_eq!(
         rows(c, "PRAGMA main.integrity_check"),
         vec![vec![Value::Text("ok".into())]]

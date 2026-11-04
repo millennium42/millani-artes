@@ -5,6 +5,7 @@ pub mod application {
     pub mod add_free_item;
     pub mod add_product_item;
     pub mod calculate_context_result;
+    pub mod cancel_paid_sale;
     pub mod create_account;
     pub mod create_category;
     pub mod create_customer;

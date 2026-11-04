@@ -170,7 +170,7 @@ fn load_sale_in_transaction(
 ) -> Result<Option<Sale>, ()> {
     let status: Option<String> = transaction
         .query_row(
-            "SELECT status FROM main.sales WHERE id=?1",
+            "SELECT CASE WHEN EXISTS(SELECT 1 FROM main.sale_cancellations WHERE sale_id=main.sales.id) THEN 'cancelled' ELSE status END FROM main.sales WHERE id=?1",
             params![id.as_slice()],
             |row| row.get(0),
         )
@@ -179,6 +179,7 @@ fn load_sale_in_transaction(
     let status = match status.as_deref() {
         Some("open") => SaleStatus::Open,
         Some("finalized") => SaleStatus::Finalized,
+        Some("cancelled") => SaleStatus::Cancelled,
         None => return Ok(None),
         Some(_) => return Err(()),
     };

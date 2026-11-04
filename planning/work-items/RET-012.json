@@ -1,0 +1,29 @@
+{
+  "id": "RET-012",
+  "title": "Cancelar uma venda quitada com devoluções e reembolsos atômicos",
+  "specPath": "planning/specs/RET-012.md",
+  "status": "done",
+  "dependencies": ["RET-010", "RCV-010"],
+  "acceptanceCriteria": [
+    "Somente venda finalizada sem devido aberto pode ser cancelada, uma vez.",
+    "Registrar devolução da quantidade restante por linha com o cálculo cumulativo existente.",
+    "Reembolsar exatamente o saldo reservado ainda aberto por devolução, incluindo saldo após reembolso parcial anterior, sem duplicar valor.",
+    "Exigir conta e contexto explícitos por saída e permitir conta diferente da original.",
+    "Persistir status, devoluções, saídas, vínculos e auditorias atomicamente; preservar histórico e bloquear novas operações financeiras da venda cancelada.",
+    "Testar migration banco vazio/upgrade e comportamento SQLite file-backed; manter RET-013 como prova separada de rollback consumidor.",
+    "Atualizar fontes rastreadas e gates B6; passes:true é apenas candidato até P-REV, CI exata e nota de release."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret012_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml em debug e release",
+    "Cargo Audit, OSV-Scanner, npm audit, Gitleaks staged/history e validadores documentais aplicáveis",
+    "P-REV GPT-6 Luna max read-only; CI source/final-main no SHA exato; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor; P-REV independente, somente leitura, GPT-6 Luna max. Nenhum modelo local, roteamento local ou escrita paralela. Telemetria de uso/custo não registrada.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 `done/E3/passes:true`, ainda não liberado. A regra RET-012 foi aprovada pela usuária em 04/11/2026 e está na BUSINESS_RULES/spec. Implementação, migration v17, testes e gates locais foram executados no candidato de código 0e4d9ecb98cfe63d147f26231bd9556b83b33839/tree 0ee7f92944c7ba2dd2dfb5e07852e8f8e89dad6c. Cargo Audit 0.22.2: 422 deps, 0 vulnerabilidades, 2 avisos aprovados; OSV 2.6.0: 542 pacotes, 3 findings cobertos pelas exceções vigentes/0 fora; npm audit 11.19.0/Node24.21.0: 120 deps/0 vulnerabilidades; SAST 45/45. Cargo.lock dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012 e package-lock 8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19 inalterados. Exceções e hashes/escopos aprovados revalidados, expiram 2026-11-06, sem alteração/renovação. Gitleaks staged candidato1: 23 paths/~104904 bytes/exit0/0 findings, receipt no metadata de seu tree. No candidato documental 2 887cc0e31b768d2aab9269b107648f0294c38488/tree 351c14bc6c1cdac918aca54b00ac170fe5481b58, Gitleaks 8.30.1 `git --log-opts=--all --full-history --diff-merges=first-parent`: 912 commits/~17308525 bytes/exit0/0 findings; uma execução default anterior informou 884 e foi supersedida pela varredura explícita com merges. Validadores candidate2: project-map 28/844, evidence 185/25, work-items 185/72, progress 26 fixtures. `861339` bytes foi a saída append-only daquele candidato e está PRELIMINAR/SUPERSEDIDO; `864201` foi o resultado corrigido do candidato 3 e também é histórico. O resultado exato da verificação append-only pós-última-entrada está registrado no handoff da revisão documental corrente. P-REV R3 identificou somente essa distinção documental, sem issue de produto; P-REV final no tree corrigido, CI source/final-main exatos e nota released preservando mappings são gates de liberação. RET-010/RCV-010 têm notas released ancestrais; DB-011 confirmado no handoff RET-010; RCV-001/002/003 reconfirmados e mappings preservados. RET-013 só começa após release; B7 não iniciado."
+}
