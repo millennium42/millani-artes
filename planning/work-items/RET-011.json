@@ -1,0 +1,33 @@
+{
+  "id": "RET-011",
+  "title": "Provar que o reembolso reduz exatamente a conta escolhida",
+  "specPath": "planning/specs/RET-011.md",
+  "status": "done",
+  "dependencies": [
+    "RET-010",
+    "FIN-024"
+  ],
+  "acceptanceCriteria": [
+    "Usar o arquivo SQLite físico e o registro real de reembolso de RET-010.",
+    "Reabrir o banco e ler contas/movimentos pelos leitores reais; derivar saldo com Account::balance_cents.",
+    "Provar A=2500 antes/depois e delta zero; provar B=100 antes, B=-400 depois e delta -500 após reembolso de 500 centavos escolhido explicitamente para B.",
+    "Provar que A e B são distintas e que nenhuma conta ou saldo materializado é criado.",
+    "Não alterar lógica de produção, migration, dependência, regras de produto ou UI.",
+    "Sincronizar spec, handoff, roadmap, matrizes e progress log append-only, mantendo gates e limites honestos.",
+    "Tratar done/E3/passes:true somente como candidato B6 até P-REV, CI remoto nos SHAs exatos e nota de evidência liberarem o item."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret010_records_partials_caps_each_item_and_persists_chosen_exit_context_and_audit",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret011_refund_reduces_only_the_explicit_account",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml em debug e release",
+    "Cargo Audit, OSV-Scanner, Gitleaks staged e validadores de mapa, work items, evidência e progress log append-only",
+    "P-REV independente read-only; CI source e final-main nos SHAs exatos; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT/root único escritor; P-REV GPT Luna max independente read-only antes do CI final; sem modelos locais/roteamento local. Reserva ativa na spec, base origin/main 03b16d3b33ba4e74410a9c36dc1c685eb41fb9cd, oito paths exatos; qualquer ampliação registrada antes da escrita. Uso/custo atribuível não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true após todos os gates locais/SECURITY e validadores; a P-REV do candidato `5f77bca5b1161964b117b245acf365adda746428` encontrou 0 P0/P1 e 1 P2 documental: textos ainda chamavam de pendente o scan já ligado ao tree daquele commit. Esta correção vincula o recibo ao metadata do commit que contém o tree escaneado; qualquer alteração rastreada exige novo scan/recibo no commit do tree atualizado. A prova Rust/teste focal segue no blob a751adc26a3c16a311b6fee1e52520ae0b40fce6 e src-tauri permanece inalterado. Rust local anterior: RET-010 baseline 1/1; RET-011 1/1; debug/release 301 biblioteca, 7/8 binários (um WebView ignorado), 254 SQLite e 40 doctests; fmt/Clippy -D warnings. Coverage apenas domain/mod.rs 375/375 linhas e 39/39 funções, sem branches/global. SECURITY reexecutada em 2026-11-03 no source SHA defc7a707f2cf3e9180465d00be0e8db69144659, sem mudança de código/manifests/locks: Cargo Audit0.22.2 fixtures48/48, 422 deps/0 vulnerabilidades/2 warnings aprovados; OSV2.6.0 fixtures39/39, 542 pacotes/3 findings cobertos/0 fora; npm Node24.21.0/npm11.19.0 fixtures40/40, 120 deps/0 vulnerabilidades. Exceções/hashes conferem até 2026-11-06; resultados completos e inputs constam no progress log. A primeira chamada npm falhou antes do audit com NPM_NODE_VERSION_INVALID no Node global 24.19/npm11.17; a repetição com PATH só do processo e pin correto passou. SECURITY foi reexecutada: Cargo422/0 vulnerabilidades/2 avisos aprovados; OSV542/3 cobertos/0 fora; npm120/0 com Node24.21/npm11.19. Validadores docs passaram. Gitleaks staged 8.30.1 no tree `c48f8675fc21d22561af89f7712e5e682ed05d5b` leu ~14.340 bytes, exit 0 e teve 0 findings; comando, versão/binário e tree estão no metadata do commit `71260cc2b6ffe80ddec7a1cc530f8f142f980264`. O recibo final Gitleaks staged de cada candidato deve estar no metadata do commit com tree correspondente. A liberação requer P-REV final sem achados impeditivos, CI remoto source/final-main nos SHAs exatos e nota released; RET-012 permanece bloqueado."
+}
