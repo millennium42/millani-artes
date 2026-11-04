@@ -202,3 +202,7 @@ A evidência da conta única continua focal E3 candidata; não prova rollback co
 ## RET-012 — P-REV e CI source verificados no candidato 36ec6f2
 
 P-REV independente read-only GPT-6 Luna max no commit 36ec6f2df237930e7d5a8975a0835c309aca0d2f/tree 46df4d333827900df5076997735332bbb852b590: P0/P1/P2/P3=0/0/0/0. CI source run 41922138266 no SHA exato terminou success, 23 etapas/0 skips. Estes recibos não cobrem o novo SHA da atualização documental presente nem o final-main; P-REV do próximo tree e CI correspondentes ainda pendem. Prova financeira permanece focal, sem claim de rollback consumidor ou fechamento global INV-FIN-005/006/007.
+
+## RET-012 — correção do achado documental P-REV R7
+
+No candidato `fd18000fa4cf6e8d4df648121711c4e377de7391`/tree `52676f082d1f03150f155ad40cd5f180cc95667d`, P-REV read-only GPT-6 Luna max encontrou P0/P1/P2/P3=0/0/1/0: faltava registrar no handoff o check append-only após a última entrada do log. Após acrescentar a entrada R7, `check-progress-log.ps1 -BaseRef HEAD -TargetRef INDEX` passou exit 0 e preservou 876759 bytes históricos, alvo INDEX; o resultado está no handoff após essa entrada. O check não prova as invariantes financeiras. O candidato atualizado aguarda novo P-REV, CI source/final-main exatos e nota released; RET-013 continua bloqueado.

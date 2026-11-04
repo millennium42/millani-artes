@@ -902,3 +902,7 @@ Candidato de código 40394836c9c3988b2c8e2e645ce74d66e8c2ddb9/tree 56f10298717bb
 ### RET-012 — P-REV/CI source do candidato 36ec6f2
 
 P-REV GPT-6 Luna max read-only no SHA 36ec6f2df237930e7d5a8975a0835c309aca0d2f/tree 46df4d333827900df5076997735332bbb852b590: P0/P1/P2/P3=0/0/0/0. CI source run 41922138266 terminou success com 23 etapas e nenhum skip. A alteração documental que registra esses recibos cria um novo candidato; gates source/final-main e nota released desse novo fechamento continuam pendentes.
+
+### RET-012 — correção de append-only após P-REV R7
+
+P-REV read-only GPT-6 Luna max no SHA `fd18000fa4cf6e8d4df648121711c4e377de7391`/tree `52676f082d1f03150f155ad40cd5f180cc95667d` encontrou P0/P1/P2/P3=0/0/1/0, sem achados de produto/segurança: o handoff não continha o resultado append-only posterior à última entrada do progress log. A entrada R7 foi acrescentada; depois dela, `check-progress-log.ps1 -BaseRef HEAD -TargetRef INDEX` passou exit 0, preservando 876759 bytes históricos, alvo INDEX. O recibo consta no handoff depois da entrada. Essa evidência é documental e não substitui os gates de release: a nova árvore ainda precisa P-REV limpo, CI source/final-main nos SHAs exatos e nota released.
