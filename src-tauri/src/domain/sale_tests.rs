@@ -86,6 +86,20 @@ fn sal009_preserves_identity_both_states_and_empty_collection_as_metadata() {
 }
 
 #[test]
+fn ret012_cancelled_sale_status_is_distinct_from_open_and_finalized() {
+    let sale = Sale {
+        id: [0x43; 16],
+        status: SaleStatus::Cancelled,
+        items: Vec::new(),
+    };
+    assert!(matches!(&sale.status, SaleStatus::Cancelled));
+    assert!(!matches!(
+        &sale.status,
+        SaleStatus::Open | SaleStatus::Finalized
+    ));
+}
+
+#[test]
 fn sal016_preserves_each_payment_account_amount_and_order() {
     let payments = Vec::from([
         SalePayment {

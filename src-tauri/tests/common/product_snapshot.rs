@@ -22,9 +22,15 @@ fn setup() -> (TempDirectory, PathBuf) {
         (9, CUSTOMERS_MIGRATION_SQL),
         (10, SALES_MIGRATION_SQL),
         (11, SALE_ITEMS_MIGRATION_SQL),
+        (12, RECEIVABLES_MIGRATION_SQL),
+        (13, RECEIPTS_MIGRATION_SQL),
+        (14, SALE_RETURN_ITEMS_MIGRATION_SQL),
     ] {
         connection = execute_versioned_migration(connection, version, sql).unwrap();
     }
+    connection = execute_sale_return_financials_migration(connection).unwrap();
+    connection = execute_sale_return_refunds_migration(connection).unwrap();
+    connection = execute_sale_cancellations_migration(connection).unwrap();
     drop(connection);
     (directory, path)
 }
@@ -84,7 +90,7 @@ fn assert_catalog(path: &Path, description: &str, price: i64, active: bool) {
 fn assert_health(path: &Path) {
     let connection = open_database(path).unwrap();
     assert!(connection.is_autocommit());
-    assert_eq!(schema_version(&connection, 11).unwrap(), 11);
+    assert_eq!(schema_version(&connection, 17).unwrap(), 17);
     assert_eq!(
         connection
             .query_row("PRAGMA main.integrity_check", [], |r| r.get::<_, String>(0))

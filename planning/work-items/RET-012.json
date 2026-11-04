@@ -1,0 +1,29 @@
+{
+  "id": "RET-012",
+  "title": "Cancelar uma venda quitada com devoluções e reembolsos atômicos",
+  "specPath": "planning/specs/RET-012.md",
+  "status": "done",
+  "dependencies": ["RET-010", "RCV-010"],
+  "acceptanceCriteria": [
+    "Somente venda finalizada sem devido aberto pode ser cancelada, uma vez.",
+    "Registrar devolução da quantidade restante por linha com o cálculo cumulativo existente.",
+    "Reembolsar exatamente o saldo reservado ainda aberto por devolução, incluindo saldo após reembolso parcial anterior, sem duplicar valor.",
+    "Exigir conta e contexto explícitos por saída e permitir conta diferente da original.",
+    "Persistir status, devoluções, saídas, vínculos e auditorias atomicamente; preservar histórico e bloquear novas operações financeiras da venda cancelada.",
+    "Testar migration banco vazio/upgrade e comportamento SQLite file-backed; manter RET-013 como prova separada de rollback consumidor.",
+    "Atualizar fontes rastreadas e gates B6; passes:true é apenas candidato até P-REV, CI exata e nota de release."
+  ],
+  "checks": [
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness ret012_",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml em debug e release",
+    "Cargo Audit, OSV-Scanner, npm audit, Gitleaks staged/history e validadores documentais aplicáveis",
+    "P-REV GPT-6 Luna max read-only; CI source/final-main no SHA exato; nota refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor; P-REV independente, somente leitura, GPT-6 Luna max. Nenhum modelo local, roteamento local ou escrita paralela. Telemetria de uso/custo não registrada.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 `done/E3/passes:true`, ainda não liberado: regra aprovada pela usuária em 04/11/2026; implementação/migration/testes, Rust/SQLite/Tauri/frontend, validadores, SAST, scans locais de dependências e histórico Gitleaks executados. Resultados pré-commit identificam HEAD base eccc7292792d00bcf448c1c747507aa2fb65c248; locks inalterados; Gitleaks staged preliminar passou no tree 005c8efcbb19eb75b432806c432686e560de3917. O tree final do candidato será escaneado e amarrado no metadata do commit. Scanners de dependência ainda serão repetidos no SHA do commit candidato. P-REV, CI source/final-main exatos e nota released preservando mappings permanecem gates de liberação. Exceções aprovadas atuais vencem 2026-11-06; sem alteração/renovação. RET-010 e RCV-010 têm notas released ancestrais; DB-011 confirmado pelo handoff RET-010. RCV-001/002/003 reconfirmados na nota corrente, mappings preservados. RET-013 só começa após release; B7 não iniciado."
+}

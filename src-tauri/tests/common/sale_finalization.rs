@@ -8,11 +8,13 @@ use millani_artes::application::finalize_sale::{
 use millani_artes::application::list_accounts::list_accounts;
 use millani_artes::application::list_movements::list_movements;
 use millani_artes::database::{
-    execute_versioned_migration, open_database, schema_version, ACCOUNTS_MIGRATION_SQL,
-    AUDIT_EVENT_MIGRATION_SQL, CATEGORIES_MIGRATION_SQL, CUSTOMERS_MIGRATION_SQL,
-    MOVEMENTS_MIGRATION_SQL, MOVEMENT_CATEGORIES_MIGRATION_SQL, PRODUCTS_MIGRATION_SQL,
-    RECEIVABLES_MIGRATION_SQL, RECURRENCES_MIGRATION_SQL, SALES_MIGRATION_SQL,
-    SALE_ITEMS_MIGRATION_SQL,
+    execute_sale_cancellations_migration, execute_sale_return_financials_migration,
+    execute_sale_return_refunds_migration, execute_versioned_migration, open_database,
+    schema_version, ACCOUNTS_MIGRATION_SQL, AUDIT_EVENT_MIGRATION_SQL, CATEGORIES_MIGRATION_SQL,
+    CUSTOMERS_MIGRATION_SQL, MOVEMENTS_MIGRATION_SQL, MOVEMENT_CATEGORIES_MIGRATION_SQL,
+    PRODUCTS_MIGRATION_SQL, RECEIPTS_MIGRATION_SQL, RECEIVABLES_MIGRATION_SQL,
+    RECURRENCES_MIGRATION_SQL, SALES_MIGRATION_SQL, SALE_ITEMS_MIGRATION_SQL,
+    SALE_RETURN_ITEMS_MIGRATION_SQL,
 };
 use millani_artes::domain::ports::{Clock, UuidGenerator};
 use millani_artes::domain::{Context, DiscountInput, Movement, MovementKind, SalePayment};
@@ -65,9 +67,14 @@ fn setup() -> (TempDirectory, PathBuf) {
         (10, SALES_MIGRATION_SQL),
         (11, SALE_ITEMS_MIGRATION_SQL),
         (12, RECEIVABLES_MIGRATION_SQL),
+        (13, RECEIPTS_MIGRATION_SQL),
+        (14, SALE_RETURN_ITEMS_MIGRATION_SQL),
     ] {
         connection = execute_versioned_migration(connection, version, sql).unwrap();
     }
+    connection = execute_sale_return_financials_migration(connection).unwrap();
+    connection = execute_sale_return_refunds_migration(connection).unwrap();
+    connection = execute_sale_cancellations_migration(connection).unwrap();
     drop(connection);
     (directory, path)
 }
@@ -204,7 +211,7 @@ fn snapshot(connection: &Connection) -> Vec<Vec<Vec<Value>>> {
 
 fn assert_healthy(connection: &Connection) {
     assert!(connection.is_autocommit());
-    assert_eq!(schema_version(connection, 12).unwrap(), 12);
+    assert_eq!(schema_version(connection, 17).unwrap(), 17);
     assert_eq!(
         rows(connection, "PRAGMA main.integrity_check"),
         vec![vec![Value::Text("ok".into())]]

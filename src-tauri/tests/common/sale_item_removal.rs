@@ -36,9 +36,15 @@ fn setup() -> (TempDirectory, PathBuf) {
         (9, CUSTOMERS_MIGRATION_SQL),
         (10, SALES_MIGRATION_SQL),
         (11, SALE_ITEMS_MIGRATION_SQL),
+        (12, RECEIVABLES_MIGRATION_SQL),
+        (13, RECEIPTS_MIGRATION_SQL),
+        (14, SALE_RETURN_ITEMS_MIGRATION_SQL),
     ] {
         connection = execute_versioned_migration(connection, version, sql).unwrap();
     }
+    connection = execute_sale_return_financials_migration(connection).unwrap();
+    connection = execute_sale_return_refunds_migration(connection).unwrap();
+    connection = execute_sale_cancellations_migration(connection).unwrap();
     drop(connection);
     let mut movements = AdapterSqliteMovementStore::new(open_database(&path).unwrap());
     create_entry(
@@ -193,7 +199,7 @@ fn removal_events(connection: &Connection) -> Vec<AuditRemoval> {
 
 fn health(connection: &Connection) {
     assert!(connection.is_autocommit());
-    assert_eq!(schema_version(connection, 11).unwrap(), 11);
+    assert_eq!(schema_version(connection, 17).unwrap(), 17);
     assert_eq!(
         rows(connection, "PRAGMA main.integrity_check"),
         vec![vec![Value::Text("ok".into())]]
