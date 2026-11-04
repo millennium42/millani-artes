@@ -1,0 +1,172 @@
+{
+  "id": "RET-012",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-04",
+  "scope": "Item-level B6 release. This does not close B6 or start B7.",
+  "source_sha": "72f6b159b44b25d05fc7ab4addfb0a901a11431c",
+  "final_sha": "fc01ca3d3b2fc955646061244c4adfe70a5f1ae8",
+  "tree_sha": "a70ccca9dcce4cbdea7f35ae5621406f323038db",
+  "pull_request": {
+    "number": 53,
+    "url": "https://github.com/millennium42/millani-artes/pull/53",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "fc01ca3d3b2fc955646061244c4adfe70a5f1ae8"
+  },
+  "source_ci": {
+    "run": {
+      "id": 41881405330,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "72f6b159b44b25d05fc7ab4addfb0a901a11431c",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41881405330"
+    },
+    "job": {
+      "id": 126754514104,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 41884106308,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "fc01ca3d3b2fc955646061244c4adfe70a5f1ae8",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41884106308"
+    },
+    "job": {
+      "id": 126763823852,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "72f6b159b44b25d05fc7ab4addfb0a901a11431c",
+    "candidate_tree": "a70ccca9dcce4cbdea7f35ae5621406f323038db",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "note": "Four review rounds fixed documentary status issues; final re-review found no blocking finding."
+  },
+  "local_verification": {
+    "code_commit": "0e4d9ecb98cfe63d147f26231bd9556b83b33839",
+    "code_tree": "0ee7f92944c7ba2dd2dfb5e07852e8f8e89dad6c",
+    "code_unchanged_after_code_commit": true,
+    "rust": {
+      "focal_ret012": "12/12",
+      "sqlite_harness": "266/266",
+      "debug_and_release": "lib302; bin7 with 1 ignored for WebView2; SQLite266; doctests40",
+      "fmt_check": "pass",
+      "clippy_all_targets_all_features_d_warnings": "pass",
+      "tauri_build_no_bundle": "pass",
+      "tauri_custom_protocol_release_tests": "pass",
+      "executable": {
+        "format": "PE32+ AMD64",
+        "bytes": 8533504,
+        "sha256": "8114c5007c3ab772378a87e0b54530c790f52f421470e89f1ea87f72ec57239e"
+      }
+    },
+    "frontend": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "format_lint_typecheck": "pass",
+      "vitest": "3 tests in 2 files",
+      "coverage": "100% only in the two reported frontend scaffold files; not financial or global coverage"
+    },
+    "security_on_candidate_sha": {
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "exception_expiry": "2026-11-06"
+      },
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "findings": 3,
+        "excepted": 3,
+        "unexcepted": 0,
+        "exception_expiry": "2026-11-06",
+        "lock_sha256": {
+          "package-lock.json": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+          "src-tauri/Cargo.lock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+        }
+      },
+      "npm_audit": {
+        "version": "11.19.0",
+        "node": "24.21.0",
+        "dependencies": 120,
+        "vulnerabilities": 0
+      },
+      "gitleaks_staged": {
+        "version": "8.30.1",
+        "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+        "tree": "a70ccca9dcce4cbdea7f35ae5621406f323038db",
+        "paths": 2,
+        "reported_bytes": 5212,
+        "findings": 0,
+        "receipt": "commit metadata for source_sha"
+      },
+      "gitleaks_history": {
+        "version": "8.30.1",
+        "candidate_sha": "887cc0e31b768d2aab9269b107648f0294c38488",
+        "candidate_tree": "351c14bc6c1cdac918aca54b00ac170fe5481b58",
+        "commits": 912,
+        "findings": 0,
+        "merge_inclusive": true
+      },
+      "sast_fixtures": "45/45"
+    },
+    "document_validators": {
+      "project_map": "28 sources/844 files",
+      "evidence_states": "185 items/25 fixtures",
+      "work_items": "185 items/72 fixtures",
+      "progress_log_fixtures": "26",
+      "append_only": "869436 bytes preserved, exit 0",
+      "frontend_selection_fixtures": "20",
+      "tauri_plugins": "37 fixtures/2 CLI cases/0 active plugins"
+    }
+  },
+  "notes_mapping": {
+    "notes_ref_before": "e2823afdcd9f4a59b6c64332526f626c222ba909",
+    "notes_before": 197,
+    "notes_after": 198,
+    "preserved_mapping_set_sha256": "6813f1555d443bb2b2ee6866d2b306ec7509cbf9cf4820138f38402f0ed4d46e",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 197 previous evidence mappings are to be preserved; this note adds only the RET-012 mapping for final_sha."
+  },
+  "limitations": [
+    "No fault injection after the first financial write in cancel_paid_sale; RET-013 owns the consumer rollback proof.",
+    "No UI/IPC, smoke, official E2E, financial coverage or global coverage is claimed.",
+    "The four existing OSV approvals and two Cargo Audit advisories expire 2026-11-06; none was changed, renewed or suppressed.",
+    "This release is RET-012 only; B6 remains open and B7 is not started."
+  ],
+  "next": "RET-013, after verifying this released note and preserving the existing evidence mappings."
+}
