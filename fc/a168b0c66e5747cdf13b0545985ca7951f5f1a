@@ -1,0 +1,141 @@
+{
+  "id": "RET-012",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-04",
+  "scope": "Reopened B6 RET-012 rule: every new refund exit from one paid-sale cancellation uses the same explicitly selected account, even when receipts used different accounts. This item release does not close B6 or start B7.",
+  "human_decision": {
+    "approved": true,
+    "date": "2026-11-04",
+    "rule": "All new cancellation refund exits use one explicitly selected account; existing receipts, refunds, links and sale history remain preserved."
+  },
+  "source_sha": "b295e28b68bd95b8a8d5fb6472213ea678834bf6",
+  "final_sha": "fca168b0c66e5747cdf13b0545985ca7951f5f1a",
+  "tree_sha": "add7c644b61376d07fecb6a679da992f793786fb",
+  "pull_request": {
+    "number": 55,
+    "url": "https://github.com/millennium42/millani-artes/pull/55",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "fca168b0c66e5747cdf13b0545985ca7951f5f1a"
+  },
+  "source_ci": {
+    "run": {
+      "id": 41927424500,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "b295e28b68bd95b8a8d5fb6472213ea678834bf6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41927424500"
+    },
+    "job": {
+      "id": 126915357627,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 41929514700,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "fca168b0c66e5747cdf13b0545985ca7951f5f1a",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41929514700"
+    },
+    "job": {
+      "id": 126922533457,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "b295e28b68bd95b8a8d5fb6472213ea678834bf6",
+    "candidate_tree": "add7c644b61376d07fecb6a679da992f793786fb",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "note": "R8 confirmed the R7 append-only receipt correction across the seven changed files. R7 on predecessor fd18000 found one documentary P2; the progress-log entry was appended and the check was run afterward."
+  },
+  "local_verification": {
+    "code_commit": "40394836c9c3988b2c8e2e645ce74d66e8c2ddb9",
+    "code_tree": "56f10298717bbaa18bc829e02d5d7ab4d8396a40",
+    "code_unchanged_after_code_commit": true,
+    "rust": {
+      "focal_ret012": "12/12",
+      "sqlite_harness": "266/266",
+      "debug_and_release": "library 302; binary 7/8 with 1 ignored for WebView2; SQLite 266; doctests 40",
+      "fmt_check": "pass",
+      "clippy_all_targets_all_features_d_warnings": "pass"
+    },
+    "frontend": {
+      "runtime": "Node 24.21.0 / npm 11.19.0",
+      "format_lint_typecheck": "pass",
+      "vitest": "3 tests in 2 files passed",
+      "coverage": "100% only on generated frontend scaffold files; no financial or global coverage claim"
+    },
+    "security": {
+      "cargo_audit": "422 dependencies; 0 vulnerabilities; 2 previously approved warnings",
+      "osv_scanner": "542 packages; 3 findings covered by existing approvals; 0 outside approvals",
+      "npm_audit": "120 dependencies; 0 vulnerabilities",
+      "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+      "cargo_toml_sha256": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57",
+      "exceptions": "approved scopes and input hashes matched; expire before 2026-11-06 UTC; rechecked 2026-11-04; no renewal or suppression"
+    },
+    "documentation_validators": {
+      "project_map": "28 sources / 844 files",
+      "gitignore": "28 ignored artifacts / 4 sources and lockfiles preserved",
+      "evidence_states": "25 fixtures / 185 work items",
+      "work_items": "72 fixtures / 185 items",
+      "progress_log_fixtures": "26",
+      "append_only": "exit 0; 876759 historical bytes preserved; target INDEX; executed after the R7 progress-log entry",
+      "frontend_selection": "20 fixtures",
+      "tauri_plugins": "37 fixtures / 2 CLI cases / 0 active plugins"
+    },
+    "gitleaks_staged": {
+      "tree": "add7c644b61376d07fecb6a679da992f793786fb",
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "paths": 7,
+      "reported_bytes": 12585,
+      "command": "protect --staged --redact=100 --no-banner --no-color --exit-code 1 --report-format json --report-path -",
+      "exit": 0,
+      "findings": 0
+    },
+    "migration_or_dependency_change": false,
+    "local_model_or_routing_used": false
+  },
+  "notes_mapping": {
+    "notes_ref_before": "26262c9b330af73f428cdd819d6cf0a87de6a025",
+    "notes_before": 198,
+    "notes_after": 199,
+    "preserved_mapping_set_sha256": "185c8387f2d4a1df5d7b34144b0f020edd6923900fda2c3418f3677ce80f5ecf",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 198 previous evidence mappings are preserved; this note adds only the RET-012 mapping for the final SHA."
+  },
+  "limitations": [
+    "The local proof does not cover rollback after a partial write; RET-013 remains a separate item.",
+    "UI/IPC, E2E, smoke and global financial/Rust coverage are not claimed."
+  ],
+  "next": "RET-013 may proceed after this released note is verified. B7 is outside scope and was not started."
+}
