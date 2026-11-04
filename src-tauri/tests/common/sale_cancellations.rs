@@ -171,7 +171,7 @@ fn ret012_cancel_paid_sale_returns_remaining_items_and_refunds_each_open_reserva
         },
         SaleCancellationRefundRoute {
             target: SaleCancellationRefundTarget::CancellationReturnForSaleItem(ITEM_A),
-            account_id: ACCOUNT_C,
+            account_id: ACCOUNT_B,
             context: Context::Home,
         },
         SaleCancellationRefundRoute {
@@ -233,21 +233,25 @@ fn ret012_cancel_paid_sale_returns_remaining_items_and_refunds_each_open_reserva
         .unwrap(),
         2800
     );
-    let routed: Vec<(i64, Vec<u8>, String)> = {
+    let mut routed: Vec<(i64, Vec<u8>, String)> = {
         let mut s = c.prepare("SELECT m.amount_cents,m.account_id,m.context FROM main.sale_return_refunds x JOIN main.movements m ON m.id=x.movement_id ORDER BY m.id").unwrap();
         s.query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))
             .unwrap()
             .collect::<rusqlite::Result<_>>()
             .unwrap()
     };
-    assert!(routed.contains(&(400, ACCOUNT_B.to_vec(), "factory".into())));
-    assert!(routed.contains(&(1000, ACCOUNT_C.to_vec(), "home".into())));
-    assert!(routed.contains(&(1000, ACCOUNT_B.to_vec(), "home".into())));
-    for (account, expected_balance) in [
-        (ACCOUNT_ORIGINAL, 2400),
-        (ACCOUNT_B, -1400),
-        (ACCOUNT_C, -1000),
-    ] {
+    routed.sort();
+    let mut expected_routed = vec![
+        (400, ACCOUNT_ORIGINAL.to_vec(), "home".to_owned()),
+        (400, ACCOUNT_B.to_vec(), "factory".to_owned()),
+        (1000, ACCOUNT_B.to_vec(), "home".to_owned()),
+        (1000, ACCOUNT_B.to_vec(), "home".to_owned()),
+    ];
+    expected_routed.sort();
+    assert_eq!(routed, expected_routed);
+    for (account, expected_balance) in
+        [(ACCOUNT_ORIGINAL, 2400), (ACCOUNT_B, -2400), (ACCOUNT_C, 0)]
+    {
         assert_eq!(
             c.query_row(
                 "SELECT COALESCE(SUM(CASE WHEN kind='entry' THEN amount_cents WHEN kind='exit' THEN -amount_cents ELSE 0 END),0) FROM main.movements WHERE account_id=?1",
@@ -375,7 +379,7 @@ fn ret012_rejects_partially_paid_sale_before_any_cancellation_write() {
 }
 
 #[test]
-fn ret012_requires_exact_refund_routes_before_generating_ids_or_writing() {
+fn ret012_requires_exact_refund_routes_and_one_account_before_generating_ids_or_writing() {
     struct NoIds;
     impl UuidGenerator for NoIds {
         type Error = ();
@@ -384,7 +388,10 @@ fn ret012_requires_exact_refund_routes_before_generating_ids_or_writing() {
         }
     }
 
-    for (case, filename) in ["missing", "extra", "duplicate"].into_iter().enumerate() {
+    for (case, filename) in ["missing", "extra", "duplicate", "split-account"]
+        .into_iter()
+        .enumerate()
+    {
         let (_directory, path) = setup(&format!("ret012-routes-{filename}.sqlite"), true);
         let mut store = AdapterSqliteSaleCancellationStore::new(open_database(&path).unwrap());
         let preview = preview_sale_cancellation(SALE, &mut store).unwrap();
@@ -398,6 +405,7 @@ fn ret012_requires_exact_refund_routes_before_generating_ids_or_writing() {
                 account_id: ACCOUNT_B,
                 context: Context::Home,
             }),
+            3 => routes[1].account_id = ACCOUNT_C,
             _ => {
                 let first = routes.first().unwrap();
                 routes.push(SaleCancellationRefundRoute {
@@ -407,10 +415,10 @@ fn ret012_requires_exact_refund_routes_before_generating_ids_or_writing() {
                 });
             }
         }
-        assert!(matches!(
+        assert_eq!(
             cancel_paid_sale(preview, routes, &mut NoIds, &FixedClock, &mut store),
             Err(millani_artes::application::cancel_paid_sale::CancelPaidSaleError::RefundRoutesInvalid)
-        ));
+        );
         let c = open_database(&path).unwrap();
         assert_eq!(
             c.query_row("SELECT count(*) FROM main.sale_cancellations", [], |r| r

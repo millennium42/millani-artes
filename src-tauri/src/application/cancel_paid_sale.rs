@@ -121,6 +121,14 @@ pub fn cancel_paid_sale<S: SaleCancellationStore, I: UuidGenerator, C: Clock>(
     clock: &C,
     store: &mut S,
 ) -> Result<(), CancelPaidSaleError> {
+    let selected_account_id = routes.first().map(|route| route.account_id);
+    if routes
+        .iter()
+        .any(|route| Some(route.account_id) != selected_account_id)
+    {
+        return Err(CancelPaidSaleError::RefundRoutesInvalid);
+    }
+
     let mut routes_by_target = HashMap::with_capacity(routes.len());
     for route in routes {
         if routes_by_target.insert(route.target, route).is_some() {
