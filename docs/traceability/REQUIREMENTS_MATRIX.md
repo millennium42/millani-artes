@@ -890,3 +890,7 @@ SAL-020 | VERIFY local | E3 | Finalizador backend em SQLite file-backed: 4 unit�
 | Requisito | Contrato / cenário | Evidência atual e limites |
 |---|---|---|
 | MVP-10 / INV-FIN-006/007 | Uma falha deferred durante o COMMIT do consumidor real não persiste recibo, Entry ou qualquer audit_event. | O teste SQLite file-backed `rcv011_deferred_commit_failure_rolls_back_receipt_entry_and_events` injeta FK sintética inválida somente após o último audit_event; compara snapshots antes/depois de reabrir, schema v13, autocommit, integrity e foreign keys. GREEN 1/1; RED da mutação separando as transações falhou pela persistência parcial. Rust fmt/Clippy locked/debug/release/doctests passaram. P-REV final read-only nos 11 paths staged confirmou o índice INV-FIN-006 com RCV-011 e não encontrou P0/P1/P2/P3; o revisor não executou checks; CI remoto source/final exatos e nota pendentes. Não prova UI/IPC, SMK/E2E, rollback físico/power loss nem cobertura global. |
+
+## RET-012 — rastreabilidade do candidato
+
+A regra de cancelamento foi aprovada em 04/11/2026 e consta em BUSINESS_RULES/spec. O candidato `0e4d9ecb98cfe63d147f26231bd9556b83b33839`/tree `0ee7f92944c7ba2dd2dfb5e07852e8f8e89dad6c` tem execução local e SECURITY documentadas; P-REV rodada 1 não identificou P0/P1/P2. A reconciliação documental passou nos validadores locais; o recibo staged do candidato acompanha o tree correspondente no metadata do commit. P-REV final, CI remoto exato e nota released são gates da dependência, portanto RET-013 permanece bloqueado.
