@@ -206,3 +206,11 @@ P-REV independente read-only GPT-6 Luna max no commit 36ec6f2df237930e7d5a8975a0
 ## RET-012 — correção do achado documental P-REV R7
 
 No candidato `fd18000fa4cf6e8d4df648121711c4e377de7391`/tree `52676f082d1f03150f155ad40cd5f180cc95667d`, P-REV read-only GPT-6 Luna max encontrou P0/P1/P2/P3=0/0/1/0: faltava registrar no handoff o check append-only após a última entrada do log. Após acrescentar a entrada R7, `check-progress-log.ps1 -BaseRef HEAD -TargetRef INDEX` passou exit 0 e preservou 876759 bytes históricos, alvo INDEX; o resultado está no handoff após essa entrada. O check não prova as invariantes financeiras. O candidato atualizado aguarda novo P-REV, CI source/final-main exatos e nota released; RET-013 continua bloqueado.
+
+## RET-012 — liberação da regra de conta única
+
+RET-012 foi liberado E3 no SHA final-main `fca168b0c66e5747cdf13b0545985ca7951f5f1a`; P-REV R8 sem P0/P1/P2/P3 e CI source `41927424500`/final-main `41929514700` passaram 23/23 sem skips nos SHAs exatos. A nota `refs/notes/evidence` objeto `fa8f310bf79df9885d35faba0e3ade0de67c6ba3` preserva 198 mappings anteriores e adiciona RET-012 (199). O teste prova que as novas saídas do cancelamento usam a mesma conta escolhida e preservam reembolso histórico. Não prova rollback após escrita parcial, UI/IPC, E2E, smoke ou cobertura global.
+
+## RET-012 — status-sync documental
+
+O registro `done/E3/passes:true` remete à nota released no SHA `fca168b0c66e5747cdf13b0545985ca7951f5f1a`, que preserva 198 mappings e inclui RET-012 (199). O status-sync é documental, não altera as invariantes demonstradas. O candidato sync aguarda seus próprios gates; não libera RET-013 antes da integração deste registro.
