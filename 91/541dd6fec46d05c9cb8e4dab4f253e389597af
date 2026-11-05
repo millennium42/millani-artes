@@ -1,0 +1,141 @@
+{
+  "id": "DSH-004",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Projeção somente de leitura do total de saídas criadas hoje, usando a regra humana aprovada para Brasília UTC-3 fixo e janela semiaberta; considera movimentos atualmente exit com evento original movement_exit_create. Sem migration, dependência, escrita financeira, UI ou IPC.",
+  "source_sha": "95cb52aeefdce394987c61cc6992692791346445",
+  "final_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+  "tree_sha": "953945d3f2bb38368c8ace876e93554c11ff05f5",
+  "pull_request": {
+    "number": 66,
+    "url": "https://github.com/millennium42/millani-artes/pull/66",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42100755434,
+      "run_number": 475,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "95cb52aeefdce394987c61cc6992692791346445",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42100755434"
+    },
+    "job": {
+      "id": 127502586529,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_executable_verification": "success"
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42103078477,
+      "run_number": 476,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42103078477"
+    },
+    "job": {
+      "id": 127510680595,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_executable_verification": "success"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_tree": "953945d3f2bb38368c8ace876e93554c11ff05f5",
+    "base_sha": "75e2c0274854bf7c1f41bcdf63177dba0da8a2e1",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "review_history": "Revisão final do tree candidato exato após correções documentais, sem achados; o revisor não executou testes ou scanners."
+  },
+  "local_verification": {
+    "rust": {
+      "version": "1.99.0 / Windows MSVC",
+      "fmt": "passed",
+      "clippy_all_targets_d_warnings": "passed",
+      "debug_tests": "passed; 324 library tests, 7/8 binary tests (1 WebView2 ignored), 273 SQLite integration tests and 40 doctests",
+      "release_tests_custom_protocol": "passed; complete command exit 0"
+    },
+    "dashboard_tests": {
+      "application": "5/5 DSH-004 tests passed",
+      "sqlite_file_backed": "3/3 integration tests passed",
+      "focused_dashboard_suite": "15/15 passed",
+      "sqlite_entry_and_exit_suite": "6/6 passed after reopen and unchanged snapshot checks"
+    },
+    "frontend": {
+      "runtime": "Node 24.21.0 / npm 11.19.0",
+      "quality": "passed: format, lint, typecheck, tests",
+      "tests": "3 tests across 2 files",
+      "build": "passed",
+      "coverage": "frontend scaffold report validated; no feature or global coverage claim"
+    },
+    "security": {
+      "cargo_audit": "0.22.2; 422 dependencies; 0 vulnerabilities; 2 previously approved advisories RUSTSEC-2024-0370 and RUSTSEC-2024-0429",
+      "osv_scanner": "2.6.0; 542 packages; 3 covered by existing approvals; 0 outside approvals",
+      "npm_audit": "120 dependencies; 0 vulnerabilities",
+      "sast": "45 fixtures passed; frontend and PowerShell scope",
+      "fixtures": "Cargo 48/48; OSV 39/39; npm 40/40; Gitleaks 16/16",
+      "exceptions": "Existing Cargo/OSV approvals and lock hashes unchanged; expiry 2026-11-06; no renewal or suppression"
+    },
+    "documentation_validation": {
+      "work_items_and_evidence": "190 valid records; fixtures 72 and 25",
+      "project_map": "28 sources / 868 files",
+      "gitignore": "28 ignored / 4 preserved",
+      "tauri_plugin_fixtures": "37; CLI cases 2",
+      "frontend_selector": "20 cases",
+      "ci_audit_fixtures": "42 cases / 14 PowerShell",
+      "progress_log_fixtures": "26",
+      "append_only": "passed; 914253 historical bytes preserved against staged index"
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_tree": "953945d3f2bb38368c8ace876e93554c11ff05f5",
+      "staged_findings": 0,
+      "history_commits": 963,
+      "historical_findings": 0
+    },
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "Cargo/OSV approvals expire on 2026-11-06; they were not renewed or suppressed."
+  ],
+  "limitations": [
+    "No UI/IPC, real WebView2 launch, E2E/smoke, feature or global coverage, load testing, multi-process concurrency, DSH-010, or global financial-invariant closure is claimed.",
+    "Read-only database proof is limited to tested SQLite file-backed queries, reopen, query_only mode, and before/after snapshot."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "b2742926c4d37204f318788b7f911966b4656fde",
+    "notes_before": 209,
+    "notes_after": 210,
+    "preserved_mapping_set_sha256": "b0930fbccd4859097930a85e71bc5470dcf6865ecaa83dd3eed9193c927bc59c",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 209 prior mappings are preserved; only this DSH-004 release mapping was added."
+  },
+  "next": "Após confirmar a nota de release remotamente, sincronizar o recibo documental de DSH-004 se ainda houver campos de candidato; então prosseguir serialmente para DSH-005. B7 permanece fora do escopo."
+}
