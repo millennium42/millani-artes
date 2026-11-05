@@ -1,0 +1,72 @@
+{
+  "id": "DSH-001",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "DSH-001 status-sync correction: aligns roadmap, spec, work item, handoff, traceability matrices, and append-only progress log after the already released DSH-001 status-sync. Documentation only; no product code, migration, dependency, or business rule change.",
+  "source_sha": "34cbc6bc263aa7b089866c8109d82f7e0d25b3cf",
+  "final_sha": "88c22e1069d28866e53d9e318289b56a2551f3b1",
+  "tree_sha": "516eb8ca42189b6405f6e83cd459e6c75baca0f4",
+  "pull_request": {
+    "number": 61,
+    "url": "https://github.com/millennium42/millani-artes/pull/61",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "88c22e1069d28866e53d9e318289b56a2551f3b1"
+  },
+  "source_ci": {
+    "run": {"id": 41987276782, "workflow": "Documentation", "event": "pull_request", "run_attempt": 1, "head_sha": "34cbc6bc263aa7b089866c8109d82f7e0d25b3cf", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/41987276782"},
+    "job": {"id": 127110892988, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7, "skipped_scope": "frontend install/quality/coverage and pinned Rust/Tauri production build/executable checks; documentation-only selection"}
+  },
+  "final_ci": {
+    "run": {"id": 41987631066, "workflow": "Documentation", "event": "push", "run_attempt": 1, "head_sha": "88c22e1069d28866e53d9e318289b56a2551f3b1", "status": "completed", "conclusion": "success", "url": "https://github.com/millennium42/millani-artes/actions/runs/41987631066"},
+    "job": {"id": 127112071723, "name": "validate", "status": "completed", "conclusion": "success", "steps_total": 23, "steps_passed": 16, "steps_skipped": 7, "skipped_scope": "frontend install/quality/coverage and pinned Rust/Tauri production build/executable checks; documentation-only selection"}
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "34cbc6bc263aa7b089866c8109d82f7e0d25b3cf",
+    "candidate_tree": "516eb8ca42189b6405f6e83cd459e6c75baca0f4",
+    "mode": "read-only",
+    "findings": {"P0": 0, "P1": 0, "P2": 0, "P3": 0},
+    "checks_executed_by_reviewer": false,
+    "note": "Reviewed the exact correction tree against base e2f5929ecb445b95a44d72ac0df6f77702c0ff31; no blocking or advisory findings."
+  },
+  "local_verification": {
+    "documentation_validators": {
+      "project_map": "28 sources / 850 files",
+      "work_items": "72 fixtures / 187 items",
+      "evidence_states": "25 fixtures / 187 declarations",
+      "progress_log_fixtures": 26,
+      "append_only": "exit 0; 897707 historical bytes preserved",
+      "git_diff_check": "pass"
+    },
+    "security": {
+      "gitleaks_staged": {"version": "8.30.1", "tree": "516eb8ca42189b6405f6e83cd459e6c75baca0f4", "paths": 7, "reported_bytes_approx": 10067, "findings": 0},
+      "gitleaks_history": {"version": "8.30.1", "commits": 948, "findings": 0},
+      "gitleaks_fixtures": "16/16",
+      "osv_scanner": {"version": "2.6.0", "packages": 542, "findings_covered_by_approved_exceptions": 3, "unexcepted": 0, "fixtures": "39/39", "exception_expiry": "2026-11-06"},
+      "cargo_audit": {"version": "0.22.2", "dependencies": 422, "vulnerabilities": 0, "previously_approved_warnings": 2, "fixtures": "48/48", "exception_expiry": "2026-11-06", "database_last_commit": "965bf9ad083b58e6340d65829d85217b18be9290"},
+      "npm_audit": {"node": "24.21.0", "npm": "11.19.0", "dependencies": 120, "vulnerabilities": 0, "fixtures": "40/40", "ci_audit_fixtures": "42/42"},
+      "exceptions": "OSV/Cargo approval scopes and input hashes matched; no exception was changed, suppressed, or renewed. They expire 2026-11-06."
+    },
+    "status_sync": "Documentation-only. No Rust/product or TypeScript tests claimed for this correction; functional DSH-001 evidence remains in its prior released note.",
+    "local_model_or_routing_used": false
+  },
+  "notes_mapping": {
+    "notes_ref_before": "cb46fca3ce691d3c8afbef092cfae3763e052efc",
+    "notes_before": 204,
+    "notes_after": 205,
+    "preserved_mapping_set_sha256": "b0179a63c57b3b7fb6d912eeb8f54441743abddb032b44b85adbd99a809e8e4f",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 204 prior evidence mappings are preserved; this note adds only the DSH-001 status-sync correction for the exact final main SHA."
+  },
+  "limitations": [
+    "This status-sync correction adds no product behavior or new financial proof; DSH-001 functional evidence remains scoped to its prior note.",
+    "Source and final-main Documentation CI each passed 16/23 steps; seven frontend, coverage, Rust setup, and Tauri build/executable steps were skipped by the documentation-only selector.",
+    "No product Rust/TypeScript tests, UI/IPC, smoke, E2E, global coverage, or global invariant closure are claimed for this docs-only correction.",
+    "Approved OSV/Cargo exceptions expire 2026-11-06 and require a fresh validity check before a later item closure; no renewal was made."
+  ],
+  "next": "After verifying this note on refs/notes/evidence, start DSH-002 only after reconfirming current main, FIN-024 release note, dependencies, work item/spec/handoff, CI and repository state. B7 remains outside scope."
+}
