@@ -15,6 +15,10 @@ Cada pagamento inicial de uma venda tem seu próprio contexto Casa/Fábrica, esc
 
 - Vencimento mensal: quando o dia escolhido não existir, usar o último dia do mês; considerar o vencimento até o fim do dia no horário de Brasília. Decisão humana registrada em 19/10/2026, na resposta à pergunta de calendário durante REC-011.
 
+## Entradas do dia no dashboard — decisão humana de 05/11/2026
+
+Para DSH-003, “hoje” é o dia civil de Brasília com offset fixo UTC−3, do início desse dia inclusive ao início do dia seguinte exclusivo. Conta como entrada do dia um movimento atualmente classificado como entrada cujo evento original `movement_entry_create` ocorreu nessa janela. A data é a do evento original em UTC; edições de valor ou contexto não a alteram, e uma saída convertida em entrada por `movement_update` não conta como entrada criada no dia. Decisão humana recebida em 05/11/2026 nesta conversa: “Continue com o recomendado”, em resposta à recomendação completa de DSH-003; horário exato não registrado. O offset é fixo e não aplica regras históricas de IANA/DST.
+
 
 ## Preço sugerido de produto — decisão humana de 19/10/2026
 O preço sugerido é informado em centavos inteiros e pode ser R$ 0,00. Valores negativos são rejeitados. Esta validação não altera o produto nem depende de seu nome ou estado ativo. Não foi definido limite superior adicional ao tipo i64. Registro autorizado na resposta humana da PRD-003: “Aceitar zero; rejeitar negativos”. Persistência, criação, edição e desativação seguem seus work items próprios.

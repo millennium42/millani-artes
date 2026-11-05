@@ -91,6 +91,8 @@ mod transfer_rollback;
 
 mod balance_calculation;
 
+mod dashboard_today_entries;
+
 mod movement_reading;
 
 mod context_result;

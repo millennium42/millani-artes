@@ -23,6 +23,7 @@ pub mod application {
     pub mod list_account_balances;
     pub mod list_accounts;
     pub mod list_movements;
+    pub mod list_today_entries;
     pub mod mark_obligation_overdue;
     pub mod pay_recurrence;
     pub mod record_receivable_receipt;
