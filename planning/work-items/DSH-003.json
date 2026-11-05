@@ -1,0 +1,29 @@
+{
+  "id": "DSH-003",
+  "title": "Projetar o total de entradas criadas hoje",
+  "specPath": "planning/specs/DSH-003.md",
+  "status": "done",
+  "dependencies": [
+    "FIN-017"
+  ],
+  "acceptanceCriteria": [
+    "Aplicar dia civil de Brasília com UTC−3 fixo e janela semiaberta definida pela decisão humana de 05/11/2026.",
+    "Somar em centavos somente movimentos atualmente entry com exatamente um evento movement_entry_create na janela; ausência exclui e duplicidade falha opacamente.",
+    "Preservar a data original em edições; excluir saídas convertidas em entradas por movement_update.",
+    "Provar janela e overflow no domínio, clock/store no caso de uso e leitura SQLite file-backed sem mutação.",
+    "Fechar gates locais, SECURITY, revisão P-REV, CI source/final-main exatos e nota released antes de liberar DSH-004."
+  ],
+  "checks": [
+    "rtk proxy C:\\Users\\milla\\.cargo\\bin\\cargo.exe fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy C:\\Users\\milla\\.cargo\\bin\\cargo.exe clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",
+    "rtk proxy C:\\Users\\milla\\.cargo\\bin\\cargo.exe test --locked --manifest-path src-tauri/Cargo.toml",
+    "rtk proxy C:\\Users\\milla\\.cargo\\bin\\cargo.exe test --release --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "Cargo Audit/OSV/npm audit, fixtures Cargo/OSV/npm/Gitleaks, SAST, npm quality/build, document validators and append-only verification; exact runtime/database scope recorded in handoff and evidence note.",
+    "Gitleaks staged final-tree, P-REV read-only, CI source/final-main exact SHA and refs/notes/evidence released remain release gates; do not advance DSH-004 before final note."
+  ],
+  "agentPlan": "P-INT: único escritor e executor. P-REV: revisão final read-only GPT-6 Luna max, sem modelo local ou roteamento local; nenhuma escrita paralela. Reserva: DSH-003 / worktree codex/dsh-003-today-entry / base origin/main 768752749880c02b7cca5e8984b3b820f0f4159b / produto e artefatos rastreados do item / liberar DSH-004 só após CI final e nota released.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true após critérios funcionais, validadores locais e SECURITY. Regra humana E4 de 05/11/2026 registrada em docs/product/BUSINESS_RULES.md. Gitleaks staged 8.30.1 passou nos trees b6d72daf0ade52edc5f84273ba04fbd8e90816c4 (~39710 bytes) e 859d2a74fdf8f3ebb5fb75472f818d31ac768d30 (~41951 bytes), zero leaks; histórico 956 commits/0; append-only preservou 910293 bytes no índice. P-REV GPT-6 Luna max read-only nos mesmos trees contra base 768752749880c02b7cca5e8984b3b820f0f4159b: P0/P1/P2/P3=0/0/0/0; revisão E2 não executou checks. Esta atualização de recibos cria outro tree; repetir validadores append-only/Gitleaks staged e revisão final nele. Scanners Cargo/OSV/npm/SAST que reportaram base SHA 768752749880c02b7cca5e8984b3b820f0f4159b serão repetidos no commit candidato. Não liberado: CI source/final-main exatos e nota released continuam pendentes. OSV/Cargo expiram em 2026-11-06 sem renovação/supressão. Limites no handoff; B7 fora do escopo."
+}

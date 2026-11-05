@@ -109,6 +109,39 @@ pub fn total_balance_cents(accounts: &[Account], movements: &[Movement]) -> Resu
     i64::try_from(total).map_err(|_| DomainError::InvalidInput)
 }
 
+/// Return the fixed UTC window for the current civil day in Brasília (UTC−3).
+pub fn brasilia_day_window_ms(now_ms: i64) -> Result<(i64, i64)> {
+    const DAY_MS: i128 = 86_400_000;
+    const BRASILIA_OFFSET_MS: i128 = 10_800_000;
+
+    if now_ms < 0 {
+        return Err(DomainError::InvalidInput);
+    }
+
+    let local_ms = i128::from(now_ms) - BRASILIA_OFFSET_MS;
+    let start_ms = local_ms.div_euclid(DAY_MS) * DAY_MS + BRASILIA_OFFSET_MS;
+    let end_ms = start_ms + DAY_MS;
+
+    Ok((
+        i64::try_from(start_ms).map_err(|_| DomainError::InvalidInput)?,
+        i64::try_from(end_ms).map_err(|_| DomainError::InvalidInput)?,
+    ))
+}
+
+/// Sum positive entry amounts in cents and reject totals outside `i64`.
+pub fn sum_entry_amounts_cents(amounts: &[i64]) -> Result<i64> {
+    let total = amounts.iter().try_fold(0_i128, |total, amount| {
+        if *amount <= 0 {
+            return Err(DomainError::InvalidInput);
+        }
+        total
+            .checked_add(i128::from(*amount))
+            .ok_or(DomainError::InvalidInput)
+    })?;
+
+    i64::try_from(total).map_err(|_| DomainError::InvalidInput)
+}
+
 /// Category identity and active-state metadata.
 ///
 /// ```compile_fail
@@ -1015,3 +1048,6 @@ mod receivable_tests;
 
 #[cfg(test)]
 mod sale_return_tests;
+
+#[cfg(test)]
+mod dashboard_today_tests;

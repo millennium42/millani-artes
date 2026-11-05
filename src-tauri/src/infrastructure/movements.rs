@@ -3,6 +3,7 @@ use crate::application::create_exit::ExitCreationStore;
 use crate::application::create_transfer::TransferCreationStore;
 use crate::application::edit_movement::MovementEditingStore;
 use crate::application::list_movements::MovementReadStore;
+use crate::application::list_today_entries::TodayEntryReadStore;
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{Context, Movement, MovementKind};
 use rusqlite::{Connection, Transaction};
@@ -71,6 +72,22 @@ impl fmt::Display for MovementReadError {
 }
 
 impl std::error::Error for MovementReadError {}
+
+pub struct TodayEntryReadError;
+
+impl fmt::Debug for TodayEntryReadError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("TodayEntryReadError")
+    }
+}
+
+impl fmt::Display for TodayEntryReadError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str("today's entry history could not be read")
+    }
+}
+
+impl std::error::Error for TodayEntryReadError {}
 
 pub struct MovementEditStoreError;
 
@@ -334,6 +351,39 @@ impl MovementReadStore for AdapterSqliteMovementStore {
             .map_err(|_| MovementReadError)?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|_| MovementReadError)
+    }
+}
+
+impl TodayEntryReadStore for AdapterSqliteMovementStore {
+    type Error = TodayEntryReadError;
+
+    fn read_entry_amounts_created_between(
+        &self,
+        start_ms: i64,
+        end_ms: i64,
+    ) -> Result<Vec<i64>, Self::Error> {
+        if start_ms >= end_ms {
+            return Err(TodayEntryReadError);
+        }
+
+        let connection = self.connection.as_ref().ok_or(TodayEntryReadError)?;
+        let mut statement = connection
+            .prepare(
+                "SELECT m.amount_cents, COUNT(e.event_id), MIN(e.occurred_at_ms) FROM main.movements AS m JOIN main.audit_event AS e ON e.entity='movement' AND e.operation='movement_entry_create' AND e.entity_id=m.id WHERE m.kind='entry' GROUP BY m.id HAVING COUNT(e.event_id)<>1 OR (MIN(e.occurred_at_ms)>=?1 AND MIN(e.occurred_at_ms)<?2) ORDER BY m.id",
+            )
+            .map_err(|_| TodayEntryReadError)?;
+        let rows = statement
+            .query_map(rusqlite::params![start_ms, end_ms], |row| {
+                let amount_cents: i64 = row.get(0)?;
+                let event_count: i64 = row.get(1)?;
+                if event_count != 1 {
+                    return Err(rusqlite::Error::InvalidQuery);
+                }
+                Ok(amount_cents)
+            })
+            .map_err(|_| TodayEntryReadError)?;
+        rows.collect::<rusqlite::Result<Vec<i64>>>()
+            .map_err(|_| TodayEntryReadError)
     }
 }
 
