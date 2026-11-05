@@ -1,0 +1,138 @@
+{
+  "id": "DSH-002",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "DSH-002 status-sync: aligns spec, work item, roadmap, invariant and requirements matrices, handoff, and append-only progress log with the previously released functional evidence. Documentation only; no product source, migration, dependency, or business rule change.",
+  "source_sha": "9c0fd59fae376bf4f7d2cd454baaa160165695e7",
+  "final_sha": "768752749880c02b7cca5e8984b3b820f0f4159b",
+  "tree_sha": "4983931682bf5911708a2ae399e736977a520c2a",
+  "pull_request": {
+    "number": 63,
+    "url": "https://github.com/millennium42/millani-artes/pull/63",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "768752749880c02b7cca5e8984b3b820f0f4159b"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42024438317,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "9c0fd59fae376bf4f7d2cd454baaa160165695e7",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42024438317"
+    },
+    "job": {
+      "id": 127234986463,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Documentation-only selection skipped locked frontend install, frontend quality, coverage validation/upload, pinned Rust setup, Tauri production build, and executable verification."
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42024994313,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "768752749880c02b7cca5e8984b3b820f0f4159b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42024994313"
+    },
+    "job": {
+      "id": 127236851297,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Documentation-only selection skipped locked frontend install, frontend quality, coverage validation/upload, pinned Rust setup, Tauri production build, and executable verification."
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_tree": "4983931682bf5911708a2ae399e736977a520c2a",
+    "base_sha": "4f2b1a0e14b8f0c01d8d824a223c863b4d63ef5f",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false
+  },
+  "local_verification": {
+    "documentation_validators": {
+      "project_map": "28 sources / 855 files",
+      "work_items_and_evidence": "188 records; 72 work-item fixtures / 25 evidence-state fixtures",
+      "append_only_progress": "26 fixtures; 905614 historical bytes preserved",
+      "gitignore": "28 ignored artifacts / 4 preserved source and lock files",
+      "frontend_selection": "20 fixtures",
+      "tauri_plugins": "37 fixtures / 2 CLI cases / 0 active plugins",
+      "diff_check": "pass"
+    },
+    "status_sync_security": {
+      "gitleaks_staged": {
+        "version": "8.30.1",
+        "tree": "4983931682bf5911708a2ae399e736977a520c2a",
+        "bytes_scanned_approx": 30339,
+        "findings": 0,
+        "exit": 0,
+        "stdout_bytes": 0,
+        "stderr_bytes": 108
+      },
+      "npm_audit": {
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "dependencies": 120,
+        "vulnerabilities": 0,
+        "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19"
+      },
+      "osv_scanner": {
+        "version": "2.6.0",
+        "packages": 542,
+        "findings_covered_by_approved_exceptions": 3,
+        "unexcepted": 0,
+        "exception_expiry": "2026-11-06"
+      },
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "previously_approved_warnings": 2,
+        "advisory_database_commit": "26fd2d43f7280a1fb925a3743ec463017afe7119"
+      },
+      "exception_state": "Existing OSV/Cargo approvals were unchanged, checked in source/final CI, not renewed or suppressed, and expire 2026-11-06."
+    },
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "Documentation-only CI skipped seven frontend, coverage, Rust setup, and Tauri build/executable steps.",
+    "GitHub runner emitted a Node.js 20 deprecation warning for the pinned checkout action; all executed steps passed.",
+    "Existing OSV/Cargo approvals expire 2026-11-06 and require revalidation before a later item closure; none were renewed."
+  ],
+  "limitations": [
+    "This status-sync adds no product behavior or new financial proof; functional evidence remains in the released DSH-002 note on 4f2b1a0e14b8f0c01d8d824a223c863b4d63ef5f.",
+    "Separate account and movement reads do not guarantee a shared snapshot under concurrent writes.",
+    "No UI/IPC, E2E, global coverage, DSH-010 no-write proof, or global INV-FIN-002 closure is claimed."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "f1d901c01e7421500e8fb7546a80fe22aacbd10d",
+    "notes_before": 206,
+    "notes_after": 207,
+    "preserved_mapping_set_sha256": "c5a1e64c8af38e8519c328b096223c310d22860c809169448dc60581e6a1e3e9",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 206 prior mappings are preserved; only this DSH-002 status-sync mapping was added."
+  },
+  "next": "After verifying this status-sync note remotely, proceed serially to DSH-003. B7 remains outside scope."
+}
