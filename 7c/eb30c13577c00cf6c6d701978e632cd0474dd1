@@ -1,0 +1,125 @@
+{
+  "id": "DSH-003",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Projeção somente de leitura do total de entradas criadas hoje: dia civil Brasília UTC-3 fixo e janela semiaberta; movimentos atualmente entry com exatamente um evento original movement_entry_create; edição preserva a data; saídas reclassificadas ficam excluídas. Sem migration, dependência, mudança de ledger, UI ou IPC.",
+  "source_sha": "1942c04a2230828560f8268f2137cf472e6752a4",
+  "final_sha": "7ceb30c13577c00cf6c6d701978e632cd0474dd1",
+  "tree_sha": "e5a1cd3ef24fbe601a3a64ba9adf1f4c62c386d7",
+  "pull_request": {
+    "number": 64,
+    "url": "https://github.com/millennium42/millani-artes/pull/64",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "7ceb30c13577c00cf6c6d701978e632cd0474dd1"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42041805152,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "1942c04a2230828560f8268f2137cf472e6752a4",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42041805152"
+    },
+    "job": {
+      "id": 127294233759,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42044358344,
+      "run_number": 472,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "7ceb30c13577c00cf6c6d701978e632cd0474dd1",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42044358344"
+    },
+    "job": {
+      "id": 127303172383,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_executable_verification": "success"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_tree": "e5a1cd3ef24fbe601a3a64ba9adf1f4c62c386d7",
+    "base_sha": "768752749880c02b7cca5e8984b3b820f0f4159b",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false
+  },
+  "local_verification": {
+    "rust": {
+      "fmt": "passed",
+      "clippy_all_targets_d_warnings": "passed",
+      "debug_tests": "passed; 319 library tests and 40 doctests reported",
+      "release_tests_custom_protocol": "passed"
+    },
+    "dashboard_tests": {
+      "domain": "5/5 passed",
+      "application": "5/5 passed",
+      "sqlite_file_backed": "3/3 passed; reopen, query-only and before/after snapshot checked"
+    },
+    "frontend": {
+      "runtime": "Node 24.21.0 / npm 11.19.0",
+      "quality": "passed; format, lint, typecheck and 3 tests",
+      "coverage": "100% for the measured existing 5 statements, 2 branches, 1 function and 4 lines in 2 frontend files only",
+      "build": "passed; 16 modules"
+    },
+    "security": {
+      "cargo_audit": "0.22.2; 422 dependencies; 0 vulnerabilities; 2 previously approved warnings",
+      "osv_scanner": "2.6.0; 542 packages; 3 findings covered by existing approvals; 0 unexcepted",
+      "npm_audit": "120 dependencies; 0 vulnerabilities",
+      "sast": "45/45 fixtures passed; scope frontend and PowerShell, not Rust backend SQL",
+      "fixtures": "Cargo 48/48; OSV 39/39; npm 40/40; Gitleaks 16/16; CI audits 42/42; project map 28/862; work items/evidence 189 valid; append-only history preserved"
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_tree": "e5a1cd3ef24fbe601a3a64ba9adf1f4c62c386d7",
+      "findings": 0,
+      "history_commits": 957,
+      "historical_findings": 0
+    },
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "Previously approved OSV/Cargo exceptions were not renewed or suppressed and expire 2026-11-06; revalidate before any later closure.",
+    "GitHub emitted a Node.js 20 deprecation warning for the pinned checkout action; all source and final-main CI steps passed."
+  ],
+  "limitations": [
+    "No UI/IPC, real WebView2 launch, E2E, global coverage, high-volume performance, multi-process concurrency, or DSH-010 no-write guarantee is claimed.",
+    "UTC-3 is fixed; historical IANA/DST behavior is outside this rule."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "d526c14580b894caccb1b4bcd51d1a002aaf9417",
+    "notes_before": 207,
+    "notes_after": 208,
+    "preserved_mapping_set_sha256": "242b4fbf1e9330f1ba368829ad4ad60dc67da45e2b935bda5fce9d4209d1fc3e",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 207 prior mappings are preserved; only this DSH-003 release mapping was added."
+  },
+  "next": "After verifying this release note remotely, synchronize the documentation receipt for DSH-003, then proceed serially to DSH-004. B7 remains outside scope."
+}
