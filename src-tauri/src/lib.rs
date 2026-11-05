@@ -20,6 +20,7 @@ pub mod application {
     pub mod finalize_sale;
     pub mod generate_fixed_obligation;
     pub mod generate_variable_obligation;
+    pub mod list_account_balances;
     pub mod list_accounts;
     pub mod list_movements;
     pub mod mark_obligation_overdue;

@@ -1,7 +1,8 @@
 use super::exit_persistence::{assert_health, setup, FixedClock, FixedIds};
 use millani_artes::application::{
     create_entry::create_entry, create_exit::create_exit, create_transfer::create_transfer,
-    list_accounts::list_accounts, list_movements::list_movements,
+    list_account_balances::list_account_balances, list_accounts::list_accounts,
+    list_movements::list_movements,
 };
 use millani_artes::database::open_database;
 use millani_artes::domain::{Context, Movement, MovementKind};
@@ -112,6 +113,63 @@ fn persisted_movements_and_real_account_reader_feed_account_balance() {
         millani_artes::domain::total_balance_cents(&accounts, &movements),
         Ok(6490)
     );
+    let before_query = (
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.accounts", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.movements", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.audit_event", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+    );
+    let account_reader_connection = open_database(&path).unwrap();
+    account_reader_connection
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let movement_reader_connection = open_database(&path).unwrap();
+    movement_reader_connection
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let balances = list_account_balances(
+        &AdapterSqliteAccountStore::new(account_reader_connection),
+        &AdapterSqliteMovementStore::new(movement_reader_connection),
+    )
+    .unwrap();
+    assert_eq!(balances.len(), 2);
+    for balance in balances {
+        if balance.account.id == source {
+            assert_eq!(balance.balance_cents, -1179);
+        } else {
+            assert_eq!(balance.account.id, destination);
+            assert_eq!(balance.balance_cents, 7669);
+        }
+    }
+    let after_query = (
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.accounts", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.movements", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+        reopened
+            .query_row("SELECT COUNT(*) FROM main.audit_event", [], |r| {
+                r.get::<_, i64>(0)
+            })
+            .unwrap(),
+    );
+    assert_eq!(after_query, before_query);
     let context_store = AdapterSqliteMovementStore::new(open_database(&path).unwrap());
     assert_eq!(
         millani_artes::application::calculate_context_result::calculate_context_result(
