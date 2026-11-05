@@ -1,0 +1,135 @@
+{
+  "id": "DSH-004",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Status-sync documental do DSH-004. Implementacao funcional ja liberada no SHA 91541dd6fec46d05c9cb8e4dab4f253e389597af; este recibo registra o fechamento documental no SHA final da main sem alterar comportamento de produto.",
+  "source_sha": "3c63ddc1c6cd63b0c24005f921f987ffb25673f7",
+  "final_sha": "7cb7a7c7b365424dd923bf3021546879763deb36",
+  "tree_sha": "f08faa7081573171010c625d345128d3f04421eb",
+  "pull_request": {
+    "number": 67,
+    "url": "https://github.com/millennium42/millani-artes/pull/67",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "7cb7a7c7b365424dd923bf3021546879763deb36"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42111367970,
+      "run_number": 477,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "3c63ddc1c6cd63b0c24005f921f987ffb25673f7",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42111367970"
+    },
+    "job": {
+      "id": 127539489742,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies, Check frontend quality, Validate coverage reports, Upload frontend coverage, Prepare pinned Rust, Build Tauri production, Verify Tauri executable."
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42111866617,
+      "run_number": 478,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "7cb7a7c7b365424dd923bf3021546879763deb36",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42111866617"
+    },
+    "job": {
+      "id": 127541200653,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies, Check frontend quality, Validate coverage reports, Upload frontend coverage, Prepare pinned Rust, Build Tauri production, Verify Tauri executable."
+    }
+  },
+  "functional_release": {
+    "source_sha": "95cb52aeefdce394987c61cc6992692791346445",
+    "final_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+    "tree_sha": "953945d3f2bb38368c8ace876e93554c11ff05f5",
+    "pull_request": 66,
+    "source_ci": "42100755434 success, 23/23, zero skips",
+    "final_ci": "42103078477 success, 23/23, zero skips; Tauri executable verification passed",
+    "evidence_note_blob": "782450773655fee54f06b3f9e858915c6aa2d83a"
+  },
+  "review_history": [
+    {
+      "revision": "R1",
+      "candidate_tree": "6831983e41ae6df00d8ca813fc9d34bf43c13c48",
+      "base_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+      "findings": {"P0": 0, "P1": 0, "P2": 1, "P3": 1},
+      "disposition": "Corrigido em R2",
+      "details": "P2: separar a confirmacao local da validade/hash das excecoes Cargo/OSV dos passos de auditoria no CI. P3: datar o estado historico da linha DSH-003 no roadmap."
+    },
+    {
+      "revision": "R2",
+      "candidate_tree": "50cae5e546a2f42d3d17e726895f25469661cda9",
+      "base_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+      "findings": {"P0": 0, "P1": 0, "P2": 0, "P3": 1},
+      "disposition": "Corrigido no candidato final",
+      "details": "P3: esclarecer que o status-sync documental DSH-003 ainda estava pendente naquele ponto historico antes de DSH-004."
+    },
+    {
+      "revision": "final",
+      "candidate_tree": "f08faa7081573171010c625d345128d3f04421eb",
+      "base_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+      "reviewed_revision_tree": "50cae5e546a2f42d3d17e726895f25469661cda9",
+      "findings": {"P0": 0, "P1": 0, "P2": 0, "P3": 0},
+      "mode": "read-only",
+      "model": "GPT-6 Luna max",
+      "reviewer_checks_run": false
+    }
+  ],
+  "local_checks": {
+    "scope": "Documentacao-only; nenhuma alteracao de codigo, schema, dependencia ou produto.",
+    "documentation_validation": {
+      "work_items_and_evidence": "190 registros validos; fixtures 72 e 25",
+      "project_map": "28 fontes / 868 arquivos",
+      "gitignore": "28 ignorados / 4 fontes e lockfiles preservados",
+      "tauri_plugin_fixtures": "37; casos CLI 2",
+      "frontend_selector": "20 casos",
+      "ci_audit_fixtures": "42 casos / 14 PowerShell",
+      "progress_log_fixtures": "26",
+      "append_only": "passou; 917291 bytes historicos preservados contra o indice staged"
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_tree": "f08faa7081573171010c625d345128d3f04421eb",
+      "staged_findings": 0,
+      "history_base_sha": "91541dd6fec46d05c9cb8e4dab4f253e389597af",
+      "history_commits": 965,
+      "historical_findings": 0
+    },
+    "functional_product_tests": "Nao repetidos nesta sincronizacao documental; gates funcionais constam no recibo da liberacao funcional acima."
+  },
+  "limitations": [
+    "Este status-sync documental nao amplia a prova funcional de DSH-004.",
+    "CI source e final-main ignoraram apenas instalacao/qualidade/coverage frontend, preparacao Rust pinada, build Tauri e verificacao do executavel, conforme escopo documental."
+  ],
+  "security_exceptions": "Excecoes Cargo/OSV existentes e hashes dos locks preservados, sem renovacao ou supressao; validade confirmada localmente ate 2026-11-06. Os passos CI executaram auditorias de dependencias, sem substituir essa verificacao local.",
+  "notes_mapping": {
+    "notes_ref_before": "68b0862bfbc4311ac74dc94a53bcaa0defa9b8ee",
+    "notes_before": 210,
+    "notes_after": 211,
+    "preserved_mapping_set_sha256": "27051c705c67d3cdf7b9902a8dba6e3b28bc024b93a77e380a5e66339e994d93",
+    "hash_method": "SHA-256 sobre linhas git notes list em ordem lexica, unidas por LF sem LF final",
+    "preserved": "Todos os 210 mappings anteriores preservados; somente o recibo DSH-004 deste status-sync foi adicionado."
+  },
+  "next": "Confirmar esta nota remotamente; DSH-004 fica liberado e DSH-005 pode iniciar em seguida. B7 permanece fora do escopo."
+}
