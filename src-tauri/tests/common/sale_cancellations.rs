@@ -1,18 +1,23 @@
 use super::TempDirectory;
 use millani_artes::application::add_product_item::read_sale;
 use millani_artes::application::cancel_paid_sale::{
-    cancel_paid_sale, preview_sale_cancellation, SaleCancellationPreview,
+    cancel_paid_sale, preview_sale_cancellation, CancelPaidSaleError, SaleCancellationPreview,
     SaleCancellationRefundRoute, SaleCancellationRefundTarget,
 };
+use millani_artes::application::list_accounts::list_accounts;
+use millani_artes::application::list_movements::list_movements;
 use millani_artes::application::record_sale_refund::record_sale_refund;
 use millani_artes::database::*;
 use millani_artes::domain::ports::{Clock, UuidGenerator};
 use millani_artes::domain::{Context, SaleStatus};
+use millani_artes::infrastructure::accounts::AdapterSqliteAccountStore;
+use millani_artes::infrastructure::movements::AdapterSqliteMovementStore;
 use millani_artes::infrastructure::sale_returns::{
     AdapterSqliteSaleCancellationStore, AdapterSqliteSaleRefundStore,
 };
 use millani_artes::infrastructure::sales::AdapterSqliteSaleStore;
-use rusqlite::{params, Connection};
+use rusqlite::{params, types::Value, Connection};
+use std::error::Error;
 use std::path::{Path, PathBuf};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
@@ -144,6 +149,65 @@ fn routes_for(
             account_id,
             context: Context::Home,
         })
+        .collect()
+}
+
+fn ret013_rows(connection: &Connection, sql: &str) -> Vec<Vec<Value>> {
+    let mut statement = connection.prepare(sql).unwrap();
+    let columns = statement.column_count();
+    statement
+        .query_map([], |row| {
+            (0..columns)
+                .map(|column| row.get(column))
+                .collect::<rusqlite::Result<Vec<_>>>()
+        })
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap()
+}
+
+fn ret013_snapshot(connection: &Connection) -> Vec<Vec<Vec<Value>>> {
+    [
+        "accounts",
+        "sales",
+        "sale_items",
+        "movements",
+        "receivables",
+        "receipts",
+        "sale_return_items",
+        "sale_return_refunds",
+        "sale_cancellations",
+        "audit_event",
+        "schema_migration",
+    ]
+    .into_iter()
+    .map(|table| {
+        ret013_rows(
+            connection,
+            &format!("SELECT * FROM main.{table} ORDER BY 1"),
+        )
+    })
+    .collect()
+}
+
+fn ret013_assert_healthy(connection: &Connection) {
+    assert!(connection.is_autocommit());
+    assert_eq!(schema_version(connection, 17).unwrap(), 17);
+    assert_eq!(
+        ret013_rows(connection, "PRAGMA main.integrity_check"),
+        vec![vec![Value::Text("ok".into())]]
+    );
+    assert!(ret013_rows(connection, "PRAGMA main.foreign_key_check").is_empty());
+}
+
+fn ret013_balances(path: &Path) -> Vec<i64> {
+    let account_store = AdapterSqliteAccountStore::new(open_database(path).unwrap());
+    let accounts = list_accounts(&account_store).unwrap();
+    let movement_store = AdapterSqliteMovementStore::new(open_database(path).unwrap());
+    let movements = list_movements(&movement_store).unwrap();
+    accounts
+        .iter()
+        .map(|account| account.balance_cents(&movements).unwrap())
         .collect()
 }
 
@@ -645,4 +709,63 @@ fn ret012_cancellation_is_immutable_and_blocks_future_financial_records() {
             .unwrap(),
         3
     );
+}
+
+#[test]
+fn ret013_cancel_paid_sale_rolls_back_after_refund_movement_write() {
+    let (_directory, path) = setup_paid_cash_sale("ret013-rollback.sqlite");
+    let mut preview_store = AdapterSqliteSaleCancellationStore::new(open_database(&path).unwrap());
+    let preview = preview_sale_cancellation(SALE, &mut preview_store).unwrap();
+    let routes = routes_for(&preview, ACCOUNT_ORIGINAL);
+    drop(preview_store);
+
+    let connection = open_database(&path).unwrap();
+    connection
+        .execute_batch(
+            "CREATE TRIGGER main.ret013_fail_refund_link
+             BEFORE INSERT ON main.sale_return_refunds
+             WHEN EXISTS (
+                 SELECT 1 FROM main.movements
+                 WHERE id=NEW.movement_id AND kind='exit'
+             )
+             BEGIN SELECT RAISE(ABORT,'ret013 synthetic fault'); END;",
+        )
+        .unwrap();
+    drop(connection);
+
+    let observer = open_database(&path).unwrap();
+    ret013_assert_healthy(&observer);
+    let baseline = ret013_snapshot(&observer);
+    drop(observer);
+    let baseline_balances = ret013_balances(&path);
+
+    let connection = open_database(&path).unwrap();
+    connection
+        .pragma_update(None, "defer_foreign_keys", true)
+        .unwrap();
+    assert_eq!(
+        connection
+            .pragma_query_value(None, "defer_foreign_keys", |row| row.get::<_, i64>(0))
+            .unwrap(),
+        1
+    );
+    let mut store = AdapterSqliteSaleCancellationStore::new(connection);
+    // StoreFailed intentionally hides SQLite diagnostics, so the trigger predicate guards the fault point.
+    let error = cancel_paid_sale(preview, routes, &mut Ids(0x41), &FixedClock, &mut store)
+        .expect_err("the injected refund-link failure must abort cancellation");
+    assert_eq!(error, CancelPaidSaleError::StoreFailed);
+    assert_eq!(error.to_string(), "sale cancellation could not be stored");
+    assert_eq!(format!("{error:?}"), "StoreFailed");
+    assert!(error.source().is_none());
+    drop(store);
+
+    let reopened = open_database(&path).unwrap();
+    ret013_assert_healthy(&reopened);
+    assert_eq!(ret013_snapshot(&reopened), baseline);
+    drop(reopened);
+    assert_eq!(ret013_balances(&path), baseline_balances);
+
+    let mut sales = AdapterSqliteSaleStore::new(open_database(&path).unwrap());
+    let sale = read_sale(&mut sales, SALE).unwrap().unwrap();
+    assert!(matches!(sale.status, SaleStatus::Finalized));
 }
