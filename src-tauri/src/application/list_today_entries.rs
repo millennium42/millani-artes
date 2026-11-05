@@ -1,5 +1,5 @@
 use crate::domain::ports::Clock;
-use crate::domain::{brasilia_day_window_ms, sum_entry_amounts_cents};
+use crate::domain::{brasilia_day_window_ms, sum_positive_movement_amounts_cents};
 use std::time::UNIX_EPOCH;
 
 #[derive(Debug)]
@@ -44,7 +44,7 @@ pub fn list_today_entry_cents<C: Clock, S: TodayEntryReadStore>(
         .read_entry_amounts_created_between(start_ms, end_ms)
         .map_err(|_| ListTodayEntriesError)?;
 
-    sum_entry_amounts_cents(&amounts).map_err(|_| ListTodayEntriesError)
+    sum_positive_movement_amounts_cents(&amounts).map_err(|_| ListTodayEntriesError)
 }
 
 #[cfg(test)]

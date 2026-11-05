@@ -1,4 +1,4 @@
-use super::{brasilia_day_window_ms, sum_entry_amounts_cents};
+use super::{brasilia_day_window_ms, sum_positive_movement_amounts_cents};
 
 #[test]
 fn fixed_brasilia_day_uses_inclusive_start_and_exclusive_end() {
@@ -45,15 +45,21 @@ fn fixed_brasilia_window_rejects_negative_or_unrepresentable_instants() {
 }
 
 #[test]
-fn entry_sum_accepts_empty_and_positive_cents_without_overflow() {
-    assert_eq!(sum_entry_amounts_cents(&[]).unwrap(), 0);
-    assert_eq!(sum_entry_amounts_cents(&[125, 300]).unwrap(), 425);
-    assert_eq!(sum_entry_amounts_cents(&[i64::MAX]).unwrap(), i64::MAX);
+fn movement_sum_accepts_empty_and_positive_cents_without_overflow() {
+    assert_eq!(sum_positive_movement_amounts_cents(&[]).unwrap(), 0);
+    assert_eq!(
+        sum_positive_movement_amounts_cents(&[125, 300]).unwrap(),
+        425
+    );
+    assert_eq!(
+        sum_positive_movement_amounts_cents(&[i64::MAX]).unwrap(),
+        i64::MAX
+    );
 }
 
 #[test]
-fn entry_sum_rejects_nonpositive_values_and_i64_overflow() {
+fn movement_sum_rejects_nonpositive_values_and_i64_overflow() {
     for amounts in [&[0][..], &[-1][..], &[i64::MAX, 1][..]] {
-        assert!(sum_entry_amounts_cents(amounts).is_err());
+        assert!(sum_positive_movement_amounts_cents(amounts).is_err());
     }
 }

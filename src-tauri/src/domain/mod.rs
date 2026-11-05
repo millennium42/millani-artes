@@ -128,8 +128,8 @@ pub fn brasilia_day_window_ms(now_ms: i64) -> Result<(i64, i64)> {
     ))
 }
 
-/// Sum positive entry amounts in cents and reject totals outside `i64`.
-pub fn sum_entry_amounts_cents(amounts: &[i64]) -> Result<i64> {
+/// Sum positive movement amounts in cents and reject totals outside `i64`.
+pub fn sum_positive_movement_amounts_cents(amounts: &[i64]) -> Result<i64> {
     let total = amounts.iter().try_fold(0_i128, |total, amount| {
         if *amount <= 0 {
             return Err(DomainError::InvalidInput);

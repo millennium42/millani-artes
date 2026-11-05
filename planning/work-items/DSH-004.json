@@ -1,0 +1,30 @@
+{
+  "id": "DSH-004",
+  "title": "Projetar o total de saídas criadas hoje",
+  "specPath": "planning/specs/DSH-004.md",
+  "status": "done",
+  "dependencies": [
+    "DSH-003",
+    "FIN-018"
+  ],
+  "acceptanceCriteria": [
+    "Aplicar a definição humana de hoje já aprovada para DSH-003: Brasília UTC−3 fixo e janela semiaberta.",
+    "Somar em centavos apenas movimentos atualmente exit com um evento original movement_exit_create na janela; evento ausente exclui e duplicidade falha opacamente.",
+    "Preservar a data original em edições e excluir entradas convertidas em saídas por movement_update.",
+    "Provar janela, somatório/overflow, clock/store e leitura SQLite file-backed read-only após reopen sem mutação.",
+    "Fechar validadores locais, SECURITY, P-REV independente, CI source/final-main exatos e nota released antes de DSH-005."
+  ],
+  "checks": [
+    "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml",
+    "cargo test --release --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "Cargo Audit/OSV/npm audit, fixtures Cargo/OSV/npm/Gitleaks, SAST, npm quality/build, validadores documentais e append-only; ambiente/versão/escopo em handoff/nota.",
+    "Gitleaks staged final, P-REV read-only, CI source/final-main em SHAs exatos e refs/notes/evidence released antes da liberação."
+  ],
+  "agentPlan": "P-INT: único escritor e executor no branch codex/dsh004-today-exits, base origin/main 75e2c0274854bf7c1f41bcdf63177dba0da8a2e1. P-REV: revisão adversarial independente read-only GPT-6 Luna max, sem modelo local/roteamento local e sem escrita paralela. Reserva fica ativa até CI final e nota released; DSH-005 bloqueado até a liberação.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6, ainda não liberado. Regra humana de DSH-003 reutilizada para saídas em BUSINESS_RULES. RED: API ausente; 5 testes de aplicação, 3 integrações file-backed, seleção dashboard 15/15, SQLite entradas+saídas 6/6. Rust debug: 324 biblioteca, 7/8 binário (1 WebView2 ignorado), 273 SQLite, 40 doctests; suite release completa exit 0; fmt/Clippy passaram. Node 24.21.0/npm 11.19.0: frontend quality/build passou. SECURITY: Cargo Audit 422/0/2 aprovados, OSV 542/3 cobertos/0 fora, npm 120/0; fixtures Cargo 48, OSV 39, npm 40, SAST 45, Gitleaks 16; histórico 962 commits/0 achados. Exceções expiram em 2026-11-06 e não foram renovadas. SAST inicial usou Node global 24.19.0; repetição pinada passou. Cache RustSec global suja preservada; usado clone limpo isolado. Builds Rust locais usaram um job, sem símbolos de debug/incremental para caber no disco. Validadores finais, Gitleaks staged, P-REV, CI source/final-main exata e nota released pendem; DSH-005 bloqueado. Limites: sem UI/IPC, E2E, coverage global, DSH-010, concorrência entre processos ou fechamento global de invariantes. Validadores: work items 190/fixtures72, evidence190/fixtures25, mapa28/868, gitignore28/4, plugins37/2 CLI, frontend selector20, CI audit42/14, progress fixtures26; append-only será repetido contra índice staged. Dependências satisfeitas antes do início: FIN-018 released e DSH-003 status-sync released na base 75e2c0274854bf7c1f41bcdf63177dba0da8a2e1; PR65 source/final CI 42050749151/42051241163 sucesso 16/23, sete skips document-only; nota blob 6b8bac53931e4e2e7b30da3871b2dea73e8a15ae preserva 208 mappings e totaliza 209. P-REV GPT-6 Luna max read-only final no tree 2d1c8cdbe986642b3d997f0943329d7d0459ba6c/base 75e2c0274854bf7c1f41bcdf63177dba0da8a2e1: P0/P1/P2/P3=0/0/0/0. Gitleaks staged 8.30.1 nesse tree exit0, 0 findings. Registro foi acrescentado à documentação; repetir no candidato congelado antes de CI."
+}

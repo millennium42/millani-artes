@@ -93,6 +93,8 @@ mod balance_calculation;
 
 mod dashboard_today_entries;
 
+mod dashboard_today_exits;
+
 mod movement_reading;
 
 mod context_result;
