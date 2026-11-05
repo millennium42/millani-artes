@@ -1,0 +1,115 @@
+{
+  "id": "DSH-003",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Status-sync documental de DSH-003: reconcilia spec, work item, matrizes de invariantes/requisitos/segurança, roadmap, handoff e log append-only com o recibo funcional já liberado. Sem alteração de produto, regra de negócio, migration ou dependência.",
+  "source_sha": "1fda87706a00c2c2d108700349aa636477b80291",
+  "final_sha": "75e2c0274854bf7c1f41bcdf63177dba0da8a2e1",
+  "tree_sha": "c373a786457022ea93105f501e0130f022b29177",
+  "pull_request": {
+    "number": 65,
+    "url": "https://github.com/millennium42/millani-artes/pull/65",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "75e2c0274854bf7c1f41bcdf63177dba0da8a2e1"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42050749151,
+      "run_number": 473,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "1fda87706a00c2c2d108700349aa636477b80291",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42050749151"
+    },
+    "job": {
+      "id": 127325865790,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies, Check frontend quality, Validate coverage reports, Upload frontend coverage, Prepare pinned Rust, Build Tauri production, Verify Tauri executable."
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42051241163,
+      "run_number": 474,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "75e2c0274854bf7c1f41bcdf63177dba0da8a2e1",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42051241163"
+    },
+    "job": {
+      "id": 127327590849,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies, Check frontend quality, Validate coverage reports, Upload frontend coverage, Prepare pinned Rust, Build Tauri production, Verify Tauri executable."
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_tree": "c373a786457022ea93105f501e0130f022b29177",
+    "base_sha": "7ceb30c13577c00cf6c6d701978e632cd0474dd1",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "review_history": "A revisão inicial do tree fcea1d598d8bad1dfc1dcde071ed1b7a947c3fcc apontou um P3: o texto histórico de candidato/não liberado no work item não estava rotulado como histórico. O texto foi corrigido, preservando o histórico, e o P-REV final do tree c373a786457022ea93105f501e0130f022b29177 não encontrou findings."
+  },
+  "local_verification": {
+    "documentation": {
+      "project_map": "28 fontes / 862 arquivos",
+      "work_items_and_evidence": "189 registros válidos; fixtures 72 work-item / 25 evidence-state",
+      "progress_log": "26 fixtures; 913616 bytes históricos preservados com alvo INDEX",
+      "gitignore": "28 ignorados / 4 fontes e lockfiles preservados",
+      "tauri_plugins": "37 fixtures / 2 casos CLI / 0 plugins ativos",
+      "ci_audit_fixtures": "42 casos / 14 PowerShell",
+      "staged_diff_check": "passed"
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_tree": "c373a786457022ea93105f501e0130f022b29177",
+      "staged_findings": 0,
+      "staged_bytes_approx": 13712,
+      "source_sha": "1fda87706a00c2c2d108700349aa636477b80291",
+      "history_commits": 961,
+      "historical_findings": 0,
+      "fixture_cases": 16
+    }
+  },
+  "warnings": [
+    "CI de status-sync é documental e omitiu as sete etapas frontend/coverage/Rust/Tauri listadas nos jobs; a prova funcional e o build/verificação Tauri pertencem ao release funcional anterior de DSH-003, no SHA 7ceb30c13577c00cf6c6d701978e632cd0474dd1.",
+    "Exceções Cargo/OSV existentes não foram renovadas e expiram em 2026-11-06."
+  ],
+  "limitations": [
+    "Este status-sync não adiciona evidência de comportamento do produto; preserva o escopo e limites funcionais na nota blob 662d9b518845d7dbf03f4f38336fd43ed0aaf7ab do SHA 7ceb30c13577c00cf6c6d701978e632cd0474dd1.",
+    "Sem alegações de UI/IPC, WebView2 real, E2E, cobertura global, DSH-010 ou invariantes globais."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "4ed1c868e2bbf24eb442ee7fa5a465cb8344ad1c",
+    "notes_before": 208,
+    "notes_after": 209,
+    "preserved_mapping_set_sha256": "ebac8f27f358f2056de0d38358ae2b0e177a681cb1b0fd206c5634268be8215e",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 208 prior mappings are preserved; only this DSH-003 status-sync mapping was added."
+  },
+  "next": "After verifying this status-sync note remotely, proceed serially to DSH-004. B7 remains outside scope."
+}
