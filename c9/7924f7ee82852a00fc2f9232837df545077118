@@ -1,0 +1,137 @@
+{
+  "id": "RET-013",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Prova transacional SQLite do rollback do consumidor real cancel_paid_sale após a escrita do movimento de reembolso; alterações rastreadas do candidato são somente o teste de integração e documentação de RET-013.",
+  "source_sha": "8c7ef6b317af04a0339c4c7fc6bc1cfbd2455248",
+  "final_sha": "c97924f7ee82852a00fc2f9232837df545077118",
+  "tree_sha": "d372cf70cc43a1cb3e044421b51fb3142911397c",
+  "pull_request": {
+    "number": 54,
+    "url": "https://github.com/millennium42/millani-artes/pull/54",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "c97924f7ee82852a00fc2f9232837df545077118"
+  },
+  "source_ci": {
+    "run": {
+      "id": 41951274660,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "8c7ef6b317af04a0339c4c7fc6bc1cfbd2455248",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41951274660"
+    },
+    "job": {
+      "id": 126995528608,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 41953174718,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "c97924f7ee82852a00fc2f9232837df545077118",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41953174718"
+    },
+    "job": {
+      "id": 127001679575,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "8c7ef6b317af04a0339c4c7fc6bc1cfbd2455248",
+    "candidate_tree": "d372cf70cc43a1cb3e044421b51fb3142911397c",
+    "mode": "read-only",
+    "findings": { "P0": 0, "P1": 0, "P2": 0, "P3": 0 },
+    "checks_executed_by_reviewer": false,
+    "note": "R8 revisou a tree exata que também é a tree do SHA final c97924f; corrigiu R6 e confirmou os recibos R7 e schema."
+  },
+  "local_verification": {
+    "code_snapshot_sha": "80b8182c27801bc61067cfff55ddeb2819c3632d",
+    "code_unchanged_after_snapshot": true,
+    "rust": {
+      "focal_ret013": "1/1",
+      "ret012_regression": "12/12",
+      "debug_and_release_each": "library 302; binary 7/8 with 1 ignored for WebView2; SQLite 267; doctests 40",
+      "fmt_check": "pass",
+      "clippy_all_targets_all_features_d_warnings": "pass"
+    },
+    "security": {
+      "cargo_audit": "422 dependencies; 0 vulnerabilities; 2 previously approved warnings",
+      "osv_scanner": "542 packages; 3 findings covered by existing approvals; 0 outside approvals",
+      "npm_audit": "120 dependencies; 0 vulnerabilities",
+      "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+      "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+      "exceptions": "Approved scopes/input hashes matched; Cargo/OSV exceptions expire 2026-11-06; no renewal or suppression. Exact source/final CI reran dependency audit gates successfully."
+    },
+    "documentation_validators": {
+      "project_map": "28 sources / 847 files",
+      "gitignore": "28 ignored / 4 preserved",
+      "evidence_states": "25 fixtures / 186 work items; declarations only",
+      "work_items": "72 fixtures / 186 items",
+      "progress_log_fixtures": "26",
+      "append_only": "exit 0; 887496 historical bytes preserved; target INDEX",
+      "frontend_selection": "20 fixtures; selected=true for source diff",
+      "tauri_plugins": "37 fixtures / 2 CLI cases / 0 active plugins"
+    },
+    "gitleaks_staged": {
+      "tree": "d372cf70cc43a1cb3e044421b51fb3142911397c",
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "paths": 4,
+      "patch_bytes": 20100,
+      "command": "protect --staged --config clean-default --gitleaks-ignore-path empty-file --ignore-gitleaks-allow --redact=100 --no-banner --no-color --exit-code 1 --timeout 120 --report-format json --report-path -",
+      "exit": 0,
+      "findings": 0
+    },
+    "gitleaks_history": {
+      "source_sha": "8c7ef6b317af04a0339c4c7fc6bc1cfbd2455248",
+      "commits": 935,
+      "findings": 0,
+      "version": "8.30.1"
+    },
+    "production_code_changed": false,
+    "migration_or_dependency_changed": false,
+    "local_model_or_routing_used": false,
+    "limits": [
+      "One real cancel_paid_sale consumer and one synthetic persistence fault point only.",
+      "StoreFailed is sanitized; no independent signal observes whether the specific trigger fired.",
+      "No UI/IPC, E2E, physical/WAL rollback, global coverage, or global INV-FIN-006/007 closure is claimed."
+    ]
+  },
+  "notes_mapping": {
+    "notes_ref_before": "37882a17bdf7dbc35da56489b2c39283c346f4db",
+    "notes_before": 200,
+    "notes_after": 201,
+    "preserved_mapping_set_sha256": "2e5fe1da317f12f3390cbb8551820faa070b3c1c40272170df42ba103e717641",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 200 existing evidence mappings are preserved; this note adds only RET-013 for the final main SHA."
+  },
+  "limitations": [
+    "The rollback proof is focal to one consumer and one fault point; it does not establish physical rollback or other consumers.",
+    "Source and final-main Documentation workflows both passed 23/23 steps with 0 skips on their exact SHAs.",
+    "No claim of global financial invariant closure, UI/IPC, E2E, or global Rust coverage."
+  ],
+  "next": "RET-013 evidence is released after final-main CI and this note; only then may the B6 documentary status be synchronized. DSH remains unopened until RET-013 status synchronization is verified; B7 is outside scope."
+}
