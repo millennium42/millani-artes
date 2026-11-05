@@ -1,0 +1,170 @@
+{
+  "id": "RET-013",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "RET-013 documentary status-sync for the already released functional rollback proof; aligns the tracked roadmap status and keeps DSH-001 gated. No new product behavior is proved.",
+  "source_sha": "685cdcb1bc91b903b656899a1564675ad7b189dc",
+  "final_sha": "6d27d9fd7e464bb1253a1f64ed286b7175f8f2b8",
+  "tree_sha": "aaddf4c31aa5751c41667bc79d44c64d92e9976b",
+  "pull_request": {
+    "number": 58,
+    "url": "https://github.com/millennium42/millani-artes/pull/58",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "6d27d9fd7e464bb1253a1f64ed286b7175f8f2b8"
+  },
+  "source_ci": {
+    "run": {
+      "id": 41966572150,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "685cdcb1bc91b903b656899a1564675ad7b189dc",
+      "tested_merge_sha": "f06184de5cf99d17f1377a0a34cca2df05a9d6b5",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41966572150"
+    },
+    "job": {
+      "id": 127044846430,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "frontend dependency install, frontend quality, coverage validation/upload, pinned Rust setup, Tauri production build and executable verification; document-only selector"
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 41966956882,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "6d27d9fd7e464bb1253a1f64ed286b7175f8f2b8",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41966956882"
+    },
+    "job": {
+      "id": 127046064055,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "frontend dependency install, frontend quality, coverage validation/upload, pinned Rust setup, Tauri production build and executable verification; document-only selector"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "685cdcb1bc91b903b656899a1564675ad7b189dc",
+    "candidate_tree": "aaddf4c31aa5751c41667bc79d44c64d92e9976b",
+    "base_sha": "c2c71d0ad0ea5c4ca6a207f561805b23baa7f85f",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "note": "R12 reviewed the exact three-document tree, confirmed RCV receipts, RET-012 release state, the DSH-001 gate and B7 exclusion. No findings."
+  },
+  "local_verification": {
+    "environment": {
+      "os": "Windows",
+      "powershell": "7.6.5",
+      "python": "3.12.10",
+      "git": "2.55.0.windows.3"
+    },
+    "documentation_validators": {
+      "work_items": "72 fixtures passed; schema checker accepted 186 items",
+      "evidence_states": "25 fixtures passed; state checker accepted 186 declarations",
+      "project_map": "28 sources and 847 files",
+      "gitignore": "28 ignored artifacts and 4 preserved source or lockfiles",
+      "progress_log_fixtures": "26 passed",
+      "append_only": "892269 historical bytes preserved from base c2c71d0ad0ea5c4ca6a207f561805b23baa7f85f to candidate index",
+      "frontend_selection": "20 fixtures passed; diff selected document-only checks",
+      "tauri_plugins": "37 fixtures, 2 CLI cases, 0 active plugins; checker found 0 plugins and 0 ADR records",
+      "diff_check": "pass"
+    },
+    "gitleaks_staged": {
+      "tree": "aaddf4c31aa5751c41667bc79d44c64d92e9976b",
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "paths": 3,
+      "reported_bytes_approx": 3450,
+      "command": "git --staged --config clean-default --gitleaks-ignore-path empty-file --ignore-gitleaks-allow --redact=100 --no-banner --no-color --exit-code 1 --report-format json --report-path -",
+      "exit": 0,
+      "findings": 0
+    },
+    "gitleaks_history": {
+      "script": "scripts/check_gitleaks.py --source .",
+      "source_sha": "685cdcb1bc91b903b656899a1564675ad7b189dc",
+      "commits": 939,
+      "findings": 0,
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c"
+    },
+    "security": {
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "findings": 3,
+        "excepted": 3,
+        "unexcepted": 0,
+        "expiry": "2026-11-06",
+        "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      },
+      "npm_audit": {
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "dependencies": 120,
+        "vulnerabilities": 0,
+        "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19"
+      },
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2,
+        "approved_ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "expiry": "2026-11-06",
+        "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012",
+        "cargo_toml_sha256": "2d8b42708311f046d0e9c80451aaa8a582a76e15ce7d2a4a0b176f973b9a5b57"
+      },
+      "exceptions_renewed_or_suppressed": false
+    },
+    "product_source_changed": false,
+    "migration_or_dependency_changed": false,
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "Non-blocking GitHub Actions warning: actions/checkout uses a Node.js 20 runtime that is deprecated; runner forced Node.js 24."
+  ],
+  "limitations": [
+    "This status-sync is documentary and adds no behavior or financial proof.",
+    "Seven frontend, coverage, Rust and Tauri build/executable checks were skipped by the document-only selector in both CI runs; no product test or E2E claim is made.",
+    "The prior RET-013 functional proof remains limited to one cancel_paid_sale consumer and one fault point; no global rollback, UI/IPC, WAL or global invariant closure is claimed.",
+    "Existing OSV and Cargo approvals matched their approved inputs during both runs and expire on 2026-11-06; none were renewed or suppressed."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "04750fe71b3360cbbe6d26b0d863aa4aafda8df6",
+    "notes_before": 201,
+    "notes_after": 202,
+    "preserved_mapping_set_sha256": "0890cfbb9f6a3268f840612aff5ba0abcb5511f5402c8e3f48f161ae86aaf80a",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 201 prior mappings are preserved; this note adds only the RET-013 status-sync mapping for the final main SHA."
+  },
+  "next": "After verifying this status-sync note, begin DSH-001. B7 remains outside scope."
+}
