@@ -1,0 +1,225 @@
+{
+  "id": "DSH-001",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Pure domain aggregation of all supplied account balances through released FIN-024 Account::balance_cents; no persisted aggregate, migration, dependency, UI or IPC.",
+  "source_sha": "dcaac396e71a4f3143b4a1534d112974ce015fd4",
+  "final_sha": "dea36154176879e4b20b48fab9255794e63caf91",
+  "tree_sha": "e332f733a6ff9fa488be7b29806deb0a789ca518",
+  "pull_request": {
+    "number": 59,
+    "url": "https://github.com/millennium42/millani-artes/pull/59",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "dea36154176879e4b20b48fab9255794e63caf91"
+  },
+  "source_ci": {
+    "run": {
+      "id": 41975589473,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "head_sha": "dcaac396e71a4f3143b4a1534d112974ce015fd4",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41975589473"
+    },
+    "job": {
+      "id": 127073553167,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "pr_merge_build_sha": "272a53d80f744dc9b68e4391096d65a655203e6e",
+      "native_evidence": {
+        "sha256": "c77fd9ffcf91ae291119d459660d1db24b2b4d0398e24b907ac64961e012cb03",
+        "bytes": 8536576,
+        "machine": "AMD64",
+        "pe": "PE32+",
+        "customProtocol": true,
+        "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+        "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+        "node": "v24.21.0",
+        "imageOS": "win25-vs2026",
+        "imageVersion": "20261030.294.1",
+        "npmLock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "cargoLock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      }
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 41976980428,
+      "workflow": "Documentation",
+      "event": "push",
+      "run_attempt": 1,
+      "head_sha": "dea36154176879e4b20b48fab9255794e63caf91",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/41976980428"
+    },
+    "job": {
+      "id": 127078003887,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "native_evidence": {
+        "sha256": "3c2cae670f41e90c945ad478f497ea3abd7aace38d7b42d1625e745109ddd314",
+        "bytes": 8536576,
+        "machine": "AMD64",
+        "pe": "PE32+",
+        "customProtocol": true,
+        "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+        "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+        "node": "v24.21.0",
+        "imageOS": "win25-vs2026",
+        "imageVersion": "20261030.294.1",
+        "npmLock": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "cargoLock": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      }
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "dcaac396e71a4f3143b4a1534d112974ce015fd4",
+    "candidate_tree": "e332f733a6ff9fa488be7b29806deb0a789ca518",
+    "base_sha": "6d27d9fd7e464bb1253a1f64ed286b7175f8f2b8",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false,
+    "note": "R3 reviewed the exact tree; confirmed candidate-only status and human decision precedence; no findings."
+  },
+  "local_verification": {
+    "environment": {
+      "os": "Windows",
+      "powershell": "7.6.5",
+      "python": "3.12.10",
+      "rust": "1.99.0",
+      "node": "24.21.0",
+      "npm": "11.19.0"
+    },
+    "focused_tests": {
+      "domain": "2 passed",
+      "sqlite_reopen": "1 passed",
+      "sqlite_oracle_cents": 6490,
+      "account_balances_cents": [
+        -1179,
+        7669
+      ]
+    },
+    "rust_local": {
+      "fmt_check": "pass",
+      "clippy_locked_all_targets_deny_warnings": "pass",
+      "debug_suite": {
+        "library": 304,
+        "sqlite": 267,
+        "doctests": 40,
+        "status": "pass"
+      },
+      "release_custom_protocol": {
+        "library": 304,
+        "binary_passed": 7,
+        "binary_ignored": 1,
+        "sqlite": 267,
+        "doctests": 40,
+        "status": "pass"
+      }
+    },
+    "documentation_validators": {
+      "work_item_fixtures": 72,
+      "work_items_accepted": 187,
+      "evidence_fixtures": 25,
+      "evidence_items_accepted": 187,
+      "project_map_sources": 28,
+      "project_map_files": 850,
+      "progress_fixtures": 26,
+      "append_only_historical_bytes_preserved": 893874,
+      "gitignore_ignored": 28,
+      "gitignore_preserved": 4,
+      "frontend_selector_fixtures": 20,
+      "tauri_plugin_fixtures": 37,
+      "tauri_plugin_cli_cases": 2,
+      "diff_check": "pass"
+    },
+    "gitleaks_staged": {
+      "tree": "e332f733a6ff9fa488be7b29806deb0a789ca518",
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "paths": 11,
+      "findings": 0,
+      "exit": 0
+    },
+    "gitleaks_history": {
+      "script": "scripts/check_gitleaks.py --source .",
+      "source_sha": "dcaac396e71a4f3143b4a1534d112974ce015fd4",
+      "commits": 942,
+      "findings": 0,
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c"
+    },
+    "security": {
+      "osv": {
+        "version": "2.6.0",
+        "packages": 542,
+        "findings": 3,
+        "excepted": 3,
+        "unexcepted": 0,
+        "expiry": "2026-11-06",
+        "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      },
+      "npm_audit": {
+        "node": "24.21.0",
+        "npm": "11.19.0",
+        "dependencies": 120,
+        "vulnerabilities": 0,
+        "package_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19"
+      },
+      "cargo_audit": {
+        "version": "0.22.2",
+        "dependencies": 422,
+        "vulnerabilities": 0,
+        "approved_warnings": 2,
+        "approved_ids": [
+          "RUSTSEC-2024-0370",
+          "RUSTSEC-2024-0429"
+        ],
+        "expiry": "2026-11-06",
+        "cargo_lock_sha256": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      },
+      "exceptions_renewed_or_suppressed": false
+    },
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "One binary WebView2 test is intentionally ignored by the harness in local and CI release runs.",
+    "Three existing OSV findings and two approved Cargo audit advisories remain covered only by unmodified approvals expiring 2026-11-06; none were renewed or suppressed.",
+    "The initial custom-protocol attempt stopped before tests because frontend dist was absent; after building frontend, a local release link attempt hit a full C: drive. Cleanup was limited to this worktree target; the final local release suite then passed."
+  ],
+  "limitations": [
+    "No UI/IPC, application dashboard, E2E, global coverage, DSH-010 no-write proof, or global INV-FIN-002 closure is claimed.",
+    "PR CI native build used pull_request merge SHA 272a53d80f744dc9b68e4391096d65a655203e6e while the run head is the exact source commit dcaac396e71a4f3143b4a1534d112974ce015fd4. Final-main CI and native build ran on exact main SHA dea36154176879e4b20b48fab9255794e63caf91."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "b151652d775582a0b709f2dc347cf824aa26b9e6",
+    "notes_before": 202,
+    "notes_after": 203,
+    "preserved_mapping_set_sha256": "34adfca56036443cfefe57ae249ad95bf7d7c6d4a0c6e2b70b26f798d8cfe668",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 202 prior mappings are preserved; this note adds only DSH-001 for the exact final main SHA."
+  },
+  "next": "Reconcile the tracked work item, roadmap and handoff from candidate to released in the DSH-001 status-sync before beginning DSH-002. B7 remains outside scope."
+}
