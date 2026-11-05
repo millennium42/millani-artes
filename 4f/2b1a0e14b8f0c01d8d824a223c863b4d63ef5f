@@ -1,0 +1,121 @@
+{
+  "id": "DSH-002",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-05",
+  "scope": "Read-only per-account dashboard balance projection; reuses existing readers and Account::balance_cents; no persistence, migration, dependency, UI or IPC.",
+  "source_sha": "c7533bdc2625389003033312913741d5ebf48dcb",
+  "final_sha": "4f2b1a0e14b8f0c01d8d824a223c863b4d63ef5f",
+  "tree_sha": "415bee2333fbfacea8ae4ccfa1e344193723d15d",
+  "pull_request": {
+    "number": 62,
+    "url": "https://github.com/millennium42/millani-artes/pull/62",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "4f2b1a0e14b8f0c01d8d824a223c863b4d63ef5f"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42006165707,
+      "event": "pull_request",
+      "head_sha": "c7533bdc2625389003033312913741d5ebf48dcb",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42006165707"
+    },
+    "job": {
+      "id": 127173336584,
+      "status": "completed",
+      "conclusion": "success",
+      "steps": "23/23 passed, 0 skipped",
+      "pr_merge_build_sha": "2a835dc9c45acf2792214d45eb560ea43867eeac",
+      "native_exe_sha256": "457bc73381937970f13a05dfedf04994dba1809b90c8f2d24ff6f09b2b5057a2",
+      "bytes": 8536576,
+      "PE": "PE32+ AMD64",
+      "customProtocol": true
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42008314295,
+      "event": "push",
+      "head_sha": "4f2b1a0e14b8f0c01d8d824a223c863b4d63ef5f",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42008314295"
+    },
+    "job": {
+      "id": 127180601048,
+      "status": "completed",
+      "conclusion": "success",
+      "steps": "23/23 passed, 0 skipped",
+      "native_exe_sha256": "d65fa8d495990b6210f571a7763e167256be240428d68f1b4b9bb13edc1578fe",
+      "bytes": 8536576,
+      "PE": "PE32+ AMD64",
+      "customProtocol": true,
+      "rustc": "1.99.0",
+      "cargo": "1.99.0",
+      "node": "24.21.0",
+      "image": "win25-vs2026/20261103.298.1"
+    }
+  },
+  "p_rev": {
+    "persona": "P-REV",
+    "model": "GPT-6 Luna max",
+    "candidate_sha": "c7533bdc2625389003033312913741d5ebf48dcb",
+    "tree": "415bee2333fbfacea8ae4ccfa1e344193723d15d",
+    "mode": "read-only",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_executed_by_reviewer": false
+  },
+  "local_verification": {
+    "environment": "Windows; PowerShell 7.6.5; Python 3.12.10; Rust 1.99.0; Node 24.21.0; npm 11.19.0",
+    "tests": "Unit 5/5; SQLite file-backed reopen 1/1 using real adapters/query_only; balances -1179/7669 cents; account/movement/audit counts unchanged. Rust debug/release: 309 library, 7/8 binary (one WebView2 intentionally ignored), 267 SQLite, 40 doctests; fmt and Clippy passed.",
+    "frontend": "Format, lint, typecheck, build passed; 3 tests; 100% coverage only of existing TypeScript scaffold.",
+    "coverage": "Focal Rust 26/26 lines, 4/4 functions, 32/32 regions; stable branch coverage unavailable.",
+    "docs": "Map 28/855; work items/evidence 188; fixtures 72/25; progress fixtures 26 with 898410 historical bytes preserved; gitignore 28/4; plugin fixtures 37/2 CLI/0 active; diff check passed.",
+    "gitleaks": {
+      "tree": "415bee2333fbfacea8ae4ccfa1e344193723d15d",
+      "version": "8.30.1",
+      "bytes": 54928,
+      "findings": 0,
+      "exit": 0
+    },
+    "security": {
+      "date": "2026-11-05",
+      "npm": "120 dependencies, 0 vulnerabilities (Node 24.21.0/npm 11.19.0; fixtures 40/40)",
+      "osv": "2.6.0; 542 packages; 3 findings covered by existing exceptions, 0 unexcepted (fixtures 39/39)",
+      "cargo_audit": "0.22.2; 422 dependencies; 0 vulnerabilities; 2 approved warnings RUSTSEC-2024-0370/0429; advisory DB 26fd2d43f7280a1fb925a3743ec463017afe7119",
+      "locks": {
+        "npm": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19",
+        "cargo": "dcc811e8c3dfb8c4bab85bfb28b836ccc6c1816e16775348c31aed45b4e4d012"
+      },
+      "exception_state": "OSV/Cargo approvals unchanged, verified in CI, expire before 2026-11-06 UTC; none renewed or suppressed."
+    },
+    "local_model_or_routing_used": false
+  },
+  "warnings": [
+    "One binary WebView2 test is intentionally ignored.",
+    "Three OSV findings and two approved Cargo advisories remain covered by unchanged approvals expiring before 2026-11-06 UTC.",
+    "GitHub runner emitted a Node.js 20 deprecation warning for the pinned checkout action; all steps passed."
+  ],
+  "limitations": [
+    "Separate account/movement reads do not guarantee a shared snapshot under concurrent writes.",
+    "No UI/IPC, E2E, global coverage, DSH-010 no-write proof or global INV-FIN-002 closure is claimed."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "6affa48ec44f99c28f83d9be6efb4691143df93e",
+    "notes_before": 205,
+    "notes_after": 206,
+    "preserved_mapping_set_sha256": "6516bb20ae91ca8cbefe068db23712ee2e2bfc002247dc26f7ad5492c0d86108",
+    "hash_method": "SHA-256 over lexically sorted git notes list lines joined with LF and no trailing LF",
+    "preserved": "All 205 prior mappings are preserved; only this DSH-002 mapping was added."
+  },
+  "next": "Complete the DSH-002 release status-sync, with its own review, source/final CI and evidence note, before DSH-003; B7 remains outside scope."
+}
