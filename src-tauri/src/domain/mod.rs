@@ -98,6 +98,17 @@ impl Account {
     }
 }
 
+/// Sum the balances derived for every account from the canonical movement history.
+pub fn total_balance_cents(accounts: &[Account], movements: &[Movement]) -> Result<i64> {
+    let total = accounts.iter().try_fold(0_i128, |total, account| {
+        total
+            .checked_add(i128::from(account.balance_cents(movements)?))
+            .ok_or(DomainError::InvalidInput)
+    })?;
+
+    i64::try_from(total).map_err(|_| DomainError::InvalidInput)
+}
+
 /// Category identity and active-state metadata.
 ///
 /// ```compile_fail
