@@ -108,6 +108,10 @@ fn persisted_movements_and_real_account_reader_feed_account_balance() {
     );
     assert_eq!(movements.len(), 4);
     assert_eq!(accounts.len(), 2);
+    assert_eq!(
+        millani_artes::domain::total_balance_cents(&accounts, &movements),
+        Ok(6490)
+    );
     let context_store = AdapterSqliteMovementStore::new(open_database(&path).unwrap());
     assert_eq!(
         millani_artes::application::calculate_context_result::calculate_context_result(

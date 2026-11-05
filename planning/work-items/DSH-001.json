@@ -1,0 +1,26 @@
+{
+  "id": "DSH-001",
+  "title": "Calcular o saldo total derivado de todas as contas",
+  "specPath": "planning/specs/DSH-001.md",
+  "status": "done",
+  "dependencies": ["FIN-024"],
+  "acceptanceCriteria": [
+    "Somar em centavos os saldos de todas as contas usando o contrato liberado de FIN-024, incluindo saldo inicial e movimentos válidos dos dois contextos.",
+    "Preservar neutralidade de transferências no total; retornar zero sem contas e erro opaco se algum saldo individual ou total for inválido/não representável.",
+    "Provar com leitores SQLite existentes e banco reaberto que os saldos -1179 e 7669 produzem total 6490, sem alterar histórico.",
+    "Executar os gates Rust e de segurança aplicáveis; sem schema, migration, dependência, UI ou IPC novos."
+  ],
+  "checks": [
+    "Teste focal de domínio de saldo total",
+    "Teste focal SQLite de saldo total após reopen",
+    "Rust fmt --check e Clippy --locked --all-targets -D warnings",
+    "Suítes Rust debug/release e doctests",
+    "Cargo Audit, OSV e Gitleaks conforme configuração atual",
+    "Validadores documentais, P-REV read-only, CI source/final em SHA exato e nota released"
+  ],
+  "agentPlan": "P-INT único escritor/executor; P-REV independente read-only GPT-6 Luna max; sem modelos locais, roteamento local ou escrita paralela; telemetria não registrada.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true; não liberado. Decisão humana posterior de 05/11: a usuária respondeu ‘Usar o candidato B6 (Recomendado)’, registrada no adendo de governance/EVIDENCE_POLICY.md, e restabeleceu somente o estado candidato após os gates locais; P-REV/CI exata/nota permanecem gates de liberação. RECON na base limpa origin/main 6d27d9fd7e464bb1253a1f64ed286b7175f8f2b8. FIN-024 released é a fonte canônica de Account::balance_cents. Implementação e testes DSH-001 passaram localmente em 2026-11-05: focal domínio 2/2, SQLite reopen 1/1, suíte debug 304 testes de biblioteca/267 SQLite/40 doctests, suíte release tauri/custom-protocol 304/7 de 8 testes do binário (WebView2 intencionalmente ignorado)/267/40; fmt e Clippy passaram. SECURITY local passou conforme spec. Validadores documentais passaram no tree d135ac2c27b11405acad5959626694f95db1f105: work item/evidence fixtures 72/25 e 187 work items, mapa 28 fontes/850 arquivos, progress 26 e append-only 893874 bytes históricos, gitignore 28/4, frontend 20, Tauri plugins 37/2 CLI e diff --check limpo. Gitleaks staged 8.30.1 passou nesse tree (10 paths, zero findings). P-REV R1 no tree anterior a12d54351287b08dfa7286acb01b2c8f526bb9cc: P0/P1/P2=0, P3=1 por registros de staged/P-REV desatualizados; corrigido em d135ac2. P-REV R2 no tree 26bcf5624e6eb5b7de13b5cd93c0aa52c45b0436: P0/P1/P2/P3=0/0/1/0 porque ainda não havia registro do adendo de decisão humana de 05/11; este checkpoint o reconcilia e exige repetir validadores relevantes, Gitleaks staged/history e P-REV. CI remoto source/final-main nos SHAs exatos e nota própria released ainda são gates de liberação; DSH-002 continua bloqueado. Exceções OSV/Cargo atuais expiram em 2026-11-06; não foram alteradas. RCV-001–003 foram confirmados por notas remotas e permanecem preservados."
+}

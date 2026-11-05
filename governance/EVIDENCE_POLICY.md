@@ -27,3 +27,7 @@ PLN-002 adiciona `planning/WORK_ITEM.schema.json` e `scripts/check-work-items.ps
 ## Decisão humana posterior para a Meta B6 — 04/11/2026
 
 Para esta execução da Meta B6, a usuária determinou que `passes:true` só seja marcado depois de todos os gates individuais comprovados, inclusive P-REV, CI source/final-main nos SHAs exatos e nota `released` correspondente. Esta decisão substitui, nesta Meta, a etapa candidata `done/E3/passes:true` autorizada em 31/10/2026. Enquanto qualquer gate ou nota de release faltar, manter `passes:false` e não liberar o próximo item.
+
+## Decisão humana supersedente para a Meta B6 — 05/11/2026
+
+Após a decisão acima, ao escolher entre manter a interpretação estrita e usar o estado candidato, a usuária respondeu explicitamente: “Usar o candidato B6 (Recomendado)”. Para esta Meta, essa resposta posterior restabelece somente o marcador candidato `done/E3/passes:true` após critérios funcionais e gates locais/SECURITY comprovados, sempre identificando `candidato/não liberado`. Ela não altera os gates de liberação da seção acima: P-REV, CI remoto source/final-main nos SHAs exatos e nota `released` continuam obrigatórios, e nenhuma dependência avança antes da nota completa. Esta exceção vale apenas para o fluxo B6 desta Meta; B7 e outros fluxos ficam fora.

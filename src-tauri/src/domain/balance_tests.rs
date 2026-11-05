@@ -1,4 +1,6 @@
-use super::{Account, AccountType, Context, DomainError, Movement, MovementKind};
+use super::{
+    total_balance_cents, Account, AccountType, Context, DomainError, Movement, MovementKind,
+};
 
 fn account(id: u8, opening: i64) -> Account {
     Account {
@@ -183,4 +185,49 @@ fn current_history_is_replayed_without_retaining_prior_balance() {
     assert!(matches!(history[1].context, Context::Home));
     assert!(matches!(history[2].context, Context::Factory));
     assert!(matches!(history[3].context, Context::Home));
+}
+
+#[test]
+fn total_balance_sums_all_derived_accounts_and_keeps_transfers_neutral() {
+    let accounts = [account(1, 100), account(2, -50), account(3, 300)];
+    let movements = [
+        movement(1, 0, 80, 1, 0, 0),
+        movement(2, 1, 20, 2, 0, 1),
+        movement(3, 2, 40, 1, 2, 0),
+        movement(4, 2, 5, 2, 1, 1),
+    ];
+
+    assert_eq!(total_balance_cents(&accounts, &movements), Ok(410));
+    assert_eq!(total_balance_cents(&[], &[]), Ok(0));
+    assert_eq!(
+        total_balance_cents(&[account(1, -10), account(2, -20)], &[]),
+        Ok(-30)
+    );
+}
+
+#[test]
+fn total_balance_uses_wide_sum_and_rejects_unrepresentable_or_invalid_balances() {
+    assert_eq!(
+        total_balance_cents(
+            &[
+                account(1, i64::MAX),
+                account(2, i64::MAX),
+                account(3, i64::MIN)
+            ],
+            &[]
+        ),
+        Ok(i64::MAX - 1)
+    );
+    assert_eq!(
+        total_balance_cents(&[account(1, i64::MAX), account(2, 1)], &[]),
+        Err(DomainError::InvalidInput)
+    );
+    assert_eq!(
+        total_balance_cents(&[account(1, i64::MIN), account(2, -1)], &[]),
+        Err(DomainError::InvalidInput)
+    );
+    assert_eq!(
+        total_balance_cents(&[account(1, i64::MAX)], &[movement(1, 0, 1, 1, 0, 0)]),
+        Err(DomainError::InvalidInput)
+    );
 }
