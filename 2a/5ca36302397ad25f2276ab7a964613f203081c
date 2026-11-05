@@ -150,4 +150,4 @@
     "UI/IPC, rollback after partial write, E2E, smoke, and global financial/Rust coverage are not claimed."
   ],
   "next": "After verifying this released status-sync note, continue to RET-013 by revalidating current main and rebasing preserved PR #54. B7 remains outside scope."
-}\n
+}
