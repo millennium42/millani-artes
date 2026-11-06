@@ -22,6 +22,7 @@ pub mod application {
     pub mod generate_variable_obligation;
     pub mod list_account_balances;
     pub mod list_accounts;
+    pub mod list_month_sales;
     pub mod list_movements;
     pub mod list_today_entries;
     pub mod list_today_exits;

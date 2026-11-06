@@ -1,0 +1,30 @@
+{
+  "id": "DSH-005",
+  "title": "Projetar o total bruto de vendas finalizadas no mês",
+  "specPath": "planning/specs/DSH-005.md",
+  "status": "done",
+  "dependencies": [
+    "SAL-020"
+  ],
+  "acceptanceCriteria": [
+    "Aplicar a decisão humana E4: mês civil de Brasília UTC−3 fixo, janela semiaberta, total congelado das vendas finalizadas por sale_finalize original, independente de recebimentos e sem ajuste por devoluções/cancelamentos posteriores.",
+    "Implementar janela mensal com testes de limite, virada de ano, fevereiro bissexto e erros de representação sem adicionar dependência.",
+    "Somar snapshots em centavos com zero permitido, overflow rejeitado e resultado sem parcial; clock consultado uma vez e erros opacos.",
+    "Provar consulta SQL somente leitura, evento ausente excluído, duplicidade rejeitada e vendas abertas fora do total.",
+    "Provar SQLite file-backed após reopen com query_only, pagamentos pendentes/recebidos, cancelamento/devolução posterior e snapshots antes/depois iguais.",
+    "Fechar SECURITY, validadores, P-REV read-only independente, CI source/final-main exatos e nota released antes de DSH-006."
+  ],
+  "checks": [
+    "rtk proxy cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "rtk proxy cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets --features tauri/custom-protocol -- -D warnings",
+    "rtk proxy cargo test --locked --manifest-path src-tauri/Cargo.toml",
+    "rtk proxy cargo test --release --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+    "Cargo Audit, OSV, Gitleaks, validadores documentais, SAST aplicável e append-only com ambiente/versão/escopo registrados.",
+    "P-REV independente read-only, CI remoto source/final-main nos SHAs exatos e nota refs/notes/evidence released antes da liberação."
+  ],
+  "agentPlan": "P-INT único escritor/executor em codex/dsh005-monthly-sales, base origin/main 7cb7a7c7b365424dd923bf3021546879763deb36; P-REV read-only GPT-6 Luna max no candidato final; nenhum modelo local/roteamento local. Paths e reconciliação documental DSH-004 constam em planning/specs/DSH-005.md.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "done/E3/passes:true somente como CANDIDATO B6, ainda não liberado. Regra E4 aplicada. Implementação focal: domínio/aplicação/SQLite file-backed 4/4 cada; Rust fmt/Clippy/debug/release e npm quality/build passaram no código inalterado após essas execuções. SECURITY: Cargo Audit 0.22.2 422 deps/0 vulnerabilidades/2 avisos exatamente aprovados; OSV 2.6.0 542 pacotes/3 findings aprovados/0 fora; npm audit 120/0; SAST45; fixtures Cargo52/52, OSV39/39, npm40/40. Exceções permanecem limitadas aos mesmos IDs, versões, hashes e alvo com expiresBeforeUTC 2026-11-07; nenhuma finding nova foi aprovada. Validadores documentais: mapa28 fontes/875 arquivos, work items/evidence191, fixtures72/25, gitignore28/4, progress fixtures26 e append-only preservou919334 bytes. Gitleaks 8.30.1 staged exit 0, 0 leaks. P-REV independente read-only, CI source/final-main nos SHAs exatos e nota released ainda pendem; DSH-006 continua bloqueado. Limites: fixtures sintéticas, sem UI/IPC/E2E/DSH-010/cobertura global; B7 fora do escopo."
+}

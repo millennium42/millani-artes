@@ -128,6 +128,75 @@ pub fn brasilia_day_window_ms(now_ms: i64) -> Result<(i64, i64)> {
     ))
 }
 
+/// Return the fixed UTC window for the current civil month in Brasília (UTC−3).
+pub fn brasilia_month_window_ms(now_ms: i64) -> Result<(i64, i64)> {
+    const DAY_MS: i128 = 86_400_000;
+    const BRASILIA_OFFSET_MS: i128 = 10_800_000;
+
+    if now_ms < 0 {
+        return Err(DomainError::InvalidInput);
+    }
+
+    let local_days = (i128::from(now_ms) - BRASILIA_OFFSET_MS).div_euclid(DAY_MS);
+    let (year, month, _) = civil_date_from_days(local_days);
+    let start_days = days_from_civil_date(year, month, 1);
+    let (next_year, next_month) = if month == 12 {
+        (year + 1, 1)
+    } else {
+        (year, month + 1)
+    };
+    let end_days = days_from_civil_date(next_year, next_month, 1);
+
+    let utc_ms = |days: i128| {
+        days.checked_mul(DAY_MS)
+            .and_then(|millis| millis.checked_add(BRASILIA_OFFSET_MS))
+            .and_then(|millis| i64::try_from(millis).ok())
+            .ok_or(DomainError::InvalidInput)
+    };
+
+    Ok((utc_ms(start_days)?, utc_ms(end_days)?))
+}
+
+// Proleptic Gregorian conversion keeps the fixed-offset projection dependency-free.
+fn civil_date_from_days(days: i128) -> (i128, i128, i128) {
+    let shifted = days + 719_468;
+    let era = shifted.div_euclid(146_097);
+    let day_of_era = shifted - era * 146_097;
+    let year_of_era =
+        (day_of_era - day_of_era / 1_460 + day_of_era / 36_524 - day_of_era / 146_096) / 365;
+    let mut year = year_of_era + era * 400;
+    let day_of_year = day_of_era - (365 * year_of_era + year_of_era / 4 - year_of_era / 100);
+    let month_part = (5 * day_of_year + 2) / 153;
+    let day = day_of_year - (153 * month_part + 2) / 5 + 1;
+    let month = month_part + if month_part < 10 { 3 } else { -9 };
+    year += i128::from(month <= 2);
+    (year, month, day)
+}
+
+fn days_from_civil_date(year: i128, month: i128, day: i128) -> i128 {
+    let year = year - i128::from(month <= 2);
+    let era = year.div_euclid(400);
+    let year_of_era = year - era * 400;
+    let shifted_month = month + if month > 2 { -3 } else { 9 };
+    let day_of_year = (153 * shifted_month + 2) / 5 + day - 1;
+    let day_of_era = year_of_era * 365 + year_of_era / 4 - year_of_era / 100 + day_of_year;
+    era * 146_097 + day_of_era - 719_468
+}
+
+/// Sum nonnegative sale snapshot amounts in cents and reject totals outside `i64`.
+pub fn sum_nonnegative_sale_amounts_cents(amounts: &[i64]) -> Result<i64> {
+    let total = amounts.iter().try_fold(0_i128, |total, amount| {
+        if *amount < 0 {
+            return Err(DomainError::InvalidInput);
+        }
+        total
+            .checked_add(i128::from(*amount))
+            .ok_or(DomainError::InvalidInput)
+    })?;
+
+    i64::try_from(total).map_err(|_| DomainError::InvalidInput)
+}
+
 /// Sum positive movement amounts in cents and reject totals outside `i64`.
 pub fn sum_positive_movement_amounts_cents(amounts: &[i64]) -> Result<i64> {
     let total = amounts.iter().try_fold(0_i128, |total, amount| {
@@ -988,6 +1057,10 @@ mod result_effect_tests;
 
 #[cfg(test)]
 mod balance_tests;
+
+#[cfg(test)]
+#[path = "dashboard_month_sales_tests.rs"]
+mod dashboard_month_sales_tests;
 
 #[cfg(test)]
 mod fixed_recurrence_tests;
