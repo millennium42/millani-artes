@@ -1,0 +1,124 @@
+{
+  "id": "DSH-006",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-06",
+  "scope": "Sincronizacao documental da liberacao funcional DSH-006, com CI source e final-main nos SHAs exatos e recibo proprio.",
+  "source_sha": "aec7919af926b5116167351df96e8c4640fffbaf",
+  "source_tree_sha": "190cac0dfd58bd7ed00052f0e6390fec6237803d",
+  "final_sha": "a32b3bb9d8191f3ce91a93ae85e3a7fba7b3dc53",
+  "tree_sha": "190cac0dfd58bd7ed00052f0e6390fec6237803d",
+  "pull_request": {
+    "number": 71,
+    "url": "https://github.com/millennium42/millani-artes/pull/71",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "a32b3bb9d8191f3ce91a93ae85e3a7fba7b3dc53"
+  },
+  "functional_release": {
+    "pull_request": 70,
+    "source_sha": "a22cbedf8b91232a5e9ca23aa979f21f45436f5f",
+    "final_sha": "8e411973d4bd087b7fef92954f9050899067919c",
+    "source_ci": {
+      "run_number": 485,
+      "run_id": 42263346365,
+      "conclusion": "success"
+    },
+    "final_ci": {
+      "run_number": 486,
+      "run_id": 42265696039,
+      "conclusion": "success"
+    },
+    "p_rev": {
+      "revision": "R10",
+      "model": "GPT-6 Luna max",
+      "mode": "read-only",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      }
+    },
+    "evidence_note_blob": "3bea67a606ac2b956db46cac4cde9994a51be6db"
+  },
+  "status_sync": {
+    "files": [
+      "docs/security/SECURITY_TEST_MATRIX.md",
+      "docs/traceability/INVARIANT_TEST_MATRIX.md",
+      "docs/traceability/REQUIREMENTS_MATRIX.md",
+      "planning/PROGRESS_LOG.md",
+      "planning/ROADMAP.md",
+      "planning/handoffs/DSH-006.md",
+      "planning/specs/DSH-006.md",
+      "planning/work-items/DSH-006.json"
+    ],
+    "delta": "Somente documentacao; sem mudanca em codigo, testes, migration, dependencia, lockfile ou regra de produto.",
+    "source_ci": {
+      "run_number": 487,
+      "run_id": 42272652796,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "aec7919af926b5116167351df96e8c4640fffbaf",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42272652796",
+      "job": {
+        "id": 128080913255,
+        "name": "validate",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      },
+      "skipped_steps": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    },
+    "final_ci": {
+      "run_number": 488,
+      "run_id": 42273135084,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "a32b3bb9d8191f3ce91a93ae85e3a7fba7b3dc53",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42273135084",
+      "job": {
+        "id": 128082565042,
+        "name": "validate",
+        "conclusion": "success",
+        "steps_total": 23,
+        "steps_passed": 16,
+        "steps_skipped": 7
+      }
+    },
+    "local_checks": {
+      "environment": "PowerShell 7.6.9",
+      "documentation_validators": "project map 28 sources/883 files; work items 72 fixtures/192 items; evidence states 25 fixtures/192 declarations; progress log 26 fixtures; append-only preserved 944747 historical bytes; gitignore 28 ignored/4 source-lockfiles preserved; Tauri metadata 37 fixtures/2 CLI/0 active plugins; git diff --check passed.",
+      "gitleaks": "Repository-pinned, integrity-verified wrapper 8.30.1; wrapper tests 16/16; history 978 commits/0 findings at base 8e411973d4bd087b7fef92954f9050899067919c; final staged scan 0 findings (~16.67 KB).",
+      "consistency_review": "Read-only integrator reconciliation confirmed the eight documentation paths, current functional receipt, work item, roadmap and main base agree; not a separate P-REV."
+    }
+  },
+  "security_exceptions": "Quatro excecoes de dependencia previamente aprovadas permanecem inalteradas, sem supressoes nem renovacoes, e expiram em 2026-11-07 UTC.",
+  "limitations": [
+    "CI source #487 e final-main #488 validam status-sync documental; sete etapas frontend/Rust/build foram omitidas em ambos e nao repetem os gates funcionais.",
+    "Limites funcionais permanecem os da nota #70: projecao backend read-only focal, sem UI/IPC, E2E/smoke, WebView2 real, coverage global ou prova de concorrencia/invariantes globais."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "ed2d8a98245562c4e0bed901efda81303ec87d6d",
+    "notes_before": 214,
+    "notes_after": 215,
+    "preserved_mapping_set_sha256": "939535b19935a487cc22d2e800641f88c5b0a18d606ad2f490c1030a83ce6917",
+    "hash_method": "SHA-256 sobre linhas git notes list ordenadas ordinalmente, unidas por LF, sem LF final.",
+    "preserved": "Todos os 214 mappings anteriores preservados; somente o recibo de status-sync DSH-006 foi adicionado."
+  },
+  "next": "DSH-007 e elegivel para RECON somente apos reconfirmar a liberacao de REC-008, seu handoff e a nota remota; B7 fora do escopo."
+}
