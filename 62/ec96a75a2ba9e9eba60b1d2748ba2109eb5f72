@@ -1,0 +1,121 @@
+{
+  "id": "DSH-005",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-06",
+  "scope": "Implementação funcional DSH-005: projeção backend read-only da soma em centavos dos totais congelados de vendas finalizadas cujo evento original sale_finalize ocorreu no mês civil atual de Brasília (UTC−3 fixo), em janela semiaberta. Sem migration, dependência, UI, IPC ou escrita financeira.",
+  "source_sha": "446f7b1e27b854410709cbb1181cf5996ae11887",
+  "final_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+  "tree_sha": "106643db6b7a498a15ac773305d973ccb02aef5f",
+  "pull_request": {
+    "number": 68,
+    "url": "https://github.com/millennium42/millani-artes/pull/68",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72"
+  },
+  "product_rule": "Decisão humana E4 registrada em BUSINESS_RULES.md: somar os valores congelados das vendas finalizadas pelo evento original sale_finalize no mês corrente de Brasília (UTC−3 fixo); recebimentos não alteram a projeção e devoluções/cancelamentos posteriores não a revisam.",
+  "source_ci": {
+    "run": {
+      "id": 42159525180,
+      "run_number": 479,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "446f7b1e27b854410709cbb1181cf5996ae11887",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42159525180"
+    },
+    "job": {
+      "id": 127701603011,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42161092478,
+      "run_number": 480,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42161092478"
+    },
+    "job": {
+      "id": 127706678561,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_production_build": "success",
+      "executable_verification": "success"
+    }
+  },
+  "review_history": [
+    {
+      "revision": "final",
+      "candidate_tree": "106643db6b7a498a15ac773305d973ccb02aef5f",
+      "base_sha": "7cb7a7c7b365424dd923bf3021546879763deb36",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      },
+      "mode": "read-only",
+      "model": "GPT-6 Luna max",
+      "reviewer_checks_run": false,
+      "summary": "P2 anterior no handoff foi corrigido; revisão final confirmou fechamento sem achados."
+    }
+  ],
+  "local_checks": {
+    "focused_tests": {
+      "domain": "4/4",
+      "application": "4/4",
+      "sqlite_file_backed": "4/4",
+      "coverage_scope": "focal; não representa cobertura global"
+    },
+    "rust": "fmt e Clippy com -D warnings passaram; debug: 332 testes de lib, 7/8 bins com 1 ignorado, 277 SQLite, 40 doctests; suite release/custom-protocol completa passou.",
+    "frontend": "Node 24.21.0/npm 11.19.0: quality e build passaram; nenhuma fonte TypeScript alterada.",
+    "security": {
+      "cargo_audit": "Cargo Audit 0.22.2; 422 dependências; 0 vulnerabilidades; 2 avisos previamente aprovados.",
+      "osv": "OSV-Scanner 2.6.0; 542 pacotes; 3 achados cobertos por exceções aprovadas; 0 fora das exceções.",
+      "npm_audit": "120 dependências; 0 vulnerabilidades.",
+      "sast": "45 casos passaram; escopo frontend/PowerShell, não cobre SQL do backend Rust.",
+      "fixtures": "Cargo 52/52; OSV 39/39; npm 40/40.",
+      "gitleaks": "8.30.1; staged tree 106643db6b7a498a15ac773305d973ccb02aef5f; 0 findings."
+    },
+    "documentation_validators": "Mapa 28 fontes/875 arquivos; work items/evidência 191 válidos; fixtures 72/25; gitignore 28 ignorados e 4 fontes/lockfiles preservados; progress fixtures 26; append-only preservou 919334 bytes; staged diff check passou."
+  },
+  "security_exceptions": "Quatro exceções de dependências existentes foram renovadas somente no escopo aprovado para DSH-005 até 2026-11-07. Nenhuma finding foi suprimida e nenhuma exceção nova foi criada. Não usar após a expiração sem nova autorização humana.",
+  "warnings": [
+    {
+      "source": "CI source e final-main",
+      "level": "warning",
+      "detail": "actions/checkout fixado em Node.js 20 está sendo executado sob Node.js 24; aviso de depreciação, sem falha de gate."
+    }
+  ],
+  "limitations": [
+    "Prova funcional backend focal; não cobre UI/IPC nem E2E/smoke.",
+    "Não afirma cobertura global, concorrência entre processos ou fechamento global de INV-FIN-002.",
+    "CI source e final-main executaram 23/23 passos com zero skips, incluindo build de produção Tauri e verificação do executável no SHA final."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "169413fcae58cafb8fac9b7c8ba69d647c1e65df",
+    "notes_before": 211,
+    "notes_after": 212,
+    "preserved_mapping_set_sha256": "2480f44d6d6ab77847f7f4729ece5aa1155b283f4c8d1b925f49df6e486e22ad",
+    "hash_method": "SHA-256 sobre linhas git notes list ordenadas ordinalmente, unidas por LF sem LF final.",
+    "preserved": "Todos os 211 mappings anteriores preservados; somente o recibo funcional DSH-005 foi adicionado."
+  },
+  "next": "Concluir status-sync documental DSH-005 com CI source/final-main e recibo próprios antes de liberar DSH-006. B7 fora do escopo."
+}
