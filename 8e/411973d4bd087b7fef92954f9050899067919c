@@ -1,0 +1,120 @@
+{
+  "id": "DSH-006",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-06",
+  "scope": "Projeção backend read-only do total a receber: soma, em centavos, do principal de recebíveis de vendas finalizadas menos recibos aplicados e reduções de dívida por devoluções, sem filtro temporal e sem saldo persistido.",
+  "source_sha": "a22cbedf8b91232a5e9ca23aa979f21f45436f5f",
+  "final_sha": "8e411973d4bd087b7fef92954f9050899067919c",
+  "tree_sha": "39114c33e34d2052a8ceeca609af6f2dfffe8a71",
+  "pull_request": {
+    "number": 70,
+    "url": "https://github.com/millennium42/millani-artes/pull/70",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "8e411973d4bd087b7fef92954f9050899067919c"
+  },
+  "product_rule": "Derivar o devido por recebível finalizado como principal menos recibos e reduções de dívida de devoluções; somar valores não negativos com overflow detectado. Não filtrar por vencimento/data; reembolsos/saídas não reduzem dívida. Sem total parcial em caso de dado inválido ou overflow.",
+  "source_ci": {
+    "run": {
+      "id": 42263346365,
+      "run_number": 485,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "a22cbedf8b91232a5e9ca23aa979f21f45436f5f",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42263346365"
+    },
+    "job": {
+      "id": 128048740490,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42265696039,
+      "run_number": 486,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "8e411973d4bd087b7fef92954f9050899067919c",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42265696039"
+    },
+    "job": {
+      "id": 128056892926,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_production_build": "success",
+      "executable_verification": "success"
+    }
+  },
+  "review_history": [
+    {
+      "revision": "final",
+      "candidate_tree": "ec41ff9d420d4e2fbadf7f491da89c8c7138df4f",
+      "base_sha": "4ee4a0de46486e3a39558ccc56616c7dcbb07e64",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      },
+      "mode": "read-only",
+      "model": "GPT-6 Luna max",
+      "reviewer_checks_run": false,
+      "summary": "Revisão independente read-only sem achados impeditivos; código e testes permaneceram inalterados após a revisão."
+    }
+  ],
+  "local_checks": {
+    "focused_tests": {
+      "domain": "2/2",
+      "application": "3/3",
+      "sqlite_file_backed": "3/3",
+      "coverage_scope": "focal; não representa cobertura global"
+    },
+    "rust": "fmt e Clippy locked -D warnings passaram; debug e release: 337 testes de biblioteca, 7/8 binários com um teste WebView2 ignorado, 280 SQLite e 40 doctests.",
+    "frontend": "Nenhum TypeScript alterado; CI executou quality e validação dos relatórios de coverage com sucesso.",
+    "security": {
+      "cargo_audit": "422 dependências; 0 vulnerabilidades; 2 avisos previamente aprovados.",
+      "osv": "542 pacotes; 3 findings cobertos por exceções existentes; 0 fora das exceções.",
+      "npm_audit": "120 dependências; 0 vulnerabilidades.",
+      "sast": "45/45 casos; escopo frontend/PowerShell, não cobre SQL Rust/backend.",
+      "gitleaks": "8.30.1; histórico 975 commits/0 findings e árvore staged final 0 findings."
+    },
+    "documentation_validators": "Árvore staged final 39114c33e34d2052a8ceeca609af6f2dfffe8a71: mapa 28/883; work-items 72 fixtures/192 itens; evidence 25/192; progress fixtures 26; append-only preservou 941167 bytes; gitignore 28/4; Tauri 37/2 CLI/0 plugins; diff check passou."
+  },
+  "security_exceptions": "Quatro exceções de dependências previamente aprovadas permaneceram sem alteração; nenhum finding foi suprimido e nenhuma exceção nova foi criada. Expiram em 2026-11-07 UTC; não houve renovação.",
+  "warnings": [
+    {
+      "source": "CI source e final-main",
+      "level": "warning",
+      "detail": "actions/checkout fixado em Node.js 20 executou sob Node.js 24; aviso de depreciação, sem falha de gate."
+    }
+  ],
+  "limitations": [
+    "Prova focal de projeção backend read-only; não cobre UI/IPC, E2E/smoke ou WebView2 real.",
+    "Sem alegação de coverage global, concorrência entre processos ou fechamento global de INV-FIN-002.",
+    "CI source #485 e final-main #486 passaram 23/23 passos sem skips nos SHAs exatos; build Tauri e verificação do executável passaram."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "4842844587c79da5d78d69e51f7a0f1fc1147142",
+    "notes_before": 213,
+    "notes_after": 214,
+    "preserved_mapping_set_sha256": "79823d65cf5e2374567107c6380617178abd645f38ddfec4ddba570d8c8208a0",
+    "hash_method": "SHA-256 sobre linhas de git notes list ordenadas ordinalmente, unidas por LF sem LF final.",
+    "preserved": "Todos os 213 mappings anteriores preservados; somente o recibo funcional DSH-006 foi adicionado."
+  },
+  "next": "Sincronizar a documentação de status de DSH-006 com PR, CI e nota released próprios antes de liberar DSH-007. B7 fora do escopo."
+}
