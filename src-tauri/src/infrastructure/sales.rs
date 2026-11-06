@@ -1,6 +1,7 @@
 use crate::application::add_free_item::{FreeItemStore, FreeItemWrite};
 use crate::application::add_product_item::{ProductItemWrite, SaleError, SaleStore};
 use crate::application::finalize_sale::{FinalizeSaleWrite, FinalizedSale, SaleFinalizationStore};
+use crate::application::list_month_sales::MonthSaleReadStore;
 use crate::application::remove_sale_item::{RemoveSaleItemWrite, SaleItemRemovalStore};
 use crate::database::{append_audit_event, execute_write_transaction, AuditEvent};
 use crate::domain::{
@@ -10,6 +11,22 @@ use crate::domain::{
 use crate::infrastructure::movements::persist_entry_in_transaction;
 use crate::infrastructure::receivables::persist_receivable_in_transaction;
 use rusqlite::{params, Connection, OptionalExtension, Transaction};
+
+pub struct MonthSaleReadError;
+
+impl std::fmt::Debug for MonthSaleReadError {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str("MonthSaleReadError")
+    }
+}
+
+impl std::fmt::Display for MonthSaleReadError {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str("monthly sale history could not be read")
+    }
+}
+
+impl std::error::Error for MonthSaleReadError {}
 
 enum ItemSource {
     Product([u8; 16]),
@@ -436,5 +453,47 @@ impl SaleItemRemovalStore for AdapterSqliteSaleStore {
             }
             Err(_) => Err(SaleError::StoreFailed),
         }
+    }
+}
+
+impl MonthSaleReadStore for AdapterSqliteSaleStore {
+    type Error = MonthSaleReadError;
+
+    fn read_finalized_sale_item_amounts_created_between(
+        &self,
+        start_ms: i64,
+        end_ms: i64,
+    ) -> Result<Vec<i64>, Self::Error> {
+        if start_ms >= end_ms {
+            return Err(MonthSaleReadError);
+        }
+
+        let connection = self.connection.as_ref().ok_or(MonthSaleReadError)?;
+        let mut statement = connection
+            .prepare(
+                "SELECT item.total_cents, COUNT(event.event_id), \
+                 MAX(CASE WHEN event.occurred_at_ms>=?1 AND event.occurred_at_ms<?2 THEN 1 ELSE 0 END) \
+                 FROM main.sales AS sale \
+                 JOIN main.audit_event AS event ON event.entity='sale' AND event.operation='sale_finalize' AND event.entity_id=sale.id \
+                 LEFT JOIN main.sale_items AS item ON item.sale_id=sale.id \
+                 WHERE sale.status='finalized' \
+                 GROUP BY sale.id, item.id, item.position, item.total_cents \
+                 HAVING MAX(CASE WHEN event.occurred_at_ms>=?1 AND event.occurred_at_ms<?2 THEN 1 ELSE 0 END)=1 \
+                 ORDER BY sale.id, item.position",
+            )
+            .map_err(|_| MonthSaleReadError)?;
+        let rows = statement
+            .query_map(params![start_ms, end_ms], |row| {
+                let amount_cents: Option<i64> = row.get(0)?;
+                let event_count: i64 = row.get(1)?;
+                let window_event_count: i64 = row.get(2)?;
+                if event_count != 1 || window_event_count != 1 {
+                    return Err(rusqlite::Error::InvalidQuery);
+                }
+                amount_cents.ok_or(rusqlite::Error::InvalidQuery)
+            })
+            .map_err(|_| MonthSaleReadError)?;
+        rows.collect::<rusqlite::Result<Vec<i64>>>()
+            .map_err(|_| MonthSaleReadError)
     }
 }

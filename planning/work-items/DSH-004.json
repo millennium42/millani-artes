@@ -22,7 +22,7 @@
     "Cargo Audit/OSV/npm audit, fixtures Cargo/OSV/npm/Gitleaks, SAST, npm quality/build, validadores documentais e append-only; ambiente/versão/escopo em handoff/nota.",
     "Gitleaks staged final, P-REV read-only, CI source/final-main em SHAs exatos e refs/notes/evidence released antes da liberação."
   ],
-  "agentPlan": "P-INT: único escritor e executor no branch codex/dsh004-today-exits, base origin/main 75e2c0274854bf7c1f41bcdf63177dba0da8a2e1. P-REV: revisão adversarial independente read-only GPT-6 Luna max, sem modelo local/roteamento local e sem escrita paralela. Implementação funcional liberada no SHA 91541dd6fec46d05c9cb8e4dab4f253e389597af; status-sync documental possui reserva separada e DSH-005 aguarda seu recibo.",
+  "agentPlan": "P-INT: único escritor e executor no branch codex/dsh004-today-exits, base origin/main 75e2c0274854bf7c1f41bcdf63177dba0da8a2e1. P-REV: revisão adversarial independente read-only GPT-6 Luna max, sem modelo local/roteamento local e sem escrita paralela. Implementação funcional liberada no SHA 91541dd6fec46d05c9cb8e4dab4f253e389597af; status-sync documental liberado no PR #67: source/final CI #477/#478 success 16/23 nos SHAs exatos e nota blob fef1a7285aec0676c61ad30cb6d07dcdd45b6835 released no final-main 7cb7a7c7b365424dd923bf3021546879763deb36, preservando 210 mappings e totalizando 211; DSH-005 iniciou após verificar o recibo remoto.",
   "evidence": "E3",
   "humanGateRequired": false,
   "passes": true,

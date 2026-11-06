@@ -22,6 +22,9 @@ EXCEPTIONS = ROOT / "docs/security/CARGO_WINDOWS_EXCEPTION.json"
 APPROVAL = ROOT / "docs/security/CARGO_WINDOWS_APPROVAL.json"
 APPROVAL_TEXT = "execução temporaria aprovada, siga com a meta em modo economia de tokens"
 REFERENCE_RE = r"Codex user reply to SEC-011 proposal [0-9a-f]{40}"
+B6_DSH005_RENEWAL_TEXT = "Dou autorização completa pra todas as decisões serem as recomendadas"
+B6_DSH005_RENEWAL_REFERENCE = "Direct user reply approving the recommended 24-hour renewal for DSH-005 on 2026-11-06 UTC; same exceptions, IDs, versions, input hashes and target; expiresBeforeUTC 2026-11-07."
+B6_DSH005_RENEWAL_SCOPE_SHA256 = "822ee70a0082fe30b287656ace76760b2913e0b039e162153155e45f91c528ed"
 KINDS = {"unmaintained", "unsound", "notice", "yanked"}
 CONFIG = '''[advisories]
 ignore=[]
@@ -162,11 +165,18 @@ def load_exceptions(blobs):
     require("sha256:" + hashlib.sha256(content).hexdigest() == config["approvalRecord"],
             "CARGO_APPROVAL_RECORD_CHANGED")
     record = read_json(content)
+    prior_approval = (isinstance(record, dict)
+                      and record.get("humanDecision") == APPROVAL_TEXT
+                      and isinstance(record.get("decisionReference"), str)
+                      and re.fullmatch(REFERENCE_RE, record["decisionReference"]))
+    dsh005_renewal = (isinstance(record, dict)
+                      and record.get("humanDecision") == B6_DSH005_RENEWAL_TEXT
+                      and record.get("decisionReference") == B6_DSH005_RENEWAL_REFERENCE
+                      and scope_digest(config) == B6_DSH005_RENEWAL_SCOPE_SHA256)
     require(isinstance(record, dict)
             and set(record) == {"approvedScopeSHA256", "humanDecision", "decisionReference"}
             and all(isinstance(v, str) and v.strip() for v in record.values())
-            and record["humanDecision"] == APPROVAL_TEXT
-            and re.fullmatch(REFERENCE_RE, record["decisionReference"]), "CARGO_APPROVAL_INVALID")
+            and (prior_approval or dsh005_renewal), "CARGO_APPROVAL_INVALID")
     require(record["approvedScopeSHA256"] == scope_digest(config), "CARGO_APPROVAL_SCOPE_CHANGED")
     require(re.fullmatch(r"\d{4}-\d{2}-\d{2}", config["expiresBeforeUTC"])
             and datetime.now(timezone.utc).date() < date.fromisoformat(config["expiresBeforeUTC"]),

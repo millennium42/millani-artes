@@ -184,6 +184,21 @@ def main():
             case("suggested-but-unreceived-decision-denied", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
             approve(config, gate.APPROVAL_TEXT)
             case("fixture-reference-denied", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+            renewal = deepcopy(config)
+            renewal["expiresBeforeUTC"] = (datetime.now(timezone.utc).date() + timedelta(days=2)).isoformat()
+            with patch.object(gate, "B6_DSH005_RENEWAL_SCOPE_SHA256", gate.scope_digest(renewal)):
+                approve(renewal, gate.B6_DSH005_RENEWAL_TEXT, gate.B6_DSH005_RENEWAL_REFERENCE)
+                case("exact-b6-renewal-accepted", lambda: gate.load_exceptions(blobs))
+                changed_expiry = deepcopy(renewal)
+                changed_expiry["expiresBeforeUTC"] = (datetime.now(timezone.utc).date() + timedelta(days=3)).isoformat()
+                approve(changed_expiry, gate.B6_DSH005_RENEWAL_TEXT, gate.B6_DSH005_RENEWAL_REFERENCE)
+                case("b6-renewal-expiry-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+                approve(renewal, gate.B6_DSH005_RENEWAL_TEXT, "fixture://different-renewal")
+                case("b6-renewal-reference-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+                changed_exception = deepcopy(renewal)
+                changed_exception["exceptions"][0]["id"] = "RUSTSEC-2026-0002"
+                approve(changed_exception, gate.B6_DSH005_RENEWAL_TEXT, gate.B6_DSH005_RENEWAL_REFERENCE)
+                case("b6-renewal-exception-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
             # Fixture approval is available only through this explicit test patch.
             with patch.object(gate, "APPROVAL_TEXT", "SYNTHETIC TEST, NOT HUMAN APPROVAL"), \
                     patch.object(gate, "REFERENCE_RE", r"fixture://sec011"):
