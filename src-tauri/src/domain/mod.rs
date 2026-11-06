@@ -197,6 +197,19 @@ pub fn sum_nonnegative_sale_amounts_cents(amounts: &[i64]) -> Result<i64> {
     i64::try_from(total).map_err(|_| DomainError::InvalidInput)
 }
 
+/// Sum nonnegative outstanding receivable amounts in cents and reject totals outside i64.
+pub fn sum_nonnegative_receivable_due_cents(amounts: &[i64]) -> Result<i64> {
+    let total = amounts.iter().try_fold(0_i128, |total, amount| {
+        if *amount < 0 {
+            return Err(DomainError::InvalidInput);
+        }
+        total
+            .checked_add(i128::from(*amount))
+            .ok_or(DomainError::InvalidInput)
+    })?;
+
+    i64::try_from(total).map_err(|_| DomainError::InvalidInput)
+}
 /// Sum positive movement amounts in cents and reject totals outside `i64`.
 pub fn sum_positive_movement_amounts_cents(amounts: &[i64]) -> Result<i64> {
     let total = amounts.iter().try_fold(0_i128, |total, amount| {
@@ -946,7 +959,7 @@ pub struct Receivable {
 impl Receivable {
     /// Projects the amount still due after the caller's cumulative recorded reductions.
     /// `applied_cents` is not a new payment amount.
-    /// shortcut: caller supplies the aggregate, revisit when receipt and return history readers exist.
+    /// The caller supplies the aggregate, keeping persistence outside the domain.
     pub fn remaining_due_cents(&self, applied_cents: i64) -> Result<i64> {
         if self.pending.amount_cents <= 0
             || applied_cents < 0
@@ -1061,6 +1074,10 @@ mod balance_tests;
 #[cfg(test)]
 #[path = "dashboard_month_sales_tests.rs"]
 mod dashboard_month_sales_tests;
+
+#[cfg(test)]
+#[path = "dashboard_receivables_tests.rs"]
+mod dashboard_receivables_tests;
 
 #[cfg(test)]
 mod fixed_recurrence_tests;
