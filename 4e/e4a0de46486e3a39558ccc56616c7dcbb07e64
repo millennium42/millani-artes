@@ -1,0 +1,167 @@
+{
+  "id": "DSH-005",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-06",
+  "scope": "Sincronizacao documental do release funcional DSH-005; sem alteracao de comportamento, schema, migration, dependencias ou produto.",
+  "source_sha": "b6fd76eed4230357c91826eea22a80f5a8a62f81",
+  "final_sha": "4ee4a0de46486e3a39558ccc56616c7dcbb07e64",
+  "tree_sha": "ed35485029464d0d91048054dcf267912d6c1a0a",
+  "pull_request": {
+    "number": 69,
+    "url": "https://github.com/millennium42/millani-artes/pull/69",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "4ee4a0de46486e3a39558ccc56616c7dcbb07e64"
+  },
+  "functional_release": {
+    "pull_request": 68,
+    "source_sha": "446f7b1e27b854410709cbb1181cf5996ae11887",
+    "final_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+    "source_ci": 479,
+    "final_ci": 480,
+    "evidence_note_blob": "23a503e67a2da54bb3a93d6cd85a170c32dfd3b7",
+    "mappings": "211 to 212"
+  },
+  "source_ci": {
+    "run": {
+      "id": 42168607098,
+      "run_number": 481,
+      "workflow": "Documentation",
+      "event": "pull_request",
+      "head_sha": "b6fd76eed4230357c91826eea22a80f5a8a62f81",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42168607098"
+    },
+    "job": {
+      "id": 127730886398,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies; Check frontend quality; Validate coverage reports; Upload frontend coverage; Prepare pinned Rust; Build Tauri production; Verify Tauri executable."
+    }
+  },
+  "final_ci": {
+    "run": {
+      "id": 42168839967,
+      "run_number": 482,
+      "workflow": "Documentation",
+      "event": "push",
+      "head_sha": "4ee4a0de46486e3a39558ccc56616c7dcbb07e64",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/millennium42/millani-artes/actions/runs/42168839967"
+    },
+    "job": {
+      "id": 127731642273,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "skipped_scope": "Install locked frontend dependencies; Check frontend quality; Validate coverage reports; Upload frontend coverage; Prepare pinned Rust; Build Tauri production; Verify Tauri executable."
+    }
+  },
+  "review_history": [
+    {
+      "revision": "R1",
+      "candidate_tree": "189621af14919b3e7c642492a4c1194113f9708d",
+      "base_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 1,
+        "P3": 0
+      },
+      "disposition": "Corrigido em revisoes posteriores",
+      "details": "Checkpoint anterior a E4 na spec descrito como estado presente."
+    },
+    {
+      "revision": "R2",
+      "candidate_tree": "9219c4738bc5a86c7bf5fd980eca73718be1b7e5",
+      "base_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 1,
+        "P3": 0
+      },
+      "disposition": "Corrigido em revisoes posteriores",
+      "details": "Checkpoint funcional 03:40 no handoff dizia gates pendentes apesar do release funcional posterior."
+    },
+    {
+      "revision": "R3",
+      "candidate_tree": "8305a5ed54e010cfcdb52331a0df46b082c2dd78",
+      "base_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 1,
+        "P3": 0
+      },
+      "disposition": "Corrigido no candidato final",
+      "details": "Checkpoint npm/SAST 03:37 na spec dizia que gates funcionais continuavam pendentes."
+    },
+    {
+      "revision": "final",
+      "candidate_tree": "ed35485029464d0d91048054dcf267912d6c1a0a",
+      "base_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "findings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      },
+      "mode": "read-only",
+      "model": "GPT-6 Luna max",
+      "reviewer_checks_run": false,
+      "paths_reviewed": 8
+    }
+  ],
+  "local_checks": {
+    "scope": "Somente documentacao; validacao local reproduzida pelo integrador.",
+    "documentation_validation": {
+      "project_map": "28 fontes / 875 arquivos",
+      "work_items": "191 validos",
+      "evidence_states": "191 validos",
+      "append_only": "passou; 925402 bytes historicos preservados contra INDEX",
+      "progress_log_fixtures": 26,
+      "work_item_fixtures": 72,
+      "evidence_state_fixtures": 25,
+      "gitleaks_fixtures": 16,
+      "diff_check": "passou"
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "staged_tree": "ed35485029464d0d91048054dcf267912d6c1a0a",
+      "staged_bytes": 23215,
+      "staged_findings": 0,
+      "history_base_sha": "62ec96a75a2ba9e9eba60b1d2748ba2109eb5f72",
+      "history_commits": 971,
+      "history_findings": 0
+    },
+    "test_invocation": "A primeira chamada do fixture test-gitleaks.py via pwsh -File falhou por extensao incompativel; python -B scripts/test-gitleaks.py corrigido passou 16/16.",
+    "functional_checks": "Nao reexecutados neste status-sync; a liberacao funcional e seus limites estao documentados acima e no recibo PR #68."
+  },
+  "security_exceptions": "Quatro excecoes de dependencia previamente aprovadas permaneceram sem alteracao, supressao ou renovacao adicional, com escopo e hashes autorizados e expiracao em 2026-11-07 UTC. Os passos Cargo Audit, OSV e npm audit passaram nos CI source/final enquanto as aprovacoes estavam validas.",
+  "limitations": [
+    "Status-sync documental; nao altera nem amplia o comportamento do dashboard.",
+    "CI documental: 7 etapas de frontend/build/Rust foram omitidas pelo seletor document-only; source/final passaram 16/23.",
+    "A evidencia funcional DSH-005 continua backend-only/focal; sem UI/IPC, E2E, DSH-010, cobertura global, concorrencia entre processos ou prova global de INV-FIN-002."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "05cf8468511a99677975634285b64985738da790",
+    "notes_before": 212,
+    "notes_after": 213,
+    "preserved_mapping_set_sha256": "aa07ed23a2fa9ad1ac966a98c7cabf03a1e21a467230f51614ccf06799bd40b0",
+    "hash_method": "SHA-256 sobre linhas git notes list ordenadas ordinalmente, unidas por LF sem LF final.",
+    "preserved": "Todos os 212 mappings anteriores preservados; somente o recibo do status-sync documental DSH-005 foi adicionado."
+  },
+  "next": "DSH-006 pode iniciar apos verificar a nota released remota deste fechamento; seguir serialmente o B6. B7 fora do escopo."
+}
