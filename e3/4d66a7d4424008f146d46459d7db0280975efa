@@ -1,0 +1,110 @@
+{
+  "id": "DSH-007",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-10",
+  "scope": "Read-only backend projection of the total open recurrence obligations payable/overdue, with checked summation and no financial writes.",
+  "source_sha": "77e15724dc6ae6bbfe03f95021b87bce359662bd",
+  "source_tree_sha": "59d8a6d8e47112e43b19149235ed1a14986ff03c",
+  "final_sha": "e34d66a7d4424008f146d46459d7db0280975efa",
+  "tree_sha": "59d8a6d8e47112e43b19149235ed1a14986ff03c",
+  "pull_request": {
+    "number": 72,
+    "url": "https://github.com/millennium42/millani-artes/pull/72",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "e34d66a7d4424008f146d46459d7db0280975efa"
+  },
+  "source_ci": {
+    "run_number": 489,
+    "run_id": 42733634283,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "77e15724dc6ae6bbfe03f95021b87bce359662bd",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42733634283",
+    "job": {
+      "id": 129557469720,
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_build": "success",
+      "executable_verification": "success"
+    }
+  },
+  "final_ci": {
+    "run_number": 490,
+    "run_id": 42735663392,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "e34d66a7d4424008f146d46459d7db0280975efa",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42735663392",
+    "job": {
+      "id": 129564148084,
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "tauri_build": "success",
+      "executable_verification": "success"
+    }
+  },
+  "p_rev": {
+    "revision": "R4",
+    "model": "GPT-6 Luna max",
+    "mode": "read-only",
+    "tree": "3342810669e3a7a70dc3a04a7a35c2ecc34f79c9",
+    "base": "a32b3bb9d8191f3ce91a93ae85e3a7fba7b3dc53",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    }
+  },
+  "review_history": [
+    {
+      "revision": "R1",
+      "findings": {
+        "P2": 2
+      },
+      "resolution": "Bound OSV approval to exact human decision/reference/scope and corrected invariant status; confirmed by R2."
+    },
+    {
+      "revision": "R3",
+      "findings": {
+        "P2": 1
+      },
+      "resolution": "Corrected PowerShell control-character corruption in R2 handoff receipt; R4 confirmed exact SHAs and no control characters."
+    }
+  ],
+  "local_checks": {
+    "rust": "Rust 1.99.0 MSVC; fmt check and locked Clippy passed; debug and release each passed 343 library tests, 7 binary tests (1 WebView2-dependent ignored), 282 SQLite harness tests and 40 doctests.",
+    "focal_coverage": "Application 11/11 lines, 2/2 functions, 15/15 regions; SQLite adapter 37/37 lines, 6/6 functions, 66/70 regions; domain module file 492/492 lines, 56/56 functions, 709/713 regions. LLVM stable reported no branches; not global coverage.",
+    "security": "Cargo Audit 0.22.2 with isolated clean official advisory DB d9cb059f3217db87aeccd190b81eaffe8cc29cb9: 422 dependencies, 0 vulnerabilities, 2 previously approved warnings. OSV Scanner 2.6.0: 542 packages, 3 previously approved findings, 0 unapproved. npm audit 120 packages/0 vulnerabilities; SAST 45/45. Cargo/OSV and fixture checks were run on tree 1fdc87f8c0a92f0495f16fa654bc4a1bba640941 with Rust, lockfiles, security scripts, fixtures and tests identical to the source commit.",
+    "frontend": "Pinned Node 24.21.0/npm 11.19.0; format, lint, typecheck and 3 tests passed. Scaffold-only coverage: 4/4 lines, 5/5 statements, 1/1 function, 2/2 branches.",
+    "documentation": "On tree 7319289edbeb4fa0ec6fcb942537f3501d620ec9, project map 28 sources/891 files; work items 72 fixtures/193; evidence 25 fixtures/193; progress log 26 fixtures; gitignore 28 ignored/4 preserved; Tauri metadata 37 fixtures/2 CLI/0 plugins. On final staged tree 59d8a6d8e47112e43b19149235ed1a14986ff03c, append-only check preserved 946438 historical bytes, Gitleaks 8.30.1 staged scan examined about 86165 bytes/0 findings, and diff check passed.",
+    "recovered_invocation": "A first call used nonexistent scripts/test-tauri-plugin-metadata.ps1 and exited 1; canonical test-tauri-plugins.py and check_tauri_plugins.py were found and passed.",
+    "exceptions": "Four previously approved scopes only, unchanged identities/versions/Windows target, no new suppressions; expiry 2026-11-11 UTC."
+  },
+  "limitations": [
+    "Backend projection only; no UI/IPC, E2E/smoke, real WebView2, cross-process concurrency proof, or global Rust coverage claim.",
+    "This proves the DSH-007 projection only; it does not prove DSH-010 non-persistence or other dashboard requirements."
+  ],
+  "notes_mapping": {
+    "notes_ref_before": "refs/notes/evidence",
+    "notes_before": 215,
+    "notes_after": 216,
+    "preserved_mapping_set_sha256": "b51c28dda6c19bce09020ae5c681a6dd5f6a7f326a4ca3c111dc7240e443f3b0",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without a trailing LF.",
+    "preserved": "All 215 prior mappings are preserved; exactly one DSH-007 functional release mapping is added."
+  },
+  "next": "Complete DSH-007 status-sync documentation and its own exact-SHA CI/evidence note before starting DSH-008; B7 remains out of scope."
+}
