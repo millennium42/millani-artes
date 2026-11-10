@@ -254,6 +254,19 @@ def main():
             write_proposal()
             case("changed-exception-scope", lambda: gate.load_exceptions(blobs), "OSV_EXCEPTION_SCOPE_CHANGED")
 
+        def dsh007_authority():
+            config = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
+            record = json.loads(gate.DEFAULT_APPROVAL.read_bytes())
+            assert gate.is_authorized_b6_dsh007_approval(config, record)
+            changed_decision = deepcopy(record)
+            changed_decision["humanDecision"] = "synthetic approval"
+            assert not gate.is_authorized_b6_dsh007_approval(config, changed_decision)
+            changed_scope = deepcopy(config)
+            changed_scope["exceptions"][0]["ids"].append("UNAPPROVED-TEST-ID")
+            assert not gate.is_authorized_b6_dsh007_approval(changed_scope, record)
+
+        case("dsh007-approval-requires-exact-human-text-reference-and-scope", dsh007_authority)
+
         allowed = {("npm", "lodash", "4.17.21", "MILLANI-TEST-NPM-0001")}
         assert gate.check_report(response(vulnerable, 1), expected, allowed)["excepted"] == 1
         case("exception-other-package-denied", lambda: gate.check_report(

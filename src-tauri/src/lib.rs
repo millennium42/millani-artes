@@ -24,6 +24,7 @@ pub mod application {
     pub mod list_accounts;
     pub mod list_month_sales;
     pub mod list_movements;
+    pub mod list_payables;
     pub mod list_receivables;
     pub mod list_today_entries;
     pub mod list_today_exits;
@@ -42,6 +43,7 @@ pub mod infrastructure {
     pub mod categories;
     pub mod customers;
     pub mod movements;
+    pub mod payable_due;
     pub mod products;
     pub mod receivable_due;
     pub mod receivables;
