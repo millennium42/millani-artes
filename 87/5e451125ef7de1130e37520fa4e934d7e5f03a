@@ -1,0 +1,111 @@
+{
+  "id": "DSH-007",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-10",
+  "scope": "Documentation-only status-sync for the already released read-only backend projection of recurrence obligations payable/overdue; this PR adds no product behavior or test coverage.",
+  "source_sha": "1fd4489f3ec532b8dc66a6ac5865b3a53361cf72",
+  "source_tree_sha": "519a77f7576618dc35d4958c02103021914b0770",
+  "final_sha": "875e451125ef7de1130e37520fa4e934d7e5f03a",
+  "tree_sha": "519a77f7576618dc35d4958c02103021914b0770",
+  "pull_request": {
+    "number": 73,
+    "url": "https://github.com/millennium42/millani-artes/pull/73",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "875e451125ef7de1130e37520fa4e934d7e5f03a"
+  },
+  "source_ci": {
+    "run_number": 491,
+    "run_id": 42739576097,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "1fd4489f3ec532b8dc66a6ac5865b3a53361cf72",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42739576097",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "final_ci": {
+    "run_number": 492,
+    "run_id": 42739927084,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "875e451125ef7de1130e37520fa4e934d7e5f03a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42739927084",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "prior_functional_release": {
+    "pull_request": 72,
+    "final_sha": "e34d66a7d4424008f146d46459d7db0280975efa",
+    "evidence_note_blob": "410048209c60e629d4f593422385067b3ead412e",
+    "source_ci_run_id": 42733634283,
+    "final_ci_run_id": 42735663392,
+    "limitation": "Backend read-only projection only; see the functional release receipt for detailed product checks and boundaries."
+  },
+  "p_rev": {
+    "revision": "R5",
+    "model": "GPT-6 Luna max",
+    "mode": "read-only",
+    "tree": "c2585cd8d469974f642e1cea9215e2355d0cd531",
+    "base": "e34d66a7d4424008f146d46459d7db0280975efa",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_run": false
+  },
+  "local_checks": {
+    "documentation": "On tree c065c87003e6f42c605f747d86679c45f60c06f7: project map 28 sources/891 files; work items 72 fixtures/193 items; evidence states 25 fixtures/193 declarations; progress fixtures 26/26 and append-only check preserved 957129 historical bytes; gitignore 28 ignored/4 preserved; Tauri metadata 37 fixtures/2 CLI/0 plugins; Gitleaks fixtures 16/16 and staged Gitleaks 8.30.1 ~14101 bytes/0 findings. On tree c2585cd8d469974f642e1cea9215e2355d0cd531: progress fixtures 26/26, append-only preserved 957129 bytes, staged Gitleaks ~15431 bytes/0 findings, diff check passed. On final source tree 519a77f7576618dc35d4958c02103021914b0770: staged Gitleaks 8.30.1 ~16917 bytes/0 findings and staged diff check passed.",
+    "security": "On both exact remote runs, lockfile vulnerability scan, npm audit and Cargo audit steps passed. Four previously approved exception scopes were unchanged and unexpired at the run date (expiry 2026-11-11 UTC); no finding was newly suppressed or renewed.",
+    "review_limit": "P-REV R5 was read-only and ran no tests, scanners or CI."
+  },
+  "limitations": [
+    "The seven listed frontend/Rust/production-build steps were skipped because this PR contains documentation only; no product tests, build or executable verification were performed by these status-sync runs.",
+    "This status-sync does not extend the product proof from PR #72 and does not prove UI/IPC, E2E/smoke, real WebView2, cross-process concurrency, global coverage, or DSH-010."
+  ],
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "preserved_count": 216,
+    "total_after": 217,
+    "preserved_mapping_set_sha256": "2f9b7e22c0ec6f3abb8a6cb72675f1060c4956da12394084a0aa90aa3aa9497e",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without a trailing LF.",
+    "preserved": "All 216 prior mappings are preserved; exactly one DSH-007 status-sync mapping is added."
+  },
+  "next": "DSH-008 may start only after this note is verified in the remote refs/notes/evidence; B7 remains outside scope."
+}
