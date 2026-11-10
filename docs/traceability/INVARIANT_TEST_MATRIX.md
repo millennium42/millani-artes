@@ -269,3 +269,11 @@ No pwsh 7.6.9, passaram test/check project-map (28 fixtures; 28 fontes/883 arqui
 ### DSH-006 — prova liberada 06/11/2026
 
 A projeção read-only deriva o devido por recebível a partir do principal, recibos e reduções de dívida, sem multiplicação de históricos nem soma parcial em falhas. CI source #485/run 42263346365, SHA a22cbedf8b91232a5e9ca23aa979f21f45436f5f, 23/23 success, zero skips. CI final-main #486/run 42265696039, SHA 8e411973d4bd087b7fef92954f9050899067919c, 23/23 success, zero skips; build Tauri e verificação do executável passaram. Nota released DSH-006 blob 3bea67a606ac2b956db46cac4cde9994a51be6db em refs/notes/evidence; preserva 213 mappings e totaliza 214. A evidência não fecha INV-SAL-004 global nem prova escrita/atomicidade de recebimentos ou devoluções. Limites mantidos: projeção backend read-only focal, sem UI/IPC, E2E/smoke, WebView2 real, coverage global ou prova de concorrência/invariantes globais.
+
+## DSH-007 - a pagar (E3 focal; done/E3/passes:true candidato/não liberado)
+
+Critérios funcionais, gates locais e SECURITY passaram; este marcador segue a decisão humana B6 de candidato. Não constitui revisão nem CI e não libera DSH-008: P-REV R2, CI source/final-main nos SHAs exatos e nota released ainda pendem.
+
+| Invariante/projeção | Prova local | Evidência e limite |
+|---|---|---|
+| MVP-12, leitura sem mutação | Soma Rust checked de estados `payable`/`overdue`; exclui `awaiting_value`/`paid`. Domain 3/3, application 3/3 e SQLite file-backed 2/2; cobre vazio, valores inválidos, overflow, erro opaco, períodos/contextos distintos, reopen, `query_only`, TEMP shadow, snapshots, autocommit, integridade, FKs e schema/linha inválidos. Suítes debug/release e doctests, fmt e Clippy passaram; cobertura local registrada em `COVERAGE_POLICY.md`. | Candidato E3 focal da projeção, sem ampliar INV-FIN-002: não é saldo de conta e não prova UI/IPC, DSH-010, E2E/smoke, cobertura global ou concorrência entre processos. SECURITY local passou após atualização autorizada `rusqlite 0.41.1`/`libsqlite3-sys 0.39.1`: Cargo Audit 422/0 vulnerabilidades/2 avisos antigos cobertos, OSV 542/3 findings antigos cobertos/0 não aprovados, npm120/0. P-REV R2, CI source/final-main e nota released pendem; DSH-008 não liberado. |

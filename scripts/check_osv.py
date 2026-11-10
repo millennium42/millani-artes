@@ -27,8 +27,13 @@ PINS = {
     "osv-scanner_SHA256SUMS": (554, "29f6fbc8bdd02d977df4b0987705d046233c36b70469a7021c623e8c155c9ddc"),
 }
 LOCKS = ("package-lock.json", "src-tauri/Cargo.lock")
-EXCEPTIONS = ROOT / "docs/security/OSV_WINDOWS_EXCEPTION.json"
-APPROVAL = ROOT / "docs/security/OSV_WINDOWS_APPROVAL.json"
+DEFAULT_EXCEPTIONS = ROOT / "docs/security/OSV_WINDOWS_EXCEPTION.json"
+DEFAULT_APPROVAL = ROOT / "docs/security/OSV_WINDOWS_APPROVAL.json"
+EXCEPTIONS = DEFAULT_EXCEPTIONS
+APPROVAL = DEFAULT_APPROVAL
+B6_DSH007_APPROVAL_TEXT = "Dou autorização completa pra todas as decisões serem as recomendadas"
+B6_DSH007_APPROVAL_REFERENCE = "Direct user instruction authorizing recommended B6 decisions on 2026-11-09 UTC; retain only the same four pre-existing advisory identities, packages, versions and Windows target; rebind input hashes after the authorized rusqlite security update; add no advisory exception; expiresBeforeUTC 2026-11-11."
+B6_DSH007_APPROVAL_SCOPE_SHA256 = "cfdb63636a37fd7e806364eb75c928972aa246add3e01f638f7c2097a26e65b8"
 
 
 class GateError(Exception):
@@ -181,6 +186,13 @@ def approval_digest(config):
                                      separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
+def is_authorized_b6_dsh007_approval(config, record):
+    return (isinstance(record, dict)
+            and record.get("humanDecision") == B6_DSH007_APPROVAL_TEXT
+            and record.get("decisionReference") == B6_DSH007_APPROVAL_REFERENCE
+            and approval_digest(config) == B6_DSH007_APPROVAL_SCOPE_SHA256)
+
+
 def load_exceptions(blobs):
     safe_path(EXCEPTIONS)
     config = json.loads(EXCEPTIONS.read_bytes(), object_pairs_hook=object_pairs)
@@ -203,6 +215,9 @@ def load_exceptions(blobs):
     require(all(isinstance(value, str) and value.strip() for value in record.values()),
             "OSV_EXCEPTION_UNAPPROVED")
     require(record["approvedScopeSHA256"] == approval_digest(config), "OSV_EXCEPTION_APPROVAL_MISMATCH")
+    if EXCEPTIONS == DEFAULT_EXCEPTIONS:
+        require(APPROVAL == DEFAULT_APPROVAL and is_authorized_b6_dsh007_approval(config, record),
+                "OSV_EXCEPTION_UNAPPROVED")
     expires = date.fromisoformat(config["expiresBeforeUTC"])
     require(datetime.now(timezone.utc).date() < expires, "OSV_EXCEPTION_EXPIRED")
     require(set(config["inputSHA256"]) == {"src-tauri/Cargo.lock", "src-tauri/Cargo.toml"}, "OSV_EXCEPTION_SCOPE_INVALID")

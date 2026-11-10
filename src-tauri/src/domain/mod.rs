@@ -210,6 +210,21 @@ pub fn sum_nonnegative_receivable_due_cents(amounts: &[i64]) -> Result<i64> {
 
     i64::try_from(total).map_err(|_| DomainError::InvalidInput)
 }
+
+/// Sum positive open recurrence obligation amounts in cents and reject totals outside `i64`.
+pub fn sum_open_recurrence_obligation_amounts_cents(amounts: &[i64]) -> Result<i64> {
+    let total = amounts.iter().try_fold(0_i128, |total, amount| {
+        if *amount <= 0 {
+            return Err(DomainError::InvalidInput);
+        }
+        total
+            .checked_add(i128::from(*amount))
+            .ok_or(DomainError::InvalidInput)
+    })?;
+
+    i64::try_from(total).map_err(|_| DomainError::InvalidInput)
+}
+
 /// Sum positive movement amounts in cents and reject totals outside `i64`.
 pub fn sum_positive_movement_amounts_cents(amounts: &[i64]) -> Result<i64> {
     let total = amounts.iter().try_fold(0_i128, |total, amount| {
@@ -1075,6 +1090,9 @@ mod balance_tests;
 #[path = "dashboard_month_sales_tests.rs"]
 mod dashboard_month_sales_tests;
 
+#[cfg(test)]
+#[path = "dashboard_payables_tests.rs"]
+mod dashboard_payables_tests;
 #[cfg(test)]
 #[path = "dashboard_receivables_tests.rs"]
 mod dashboard_receivables_tests;
