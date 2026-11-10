@@ -1,0 +1,181 @@
+{
+  "id": "FIN-027",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-10",
+  "scope": "Documentation-only status-sync for the already implemented read-only backend projection of net result by Casa/Fábrica context. PR #74 changes no product code, tests, migrations, dependencies or manifests.",
+  "source_sha": "2a5b71755fece00a17bcfe7e7c225a57f4ac2e85",
+  "source_tree_sha": "185ae7d575c138a683b4aea10fdb5378f4c6fcf3",
+  "final_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+  "tree_sha": "185ae7d575c138a683b4aea10fdb5378f4c6fcf3",
+  "pull_request": {
+    "number": 74,
+    "url": "https://github.com/millennium42/millani-artes/pull/74",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f"
+  },
+  "source_ci": {
+    "run_number": 493,
+    "run_id": 42753173384,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "2a5b71755fece00a17bcfe7e7c225a57f4ac2e85",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42753173384",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "final_ci": {
+    "run_number": 494,
+    "run_id": 42753415857,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42753415857",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "product_proof": {
+    "source_ci": {
+      "run_number": 391,
+      "run_id": 39181782882,
+      "sha": "d438ab051db80153f5f2c505a56f710f1f0d0d41",
+      "conclusion": "success",
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "final_main_ci": {
+      "run_number": 490,
+      "run_id": 42735663392,
+      "sha": "e34d66a7d4424008f146d46459d7db0280975efa",
+      "conclusion": "success",
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "same_product_tree_at_base": true,
+    "statement": "src-tauri permaneceu idêntico entre a prova integral e a main base 875e451125ef7de1130e37520fa4e934d7e5f03a; os CIs do status-sync são documentais e não ampliam a cobertura de produto."
+  },
+  "review": {
+    "reviewer": "P-REV final read-only GPT-6 Luna max",
+    "tree_sha": "185ae7d575c138a683b4aea10fdb5378f4c6fcf3",
+    "base_sha": "875e451125ef7de1130e37520fa4e934d7e5f03a",
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "checks_run": false,
+    "review_history": [
+      "R2 retirou o P3 inicial após comparar os trees: somente o recibo R1 mudou, coerente com o handoff.",
+      "R3 encontrou P1 no handoff quando normalização incorreta inseriu escapes literais e achatou o arquivo; o conteúdo multiline íntegro foi restaurado do tree 6955a6cf82518acc6a0d7d52fbe4fe585c5581b3 e a correção ficou registrada.",
+      "R4 revisou o candidato corrigido sem achados."
+    ]
+  },
+  "local_checks": {
+    "documentation": "No candidato final: project-map 28 fontes/891 arquivos; work-items 193 válidos/72 fixtures; evidence states 193 declarações/25 fixtures; progress 26 fixtures e append-only preservou 959016 bytes; gitignore 28/4; Tauri 37 fixtures/2 CLI/0 plugins (Python 3.12.10); diff --cached --check passou.",
+    "security": "Gitleaks 8.30.1 fixtures 16/16; histórico local 987 commits/0 findings na base 875e451125ef7de1130e37520fa4e934d7e5f03a; staged 16.75 KB/0 findings; binário SHA-256 17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c. Rust/TypeScript local não foram repetidos porque código, testes, deps e configuração não mudaram."
+  },
+  "security_scans": {
+    "gitleaks_history": {
+      "version": "8.30.1",
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+      "source_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+      "commits": 543,
+      "findings": 0
+    },
+    "osv": {
+      "version": "2.6.0",
+      "source_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+      "packages": 542,
+      "findings": 3,
+      "excepted": 3,
+      "unexcepted": 0,
+      "exception_expiry": "2026-11-11",
+      "exceptions_renewed_or_added": false
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "source_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+      "dependencies": 120,
+      "vulnerabilities": {
+        "critical": 0,
+        "high": 0,
+        "moderate": 0,
+        "low": 0,
+        "info": 0,
+        "total": 0
+      }
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "source_sha": "f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "warnings": 2,
+      "excepted": 2,
+      "exception_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ],
+      "exception_expiry": "2026-11-11",
+      "input_sha256": {
+        "src-tauri/Cargo.lock": "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433",
+        "src-tauri/Cargo.toml": "8bf107e28bb0646142adac0c4099c6d7dd00586e42b3acb313badd320eb8ff5e"
+      }
+    }
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "preserved_count": 217,
+    "total_after": 218,
+    "preserved_mapping_set_sha256": "6c167c7535cd83073b2cd2fdc9d2f6bae25768098bf6054983b8f2009b57eb14",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+    "preserved_receipts": [
+      "RCV-001",
+      "RCV-002",
+      "RCV-003",
+      "DSH-007"
+    ],
+    "preserved": "All 217 prior mappings are preserved; exactly one FIN-027 status-sync mapping is added."
+  },
+  "limitations": [
+    "Seven named frontend, Rust and production-build checks were skipped because PR #74 is documentation-only; status-sync CIs do not prove product behavior.",
+    "This release does not prove UI/IPC, E2E/smoke, real WebView2, global coverage, global concurrency or other invariants."
+  ],
+  "next": "FIN-027 is released after this note is verified in remote refs/notes/evidence. DSH-008 may start after verification; B7 remains outside scope."
+}
