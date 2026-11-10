@@ -303,3 +303,7 @@ application::add_free_item usa as portas Clock/UuidGenerator e FreeItemStore; Ad
 ## SAL-014 — remoção de item persistido (E3 local)
 
 `application::remove_sale_item` gera o ID e horário do evento pelas portas existentes e chama a porta isolada `SaleItemRemovalStore`, sem ampliar o contrato consumido por SAL-012. `AdapterSqliteSaleStore` valida venda aberta e vínculo `(sale_id,item_id)`, apaga exatamente uma linha e registra auditoria na transação IMMEDIATE existente; rejeições de negócio mantêm a conexão e falhas operacionais descartam-na. Acesso a `main` é qualificado e parametrizado. Sem UI, IPC, startup ou cálculo de total; detalhes e limites: [spec](../../planning/specs/SAL-014.md) e [handoff](../../planning/handoffs/SAL-014.md).
+
+## FIN-027 — resultado líquido por contexto
+
+application::calculate_context_result reutiliza MovementReadStore, list_movements e Movement::result_effect_cents; domínio, adapter, banco e interfaces não foram alterados. Prova de produto: source #391 e final-main integral #490. Este status-sync ainda aguarda CI próprio e nota; sem prova de UI/IPC ou DSH-008/009.
