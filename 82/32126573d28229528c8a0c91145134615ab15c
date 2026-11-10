@@ -1,0 +1,189 @@
+{
+  "id": "DSH-008",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-10",
+  "scope": "Read-only focal proof that the existing FIN-027 factory-result projection works on persisted real SQLite movements through a query_only connection; no production logic, migration, dependency, UI or IPC changed.",
+  "source_sha": "5f549cd9313953a12a6c843fa63168d453b8867b",
+  "source_tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977",
+  "final_sha": "8232126573d28229528c8a0c91145134615ab15c",
+  "tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977",
+  "pull_request": {
+    "number": 75,
+    "url": "https://github.com/millennium42/millani-artes/pull/75",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "8232126573d28229528c8a0c91145134615ab15c"
+  },
+  "source_ci": {
+    "run_number": 495,
+    "run_id": 42761193567,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "5f549cd9313953a12a6c843fa63168d453b8867b",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42761193567",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "steps_skipped_names": [],
+      "execution_ref_sha": "8f9240b93f5018b7251fa88393e11e0db45d4303",
+      "execution_tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977",
+      "candidate_tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977"
+    }
+  },
+  "final_ci": {
+    "run_number": 496,
+    "run_id": 42762915094,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "8232126573d28229528c8a0c91145134615ab15c",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/42762915094",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "steps_skipped_names": [],
+      "native_evidence": {
+        "source_sha": "8232126573d28229528c8a0c91145134615ab15c",
+        "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+        "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+        "node": "v24.21.0",
+        "image_os": "win25-vs2026",
+        "image_version": "20261103.298.1",
+        "executable_bytes": 8536576,
+        "executable_sha256": "b2b3fb61724dc00180b0c1bd9ebf1371b782836ff9b89791856516c8186bec63",
+        "executable_format": "PE32+",
+        "machine": "AMD64",
+        "custom_protocol": true,
+        "cargo_lock_sha256": "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433",
+        "npm_lock_sha256": "8d18a03398edc734b7761d0a6050b62f36ceb6eceedbad5d34b101726c423c19"
+      }
+    }
+  },
+  "product_proof": {
+    "test": "persisted_movements_and_real_account_reader_feed_account_balance",
+    "scenario": "Persisted Casa entry 100 cents, factory exit 30 cents, transfers Casa 20 and Factory 5, opening balances -1234 and 7654; reopened SQLite and query_only context projection.",
+    "expected_result": "Factory net result -30 cents; opening balances excluded and transfers neutral."
+  },
+  "review": {
+    "reviewer": "GPT-6 Luna max",
+    "mode": "independent read-only P-REV",
+    "tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977",
+    "p0": 0,
+    "p1": 0,
+    "p2": 0,
+    "p3": 0,
+    "reviewer_checks_executed": false,
+    "result": "Final review has no remaining candidate blockers; prior P2 findings were corrected."
+  },
+  "local_checks": {
+    "rust": {
+      "date_utc": "2026-11-10",
+      "version": "1.99.0",
+      "target": "x86_64-pc-windows-msvc",
+      "src_tauri_tree_sha": "527b010527ca39804c4444d976afd170426634de",
+      "focused_command": "cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness persisted_movements_and_real_account_reader_feed_account_balance",
+      "focused_result": "1 passed, 0 failed, 281 filtered",
+      "debug_command": "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+      "release_command": "cargo test --locked --release --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol",
+      "each_suite_result": "343 library, 7 binary (1 intentionally ignored for WebView2), 282 SQLite, 40 doctests; all executed tests passed.",
+      "fmt_command": "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+      "clippy_command": "cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets --features tauri/custom-protocol -- -D warnings",
+      "fmt": "pass",
+      "clippy": "pass"
+    },
+    "frontend": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "commands": [
+        "npm ci --ignore-scripts",
+        "npm run build",
+        "npm run quality"
+      ],
+      "result": "pass; format, lint, typecheck, 3 tests",
+      "coverage": "100% applies only to 2 scaffold frontend files and 3 tests; not Rust/global coverage."
+    },
+    "documentation_validators": "Project map 28 sources/894 files; work-item schema 194; evidence declarations 194; fixtures 72 and 25; progress fixtures 26 and append-only 962696 prior bytes preserved; gitignore 28 ignored/4 source lockfiles preserved; Tauri metadata 37 fixtures/2 CLI/0 plugins; all passed.",
+    "gitleaks_staged": {
+      "version": "8.30.1",
+      "exact_candidate_tree_sha": "88c29636b6e69d887ab5a8a88f870e716d2b5977",
+      "exact_candidate_tree_result": "0 findings, approximately 23227 bytes scanned",
+      "recorded_scan_tree_sha": "5ee4eb52ea55c3d25b4ef0d5aaf42c0f5c3f06de",
+      "recorded_scan_command": "rtk proxy artifacts/tools/gitleaks/8.30.1/gitleaks.exe protect --staged --redact=100 --no-banner --no-color --exit-code 1 --timeout 60 --report-format json",
+      "historical_exact_candidate_rerun": "0 findings; same command on candidate tree 88c29636b6e69d887ab5a8a88f870e716d2b5977."
+    }
+  },
+  "security_scans": {
+    "source_sha": "8232126573d28229528c8a0c91145134615ab15c",
+    "gitleaks_history": {
+      "version": "8.30.1",
+      "commits": 545,
+      "findings": 0,
+      "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c"
+    },
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "excepted": 3,
+      "unexcepted": 0,
+      "exception_expiry": "2026-11-11",
+      "lockfiles": {
+        "package-lock.json": 120,
+        "src-tauri/Cargo.lock": 422
+      }
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0,
+      "audit_level": "high"
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "database_head": "d9cb059f3217db87aeccd190b81eaffe8cc29cb9",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "warnings": 2,
+      "excepted": 2,
+      "exception_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ],
+      "exception_expiry": "2026-11-11"
+    },
+    "existing_approvals": "Original IDs/packages/versions/target/hashes retained; no finding added, suppressed, expanded or renewed. Gates require current UTC date strictly earlier than expiresBeforeUTC; final-main scan ran 2026-11-10 UTC, before expiry."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "preserved_count": 218,
+    "total_after": 219,
+    "preserved_mapping_set_sha256": "d7a9163991a581f233e2b2af89f9f633e5335744dcad1beade73ed9e7988bb6d",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+    "preserved_receipts": [
+      "RCV-001",
+      "RCV-002",
+      "RCV-003",
+      "DSH-007",
+      "FIN-027"
+    ],
+    "preserved": "All 218 prior mappings are preserved; exactly one DSH-008 mapping is added."
+  },
+  "limitations": [
+    "Backend/read-only focal proof only; no UI/IPC, smoke/E2E, real WebView2 execution, Rust global coverage, temporal window/timezone, or DSH-010 comprehensive no-write proof.",
+    "Does not establish the global closure of INV-FIN-003 or production acceptance.",
+    "One non-blocking CI warning: pinned actions/checkout v4 advertises Node.js 20 and is forced by GitHub to Node.js 24; all workflow steps passed. No workflow/action exception was added."
+  ],
+  "next": "DSH-008 is released after this note is verified remotely. DSH-009 may then begin; B7 remains outside scope."
+}
