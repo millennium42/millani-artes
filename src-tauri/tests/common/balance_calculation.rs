@@ -170,7 +170,11 @@ fn persisted_movements_and_real_account_reader_feed_account_balance() {
             .unwrap(),
     );
     assert_eq!(after_query, before_query);
-    let context_store = AdapterSqliteMovementStore::new(open_database(&path).unwrap());
+    let context_connection = open_database(&path).unwrap();
+    context_connection
+        .pragma_update(None, "query_only", true)
+        .unwrap();
+    let context_store = AdapterSqliteMovementStore::new(context_connection);
     assert_eq!(
         millani_artes::application::calculate_context_result::calculate_context_result(
             &Context::Home,
