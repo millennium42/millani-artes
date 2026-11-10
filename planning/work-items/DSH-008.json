@@ -1,0 +1,28 @@
+{
+  "id": "DSH-008",
+  "title": "resultado fábrica",
+  "specPath": "planning/specs/DSH-008.md",
+  "status": "done",
+  "dependencies": [
+    "FIN-027"
+  ],
+  "acceptanceCriteria": [
+    "calculate_context_result(Context::Factory) projeta o resultado líquido em centavos dos movimentos persistidos, sem duplicar regra FIN-027.",
+    "SQLite file-backed reaberto e query_only, com movimentos reais nos dois contextos, transferências e saldos iniciais, produz o valor focal esperado de -30 centavos.",
+    "Saldos iniciais, movimentos Casa e transferências não entram como resultado da Fábrica; erros e overflow preservam o contrato opaco FIN-027.",
+    "Sem estado/agregado editável, gravação, migration, dependência, regra financeira nova, UI ou IPC; DSH-010 continua sendo a prova ampla de projeção sem escrita.",
+    "P-REV independente, CI source/final-main em SHAs exatos e nota released preservando mappings são gates de liberação deste item."
+  ],
+  "checks": [
+    "RED/RECON documentam que FIN-027 já contém o cálculo e a prova Home/Fábrica; nenhuma lógica de produção nova é necessária.",
+    "Teste focal SQLite de movimentos persistidos, reopen e leitura query_only; testes Rust de debug/release e doctests conforme gates existentes.",
+    "cargo fmt --check, cargo clippy --locked --all-targets -- -D warnings e Cargo Audit/OSV; npm audit e Gitleaks/validadores quando exigidos pelo workflow.",
+    "P-REV GPT-6 Luna max read-only no candidato congelado; corrigir achados e revalidar.",
+    "CI remoto source e final-main nos SHAs exatos e nota refs/notes/evidence released no SHA final, com mappings anteriores preservados."
+  ],
+  "agentPlan": "P-INT único escritor/executor; P-REV independente read-only GPT-6 Luna max. Sem modelos locais, roteamento local ou escrita paralela; uso/custo atribuível não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "Candidato B6 done/E3/passes:true, ainda não liberado. Base limpa origin/main f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f; nota FIN-027 e recibos RCV-001/002/003/DSH-007 confirmados. Execução Rust em 2026-11-10 UTC, Rust 1.99.0/x86_64-pc-windows-msvc, subtree src-tauri exato 527b010527ca39804c4444d976afd170426634de: `cargo test --locked --manifest-path src-tauri/Cargo.toml --test sqlite_harness persisted_movements_and_real_account_reader_feed_account_balance` passou 1/1; `cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol` e versão `--release` passaram cada uma (343 biblioteca, 7 binário/1 ignored por WebView2, 282 SQLite, 40 doctests); fmt e Clippy locked passaram. Resultado focal -30 centavos com movimentos Casa/Fábrica, transferências e saldos iniciais -1234/7654 após reopen/query_only. Node/npm pinned: build/quality, format/lint/typecheck e 3 testes passaram; coverage 100% só scaffold. Cargo Audit422/0 vulnerabilidades/2 avisos aprovados; OSV542/3 findings cobertos/0 fora; npm120/0; Gitleaks histórico990/0; fixtures Cargo56, OSV40, Gitleaks16 e SAST45 passaram. As aprovações têm `expiresBeforeUTC=2026-11-11`, aceitas apenas se a data UTC for estritamente anterior ao corte; 2026-11-10 UTC foi o último dia válido observado. Sem renovação ou finding nova. RED de produção não aplicável: FIN-027 já fornece comportamento; nenhum código de produção/dep/schema/UI/IPC alterado. P-REV independente, CI source/final-main nos SHAs exatos e nota released são gates de liberação; DSH-009 bloqueado até a nota própria no SHA final. Limites: sem UI/IPC, E2E, cobertura Rust global, período/fuso ou INV-FIN-003 global."
+}
