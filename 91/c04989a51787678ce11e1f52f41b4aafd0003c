@@ -159,7 +159,7 @@
     "notes_ref": "refs/notes/evidence",
     "preserved_count": 219,
     "total_after": 220,
-    "preserved_mapping_set_sha256": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
+    "preserved_mapping_set_sha256": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
     "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
     "preserved_receipts": [
       "RCV-001",
@@ -169,7 +169,7 @@
       "FIN-027",
       "DSH-008"
     ],
-    "preserved": "All 219 mappings from baseline tree 9dfebd46a44d50df6245b499001e61638f08310d are retained byte-for-byte. The DSH-009 target was already present in intermediate ref 7c97c07eb35543548b0333e04109c873b6214ef3 as a candidate and is now the released note; its prior blob remains in note history. Total: 220 mappings."
+    "preserved": "The 219 mapping lines from baseline tree 9dfebd46a44d50df6245b499001e61638f08310d match the prior note-ref tree 7c97c07eb35543548b0333e04109c873b6214ef3 after excluding the DSH-009 target; their documented SHA-256 is 68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6. The DSH-009 target was already present as a candidate; its superseded note blobs remain in note history."
   },
   "limitations": [
     "Backend/read-only focal proof only; no UI/IPC, smoke/E2E, real WebView2 execution, Rust global coverage, branch coverage, temporal window or timezone behavior.",
@@ -180,12 +180,12 @@
   "next": "DSH-010 may start only after this note is verified remotely; B7 remains outside scope.",
   "correction": {
     "date": "2026-11-12",
-    "previous_note_blob": "c9a573b0e47051217f968abcb8f5d679721f17df",
-    "previous_notes_ref": "e045ebf11b90a2bd7e606e7f66e8a3dfa01ef95c",
-    "prior_recorded_mapping_hash": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
-    "verified_mapping_hash": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
-    "method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF",
-    "verification": "The baseline tree 9dfebd46a44d50df6245b499001e61638f08310d contains 219 mappings. The current evidence ref excluding the DSH-009 target has the same 219 mapping lines and the same set; recomputation yields f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd. The prior correction value 68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6 is not reproduced by the documented method. The intermediate ref 7c97c07eb35543548b0333e04109c873b6214ef3 already contained a candidate DSH-009 note for the same target; the released note replaced its blob, and the prior blob remains in note history."
+    "previous_note_blob": "433ecaa76ab131b65ebdb75dba3736eea7b05e68",
+    "previous_notes_ref": "c4f2f56918f5785eed264bb2d0b3a8f6cd83a619",
+    "prior_recorded_mapping_hash": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
+    "verified_mapping_hash": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
+    "method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+    "verification": "Reproduced against the prior note-ref tree 7c97c07eb35543548b0333e04109c873b6214ef3 and the baseline tree 9dfebd46a44d50df6245b499001e61638f08310d: each contains 220 mappings including the existing DSH-009 target. Excluding that target yields the same 219 mapping lines and hash 68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6. The current ref additionally contains the later DSH-010 mapping; excluding both release targets preserves the same 219 mappings. The prior f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd value is not reproduced by this method."
   },
   "correction_history": [
     {
@@ -196,6 +196,15 @@
       "verified_mapping_hash": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
       "method": "SHA-256 of the 219 prior git-notes list lines, ordinally sorted and LF-joined without trailing LF",
       "verification": "The 219 mappings in the prior notes-ref tree equal the current mappings after excluding the DSH-009 target; total current mappings remain 220."
+    },
+    {
+      "date": "2026-11-12",
+      "previous_note_blob": "c9a573b0e47051217f968abcb8f5d679721f17df",
+      "previous_notes_ref": "e045ebf11b90a2bd7e606e7f66e8a3dfa01ef95c",
+      "prior_recorded_mapping_hash": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
+      "verified_mapping_hash": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
+      "method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF",
+      "verification": "The baseline tree 9dfebd46a44d50df6245b499001e61638f08310d contains 219 mappings. The current evidence ref excluding the DSH-009 target has the same 219 mapping lines and the same set; recomputation yields f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd. The prior correction value 68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6 is not reproduced by the documented method. The intermediate ref 7c97c07eb35543548b0333e04109c873b6214ef3 already contained a candidate DSH-009 note for the same target; the released note replaced its blob, and the prior blob remains in note history."
     }
   ]
 }
