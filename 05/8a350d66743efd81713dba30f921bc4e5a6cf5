@@ -1,0 +1,192 @@
+{
+  "id": "DSH-010",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-12",
+  "scope": "File-backed proof that dashboard projections DSH-001..009 are read-only after migrations and reopen. No production, product rule, migration, dependency, UI or IPC change.",
+  "source_sha": "66b9dd4b32ef2f85c2618d2d5fdd9106dba06b4a",
+  "source_tree_sha": "43a08c5bf5da99c7bdc91ad174b3e63319b6fed6",
+  "final_sha": "058a350d66743efd81713dba30f921bc4e5a6cf5",
+  "tree_sha": "43a08c5bf5da99c7bdc91ad174b3e63319b6fed6",
+  "pull_request": {
+    "number": 78,
+    "url": "https://github.com/millennium42/millani-artes/pull/78",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "058a350d66743efd81713dba30f921bc4e5a6cf5"
+  },
+  "source_ci": {
+    "run_number": 501,
+    "run_id": 43195431623,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "66b9dd4b32ef2f85c2618d2d5fdd9106dba06b4a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43195431623",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "steps_skipped_names": [],
+      "candidate_tree_sha": "43a08c5bf5da99c7bdc91ad174b3e63319b6fed6"
+    },
+    "coverage_artifact": {
+      "id": 13932707273,
+      "name": "frontend-coverage-43195431623-1",
+      "sha256": "a654881712661e4e1dbf21f7493cd0d52dc756bf87fba32daa25ff3e4520e7b0",
+      "size_bytes": 21915
+    }
+  },
+  "final_ci": {
+    "run_number": 502,
+    "run_id": 43197727082,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "058a350d66743efd81713dba30f921bc4e5a6cf5",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43197727082",
+    "job": {
+      "name": "validate",
+      "conclusion": "success",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0,
+      "steps_skipped_names": [],
+      "candidate_tree_sha": "43a08c5bf5da99c7bdc91ad174b3e63319b6fed6",
+      "executable_verification_step": "success",
+      "executable_fingerprint": "not registered via GitHub connector"
+    },
+    "coverage_artifact": {
+      "id": 13934395576,
+      "name": "frontend-coverage-43197727082-1",
+      "sha256": "05be2add47c2fc496dfecba50739ec658fe8b6b70b68a2ece7570d2e7e355d14",
+      "size_bytes": 21911
+    }
+  },
+  "product_proof": {
+    "test": "common::dashboard_read_only::all_dashboard_projections_read_without_changing_the_database",
+    "scenario": "Full migration schema v17 in file-backed synthetic SQLite, closed and reopened; all nine real DSH-001..009 query adapters ran through PRAGMA query_only=1.",
+    "expected_results_cents": {
+      "total_and_per_account_balance": 10225,
+      "entries_today": 500,
+      "exits_today": 275,
+      "sales_month": 3000,
+      "receivables": 1200,
+      "payables": 4000,
+      "factory_result": -75,
+      "home_expenses": 200
+    },
+    "invariants": "UPDATE rejected with SQLITE_READONLY; schema and all persistent main-table rows unchanged; integrity_check=ok; foreign-key violations=0; schema version 17; autocommit.",
+    "focal_tests": "1 passed after P-REV correction; sentinel sqliteX_shadow included in snapshot via GLOB filters."
+  },
+  "review": {
+    "reviewer": "GPT-6 Luna max",
+    "mode": "independent read-only P-REV",
+    "tree_sha": "43a08c5bf5da99c7bdc91ad174b3e63319b6fed6",
+    "reviewer_checks_executed": false,
+    "findings": "P0/P1/P2/P3=0/0/0/0",
+    "result": "Confirmed corrected snapshot filters, query_only readers, complete persistent snapshots, health checks and candidate/release status."
+  },
+  "local_checks": {
+    "rust": {
+      "version": "1.99.0",
+      "target": "x86_64-pc-windows-msvc",
+      "fmt": "pass",
+      "clippy_locked_all_targets_custom_protocol_D_warnings": "pass",
+      "debug_suite": "pass",
+      "release_suite": "pass",
+      "suite_counts_each": "348 library, 7 binary (1 intentionally ignored for WebView2), 284 SQLite, 40 doctests",
+      "focal_sqlite": "1 passed"
+    },
+    "frontend": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "npm_ci_ignore_scripts": "pass",
+      "npm_build": "pass",
+      "local_format_lint_typecheck_tests_coverage": "omitted because no TypeScript source changed",
+      "CI_frontend_quality_and_coverage": "pass"
+    },
+    "security_fixtures": {
+      "osv": "41/41",
+      "cargo_audit_ci": "42/42",
+      "cargo_audit": "60/60",
+      "npm_audit": "40/40",
+      "gitleaks": "16/16",
+      "sast": "45/45"
+    },
+    "documentation_validators": "Map 28 sources/904 files; gitignore 28 ignored/4 source files; evidence/work-items 196; fixtures 25/72; Tauri 37 fixtures/2 CLI; progress 26 fixtures and 971257 historical bytes append-only; frontend selector 20; all passed.",
+    "gitleaks": {
+      "version": "8.30.1",
+      "history_findings": 0,
+      "staged_findings": 0,
+      "commit_count": "not recorded in this release note"
+    }
+  },
+  "security_scans": {
+    "osv": {
+      "version": "2.6.0",
+      "packages": 542,
+      "findings": 3,
+      "excepted": 3,
+      "unexcepted": 0,
+      "approvals_expire_before_utc": "2026-11-14"
+    },
+    "cargo_audit": {
+      "version": "0.22.2",
+      "dependencies": 422,
+      "vulnerabilities": 0,
+      "approved_warnings": 2,
+      "approved_warning_ids": [
+        "RUSTSEC-2024-0370",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    "npm_audit": {
+      "node": "24.21.0",
+      "npm": "11.19.0",
+      "dependencies": 120,
+      "vulnerabilities": 0
+    },
+    "approvals": "Same pre-existing identities, packages, versions and hashes; no exception or suppression added."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "6d5772b2372933db33e0770d7e191e8fc0ee7acb",
+    "preserved_count": 220,
+    "total_after": 221,
+    "preserved_mapping_set_sha256": "48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+    "preserved": "All 220 mappings present immediately before DSH-010 are retained; one DSH-010 mapping is added. The DSH-009 note checksum correction was completed first; its previous note blobs remain in note history.",
+    "preserved_receipts": [
+      "RCV-001",
+      "RCV-002",
+      "RCV-003",
+      "FIN-027",
+      "DSH-001",
+      "DSH-007",
+      "DSH-008",
+      "DSH-009"
+    ]
+  },
+  "evidence_correction": {
+    "id": "DSH-009 mapping checksum",
+    "prior_note_blob": "c9a573b0e47051217f968abcb8f5d679721f17df",
+    "corrected_note_blob": "433ecaa76ab131b65ebdb75dba3736eea7b05e68",
+    "baseline_tree": "9dfebd46a44d50df6245b499001e61638f08310d",
+    "baseline_mapping_count": 219,
+    "verified_mapping_set_sha256": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
+    "previous_value_not_reproduced": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
+    "verification": "The baseline has 219 mappings; excluding DSH-009 from the corrected pre-DSH-010 ref yields the identical 219 lines and set. The old and superseded DSH-009 note blobs remain in refs/notes/evidence history."
+  },
+  "limitations": [
+    "Backend SQLite proof only; no UI/IPC, smoke/E2E, real WebView2 execution, concurrency across processes, Rust global coverage or branch coverage claim.",
+    "CI executable verification passed, but the GitHub connector did not expose its executable fingerprint.",
+    "Three pre-existing OSV findings remain temporarily approved until before 2026-11-14 UTC; Cargo has two approved warnings."
+  ],
+  "next": "DSH-010 released. Perform the docs-only B6 status sync with its own P-REV, source/final-main CI and evidence note; do not start B7."
+}
