@@ -1,0 +1,26 @@
+{
+  "id": "DSH-010",
+  "title": "Provar que as projeções do dashboard não escrevem no banco",
+  "specPath": "planning/specs/DSH-010.md",
+  "status": "done",
+  "dependencies": ["DSH-001", "DSH-009"],
+  "acceptanceCriteria": [
+    "Exercitar os casos de uso backend DSH-001 a DSH-009 sobre arquivo SQLite migrado e reaberto, usando adapters reais de leitura com PRAGMA query_only=ON.",
+    "Validar resultados não nulos das nove projeções no fixture sintético e preservar exatamente schema e linhas persistentes antes/depois.",
+    "Confirmar integrity_check=ok, zero violações de FK, migration version 17 e autocommit; não adicionar código de produção, regra, migration, dependência, UI ou IPC.",
+    "Passar gates locais Rust, SECURITY, validadores documentais e Gitleaks; registrar evidência, limites e riscos sem adicionar exceções."
+  ],
+  "checks": [
+    "Teste focal file-backed DSH-001..009 com adapters reais, query_only e snapshots integrais antes/depois",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+    "cargo clippy --manifest-path src-tauri/Cargo.toml --locked --all-targets --features tauri/custom-protocol -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol em debug e release",
+    "Cargo Audit, OSV Scanner, npm audit e Gitleaks conforme gates atuais; fixtures e validadores de documentos/work items/evidência/progress log",
+    "Gate de liberação pós-candidato: P-REV independente read-only; CI source/final-main nos SHAs exatos; nota released remota em refs/notes/evidence preservando mappings"
+  ],
+  "agentPlan": "P-INT único escritor e executor; P-REV independente read-only GPT Luna max; sem modelos locais, roteamento local ou escrita paralela; uso/custo não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": true,
+  "notes": "CANDIDATO / NÃO LIBERADO: teste focal 1/1; Rust debug/release, fmt e Clippy passaram; SECURITY local passou (OSV 542/3 aprovados/0 fora; Cargo 422/0 vulnerabilidades/2 warnings aprovados; npm 120/0; Gitleaks history 999/0 e staged 0; fixtures OSV41, CI Audit42, Cargo60, npm40, Gitleaks16, SAST45). Validadores finais passaram: mapa 28/904; evidence/work items 196, fixtures 25/72; Tauri37/2; progress26, 971257 bytes preservados; seletor frontend20. Quatro aprovações existentes expiram antes de 2026-11-14 UTC; 3 findings OSV são risco temporário. Primeiro P-REV apontou P2 documental, resolvido ao separar aceite candidato e gates de release; apontou P3 no filtro LIKE de snapshot, reproduzido em RED e corrigido com GLOB e sentinela sqliteX_shadow. P-REV de confirmação GPT-6 Luna max não encontrou findings impeditivos (P0/P1/P2/P3=0/0/0/0). CI source/final-main nos SHAs exatos e nota released ainda pendentes; nenhuma dependência liberada. Base origin/main/HEAD 5b842bd9a5054e1a7ab24ebd748d2420ba15f2ce. DSH-001/009 e recibo DSH-009 (220 mappings, 219 preservados) conferidos. Sem mudança em produção, UI/IPC, migrations ou dependências."
+}

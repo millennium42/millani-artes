@@ -97,6 +97,7 @@ mod dashboard_today_exits;
 
 mod dashboard_month_sales;
 mod dashboard_payables;
+mod dashboard_read_only;
 mod dashboard_receivables;
 
 mod movement_reading;
