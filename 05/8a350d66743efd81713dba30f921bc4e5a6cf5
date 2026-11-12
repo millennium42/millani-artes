@@ -192,12 +192,12 @@
   "correction_history": [
     {
       "date": "2026-11-12",
-      "previous_note_blob": "aad2ad96f9aa832e9f477e6521ccb0cd1bbd7949",
+      "previous_note_blob": "d4ff183f1efe97d55dc307ca08c0284dcac9149f",
       "prior_recorded_preserved_mapping_hash": "48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966",
       "verified_preserved_mapping_hash": "5c45117f51d8cf3f1234f83129992bd5bb0a2bea228c2270eafe35fb3143fd5f",
       "previous_ref": "6d5772b2372933db33e0770d7e191e8fc0ee7acb",
       "method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
-      "verification": "The previous ref contains 220 mappings, and its mapping set equals the current ref after excluding the DSH-010 target. The prior 48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966 value is not reproduced."
+      "verification": "At DSH-010 release, the 220 mapping lines in previous ref 6d5772b2372933db33e0770d7e191e8fc0ee7acb were retained exactly. A subsequent DSH-009 evidence correction replaced the blob at that same target; current mapping target keys still match the previous ref, with only the DSH-009 note blob changed and its prior blobs retained. The previous 48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966 value is not reproduced."
     }
   ]
 }
