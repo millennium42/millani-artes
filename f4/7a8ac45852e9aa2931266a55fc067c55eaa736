@@ -1,0 +1,142 @@
+{
+  "id": "DSH-010",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "release_date": "2026-11-12",
+  "scope": "Documentation-only status synchronization for DSH-009/DSH-010 evidence and the B6 close candidate. No product code, migration, dependency, UI or IPC changes.",
+  "source_sha": "be683016e9c598019d8f5bd6b77feae3d9573306",
+  "source_tree_sha": "29012e774b531eb5cc79eff410b1eba73ea9c2c8",
+  "final_sha": "f47a8ac45852e9aa2931266a55fc067c55eaa736",
+  "tree_sha": "29012e774b531eb5cc79eff410b1eba73ea9c2c8",
+  "pull_request": {
+    "number": 79,
+    "url": "https://github.com/millennium42/millani-artes/pull/79",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "f47a8ac45852e9aa2931266a55fc067c55eaa736"
+  },
+  "source_ci": {
+    "run_number": 503,
+    "run_id": 43213848275,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "be683016e9c598019d8f5bd6b77feae3d9573306",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43213848275",
+    "job": {
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "final_ci": {
+    "run_number": 504,
+    "run_id": 43214244779,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "f47a8ac45852e9aa2931266a55fc067c55eaa736",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43214244779",
+    "job": {
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "review": {
+    "reviewer": "GPT-6 Luna max",
+    "mode": "independent read-only P-REV",
+    "tree_sha": "29012e774b531eb5cc79eff410b1eba73ea9c2c8",
+    "reviewer_checks_executed": false,
+    "findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    }
+  },
+  "local_checks": {
+    "project_map": "fixtures passed; 28 sources and 904 files",
+    "gitignore": "28 ignored artifacts; 4 sources/lockfiles preserved",
+    "evidence_states": "25 fixtures passed; 196 work items validated",
+    "work_items": "72 fixtures passed; 196 work items validated",
+    "progress_log": "26 fixtures passed; HEAD-to-INDEX append-only preserved 975441 historical bytes",
+    "gitleaks": {
+      "version": "8.30.1",
+      "fixtures": "16/16 passed serially",
+      "history_commits": 1006,
+      "findings": 0,
+      "initial_parallel_attempt": "Clean fixture failed while fixture suite and scanner ran concurrently; isolated serial rerun passed. Root cause is unproven."
+    },
+    "diff_check": "passed"
+  },
+  "security": {
+    "dependency_gates": "Lockfile scan, npm audit and Cargo Audit passed in both exact-SHA CI runs.",
+    "existing_approvals": "No new or renewed exceptions. Four existing approvals remain temporary and expire before 2026-11-14 UTC; three pre-existing OSV findings remain a time-limited risk."
+  },
+  "evidence_reconciliation": {
+    "DSH-009": {
+      "current_note_blob": "006e7c8cf946085f1186d776984bd7b68c928606",
+      "preserved_count": 219,
+      "total_at_release": 220,
+      "preserved_mapping_set_sha256": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
+      "superseded_blobs_preserved": [
+        "ed35706e4d020e0fa2108992824b10427e06c0fd",
+        "c9a573b0e47051217f968abcb8f5d679721f17df",
+        "433ecaa76ab131b65ebdb75dba3736eea7b05e68"
+      ]
+    },
+    "DSH-010": {
+      "current_note_blob": "9d29c40ca44ab1cb2af95c381ae82650b99d767a",
+      "preserved_count": 220,
+      "total_at_release": 221,
+      "preserved_mapping_set_sha256": "5c45117f51d8cf3f1234f83129992bd5bb0a2bea228c2270eafe35fb3143fd5f"
+    }
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "539c57ff0124e6945f8907a8a0b366b6ff33bdda",
+    "preserved_count": 221,
+    "total_after": 222,
+    "preserved_mapping_set_sha256": "4c92ca4a3ae55d675446d091250307fd1eac812d78caa4bbf69543d78a0cdfde",
+    "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+    "preserved": "All 221 mapping lines from the prior remote evidence ref are retained. The corrected DSH-009/DSH-010 blobs remain at their existing targets; superseded note blobs remain in history.",
+    "b6_release_receipts": [
+      "RCV-004", "RCV-005", "RCV-006", "RCV-007", "RCV-008", "RCV-009", "RCV-010", "RCV-011",
+      "RET-001", "RET-002", "RET-003", "RET-004", "RET-005", "RET-006", "RET-007", "RET-008",
+      "RET-009", "RET-010", "RET-011", "RET-012", "RET-013",
+      "DSH-001", "DSH-002", "DSH-003", "DSH-004", "DSH-005", "DSH-006", "DSH-007", "DSH-008", "DSH-009", "DSH-010"
+    ],
+    "additional_preserved_receipts": ["RCV-001", "RCV-002", "RCV-003"]
+  },
+  "b6_state": "All 31 pending B6 work items have released E3 receipts; RCV-001/002/003 remain preserved. This note releases the DSH-010 documentation status-sync. The roadmap still marks overall B6 closure as a candidate pending its final closure update; B7 has not started.",
+  "limitations": [
+    "Documentation-only status sync; no product behavior changed or was retested by this PR.",
+    "Seven conditional frontend/Rust build steps were skipped by the exact-SHA Documentation CI because this diff did not touch those surfaces.",
+    "The concurrent local Gitleaks fixture failure was not root-caused; serial fixture and remote CI passed."
+  ],
+  "next": "Complete the final B6 roadmap closure status update with its own review, exact-SHA CI and released evidence note; do not start B7."
+}
