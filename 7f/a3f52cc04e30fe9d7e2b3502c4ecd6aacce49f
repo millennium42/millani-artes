@@ -1,0 +1,121 @@
+{
+  "note_type": "release_evidence",
+  "id": "B6-CLOSE",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "Fechamento agregado do bloco B6",
+  "summary": "Fecha o estado agregado de B6 apos a liberacao individual dos 31 recibos E3, preservando RCV-001/002/003.",
+  "source_sha": "d1e4fd83cc7feda87e36d887560e3802164c427b",
+  "source_tree_sha": "7716785017baeafb7902c99532632e0d71b81294",
+  "final_sha": "7fa3f52cc04e30fe9d7e2b3502c4ecd6aacce49f",
+  "tree_sha": "7716785017baeafb7902c99532632e0d71b81294",
+  "pull_request": {
+    "number": 80,
+    "url": "https://github.com/millennium42/millani-artes/pull/80",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "7fa3f52cc04e30fe9d7e2b3502c4ecd6aacce49f"
+  },
+  "source_ci": {
+    "run_number": 505,
+    "run_id": 43219851191,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "d1e4fd83cc7feda87e36d887560e3802164c427b",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43219851191",
+    "job": {
+      "id": 131188290238,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "final_ci": {
+    "run_number": 506,
+    "run_id": 43220270325,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "7fa3f52cc04e30fe9d7e2b3502c4ecd6aacce49f",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/43220270325",
+    "job": {
+      "id": 131189713149,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7,
+      "steps_skipped_names": [
+        "Install locked frontend dependencies",
+        "Check frontend quality",
+        "Validate coverage reports",
+        "Upload frontend coverage",
+        "Prepare pinned Rust",
+        "Build Tauri production",
+        "Verify Tauri executable"
+      ]
+    }
+  },
+  "review": {
+    "reviewer": "GPT-6 Luna max",
+    "mode": "independent read-only P-REV",
+    "tree_sha": "7716785017baeafb7902c99532632e0d71b81294",
+    "reviewer_checks_executed": false,
+    "findings": { "P0": 0, "P1": 0, "P2": 0, "P3": 0 }
+  },
+  "local_checks": {
+    "project_map": "fixtures passed; 28 sources and 904 files (before final one-line roadmap title clarification; target unaffected)",
+    "gitignore": "fixtures passed; 28 ignored artifacts and 4 sources/lockfiles preserved (before final title clarification; target unaffected)",
+    "evidence_states": "25 fixtures passed; 196 work items (before final title clarification; target unaffected)",
+    "work_items": "72 fixtures passed; 196 work items (before final title clarification; target unaffected)",
+    "progress_log": "26 fixtures passed; HEAD-to-INDEX append-only preserved 979165 historical bytes on the final candidate tree",
+    "gitleaks": {
+      "version": "8.30.1",
+      "fixtures": "16/16 passed serially",
+      "staged_history": "0 findings across 1009 prior commits; rerun after final title clarification"
+    },
+    "diff_check": "passed on exact candidate tree",
+    "product_tests": "not run; documentation-only diff"
+  },
+  "security": {
+    "dependency_gates": "Lockfile scan, npm audit and Cargo Audit passed in exact source and final-main CI.",
+    "existing_approvals": "Four pre-existing Windows approvals remained valid at CI time and expire before 2026-11-14 UTC. No approval or suppression was added or renewed.",
+    "known_risk": "Three pre-existing OSV findings remain a temporary risk."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "0c987ae4f348a02801181fdd342469cfc48c2b4f",
+    "preserved_count": 222,
+    "total_after": 223,
+    "preserved_mapping_set_sha256": "55f014fece0afe9ef5442978e8e493725e6656b99c81cacd737aeac2178facb7",
+    "hash_method": "SHA-256 over mapping lines sorted ordinally and joined with LF without trailing LF.",
+    "preserved": "All 222 prior remote mappings are retained; RCV-001/002/003 note targets and the released DSH-010 status-sync note remain intact."
+  },
+  "b6_release_receipts": [
+    "RCV-004", "RCV-005", "RCV-006", "RCV-007", "RCV-008", "RCV-009", "RCV-010", "RCV-011",
+    "RET-001", "RET-002", "RET-003", "RET-004", "RET-005", "RET-006", "RET-007", "RET-008",
+    "RET-009", "RET-010", "RET-011", "RET-012", "RET-013",
+    "DSH-001", "DSH-002", "DSH-003", "DSH-004", "DSH-005", "DSH-006", "DSH-007", "DSH-008", "DSH-009", "DSH-010"
+  ],
+  "additional_preserved_receipts": ["RCV-001", "RCV-002", "RCV-003"],
+  "b6_state": "B6 fechado: os 31 itens do escopo têm recibos E3 released e RCV-001/002/003 foram preservados. Esta nota released completa o fechamento agregado; B7 nao foi iniciado.",
+  "limitations": [
+    "Fechamento documental; nao altera comportamento de produto e nao reexecuta testes financeiros.",
+    "Sem UI/IPC, smoke/E2E, WebView2, cobertura global ou release de produto.",
+    "Sete etapas condicionais de frontend/Rust foram ignoradas nos dois CIs document-only."
+  ],
+  "next": "B6 fechado. B7 permanece fora desta autorizacao e nao foi iniciado."
+}
