@@ -306,4 +306,8 @@ application::add_free_item usa as portas Clock/UuidGenerator e FreeItemStore; Ad
 
 ## FIN-027 — resultado líquido por contexto
 
-application::calculate_context_result reutiliza MovementReadStore, list_movements e Movement::result_effect_cents; domínio, adapter, banco e interfaces não foram alterados. Prova de produto: source #391 e final-main integral #490. Este status-sync ainda aguarda CI próprio e nota; sem prova de UI/IPC ou DSH-008/009.
+application::calculate_context_result reutiliza MovementReadStore, list_movements e Movement::result_effect_cents; domínio, adapter, banco e interfaces não foram alterados. Prova de produto: source #391 e final-main integral #490; status-sync liberado por PR #74, CI source #493 e final-main #494, nota released no SHA f93e43ce26ec8e754eec2c4ddc1cb9162c873c5f preservando 217 mappings e totalizando 218. Sem prova de UI/IPC; DSH-008 e DSH-009 mantêm suas próprias provas focais.
+
+## DSH-009 — gastos históricos da Casa
+
+`application::calculate_home_expenses` reutiliza `MovementReadStore`, `list_movements` e `Movement::result_effect_cents`; valida todos os movimentos antes de selecionar saídas da Casa e não escreve. A função e os testes ficam em módulos de aplicação; a integração usa `AdapterSqliteMovementStore` e o harness SQLite existente. Sem alteração de domínio, adapter de produção, schema, migration, UI, IPC ou startup. Fonte: planning/specs/DSH-009.md e planning/handoffs/DSH-009.md. CI/P-REV/nota de DSH-009 ainda são gates de liberação.

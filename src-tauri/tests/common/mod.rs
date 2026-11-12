@@ -101,6 +101,7 @@ mod dashboard_receivables;
 
 mod movement_reading;
 
+mod context_expenses;
 mod context_result;
 
 mod initial_balance_revenue;

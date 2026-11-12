@@ -10,7 +10,11 @@ O checker confere tamanho, hash e versão do binário, lê o Cargo.lock completo
 
 A [CLI 0.22.2](https://github.com/rustsec/rustsec/blob/cargo-audit%2Fv0.22.2/cargo-audit/src/commands/audit.rs) nega warnings explicitamente. A [política de dependências](../security/DEPENDENCY_SECURITY.md) exige correção ou exceção humana temporária.
 
-## Exceção humana vigente
+## Estado atual e histórico da exceção
+
+Revalidação local de DSH-009 em 2026-11-12 UTC: a configuração atual conserva somente glib 0.18.5 (`RUSTSEC-2024-0429`) e proc-macro-error 1.0.4 (`RUSTSEC-2024-0370`), para o target Windows e hashes atuais de `Cargo.lock`/`Cargo.toml`; `expiresBeforeUTC` é `2026-11-14`. Cargo Audit 0.22.2 consultou 422 dependências no clone RustSec oficial limpo `fd6f39814c4d3c359fdbe223d0280dec4933f78f`: zero vulnerabilidades e apenas esses dois avisos. A autorização humana registrada não acrescenta findings ou exceções. Os três findings OSV permanecem no registro OSV separado e não são cobertos por este gate Cargo.
+
+O registro abaixo documenta o aceite original e é histórico; a configuração/registro atuais nos JSON vinculados acima são a fonte de validade corrente.
 
 A [configuração](../security/CARGO_WINDOWS_EXCEPTION.json) e o [registro próprio](../security/CARGO_WINDOWS_APPROVAL.json) registram approved=true e a decisão humana recebida em 2026-10-08. Escopo:
 

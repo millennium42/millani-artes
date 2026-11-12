@@ -256,7 +256,10 @@ def main():
 
         def dsh007_authority():
             config = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
-            record = json.loads(gate.DEFAULT_APPROVAL.read_bytes())
+            config["expiresBeforeUTC"] = "2026-11-11"
+            record = {"approvedScopeSHA256": gate.approval_digest(config),
+                      "humanDecision": gate.B6_DSH007_APPROVAL_TEXT,
+                      "decisionReference": gate.B6_DSH007_APPROVAL_REFERENCE}
             assert gate.is_authorized_b6_dsh007_approval(config, record)
             changed_decision = deepcopy(record)
             changed_decision["humanDecision"] = "synthetic approval"
@@ -266,6 +269,32 @@ def main():
             assert not gate.is_authorized_b6_dsh007_approval(changed_scope, record)
 
         case("dsh007-approval-requires-exact-human-text-reference-and-scope", dsh007_authority)
+
+        def dsh009_authority():
+            proposal = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
+            proposal["expiresBeforeUTC"] = "2026-11-14"
+            text = "Dou autorização completa pra todas as decisões serem as recomendadas"
+            reference = ("Direct user instruction authorizing all recommended B6 decisions; retain only the same four "
+                        "pre-existing advisory identities, packages, versions and Windows target; add no advisory "
+                        "exception; expiresBeforeUTC 2026-11-14.")
+            record = {"humanDecision": text, "decisionReference": reference,
+                      "approvedScopeSHA256": gate.approval_digest(proposal)}
+            with patch.object(gate, "B6_DSH009_APPROVAL_SCOPE_SHA256", gate.approval_digest(proposal)):
+                assert gate.is_authorized_b6_dsh009_approval(proposal, record)
+                changed_record = deepcopy(record)
+                changed_record["humanDecision"] = "synthetic approval"
+                assert not gate.is_authorized_b6_dsh009_approval(proposal, changed_record)
+                changed_reference = deepcopy(record)
+                changed_reference["decisionReference"] = "synthetic renewal"
+                assert not gate.is_authorized_b6_dsh009_approval(proposal, changed_reference)
+                changed_expiry = deepcopy(proposal)
+                changed_expiry["expiresBeforeUTC"] = "2026-11-15"
+                assert not gate.is_authorized_b6_dsh009_approval(changed_expiry, record)
+                changed_scope = deepcopy(proposal)
+                changed_scope["exceptions"][0]["ids"].append("UNAPPROVED-TEST-ID")
+                assert not gate.is_authorized_b6_dsh009_approval(changed_scope, record)
+
+        case("dsh009-approval-requires-exact-human-text-reference-and-scope", dsh009_authority)
 
         allowed = {("npm", "lodash", "4.17.21", "MILLANI-TEST-NPM-0001")}
         assert gate.check_report(response(vulnerable, 1), expected, allowed)["excepted"] == 1
