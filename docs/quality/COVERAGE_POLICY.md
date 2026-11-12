@@ -547,3 +547,7 @@ DSH-007 | LLVM focal local E3; item não liberado | Rust 1.99.0 / LLVM 23.1.1, p
 ### FIN-027 — cobertura focal
 
 LLVM 23.1.1 local: calculate_context_result.rs 24/24 linhas, 3/3 funções e 36/37 regiões no perfil full; controle sem testes FIN-027: 0/24 linhas e 0/3 funções. Stable não reportou branches. É cobertura focal local, não coverage de statements/global nem coverage de CI.
+
+### DSH-009 — cobertura focal
+
+LLVM 23.1.1 local: `calculate_home_expenses.rs` 24/24 linhas e 3/3 funções no perfil full; controle sem os cinco testes unitários DSH-009: 0/24 linhas e 0/3 funções. Stable não reportou branches; regiões/branches não são inferidos como statements. Métrica local somente do arquivo do caso de uso, sem cobertura Rust global ou no CI.

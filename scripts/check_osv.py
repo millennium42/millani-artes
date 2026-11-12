@@ -34,6 +34,11 @@ APPROVAL = DEFAULT_APPROVAL
 B6_DSH007_APPROVAL_TEXT = "Dou autorização completa pra todas as decisões serem as recomendadas"
 B6_DSH007_APPROVAL_REFERENCE = "Direct user instruction authorizing recommended B6 decisions on 2026-11-09 UTC; retain only the same four pre-existing advisory identities, packages, versions and Windows target; rebind input hashes after the authorized rusqlite security update; add no advisory exception; expiresBeforeUTC 2026-11-11."
 B6_DSH007_APPROVAL_SCOPE_SHA256 = "cfdb63636a37fd7e806364eb75c928972aa246add3e01f638f7c2097a26e65b8"
+B6_DSH009_APPROVAL_TEXT = "Dou autorização completa pra todas as decisões serem as recomendadas"
+B6_DSH009_APPROVAL_REFERENCE = ("Direct user instruction authorizing all recommended B6 decisions; retain only the same four "
+                                "pre-existing advisory identities, packages, versions and Windows target; add no "
+                                "advisory exception; expiresBeforeUTC 2026-11-14.")
+B6_DSH009_APPROVAL_SCOPE_SHA256 = "6e12d9577971bde973bce088ceeab48a0475fd9054cd6ec81a31579abf96010b"
 
 
 class GateError(Exception):
@@ -193,6 +198,13 @@ def is_authorized_b6_dsh007_approval(config, record):
             and approval_digest(config) == B6_DSH007_APPROVAL_SCOPE_SHA256)
 
 
+def is_authorized_b6_dsh009_approval(config, record):
+    return (isinstance(record, dict)
+            and record.get("humanDecision") == B6_DSH009_APPROVAL_TEXT
+            and record.get("decisionReference") == B6_DSH009_APPROVAL_REFERENCE
+            and approval_digest(config) == B6_DSH009_APPROVAL_SCOPE_SHA256)
+
+
 def load_exceptions(blobs):
     safe_path(EXCEPTIONS)
     config = json.loads(EXCEPTIONS.read_bytes(), object_pairs_hook=object_pairs)
@@ -216,7 +228,9 @@ def load_exceptions(blobs):
             "OSV_EXCEPTION_UNAPPROVED")
     require(record["approvedScopeSHA256"] == approval_digest(config), "OSV_EXCEPTION_APPROVAL_MISMATCH")
     if EXCEPTIONS == DEFAULT_EXCEPTIONS:
-        require(APPROVAL == DEFAULT_APPROVAL and is_authorized_b6_dsh007_approval(config, record),
+        require(APPROVAL == DEFAULT_APPROVAL
+                and (is_authorized_b6_dsh007_approval(config, record)
+                     or is_authorized_b6_dsh009_approval(config, record)),
                 "OSV_EXCEPTION_UNAPPROVED")
     expires = date.fromisoformat(config["expiresBeforeUTC"])
     require(datetime.now(timezone.utc).date() < expires, "OSV_EXCEPTION_EXPIRED")

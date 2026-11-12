@@ -212,6 +212,23 @@ def main():
                 changed_exception["exceptions"][0]["id"] = "RUSTSEC-2026-0002"
                 approve(changed_exception, gate.B6_DSH007_RENEWAL_TEXT, gate.B6_DSH007_RENEWAL_REFERENCE)
                 case("b6-dsh007-renewal-exception-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+            dsh009_text = "Dou autorização completa pra todas as decisões serem as recomendadas"
+            dsh009_reference = ("Direct user instruction authorizing all recommended B6 decisions; retain only the same "
+                                "four pre-existing advisory identities, packages, versions and Windows target; add no "
+                                "advisory exception; expiresBeforeUTC 2026-11-14.")
+            with patch.object(gate, "B6_DSH009_RENEWAL_SCOPE_SHA256", gate.scope_digest(renewal)):
+                approve(renewal, dsh009_text, dsh009_reference)
+                case("exact-b6-dsh009-renewal-accepted", lambda: gate.load_exceptions(blobs))
+                changed_expiry = deepcopy(renewal)
+                changed_expiry["expiresBeforeUTC"] = (datetime.now(timezone.utc).date() + timedelta(days=3)).isoformat()
+                approve(changed_expiry, dsh009_text, dsh009_reference)
+                case("b6-dsh009-renewal-expiry-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+                approve(renewal, dsh009_text, "fixture://different-renewal")
+                case("b6-dsh009-renewal-reference-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+                changed_exception = deepcopy(renewal)
+                changed_exception["exceptions"][0]["id"] = "RUSTSEC-2026-0002"
+                approve(changed_exception, dsh009_text, dsh009_reference)
+                case("b6-dsh009-renewal-exception-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
             # Fixture approval is available only through this explicit test patch.
             with patch.object(gate, "APPROVAL_TEXT", "SYNTHETIC TEST, NOT HUMAN APPROVAL"), \
                     patch.object(gate, "REFERENCE_RE", r"fixture://sec011"):
