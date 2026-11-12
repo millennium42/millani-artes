@@ -159,9 +159,9 @@
     "previous_ref": "6d5772b2372933db33e0770d7e191e8fc0ee7acb",
     "preserved_count": 220,
     "total_after": 221,
-    "preserved_mapping_set_sha256": "48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966",
+    "preserved_mapping_set_sha256": "5c45117f51d8cf3f1234f83129992bd5bb0a2bea228c2270eafe35fb3143fd5f",
     "hash_method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
-    "preserved": "All 220 mappings present immediately before DSH-010 are retained; one DSH-010 mapping is added. The DSH-009 note checksum correction was completed first; its previous note blobs remain in note history.",
+    "preserved": "The exact 220 mapping lines in previous ref 6d5772b2372933db33e0770d7e191e8fc0ee7acb were retained when DSH-010 was added. A later evidence-only DSH-009 correction replaced the note blob at the same target; earlier blobs remain in notes history.",
     "preserved_receipts": [
       "RCV-001",
       "RCV-002",
@@ -176,17 +176,28 @@
   "evidence_correction": {
     "id": "DSH-009 mapping checksum",
     "prior_note_blob": "c9a573b0e47051217f968abcb8f5d679721f17df",
-    "corrected_note_blob": "433ecaa76ab131b65ebdb75dba3736eea7b05e68",
+    "corrected_note_blob": "006e7c8cf946085f1186d776984bd7b68c928606",
     "baseline_tree": "9dfebd46a44d50df6245b499001e61638f08310d",
     "baseline_mapping_count": 219,
-    "verified_mapping_set_sha256": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
-    "previous_value_not_reproduced": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
-    "verification": "The baseline has 219 mappings; excluding DSH-009 from the corrected pre-DSH-010 ref yields the identical 219 lines and set. The old and superseded DSH-009 note blobs remain in refs/notes/evidence history."
+    "verified_mapping_set_sha256": "68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6",
+    "previous_value_not_reproduced": "f11b5393f784870fe02bf503a99e66ed10b738a6a61469e9f2da9dcc611514bd",
+    "verification": "The 219 mapping lines obtained by excluding the DSH-009 and DSH-010 release targets from the current evidence ref equal the prior 219 mappings from baseline tree 9dfebd46a44d50df6245b499001e61638f08310d after excluding its DSH-009 target; SHA-256 is 68711948acb6276f79e3b22b93b401e53e0922beac34f884f916ffbc20c601b6. Previous values and note blobs remain in note history."
   },
   "limitations": [
     "Backend SQLite proof only; no UI/IPC, smoke/E2E, real WebView2 execution, concurrency across processes, Rust global coverage or branch coverage claim.",
     "CI executable verification passed, but the GitHub connector did not expose its executable fingerprint.",
     "Three pre-existing OSV findings remain temporarily approved until before 2026-11-14 UTC; Cargo has two approved warnings."
   ],
-  "next": "DSH-010 released. Perform the docs-only B6 status sync with its own P-REV, source/final-main CI and evidence note; do not start B7."
+  "next": "DSH-010 released. Perform the docs-only B6 status sync with its own P-REV, source/final-main CI and evidence note; do not start B7.",
+  "correction_history": [
+    {
+      "date": "2026-11-12",
+      "previous_note_blob": "aad2ad96f9aa832e9f477e6521ccb0cd1bbd7949",
+      "prior_recorded_preserved_mapping_hash": "48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966",
+      "verified_preserved_mapping_hash": "5c45117f51d8cf3f1234f83129992bd5bb0a2bea228c2270eafe35fb3143fd5f",
+      "previous_ref": "6d5772b2372933db33e0770d7e191e8fc0ee7acb",
+      "method": "SHA-256 over git notes list lines sorted ordinally and joined by LF without trailing LF.",
+      "verification": "The previous ref contains 220 mappings, and its mapping set equals the current ref after excluding the DSH-010 target. The prior 48b8d8e64ae5ca07cd24e1c8566dedd9ed25789a5befa4bc6fa9691e65ef2966 value is not reproduced."
+    }
+  ]
 }
