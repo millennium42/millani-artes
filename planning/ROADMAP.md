@@ -234,7 +234,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 
 ## B7 — UI, backup, smoke e instalador
 
-- UI-001 — shell acessível ← INF-002, ARC-001
+- UI-001 — shell acessível ← INF-002, ARC-001 | liberado E3 no SHA final-main `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`; CI source `38907719490` e final-main `38913807462` verdes nos SHAs registrados. O recibo externo `UI-001-note-publication-20261016.json` confirma a publicação da nota 89, a ref remota exata e a liberação pelo root. UI-002 é o próximo item, após revalidar recibos e paths atuais.
 - UI-002 — foco e teclado do shell ← UI-001
 - UI-003 — configuração inicial de contas ← UI-001, FIN-008
 - UI-004 — cadastro de categoria ← UI-001, CAT-004
@@ -530,17 +530,17 @@ FIN-008 executor concluído done/E3/passes=true/humanGateRequired=false: source 
 
 ## CAT-003 — integracao primaria 16/10/2026
 
-Integracao inicial humana autorizada por fast-forward fa62d588->7573c65;97branches ancestrais/86notas preservadas e refs main/retomada publicadas. CAT-003 ainda in_progress/E3/passesfalse,com gateslocaisPASS;CI38907719490 em execucao. FIN-012 e UI-001 permanecem abertos,160IDs pendentes;sem alterar grafo. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+Snapshot histórico do checkpoint de integração inicial: fast-forward fa62d588->7573c65 autorizado; 97 branches ancestrais/86 notas preservadas e refs main/retomada publicadas. CAT-003 ainda in_progress/E3/passesfalse, com gates locais PASS e CI38907719490 em execução. FIN-012 e UI-001 apareciam abertos naquele checkpoint; ambas foram liberadas posteriormente pelas notas 88/89. Fonte histórica: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e.
 
 
-CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+Snapshot histórico anterior às notas 87/88/89: CAT-003 executor done/E3/passestrue após CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidência e limites em planning/handoffs/CAT-003.md; CI documental final/nota87/liberação pendentes naquele checkpoint. FIN-012 e UI-001 foram liberadas posteriormente pelas notas 88/89.
 
 
 ## FIN-012 — integração primária em 16/10/2026
 
-CAT-003 liberado após CI final 38909068737 e nota 87. FIN-012 está em fechamento serial; UI-001 aguarda sua liberação. Grafo formal preservado. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
+Snapshot histórico anterior às notas 88/89: CAT-003 liberado após CI final 38909068737 e nota 87; FIN-012 ainda em fechamento serial e UI-001 aguardava liberação. As liberações posteriores estão descritas abaixo. Grafo formal preservado. Fontes históricas: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica.
 
-FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
+Snapshot histórico anterior às notas 88/89: FIN-012 aguardava CI documental final/nota88 e UI-001 aguardava sua liberação. FIN-012 foi liberada pela nota 88 no SHA `59a37896f0169c0e6945d8e226dbc6cb49ac0629`; UI-001 foi liberada pela nota 89 no SHA `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`. Permanecem os limites do contrato FIN-012: sem consumidor, regras financeiras, coverage global ou instalador.
 
 
 ## UI-001 — verificação primária em 16/10/2026
@@ -550,13 +550,13 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 ```json
 {
   "FIN-012": "liberado com CI38910468674 e nota88,87notas preservadas",
-  "UI-001": "inspeção nativa concluída; fechamento/CI final/nota89/liberação pendentes",
-  "próximo": "reconciliar elegibilidade FIN-005 após liberação; grafo preservado"
+  "UI-001": "checkpoint anterior à nota89; inspeção nativa concluída; depois liberado no SHA 1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+  "próximo": "UI-002 após revalidar a liberação e criar sua spec/work item/handoff"
 }
 ```
 
 
-UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+UI-001 liberado E3: inspeção nativa, quality/build e limites registrados no handoff. CI source `38907719490` passou 23/23 no SHA `7573c65899416cf180bb25545f6cfae6335bb00e`; CI final `38913807462` passou no SHA exato `1cb08dbc12883ebb439ca60d44789dc4ff0daac6` com 16 aprovados/7 skips document-only. A nota `released` 89 foi publicada nesse SHA e preserva as 88 anteriores. O main atual descende do SHA de release; a shell não mudou. O código de saída nativo não foi registrado (`null`); sem alegação de WCAG numérico, largura mínima, jornada financeira, coverage Rust global, E2E ou instalador.
 
 
 FIN-009 in_progress/E3/passesfalse: leitura integrada localmente,97+8 debug/release e98+8 instrumentadoPASS;global459/470linhas46/49funções/críticos95PASS;reviewsemP0P1P2. CI source/final/nota90/liberação pendentes;supersede nota histórica de não iniciado,semjornadaUIIPC/setup.

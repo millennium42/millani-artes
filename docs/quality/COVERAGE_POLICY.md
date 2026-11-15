@@ -103,14 +103,14 @@ FIN-008 passa os gates focais ≥95% de linhas e funções em application/adapte
 LLVM23.1.1 focal database.rs276/280linhas(98,5714%),25/25funcoes(100%);gatescriticos>=95PASS;controle semSQL0linhas/0funcoes rejeita95. Statements nao medidos,branches stableN/A,regioes nao sao statements;sem global. Reports692744e2cd871c612cafc38bde8a907946a756a54072c2415bf5291f871bbf1f e bd9d0ead5e1ef8c1f7606b479c5501e09de42727ec1a5892de2dc612fabf1b82 preservados externamente. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
 
 
-CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+Snapshot histórico anterior às notas 87/88/89: CAT-003 executor done/E3/passestrue após CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidência e limites em planning/handoffs/CAT-003.md; CI documental final/nota87/liberação pendentes naquele checkpoint. FIN-012 e UI-001 foram liberadas posteriormente pelas notas 88/89.
 
 
 ## FIN-012 — integração primária em 16/10/2026
 
 Report LLVM integrado: domain/mod.rs 19/19 linhas e 4/4 funções. Movement/MovementKind não adicionam linhas executáveis próprias. Statements não medidos, branches stable N/A; sem cobertura global ou percentual artificial para declarações. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
 
-FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
+Snapshot histórico anterior às notas 88/89: FIN-012 aguardava CI documental final/nota88 e UI-001 aguardava sua liberação. FIN-012 foi liberada pela nota 88 no SHA `59a37896f0169c0e6945d8e226dbc6cb49ac0629`; UI-001 foi liberada pela nota 89 no SHA `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`. Permanecem os limites do contrato FIN-012: sem consumidor, regras financeiras, coverage global ou instalador.
 
 
 ## UI-001 — verificação primária em 16/10/2026
@@ -131,8 +131,10 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 ```
 
 
-UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+UI-001 liberado E3: shell de produção e inspeção nativa registrados no handoff; cobertura V8 focal 5/5 statements, 2/2 branches, 1/1 function e 4/4 lines, sem alegação global. CI source `38907719490` passou 23/23 no SHA `7573c65899416cf180bb25545f6cfae6335bb00e`; CI final `38913807462` passou no SHA exato `1cb08dbc12883ebb439ca60d44789dc4ff0daac6` com 16 aprovados/7 skips document-only. A nota `released` 89 foi publicada nesse SHA e preserva as 88 anteriores. Thresholds canônicos mantidos; código de saída nativo não registrado (`null`); sem alegação de WCAG numérico, largura mínima, jornada financeira, cobertura Rust global, E2E ou instalador.
 
+
+Nota de publicação: `UI-001-note-publication-20261016.json` confirma o push normal da nota 89, a ref remota exata, a preservação das 88 notas anteriores e a liberação pelo root.
 
 ## FIN-009 — leitura de contas, E3 local em 17/10/2026
 

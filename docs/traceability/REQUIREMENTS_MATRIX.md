@@ -425,17 +425,17 @@ FIN-008 executa a criação persistente de conta e audit_event com sucesso/reope
 
 ## CAT-003 — integracao primaria 16/10/2026
 
-CAT-003 comprova somente schema SQLite de categorias e upgrade preservado;MVP categorias/CRUD/UI e historico continuam parciais. FIN-012/UI-001 abertos;sem jornada financeira/E2E/setup. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
+Snapshot histórico anterior às notas 88/89: CAT-003 comprovava somente schema SQLite de categorias e upgrade preservado; MVP categorias/CRUD/UI e historico continuavam parciais; FIN-012/UI-001 ainda apareciam abertos. FIN-012 foi liberada pela nota 88 no SHA `59a37896f0169c0e6945d8e226dbc6cb49ac0629`; UI-001 foi liberada pela nota 89 no SHA `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`. Fonte histórica: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA `7573c65899416cf180bb25545f6cfae6335bb00e`.
 
 
-CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+Snapshot histórico anterior às notas 87/88/89: CAT-003 executor done/E3/passestrue após CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidência e limites em planning/handoffs/CAT-003.md; CI documental final/nota87/liberação pendentes naquele checkpoint. FIN-012 e UI-001 foram liberadas posteriormente pelas notas 88/89.
 
 
 ## FIN-012 — integração primária em 16/10/2026
 
 FIN-012 entrega somente a representação de movimento. Neutralidade de transferência, saldo, categoria histórica, persistência e consumidores continuam sem comprovação por este contrato. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
 
-FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
+Snapshot histórico anterior às notas 88/89: FIN-012 aguardava CI documental final/nota88 e UI-001 aguardava sua liberação. FIN-012 foi liberada pela nota 88 no SHA `59a37896f0169c0e6945d8e226dbc6cb49ac0629`; UI-001 foi liberada pela nota 89 no SHA `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`. Permanecem os limites do contrato FIN-012: sem consumidor, regras financeiras, coverage global ou instalador.
 
 
 ## UI-001 — verificação primária em 16/10/2026
@@ -444,13 +444,15 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 
 ```json
 {
-  "UI-001": "shell nativa E3 e review E2; sem jornada financeira ou instalador"
+  "UI-001": "shell nativa liberada E3 pela nota 89 no SHA 1cb08dbc12883ebb439ca60d44789dc4ff0daac6; sem jornada financeira ou instalador"
 }
 ```
 
 
-UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+UI-001 liberado E3: inspeção nativa, testes/build e limites estão em `planning/handoffs/UI-001.md`. CI source `38907719490` passou 23/23 no SHA `7573c65899416cf180bb25545f6cfae6335bb00e`; CI final `38913807462` passou no SHA exato `1cb08dbc12883ebb439ca60d44789dc4ff0daac6` com 16 aprovados/7 skips document-only. A nota `released` 89 foi publicada nesse SHA e preserva as 88 anteriores. Sem jornada financeira, instalador, WCAG numérico ou alegação de cobertura global.
 
+
+Nota de publicação: `UI-001-note-publication-20261016.json` confirma o push normal da nota 89, a ref remota exata, a preservação das 88 notas anteriores e a liberação pelo root.
 
 ## FIN-009 — leitura de contas, E3 local em 17/10/2026
 
