@@ -171,6 +171,34 @@ def main():
         checkout = FIXTURES / "checkout"
         checkout.mkdir()
 
+        def ui_meta_advance_authority():
+            proposal = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
+            proposal["expiresBeforeUTC"] = "2026-11-27"
+            proposal["exceptions"].append({"ecosystem": "crates.io", "name": "chrono", "version": "0.4.45",
+                                           "ids": ["RUSTSEC-2026-0543"]})
+            reference = ('Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
+                         'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary actions through UI-016 but '
+                         'does not name chrono or separately acknowledge the unmaintained risk; leader permits only a temporary 7-day waiver for '
+                         'chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
+                         '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
+                         'target; expiresBeforeUTC 2026-11-27.')
+            record = {"approvedScopeSHA256": gate.approval_digest(proposal),
+                      "humanDecision": "autorizo explicitamente o que for preciso para avançar até ui 016",
+                      "decisionReference": reference}
+            with patch.object(gate, "UI_META_ADVANCE_SCOPE_SHA256", gate.approval_digest(proposal)):
+                assert gate.is_authorized_ui_meta_advance(proposal, record)
+                for changed_record in [record | {"humanDecision": "synthetic approval"},
+                                       record | {"decisionReference": "synthetic renewal"}]:
+                    assert not gate.is_authorized_ui_meta_advance(proposal, changed_record)
+                for changed_scope in [proposal | {"expiresBeforeUTC": "2026-11-28"},
+                                      proposal | {"exceptions": [*proposal["exceptions"], {
+                                          "ecosystem": "crates.io", "name": "other-crate", "version": "1.0.0",
+                                          "ids": ["RUSTSEC-2026-0001"]}]}]:
+                    assert not gate.is_authorized_ui_meta_advance(changed_scope, record)
+
+        case("ui-meta-advance-requires-exact-decision-reference-and-advisory-scope",
+             ui_meta_advance_authority)
+
         def windows_checkout():
             approval_path = gate.APPROVAL.relative_to(gate.ROOT).as_posix()
             paths = [*config["inputSHA256"]]
@@ -210,6 +238,14 @@ def main():
             allowed, expiry = gate.load_exceptions(blobs)
             assert len(allowed) == 4 and expiry == proposal["expiresBeforeUTC"]
             results.append({"case": "proposal-synthetic-approval-boundary", "status": "pass", "expectedFailure": None})
+            proposal["unexpected"] = "ignored metadata is not part of the approval scope"
+            renew_synthetic_approval()
+            write_proposal()
+            case("unexpected-exception-config-field-denied", lambda: gate.load_exceptions(blobs),
+                 "OSV_EXCEPTION_INVALID")
+            del proposal["unexpected"]
+            renew_synthetic_approval()
+            write_proposal()
             proposal["expiresBeforeUTC"] = "2099-01-01"
             write_proposal()
             case("expiry-change-invalidates-approval", lambda: gate.load_exceptions(blobs),
@@ -217,7 +253,7 @@ def main():
             proposal["approvalSHA256"] = gate.approval_digest(proposal)
             write_proposal()
             case("recalculated-proposal-keeps-old-record-denied", lambda: gate.load_exceptions(blobs),
-                 "OSV_EXCEPTION_APPROVAL_MISMATCH")
+                 "OSV_EXCEPTION_INVALID")
             del proposal["approvalSHA256"]
             proposal["expiresBeforeUTC"] = config["expiresBeforeUTC"]
             proposal["exceptions"][0]["ids"].append("MILLANI-TEST-UNAPPROVED-0001")
@@ -257,6 +293,9 @@ def main():
         def dsh007_authority():
             config = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
             config["expiresBeforeUTC"] = "2026-11-11"
+            config["exceptions"] = [entry for entry in config["exceptions"] if entry["name"] != "chrono"]
+            config["exceptions"].append({"ecosystem": "crates.io", "name": "block-buffer", "version": "0.10.4",
+                                         "ids": ["GHSA-qwgh-2vcv-g2f7"]})
             record = {"approvedScopeSHA256": gate.approval_digest(config),
                       "humanDecision": gate.B6_DSH007_APPROVAL_TEXT,
                       "decisionReference": gate.B6_DSH007_APPROVAL_REFERENCE}
@@ -273,6 +312,9 @@ def main():
         def dsh009_authority():
             proposal = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
             proposal["expiresBeforeUTC"] = "2026-11-14"
+            proposal["exceptions"] = [entry for entry in proposal["exceptions"] if entry["name"] != "chrono"]
+            proposal["exceptions"].append({"ecosystem": "crates.io", "name": "block-buffer", "version": "0.10.4",
+                                           "ids": ["GHSA-qwgh-2vcv-g2f7"]})
             text = "Dou autorização completa pra todas as decisões serem as recomendadas"
             reference = ("Direct user instruction authorizing all recommended B6 decisions; retain only the same four "
                         "pre-existing advisory identities, packages, versions and Windows target; add no advisory "
@@ -295,6 +337,35 @@ def main():
                 assert not gate.is_authorized_b6_dsh009_approval(changed_scope, record)
 
         case("dsh009-approval-requires-exact-human-text-reference-and-scope", dsh009_authority)
+
+        def live_ui_meta_scope_fails_closed():
+            _, live_blobs, _ = gate.inputs(gate.ROOT)
+            allowed, expiry = gate.load_exceptions(live_blobs)
+            assert expiry == "2026-11-27"
+            assert allowed == {
+                ("crates.io", "glib", "0.18.5", "GHSA-wrw7-89jp-8q8g"),
+                ("crates.io", "glib", "0.18.5", "RUSTSEC-2024-0429"),
+                ("crates.io", "proc-macro-error", "1.0.4", "RUSTSEC-2024-0370"),
+                ("crates.io", "chrono", "0.4.45", "RUSTSEC-2026-0543"),
+            }
+            assert ("crates.io", "block-buffer", "0.10.4", "GHSA-qwgh-2vcv-g2f7") not in allowed
+            path = str(FIXTURES / "block-buffer.lock")
+            report = {"results": [{
+                "source": {"type": "lockfile", "path": path},
+                "packages": [{"package": {"ecosystem": "crates.io", "name": "block-buffer",
+                                             "version": "0.10.4"},
+                              "vulnerabilities": [{"id": "GHSA-qwgh-2vcv-g2f7"}], "groups": []}],
+            }]}
+            try:
+                gate.check_report(response(report, 1), {gate.report_path(path): {
+                    ("crates.io", "block-buffer", "0.10.4")}}, allowed)
+            except gate.GateError as error:
+                assert error.code == "OSV_FINDINGS"
+            else:
+                raise AssertionError("A reappearing block-buffer finding must fail the gate.")
+
+        case("ui-meta-osv-scope-excludes-block-buffer-and-rejects-it-if-it-reappears",
+             live_ui_meta_scope_fails_closed)
 
         allowed = {("npm", "lodash", "4.17.21", "MILLANI-TEST-NPM-0001")}
         assert gate.check_report(response(vulnerable, 1), expected, allowed)["excepted"] == 1

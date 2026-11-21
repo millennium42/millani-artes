@@ -1,8 +1,8 @@
 {
   "approved": true,
-  "approvalRecord": "sha256:1707424de62fdf39ca76448b6d4baaaabacb5796f235357cecd304330716f20a",
+  "approvalRecord": "sha256:cd6501a6526f596705ba4089a75d171947bc2164fe3499e012069c0e6b014fe3",
   "target": "x86_64-pc-windows-msvc",
-  "expiresBeforeUTC": "2026-11-14",
+  "expiresBeforeUTC": "2026-11-27",
   "inputSHA256": {
     "src-tauri/Cargo.lock": "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433",
     "src-tauri/Cargo.toml": "8bf107e28bb0646142adac0c4099c6d7dd00586e42b3acb313badd320eb8ff5e"
@@ -27,10 +27,10 @@
     },
     {
       "ecosystem": "crates.io",
-      "name": "block-buffer",
-      "version": "0.10.4",
+      "name": "chrono",
+      "version": "0.4.45",
       "ids": [
-        "GHSA-qwgh-2vcv-g2f7"
+        "RUSTSEC-2026-0543"
       ]
     }
   ]

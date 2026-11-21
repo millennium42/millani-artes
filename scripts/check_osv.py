@@ -39,6 +39,25 @@ B6_DSH009_APPROVAL_REFERENCE = ("Direct user instruction authorizing all recomme
                                 "pre-existing advisory identities, packages, versions and Windows target; add no "
                                 "advisory exception; expiresBeforeUTC 2026-11-14.")
 B6_DSH009_APPROVAL_SCOPE_SHA256 = "6e12d9577971bde973bce088ceeab48a0475fd9054cd6ec81a31579abf96010b"
+UI_META_RENEWAL_TEXT = "Faça o recomendado"
+UI_META_RENEWAL_REFERENCE = (
+    'Direct user reply "Faça o recomendado" in Codex thread '
+    '01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-15; approve only 7-day Windows renewals: '
+    'Cargo Audit glib 0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370; '
+    'OSV glib 0.18.5/GHSA-wrw7-89jp-8q8g+RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370; '
+    'remove block-buffer 0.10.4/GHSA-qwgh-2vcv-g2f7; retain current lock/manifest hashes and '
+    'x86_64-pc-windows-msvc target; expiresBeforeUTC 2026-11-22.')
+UI_META_RENEWAL_SCOPE_SHA256 = "e9d8d61a1fd7619ffeae1e39e7431b72bb4ba7278409a16fe71cf95b718b6490"
+UI_META_ADVANCE_TEXT = "autorizo explicitamente o que for preciso para avançar até ui 016"
+UI_META_ADVANCE_REFERENCE = (
+    'Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
+    'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary '
+    'actions through UI-016 but does not name chrono or separately acknowledge the unmaintained risk; leader permits '
+    'only a temporary 7-day waiver for chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
+    '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no '
+    'other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
+    'target; expiresBeforeUTC 2026-11-27.')
+UI_META_ADVANCE_SCOPE_SHA256 = "55de0630f5a2e93005e56f1bcef3157ebbc501f248365b558d0e5066261372c6"
 
 
 class GateError(Exception):
@@ -205,12 +224,28 @@ def is_authorized_b6_dsh009_approval(config, record):
             and approval_digest(config) == B6_DSH009_APPROVAL_SCOPE_SHA256)
 
 
+def is_authorized_ui_meta_renewal(config, record):
+    return (isinstance(record, dict)
+            and record.get("humanDecision") == UI_META_RENEWAL_TEXT
+            and record.get("decisionReference") == UI_META_RENEWAL_REFERENCE
+            and approval_digest(config) == UI_META_RENEWAL_SCOPE_SHA256)
+
+
+def is_authorized_ui_meta_advance(config, record):
+    return (isinstance(record, dict)
+            and record.get("humanDecision") == UI_META_ADVANCE_TEXT
+            and record.get("decisionReference") == UI_META_ADVANCE_REFERENCE
+            and approval_digest(config) == UI_META_ADVANCE_SCOPE_SHA256)
+
+
 def load_exceptions(blobs):
     safe_path(EXCEPTIONS)
     config = json.loads(EXCEPTIONS.read_bytes(), object_pairs_hook=object_pairs)
     require(isinstance(config, dict) and type(config.get("approved")) is bool, "OSV_EXCEPTION_INVALID")
     if not config["approved"]:
         return set(), None
+    require(set(config) == {"approved", "approvalRecord", "target", "expiresBeforeUTC", "inputSHA256", "exceptions"},
+            "OSV_EXCEPTION_INVALID")
     require(config.get("target") == "x86_64-pc-windows-msvc"
             and isinstance(config.get("approvalRecord"), str)
             and re.fullmatch(r"sha256:[0-9a-f]{64}", config["approvalRecord"]),
@@ -230,7 +265,9 @@ def load_exceptions(blobs):
     if EXCEPTIONS == DEFAULT_EXCEPTIONS:
         require(APPROVAL == DEFAULT_APPROVAL
                 and (is_authorized_b6_dsh007_approval(config, record)
-                     or is_authorized_b6_dsh009_approval(config, record)),
+                     or is_authorized_b6_dsh009_approval(config, record)
+                     or is_authorized_ui_meta_renewal(config, record)
+                     or is_authorized_ui_meta_advance(config, record)),
                 "OSV_EXCEPTION_UNAPPROVED")
     expires = date.fromisoformat(config["expiresBeforeUTC"])
     require(datetime.now(timezone.utc).date() < expires, "OSV_EXCEPTION_EXPIRED")

@@ -290,14 +290,14 @@ FIN-008 concluiu scanners do source: Gitleaks staged source 19 paths/0; Cargo au
 Schema restrito e SQL trusted sem dados reais;preserva executor e migrations aplicadas;auditsCargo422/0vulnerabilidades/2E4,OSV542/3E4/0fora,NPM120/0,Gitleaks290/0,SAST45limitado. E4 validada nos inputs atuais ate2026-10-23T00Z;nao e seguranca global. Fonte: planning/handoffs/CAT-003.md e planning/specs/CAT-003.md, SHA7573c65899416cf180bb25545f6cfae6335bb00e; E3 local, CI de entrega em execucao, item ainda aberto.
 
 
-CAT-003 executor done/E3/passestrue apos CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidencia e limites em planning/handoffs/CAT-003.md;CI documental final/nota87/liberacao pendentes. FIN-012/UI-001 continuam abertos.
+Snapshot histórico anterior às notas 87/88/89: CAT-003 executor done/E3/passestrue após CI38907719490/job116995418974/attempt1/SHA7573c65899416cf180bb25545f6cfae6335bb00e SUCCESS23/0. Evidência e limites em planning/handoffs/CAT-003.md; CI documental final/nota87/liberação pendentes naquele checkpoint. FIN-012 e UI-001 foram liberadas posteriormente pelas notas 88/89.
 
 
 ## FIN-012 — integração primária em 16/10/2026
 
 Movement/MovementKind sem Debug, Display ou serde, com quatro guards compile-fail executados. Nenhum novo sink, dependência, IPC ou consumidor. Scans do código idêntico passaram; E4 existente restrita aos inputs aprovados e vigente até 2026-10-23T00Z. Fontes e evidência: planning/specs/FIN-012.md e planning/handoffs/FIN-012.md; source 7573c65, main 7cad038, produção idêntica. Item ainda aberto até fechamento documental.
 
-FIN-012 executor done/E3/passes true após os checks e CI do código integrado, com fonte em planning/handoffs/FIN-012.md. CI documental final, nota88 e liberação pendentes. UI-001 aguarda liberação. Sem comprovação de consumidor, regras financeiras, coverage global ou instalador.
+Snapshot histórico anterior às notas 88/89: FIN-012 aguardava CI documental final/nota88 e UI-001 aguardava sua liberação. FIN-012 foi liberada pela nota 88 no SHA `59a37896f0169c0e6945d8e226dbc6cb49ac0629`; UI-001 foi liberada pela nota 89 no SHA `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`. Permanecem os limites do contrato FIN-012: sem consumidor, regras financeiras, coverage global ou instalador.
 
 
 ## UI-001 — verificação primária em 16/10/2026
@@ -313,8 +313,10 @@ Fonte: planning/handoffs/UI-001.md, source7573c65/main59a3789, E3 local.
 ```
 
 
-UI-001 executor concluído: E3 de execução e inspeção nativa, checks do código idêntico e CI source38907719490 SUCCESS23/0; review integrado/visual E2 sem P0/P1/P2. Documentos e matrizes atualizados antes de passes true. Reserva retida até CI documental final no novo SHA, nota89/preservação88notas/Gitlimpo/WTarquivada e liberação do root. Código de saída nativo não registrado(null); sem claim exit0, WCAG numérico, mínimo de produto, jornada financeira, Rustglobal ou setup. Próximo após liberação: reconciliar elegibilidade FIN-005 no roadmap.
+UI-001 liberado E3: nenhuma capability, dependência ou comando Tauri de negócio foi adicionado; a inspeção nativa e os scans do código estão registrados no handoff. CI source `38907719490` passou 23/23 no SHA `7573c65899416cf180bb25545f6cfae6335bb00e`; CI final `38913807462` passou no SHA exato `1cb08dbc12883ebb439ca60d44789dc4ff0daac6` com 16 aprovados/7 skips document-only. A nota `released` 89 foi publicada nesse SHA e preserva as 88 anteriores. Código de saída nativo não registrado (`null`); sem alegação de `exit 0`, WCAG numérico, largura mínima, jornada financeira, coverage Rust global, E2E ou instalador.
 
+
+Nota de publicação: `UI-001-note-publication-20261016.json` confirma o push normal da nota 89, a ref remota exata, a preservação das 88 notas anteriores e a liberação pelo root.
 
 ## FIN-009 — leitura de contas, E3 local em 17/10/2026
 
@@ -482,3 +484,17 @@ Candidato `done/E3/passes:true`, não liberado: critérios focais, Rust fmt/Clip
 ### DSH-009 — rechecks após status candidato (2026-11-12 UTC)
 
 Após registrar `done/E3/passes:true` como candidato não liberado, os validadores documentais passaram novamente e Gitleaks 8.30.1 `protect --staged` encontrou zero findings no tree f9c919bd969a7b27752747c41ac342ffc959f562. A nova entrada do progress log altera o tree; repetir staged no índice final antes do P-REV/CI. Nenhum finding foi ocultado; os três findings OSV aprovados permanecem risco temporário até 2026-11-14. P-REV, CI source/final-main e nota released pendem.
+
+## UI-001 status-sync — SECURITY recheck (2026-11-20)
+
+Os scans foram executados em checkout dirty com `HEAD=79382b38c9df8014277c88a6eadc58dec6b9d39d`; não foram execução daquele commit isolado. O índice candidato capturado no review foi `f397eb0d2ad352f9752d0eef339387036b9607b6`, e os blobs de checker, aprovação, exceção e lockfiles lidos pelos scanners coincidem com esse índice; docs/testes adicionados depois não foram entradas dos scanners. Não se alega evidência do tree inteiro. OSV Scanner 2.6.0 bloqueou com 1 finding novo não aprovado: `chrono 0.4.45` / `RUSTSEC-2026-0543`; Cargo Audit 0.22.2 em DB oficial isolado limpo `f291af9b1cc0d21dfcea1709d6b037963cef262b` bloqueou por três warnings, dois antigos já autorizados e o mesmo warning novo de `chrono`. Cargo/OSV fixture suites passaram 69/69 e 43/43. A autorização humana vigente cobre só glib e proc-macro-error, não chrono. Nenhum waiver ou alteração de dependência foi criado; a CI remota do status-sync no SHA final e a nota de publicação permanecem pendentes. O global advisory DB dirty foi preservado. Gitleaks 8.30.1 passou 16/16 fixtures, histórico HEAD 79382 em 1.013 commits/0 findings e `protect --staged` sem findings no índice df0a84a8f4db3d1c8a9ab8a73d844337abc58f19; o índice muda com este registro, então reexecutar protect staged. P-SEC read-only no índice f397 não achou P0/P1; P-REV corrigiu P2 de proveniência e revalidou no índice df0a sem P0/P1/P2. Limite: o achado é `unmaintained` informativo, não vulnerabilidade classificada; o gate estrito o trata como bloqueante. Telemetria não registrado.
+
+Adendo SECURITY: Cargo metadata/tree Windows locked/offline encontrou `chrono` no lock como dependência opcional de `serde_with`, sem feature ativa/caminho no grafo selecionado. Cargo Audit inventaria o lock integral; OSV usa `--all-packages --no-ignore`. ADR-020/matriz não autorizam filtrar por feature/target. Esse achado de topologia não remove o finding, não reduz o risco documentado e não libera o status-sync; qualquer exceção depende de autorização humana específica ou remediação aprovada.
+
+### UI-001 status-sync — autorização e scanners reaplicados (2026-11-20)
+
+O registro acima preserva o checkpoint anterior à decisão humana. Depois da autorização direta “autorizo explicitamente o que for preciso para avançar até ui 016” nesta thread (01a1e070-899d-7b71-8021-abc1b05dd5d6), os dois scanners foram repetidos com dispensa finita e escopo amarrado nos registros JSON. Somente chrono 0.4.45/RUSTSEC-2026-0543 (INFO/Unmaintained; todas as versões afetadas, sem versão corrigida segundo RustSec); as exceções históricas de glib e proc-macro-error foram preservadas, e qualquer identidade, versão, input, target ou achado adicional continua bloqueado. Expiração 2026-11-27 (2026-11-26 é o último dia válido em UTC). Execuções locais sobre checkout HEAD=79382b38c9df8014277c88a6eadc58dec6b9d39d/tree staged c4f883c74ec3da9ce9bf7e90a81393bb86bcd7be (OSV output sourceSha=HEAD). Cargo Audit 0.22.2: 422 crates, 3 warnings aprovados e 0 vulnerabilidades. OSV 2.6.0: 542 pacotes, 4 findings aprovados e 0 não aprovados. Fixtures Cargo passaram 69/69 e OSV 44/44; o novo teste RED falhou antes do checker rejeitar campos extras em config aprovada, e passou após a correção. P-SEC read-only não encontrou P0/P1; encontrou um P2 de schema OSV, corrigido pelo líder e coberto por teste. E3 local não substitui P-REV final, CI remoto no SHA final nem nota released. P-REV final read-only no tree 4e7b1027372791181b9ae0b4e68e0ca181db77de não encontrou achados; CI remoto e nota seguem pendentes. A instrução ampla autoriza a dispensa temporária para avançar; não há aceite humano separado e específico do risco de falta de manutenção, que permanece registrado. Isso não é certificação de segurança. Telemetria não registrado.
+
+### UI-001 status-sync — verificação local pós-commit (2026-11-20)
+
+No SHA 7115e6321ae857fe73da7ea46013402b1edab026, fixtures sequenciais passaram: scripts/test-cargo-audit.py 69/69 (6 casos usam CLI real) e scripts/test-osv.py 44/44. Os scanners reais nesse mesmo SHA passaram: Cargo Audit 422 crates/3 warnings aprovados/0 vulnerabilidades; OSV 542 pacotes/4 findings aprovados/0 não aprovados; Gitleaks 8.30.1, 1014 commits refs disponíveis/0 findings. Work-item, declarações de evidência e progress-log append-only passaram nos checks documentais. Um primeiro disparo concorrente de Cargo/OSV fixtures com seus scanners reais colidiu nos diretórios temporários compartilhados (CARGO_SCRATCH_EXISTS/OSV_SCRATCH_EXISTS); após encerramento dos scanners, ambos os testes passaram serialmente. Não houve alteração de produto; não usar a falha de contenção simultânea como resultado de segurança. Todos esses resultados locais continuam sem substituir CI remoto source/final-main e nota released. Telemetria não registrado.

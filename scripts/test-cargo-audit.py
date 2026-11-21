@@ -106,8 +106,8 @@ def main():
     def git(*args):
         result = subprocess.run(["git", "-c", "user.name=Millani Fixture",
             "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgSign=false",
-            "-c", "core.hooksPath=NUL", *args], cwd=db, capture_output=True, timeout=30)
-        assert result.returncode == 0, args
+            "-c", "core.hooksPath=NUL", *args], cwd=db, env=gate.process_env(), capture_output=True, timeout=30)
+        assert result.returncode == 0, (args, result.stderr.decode("utf-8", "replace"))
         return result.stdout
 
     def inputs(version="1.0.0"):
@@ -229,6 +229,79 @@ def main():
                 changed_exception["exceptions"][0]["id"] = "RUSTSEC-2026-0002"
                 approve(changed_exception, dsh009_text, dsh009_reference)
                 case("b6-dsh009-renewal-exception-bound", lambda: gate.load_exceptions(blobs), "CARGO_APPROVAL_INVALID")
+
+            def ui_meta_advance_authorization():
+                config_bytes = (gate.ROOT / "docs/security/CARGO_WINDOWS_EXCEPTION.json").read_bytes()
+                record_bytes = (gate.ROOT / "docs/security/CARGO_WINDOWS_APPROVAL.json").read_bytes()
+                config = json.loads(config_bytes)
+                record = json.loads(record_bytes)
+                reference = ('Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
+                             'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary actions through UI-016 but '
+                             'does not name chrono or separately acknowledge the unmaintained risk; leader permits only a temporary 7-day waiver for '
+                             'chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
+                             '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
+                             'target; expiresBeforeUTC 2026-11-27.')
+                assert record["humanDecision"] == "autorizo explicitamente o que for preciso para avançar até ui 016"
+                assert record["decisionReference"] == reference
+                assert record["approvedScopeSHA256"] == gate.scope_digest(config)
+                real_blobs, _ = gate.inputs(gate.ROOT)
+                with patch.object(gate, "EXCEPTIONS", cfgpath), patch.object(gate, "APPROVAL", recordpath):
+                    cfgpath.write_bytes(config_bytes)
+                    recordpath.write_bytes(record_bytes)
+
+                    def exact_scope():
+                        allowed, expiry = gate.load_exceptions(real_blobs)
+                        assert expiry == "2026-11-27"
+                        assert allowed == {
+                            ("glib", "0.18.5", "registry+https://github.com/rust-lang/crates.io-index",
+                             "unsound", "RUSTSEC-2024-0429"),
+                            ("proc-macro-error", "1.0.4", "registry+https://github.com/rust-lang/crates.io-index",
+                             "unmaintained", "RUSTSEC-2024-0370"),
+                            ("chrono", "0.4.45", "registry+https://github.com/rust-lang/crates.io-index",
+                             "unmaintained", "RUSTSEC-2026-0543"),
+                        }
+
+                    case("ui-meta-cargo-advance-accepts-only-three-exact-warnings", exact_scope)
+                    changed_reference = record | {"decisionReference": "synthetic renewal reference"}
+                    changed_bytes = json.dumps(changed_reference).encode()
+                    recordpath.write_bytes(changed_bytes)
+                    changed_config = deepcopy(config)
+                    changed_config["approvalRecord"] = "sha256:" + hashlib.sha256(changed_bytes).hexdigest()
+                    cfgpath.write_text(json.dumps(changed_config), encoding="utf-8")
+                    case("ui-meta-cargo-advance-changed-reference-denied",
+                         lambda: gate.load_exceptions(real_blobs), "CARGO_APPROVAL_INVALID")
+                    cfgpath.write_bytes(config_bytes)
+                    recordpath.write_bytes(record_bytes)
+                    for name, mutate, error_code in [
+                        ("expiry", lambda value: value.update(expiresBeforeUTC="2026-11-23"),
+                         "CARGO_APPROVAL_INVALID"),
+                        ("advisory", lambda value: value["exceptions"][0].update(id="RUSTSEC-2026-0001"),
+                         "CARGO_APPROVAL_INVALID"),
+                        ("package-version", lambda value: value["exceptions"][0].update(version="0.18.6"),
+                         "CARGO_APPROVAL_INVALID"),
+                        ("target", lambda value: value.update(target="aarch64-unknown-linux-gnu"),
+                         "CARGO_EXCEPTION_UNAPPROVED"),
+                        ("input-hash", lambda value: value["inputSHA256"].update(
+                            {"src-tauri/Cargo.lock": "0" * 64}), "CARGO_APPROVAL_INVALID"),
+                    ]:
+                        changed_scope = deepcopy(config)
+                        mutate(changed_scope)
+                        cfgpath.write_text(json.dumps(changed_scope), encoding="utf-8")
+                        case("ui-meta-cargo-advance-changed-" + name + "-denied",
+                             lambda: gate.load_exceptions(real_blobs), error_code)
+                    cfgpath.write_bytes(config_bytes)
+                    changed_record = record | {"humanDecision": "synthetic approval"}
+                    changed_bytes = (json.dumps(changed_record) + "\n").encode()
+                    recordpath.write_bytes(changed_bytes)
+                    changed_config = deepcopy(config)
+                    changed_config["approvalRecord"] = "sha256:" + hashlib.sha256(changed_bytes).hexdigest()
+                    cfgpath.write_text(json.dumps(changed_config), encoding="utf-8")
+                    case("ui-meta-cargo-advance-changed-decision-denied",
+                         lambda: gate.load_exceptions(real_blobs), "CARGO_APPROVAL_INVALID")
+                cfgpath.write_bytes(config_bytes)
+                recordpath.write_bytes(record_bytes)
+
+            case("ui-meta-cargo-advance-is-bound-to-literal-user-decision-and-inputs", ui_meta_advance_authorization)
             # Fixture approval is available only through this explicit test patch.
             with patch.object(gate, "APPROVAL_TEXT", "SYNTHETIC TEST, NOT HUMAN APPROVAL"), \
                     patch.object(gate, "REFERENCE_RE", r"fixture://sec011"):

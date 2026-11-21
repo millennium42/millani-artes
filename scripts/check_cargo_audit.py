@@ -33,6 +33,25 @@ B6_DSH009_RENEWAL_REFERENCE = ("Direct user instruction authorizing all recommen
                                 "pre-existing advisory identities, packages, versions and Windows target; add no "
                                 "advisory exception; expiresBeforeUTC 2026-11-14.")
 B6_DSH009_RENEWAL_SCOPE_SHA256 = "29d35d24daec9df294706342846c7e4e4dce985a33cf3f747ad53a989fa0b14a"
+UI_META_RENEWAL_TEXT = "Faça o recomendado"
+UI_META_RENEWAL_REFERENCE = (
+    'Direct user reply "Faça o recomendado" in Codex thread '
+    '01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-15; approve only 7-day Windows renewals: '
+    'Cargo Audit glib 0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370; '
+    'OSV glib 0.18.5/GHSA-wrw7-89jp-8q8g+RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370; '
+    'remove block-buffer 0.10.4/GHSA-qwgh-2vcv-g2f7; retain current lock/manifest hashes and '
+    'x86_64-pc-windows-msvc target; expiresBeforeUTC 2026-11-22.')
+UI_META_RENEWAL_SCOPE_SHA256 = "048c9d58f089753b83138987ef4fdf8f0b82b7bc9a743c17a6cf44a0ed9df9b3"
+UI_META_ADVANCE_TEXT = "autorizo explicitamente o que for preciso para avançar até ui 016"
+UI_META_ADVANCE_REFERENCE = (
+    'Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
+    'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary '
+    'actions through UI-016 but does not name chrono or separately acknowledge the unmaintained risk; leader permits '
+    'only a temporary 7-day waiver for chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
+    '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no '
+    'other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
+    'target; expiresBeforeUTC 2026-11-27.')
+UI_META_ADVANCE_SCOPE_SHA256 = "5176762e94f46f5a83c6891210a96576d5e26e2dfc58b2a4397cf91e5d3d030c"
 KINDS = {"unmaintained", "unsound", "notice", "yanked"}
 CONFIG = '''[advisories]
 ignore=[]
@@ -189,10 +208,20 @@ def load_exceptions(blobs):
                       and record.get("humanDecision") == B6_DSH009_RENEWAL_TEXT
                       and record.get("decisionReference") == B6_DSH009_RENEWAL_REFERENCE
                       and scope_digest(config) == B6_DSH009_RENEWAL_SCOPE_SHA256)
+    ui_meta_renewal = (isinstance(record, dict)
+                       and record.get("humanDecision") == UI_META_RENEWAL_TEXT
+                       and record.get("decisionReference") == UI_META_RENEWAL_REFERENCE
+                       and scope_digest(config) == UI_META_RENEWAL_SCOPE_SHA256)
+    ui_meta_advance = (isinstance(record, dict)
+                       and record.get("humanDecision") == UI_META_ADVANCE_TEXT
+                       and record.get("decisionReference") == UI_META_ADVANCE_REFERENCE
+                       and scope_digest(config) == UI_META_ADVANCE_SCOPE_SHA256)
     require(isinstance(record, dict)
             and set(record) == {"approvedScopeSHA256", "humanDecision", "decisionReference"}
             and all(isinstance(v, str) and v.strip() for v in record.values())
-            and (prior_approval or dsh005_renewal or dsh007_renewal or dsh009_renewal), "CARGO_APPROVAL_INVALID")
+            and (prior_approval or dsh005_renewal or dsh007_renewal or dsh009_renewal
+                 or ui_meta_renewal or ui_meta_advance),
+            "CARGO_APPROVAL_INVALID")
     require(record["approvedScopeSHA256"] == scope_digest(config), "CARGO_APPROVAL_SCOPE_CHANGED")
     require(re.fullmatch(r"\d{4}-\d{2}-\d{2}", config["expiresBeforeUTC"])
             and datetime.now(timezone.utc).date() < date.fromisoformat(config["expiresBeforeUTC"]),
