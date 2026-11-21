@@ -1,9 +1,9 @@
 {
   "approved": true,
-  "approvalRecord": "sha256:cd4bbbcc78dd87d8777bdea1407ce2e2dea83bcea52a71495a2f0b6b8b5b93fc",
+  "approvalRecord": "sha256:3eb41d42cffe26d1c58f2b290ba45cd222c45bbfd3004d804a8b5c29afe54e85",
   "gate": "SEC-011/cargo-audit/0.22.2",
   "target": "x86_64-pc-windows-msvc",
-  "expiresBeforeUTC": "2026-11-14",
+  "expiresBeforeUTC": "2026-11-27",
   "inputSHA256": {
     "src-tauri/Cargo.lock": "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433",
     "src-tauri/Cargo.toml": "8bf107e28bb0646142adac0c4099c6d7dd00586e42b3acb313badd320eb8ff5e"
@@ -20,6 +20,12 @@
       "version": "1.0.4",
       "kind": "unmaintained",
       "id": "RUSTSEC-2024-0370"
+    },
+    {
+      "name": "chrono",
+      "version": "0.4.45",
+      "kind": "unmaintained",
+      "id": "RUSTSEC-2026-0543"
     }
   ]
 }
