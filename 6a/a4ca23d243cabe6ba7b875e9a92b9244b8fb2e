@@ -1,0 +1,99 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-001",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-001 status-sync for the existing static shell release",
+  "summary": "Reconciles the existing UI-001 functional shell receipt and releases the status-sync documentation candidate. No UI or financial product source changed.",
+  "source_sha": "56c15613db2967f77691176903405c263f8145e0",
+  "source_tree_sha": "1fdf57fdc05b146ae255b5e300bb8b6dd4448c7d",
+  "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+  "tree_sha": "1fdf57fdc05b146ae255b5e300bb8b6dd4448c7d",
+  "pull_request": {
+    "number": 81,
+    "url": "https://github.com/millennium42/millani-artes/pull/81",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e"
+  },
+  "source_ci": {
+    "run_number": 508,
+    "run_id": 44859430338,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "56c15613db2967f77691176903405c263f8145e0",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/44859430338",
+    "job": {
+      "id": 136709142109,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run_number": 509,
+    "run_id": 44860689539,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/44860689539",
+    "job": {
+      "id": 136713120542,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "functional_release": {
+    "status": "released",
+    "note_number": 89,
+    "final_sha": "1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+    "source_ci_run": 38907719490,
+    "final_ci_run": 38913807462,
+    "scope": "static accessible shell only; no financial journeys, IPC, persistence or E2E"
+  },
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_tree": "1fdf57fdc05b146ae255b5e300bb8b6dd4448c7d",
+    "result": "no P0/P1/P2 findings"
+  },
+  "local_e3": {
+    "scan_sha": "7115e6321ae857fe73da7ea46013402b1edab026",
+    "cargo_audit": "0.22.2; 422 crates; 1555 advisories; 3 warnings within approved identities; 0 vulnerabilities; exit 0",
+    "osv_scanner": "2.6.0; 542 packages; 4 findings within approved exceptions; 0 unapproved; exit 0",
+    "gitleaks": "8.30.1; 1014 available commits/refs; 0 findings",
+    "fixtures": "Cargo 69/69 and OSV 44/44 sequentially passed after a shared-scratch collision on the initial parallel attempt",
+    "documentary_checks": "work item and evidence-state checkers passed for 196 records; progress-log checker passed append-only on candidate index/tree 1fdf57fdc05b146ae255b5e300bb8b6dd4448c7d with 979979 historical bytes preserved"
+  },
+  "security": {
+    "chrono": "RUSTSEC-2026-0543 is classified INFO/Unmaintained, not a vulnerability-classified finding; exploitability is not assessed.",
+    "waiver_scope": "chrono 0.4.45 only, with prior glib 0.18.5 and proc-macro-error 1.0.4 exceptions retained; Windows target and exact input hashes",
+    "expires_before_utc": "2026-11-27",
+    "human_risk_acknowledgment": "The user's broad authorization was bound to the temporary waiver by the integrator; no separate human acknowledgment of the unmaintained-dependency risk is recorded."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "69e6c5f1c5e2344942599c86d1c96d7c80717475",
+    "preserved_count": 223,
+    "total_after": 224,
+    "preserved_mapping_set_sha256": "28109097428d46529791342c5d76fb1949aaad137311ff2fc8e59da328ca5a87",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF"
+  },
+  "limitations": [
+    "Native process exit code remains not recorded.",
+    "No numerical WCAG claim, product minimum width, financial journey, IPC, E2E, installer or production claim is added.",
+    "No tracked commit was made after the exact final-main CI run."
+  ],
+  "next": "UI-002 is next in scope after this receipt; create its spec, work item and handoff from current main before implementation."
+}
