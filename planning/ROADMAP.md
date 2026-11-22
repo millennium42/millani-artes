@@ -235,7 +235,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 ## B7 — UI, backup, smoke e instalador
 
 - UI-001 — shell acessível ← INF-002, ARC-001 | liberado E3 no SHA final-main `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`; CI source `38907719490` e final-main `38913807462` verdes nos SHAs registrados. O recibo externo `UI-001-note-publication-20261016.json` confirma a publicação da nota 89, a ref remota exata e a liberação pelo root. UI-002 é o próximo item, após revalidar recibos e paths atuais.
-- UI-002 — foco e teclado do shell ← UI-001
+- UI-002 — foco e teclado do shell ← UI-001 | in_progress/E3/passes:false; mínimo Tauri corrigido para 313×343 após review (UI-001 tem captura nativa legível a 313 px); builds/capturas locais concluídos. P-REV final, CI source/final-main nos SHAs exatos e nota released pendem. Não iniciar UI-003 antes da nota.
 - UI-003 — configuração inicial de contas ← UI-001, FIN-008
 - UI-004 — cadastro de categoria ← UI-001, CAT-004
 - UI-005 — formulário de entrada ← UI-001, FIN-017
