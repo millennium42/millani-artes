@@ -236,11 +236,12 @@ def main():
                 config = json.loads(config_bytes)
                 record = json.loads(record_bytes)
                 reference = ('Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
-                             'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary actions through UI-016 but '
-                             'does not name chrono or separately acknowledge the unmaintained risk; leader permits only a temporary 7-day waiver for '
-                             'chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
-                             '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
-                             'target; expiresBeforeUTC 2026-11-27.')
+                             'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; preserve only the existing temporary Windows '
+                             'waiver identities and versions: glib 0.18.5/RUSTSEC-2024-0429 (OSV GHSA-wrw7-89jp-8q8g), '
+                             'proc-macro-error 1.0.4/RUSTSEC-2024-0370, and chrono 0.4.45/RUSTSEC-2026-0543; no separate human acknowledgment '
+                             'of chrono unmaintained risk. After the UI-002 lock-only remediation of url 2.5.8 to 2.5.9 and form_urlencoded '
+                             '1.2.2 to 1.2.3, rebind input hashes only; add no advisory, package, version, or target and do not extend expiry; '
+                             'target x86_64-pc-windows-msvc, expiresBeforeUTC 2026-11-27.')
                 assert record["humanDecision"] == "autorizo explicitamente o que for preciso para avançar até ui 016"
                 assert record["decisionReference"] == reference
                 assert record["approvedScopeSHA256"] == gate.scope_digest(config)
