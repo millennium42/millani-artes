@@ -1,0 +1,44 @@
+{
+  "id": "UI-002",
+  "title": "foco e teclado do shell estático",
+  "specPath": "planning/specs/UI-002.md",
+  "status": "in_progress",
+  "dependencies": [
+    "UI-001"
+  ],
+  "acceptanceCriteria": [
+    "UI-001 funcional e status-sync liberados no SHA exato 6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e pela nota released em refs/notes/evidence; 224 mappings preservam os 223 anteriores",
+    "Shell estático sem links, controles, handlers ou tabIndex adicionados",
+    "Inspeção Tauri registrada: sem controles focáveis; Tab/Shift+Tab mantêm foco no documento, sem mudança de texto; não há componente focável a partir do qual o usuário fique preso",
+    "Configurar mínimo suportado 313x343 pixels lógicos: evidência liberada de UI-001 legível em largura 313; captura nativa deste item verifica o par no limite, sem overflow aparente",
+    "A captura headless 320x568 é exploratória; não valida o mínimo Tauri nem prova tamanho de janela nativa suportado",
+    "Contraste principal medido em 12.22:1 para #25303b sobre #f6f4f0; sem declaração geral WCAG",
+    "TypeScript quality/test/coverage/build e Tauri production build passaram sem alteração de thresholds",
+    "Sem E2E ou novos scanners; nenhuma capability, comando, dependência ou design system adicionado; justificativas e limites registrados",
+    "Spec, handoff, roadmap, matrizes e progress log append-only atualizados; só CI final-main e nota released no SHA final liberam dependentes"
+  ],
+  "checks": [
+    "Node 24.21.0/npm 11.19.0: npm ci --ignore-scripts --no-audit --no-fund; 59 pacotes instalados com sucesso",
+    "npm run quality passou: format, lint, typecheck, coverage; thresholds intactos; 5/5 statements, 2/2 branches, 1/1 functions, 4/4 lines",
+    "npm run test passou: 2 arquivos/3 testes; npm run build passou: Vite 16 módulos",
+    "Tauri production build pré-alteração, na base 6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e e sem mínimo de janela: passou; exe SHA-256 A29A59EFAE9BCFC0BC63813469A122C95A66B7E4CFD292BED9E589F3F7B7FEE. Não é evidência do candidato com mínimo configurado.",
+    "Inspeção Tauri E3: árvore sem controles; Tab/Shift+Tab ficam no painel/documento e conteúdo permanece; não prova transferência de foco para fora do WebView",
+    "Edge headless 158.0.4370.33, produção em 1024x720/320x568/455x343, capturas e hashes em spec/handoff; sem overflow aparente; contraste focal 12.22:1",
+    "P-SEC E2 sem achado material; sem mudança de código/capability/dependência; scanners omitidos",
+    "RED focal em PowerShell falhou conforme esperado no SHA base porque minWidth/minHeight estavam ausentes; BUILD Tauri inicial em 455x343 foi supersedido pela configuração corrigida 313x343",
+    "Histórico supersedido: captura nativa de teste da proposta inicial em 455x343, exe F127C7F8486749E9DA3FF9839D8CA1C4E5227572307D1D4D248219E4325847AD, imagem 2EE1D3556FF35D854B3EDDB0F10B08CA799E130665150CD27E863781C78FB9E5.",
+    "Histórico supersedido: captura de build anterior à correção de minWidth=313; área 1024x720, exe D977894A3ADD8C0503ECF483894E9C13559C715F2E1C6BA73C48BCE0840F436A, imagem CE6F2A42ECB95A853D507C9E2B28A4B06E12DD947859B0242D846BC69057F041.",
+    "P-SEC E2 sem achados; P-REV final, CI remota source/final-main e nota released pendentes",
+    "CORRECT após P-REV: o argumento anterior 455x343 ignorou a captura liberada de UI-001 em 313x752; mínimo corrigido para 313x343.",
+    "BUILD Tauri temporário no limite width/height/minWidth/minHeight 313/343 passou; exe SHA-256 9BFE478173C1931C4544E49AB1D6BE811D3BBBAA2C3355A25C1405C0D0F98AD6.",
+    "Captura válida após 6 s: cliente 313x343, janela 329x382, PrintWindow=true, exit 0, sem DB; imagem SHA-256 B50878F0B7C8038126AD6E7B4FE2CC857A6FA3D02AF2FCB95FB94DFA21141476. Tentativa anterior de 2 s ficou branca e foi excluída; SHA F484F92C902E9447310B97A1EE4263FC045CC20E0A1673C6EC61794BDA75BF85.",
+    "BUILD Tauri final com width=1024/height=720/minWidth=313/minHeight=343 passou; exe SHA-256 B9EED9C6AA17109F95263BB7663E031F41002089B26FC3D2A96DC486DAA45417. Captura cliente 1024x720, janela 1040x759, PrintWindow=true, exit 0, sem DB; imagem SHA-256 CE6F2A42ECB95A853D507C9E2B28A4B06E12DD947859B0242D846BC69057F041. Inspecionada sem CUA.",
+    "Estado B7 permanece in_progress/E3/passes:false até P-REV final, CI source/final-main exatos e nota released preservando mappings.",
+    "P-REV de confirmação identificou e corrigiu a descrição incorreta de 320x568 como abaixo do mínimo: essa viewport é maior que 313x343 em ambas as dimensões."
+  ],
+  "agentPlan": "P-INT/root único escritor e executor; P-SEC e P-REV read-only no UI-002. Revisões independentes de UI-003/012/013 (P-TRC/P-PRO) e UI-004–011/014 (P-UI/P-QA) foram delegadas separadamente e não alteraram este item. Modelos/esforço/custo efetivos das revisões anteriores não registrados; sem modelos locais, Ollama, Aider ou roteamento local.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Estado in_progress/E3/passes:false. Candidato anterior done/passes:true corrigido por política B7 e review adversarial. Mínimo atual 313x343; largura apoiada pela captura nativa legível UI-001 313x752. BUILD/captura no limite: exe 9BFE478173C1931C4544E49AB1D6BE811D3BBBAA2C3355A25C1405C0D0F98AD6, PNG B50878F0B7C8038126AD6E7B4FE2CC857A6FA3D02AF2FCB95FB94DFA21141476. Captura 2 s branca excluída (F484F92C902E9447310B97A1EE4263FC045CC20E0A1673C6EC61794BDA75BF85); repetição 6 s legível sem overflow aparente. Configuração final 1024x720/mínimo 313x343; exe B9EED9C6AA17109F95263BB7663E031F41002089B26FC3D2A96DC486DAA45417, PNG CE6F2A42ECB95A853D507C9E2B28A4B06E12DD947859B0242D846BC69057F041; PrintWindow, exit 0, sem DB. Sem CUA/cliques/teclas. Tab/Shift+Tab da execução anterior no mesmo código; sem prova de foco fora WebView/WCAG geral. Sem resize abaixo do mínimo, E2E ou scans; sem mudanças em Rust, capability, command, CSP, deps ou dados. P-SEC E2 sem achados. P-REV final, CI exata source/final-main e nota released pendem. UI-003 não inicia antes da nota. Telemetria/modelo/custo não registrados."
+}
