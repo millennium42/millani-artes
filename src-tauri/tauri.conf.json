@@ -15,7 +15,9 @@
         "label": "main",
         "title": "Millani Artes",
         "width": 1024,
-        "height": 720
+        "height": 720,
+        "minWidth": 313,
+        "minHeight": 343
       }
     ],
     "security": {

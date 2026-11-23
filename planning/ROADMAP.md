@@ -235,7 +235,7 @@ RCV-002 | done/E3/passes:true | Migration 12 `main.receivables` STRICT implement
 ## B7 — UI, backup, smoke e instalador
 
 - UI-001 — shell acessível ← INF-002, ARC-001 | liberado E3 no SHA final-main `1cb08dbc12883ebb439ca60d44789dc4ff0daac6`; CI source `38907719490` e final-main `38913807462` verdes nos SHAs registrados. O recibo externo `UI-001-note-publication-20261016.json` confirma a publicação da nota 89, a ref remota exata e a liberação pelo root. UI-002 é o próximo item, após revalidar recibos e paths atuais.
-- UI-002 — foco e teclado do shell ← UI-001
+- UI-002 — foco e teclado do shell ← UI-001 | in_progress/E3/passes:false; mínimo Tauri 313×343 após review (UI-001 tem captura nativa legível a 313 px). CI source #45074415558 encontrou RUSTSEC-2026-0592 em url 2.5.8; lock-only corrigido para url 2.5.9/form_urlencoded 1.2.3, sem Cargo.toml. Scans reais e fixtures, Rust/frontend gates, build Tauri e capturas legíveis pós-lock passaram. P-UI E2 sem bloqueio visual; P-REV E2 final na árvore 0fccb769dccb34ab6a5102ba481ca949373961ae confirmou zero P0/P1/P2 após reconciliar o snapshot histórico de UI-001. CI source/final-main exatos e nota released ainda pendem. Não iniciar UI-003 antes da nota.
 - UI-003 — configuração inicial de contas ← UI-001, FIN-008
 - UI-004 — cadastro de categoria ← UI-001, CAT-004
 - UI-005 — formulário de entrada ← UI-001, FIN-017

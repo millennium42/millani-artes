@@ -174,14 +174,15 @@ def main():
         def ui_meta_advance_authority():
             proposal = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
             proposal["expiresBeforeUTC"] = "2026-11-27"
-            proposal["exceptions"].append({"ecosystem": "crates.io", "name": "chrono", "version": "0.4.45",
-                                           "ids": ["RUSTSEC-2026-0543"]})
+            assert {entry["name"] for entry in proposal["exceptions"]} == {"glib", "proc-macro-error", "chrono"}
             reference = ('Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
-                         'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary actions through UI-016 but '
-                         'does not name chrono or separately acknowledge the unmaintained risk; leader permits only a temporary 7-day waiver for '
-                         'chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
-                         '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
-                         'target; expiresBeforeUTC 2026-11-27.')
+                         'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; preserve only the existing temporary Windows '
+                         'waiver identities and versions: glib 0.18.5/RUSTSEC-2024-0429 (OSV GHSA-wrw7-89jp-8q8g), '
+                         'proc-macro-error 1.0.4/RUSTSEC-2024-0370, and chrono 0.4.45/RUSTSEC-2026-0543; no separate human acknowledgment '
+                         'of chrono unmaintained risk. After the UI-002 lock-only remediation of url 2.5.8 to 2.5.9 and form_urlencoded '
+                         '1.2.2 to 1.2.3, rebind input hashes only; add no advisory, package, version, or target and do not extend expiry; '
+                         'target x86_64-pc-windows-msvc, expiresBeforeUTC 2026-11-27.')
+            assert gate.UI_META_ADVANCE_REFERENCE == reference
             record = {"approvedScopeSHA256": gate.approval_digest(proposal),
                       "humanDecision": "autorizo explicitamente o que for preciso para avançar até ui 016",
                       "decisionReference": reference}
@@ -293,6 +294,7 @@ def main():
         def dsh007_authority():
             config = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
             config["expiresBeforeUTC"] = "2026-11-11"
+            config["inputSHA256"]["src-tauri/Cargo.lock"] = "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433"
             config["exceptions"] = [entry for entry in config["exceptions"] if entry["name"] != "chrono"]
             config["exceptions"].append({"ecosystem": "crates.io", "name": "block-buffer", "version": "0.10.4",
                                          "ids": ["GHSA-qwgh-2vcv-g2f7"]})

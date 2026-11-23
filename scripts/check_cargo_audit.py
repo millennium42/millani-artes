@@ -45,13 +45,13 @@ UI_META_RENEWAL_SCOPE_SHA256 = "048c9d58f089753b83138987ef4fdf8f0b82b7bc9a743c17
 UI_META_ADVANCE_TEXT = "autorizo explicitamente o que for preciso para avançar até ui 016"
 UI_META_ADVANCE_REFERENCE = (
     'Leader binding of direct user instruction "autorizo explicitamente o que for preciso para avançar até ui 016" '
-    'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; the wording authorizes necessary '
-    'actions through UI-016 but does not name chrono or separately acknowledge the unmaintained risk; leader permits '
-    'only a temporary 7-day waiver for chrono 0.4.45/RUSTSEC-2026-0543 (unmaintained); preserve only the existing glib '
-    '0.18.5/RUSTSEC-2024-0429 and proc-macro-error 1.0.4/RUSTSEC-2024-0370 warnings, add no '
-    'other advisory, retain current Cargo.lock/Cargo.toml hashes and x86_64-pc-windows-msvc '
-    'target; expiresBeforeUTC 2026-11-27.')
-UI_META_ADVANCE_SCOPE_SHA256 = "5176762e94f46f5a83c6891210a96576d5e26e2dfc58b2a4397cf91e5d3d030c"
+    'in Codex thread 01a1e070-899d-7b71-8021-abc1b05dd5d6 on 2026-11-20; preserve only the existing temporary Windows '
+    'waiver identities and versions: glib 0.18.5/RUSTSEC-2024-0429 (OSV GHSA-wrw7-89jp-8q8g), '
+    'proc-macro-error 1.0.4/RUSTSEC-2024-0370, and chrono 0.4.45/RUSTSEC-2026-0543; no separate human acknowledgment '
+    'of chrono unmaintained risk. After the UI-002 lock-only remediation of url 2.5.8 to 2.5.9 and form_urlencoded '
+    '1.2.2 to 1.2.3, rebind input hashes only; add no advisory, package, version, or target and do not extend expiry; '
+    'target x86_64-pc-windows-msvc, expiresBeforeUTC 2026-11-27.')
+UI_META_ADVANCE_SCOPE_SHA256 = "2fd6d01f1d549bf234433d47459f0cc831016748c3d6442f3f3aa3f72b7d7a49"
 KINDS = {"unmaintained", "unsound", "notice", "yanked"}
 CONFIG = '''[advisories]
 ignore=[]
