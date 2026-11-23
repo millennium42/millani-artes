@@ -1018,7 +1018,7 @@ Nenhum desses registros documentais prova INV-FIN-001, regras de negócio financ
 
 ## UI-003 — configuração inicial de contas (E3 local; release pendente)
 
-Ver [spec](../../planning/specs/UI-003.md), [work item](../../planning/work-items/UI-003.json) e [handoff](../../planning/handoffs/UI-003.md). As dependências UI-001/UI-002 e FIN-008 foram revalidadas na main remota 2a8fc0f483f83f9024b5d3d82224c1b01afb5a04 por notas released lidas de volta e CI source/final exatos; não houve repetição das entregas.
+Ver [spec](../../planning/specs/UI-003.md), [work item](../../planning/work-items/UI-003.json) e [handoff](../../planning/handoffs/UI-003.md). As dependências diretas UI-001 e FIN-008 foram revalidadas na main remota 2a8fc0f483f83f9024b5d3d82224c1b01afb5a04 por notas released lidas de volta e CI source/final exatos; UI-002 também foi revalidada como contexto do shell, sem ser dependência direta no grafo. Não houve repetição das entregas.
 
 E3 local: 28 testes React em 4 arquivos; coverage 98,59% statements, 97,77% branches, 100% functions/lines sem redução de thresholds; TypeScript quality/build passaram. Rust focal 9/9; suíte completa, fmt, Clippy, testes de segurança e produção Tauri têm resultados detalhados no handoff. A jornada real sintética no binário Tauri percorreu formulário→IPC→FIN-008→SQLite v17; nome Conta UI003 com espaços externos, bank_pix e 1.234.567 centavos foram conferidos, com uma auditoria e zero movimentos. Capturas da janela real e foco/overflow automatizados têm hashes no handoff.
 
