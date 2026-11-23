@@ -1,0 +1,36 @@
+{
+  "id": "UI-004",
+  "title": "cadastro de categoria",
+  "specPath": "planning/specs/UI-004.md",
+  "status": "in_progress",
+  "dependencies": [
+    "UI-001",
+    "CAT-004"
+  ],
+  "acceptanceCriteria": [
+    "UI-001 foi revalidada como released no recibo remoto do SHA 6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e (CI final 44860689539); CAT-004 foi revalidado como released no recibo remoto do SHA 32e4e0194c45060800e70bc7aed0d3fdb82cdc50 (CI final 39095407330). Ambos os SHAs finais sao ancestrais de origin/main 05190e0f404a6865329fa4ceb3698025b5c727cf. UI-003 tambem esta released na base integrada; nao e dependencia direta.",
+    "Formulario cria categoria ativa e permite repetir o cadastro; nome valido e enviado literalmente, sem regra de dominio duplicada na UI.",
+    "O comando Tauri recebe somente name, reutiliza create_category e AdapterSqliteCategoryStore e persiste categoria e audit_event atomicamente no banco local v17.",
+    "Campo vazio nao chama API; whitespace Unicode e enviado literal e rejeitado pelo contrato backend; validacao, sucesso, loading, duplo envio, erro generico, label, teclado e foco tem testes focais; a jornada nativa comprovada usa dados sinteticos e app_local_data isolado.",
+    "Capability local main concede somente create_account e create_category; origem remota, labels divergentes, comandos nao autorizados e permissoes core/plugins continuam negados.",
+    "Falha do adapter reabre a conexao; comandos de escrita de conta e categoria compartilham uma trava de processo para o mesmo arquivo SQLite.",
+    "Sem migration, dependencia, plugin, capability ampla, design system ou regra financeira nova.",
+    "Format/lint/typecheck/test/coverage/build existentes, fmt/clippy/test/audit Rust, scans de seguranca, reviews P-REV/P-SEC e CI source/final-main exatos passam sem threshold reduzido.",
+    "Spec, work item, handoff, roadmap, matrizes de requisito/seguranca/traceabilidade e PROGRESS_LOG append-only guardam evidencia, riscos, limites, omitidos e telemetria; nota released e lida de volta antes de UI-005."
+  ],
+  "checks": [
+    "RED do lider antes de BUILD: npm test -- src/ui/App.test.tsx --reporter=dot apresentou 1 falha esperada pela ausencia do heading/formulario de categorias e 6 testes aprovados; package-lock permaneceu intacto.",
+    "Frontend local: npm run quality passou format, lint, typecheck e coverage; 6 arquivos/36 testes, lines 100%, statements 98.05%, branches 96.92%, functions 100%; npm run build passou (Vite 8.3.3, 22 modulos). Thresholds inalterados.",
+    "Rust local: cargo fmt --all --check, cargo clippy --all-targets --locked --offline -- -D warnings e cargo test --all-targets --locked --offline passaram; 348 testes unitarios + 284 de integracao; cargo test --bin passou 21, 1 ignored por exigir WebView2; categoria 3/3 e autoridade local-main 1/1.",
+    "Scans e fixtures no SHA candidato 81427e7e44f3b074e9d26d8799871f531bb0b0f7: npm tests 40/40 e audit 182 dependencias/0 vulnerabilidades; OSV tests 44/44 e 604 pacotes/4 excecoes vigentes/0 nao aprovados; Gitleaks tests 16/16 e 1.052 commits/0 findings; CI audits 42/42; Cargo Audit fixtures 69/69 e scanner 422 crates/0 vulnerabilidades/3 avisos aprovados, DB oficial isolado 43b5554d9d64ca91c8d0839b7150d4f8ee490cdc; SAST 45/45 com Node 24.21.0 pinned. Scans reais registram sourceSha exato 81427e7; waivers permanecem inalteradas e expiram antes de 27/11/2026 UTC.",
+    "E3 nativo local pelo lider: build Tauri Windows --no-bundle com appDirectoriesOverride.localData exclusivo e dados sinteticos; criacao valida, nome Unicode com espacos preservado byte a byte, erro por trigger/rollback e retry bem-sucedido confirmados no SQLite v17; quatro categorias e quatro eventos category_create. Executavel encerrado e porta de depuracao sem listener.",
+    "Build de producao no candidato documental fd0a62e590d05b5fea2a72eb8b9569224511eeca: npm run tauri -- build --no-bundle -- --locked passou; executavel Windows criado.",
+    "Inspecao automatizada sem CUA: capturas default 1024x720, minimo 313x343, foco, vazio, erro e sucesso; sequencia Tab e ativacao Enter; foco visivel e sem overflow horizontal. Razoes medidas: texto principal 12.22:1, campo 13.42:1, erro 7.17:1, sucesso 6.00:1, foco 5.45:1 sobre fundo. Sem alegacao WCAG geral. Hashes e limites no handoff.",
+    "P-REV/P-SEC revisaram 81427e7 e repetiram no candidato documental fd0a62e590d05b5fea2a72eb8b9569224511eeca; P-TRC confirmou a trilha documental nesse SHA. Todos read-only, sem achados P0/P1/P2. Limite P-SEC: autoridade compilada, sem tentativa IPC maliciosa em outro WebView real. Repetir review no proximo SHA documental final; CI source/final-main, publicacao e readback da nota remota ainda pendentes."
+  ],
+  "agentPlan": "P-INT lider e unico escritor/executor/publicador; P-PRO, P-UI/P-QA, P-SEC e P-ARC fizeram analises read-only independentes; P-REV/P-SEC revisaram 81427e7 e fd0a62e; P-TRC revisou fd0a62e; sem P0/P1/P2. Saidas delegadas sao E2 no maximo, E3 reproduzido pelo lider. Modelo/esforco efetivos, uso, custo e telemetria: nao registrado. Repetir review no SHA documental final. Reserva exata em planning/specs/UI-004.md; ativa ate CI final-main e nota remote released.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Somente UI-004. Implementacao e E3 local executados pelo lider; scans reais e testes no candidato de codigo 81427e7; Tauri build e reviews P-REV/P-SEC/P-TRC sem achados no candidato documental fd0a62e. Dependencias diretas UI-001/CAT-004 revalidadas em refs/notes/evidence remota; CIs finais exatas e ancestrais de origin/main. A proxima consolidacao documental exige review exata. Status permanece in_progress/E3/passes:false ate review final, CI source/final-main, publicacao e readback da nota released com mappings preservados. UI-005 permanece bloqueada. Telemetria nao registrada."
+}

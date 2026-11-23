@@ -72,6 +72,12 @@ impl Error for StartupError {}
 pub(crate) fn initialize_account_store_at(
     app_data_dir: &Path,
 ) -> Result<AdapterSqliteAccountStore, StartupError> {
+    initialize_database_at(app_data_dir).map(AdapterSqliteAccountStore::new)
+}
+
+pub(crate) fn initialize_database_at(
+    app_data_dir: &Path,
+) -> Result<rusqlite::Connection, StartupError> {
     if !app_data_dir.is_absolute() {
         return Err(StartupError);
     }
@@ -79,8 +85,7 @@ pub(crate) fn initialize_account_store_at(
     fs::create_dir_all(app_data_dir).map_err(|_| StartupError)?;
     let connection = database::open_database(&app_data_dir.join(DATABASE_FILE_NAME))
         .map_err(|_| StartupError)?;
-    let connection = migrate_to_latest(connection)?;
-    Ok(AdapterSqliteAccountStore::new(connection))
+    migrate_to_latest(connection)
 }
 
 fn migrate_to_latest(
@@ -189,7 +194,7 @@ fn initial_balance_cents_from_wire(value: &str) -> Result<i64, &'static str> {
 }
 
 #[derive(Clone, Copy)]
-struct SystemClock;
+pub(crate) struct SystemClock;
 
 impl Clock for SystemClock {
     fn now(&self) -> SystemTime {
@@ -198,7 +203,7 @@ impl Clock for SystemClock {
 }
 
 #[derive(Clone, Copy)]
-struct SystemUuidGenerator;
+pub(crate) struct SystemUuidGenerator;
 
 impl UuidGenerator for SystemUuidGenerator {
     type Error = getrandom::Error;
@@ -215,10 +220,14 @@ impl UuidGenerator for SystemUuidGenerator {
 #[tauri::command]
 pub(crate) fn create_account(
     state: tauri::State<'_, AccountSetupState>,
+    write_lock: tauri::State<'_, super::AppDatabaseWriteLock>,
     name: String,
     account_type: String,
     initial_balance_cents: String,
 ) -> Result<(), String> {
+    let _write_guard = write_lock
+        .lock()
+        .map_err(|_| "ACCOUNT_CREATE_FAILED".to_owned())?;
     let account_type = account_type_from_key(&account_type).map_err(str::to_owned)?;
     let initial_balance_cents =
         initial_balance_cents_from_wire(&initial_balance_cents).map_err(str::to_owned)?;

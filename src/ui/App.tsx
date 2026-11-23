@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createAccount, type AccountTypeKey } from "./accountApi";
 import { parseInitialBalanceCents } from "./accountInput";
+import CategoryForm from "./CategoryForm";
 
 const accountTypes: ReadonlyArray<{ value: AccountTypeKey; label: string }> = [
   { value: "cash", label: "Dinheiro" },
@@ -174,6 +175,13 @@ export default function App() {
             {notice}
           </p>
         )}
+        <section className="setup-section">
+          <h2>Categorias</h2>
+          <p className="intro">
+            Cadastre categorias para organizar seus registros.
+          </p>
+          <CategoryForm />
+        </section>
       </main>
     </>
   );

@@ -35,6 +35,18 @@ h1 {
   line-height: 1.2;
 }
 
+h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.setup-section {
+  margin-block-start: 1.5rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid #d8d4cc;
+}
+
 .intro {
   margin: 0 0 0.75rem;
 }
