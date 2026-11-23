@@ -56,6 +56,8 @@ test("recarrega contas disponiveis apos criar uma conta", async () => {
   vi.mocked(accountApi.createAccount).mockResolvedValue(undefined);
   vi.mocked(entryApi.listAccounts)
     .mockResolvedValueOnce([])
+    .mockResolvedValueOnce([])
+    .mockResolvedValueOnce([{ id, name: "Conta sintética" }])
     .mockResolvedValueOnce([{ id, name: "Conta sintética" }]);
   render(<App />);
 
@@ -75,9 +77,23 @@ test("recarrega contas disponiveis apos criar uma conta", async () => {
   await user.click(screen.getByRole("button", { name: "Salvar conta" }));
 
   expect(
-    await screen.findByRole("option", { name: "Conta sintética" }),
+    await screen.findAllByRole("option", { name: "Conta sintética" }),
+  ).toHaveLength(2);
+  expect(entryApi.listAccounts).toHaveBeenCalledTimes(4);
+});
+
+test("apresenta o formulário de saída na configuração inicial", async () => {
+  render(<App />);
+
+  expect(
+    await screen.findByRole("heading", {
+      name: "Registrar uma saída",
+      level: 2,
+    }),
   ).toBeTruthy();
-  expect(entryApi.listAccounts).toHaveBeenCalledTimes(2);
+  expect(
+    screen.getByText("Cadastre uma conta para registrar uma saída."),
+  ).toBeTruthy();
 });
 
 test("expõe campos rotulados e percorre o formulário por teclado", async () => {

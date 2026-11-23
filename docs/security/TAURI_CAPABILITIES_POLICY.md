@@ -88,3 +88,12 @@ O parágrafo anterior é um snapshot candidato anterior à liberação. A nota r
 Esta branch implementa o contrato aceito em ADR-027: mantém os grants existentes `create_account`/`create_category` e acrescenta somente `list_accounts`/`create_entry` à capability local `main-local-deny`, com permissões geradas por comando, `local=true` e `webviews=["main"]`. O manifesto Tauri registra explicitamente os comandos. `list_accounts` devolve apenas ID de 16 bytes e nome; `create_entry` recebe ID, string decimal de centavos e contexto e reutiliza FIN-017 e a trava compartilhada. Não há capability core/plugin, grant remoto, SQL/filesystem no frontend ou dado financeiro adicional.
 
 Prova local E3 e checks estão em [handoff UI-005](../../planning/handoffs/UI-005.md). A autorização da capability está nesta branch candidata, mas ainda não no main vigente; estado `in_progress/E3/passes:false` até review/CI/nota released. O seletor continua limitado à topologia atual de um par `main`; seletores Tauri de janela/webview são OR. Rever se essa topologia mudar.
+
+
+## UI-005 — recibo remoto released (23/11/2026)
+
+Os parágrafos anteriores preservam snapshots candidatos de UI-005. A nota remota refs/notes/evidence no SHA final-main 671d9ab0cc0bb8f206bfdffcabd481f83642e4db marca UI-005 released após source CI 45233997098 e final-main CI 45236415336 success 23/23. A capability ativa em main permite os grants explícitos de UI-003/004/005 registrados no recibo; não repetir UI-005.
+
+## UI-006 — capability implementada localmente; liberação pendente
+
+ADR-028 foi implementada no candidato UI-006: somente create_exit/allow-create-exit foi adicionado ao manifest e build.rs; a capability main-local-deny continua local e limitada ao webview main, com a descrição incluindo saída. A UI reutiliza list_accounts; o comando recebe `tauri::ipc::Request`, valida o objeto e mapeia tipos inesperados a erro estático antes de chamar FIN-018 com ID, centavos textuais e contexto sob a trava compartilhada. Testes locais verificam grant local autorizado, origem remota/webview não selecionado e comandos excedentes negados, corpo JSON válido atravessando parser com persistência/audit, além de tipo IPC sensível com erro estático e lock poisoned sem escrita. Scans pinned locais passaram no SHA `bc430507887d67b144d5871d3bc45070a9917416`; CI source/final-main e nota released/readback ainda pendem. A topologia atual tem um par main; seletores de janela/webview Tauri são OR, sem alegar restrição independente de janela futura. Não concede permissão core/plugin, remota, filesystem ou SQL.
