@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-security-probe-report"
+description = "Enables the security_probe_report command without any pre-configured scope."
+commands.allow = ["security_probe_report"]
+
+[[permission]]
+identifier = "deny-security-probe-report"
+description = "Denies the security_probe_report command without any pre-configured scope."
+commands.deny = ["security_probe_report"]

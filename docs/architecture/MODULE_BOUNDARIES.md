@@ -311,3 +311,11 @@ application::calculate_context_result reutiliza MovementReadStore, list_movement
 ## DSH-009 — gastos históricos da Casa
 
 `application::calculate_home_expenses` reutiliza `MovementReadStore`, `list_movements` e `Movement::result_effect_cents`; valida todos os movimentos antes de selecionar saídas da Casa e não escreve. A função e os testes ficam em módulos de aplicação; a integração usa `AdapterSqliteMovementStore` e o harness SQLite existente. Sem alteração de domínio, adapter de produção, schema, migration, UI, IPC ou startup. Fonte: planning/specs/DSH-009.md e planning/handoffs/DSH-009.md. CI/P-REV/nota de DSH-009 ainda são gates de liberação.
+
+## UI-003 — ponte da configuração inicial de contas (candidato local; release pendente)
+
+src/ui/App.tsx chama src/ui/accountApi.ts, que envia somente nome, AccountType e centavos como string para o comando create_account. A inicialização de produto em src-tauri/src/infrastructure/mod.rs resolve app_local_data_dir no lado Rust, abre o banco e executa as migrações existentes até a versão 17 antes de expor o estado. src-tauri/src/infrastructure/account_setup.rs adapta o comando ao caso de uso application::create_account e ao AdapterSqliteAccountStore existente; esse caminho não cria movimento.
+
+O frontend valida apenas a sintaxe de apresentação e converte para centavos exatos com BigInt. O contrato FIN-008 e o adapter continuam autoritativos para cadastro/persistência; a UI não faz SQL, não calcula saldo/receita e não reimplementa regras financeiras. O payload não escolhe path, ID ou relógio.
+
+A afirmação em ARC-001 acima de que o bootstrap ainda não tinha UI/IPC descreve somente aquele checkpoint histórico. UI-003 adiciona a primeira ponte de cadastro local; não altera as responsabilidades nem os limites da tabela de módulos. O item continua in_progress até revisão, CI remota e recibo de release exato.

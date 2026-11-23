@@ -1,0 +1,38 @@
+{
+  "id": "UI-003",
+  "title": "configuração inicial de contas",
+  "specPath": "planning/specs/UI-003.md",
+  "status": "in_progress",
+  "dependencies": [
+    "UI-001",
+    "FIN-008"
+  ],
+  "acceptanceCriteria": [
+    "UI-001, UI-002 e FIN-008 revalidados por notas released/readback, CI nos SHAs finais e mappings preservados; sem repetir entrega de dependências.",
+    "Form acessível em português permite repetir cadastro de nome, tipo e saldo inicial; nome válido é transmitido sem normalização; quatro tipos usam os keys existentes.",
+    "Entrada decimal com vírgula é convertida exatamente para centavos inteiros; parser cobre i64 mínimo/máximo sem floats, arredondamento ou perda via JSON/JavaScript.",
+    "Caso FIN-008 e adapter SQLite reais são chamados por um comando Tauri estreito; conta e audit_event são atômicos; saldo inicial não gera movimento/receita.",
+    "Banco fica em app_local_data resolvido no Rust; migrações 1–17 avançam sequencialmente e falha impede startup sem expor path/SQL.",
+    "Somente comando create_account é registrado em produto e autorizado à origem local da janela/webview main; outras origens/comandos permanecem negados.",
+    "React, parsing, sucesso, erro, loading, labels e teclado/foco têm testes focais; SQLite, migrations e command têm testes Rust; inspeção visual automatizada executa o binário Tauri sem CUA.",
+    "ADR-025 e TOOL_REGISTER aprovam e registram dependências/capability; sem plugin, permissão ampla, regra financeira de UI ou design system.",
+    "Format/lint/typecheck/test/coverage/build, gates Rust/scanners, reviews P-REV/P-SEC, validações documentais, CI source/final-main no SHA exato e nota released/readback passam sem reduzir thresholds.",
+    "Spec, handoff, roadmap, matrizes e PROGRESS_LOG append-only registram evidências, limites, riscos, omitidos e telemetria/custo como não registrado se ausentes; não iniciar UI-004 sem release.",
+    "Sem dados reais, modelos locais, Ollama, Aider, CUA ou trabalho fora de UI-003."
+  ],
+  "checks": [
+    "RECON root: origin/main/HEAD base 2a8fc0f483f83f9024b5d3d82224c1b01afb5a04, branch codex/ui-003-accounts-current-20261123; notas UI-001/UI-002/FIN-008 released, CIs source/final exatos e mappings revalidados na ref remota.",
+    "RED/GREEN root: ausência inicial do handler/DOM reproduzida nos testes focais; após implementação UI/API/Rust, 28 testes React em 4 arquivos passam sob Node 24.21.0/npm 11.19.0; coverage 98.59% statements, 97.77% branches, 100% functions/lines.",
+    "TypeScript format/lint/typecheck/coverage e npm build passam; build Tauri production --no-bundle passa com Cargo/Rust pinned 1.99.0.",
+    "cargo fmt --check e Clippy all-targets -D warnings passam; execução final cargo test --quiet: 348 testes unitários, 17 testes do binário auxiliar passaram e 1 probe foi ignorado, 284 testes de integração e 40 doctests; filtro security_tests 5 passed, 1 ignored por requerer WebView2/perfil isolado.",
+    "npm audit zero vulnerabilities; Cargo Audit 0.23.0: 422 crates/1561 advisories, 3 findings existentes; SAST 45 fixtures PASS; check_tauri_plugins.py PASS (0 plugins/0 ADRs); fixtures OSV 44/44, Gitleaks 16/16 e CI audits 42/42 PASS. Após alteração autorizada, hashes Cargo.lock/Cargo.toml da aprovação OSV foram reamarrados sem mudar target, expiração ou exceções. Scans OSV/Gitleaks pinned sobre o commit candidato e CI remota continuam pendentes.",
+    "E3 visual/E2E sintético automatizado sem CUA: binário Tauri percorreu UI→IPC→SQLite v17 e persistiu conta/audit sem movement; capturas desktop/mínimo e hashes no handoff; ordem teclado/foco visível/overflow horizontal registrados.",
+    "Limite: WEBVIEW2_USER_DATA_FOLDER não isolou app_local_data; E2E criou apenas DB v17 e sentinela sintética no path padrão; delete foi bloqueado pelo trigger e revertido; arquivo novo removido após guardas; perfil/pasta preexistentes preservados; não repetir nesse path.",
+    "P-REV/P-SEC final no candidate SHA, OSV/Gitleaks/CI source e final-main exatos, merge e nota released/readback/mappings ainda pendentes; passes:false, não iniciar UI-004."
+  ],
+  "agentPlan": "Líder GPT-6 Luna executa/reproduz todos os checks e é único escritor. Duas ondas independentes de auditoria no início concluídas read-only: P-TRC/P-QA e P-REV/P-SEC; etapa de review final usará no máximo dois delegados simultâneos, P-REV e P-SEC, cada um somente leitura no SHA exato. Modelo/telemetria/custo: não registrados.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Candidato UI-003 com implementação E3 local; status in_progress e passes:false enquanto revisões finais, CI remota source/final-main e nota release_evidence/released no SHA final/readback aguardam. Nenhuma repetição dos itens liberados. A autorização explícita cobre as decisões de apresentação e ADR-025. Limites e risco da execução no app_local_data padrão estão no handoff. Não iniciar UI-004 antes do recibo released."
+}

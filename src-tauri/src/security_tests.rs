@@ -29,11 +29,52 @@ fn unselected_capability_cannot_grant_commands() {
         "An unselected capability file must not grant commands"
     );
     assert_eq!(selected.len(), 1);
-    assert!(selected.values().all(|cap| cap.local
-        && cap.remote.is_none()
-        && cap.windows == ["main"]
-        && cap.webviews.is_empty()
-        && cap.permissions.is_empty()));
+    let selected_capability = selected.get("main-local-deny").unwrap();
+    assert!(selected_capability.local);
+    assert!(selected_capability.remote.is_none());
+    assert!(selected_capability.windows.is_empty());
+    assert_eq!(selected_capability.webviews, ["main"]);
+    assert_eq!(selected_capability.permissions.len(), 1);
+    let permission = selected_capability.permissions[0].identifier();
+    assert_eq!(permission.get_prefix(), None);
+    assert_eq!(permission.get_base(), "allow-create-account");
+}
+
+#[test]
+fn create_account_command_is_limited_to_the_local_main_webview() {
+    let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    assert_eq!(context.config().app.windows.len(), 1);
+    assert_eq!(context.config().app.windows[0].label, "main");
+    let authority = context.runtime_authority_mut();
+    let remote = Origin::Remote {
+        url: "https://example.invalid".parse().unwrap(),
+    };
+
+    assert!(authority
+        .resolve_access("create_account", "main", "main", &Origin::Local)
+        .is_some());
+    assert!(authority
+        .resolve_access("create_account", "main", "main", &remote)
+        .is_none());
+
+    for (window, webview) in [("other", "other"), ("main", "other")] {
+        assert!(authority
+            .resolve_access("create_account", window, webview, &Origin::Local)
+            .is_none());
+        assert!(authority
+            .resolve_access("create_account", window, webview, &remote)
+            .is_none());
+    }
+
+    for command in [
+        "security_probe_report",
+        "list_accounts",
+        "plugin:fs|read_text_file",
+    ] {
+        assert!(authority
+            .resolve_access(command, "main", "main", &Origin::Local)
+            .is_none());
+    }
 }
 
 #[test]

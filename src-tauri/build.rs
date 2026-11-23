@@ -1,3 +1,6 @@
 fn main() {
-    tauri_build::build();
+    let attributes = tauri_build::Attributes::new().app_manifest(
+        tauri_build::AppManifest::new().commands(&["create_account", "security_probe_report"]),
+    );
+    tauri_build::try_build(attributes).expect("TAURI_BUILD_FAILED");
 }
