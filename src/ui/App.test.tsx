@@ -11,6 +11,10 @@ vi.mock("./accountApi", () => ({
   createAccount: vi.fn(),
 }));
 
+vi.mock("./categoryApi", () => ({
+  createCategory: vi.fn(),
+}));
+
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();
@@ -22,6 +26,18 @@ test("apresenta a marca e a configuração de contas", () => {
   expect(markup).toContain("<header>Millani Artes</header>");
   expect(markup).toContain("<h1>Configure suas contas</h1>");
   expect(markup).not.toContain("Aplicativo local em construção.");
+});
+
+test("apresenta cadastro acessivel de categoria", () => {
+  render(<App />);
+
+  expect(
+    screen.getByRole("heading", { name: "Categorias", level: 2 }),
+  ).toBeTruthy();
+  expect(
+    screen.getByRole("textbox", { name: "Nome da categoria" }),
+  ).toBeTruthy();
+  expect(screen.getByRole("button", { name: "Salvar categoria" })).toBeTruthy();
 });
 
 test("expõe campos rotulados e percorre o formulário por teclado", async () => {

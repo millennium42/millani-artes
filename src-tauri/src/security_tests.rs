@@ -34,10 +34,23 @@ fn unselected_capability_cannot_grant_commands() {
     assert!(selected_capability.remote.is_none());
     assert!(selected_capability.windows.is_empty());
     assert_eq!(selected_capability.webviews, ["main"]);
-    assert_eq!(selected_capability.permissions.len(), 1);
-    let permission = selected_capability.permissions[0].identifier();
-    assert_eq!(permission.get_prefix(), None);
-    assert_eq!(permission.get_base(), "allow-create-account");
+    let mut permissions: Vec<_> = selected_capability
+        .permissions
+        .iter()
+        .map(|permission| {
+            let identifier = permission.identifier();
+            assert_eq!(identifier.get_prefix(), None);
+            identifier.get_base().to_owned()
+        })
+        .collect();
+    permissions.sort();
+    assert_eq!(
+        permissions,
+        vec![
+            "allow-create-account".to_owned(),
+            "allow-create-category".to_owned()
+        ]
+    );
 }
 
 #[test]
@@ -78,6 +91,45 @@ fn create_account_command_is_limited_to_the_local_main_webview() {
 }
 
 #[test]
+fn create_category_command_is_limited_to_the_local_main_webview() {
+    let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    let authority = context.runtime_authority_mut();
+    let remote = Origin::Remote {
+        url: "https://example.invalid".parse().unwrap(),
+    };
+
+    assert!(
+        authority
+            .resolve_access("create_category", "main", "main", &Origin::Local)
+            .is_some(),
+        "The local main webview must be authorized for create_category"
+    );
+    assert!(authority
+        .resolve_access("create_category", "main", "main", &remote)
+        .is_none());
+
+    for (window, webview) in [("other", "other"), ("main", "other")] {
+        assert!(authority
+            .resolve_access("create_category", window, webview, &Origin::Local)
+            .is_none());
+        assert!(authority
+            .resolve_access("create_category", window, webview, &remote)
+            .is_none());
+    }
+
+    for command in [
+        "list_categories",
+        "rename_category",
+        "deactivate_category",
+        "delete_category",
+    ] {
+        assert!(authority
+            .resolve_access(command, "main", "main", &Origin::Local)
+            .is_none());
+    }
+}
+
+#[test]
 fn compiled_authority_denies_ungranted_commands_and_origins() {
     let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
     let authority = context.runtime_authority_mut();
@@ -94,6 +146,10 @@ fn compiled_authority_denies_ungranted_commands_and_origins() {
         "plugin:fs|write_text_file",
         "plugin:updater|check",
         "plugin:http|fetch",
+        "list_categories",
+        "rename_category",
+        "deactivate_category",
+        "delete_category",
     ] {
         for (window, webview) in [("main", "main"), ("other", "other"), ("main", "other")] {
             for origin in &origins {

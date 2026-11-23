@@ -8,7 +8,7 @@ Aplicativo desktop, local-first e offline-first para a gestão financeira pessoa
 2. Escolha somente o primeiro work item `todo` com todas as dependências fechadas, handoff e CI comprovados.
 3. Crie a spec a partir do [template](planning/SPEC_TEMPLATE.md); siga o ciclo e registre os checks, evidência e [handoff](planning/handoffs/).
 
-O scaffold Tauri/React foi compilado e executado no Windows; evidências e fechamento na [INF-002](planning/handoffs/INF-002.md). O candidato UI-003 acrescenta inicialização SQLite e cadastro inicial local de contas, ainda sem liberação remota; as jornadas financeiras operacionais e o instalador continuam pendentes.
+O scaffold Tauri/React foi compilado e executado no Windows; evidências e fechamento na [INF-002](planning/handoffs/INF-002.md). UI-003 liberou o cadastro inicial local de contas e seu fluxo sintético de persistência, conforme recibo remoto em refs/notes/evidence no SHA 05190e0f404a6865329fa4ceb3698025b5c727cf. Nesta branch, UI-004 tem candidato E3 local de cadastro de categorias; continua in_progress/passes:false até reviews, CI remota final e nota de liberação. Veja [handoff UI-004](planning/handoffs/UI-004.md). As demais jornadas financeiras e o instalador continuam pendentes.
 
 ## Fonte canônica
 
@@ -18,7 +18,7 @@ As [regras de produto](docs/product/), os [ADRs aceitos](docs/architecture/adr/)
 
 - [Repositório público](https://github.com/millennium42/millani-artes) com documentação, templates, roadmap e work items versionados.
 - [CI de documentação](https://github.com/millennium42/millani-artes/actions/workflows/docs.yml) já executado remotamente. Para afirmar verde, confira o run e o SHA exatos registrados no handoff e nas notas Git de evidência.
-- Há scaffold mínimo e dependências de build; o estado de execução fica no handoff INF-002. O candidato UI-003 adiciona inicialização SQLite local e cadastro inicial de contas; sua liberação remota ainda está pendente. Demais funcionalidades financeiras e instalador permanecem pendentes. O workflow valida documentos/registro e executa a qualidade do frontend em alterações relevantes; comandos, execuções e limites no [handoff INF-010](planning/handoffs/INF-010.md).
+- Há scaffold mínimo e dependências de build; o estado de execução fica no handoff INF-002. UI-003 está liberada por recibo remoto no SHA 05190e0f404a6865329fa4ceb3698025b5c727cf; seu escopo é cadastro inicial local de contas com dados sintéticos. UI-004 é apenas candidata local nesta branch e ainda não libera dependentes. Demais jornadas financeiras e instalador permanecem pendentes. O workflow valida documentos/registro e executa a qualidade do frontend em alterações relevantes; comandos, execuções e limites no [handoff INF-010](planning/handoffs/INF-010.md).
 
 ## Checks locais do bootstrap
 
