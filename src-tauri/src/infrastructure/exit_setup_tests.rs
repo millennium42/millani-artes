@@ -68,14 +68,20 @@ fn counts(path: &Path) -> (i64, i64) {
 #[test]
 fn create_exit_persists_one_exit_and_audit_with_exact_cents_and_context() {
     let (directory, state, account_id) = setup();
-    create_exit_for(
-        &state,
-        &AppDatabaseWriteLock::default(),
-        account_id.to_vec(),
-        "1234".to_string(),
-        "factory".to_string(),
-    )
-    .expect("UI006_EXIT_CREATE_FAILED");
+    let mut body = tauri::ipc::InvokeBody::Json(Default::default());
+    let tauri::ipc::InvokeBody::Json(arguments) = &mut body else {
+        unreachable!("UI006_JSON_BODY_EXPECTED");
+    };
+    arguments["accountId"] = account_id
+        .iter()
+        .map(|byte| u64::from(*byte))
+        .collect::<Vec<_>>()
+        .into();
+    arguments["amountCents"] = "1234".into();
+    arguments["context"] = "factory".into();
+
+    create_exit_from_request_for(&state, &AppDatabaseWriteLock::default(), &body)
+        .expect("UI006_EXIT_CREATE_FAILED");
 
     let connection = database::open_database(&directory.path().join("millani-artes.sqlite3"))
         .expect("UI006_DB_REOPEN_FAILED");
