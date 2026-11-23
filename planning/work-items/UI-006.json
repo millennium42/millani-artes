@@ -1,0 +1,39 @@
+{
+  "id": "UI-006",
+  "title": "formulário de saída",
+  "specPath": "planning/specs/UI-006.md",
+  "status": "in_progress",
+  "dependencies": [
+    "UI-001",
+    "FIN-018"
+  ],
+  "acceptanceCriteria": [
+    "UI-001 e FIN-018 têm recibos remotos released, CIs exatos e SHAs finais ancestrais de origin/main atual; UI-005 está released pela nota no SHA atual, mas não é dependência direta.",
+    "ADR-028 autoriza somente create_exit via capability local main-local-deny/webview main, atualiza sua descrição para refletir saída e reutiliza list_accounts para retornar ID/nome.",
+    "ExitForm tem campos conta, valor e contexto; estados e teclado/foco/labels/erros são acessíveis, sem perder dados ao falhar ou atualizar opções.",
+    "Valor converte para centavos inteiros sem Number/arredondamento; positividade e regra financeira permanecem em FIN-018.",
+    "Ponte Tauri valida ID/centavos/contexto, usa trava compartilhada/caso FIN-018/adapter transacional e erros estáticos.",
+    "Testes React/API/Rust/SQLite e authority cobrem contrato, atomicidade, erro/retry e grants autorizados/negados sem dados reais.",
+    "TypeScript format/lint/typecheck/test/coverage/build, Rust fmt/clippy/test/audit, security scans/fixtures e build Tauri passam sem reduzir thresholds ou mascarar skips.",
+    "Build Tauri release e execução headless do bundle frontend de produção com IPC sintético; capturas sem CUA em 1024x720 e 313x343 cobrem formulário/loading/vazio/erro, com labels, teclado/foco, contraste e overflow inspecionados. Testes SQLite sintéticos verificam persistência separadamente; isso não é E2E nativo UI-IPC-DB.",
+    "P-REV e P-SEC revisam o candidato exato sem P0/P1/P2; CI source e final-main verdes no SHA exato; nota released remota preserva mappings e é lida de volta.",
+    "Spec, ADR, handoff, matrizes, roadmap e PROGRESS_LOG append-only registram evidências, limites, riscos, omissões e telemetria não registrada."
+  ],
+  "checks": [
+    "RECON E2 na worktree limpa codex/ui006-20261123-671d9ab-main-clean, branch origin/main atual 671d9ab0cc0bb8f206bfdffcabd481f83642e4db.",
+    "UI-001 nota refs/notes/evidence: released no SHA 6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e, CI final 44860689539; ancestral da main atual.",
+    "FIN-018 nota refs/notes/evidence: released no SHA 1b31d51bccbbe568fa82ae32d80b03f109707bb4; source CI 39134383058 e final-main CI 39135227908, sucesso com 7 skips document-only no final; ancestral da main atual.",
+    "UI-005 nota refs/notes/evidence: released no SHA 671d9ab0cc0bb8f206bfdffcabd481f83642e4db, source CI 45233997098 e final-main CI 45236415336; esta nota prevalece sobre snapshots anteriores in_progress/passes:false.",
+    "RED E3 reproduzido antes de BUILD na base 671d9ab: frontend falhou por ExitForm/exitApi ausentes; Rust negou create_exit e reportou exit_setup ausente. Saídas: artifacts/ui006-red-frontend-20261123.txt e artifacts/ui006-red-authority-20261123.txt.",
+    "npm run quality PASS: 11 arquivos/75 testes; global 95,76% statements, 90,95% branches, 90,32% functions, 98,91% lines. npm run build e npm audit PASS; 0 vulnerabilidades.",
+    "cargo fmt --check, clippy all-targets/custom-protocol -D warnings, cargo test padrão e cargo build --release/custom-protocol PASS. Testes: 348 lib, 30 bin/1 ignored, 284 SQLite, 40 doctests. Uma execução include-ignored saiu 0; repetição exit101 por sec001-webview-profile existente deixado pelo próprio probe e preservado sem processo do app.",
+    "Captura Edge headless do bundle de produção com invoke sintético em 1024x720 e 313x343; imagens de formulário, loading, vazio e erro/retry no handoff/spec. Sem barra horizontal observada. E2E Tauri UI-IPC-DB não executado.",
+    "P-UI/P-QA: 0 P0/P1/P2. P-SEC encontrou teste authority duplicado; líder removeu duplicata, preservando a variante que valida janela main. Review final P-REV/P-SEC do SHA de commit ainda pendente.",
+    "Fixtures locais: Tauri plugins 37, Gitleaks 16, OSV 44, seleção frontend 20, npm audit 40, CI audits 42, Cargo Audit 69, SAST 45; check_tauri_plugins.py passou sem plugin novo. Primeira tentativa npm/SAST falhou por Node fora do pin; ambas passaram com Node 24.21.0/npm 11.19.0. Scanners reais pinned Gitleaks/OSV/npm/Cargo Audit, review final, CI source/final-main e nota released/readback ainda pendentes; cargo audit global não está no PATH, usar scripts canônicos."
+  ],
+  "agentPlan": "P-INT único escritor/integrador/executor. P-TRC/P-PRO, P-UI/P-QA e P-SEC fizeram análises read-only com missões distintas; P-REV/P-SEC farão review read-only do tree candidato exato. Máximo 2 delegados ativos no checkout compartilhado. GPT-6 Luna max solicitado; sem modelos locais. Custo, tokens e duração: não registrado.",
+  "evidence": "E3",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Somente UI-006; in_progress/E3/passes:false até scanners, review exata, CI source/final-main e nota released lida de volta. UI-007 continua bloqueada. UI-005/001 não serão repetidas. E2E Tauri UI-IPC-DB, medição numérica de scrollWidth e telemetria: não registrado."
+}

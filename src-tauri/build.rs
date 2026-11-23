@@ -5,6 +5,7 @@ fn main() {
             "create_category",
             "list_accounts",
             "create_entry",
+            "create_exit",
             "security_probe_report",
         ]));
     tauri_build::try_build(attributes).expect("TAURI_BUILD_FAILED");
