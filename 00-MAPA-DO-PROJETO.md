@@ -18,6 +18,6 @@
 | Automação | `.github/workflows/` | checks remotos |
 | Checks locais | `scripts/` | validação reproduzível do mapa |
 
-Diretórios agrupam seus arquivos internos; o mapa não duplica o inventário completo. Além da documentação, checks e scaffold Tauri/React, o core contém domínio, SQLite/migrations, criação de conta (FIN-008) e finalização transacional de venda com entradas e recebível pendente (SAL-020, concluído como E3 local). Jornada UI/IPC/startup, projeção de saldo completa, cobertura Rust global e instalador continuam sem comprovação; consulte os handoffs correspondentes. Verifique paths e cobertura da árvore com `rtk proxy pwsh -NoProfile -File scripts/check-project-map.ps1`.
+Diretórios agrupam seus arquivos internos; o mapa não duplica o inventário completo. Além da documentação, checks e scaffold Tauri/React, o core contém domínio, SQLite/migrations, criação de conta (FIN-008) e finalização transacional de venda com entradas e recebível pendente (SAL-020, concluído como E3 local). UI/IPC/startup tem E3 local limitado a UI-003: inicialização/migrações até v17 e uma jornada sintética de cadastro; a liberação remota ainda está pendente. Outras jornadas financeiras, projeção completa de saldo, cobertura Rust global e instalador continuam sem comprovação; consulte os handoffs correspondentes. Verifique paths e cobertura da árvore com `rtk proxy pwsh -NoProfile -File scripts/check-project-map.ps1`.
 
 Não implemente regras financeiras na UI. Caminho de escrita: UI → caso de uso → domínio → repositório → SQLite.

@@ -159,7 +159,7 @@ mod native {
         mpsc, Arc,
     };
     use std::time::Duration;
-    use tauri::Listener;
+    use tauri::{Listener, Manager};
 
     fn guard_profile(workspace: &Path, profile: &Path) {
         assert!(workspace.is_absolute() && profile.is_absolute());
@@ -328,6 +328,12 @@ mod native {
             })
             .invoke_handler(tauri::generate_handler![security_probe_report])
             .setup(move |app| {
+                app.add_capability(
+                    tauri::ipc::CapabilityBuilder::new("ui003-native-probe")
+                        .local(true)
+                        .webview("main")
+                        .permission("allow-security-probe-report"),
+                )?;
                 app.listen("sec-001-probe", move |_| {
                     listener_seen.store(true, Ordering::SeqCst);
                 });
@@ -379,7 +385,7 @@ mod native {
                                 {event: "sec-001-probe", payload: null});
                               await new Promise(resolve => setTimeout(resolve, 100));
                               await invoke("security_probe_report", {
-                                brandLoaded: document.querySelector("h1")?.textContent === "Millani Artes",
+                                brandLoaded: document.querySelector("header")?.textContent.trim() === "Millani Artes",
                                 titleDenied, eventDenied,
                                 cspChecks: [...blocked, ...(localStyle ? ["local-style"] : [])]
                               });
