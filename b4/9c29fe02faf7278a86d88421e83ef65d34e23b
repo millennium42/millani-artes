@@ -1,0 +1,158 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-006",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-006 release status synchronization",
+  "release_date": "2026-11-23",
+  "scope": "UI-006 only: exit form implementation previously merged by PR #92 and this documentation-only release status synchronization. No UI-001/UI-005 implementation or E3 was repeated.",
+  "summary": "Releases UI-006 after the exact code source/final-main CIs, exact status-sync source/final-main CIs, independent review, and remote note verification. UI-007 may begin only after this receipt.",
+  "source_sha": "87c6cd27f75374c9652c84d34c17cc7a2ee32b01",
+  "source_tree_sha": "bda4d167778d5350264770262e6afca7d07d8d7b",
+  "final_sha": "b49c29fe02faf7278a86d88421e83ef65d34e23b",
+  "tree_sha": "bda4d167778d5350264770262e6afca7d07d8d7b",
+  "pull_request": {
+    "number": 93,
+    "url": "https://github.com/millennium42/millani-artes/pull/93",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "b49c29fe02faf7278a86d88421e83ef65d34e23b"
+  },
+  "source_ci": {
+    "run_number": 535,
+    "run_id": 45286352431,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "87c6cd27f75374c9652c84d34c17cc7a2ee32b01",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45286352431",
+    "job": {
+      "id": 138083581562,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 536,
+    "run_id": 45286756420,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "b49c29fe02faf7278a86d88421e83ef65d34e23b",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45286756420",
+    "job": {
+      "id": 138084967962,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "implementation": {
+    "pull_request": 92,
+    "source_sha": "6af29e42d72b1046525e30ebfea7df20701f7912",
+    "final_sha": "33cd333551a908a24be54bd9fe7577515e0162e6",
+    "source_ci_run": 45275229408,
+    "final_ci_run": 45278077539,
+    "source_ci": "success 23/23, zero skipped",
+    "final_ci": "success 23/23, zero skipped",
+    "status": "merged"
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "ancestral_of_final_main": true,
+      "receipt": "remote release_evidence note re-read from refs/notes/evidence"
+    },
+    {
+      "id": "FIN-018",
+      "status": "released",
+      "final_sha": "1b31d51bccbbe568fa82ae32d80b03f109707bb4",
+      "source_ci_run": 39134383058,
+      "final_ci_run": 39135227908,
+      "ancestral_of_final_main": true,
+      "receipt": "remote note status=released re-read from refs/notes/evidence"
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC",
+      "P-TRC"
+    ],
+    "candidate_sha": "87c6cd27f75374c9652c84d34c17cc7a2ee32b01",
+    "candidate_tree_sha": "bda4d167778d5350264770262e6afca7d07d8d7b",
+    "result": "zero P0/P1/P2 findings",
+    "checks": "reviewers did not execute checks",
+    "history": "Two chronological P2s were corrected and append-only records added; final candidate reviewed above."
+  },
+  "local_e3": {
+    "implementation_sha": "6af29e42d72b1046525e30ebfea7df20701f7912",
+    "red_before_build": true,
+    "frontend": "quality passed; 75 tests across 11 files; statements 95.76%, branches 90.95%, functions 90.32%, lines 98.91%; build and npm audit passed with zero vulnerabilities",
+    "rust": "fmt, clippy with -D warnings, ordinary tests and release/custom-protocol build passed; 704 tests passed and one ignored (348 lib, 32 bin, 284 SQLite, 40 doctests)",
+    "scans": {
+      "gitleaks": "8.30.1; 1067 commits; zero findings",
+      "osv": "2.6.0; 604 packages; four exact approved findings; zero unapproved",
+      "npm": "Node 24.21.0/npm 11.19.0; 182 dependencies; zero vulnerabilities",
+      "cargo_audit": "0.22.2; 422 dependencies; zero vulnerabilities; three existing approved warnings",
+      "rustsec_db": "official isolated database commit 52384ab5581a4487b62c549eef95cf7ba7e8bad5; 1563 advisories",
+      "fixtures": "Tauri plugins 37, Gitleaks 16, OSV 44, npm 40, CI audits 42, Cargo 69, SAST 45; SAST45 validates fixtures only, not real Rust/backend SQL"
+    },
+    "visual_inspection": {
+      "method": "automated Edge headless production frontend bundle, synthetic Tauri invoke and synthetic data; no CUA",
+      "viewports": ["1024x720", "313x343"],
+      "states": ["form", "loading", "empty", "error/retry"],
+      "captures": [
+        {"file":"ui006-visual-exit-1024x720.png","sha256":"054EA8D882D35A6765284A5C9CA00FE7D798488C60FD8D363C6F1237A4DC32CA"},
+        {"file":"ui006-visual-exit-313x343.png","sha256":"E54F3D8A80F6B20C70E41194BC730507B5A8CFE22C95E229EBA12A64C37F5D97"},
+        {"file":"ui006-visual-loading-313x343.png","sha256":"809ED74E2C4289CB52936EF2D9E702EA0E1D77D27F5154723693C5D848099493"},
+        {"file":"ui006-visual-empty-313x343.png","sha256":"35D8171D624FC832DB0D98CC93A27A10A7BC9C04F369A4F568F70CD04DE57121"},
+        {"file":"ui006-visual-error-313x343.png","sha256":"C6A75D20DF6BD680017B28336C3EE40B398D325F21E5DBDDC4BEACE962AD8F32"}
+      ],
+      "observed": "labels/instructions visible, states fit, no visual horizontal overflow observed; no numeric scrollWidth measurement"
+    },
+    "contrast_ratios": {
+      "page_text": "12.22:1",
+      "fields_and_button": "13.42:1",
+      "help": "8.08:1",
+      "error": "7.17:1",
+      "success": "6.00:1",
+      "focus": ["5.45:1", "5.98:1"],
+      "control_borders": ["4.83:1", "4.40:1"],
+      "limitation": "calculated from unchanged src/styles.css blob d1a404800bac0c50fa9b5394de473d8044542a69; no general WCAG conformance claim"
+    }
+  },
+  "security": {
+    "permission": "only local create_exit grant; no new core/plugin permissions or dependencies",
+    "exceptions": "no scan exception broadened; existing OSV/Cargo findings remain limited to approved x86_64-pc-windows-msvc target exceptions",
+    "expiry": "2026-11-27T00:00Z"
+  },
+  "limitations": [
+    "No native Tauri UI-to-IPC-to-SQLite end-to-end journey.",
+    "No general WCAG conformance or numeric scrollWidth measurement.",
+    "No installer, production or future multi-window WebView validation.",
+    "Telemetry, time and model cost: not registered."
+  ],
+  "status_reconciliation": "The tracked UI-006 work item remains in_progress/E3/passes:false as the pre-receipt snapshot under the strict non-B6 evidence rule. This note is the terminal released receipt on the exact final SHA; no tracked commit followed final-main CI. It releases UI-006 and permits UI-007.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref_sha": "29bda515d9fa12a9d6e985ce168f1614aba72bde",
+    "preserved_count": 230,
+    "total_after": 231,
+    "preserved_mapping_set_sha256": "a89187156b0d8bc39bd4334ce8e941ed9d559771abe1d2e3130a89be22a9d9c5",
+    "hash_method": "SHA-256 of mapping lines note-blob-SHA then target-SHA sorted ordinally and joined by LF without trailing LF",
+    "publication": "append one mapping only, push without force, fetch and read back the remote ref"
+  },
+  "next": "UI-007 only after this remote receipt readback; continue only within UI-001 through UI-016."
+}
