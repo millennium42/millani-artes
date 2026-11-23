@@ -48,7 +48,9 @@ fn unselected_capability_cannot_grant_commands() {
         permissions,
         vec![
             "allow-create-account".to_owned(),
-            "allow-create-category".to_owned()
+            "allow-create-category".to_owned(),
+            "allow-create-entry".to_owned(),
+            "allow-list-accounts".to_owned()
         ]
     );
 }
@@ -81,7 +83,46 @@ fn create_account_command_is_limited_to_the_local_main_webview() {
 
     for command in [
         "security_probe_report",
-        "list_accounts",
+        "list_movements",
+        "plugin:fs|read_text_file",
+    ] {
+        assert!(authority
+            .resolve_access(command, "main", "main", &Origin::Local)
+            .is_none());
+    }
+}
+
+#[test]
+fn entry_commands_are_limited_to_the_local_main_webview() {
+    let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    assert_eq!(context.config().app.windows.len(), 1);
+    assert_eq!(context.config().app.windows[0].label, "main");
+    let authority = context.runtime_authority_mut();
+    let remote = Origin::Remote {
+        url: "https://example.invalid".parse().unwrap(),
+    };
+
+    for command in ["list_accounts", "create_entry"] {
+        assert!(authority
+            .resolve_access(command, "main", "main", &Origin::Local)
+            .is_some());
+        assert!(authority
+            .resolve_access(command, "main", "main", &remote)
+            .is_none());
+
+        for (window, webview) in [("other", "other"), ("main", "other")] {
+            assert!(authority
+                .resolve_access(command, window, webview, &Origin::Local)
+                .is_none());
+            assert!(authority
+                .resolve_access(command, window, webview, &remote)
+                .is_none());
+        }
+    }
+
+    for command in [
+        "list_movements",
+        "security_probe_report",
         "plugin:fs|read_text_file",
     ] {
         assert!(authority
