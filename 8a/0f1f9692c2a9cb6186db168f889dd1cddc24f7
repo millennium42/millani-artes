@@ -1,0 +1,118 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-002",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "recorded_date": "2026-11-23",
+  "title": "UI-002 minimum supported shell window",
+  "summary": "Sets the Tauri shell minimum client area to 313x343 logical pixels while preserving the 1024x720 default. A lock-only remediation updates url 2.5.8 to 2.5.9 and form_urlencoded 1.2.2 to 1.2.3 after the first source CI found RUSTSEC-2026-0592. No declared product dependency, command, capability, or financial rule was added.",
+  "source_sha": "91594cb7f9b2942fed01c5238d1bc07e38857b6b",
+  "source_tree_sha": "74c9a7906a6227104796d1a484d0703fc8394eef",
+  "final_sha": "8a0f1f9692c2a9cb6186db168f889dd1cddc24f7",
+  "tree_sha": "74c9a7906a6227104796d1a484d0703fc8394eef",
+  "pull_request": {
+    "number": 83,
+    "url": "https://github.com/millennium42/millani-artes/pull/83",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "8a0f1f9692c2a9cb6186db168f889dd1cddc24f7"
+  },
+  "source_ci": {
+    "run_number": 511,
+    "run_id": 45088800402,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "91594cb7f9b2942fed01c5238d1bc07e38857b6b",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45088800402",
+    "job": {
+      "id": 137413406577,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run_number": 512,
+    "run_id": 45090427285,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "8a0f1f9692c2a9cb6186db168f889dd1cddc24f7",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45090427285",
+    "job": {
+      "id": 137418499019,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "release_note_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "functional_release_note_number": 89,
+      "functional_final_sha": "1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "evidence_note_mappings": 224
+    },
+    {
+      "id": "INF-002",
+      "status": "released",
+      "final_sha": "04d5b17a370d9d9fab6d65d35b19e7e00f50cf48",
+      "final_ci_run": 37241566670
+    },
+    {
+      "id": "ARC-001",
+      "status": "released",
+      "final_sha": "51ea47715599e08293a10ca10ce40e03d1add267",
+      "final_ci_run": 37864107419
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC",
+      "P-UI"
+    ],
+    "candidate_tree": "0fccb769dccb34ab6a5102ba481ca949373961ae",
+    "result": "P-REV found no P0/P1/P2 findings; P-SEC reported no material finding; P-UI reported no visual blocker."
+  },
+  "local_e3": {
+    "candidate_content_sha": "9a3f8cd0f88d0a318ea59448135600abd68b038e",
+    "environment": "Windows; Node 24.21.0/npm 11.19.0; Rust 1.99.0; Edge WebView2 158.0.4370.33",
+    "frontend": "npm run quality, npm test (2 files/3 tests), npm run build passed; coverage thresholds unchanged.",
+    "security": "SAST fixtures 45/45; npm audit 120 packages/0 vulnerabilities; OSV 542 packages/4 pre-existing exceptions/0 unapproved; Cargo Audit 422 dependencies/0 vulnerabilities/3 pre-existing advisories; Gitleaks 1,020 commits/0 findings; fixtures SAST 45/45, npm audit 40/40, OSV 44/44, Cargo Audit 69/69, Gitleaks 16/16, CI audits 42/42.",
+    "rust": "cargo fmt and Clippy passed; release tests 348 library, 7 binary, 1 WebView2 test ignored, 284 integration/SQLite, 40 doctests passed.",
+    "tauri": "Production build with --locked passed.",
+    "visual": "Automated PrintWindow captures, no CUA: client 313x343, exit 0, no local DB, PNG SHA-256 B50878F0B7C8038126AD6E7B4FE2CC857A6FA3D02AF2FCB95FB94DFA21141476 after 15 seconds; standard client 1024x720, exit 0, no local DB, PNG SHA-256 CE6F2A42ECB95A853D507C9E2B28A4B06E12DD947859B0242D846BC69057F041; images inspected as legible with no apparent overflow."
+  },
+  "security": {
+    "lockfile_change": "Cargo.lock only; url 2.5.8 to 2.5.9 and form_urlencoded 1.2.2 to 1.2.3; Cargo.toml unchanged.",
+    "residual_risk": "RUSTSEC-2026-0543 on chrono 0.4.45 is an unmaintained warning, not a vulnerability-classified finding; the temporary repository exception expires before 2026-11-27 UTC. No separate human acknowledgment of this maintenance risk is recorded."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "3f08629e54759b3b0969b1201c4420b45644fc5d",
+    "preserved_count": 224,
+    "total_after": 225,
+    "preserved_mapping_set_sha256": "a6b8a50b224d4a5634c755641061b50babf548551d3934f59e1ff32e75464e85",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF"
+  },
+  "limitations": [
+    "The shell has no focusable controls; Tab/Shift+Tab was observed before the final rebuild and not repeated afterward.",
+    "No focus transfer outside the WebView was demonstrated; this does not claim general WCAG conformance.",
+    "No below-minimum resize, financial journey, E2E, installer, or production deployment was demonstrated.",
+    "The 6-second minimum capture was white and excluded; the valid post-lock minimum capture waited 15 seconds. Telemetry and cost are not recorded.",
+    "No tracked commit was made after the exact final-main CI run."
+  ],
+  "next": "The UI-002 release receipt is published on the exact final SHA. Reconcile tracked status documents in a status-sync candidate and publish its own exact-SHA receipt before starting UI-003."
+}
