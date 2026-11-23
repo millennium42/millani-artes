@@ -24,12 +24,14 @@
       "capabilities": [
         {
           "identifier": "main-local-deny",
-          "description": "SEC-001 / ADR-021 / ADR-025 / ADR-026: local main webview; create_account and create_category only. Tests: src/security_tests.rs.",
+          "description": "SEC-001 / ADR-021 / ADR-025 / ADR-026 / ADR-027: local main webview; setup and entry commands only. Tests: src/security_tests.rs.",
           "local": true,
           "windows": [],
           "permissions": [
             "allow-create-account",
-            "allow-create-category"
+            "allow-create-category",
+            "allow-list-accounts",
+            "allow-create-entry"
           ],
           "webviews": [
             "main"

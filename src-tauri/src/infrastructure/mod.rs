@@ -1,5 +1,6 @@
 pub(crate) mod account_setup;
 pub(crate) mod category_setup;
+pub(crate) mod entry_setup;
 
 use std::io::Write;
 use std::sync::{LockResult, Mutex, MutexGuard};
@@ -25,6 +26,7 @@ pub(crate) fn startup() -> tauri::Result<()> {
                 .map_err(|_| account_setup::StartupError)?;
             let account_store = account_setup::initialize_account_store_at(&data_dir)?;
             let category_store = category_setup::initialize_category_store_at(&data_dir)?;
+            let entry_store = entry_setup::initialize_entry_store_at(&data_dir)?;
             app.manage(AppDatabaseWriteLock::default());
             app.manage(account_setup::AccountSetupState::new(
                 account_store,
@@ -32,13 +34,16 @@ pub(crate) fn startup() -> tauri::Result<()> {
             ));
             app.manage(category_setup::CategorySetupState::new(
                 category_store,
-                data_dir,
+                data_dir.clone(),
             ));
+            app.manage(entry_setup::EntrySetupState::new(entry_store, data_dir));
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
             account_setup::create_account,
-            category_setup::create_category
+            category_setup::create_category,
+            entry_setup::list_accounts,
+            entry_setup::create_entry
         ])
         .run(tauri::generate_context!())
 }

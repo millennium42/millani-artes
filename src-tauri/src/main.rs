@@ -12,5 +12,9 @@ fn main() -> ExitCode {
 #[cfg(test)]
 mod security_tests;
 
+#[cfg(test)]
+#[path = "infrastructure/entry_setup_tests.rs"]
+mod entry_setup_tests;
+
 #[cfg(all(test, windows))]
 mod startup_tests;

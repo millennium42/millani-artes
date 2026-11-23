@@ -3,9 +3,10 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, expect, test, vi } from "vitest";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import App from "./App";
 import * as accountApi from "./accountApi";
+import * as entryApi from "./entryApi";
 
 vi.mock("./accountApi", () => ({
   createAccount: vi.fn(),
@@ -14,6 +15,15 @@ vi.mock("./accountApi", () => ({
 vi.mock("./categoryApi", () => ({
   createCategory: vi.fn(),
 }));
+
+vi.mock("./entryApi", () => ({
+  listAccounts: vi.fn(),
+  createEntry: vi.fn(),
+}));
+
+beforeEach(() => {
+  vi.mocked(entryApi.listAccounts).mockResolvedValue([]);
+});
 
 afterEach(() => {
   cleanup();
@@ -38,6 +48,36 @@ test("apresenta cadastro acessivel de categoria", () => {
     screen.getByRole("textbox", { name: "Nome da categoria" }),
   ).toBeTruthy();
   expect(screen.getByRole("button", { name: "Salvar categoria" })).toBeTruthy();
+});
+
+test("recarrega contas disponiveis apos criar uma conta", async () => {
+  const user = userEvent.setup();
+  const id = Array.from({ length: 16 }, (_, index) => index + 1);
+  vi.mocked(accountApi.createAccount).mockResolvedValue(undefined);
+  vi.mocked(entryApi.listAccounts)
+    .mockResolvedValueOnce([])
+    .mockResolvedValueOnce([{ id, name: "Conta sintética" }]);
+  render(<App />);
+
+  await screen.findByText("Cadastre uma conta para registrar uma entrada.");
+  await user.type(
+    screen.getByRole("textbox", { name: "Nome da conta" }),
+    "Conta nova",
+  );
+  await user.selectOptions(
+    screen.getByRole("combobox", { name: "Tipo de conta" }),
+    "cash",
+  );
+  await user.type(
+    screen.getByRole("textbox", { name: "Saldo inicial (R$)" }),
+    "0,00",
+  );
+  await user.click(screen.getByRole("button", { name: "Salvar conta" }));
+
+  expect(
+    await screen.findByRole("option", { name: "Conta sintética" }),
+  ).toBeTruthy();
+  expect(entryApi.listAccounts).toHaveBeenCalledTimes(2);
 });
 
 test("expõe campos rotulados e percorre o formulário por teclado", async () => {
@@ -118,7 +158,11 @@ test("anuncia o envio e impede uma segunda submissão enquanto salva", async () 
   );
   await user.click(screen.getByRole("button", { name: "Salvar conta" }));
 
-  expect(screen.getByRole("status").textContent).toContain("Salvando…");
+  expect(
+    screen
+      .getAllByRole("status")
+      .some((status) => status.textContent?.includes("Salvando…")),
+  ).toBe(true);
   expect(
     screen.getByRole("button", { name: "Salvando…" }).matches(":disabled"),
   ).toBe(true);

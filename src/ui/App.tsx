@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createAccount, type AccountTypeKey } from "./accountApi";
 import { parseInitialBalanceCents } from "./accountInput";
 import CategoryForm from "./CategoryForm";
+import EntryForm from "./EntryForm";
 
 const accountTypes: ReadonlyArray<{ value: AccountTypeKey; label: string }> = [
   { value: "cash", label: "Dinheiro" },
@@ -22,6 +23,7 @@ export default function App() {
   const [formError, setFormError] = useState("");
   const [notice, setNotice] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [accountRefreshKey, setAccountRefreshKey] = useState(0);
   const isSubmittingRef = useRef(false);
   const nameRef = useRef<HTMLInputElement>(null);
   const balanceRef = useRef<HTMLInputElement>(null);
@@ -56,6 +58,7 @@ export default function App() {
       setName("");
       setAccountType("");
       setBalance("");
+      setAccountRefreshKey((key) => key + 1);
       setNotice("Conta criada. Você pode cadastrar outra.");
     } catch (error) {
       if (error === "ACCOUNT_NAME_INVALID") {
@@ -182,6 +185,7 @@ export default function App() {
           </p>
           <CategoryForm />
         </section>
+        <EntryForm accountRefreshKey={accountRefreshKey} />
       </main>
     </>
   );

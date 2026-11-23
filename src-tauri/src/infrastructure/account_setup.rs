@@ -1,4 +1,5 @@
 use millani_artes::application::create_account::{self, CreateAccountError};
+use millani_artes::application::list_accounts::{list_accounts, ListAccountsError};
 use millani_artes::database;
 use millani_artes::domain::ports::{Clock, UuidGenerator};
 use millani_artes::domain::AccountType;
@@ -24,6 +25,13 @@ impl AccountSetupState {
             store: Mutex::new(store),
             app_data_dir,
         }
+    }
+
+    pub(crate) fn read_accounts_for_entry_form(
+        &self,
+    ) -> Result<Vec<millani_artes::domain::Account>, &'static str> {
+        let store = self.store.lock().map_err(|_| "ACCOUNT_LIST_FAILED")?;
+        list_accounts(&*store).map_err(|_: ListAccountsError| "ACCOUNT_LIST_FAILED")
     }
 
     fn create_account(
