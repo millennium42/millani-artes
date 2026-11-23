@@ -63,7 +63,7 @@ FIN-007 primary E3 exercitou constraints da migration 003 imutável: 16 classes 
 FIN-007 source CI `38628675813` no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978` passou; registro acima descreve os testes do executor, sem inferir regra/consumer. Publicação documental permanece pendente.
 
 ## FIN-008 — gravação de conta e auditoria na aplicação (E3 primary)
-O caso de uso valida nome, injeta IDs/relógio e usa adapter SQLite parametrizado para persistir os quatro campos de Account junto de um audit_event na mesma transação. Cargo executou 48 testes SQL; casos FIN-008 cobrem reopen e rollback de account/audit. Nenhuma migration/schema foi alterada. Isso prova o caminho focal exercitado, não startup, UI/IPC, projeção de saldo/receita, INV-FIN-001 ou consumer posterior; Gitleaks staged, validators e CI ainda pendentes.
+O caso de uso valida nome, injeta IDs/relógio e usa adapter SQLite parametrizado para persistir os quatro campos de Account junto de um audit_event na mesma transação. Cargo executou 48 testes SQL; casos FIN-008 cobrem reopen e rollback de account/audit. Nenhuma migration/schema foi alterada. Isso prova o caminho focal exercitado, não startup, UI/IPC, projeção de saldo/receita, INV-FIN-001 ou consumer posterior. A frase sobre Gitleaks/validators/CI pendentes era o snapshot anterior ao fechamento E3 e à CI source registrada abaixo; o release documental permanece uma evidência separada.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 confirma a persistência dos quatro campos Account sem inferir receita do saldo inicial. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; INV-FIN-001 segue sem prova.
 
