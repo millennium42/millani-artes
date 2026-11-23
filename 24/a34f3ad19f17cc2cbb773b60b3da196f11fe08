@@ -1,0 +1,115 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-002",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "recorded_date": "2026-11-23",
+  "title": "UI-002 status-sync documentation",
+  "summary": "Reconciles the tracked UI-002 status documents after the functional release. Documentation only: no product code, dependency, capability, command, financial rule, or UI behavior changed. The separate note releases this status-sync on the exact final-main SHA and preserves the prior evidence mappings.",
+  "source_sha": "2fc3cbb4fd8bc88d5189e5d141894185c094f1c7",
+  "source_tree_sha": "2c6d7758564aa8aa45880640a0561bee3c0cca83",
+  "final_sha": "24a34f3ad19f17cc2cbb773b60b3da196f11fe08",
+  "tree_sha": "2c6d7758564aa8aa45880640a0561bee3c0cca83",
+  "pull_request": {
+    "number": 84,
+    "url": "https://github.com/millennium42/millani-artes/pull/84",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "24a34f3ad19f17cc2cbb773b60b3da196f11fe08"
+  },
+  "source_ci": {
+    "run_number": 513,
+    "run_id": 45095346389,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "2fc3cbb4fd8bc88d5189e5d141894185c094f1c7",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45095346389",
+    "job": {
+      "id": 137433832865,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 514,
+    "run_id": 45095594041,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "24a34f3ad19f17cc2cbb773b60b3da196f11fe08",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45095594041",
+    "job": {
+      "id": 137434568451,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "release_note_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "functional_release_note_number": 89,
+      "functional_final_sha": "1cb08dbc12883ebb439ca60d44789dc4ff0daac6",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "evidence_note_mappings": 224
+    },
+    {
+      "id": "INF-002",
+      "status": "released",
+      "final_sha": "04d5b17a370d9d9fab6d65d35b19e7e00f50cf48",
+      "final_ci_run": 37241566670
+    },
+    {
+      "id": "ARC-001",
+      "status": "released",
+      "final_sha": "51ea47715599e08293a10ca10ce40e03d1add267",
+      "final_ci_run": 37864107419
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-TRC"
+    ],
+    "candidate_tree": "2c6d7758564aa8aa45880640a0561bee3c0cca83",
+    "result": "P-REV found zero P0/P1/P2 findings; P-TRC independently verified the released UI-002 receipt, exact CI SHAs, closed PR #82, and 225 remote mappings with 224 preserved. The local refs/notes/evidence ref 539c57ff0124e6945f8907a8a0b366b6ff33bdda differed from the remote ref and was left unchanged."
+  },
+  "local_checks": {
+    "evidence": "E3 documentation/security checks; no product implementation repeated",
+    "project_map": "test passed; checker found 28 sources and 907 files",
+    "work_items": "72 fixtures passed; checker found 197 work items",
+    "evidence_states": "25 fixtures passed; checker found 197 declarations",
+    "progress_log": "26 fixtures passed; append-only check against origin/main preserved 997474 historical bytes",
+    "tauri_plugins": "37 fixtures and 2 CLI cases passed",
+    "json": "UI-002 work item parsed successfully",
+    "gitleaks": "8.30.1 staged scan checked 20.59 KB with 0 findings; history scan on source SHA 2fc3cbb checked 1024 commits with 0 findings",
+    "diff_check": "git diff --cached --check passed"
+  },
+  "limitations": [
+    "The status-sync did not repeat product behavior tests because it changed documentation only; the UI-002 E3 remains the separate functional release recorded on 8a0f1f9692c2a9cb6186db168f889dd1cddc24f7.",
+    "No focus transfer outside the WebView was demonstrated; this does not claim general WCAG conformance.",
+    "No below-minimum resize, financial journey, E2E, installer, or production deployment was demonstrated.",
+    "The temporary RUSTSEC-2026-0543 warning on chrono 0.4.45 remains; the repository exception expires before 2026-11-27 UTC and no separate human acknowledgment is recorded.",
+    "Telemetry and cost are not recorded."
+  ],
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "a966586d1203b7183bd607c84275606a874ed4bf",
+    "preserved_count": 225,
+    "total_after": 226,
+    "preserved_mapping_set_sha256": "c99254e4a69d63fc29759b0d32f5db283d113ea039ac85190706fbc4356cf544",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF"
+  },
+  "next": "UI-003 is next within the authorized UI scope. Before starting, revalidate its UI-001 and FIN-008 released receipts, current main, handoff, callers and paths in a fresh worktree."
+}
