@@ -100,7 +100,7 @@ FIN-001 executor done/E3 após CI de entrega `38444911363` no SHA `31af12adcf8be
 - FIN-005 — provar saldo inicial fora de receita ← FIN-004
 - FIN-006 — migration de contas ← DB-005, FIN-001
 - FIN-007 — testar constraints de conta ← FIN-006
-- FIN-008 — criar caso de uso de conta ← FIN-002, FIN-003, FIN-004, FIN-006
+- FIN-008 — criar caso de uso de conta ← FIN-002, FIN-003, FIN-004, FIN-006 | executor `done`/E3/`passes:true`; source CI #177 passou no SHA `eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57` (23/0, trilha completa). No preflight da base `24a34f3`, a nota no SHA `fa62d588f98aed9d6596c7c3bd0af8e4a4431941` permanecia condicional; release de FIN-008 e início de FIN-009/UI-003 exigem CI documental no SHA final de `main`, nota `released` lida de volta, mappings/tuplas preservados, refs remotas reconciliadas, PRIMARY ACTIVE24 retida até publicar, Git limpo, raízes próprias ausentes e liberação explícita do root. Sem UI/IPC/startup ou prova de INV-FIN-001.
 - FIN-009 — listar contas ← FIN-008
 - CAT-001 — definir categoria ativa ← ARC-002
 - CAT-002 — validar nome de categoria ← CAT-001

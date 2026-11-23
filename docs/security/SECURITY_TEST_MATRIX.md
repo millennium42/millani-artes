@@ -281,9 +281,12 @@ FIN-007 primary E3 valida rejeição `ConstraintViolation`, preservação e reop
 
 Fechamento FIN-007: source CI `38628675813`/job `116074330758` SUCCESS23/0 no SHA `a58ad20b7664db5f7b5fb85a3cb7b0b341a46978`; Gitleaks187/0, OSV542/3 aprovadas/0 fora, Cargo audit422/0 vulnerabilidades/2 aprovadas, npm120/0, SAST45 (sem cobertura Rust), quatro validators PASS. Fixtures continuam sintéticas; sem consumer/startup inferidos.
 
-FIN-008 primary E3: INSERTs usam parâmetros SQLite e account/audit compartilham `execute_write_transaction`; erros externos são mapeados a mensagens estáticas. Cargo audit422/0 vulnerabilidades/2 avisos E4 aprovados; OSV542/3 aprovados/0 fora; review Sol6 medium E2 sem P0/P1/P2. Isso cobre o diff e cenários focais exercitados; Gitleaks staged, quatro validators e CI source ainda pendentes. Sem claim de threat coverage global, UI/IPC, startup ou acesso ao banco da usuária.
+FIN-008 primary E3: INSERTs usam parâmetros SQLite e account/audit compartilham `execute_write_transaction`; erros externos são mapeados a mensagens estáticas. Cargo audit422/0 vulnerabilidades/2 avisos E4 aprovados; OSV542/3 aprovados/0 fora; review Sol6 medium E2 sem P0/P1/P2. A frase sobre Gitleaks staged, quatro validators e CI source pendentes descreve o snapshot inicial, anterior ao fechamento registrado abaixo. Sem claim de threat coverage global, UI/IPC, startup ou acesso ao banco da usuária.
 ## FIN-008 — evidência do executor (E3)
 FIN-008 concluiu scanners do source: Gitleaks staged source 19 paths/0; Cargo audit 422/0 vulnerabilidades/2 aprovadas; OSV 542/3 aprovadas/0 fora. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57; No preparo deste recibo, o staged documental ainda não havia sido escaneado; o scan do conteúdo final será registrado na nota de fechamento.
+
+## FIN-008 — status-sync documental (22/11/2026)
+Snapshot inicial do status-sync: Gitleaks 8.30.1, regras padrão, ignore vazio e rejeição de comentários allow no staged tree 3b5390d7d3d1955ebeea47ba9eb295a1468c7922: 10 paths/31.757 B, 0 findings; SHA-256 do patch `d82b3a078f669555a40585491a4eb7af461bd431ede00b3b711a5047c77379c5`. O scanner de refs disponíveis passou em 1.026 commits/0 findings na base 24a34f3. Este é somente o snapshot inicial; o scan da árvore definitiva será registrado abaixo. Isso cobre documentação staged e refs disponíveis, não segredos inalcançáveis, conteúdo futuro da PR ou segurança de produto além dos cenários já testados.
 
 ## CAT-003 — integracao primaria 16/10/2026
 
