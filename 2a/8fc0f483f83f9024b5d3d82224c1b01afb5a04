@@ -1,0 +1,163 @@
+{
+  "note_type": "release_evidence",
+  "id": "FIN-008",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "recorded_date": "2026-11-23",
+  "title": "FIN-008 create and persist account",
+  "summary": "The existing executor validates account name and stores the account and audit_event atomically; SQLite tests cover success/reopen/rollback. Functional E3 is inherited from source commit eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57. PR #87 only reconciles release documentation and does not alter product code, financial rules, dependencies, lockfiles, migrations, or capabilities.",
+  "source_sha": "b97e888022496d004d110b943b1e2f00260ad2e2",
+  "source_tree_sha": "56eca884f7b7506f9229d992f8d5f244aa4f677f",
+  "final_sha": "2a8fc0f483f83f9024b5d3d82224c1b01afb5a04",
+  "tree_sha": "56eca884f7b7506f9229d992f8d5f244aa4f677f",
+  "pull_request": {
+    "number": 87,
+    "url": "https://github.com/millennium42/millani-artes/pull/87",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "2a8fc0f483f83f9024b5d3d82224c1b01afb5a04"
+  },
+  "source_ci": {
+    "run_number": 522,
+    "run_id": 45115494762,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "b97e888022496d004d110b943b1e2f00260ad2e2",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45115494762",
+    "job": {
+      "id": 137497271442,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 523,
+    "run_id": 45115885950,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "2a8fc0f483f83f9024b5d3d82224c1b01afb5a04",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45115885950",
+    "job": {
+      "id": 137498512191,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "dependencies": [
+    {
+      "id": "FIN-002",
+      "status": "released",
+      "final_sha": "b5fabc2453445cd04f9580751d0292eae4641cfe",
+      "final_ci_run": 38484804248,
+      "release_note_number": 77
+    },
+    {
+      "id": "FIN-003",
+      "status": "released",
+      "final_sha": "3ef70f1014abd63903e9cbd45626384177b18a1a",
+      "final_ci_run": 38488339882,
+      "release_note_number": 78
+    },
+    {
+      "id": "FIN-004",
+      "status": "released",
+      "final_sha": "bced460aca4909575956887c1e3905ec6ad5a159",
+      "final_ci_run": 38505913882,
+      "release_note_number": 79
+    },
+    {
+      "id": "FIN-006",
+      "status": "released",
+      "final_sha": "df59ca6903e886e3bdcfb2a0c456423aa8f3c57e",
+      "final_ci_run": 38572108059,
+      "release_note_number": 82
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_tree": "56eca884f7b7506f9229d992f8d5f244aa4f677f",
+    "result": "P-REV R5 and P-SEC R5 found no P0/P1/P2. Earlier P2 findings on PR-body scan receipts and cross-document references were corrected and independently re-reviewed."
+  },
+  "local_e3": {
+    "functional_source_sha": "eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57",
+    "functional_source_ci": {
+      "run_id": 38765481430,
+      "job_id": 116527438722,
+      "conclusion": "success",
+      "steps_passed": 23,
+      "steps_skipped": 0
+    },
+    "functional_tests": "82 ordinary tests and 4 compile-fail tests passed; 1 WebView test ignored; three physical SQLite FIN-008 tests cover create/reopen/rollback, plus junction smoke.",
+    "coverage": "Critical application/adapter line and function thresholds >=95% passed. Statements and branches were not measured; no global Rust coverage or complete invariant-vector claim.",
+    "documentary_candidate": {
+      "sha": "b97e888022496d004d110b943b1e2f00260ad2e2",
+      "tree_sha": "56eca884f7b7506f9229d992f8d5f244aa4f677f",
+      "validators": {
+        "project_map": "28 sources/907 files PASS",
+        "gitignore": "28 ignored/4 preserved PASS",
+        "evidence_states": "25 fixtures/197 declarations PASS",
+        "work_items": "72 fixtures/197 items PASS",
+        "progress_log": "26 fixtures; append-only preserved 1001902 historical bytes",
+        "tauri_plugins": "37 fixtures + 2 CLI; 0 plugins/0 ADR records PASS",
+        "diff_check": "PASS"
+      },
+      "gitleaks_staged": {
+        "version": "8.30.1",
+        "paths": 7,
+        "bytes": 33025,
+        "findings": 0,
+        "exit": 0,
+        "patch_sha256": "14326c9ace1f9435f8a7f40dd2cb92ffd64de9872fd0772d274038161086da23"
+      },
+      "gitleaks_history": {
+        "head_sha": "b97e888022496d004d110b943b1e2f00260ad2e2",
+        "available_commits": 1034,
+        "findings": 0,
+        "version": "8.30.1",
+        "binary_sha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c"
+      },
+      "environment": {
+        "os": "Windows",
+        "python": "3.12.10",
+        "gitleaks": "8.30.1",
+        "powershell": "não registrado"
+      }
+    },
+    "product_e3_repeated": false
+  },
+  "security": {
+    "product_code_change": "none in PR #87",
+    "ci": "Documentation source and final-main runs both passed; npm/Cargo audits, project/schema checks, append-only log checks, and Gitleaks history step passed; seven frontend/coverage/Rust build steps were skipped by the documentation selector.",
+    "staged_scan_scope": "Successive exact incremental patches are recorded in the PR body and tracked status documents; the final staged patch is the seven-path 2d90e31 to b97e888 reconciliation, not a summed aggregate scan.",
+    "residual_risk": "Gitleaks checks the available commit/ref set using pinned rules; it does not cover unreachable objects or every possible secret. Documentation CI does not prove product UI/IPC/startup behavior or general security conformance."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "3e7b9ab51060adf96509dbf638d311dd1422c40b",
+    "preserved_count": 226,
+    "total_after": 227,
+    "preserved_mapping_set_sha256": "e6140221628a2282de9874c4ea279f0c06cc88008472913df3f3dd0afb62e4f0",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF"
+  },
+  "limitations": [
+    "The functional E3 covers the account creation/audit transaction and SQLite success/reopen/rollback only.",
+    "INV-FIN-001, derived revenue/balance behavior, UI/IPC, startup, real UUID provider, smoke/E2E journeys, installer, and production deployment were not demonstrated by FIN-008.",
+    "The documentary PR and its CI do not repeat product tests or establish global coverage/security conformance.",
+    "Telemetry and model/cost usage were not recorded."
+  ],
+  "telemetry": "não registrado",
+  "next": "UI-003 is next within the authorized UI scope. Before starting it, revalidate the released UI-001 and FIN-008 receipts, current main, dependencies, caller paths, worktree, CI, tests, and its spec/work item/handoff; then work only UI-003."
+}
