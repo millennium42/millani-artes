@@ -1,0 +1,143 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-003",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-003 account registration and local persistence",
+  "release_date": "2026-11-23",
+  "scope": "Somente UI-003; sem avanço de UI-004 ou outro ID.",
+  "summary": "Libera o formulário de cadastro de contas e seu fluxo sintético UI→Tauri IPC→SQLite após reconciliação documental, reviews e CI final na main. A liberação funcional não altera regra financeira; saldos permanecem em centavos inteiros.",
+  "source_sha": "e429335e3676b3f2eb831b4f7a441f09122c46e4",
+  "source_tree_sha": "0fa86d61c0eaec6519fb1c41875a11a6e6c92e09",
+  "final_sha": "05190e0f404a6865329fa4ceb3698025b5c727cf",
+  "tree_sha": "0fa86d61c0eaec6519fb1c41875a11a6e6c92e09",
+  "pull_request": {
+    "number": 89,
+    "url": "https://github.com/millennium42/millani-artes/pull/89",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "05190e0f404a6865329fa4ceb3698025b5c727cf"
+  },
+  "source_ci": {
+    "run_number": 527,
+    "run_id": 45168079472,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "e429335e3676b3f2eb831b4f7a441f09122c46e4",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45168079472",
+    "job": {
+      "id": 137670136556,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 528,
+    "run_id": 45168644799,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "05190e0f404a6865329fa4ceb3698025b5c727cf",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45168644799",
+    "job": {
+      "id": 137672080730,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "product_release": {
+    "pull_request": {
+      "number": 88,
+      "merge_sha": "dccb22bdf21bc28c693a177b3527987818073d1e"
+    },
+    "source_ci": {
+      "run_number": 525,
+      "run_id": 45158771066,
+      "head_sha": "c27d5ab7cab262007fb8158c507f395bca9a1995",
+      "conclusion": "success",
+      "steps": "23/23; zero skipped"
+    },
+    "final_ci": {
+      "run_number": 526,
+      "run_id": 45161439587,
+      "head_sha": "dccb22bdf21bc28c693a177b3527987818073d1e",
+      "conclusion": "success",
+      "steps": "23/23; zero skipped"
+    },
+    "implementation_source_sha": "92868796bb9e5877de55a55ffdf85849086c7c88"
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "receipt": "refs/notes/evidence; current remote mapping and ancestor verified"
+    },
+    {
+      "id": "FIN-008",
+      "status": "released",
+      "final_sha": "2a8fc0f483f83f9024b5d3d82224c1b01afb5a04",
+      "source_ci_run": 45115494762,
+      "final_ci_run": 45115885950,
+      "receipt": "refs/notes/evidence; current remote mapping and ancestor verified"
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "e429335e3676b3f2eb831b4f7a441f09122c46e4",
+    "candidate_tree_sha": "0fa86d61c0eaec6519fb1c41875a11a6e6c92e09",
+    "result": "No P0/P1/P2 findings",
+    "limitation": "Reviewers did not execute checks."
+  },
+  "local_e3": {
+    "implementation_sha": "92868796bb9e5877de55a55ffdf85849086c7c88",
+    "synthetic_journey": "UI→Tauri IPC→FIN-008→SQLite v17; account and audit_event persisted atomically, zero movements; synthetic values only; money represented as integer cents.",
+    "react": "28 focal tests passed; coverage statements 98.59%, branches 97.77%, functions and lines 100%.",
+    "typescript": "Format, lint, typecheck, coverage and npm build passed; Tauri production build --no-bundle passed.",
+    "rust": "cargo fmt and Clippy passed; cargo test: 348 unit, 17 helper (1 ignored), 284 integration, 40 doctests passed; explicit Windows/WebView2 probe 1/1.",
+    "security_scan_sha": "2a395002b30e8f52703de2c9cb4ca942d49957e3",
+    "security": "OSV 604 packages: 4 covered by existing approvals, zero unapproved; Cargo Audit 422 dependencies, zero vulnerabilities, 3 existing approved warnings; no new or broadened waivers.",
+    "visual": "Automated desktop/minimum-size captures and keyboard/focus/overflow evidence recorded in handoff; no CUA.",
+    "status_sync_local": "72 work-item fixtures; 198 work items valid; 25 evidence-state fixtures/198 declarations valid; 26 progress-log fixtures with 1,020,226 historical bytes preserved; map 28 sources/919 files; diff check passed."
+  },
+  "security": {
+    "patch": "Cargo.lock-only cookie 0.18.2→0.18.3; no manifest/direct dependency change.",
+    "approvals": "Existing waiver identities, scope, target x86_64-pc-windows-msvc and expiry preserved; no waiver added or widened.",
+    "expiry": "2026-11-27 UTC"
+  },
+  "status_reconciliation": "At final_sha the tracked candidate correctly had in_progress/E3/passes:false while this post-CI release note was absent. This note is the terminal release-state receipt for that same SHA; no tracked commit followed final CI and no B6 candidate exception was used.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "2a720cebff0450764f10c4d77aac14e77619d451",
+    "preserved_count": 227,
+    "total_after": 228,
+    "preserved_mapping_set_sha256": "6734f1ab0100ed536361d9bba490c0ed38fdfcf449ebbca3cd2bdc1a5e63450c",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF.",
+    "publication": "Append one mapping only; push without force; read back the remote ref."
+  },
+  "warnings": [
+    "FIN-008 is released by its current remote note, but its own work item/spec/handoff still contain stale text claiming no release note existed at 9ebf14e; left unchanged because FIN-008 is outside this UI-only scope.",
+    "The existing chrono RUSTSEC-2026-0543 unmaintained-dependency warning remains; current approval expires before 2026-11-27 UTC and a separate human risk acknowledgement is not recorded."
+  ],
+  "limitations": [
+    "WEBVIEW2_USER_DATA_FOLDER did not isolate app_local_data; only synthetic DB v17 data and a sentinel were created and removed; preexisting app data/WebView profile were preserved; do not repeat the native E2E on that standard path.",
+    "No general numerical WCAG conformance claim, keyboard/focus claim outside the WebView, resize-below-minimum proof, post-lock-only-patch E2E, installer or production claim.",
+    "Status-sync final CI is documentation-only: 16 steps succeeded and the 7 frontend/install/coverage/Rust-build steps were skipped by the existing selector; product source/final CI #525/#526 ran 23/23 with zero skips.",
+    "Telemetry and cost were not registered."
+  ],
+  "next": "UI-004 is the next sequential candidate; do not start it until CAT-004 and UI-003 release receipts are revalidated on current remote refs."
+}
