@@ -422,6 +422,9 @@ E3 primary: caso valida nome e grava os quatro campos da conta via adapter SQLit
 ## FIN-008 — evidência do executor (E3)
 FIN-008 executa a criação persistente de conta e audit_event com sucesso/reopen/rollback; INV-FIN-001, UI/IPC e startup seguem fora da evidência. Source CI 38765481430 no SHA eea53ff05f2df34c5ff8e9aa759b70dc0a25ab57.
 
+## FIN-008 — reconciliação documental pós-PR #86 (23/11/2026)
+O status-sync documental PR #86 foi mesclado no SHA final-main `9ebf14e697503484f03d7b23739ed36af91decec` (tree `f3c97553dafd4cc9456b3e95a7bcd00c56646d15`); CI source #517/run `45103734928` e final-main #518/run `45104002281` passaram em seus SHAs exatos com 16/7/0, sete etapas de produto/build skipped. A release funcional continua comprovada somente pela E3 de origem FIN-008 e sua CI #177; os CIs de documentação não executam criação de conta nem demonstram INV-FIN-001, UI/IPC, startup ou E2E. A nota em `fa62d588` segue condicional, sem nota `released` FIN-008 em `9ebf14e`; por isso UI-003 continua bloqueada.
+
 
 ## CAT-003 — integracao primaria 16/10/2026
 
