@@ -1,6 +1,6 @@
 use crate::infrastructure::account_setup::initialize_database_at;
 use crate::infrastructure::exit_setup::{
-    create_exit_for, initialize_exit_store_at, ExitSetupState,
+    create_exit_for, create_exit_from_request_for, initialize_exit_store_at, ExitSetupState,
 };
 use crate::infrastructure::AppDatabaseWriteLock;
 use millani_artes::database;
@@ -123,6 +123,49 @@ fn malformed_ipc_and_domain_rejection_return_static_errors_without_writes() {
         );
     }
 
+    assert_eq!(counts(directory.path()), (0, 0));
+}
+
+#[test]
+fn malformed_json_types_return_static_ipc_error_without_reflecting_values_or_writing() {
+    let (directory, state, _) = setup();
+    let write_lock = AppDatabaseWriteLock::default();
+    let body = tauri::ipc::InvokeBody::Json(
+        [
+            ("accountId", "SENSITIVE_ACCOUNT_ID"),
+            ("amountCents", "1234"),
+            ("context", "home"),
+        ]
+        .into_iter()
+        .collect(),
+    );
+
+    let failure = create_exit_from_request_for(&state, &write_lock, &body)
+        .expect_err("UI006_MALFORMED_IPC_MUST_FAIL");
+    assert_eq!(failure, "EXIT_INVALID");
+    assert!(!failure.contains("SENSITIVE_ACCOUNT_ID"));
+    assert_eq!(counts(directory.path()), (0, 0));
+}
+
+#[test]
+fn poisoned_shared_write_lock_returns_static_error_without_writing() {
+    let (directory, state, account_id) = setup();
+    let write_lock = AppDatabaseWriteLock::default();
+    let poisoned = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let _guard = write_lock.lock().expect("UI006_WRITE_LOCK_EXPECTED");
+        panic!("UI006_POISON_WRITE_LOCK");
+    }));
+    assert!(poisoned.is_err());
+
+    let failure = create_exit_for(
+        &state,
+        &write_lock,
+        account_id.to_vec(),
+        "1234".to_string(),
+        "home".to_string(),
+    )
+    .expect_err("UI006_POISONED_LOCK_MUST_FAIL");
+    assert_eq!(failure, "EXIT_CREATE_FAILED");
     assert_eq!(counts(directory.path()), (0, 0));
 }
 

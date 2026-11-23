@@ -73,6 +73,42 @@ fn parse_amount_cents(amount_cents: &str) -> Result<i64, &'static str> {
     Ok(amount)
 }
 
+fn parse_exit_request_body(
+    body: &tauri::ipc::InvokeBody,
+) -> Result<(Vec<u8>, String, String), &'static str> {
+    let tauri::ipc::InvokeBody::Json(value) = body else {
+        return Err("EXIT_INVALID");
+    };
+    let arguments = value.as_object().ok_or("EXIT_INVALID")?;
+    if arguments.len() != 3 {
+        return Err("EXIT_INVALID");
+    }
+
+    let account_id = arguments
+        .get("accountId")
+        .and_then(|value| value.as_array())
+        .ok_or("EXIT_INVALID")?
+        .iter()
+        .map(|byte| {
+            byte.as_u64()
+                .and_then(|value| u8::try_from(value).ok())
+                .ok_or("EXIT_INVALID")
+        })
+        .collect::<Result<Vec<_>, _>>()?;
+    let amount_cents = arguments
+        .get("amountCents")
+        .and_then(|value| value.as_str())
+        .ok_or("EXIT_INVALID")?
+        .to_owned();
+    let context = arguments
+        .get("context")
+        .and_then(|value| value.as_str())
+        .ok_or("EXIT_INVALID")?
+        .to_owned();
+
+    Ok((account_id, amount_cents, context))
+}
+
 pub(crate) fn create_exit_for(
     state: &ExitSetupState,
     write_lock: &super::AppDatabaseWriteLock,
@@ -87,13 +123,20 @@ pub(crate) fn create_exit_for(
     state.create_exit(account_id, amount_cents, context)
 }
 
+pub(crate) fn create_exit_from_request_for(
+    state: &ExitSetupState,
+    write_lock: &super::AppDatabaseWriteLock,
+    body: &tauri::ipc::InvokeBody,
+) -> Result<(), &'static str> {
+    let (account_id, amount_cents, context) = parse_exit_request_body(body)?;
+    create_exit_for(state, write_lock, account_id, amount_cents, context)
+}
+
 #[tauri::command]
 pub(crate) fn create_exit(
     state: tauri::State<'_, ExitSetupState>,
     write_lock: tauri::State<'_, super::AppDatabaseWriteLock>,
-    account_id: Vec<u8>,
-    amount_cents: String,
-    context: String,
+    request: tauri::ipc::Request<'_>,
 ) -> Result<(), String> {
-    create_exit_for(&state, &write_lock, account_id, amount_cents, context).map_err(str::to_owned)
+    create_exit_from_request_for(&state, &write_lock, request.body()).map_err(str::to_owned)
 }
