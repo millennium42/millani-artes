@@ -29,11 +29,52 @@ fn unselected_capability_cannot_grant_commands() {
         "An unselected capability file must not grant commands"
     );
     assert_eq!(selected.len(), 1);
-    assert!(selected.values().all(|cap| cap.local
-        && cap.remote.is_none()
-        && cap.windows == ["main"]
-        && cap.webviews.is_empty()
-        && cap.permissions.is_empty()));
+    let selected_capability = selected.get("main-local-deny").unwrap();
+    assert!(selected_capability.local);
+    assert!(selected_capability.remote.is_none());
+    assert!(selected_capability.windows.is_empty());
+    assert_eq!(selected_capability.webviews, ["main"]);
+    assert_eq!(selected_capability.permissions.len(), 1);
+    let permission = selected_capability.permissions[0].identifier();
+    assert_eq!(permission.get_prefix(), None);
+    assert_eq!(permission.get_base(), "allow-create-account");
+}
+
+#[test]
+fn create_account_command_is_limited_to_the_local_main_webview() {
+    let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    assert_eq!(context.config().app.windows.len(), 1);
+    assert_eq!(context.config().app.windows[0].label, "main");
+    let authority = context.runtime_authority_mut();
+    let remote = Origin::Remote {
+        url: "https://example.invalid".parse().unwrap(),
+    };
+
+    assert!(authority
+        .resolve_access("create_account", "main", "main", &Origin::Local)
+        .is_some());
+    assert!(authority
+        .resolve_access("create_account", "main", "main", &remote)
+        .is_none());
+
+    for (window, webview) in [("other", "other"), ("main", "other")] {
+        assert!(authority
+            .resolve_access("create_account", window, webview, &Origin::Local)
+            .is_none());
+        assert!(authority
+            .resolve_access("create_account", window, webview, &remote)
+            .is_none());
+    }
+
+    for command in [
+        "security_probe_report",
+        "list_accounts",
+        "plugin:fs|read_text_file",
+    ] {
+        assert!(authority
+            .resolve_access(command, "main", "main", &Origin::Local)
+            .is_none());
+    }
 }
 
 #[test]
@@ -118,7 +159,7 @@ mod native {
         mpsc, Arc,
     };
     use std::time::Duration;
-    use tauri::Listener;
+    use tauri::{Listener, Manager};
 
     fn guard_profile(workspace: &Path, profile: &Path) {
         assert!(workspace.is_absolute() && profile.is_absolute());
@@ -287,6 +328,12 @@ mod native {
             })
             .invoke_handler(tauri::generate_handler![security_probe_report])
             .setup(move |app| {
+                app.add_capability(
+                    tauri::ipc::CapabilityBuilder::new("ui003-native-probe")
+                        .local(true)
+                        .webview("main")
+                        .permission("allow-security-probe-report"),
+                )?;
                 app.listen("sec-001-probe", move |_| {
                     listener_seen.store(true, Ordering::SeqCst);
                 });
@@ -338,7 +385,7 @@ mod native {
                                 {event: "sec-001-probe", payload: null});
                               await new Promise(resolve => setTimeout(resolve, 100));
                               await invoke("security_probe_report", {
-                                brandLoaded: document.querySelector("h1")?.textContent === "Millani Artes",
+                                brandLoaded: document.querySelector("header")?.textContent.trim() === "Millani Artes",
                                 titleDenied, eventDenied,
                                 cspChecks: [...blocked, ...(localStyle ? ["local-style"] : [])]
                               });

@@ -51,7 +51,7 @@ UI_META_ADVANCE_REFERENCE = (
     'of chrono unmaintained risk. After the UI-002 lock-only remediation of url 2.5.8 to 2.5.9 and form_urlencoded '
     '1.2.2 to 1.2.3, rebind input hashes only; add no advisory, package, version, or target and do not extend expiry; '
     'target x86_64-pc-windows-msvc, expiresBeforeUTC 2026-11-27.')
-UI_META_ADVANCE_SCOPE_SHA256 = "2fd6d01f1d549bf234433d47459f0cc831016748c3d6442f3f3aa3f72b7d7a49"
+UI_META_ADVANCE_SCOPE_SHA256 = "4ef8e1be605acab89ea8153fbbd6c928939d36ad8278ecdf38097c2b35b326e3"
 KINDS = {"unmaintained", "unsound", "notice", "yanked"}
 CONFIG = '''[advisories]
 ignore=[]

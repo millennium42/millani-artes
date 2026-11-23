@@ -295,6 +295,7 @@ def main():
             config = json.loads(gate.DEFAULT_EXCEPTIONS.read_bytes())
             config["expiresBeforeUTC"] = "2026-11-11"
             config["inputSHA256"]["src-tauri/Cargo.lock"] = "68d2fc69b4b1c87ca1b30b1eec879e5d9726570d013aa68fa271a84131a47433"
+            config["inputSHA256"]["src-tauri/Cargo.toml"] = "8bf107e28bb0646142adac0c4099c6d7dd00586e42b3acb313badd320eb8ff5e"
             config["exceptions"] = [entry for entry in config["exceptions"] if entry["name"] != "chrono"]
             config["exceptions"].append({"ecosystem": "crates.io", "name": "block-buffer", "version": "0.10.4",
                                          "ids": ["GHSA-qwgh-2vcv-g2f7"]})

@@ -24,12 +24,15 @@
       "capabilities": [
         {
           "identifier": "main-local-deny",
-          "description": "SEC-001 / ADR-021: local scaffold; no IPC commands required. Tests: src/security_tests.rs.",
+          "description": "SEC-001 / ADR-021 / ADR-025: local main webview; create_account only. Tests: src/security_tests.rs.",
           "local": true,
-          "windows": [
-            "main"
+          "windows": [],
+          "permissions": [
+            "allow-create-account"
           ],
-          "permissions": []
+          "webviews": [
+            "main"
+          ]
         }
       ],
       "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src ipc: http://ipc.localhost; img-src 'self' data:; style-src 'self'; script-src 'self'",

@@ -603,3 +603,11 @@ Após essa correção, fmt e git diff --check passaram; Clippy locked -D warning
 ### FIN-027 — evidência funcional e limites
 
 Source #391 e final-main integral #490 passaram 23/23 nos SHAs registrados no handoff, incluindo cinco unitários, dois SQLite file-backed e o teste de saldo existente chamando o cálculo real. Preflight #492 é documental (16/23, sete etapas produto/build omitidas), sem alegação de produto; CI final do status-sync ainda pendente.
+
+## UI-003 — formulário e ponte Tauri (candidato local; release pendente)
+
+Os testes React/Vitest com jsdom verificam rótulos, estados, parser de valores monetários, prevenção de submissão duplicada, sucesso, erro, loading e foco no DOM; mocks de invoke não provam IPC nem persistência. A suíte de 4 arquivos executou 28 testes. Coverage resultante: statements 98,59%, branches 97,77%, functions 100% e lines 100%; limites existentes permaneceram intactos.
+
+Um E2E nativo foi executado uma vez no binário Tauri de produção com dados sintéticos: formulário → IPC → Rust → SQLite; confirmou schema v17, conta após leitura, um audit_event pareado e zero movements. Isso é uma única jornada local e não prova listagem/dashboard, efeito sobre relatórios/receita, outras janelas, estado de falha nativo, SMK, ou cobertura global de INV-FIN-001. Capturas automatizadas de estado inicial e sucesso na janela Tauri, desktop e tamanho mínimo estão identificadas no handoff.
+
+Limitação ambiental registrada: a variável WEBVIEW2_USER_DATA_FOLDER não isolou o banco app_local_data. O binário usou o caminho de dados padrão do app e criou ali, durante esta tarefa, somente o banco v17 sintético com uma conta sentinela e uma auditoria. A remoção de linhas foi bloqueada pelo gatilho append-only e revertida sem alteração; o arquivo SQLite recém-criado foi removido após verificações de caminho/processo/listener. A pasta do app e o perfil WebView2 preexistentes foram preservados; não foi encontrado dado real nesse banco recém-criado. Não repetir a jornada nativa no caminho padrão; preparar isolamento de app_local_data antes de outra captura/execução.
