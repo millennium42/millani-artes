@@ -1,0 +1,145 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-005",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-005 registro de entrada pela tela principal",
+  "release_date": "2026-11-23",
+  "scope": "Somente UI-005; nao inicia outro ID.",
+  "summary": "Formulario acessivel para selecionar conta, valor e contexto e solicitar entrada em centavos ao caso FIN-017; capability Tauri restrita.",
+  "source_sha": "e0ceb47c724e89642ceb87c8b587f22514743a6c",
+  "source_tree_sha": "4dbbb1987819e081e8c87f263d32fc7b21c2c08f",
+  "final_sha": "671d9ab0cc0bb8f206bfdffcabd481f83642e4db",
+  "tree_sha": "4dbbb1987819e081e8c87f263d32fc7b21c2c08f",
+  "pull_request": {
+    "number": 91,
+    "url": "https://github.com/millennium42/millani-artes/pull/91",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "671d9ab0cc0bb8f206bfdffcabd481f83642e4db"
+  },
+  "source_ci": {
+    "run_number": 531,
+    "run_id": 45233997098,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "e0ceb47c724e89642ceb87c8b587f22514743a6c",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45233997098",
+    "job": {
+      "id": 137900728206,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "final_ci": {
+    "run_number": 532,
+    "run_id": 45236415336,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "671d9ab0cc0bb8f206bfdffcabd481f83642e4db",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45236415336",
+    "job": {
+      "id": 137909215225,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 23,
+      "steps_skipped": 0
+    }
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "receipt": "nota remota released revalidada e ancestral de main"
+    },
+    {
+      "id": "FIN-017",
+      "status": "released",
+      "final_sha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+      "source_ci_run": 39090756071,
+      "final_ci_run": 39091370911,
+      "receipt": "nota remota released revalidada e ancestral de main; CI final documental teve 7 skips de produto/build"
+    }
+  ],
+  "base_context": {
+    "id": "UI-004",
+    "status": "released",
+    "final_sha": "0d5846231b49b80ed81b4a599873556c9ae27615",
+    "final_ci_run": 45198674102,
+    "direct_dependency": false
+  },
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "e0ceb47c724e89642ceb87c8b587f22514743a6c",
+    "candidate_tree_sha": "4dbbb1987819e081e8c87f263d32fc7b21c2c08f",
+    "result": "no P0/P1/P2 findings",
+    "checks": "reviewers did not execute checks",
+    "limitation": "Authority review covers compiled Tauri config/tests and current single-window topology; no malicious IPC attempt from another real WebView."
+  },
+  "local_e3": {
+    "typescript": "Node 24.21.0/npm 11.19.0; npm run quality passed: 9 files/65 tests; statements 96.72%, branches 93.07%, functions 95.12%, lines 99.47%; npm run build passed. Focused post-correction tests 26/26; focused run did not measure global coverage.",
+    "rust": "Rust 1.99.0; cargo fmt --all --check, cargo clippy --all-targets --locked --offline -- -D warnings, cargo test --locked --offline passed: library 348, binary 26 with 1 WebView2-dependent ignored, SQLite integration 284, doctests 40.",
+    "production_build": "npm run tauri -- build --no-bundle -- --locked passed locally; final-main CI built and verified executable.",
+    "security_scans": "On the unchanged implementation/security inputs: npm audit 182 dependencies/0 vulnerabilities; OSV 604 packages/4 pre-existing approved/0 unapproved; Cargo Audit 422 crates/0 vulnerabilities/3 pre-existing approved warnings. Fixtures: Gitleaks 16/16, OSV 44/44, CI audits 42/42, npm audit 40/40, Cargo Audit 69/69, SAST 45/45 (fixture suite, not a comprehensive source scan). Exact source and final-main CI passed secret-history, lockfile, npm, and Cargo audit steps.",
+    "synthetic_journey": "Automated native Tauri/WebView, isolated synthetic SQLite only: sent 1234 cents, selected Casa; trigger failure left no partial movement/audit and retry stored one entry plus audit; generic errors, focus, keyboard, loading/empty/error/retry/success checked. Database after loading capture remained 1 account/1 movement/2 audits; app exited 0 and debug listener closed.",
+    "captures": [
+      {
+        "path": "artifacts/ui005-visual/loading-2026-11-23T17-35-25-058Z/loading-1024x720.png",
+        "viewport": "1024x720",
+        "sha256": "0067c652455a5346f75d4b7be7143999fd0e778ca7e01d3b2c92d404a3219dd7",
+        "bytes": 31505,
+        "scrollWidth_equals_clientWidth": true
+      },
+      {
+        "path": "artifacts/ui005-visual/loading-2026-11-23T17-35-25-058Z/loading-minimum-313x343.png",
+        "viewport": "313x343",
+        "sha256": "cee750510d19514ddfba4ba26f58c00dd4fea6a744bca4b1a22c17563cdd7226",
+        "bytes": 11172,
+        "scrollWidth_equals_clientWidth": true
+      }
+    ],
+    "contrast_ratios": "main/loading text 12.22:1; fields/buttons 13.42:1; error 7.17:1; success 6.00:1; focus/page 5.45:1.",
+    "telemetry": "not registered",
+    "model_cost": "not registered"
+  },
+  "security": {
+    "no_new_dependencies": true,
+    "no_new_plugins": true,
+    "no_migration": true,
+    "no_new_or_broadened_waiver": true,
+    "existing_approved_findings": "4 OSV findings and 3 Cargo Audit warnings remain under existing approvals; these expire before 2026-11-27 UTC.",
+    "capability": "Only list_accounts and create_entry added to the local main capability; no core/plugin grant, remote origin, filesystem, or SQL in frontend."
+  },
+  "limitations": [
+    "Evidence covers the UI-005 journey using synthetic data only; not other routes or E2E journeys.",
+    "No malicious IPC attempt in another real WebView, future-window topology, general WCAG conformance, installer, or production validation.",
+    "The first native attempt touched the default app database path without reading or changing its contents; that file was preserved. Accepted captures used isolated synthetic database overrides only.",
+    "Two failed CDP interception attempts are preserved as diagnostics and are not counted as proof.",
+    "Telemetry/model cost not registered."
+  ],
+  "status_reconciliation": "Tracked work item remains in_progress/E3/passes:false under the strict non-B6 evidence rule; the terminal note is published only after source and final-main CI/review are complete. This note on the exact final SHA is the released receipt; no tracked commit followed final-main CI.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref_sha": "1add9074950032e4b20884bc6d45c8fc5a9179e7",
+    "preserved_count": 229,
+    "total_after": 230,
+    "preserved_mapping_set_sha256": "a10d9ac6677fc3b11eb2aeec1da0f7c6ed4e19b26dfb4610a7db0e67ea789bb5",
+    "hash_method": "SHA-256 of mapping lines note-blob-SHA then target-SHA sorted ordinally and joined by LF without trailing LF",
+    "publication": "append one mapping only, push without force, fetch and read back the remote ref"
+  },
+  "next": "UI-006 only after revalidating FIN-018 released on current main; continue only within UI-001 through UI-016."
+}
