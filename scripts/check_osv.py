@@ -57,7 +57,7 @@ UI_META_ADVANCE_REFERENCE = (
     'of chrono unmaintained risk. After the UI-002 lock-only remediation of url 2.5.8 to 2.5.9 and form_urlencoded '
     '1.2.2 to 1.2.3, rebind input hashes only; add no advisory, package, version, or target and do not extend expiry; '
     'target x86_64-pc-windows-msvc, expiresBeforeUTC 2026-11-27.')
-UI_META_ADVANCE_SCOPE_SHA256 = "adc061f9c6ba4313fb3f2be9d913d3a90cf855f2208480233df955c02319d9a6"
+UI_META_ADVANCE_SCOPE_SHA256 = "e18e50611329a3265a0216f944645f4d8d9c242ace0a4a173915387c3c8251ef"
 
 
 class GateError(Exception):
