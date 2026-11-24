@@ -1,0 +1,127 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-005",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-005 reconciliação documental da liberação",
+  "release_date": "2026-11-24",
+  "scope": "Somente reconciliar os registros de UI-005 com o recibo funcional released já existente. Nenhum código, implementação, regra de produto, dependência, capability, build, E3, teste de produto ou inspeção visual foi repetido.",
+  "summary": "PR #97 atualizou README, mapa, work item, spec, handoff, roadmap, matrizes de requisitos/segurança e PROGRESS_LOG append-only. Os snapshots pré-recibo foram preservados como história, e a main atual agora registra o recibo funcional próprio de UI-005.",
+  "source_sha": "7227440621c605845ec1f746318561243b9a189f",
+  "source_tree_sha": "b051938fa7a4af6f05226bb0e2bdc54b24c17dbe",
+  "final_sha": "0e1e07fd58fa64472f9c299a663c3dc63a1c49f3",
+  "tree_sha": "b051938fa7a4af6f05226bb0e2bdc54b24c17dbe",
+  "pull_request": {
+    "number": 97,
+    "url": "https://github.com/millennium42/millani-artes/pull/97",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "0e1e07fd58fa64472f9c299a663c3dc63a1c49f3"
+  },
+  "source_ci": {
+    "run_number": 543,
+    "run_id": 45340247854,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "7227440621c605845ec1f746318561243b9a189f",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45340247854",
+    "job": {
+      "id": 138261898824,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 544,
+    "run_id": 45340525307,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "0e1e07fd58fa64472f9c299a663c3dc63a1c49f3",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45340525307",
+    "job": {
+      "id": 138262814732,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "prior_product_release": {
+    "note_blob": "ab56511f7345be6dcfea900a6237440da7f62440",
+    "final_sha": "671d9ab0cc0bb8f206bfdffcabd481f83642e4db",
+    "product_pr": 91,
+    "source_ci_run": 45233997098,
+    "final_ci_run": 45236415336,
+    "readback": "release_evidence/released; 229 mappings preserved and 230 total",
+    "implementation_e3_repeated": false
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "final_ci_run": 44860689539
+    },
+    {
+      "id": "FIN-017",
+      "status": "released",
+      "final_sha": "bf915ab236ef49332ff1a99a09b641c6a58bedec",
+      "source_ci_run": 39090756071,
+      "final_ci_run": 39091370911
+    }
+  ],
+  "context": [
+    {
+      "id": "UI-004",
+      "status": "released",
+      "direct_dependency": false
+    },
+    {
+      "id": "UI-006",
+      "status": "released",
+      "direct_dependency": false,
+      "status_sync_pr": 93
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "7227440621c605845ec1f746318561243b9a189f",
+    "candidate_tree_sha": "b051938fa7a4af6f05226bb0e2bdc54b24c17dbe",
+    "result": "Nenhum achado ativo P0/P1/P2/P3 no diff documental exato. P-REV não encontrou achados; apontamento P2 inicial de P-SEC foi retirado após separar gates do produto já liberado dos gates deste status-sync.",
+    "checks": "Revisores não executaram checks."
+  },
+  "local_checks": [
+    "Project map fixtures/check: 28 fontes/955 arquivos; gitignore fixtures 28 ignorados/4 protegidos; evidence-state fixtures 25/checker 201; work-items fixtures 72/checker 201; frontend-selector fixtures 20; Tauri plugin fixtures 37/2 CLI cases/check 0 plugins/0 ADRs.",
+    "Progress-log fixtures 26; check append-only contra origin/main passou e preservou 1.046.745 bytes históricos normalizados. Work item JSON válido; git diff --cached --check limpo antes do commit.",
+    "Seletor frontend: invocação inicial TargetRef=INDEX falhou de forma fechada por INDEX não ser commit; reexecução no tree candidato exato b051938 via commit local temporário 84e84298e8ffe74ddfa67797210ad14d6a4166f4 retornou false/exit 0; nenhum commit temporário foi enviado.",
+    "CI source/final executou validação documental, segredo em histórico, lockfiles e audits npm/Cargo; 16/23 passos passaram e 7 foram ignorados pelo seletor: instalação frontend, quality, coverage reports/upload, preparação Rust, build Tauri e verificação do executável."
+  ],
+  "status_reconciliation": "O recibo funcional de UI-005 já liberava o produto no SHA 671d9ab0cc0bb8f206bfdffcabd481f83642e4db. PR #97 somente reconciliou documentação na base atual; seu CI source e CI final de main concluíram com sucesso nos SHAs exatos. Esta nota registra a conclusão do status-sync em 0e1e07fd58fa64472f9c299a663c3dc63a1c49f3, sem repetir a liberação funcional ou E3.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref_sha": "7f8296e573dbf5549e92b498f79ced3e4193e82d",
+    "preserved_count": 234,
+    "total_after": 235,
+    "preserved_mapping_set_sha256": "63daf473f1be47eca46234e7a204a6c6a3518b8224ea3f1994db17f256047e59",
+    "hash_method": "SHA-256 das linhas <note-blob-SHA> <target-SHA> ordenadas ordinalmente, unidas por LF, sem LF final.",
+    "publication": "Uma mapping adicionada sem force; ref remota buscada e nota/conjunto de mappings lidos de volta."
+  },
+  "limitations": [
+    "Alteração somente documental: não repetiu testes do produto, E3, scans locais abrangentes, build, capturas ou inspeção visual; não usou CUA.",
+    "CI source/final foi CI documental/security; seletor ignorou sete passos de frontend/produto/build, portanto não prova esses aspectos para o status-sync.",
+    "A E3 funcional histórica continua focal em dados sintéticos; não prova jornadas adicionais, invariantes globais, tentativa IPC maliciosa em outro WebView real, WCAG geral, instalador ou produção.",
+    "Sem dados reais. Telemetria, custo/tokens e modelo efetivo do líder: não registrado."
+  ],
+  "next": "UI-007 após revalidar dependências diretas UI-001 e FIN-021 e criar worktree limpa da origin/main atual; seguir somente até UI-016."
+}
