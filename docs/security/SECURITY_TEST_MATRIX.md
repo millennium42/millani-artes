@@ -583,11 +583,11 @@ No commit de código `81427e7e44f3b074e9d26d8799871f531bb0b0f7`, fixtures locais
 
 Estado atual: UI-004 released pelo recibo remoto release_evidence/released, nota blob db9aef39ed183adca2cd467119180f04f56964d1 no SHA final-main 0d5846231b49b80ed81b4a599873556c9ae27615; PR #90, source/final CI 45196299390/45198674102 success 23/23 sem skips; mappings 228→229 e readback confirmado. A prova continua focal e não declara segurança geral do WebView, comandos futuros ou WCAG geral; o código e a E3 não foram repetidos.
 
-## UI-005 — registro local de entrada (E3 candidato; 23/11/2026)
+## UI-005 — registro local de entrada (snapshot do candidato pré-recibo; E3, 23/11/2026)
 
 ADR-027 autoriza somente os comandos estreitos `list_accounts` (ID/nome) e `create_entry` (ID, centavos string, contexto) na capability local `main-local-deny`, webview `main`. `security_tests.rs` permite o par local atual, nega origem remota, webview não selecionado e grants/comandos não autorizados; respeita a semântica OR dos seletores Tauri e não presume negação de futuras janelas. `entry_setup_tests.rs` cobre entradas inválidas, erro genérico, lock de escrita compartilhado, persistência/audit, rollback/recovery; testes React cobrem o parser exato em centavos, estados, labels, retry e foco inclusive durante refetch em segundo plano.
 
-E3 nativo local confirmou persistência/retry e ausência de SQL em erro com DB sintético. A inspeção automatizada sem CUA também capturou o estado loading em 1024×720 e 313×343, com largura de rolagem igual à largura do viewport, em banco sintético isolado. npm/OSV/Cargo Audit reais e fixtures estão no handoff e precisam de novo vínculo ao SHA final. P-SEC/P-REV revisaram o tree de implementação `7c05df509fc8c6b896f8388f15ad5f77a9f7157a` sem P0/P1/P2 (E2; sem execução de checks); P-REV/P-SEC também revisaram a árvore documental consolidada `b3982097d7b7db9c49886f6ed77c5fa503018aab` sem P0/P1/P2 (E2; sem execução de checks); CI source/final-main e nota released permanecem pendentes. Limite: teste de autoridade compilada não é uma tentativa IPC maliciosa em outro WebView real; sem WCAG geral/produção.
+E3 nativo local confirmou persistência/retry e ausência de SQL em erro com DB sintético. A inspeção automatizada sem CUA também capturou o estado loading em 1024×720 e 313×343, com largura de rolagem igual à largura do viewport, em banco sintético isolado. Neste snapshot pré-recibo, os scans e gates remotos ainda aguardavam vínculo ao SHA final; P-SEC/P-REV revisaram o tree de implementação `7c05df509fc8c6b896f8388f15ad5f77a9f7157a` e a árvore documental consolidada `b3982097d7b7db9c49886f6ed77c5fa503018aab` sem P0/P1/P2 (E2; sem execução de checks). A nota de liberação posterior está registrada abaixo. Limite: teste de autoridade compilada não é uma tentativa IPC maliciosa em outro WebView real; sem WCAG geral/produção.
 
 
 ## UI-006 — saída pela interface (execução focal local E3)
@@ -598,4 +598,4 @@ A linha SEC-006 inclui UI-006 como consumidor de FIN-018; SEC-008 inclui a capab
 
 ### UI-005 — nota de liberação atual (23/11/2026)
 
-O snapshot candidato acima foi supersedido pela nota refs/notes/evidence no SHA final-main 671d9ab0cc0bb8f206bfdffcabd481f83642e4db, estado released; source CI 45233997098 e final-main CI 45236415336 success 23/23. A nota foi lida de volta com mappings anteriores preservados. Código/E3 não foram repetidos nesta tarefa.
+O snapshot candidato acima foi supersedido pela nota `refs/notes/evidence`, blob `ab56511f7345be6dcfea900a6237440da7f62440`, no SHA final-main `671d9ab0cc0bb8f206bfdffcabd481f83642e4db`, estado released; PR #91; source CI `45233997098` e final-main CI `45236415336` success 23/23 sem skips. A nota foi lida de volta com 229 mappings anteriores preservados e 230 no total. Código/E3 não foram repetidos no status-sync documental. Telemetria: não registrado.
