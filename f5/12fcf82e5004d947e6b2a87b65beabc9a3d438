@@ -1,0 +1,121 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-006",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-006 post-receipt documentation reconciliation",
+  "release_date": "2026-11-24",
+  "scope": "UI-006 only. PR #94 reconciles tracked documentation after the already released UI-006 receipt; it changes no product source, repeats no E3, and adds no dependency.",
+  "source_sha": "e6f48d5c91d2590e15d9d8298ca0cc8b1d29564d",
+  "source_tree_sha": "fa1879edc5bb965928387b8c1c9514bc742348f7",
+  "final_sha": "f512fcf82e5004d947e6b2a87b65beabc9a3d438",
+  "tree_sha": "fa1879edc5bb965928387b8c1c9514bc742348f7",
+  "pull_request": {
+    "number": 94,
+    "url": "https://github.com/millennium42/millani-artes/pull/94",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "f512fcf82e5004d947e6b2a87b65beabc9a3d438"
+  },
+  "source_ci": {
+    "run_number": 537,
+    "run_id": 45319008186,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "e6f48d5c91d2590e15d9d8298ca0cc8b1d29564d",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45319008186",
+    "job": {
+      "id": 138192680418,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 538,
+    "run_id": 45319347837,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "f512fcf82e5004d947e6b2a87b65beabc9a3d438",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45319347837",
+    "job": {
+      "id": 138193830060,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "prior_release": {
+    "code_pr": 92,
+    "source_sha": "6af29e42d72b1046525e30ebfea7df20701f7912",
+    "final_sha": "33cd333551a908a24be54bd9fe7577515e0162e6",
+    "source_ci_run": 45275229408,
+    "final_ci_run": 45278077539,
+    "ci_result": "success, 23/23, zero skips",
+    "prior_status_sync_pr": 93,
+    "prior_status_sync_final_sha": "b49c29fe02faf7278a86d88421e83ef65d34e23b",
+    "prior_release_note_blob": "95d594717800c3c9a672ba8f8010e455b259202e",
+    "prior_mappings_preserved": 230,
+    "prior_total": 231
+  },
+  "reviews": [
+    {
+      "persona": "P-REV",
+      "candidate_sha": "e6f48d5c91d2590e15d9d8298ca0cc8b1d29564d",
+      "result": "no P0/P1/P2",
+      "checks_run": false
+    },
+    {
+      "persona": "P-SEC",
+      "candidate_sha": "e6f48d5c91d2590e15d9d8298ca0cc8b1d29564d",
+      "result": "no P0/P1/P2",
+      "checks_run": false
+    },
+    {
+      "persona": "P-TRC",
+      "candidate_sha": "e6f48d5c91d2590e15d9d8298ca0cc8b1d29564d",
+      "result": "no P0/P1/P2",
+      "checks_run": false
+    },
+    {
+      "correction": "An initial review found stale conditional release wording; all four current matrix statements were corrected and re-reviewed on the final candidate."
+    }
+  ],
+  "local_checks": [
+    "test-work-items.ps1: 72 fixtures; check-work-items.ps1: 201 valid items",
+    "test-evidence-states.ps1: 25 fixtures; check-evidence-states.ps1: 201 valid declarations",
+    "test-progress-log.ps1: 26 fixtures; check-progress-log.ps1 append-only pass, 1041772 historical bytes preserved",
+    "test-project-map.ps1 and check-project-map.ps1: 28 sources, 955 files covered",
+    "test-gitignore.ps1: 28 ignored artifacts, 4 protected sources/lockfiles",
+    "check_tauri_plugins.py: pass, 0 plugins, 0 ADR records",
+    "git diff --check: pass"
+  ],
+  "status_reconciliation": "The tracked UI-006 work item, spec, handoff, roadmap and traceability/security matrices now agree with the released receipt. Earlier in-progress checkpoints remain identified as historical. No product implementation or E3 was repeated. No tracked commit followed the exact final-main CI.",
+  "limits": [
+    "No native Tauri UI-to-IPC-to-SQLite end-to-end journey.",
+    "No general WCAG conformance or numeric scrollWidth measurement.",
+    "No installer, production or future multi-window WebView validation.",
+    "Telemetry, duration and model cost: not registered."
+  ],
+  "security": {
+    "permission": "Only the existing local create_exit grant; no new permission, dependency, or scan exception.",
+    "residual": "Evidence remains focal and does not close SEC-006/SEC-008 globally."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref_sha": "6724a2339f5d247f47fef44c2f15f49caa3ecaf3",
+    "preserved_count": 231,
+    "total_after": 232,
+    "preserved_mapping_set_sha256": "2935c54d9d1758dff533ca8dba366a2a984d885230f32dfa631260bf4e6671ee",
+    "hash_method": "SHA-256 of mapping lines note-blob-SHA then target-SHA sorted ordinally and joined by LF without trailing LF",
+    "publication": "Append one mapping only, push without force, fetch and read back the remote ref."
+  },
+  "next": "UI-007 only after revalidating current main and its direct released dependencies UI-001 and FIN-021."
+}
