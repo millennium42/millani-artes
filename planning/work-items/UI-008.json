@@ -1,0 +1,33 @@
+{
+  "id": "UI-008",
+  "title": "cadastro de produto",
+  "specPath": "planning/specs/UI-008.md",
+  "status": "in_progress",
+  "dependencies": [
+    "UI-001",
+    "PRD-005"
+  ],
+  "acceptanceCriteria": [
+    "Formulário acessível cria produto template por create_product e AdapterSqliteProductStore, sem SQL ou regra de domínio na UI.",
+    "Nome com whitespace Unicode é rejeitado no servidor; nome e descrição são preservados; descrição vazia aceita; preço zero válido, negativo rejeitado e valor transmitido como centavos inteiros sem float.",
+    "Comando Tauri recebe apenas payload estreito, usa trava compartilhada e capability local main; sucesso confirma somente após persistência e erros sanitizados permitem correção/retry.",
+    "SQLite file-backed prova produto+audit atômicos, zero efeitos de estoque/movimento/saldo, rejeição sem escrita e rollback/recovery/retry.",
+    "Vitest, qualidade/build, Rust fmt/clippy/debug/release/audit, segurança, inspeção real, review P-REV, CI nos SHAs exatos e recibo released passam sem reduzir gates."
+  ],
+  "checks": [
+    "npm run quality",
+    "npm run build",
+    "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",
+    "cargo test --locked --manifest-path src-tauri/Cargo.toml",
+    "cargo test --release --locked --manifest-path src-tauri/Cargo.toml",
+    "cargo audit --locked --file src-tauri/Cargo.lock",
+    "Scans de segurança e validadores canônicos aplicáveis; inspeção manual do build Tauri com perfil temporário",
+    "P-REV read-only; CI source/final e release_evidence no SHA exato"
+  ],
+  "agentPlan": "P-INT root GPT-6.2 Sol medium é único escritor, executor dos checks e autor de E3. P-UI/P-QA são papéis do root sem chamadas extras. Um P-REV independente GPT-6.2 Sol medium read-only por diff de produto; P-SEC começa por scanners/testes determinísticos e só ganha delegado se a pergunta for independente. P-PRO/P-TRC/P-MAP por leitura/validadores; P-OPS root; sem worker local. P-ESC GPT-6.2 Sol high apenas após falha medium ou risco P0/P1 concreto. Reserva exata e paths no planning/specs/UI-008.md; amplia antes de nova escrita; libera após CI final e recibo/readback.",
+  "evidence": "E2",
+  "humanGateRequired": false,
+  "passes": false,
+  "notes": "Meta/rota escolhida pela usuária em 24/11/2026. A RECON documental observou origin/main/HEAD fc0f0b9bec46c113ccb88d4624be16ad387a70ad. A worktree codex/ui-008-product-20261124 foi removida na consolidação após o backup; antes de implementar, criar worktree limpa da origin/main vigente e repetir RECON. UI-001 released/E3 final 6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e, CI 44859430338/44860689539, ancestral. PRD-005 released/E3 final 6138ef4f45debc6c66f7da8b251f28c3779fb316, CI fonte 39298191906 e final 39300210306 success nos SHAs exatos, ancestral. UI-007 receipt released lido em fc0f0b9, CI final-main 45442837252 success 16/23 (sete passos produto/build ignorados por seletor documental). Recon confirmou use case e adapter existentes; App inclui forms de conta/categoria/entrada/saída/transferência; falta UI, caller, comando e grant de produto. Spec antiga corrigida. Sem código/teste/build/scan/inspeção UI-008 executado ainda; E3 e CI do item não registrados; custo/telemetria por item não registrado. Próximo: RED após nova RECON."
+}

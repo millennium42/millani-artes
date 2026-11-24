@@ -4,6 +4,8 @@ Uma persona é um funcionário operacional: resolve uma classe estreita de probl
 
 ## Roteador de modelo e esforço
 
+Rota vigente da Meta UI-001–UI-016: [UI_META_001_016_ROUTING.md](UI_META_001_016_ROUTING.md). A decisão humana de 24/11/2026 fixa GPT-6.2 Sol medium para esta Meta e substitui, somente neste escopo, as rotas de modelo anteriores e a rota local-first. Não iniciar inferência local para esses IDs.
+
 O departamento escolhe a menor configuração suficiente para a tarefa, não um modelo fixo. O Integrador registra `motivo da escolha`, tentativa e escalonamento no work item/handoff.
 
 | perfil da subtarefa | primeiro candidato | alternativa | escalar somente se |

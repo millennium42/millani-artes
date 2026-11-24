@@ -1,5 +1,9 @@
 # Política de economia de tokens
 
+## Override da Meta UI-001–UI-016 — 24/11/2026
+
+Para esta Meta, seguir a rota específica em [UI_META_001_016_ROUTING.md](UI_META_001_016_ROUTING.md): GPT-6.2 Sol medium como configuração do integrador e da revisão independente, sem workers locais, no máximo um P-REV por item e sem chamadas para comandos determinísticos. Esta decisão humana mais recente prevalece sobre rotas anteriores apenas para UI-001–UI-016. Consumo/custo por item continua `não registrado`; a tabela global não é evidência de preço do plano Codex.
+
 ## Objetivo e limite
 
 Minimizar tokens, custo e tempo **por tarefa aprovada**, sem remover validação, revisão independente, segurança, acessibilidade, testes de invariantes ou evidência. Uma resposta curta que gera retry é desperdício. Quando não há telemetria do cliente, registre `não registrado`; não estime economia.
