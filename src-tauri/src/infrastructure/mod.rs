@@ -2,6 +2,7 @@ pub(crate) mod account_setup;
 pub(crate) mod category_setup;
 pub(crate) mod entry_setup;
 pub(crate) mod exit_setup;
+pub(crate) mod transfer_setup;
 
 use std::io::Write;
 use std::sync::{LockResult, Mutex, MutexGuard};
@@ -29,6 +30,7 @@ pub(crate) fn startup() -> tauri::Result<()> {
             let category_store = category_setup::initialize_category_store_at(&data_dir)?;
             let entry_store = entry_setup::initialize_entry_store_at(&data_dir)?;
             let exit_store = exit_setup::initialize_exit_store_at(&data_dir)?;
+            let transfer_store = transfer_setup::initialize_transfer_store_at(&data_dir)?;
             app.manage(AppDatabaseWriteLock::default());
             app.manage(account_setup::AccountSetupState::new(
                 account_store,
@@ -42,7 +44,14 @@ pub(crate) fn startup() -> tauri::Result<()> {
                 entry_store,
                 data_dir.clone(),
             ));
-            app.manage(exit_setup::ExitSetupState::new(exit_store, data_dir));
+            app.manage(exit_setup::ExitSetupState::new(
+                exit_store,
+                data_dir.clone(),
+            ));
+            app.manage(transfer_setup::TransferSetupState::new(
+                transfer_store,
+                data_dir,
+            ));
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
@@ -50,7 +59,8 @@ pub(crate) fn startup() -> tauri::Result<()> {
             category_setup::create_category,
             entry_setup::list_accounts,
             entry_setup::create_entry,
-            exit_setup::create_exit
+            exit_setup::create_exit,
+            transfer_setup::create_transfer
         ])
         .run(tauri::generate_context!())
 }
@@ -71,3 +81,7 @@ pub(crate) fn emit_failure(failure: Failure) {
 #[cfg(test)]
 #[path = "exit_setup_tests.rs"]
 mod exit_setup_tests;
+
+#[cfg(test)]
+#[path = "transfer_setup_tests.rs"]
+mod transfer_setup_tests;
