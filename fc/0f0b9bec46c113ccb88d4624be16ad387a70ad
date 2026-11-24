@@ -1,0 +1,102 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-007",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-007 transfer form release — final documentation SHA",
+  "release_date": "2026-11-24",
+  "scope": "UI-007 only. This carry-forward binds the already released implementation evidence to the final documentation-only main SHA; no other item is included.",
+  "summary": "The UI-007 implementation and focal E3 were released on 002adfa9a9eaa646a5e415870f47beba81b24002 by the prior released receipt. PR #100 only reconciles historical status wording and the append-only log; it does not change code or repeat E3. This receipt is attached to the exact post-merge main SHA and must be read back before UI-008 starts.",
+  "source_sha": "cbee763848268bc90a75d90b46a033089a7005d5",
+  "source_tree_sha": "fa5c23febbffb4d3ebf17761806b4a32a2c48558",
+  "final_sha": "fc0f0b9bec46c113ccb88d4624be16ad387a70ad",
+  "tree_sha": "fa5c23febbffb4d3ebf17761806b4a32a2c48558",
+  "pull_request": {
+    "number": 100,
+    "url": "https://github.com/millennium42/millani-artes/pull/100",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "fc0f0b9bec46c113ccb88d4624be16ad387a70ad"
+  },
+  "source_ci": {
+    "run_number": 549,
+    "run_id": 45442237909,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "cbee763848268bc90a75d90b46a033089a7005d5",
+    "status": "completed",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7,
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45442237909"
+  },
+  "final_ci": {
+    "run_number": 550,
+    "run_id": 45442837252,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "fc0f0b9bec46c113ccb88d4624be16ad387a70ad",
+    "status": "completed",
+    "conclusion": "success",
+    "steps_total": 23,
+    "steps_passed": 16,
+    "steps_skipped": 7,
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45442837252"
+  },
+  "previous_release_receipt": {
+    "blob": "ede440e6b3c9c28dd14f9476dd148cb47a21d555",
+    "final_sha": "002adfa9a9eaa646a5e415870f47beba81b24002",
+    "mappings": "235→236",
+    "code_pr": 98,
+    "status_sync_pr": 99
+  },
+  "implementation": {
+    "code_sha": "2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba",
+    "final_code_sha": "2d6a122176c1ac232ff411ccdc9f6ada3de7a3eb",
+    "code_tree_sha": "8d07e66f4be572e95e3edee82fdae381d7dfd1e5",
+    "original_receipt_blob": "ede440e6b3c9c28dd14f9476dd148cb47a21d555",
+    "original_ci": "45425480098/45428758710 success 23/23",
+    "status_sync_ci": "45437046688/45437625299 success 16/23, seven skipped"
+  },
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "cbee763848268bc90a75d90b46a033089a7005d5",
+    "result": "zero P0/P1/P2/P3",
+    "checks": "Reviewers did not execute checks."
+  },
+  "local_document_checks": "On the exact documentation correction: 72 work-item fixtures passed; checker accepted 202 work items; append-only checker preserved 1,055,144 historical bytes; diff check clean. No code/E3/product tests, security scans, build, or visual captures were repeated.",
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "ancestral": true
+    },
+    {
+      "id": "FIN-021",
+      "status": "released",
+      "final_sha": "cba42dd8a3b9164dde9f78075c8720cf2182f6c0",
+      "source_ci_run": 39142344305,
+      "final_ci_run": 39143131512,
+      "ancestral": true
+    }
+  ],
+  "security_and_limits": "No global security or WCAG claim; no native Tauri UI→IPC→SQLite E2E, installer, production, or real financial data. Existing Cargo/OSV exceptions unchanged and expiry 2026-11-27. Product telemetry/cost/model telemetry: not recorded.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "ad434313d07c712e4bc14b1aa798414ac72576e1",
+    "preserved_count": 236,
+    "total_after": 237,
+    "preserved_mapping_set_sha256": "832106c7a1406233b3869e03198fe2467a446452707c950e7b5d671cb0a0a221",
+    "hash_method": "SHA-256 of mapping lines <note-blob-SHA> <target-SHA>, sorted ordinally and joined by LF with no trailing LF."
+  },
+  "next": "UI-008 only after reading back this receipt, reconfirming current main and revalidating UI-001 and PRD-005 released receipts. Do not start UI-017, BKP, SMK, REL or any other scope."
+}
