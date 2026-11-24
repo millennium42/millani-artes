@@ -57,6 +57,8 @@ test("recarrega contas disponiveis apos criar uma conta", async () => {
   vi.mocked(entryApi.listAccounts)
     .mockResolvedValueOnce([])
     .mockResolvedValueOnce([])
+    .mockResolvedValueOnce([])
+    .mockResolvedValueOnce([{ id, name: "Conta sintética" }])
     .mockResolvedValueOnce([{ id, name: "Conta sintética" }])
     .mockResolvedValueOnce([{ id, name: "Conta sintética" }]);
   render(<App />);
@@ -79,7 +81,7 @@ test("recarrega contas disponiveis apos criar uma conta", async () => {
   expect(
     await screen.findAllByRole("option", { name: "Conta sintética" }),
   ).toHaveLength(2);
-  expect(entryApi.listAccounts).toHaveBeenCalledTimes(4);
+  expect(entryApi.listAccounts).toHaveBeenCalledTimes(6);
 });
 
 test("apresenta o formulário de saída na configuração inicial", async () => {

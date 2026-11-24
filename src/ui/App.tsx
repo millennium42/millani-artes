@@ -4,6 +4,7 @@ import { parseInitialBalanceCents } from "./accountInput";
 import CategoryForm from "./CategoryForm";
 import EntryForm from "./EntryForm";
 import ExitForm from "./ExitForm";
+import TransferForm from "./TransferForm";
 
 const accountTypes: ReadonlyArray<{ value: AccountTypeKey; label: string }> = [
   { value: "cash", label: "Dinheiro" },
@@ -188,6 +189,7 @@ export default function App() {
         </section>
         <EntryForm accountRefreshKey={accountRefreshKey} />
         <ExitForm accountRefreshKey={accountRefreshKey} />
+        <TransferForm accountRefreshKey={accountRefreshKey} />
       </main>
     </>
   );

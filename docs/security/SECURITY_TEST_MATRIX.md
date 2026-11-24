@@ -599,3 +599,13 @@ A linha SEC-006 inclui UI-006 como consumidor de FIN-018; SEC-008 inclui a capab
 ### UI-005 — nota de liberação atual (23/11/2026)
 
 O snapshot candidato acima foi supersedido pela nota `refs/notes/evidence`, blob `ab56511f7345be6dcfea900a6237440da7f62440`, no SHA final-main `671d9ab0cc0bb8f206bfdffcabd481f83642e4db`, estado released; PR #91; source CI `45233997098` e final-main CI `45236415336` success 23/23 sem skips. A nota foi lida de volta com 229 mappings anteriores preservados e 230 no total. Código/E3 não foram repetidos no status-sync documental. Telemetria: não registrado.
+
+
+### UI-007 — formulário de transferência (candidato local E3; liberação pendente)
+
+ADR-029 autoriza exclusivamente `create_transfer`/`allow-create-transfer` na capability local existente `main-local-deny` para webview `main`. `security_tests.rs` e o manifesto compilado permitem a combinação local/main e negam origem remota, webview não selecionado e grants excedentes. `transfer_setup_tests.rs` confirma JSON válido→FIN-021→SQLite/audit sintético; JSON malformado/extra, valores inválidos e lock de escrita envenenado retornam códigos estáticos sem escrita. Rust fmt/clippy/test/build release Tauri passaram; teste do binário inclui 37 aprovados e 1 teste WebView2 nativo ignorado.
+
+Scans locais pinned: npm 182 dependências/0 vulnerabilidades; OSV 604 pacotes/4 exceções existentes/0 fora; Cargo Audit 422 crates/0 vulnerabilidades/3 avisos cobertos por exceções existentes; Gitleaks 1.086 commits/0 achados; fixtures de npm/Cargo/OSV/Gitleaks/CI/SAST passaram (40/69/44/16/42/45). O Cargo advisory DB global estava dirty com seis arquivos não rastreados e 309 commits ahead, preservado; a auditoria usou clone oficial limpo isolado. As exceções atuais vencem em 2026-11-27; nenhuma foi ampliada.
+
+Limite: E3 local do candidato, review P-SEC, CI remota no SHA final e nota/readback ainda pendentes; sem execução nativa UI→IPC→SQLite, sem outra topologia de janela/webview, sem WCAG geral ou neutralidade global dos relatórios. A auditoria Cargo não prova vulnerabilidade explorável; os avisos enumerados são as exceções já aprovadas.
+
