@@ -1,0 +1,112 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-004",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-004 reconciliation documental do release",
+  "release_date": "2026-11-24",
+  "scope": "Reconciliação documental da liberação funcional já comprovada de UI-004; sem implementação ou repetição de E3 de produto.",
+  "summary": "PR #96 sincronizou README, mapa, work item, spec, handoff, matrizes e PROGRESS_LOG append-only com o recibo funcional remoto. Nenhum código, regra de produto, capability ou dependência mudou.",
+  "source_sha": "2080cdf915895405c1fb71d4dbe30ced3d7fbc1a",
+  "source_tree_sha": "33e25ca57ca50cab34b9dcee5c158c8ce7becf6b",
+  "final_sha": "b58923e52df1f3d288c0bd14c357600d92436103",
+  "tree_sha": "33e25ca57ca50cab34b9dcee5c158c8ce7becf6b",
+  "pull_request": {
+    "number": 96,
+    "url": "https://github.com/millennium42/millani-artes/pull/96",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "b58923e52df1f3d288c0bd14c357600d92436103"
+  },
+  "source_ci": {
+    "run_number": 541,
+    "run_id": 45334987871,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "2080cdf915895405c1fb71d4dbe30ced3d7fbc1a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45334987871",
+    "job": {
+      "id": 138244850995,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 542,
+    "run_id": 45335367493,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "b58923e52df1f3d288c0bd14c357600d92436103",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45335367493",
+    "job": {
+      "id": 138246073383,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "prior_product_release": {
+    "note_blob": "db9aef39ed183adca2cd467119180f04f56964d1",
+    "final_sha": "0d5846231b49b80ed81b4a599873556c9ae27615",
+    "product_pr": 90,
+    "source_ci_run": 45196299390,
+    "final_ci_run": 45198674102,
+    "readback": "release_evidence/released; 228 mappings preserved and 229 total",
+    "implementation_e3_repeated": false
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e"
+    },
+    {
+      "id": "CAT-004",
+      "status": "released",
+      "final_sha": "32e4e0194c45060800e70bc7aed0d3fdb82cdc50"
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "2080cdf915895405c1fb71d4dbe30ced3d7fbc1a",
+    "candidate_tree_sha": "33e25ca57ca50cab34b9dcee5c158c8ce7becf6b",
+    "result": "Zero achados P0/P1/P2/P3 no diff documental exato após correções.",
+    "limitation": "Revisores não executaram checks."
+  },
+  "local_checks": [
+    "Project map fixtures/check: 28 fontes/955 arquivos; gitignore fixtures 28; evidence-state 25/checker 201; work-items 72/checker 201; progress-log fixtures 26; Tauri plugin fixtures 37/zero plugins/zero ADRs.",
+    "check-progress-log preservou 1.043.896 bytes históricos; diff --check limpo.",
+    "Gitleaks fixtures 16; scan 1.080 commits/zero findings. OSV fixtures 44; 604 pacotes/quatro exceções aprovadas/zero não aprovados.",
+    "npm audit fixtures 40; Node 24.21.0/npm 11.19.0, 182 deps/zero vulnerabilidades. CI-audit fixtures 42.",
+    "Cargo Audit fixtures 69; 422 crates/zero vulnerabilidades/três avisos aprovados; DB oficial isolado 52384ab5581a4487b62c549eef95cf7ba7e8bad5; DB global preservado com seis entradas sujas.",
+    "Scans de dependências locais adicionais vinculados ao source inalterado a2f6fd8614b6e3d8f3c0214489ab69361534d817. CI source/final passou nos gates documentais/security exatos e pulou sete passos de frontend/produto/build pelo seletor documental."
+  ],
+  "status_reconciliation": "A nota funcional de UI-004 já liberava o cadastro de categorias. PR #96 marcou estados in_progress/passes:false antigos como checkpoints históricos. Main final descende do recibo; UI-005 tem liberação própria e não é inferida aqui.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref_sha": "4bfb3142a492eed08f3276c47d8b3f955bd3e073",
+    "preserved_count": 233,
+    "total_after": 234,
+    "preserved_mapping_set_sha256": "44427cdf99eaea09fa7011fe2aa59be88f22787d705ed8ecc747a3ad578eba5b",
+    "hash_method": "SHA-256 das linhas '<note-blob-SHA> <target-SHA>' ordenadas ordinalmente, unidas por LF sem LF final.",
+    "publication": "Uma mapping adicionada sem force; ref remota buscada e nota/conjunto de mappings lidos de volta."
+  },
+  "limitations": [
+    "Atualização documental-only: não repete testes de produto, E3, acessibilidade, build, capturas ou inspeção visual.",
+    "Sem alegação de WCAG geral, segurança geral do WebView, instalador, produção ou invariantes globais.",
+    "Telemetria, tokens, custo, duração ativa e modelo efetivo: não registrado; nenhum dado real foi usado."
+  ],
+  "next": "UI-005: reconciliar apenas documentos contra seu recibo released próprio após revalidar recibo/main atuais; não repetir E3. Não iniciar além de UI-016."
+}
