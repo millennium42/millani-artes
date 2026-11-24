@@ -1,0 +1,151 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-007",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-007 local transfer form release",
+  "release_date": "2026-11-24",
+  "scope": "UI-007 only: local transfer form and Tauri bridge, plus documentation-only status synchronization. No other roadmap item was started or released by this note.",
+  "summary": "The code implementation, focal E3, independent code review, exact source/final-main code CIs, status-sync review, and exact source/final-main status-sync CIs passed. This note is attached to the final-main SHA and must be read back before UI-008 starts.",
+  "source_sha": "56d5c67032cc72f4d05b92fb52b13afbd8e1d37a",
+  "source_tree_sha": "de5007bf269e99905e4f8aac31249a66600133af",
+  "final_sha": "002adfa9a9eaa646a5e415870f47beba81b24002",
+  "tree_sha": "de5007bf269e99905e4f8aac31249a66600133af",
+  "pull_request": {
+    "number": 99,
+    "url": "https://github.com/millennium42/millani-artes/pull/99",
+    "merge_method": "squash",
+    "merged": true,
+    "merge_commit_sha": "002adfa9a9eaa646a5e415870f47beba81b24002"
+  },
+  "source_ci": {
+    "run_number": 547,
+    "run_id": 45437046688,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "56d5c67032cc72f4d05b92fb52b13afbd8e1d37a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45437046688",
+    "job": {
+      "id": 138597570265,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 548,
+    "run_id": 45437625299,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "002adfa9a9eaa646a5e415870f47beba81b24002",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45437625299",
+    "job": {
+      "id": 138599651735,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "implementation": {
+    "pull_request": 98,
+    "source_sha": "2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba",
+    "source_tree_sha": "8d07e66f4be572e95e3edee82fdae381d7dfd1e5",
+    "final_sha": "2d6a122176c1ac232ff411ccdc9f6ada3de7a3eb",
+    "tree_sha": "8d07e66f4be572e95e3edee82fdae381d7dfd1e5",
+    "source_ci_run": 45425480098,
+    "final_ci_run": 45428758710,
+    "source_ci": "success 23/23, zero skipped",
+    "final_ci": "success 23/23, zero skipped",
+    "status": "merged"
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539,
+      "ancestral_of_final_main": true,
+      "receipt": "Remote refs/notes/evidence snapshot read back; mapping preserved."
+    },
+    {
+      "id": "FIN-021",
+      "status": "released",
+      "final_sha": "cba42dd8a3b9164dde9f78075c8720cf2182f6c0",
+      "source_ci_run": 39142344305,
+      "final_ci_run": 39143131512,
+      "ancestral_of_final_main": true,
+      "receipt": "Remote refs/notes/evidence snapshot read back; mapping preserved."
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": ["P-REV", "P-SEC"],
+    "candidate_sha": "56d5c67032cc72f4d05b92fb52b13afbd8e1d37a",
+    "candidate_tree_sha": "de5007bf269e99905e4f8aac31249a66600133af",
+    "result": "zero P0/P1/P2 findings; final P-SEC review also found zero P3",
+    "checks": "Reviewers did not execute checks.",
+    "history": "P-SEC found one P3 in earlier candidate ae74da31a052a37975761ce7c5a9d121523978fb: Gitleaks 1,086 was attributed to the candidate. The matrix was corrected to distinguish the pre-commit 1,086 scan from the exact code SHA scan at 1,087; both reviewers re-reviewed the final tree."
+  },
+  "implementation_review": {
+    "evidence": "E2 read-only",
+    "personas": ["P-REV", "P-SEC"],
+    "candidate_sha": "2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba",
+    "result": "zero P0/P1/P2 findings; no review checks were run"
+  },
+  "local_e3": {
+    "implementation_sha": "2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba",
+    "red_before_build": true,
+    "frontend": "Node 24.21.0/npm 11.19.0; format, lint, typecheck, tests, coverage and build passed; 13 files/87 tests; coverage statements 96.56%, branches 91.63%, functions 93.02%, lines 99.18%; thresholds unchanged.",
+    "rust": "Rust 1.99; fmt, clippy with warnings denied, locked tests and release/custom-protocol Tauri build passed; 348 library tests, 37 binary tests with one native WebView2 test ignored, 284 SQLite tests and 40 doctests.",
+    "bridge": "A valid four-field Request reaches FIN-021 and synthetic SQLite/audit; malformed or extra JSON, invalid values and poisoned write lock return static errors without writes. Authority tests allow local/main and deny remote origin, unselected webview and excess grants.",
+    "scans": {
+      "gitleaks": "8.30.1; exact code SHA scan: 1,087 commits; zero findings. The earlier pre-commit checkpoint was 1,086/0.",
+      "npm": "Node 24.21.0/npm 11.19.0; 182 dependencies; zero vulnerabilities.",
+      "osv": "604 packages; four existing approved exceptions; zero unapproved findings.",
+      "cargo_audit": "422 crates; zero vulnerabilities; three warnings within existing approved exceptions, expiring 2026-11-27.",
+      "fixtures": "npm 40, Cargo 69, OSV 44, Gitleaks 16, CI audit 42 and SAST 45 passed.",
+      "rustsec_database": "The shared advisory database was already dirty (six untracked files, 309 commits ahead) and was preserved; Cargo Audit used an isolated clean official clone at 1d328b6bb9f2f350bf65c1c81ab68781cb9e018a."
+    },
+    "visual_inspection": {
+      "method": "Automated Edge headless capture of the production frontend bundle with synthetic data and invoke stub; no CUA.",
+      "viewports": ["1024x720", "313x343"],
+      "overflow": "clientWidth/scrollWidth 1009/1009 and 298/298; no horizontal overflow.",
+      "states": "Form was inspected from screenshots; loading/empty/error were confirmed through component DOM text and measurements. An isolated recapture of those states stalled and was stopped.",
+      "checks": "Keyboard order, focus and labels were checked. Contrast ratios were calculated for the color pairs used only; no general WCAG claim.",
+      "captures": "Local ignored artifacts in artifacts/ui007-visual-20261124; not included in the PR."
+    }
+  },
+  "security": {
+    "capability": "Only create_transfer/allow-create-transfer was added to the existing main-local-deny capability for local origin and webview main. The bridge reuses FIN-021; no core/plugin, filesystem, SQL, remote-origin or extra command capability was added.",
+    "topology_limit": "Window and webview selectors are OR; authority evidence applies to the current single-main topology and does not prove future topologies or a real hostile WebView.",
+    "exceptions": "No exception was widened; the existing OSV/Cargo exceptions expire 2026-11-27."
+  },
+  "status_reconciliation": {
+    "documents_at_status_sync_final_sha": "in_progress/E3/passes:false; the docs explicitly held release until this note was read back.",
+    "release_gate": "This released note closes the pending receipt gate on final SHA 002adfa9a9eaa646a5e415870f47beba81b24002. After readback, append the receipt and released state to the docs before UI-008 begins."
+  },
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "1b473a87d6c10af1a3876598bd9441df16b0c655",
+    "preserved_count": 235,
+    "total_after": 236,
+    "preserved_mapping_set_sha256": "40563797dd61617e398c93583ce4e43764c134b650fbe8893e653690eaece066",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF."
+  },
+  "limitations": [
+    "No end-to-end native Tauri UI→IPC→SQLite journey was executed; no E2E claim.",
+    "No real financial data, installer, deployment, production, or general WCAG conformance claim.",
+    "FIN-021 rules and tests were reused; they were not repeated.",
+    "The UI does not prove report neutrality or global financial invariants.",
+    "Product telemetry and cost: not recorded; leader model telemetry: not recorded."
+  ],
+  "next": "Read back this remote receipt and synchronize the released state in the UI-007 docs. Only then may UI-008 start after its own dependency/branch/CI/worktree recon. Do not enter UI-017, BKP, SMK, REL or other scope."
+}
