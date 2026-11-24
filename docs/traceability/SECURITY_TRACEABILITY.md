@@ -18,7 +18,7 @@ TRC006 pode ter checksE3/reviewE2/CI documental; isso não promove controles/imp
 
 ## UI-003 — cadastro local de conta (released; prova focal)
 
-UI-003 restringe o produto a um comando create_account autorizado à capability local atual da janela/webview main; a configuração, o teste de autoridade e os limites estão em [política Tauri](../security/TAURI_CAPABILITIES_POLICY.md), [matriz de segurança](../security/SECURITY_TEST_MATRIX.md) e [handoff](../../planning/handoffs/UI-003.md). A nota remota release_evidence/released no SHA final-main 05190e0f404a6865329fa4ceb3698025b5c727cf confirma o fechamento; CI source/final-main do status-sync PR #89: 45168079472/45168644799, ambos success 16/23 com sete passos de produto/build ignorados. Isso não prova segurança geral do WebView nem autoriza comandos ou origens futuras.
+No escopo da liberação UI-003, somente o comando create_account foi selecionado para a capability local da janela/webview main; UI-004–UI-006 têm grants próprios descritos abaixo. A configuração, o teste de autoridade e os limites de UI-003 estão em [política Tauri](../security/TAURI_CAPABILITIES_POLICY.md), [matriz de segurança](../security/SECURITY_TEST_MATRIX.md) e [handoff](../../planning/handoffs/UI-003.md). A nota remota release_evidence/released no SHA final-main 05190e0f404a6865329fa4ceb3698025b5c727cf confirma o fechamento; CI source/final-main do status-sync PR #89: 45168079472/45168644799, ambos success 16/23 com sete passos de produto/build ignorados. Isso não prova segurança geral do WebView nem autoriza comandos ou origens futuras.
 
 ## UI-004 — cadastro local de categoria (candidato E3, 23/11/2026)
 
