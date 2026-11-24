@@ -1,0 +1,131 @@
+{
+  "note_type": "release_evidence",
+  "id": "UI-003",
+  "status": "done",
+  "release_state": "released",
+  "evidence": "E3",
+  "title": "UI-003 post-receipt documentation reconciliation",
+  "release_date": "2026-11-24",
+  "scope": "Somente reconciliação documental do estado já liberado de UI-003; sem implementação ou repetição de E3 de produto.",
+  "summary": "O recibo funcional anterior de UI-003 continua válido e alcançável na main atual. PR #95 sincronizou spec, work item, handoff, roadmap e matrizes com esse recibo; não alterou código, dependências, capabilities ou regra financeira.",
+  "source_sha": "fac0ceb6409e7468dc6816c1d7aa4e7efe39dada",
+  "source_tree_sha": "4d866fa5831e06422a4c1ab27fa590ed6705566f",
+  "final_sha": "a2f6fd8614b6e3d8f3c0214489ab69361534d817",
+  "tree_sha": "4d866fa5831e06422a4c1ab27fa590ed6705566f",
+  "pull_request": {
+    "number": 95,
+    "url": "https://github.com/millennium42/millani-artes/pull/95",
+    "merge_method": "merge",
+    "merged": true,
+    "merge_commit_sha": "a2f6fd8614b6e3d8f3c0214489ab69361534d817"
+  },
+  "source_ci": {
+    "run_number": 539,
+    "run_id": 45325638776,
+    "workflow": "Documentation",
+    "event": "pull_request",
+    "head_sha": "fac0ceb6409e7468dc6816c1d7aa4e7efe39dada",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45325638776",
+    "job": {
+      "id": 138214461479,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "final_ci": {
+    "run_number": 540,
+    "run_id": 45325906051,
+    "workflow": "Documentation",
+    "event": "push",
+    "head_sha": "a2f6fd8614b6e3d8f3c0214489ab69361534d817",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/millennium42/millani-artes/actions/runs/45325906051",
+    "job": {
+      "id": 138215322662,
+      "name": "validate",
+      "steps_total": 23,
+      "steps_passed": 16,
+      "steps_skipped": 7
+    }
+  },
+  "prior_product_release": {
+    "note_blob": "99f8c83674f5af0e20c02048a2b6343238ed2875",
+    "final_sha": "05190e0f404a6865329fa4ceb3698025b5c727cf",
+    "product_pr": 88,
+    "source_ci_run": 45158771066,
+    "final_ci_run": 45161439587,
+    "status_sync_pr": 89,
+    "status_sync_source_ci_run": 45168079472,
+    "status_sync_final_ci_run": 45168644799,
+    "note_readback": "released; 227 mappings preserved and 228 total",
+    "implementation_e3_repeated": false
+  },
+  "dependencies": [
+    {
+      "id": "UI-001",
+      "status": "released",
+      "final_sha": "6aa4ca23d243cabe6ba7b875e9a92b9244b8fb2e",
+      "source_ci_run": 44859430338,
+      "final_ci_run": 44860689539
+    },
+    {
+      "id": "FIN-008",
+      "status": "released",
+      "final_sha": "2a8fc0f483f83f9024b5d3d82224c1b01afb5a04",
+      "source_ci_run": 45115494762,
+      "final_ci_run": 45115885950
+    }
+  ],
+  "review": {
+    "evidence": "E2 read-only",
+    "personas": [
+      "P-REV",
+      "P-SEC"
+    ],
+    "candidate_sha": "fac0ceb6409e7468dc6816c1d7aa4e7efe39dada",
+    "candidate_tree_sha": "4d866fa5831e06422a4c1ab27fa590ed6705566f",
+    "result": "No P0/P1/P2/P3 findings on exact candidate after correction.",
+    "limitation": "Reviewers did not execute checks."
+  },
+  "local_checks": {
+    "exact_final_candidate": [
+      "Gitleaks 8.30.1 history scan: 1,078 commits, 0 findings.",
+      "git diff --check against origin/main: passed."
+    ],
+    "before_last_wording_correction": [
+      "Project map fixtures 28 passed; map 28 sources/955 files passed.",
+      "Gitignore fixtures: 28 ignored and 4 protected.",
+      "Evidence fixtures 25; 201 declarations valid.",
+      "Work-item fixtures 72; 201 declarations valid.",
+      "Progress fixtures 26; append-only history 1,042,643 bytes preserved.",
+      "Tauri plugin fixtures 37 and CLI fixtures 2; gate found 0 plugins and 0 ADR records.",
+      "Frontend selector fixtures 20; Gitleaks fixtures 16."
+    ],
+    "final_exact_sha_ci": "The exact final source and main push runs validated documentation/security gates successfully; seven product/build steps were skipped by the existing selector because the diff is documentation-only."
+  },
+  "status_reconciliation": "An older pre-receipt snapshot said in_progress/E3/passes:false. The terminal receipt at 05190e0f404a6865329fa4ceb3698025b5c727cf proves release; the final main SHA a2f6fd8614b6e3d8f3c0214489ab69361534d817 descends from that receipt. PR #95 updates tracked status and labels older checkpoints as historical. No tracked commit followed final-main CI.",
+  "notes_mapping": {
+    "notes_ref": "refs/notes/evidence",
+    "previous_ref": "670725a7c6683b359703ac98638ac96d79307f68",
+    "preserved_count": 232,
+    "total_after": 233,
+    "preserved_mapping_set_sha256": "27bcc19ef134efb06dcd22956bd170359f936beb1745741a70aef65d332db594",
+    "hash_method": "SHA-256 of mapping lines '<note-blob-SHA> <target-SHA>' sorted ordinally and joined by LF with no trailing LF.",
+    "publication": "Append one mapping only; push without force; fetch/read back the remote ref and verify note content, mapping count and set hash."
+  },
+  "warnings": [
+    "The original UI-003 receipt records an existing chrono unmaintained-dependency warning expiring before 2026-11-27 UTC; this documentation-only reconciliation did not change code or approvals."
+  ],
+  "limitations": [
+    "This reconciliation does not repeat product E3, native execution, accessibility evidence, security scans tied to product code, or visual inspection.",
+    "No general WCAG conformance, installer, production, global invariant or global coverage claim.",
+    "Product/build steps were skipped in both status-sync CI runs by the existing documentation-only selector.",
+    "Telemetry and cost: não registrado."
+  ],
+  "next": "UI-004 is next only after revalidating the UI-003 and CAT-004 released receipts on current remote refs. Do not infer UI-004 release from this note."
+}
