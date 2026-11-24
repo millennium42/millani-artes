@@ -2,7 +2,7 @@
   "id": "UI-007",
   "title": "formulário de transferência",
   "specPath": "planning/specs/UI-007.md",
-  "status": "in_progress",
+  "status": "done",
   "dependencies": ["UI-001", "FIN-021"],
   "acceptanceCriteria": [
     "UI-001 e FIN-021 têm recibos remotos released/E3, notas, CIs exatos e SHAs finais ancestrais de origin/main vigente; snapshots antigos de FIN-021 são históricos.",
@@ -13,7 +13,7 @@
     "Testes React/API, Rust file-backed e authority cobrem contrato e integração sem reatribuir os testes antigos de FIN-021.",
     "TypeScript format/lint/typecheck/test/coverage/build, Rust fmt/clippy/test/audit e security checks passam sem reduzir thresholds ou alterar exceções.",
     "Bundle de produção é executado em automação sem CUA; capturas sintéticas 1024x720 e 313x343 permitem revisar estados, foco, contraste e overflow; sem alegação E2E nativa sem execução.",
-    "P-REV/P-SEC revisaram o candidato exato sem P0/P1/P2; CI remoto source e final-main passou nos SHAs exatos; o status-sync ainda precisa de review/CI próprios e nota released lida de volta no SHA final, preservando mappings.",
+    "P-REV/P-SEC revisaram o candidato de código exato sem P0/P1/P2; status-sync documental foi revisado no SHA final sem achados P0/P1/P2/P3; source/final-main CI passou nos SHAs exatos; nota released foi lida de volta no SHA final com mappings anteriores preservados.",
     "Spec, ADR, handoff, matrizes, roadmap e PROGRESS_LOG append-only registram evidência, limites, riscos, checks omitidos e telemetria não registrada."
   ],
   "checks": [
@@ -25,12 +25,13 @@
     "E3 local do candidato: quality Node 24.21.0/npm 11.19.0 — format/lint/typecheck, 13 arquivos/87 testes, coverage 96.56/91.63/93.02/99.18% e build passaram; Rust 1.99 fmt/clippy/test/build release Tauri passaram; testes 348 lib + 37 binário/1 ignored + 284 SQLite + 40 doctests.",
     "Segurança no SHA de código 2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba: npm 182/0 vulnerabilidades; OSV 604 pacotes/4 exceções existentes/0 não aprovadas; Cargo 422/0 vulnerabilidades/3 avisos sob exceções existentes; Gitleaks 1087 commits/0 achados; fixtures npm40/Cargo69/OSV44/Gitleaks16/CI42/SAST45 passaram. O checkpoint pré-commit da spec registra Gitleaks 1086/0. O Cargo advisory DB global já estava dirty (seis arquivos não rastreados, 309 commits ahead); foi preservado e o scanner pinado usou clone oficial limpo isolado.",
     "Captura automatizada do bundle de produção, Edge headless, dados sintéticos/IPC stub, sem CUA: 1024x720 e 313x343, sem overflow; screenshots de formulário desktop/mínimo e DOM states loading/vazio/erro em artifacts/ui007-visual-20261124. Keyboard order/focus/labels verificados nos testes; contrastes dos pares usados medidos; sem declaração WCAG geral.",
-    "P-REV e P-SEC revisaram o candidato 2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba sem P0/P1/P2; nenhuma revisão executou checks. PR #98: CI source run 45425480098, success 23/23 no SHA 2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba. Merge squash em 2d6a122176c1ac232ff411ccdc9f6ada3de7a3eb; tree idêntico 8d07e66f4be572e95e3edee82fdae381d7dfd1e5; CI push main run 45428758710, success 23/23 no SHA final. Status-sync documental ainda aguarda CI próprio e nota remota/readback; manter UI-008 bloqueada até recibo released.",
-    "Checks locais do status-sync documental: mapa 28 fontes/966 arquivos; evidence 25 fixtures/202 work items; work items 72 fixtures/202; gitignore 28 artefatos/4 fontes preservadas; progress-log 26 fixtures e append-only preservou 1.051.661 bytes históricos após o commit; plugins Tauri 37 fixtures + 2 casos CLI/0 plugins. Seletor frontend false e 20 fixtures pass. CI remoto e recibo readback pendentes."
+    "Checkpoint pré-recibo: P-REV e P-SEC revisaram o candidato 2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba sem P0/P1/P2; nenhuma revisão executou checks. PR #98: CI source run 45425480098, success 23/23 no SHA 2f9834b7b368b9db206c28b0f39d4d2b9e96a5ba. Merge squash em 2d6a122176c1ac232ff411ccdc9f6ada3de7a3eb; tree idêntico 8d07e66f4be572e95e3edee82fdae381d7dfd1e5; CI push main run 45428758710, success 23/23 no SHA final. Naquele checkpoint, status-sync documental ainda aguardava CI próprio e nota remota/readback, por isso UI-008 permanecia bloqueada. A liberação posterior está registrada na linha seguinte e no estado released deste item.",
+    "Checks locais do status-sync documental: mapa 28 fontes/966 arquivos; evidence 25 fixtures/202 work items; work items 72 fixtures/202; gitignore 28 artefatos/4 fontes preservadas; progress-log 26 fixtures e append-only preservou 1.051.661 bytes históricos após o commit; plugins Tauri 37 fixtures + 2 casos CLI/0 plugins. Seletor frontend false e 20 fixtures pass.",
+    "Liberação UI-007: recibo remoto release_evidence/released, nota blob ede440e6b3c9c28dd14f9476dd148cb47a21d555, lido de volta em 002adfa9a9eaa646a5e415870f47beba81b24002; PR #99 source/final CIs 45437046688/45437625299 success 16/23, sete etapas de produto/build ignoradas; mappings 235→236, preservados."
   ],
   "agentPlan": "P-INT (GPT-6 Luna Extra High/max) é o único escritor/executor/integrador. P-TRC/P-PRO e P-UI/P-QA concluíram recon read-only; P-SEC/P-REV revisaram o candidato exato em uma onda paralela, limite de dois delegados ativos e até três achados por missão. Sem modelos locais, CUA ou roteamento local.",
   "evidence": "E3",
   "humanGateRequired": false,
-  "passes": false,
-  "notes": "UI-007 permanece in_progress/E3/passes:false até concluir review/CI do status-sync e ler de volta a nota release_evidence/released no SHA final-main com mappings preservados. Implementação, E3 local, review do código e CIs source/final-main do código estão concluídos. O app Tauri não foi executado como jornada nativa/E2E; não alegar WCAG geral. Não iniciar UI-008 antes do recibo released. Telemetria/custo/modelo líder: não registrado."
+  "passes": true,
+  "notes": "UI-007 done/E3/passes:true; recibo remoto release_evidence/released, blob ede440e6b3c9c28dd14f9476dd148cb47a21d555, lido de volta no SHA final-main 002adfa9a9eaa646a5e415870f47beba81b24002; mappings 235→236 preservados. PR #99 source/final CI 45437046688/45437625299 success 16/23, sete etapas de produto/build ignoradas. UI-008 é o próximo ID elegível após revalidar suas dependências diretas e iniciar recon limpa. O app Tauri não foi executado como jornada nativa/E2E; sem alegação de WCAG geral. Telemetria/custo/modelo líder: não registrado."
 }
