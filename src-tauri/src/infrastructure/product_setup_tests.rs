@@ -2,7 +2,9 @@ use super::{create_product_from_request_for, initialize_product_store_at, Produc
 use crate::infrastructure::AppDatabaseWriteLock;
 use millani_artes::database;
 use std::path::{Path, PathBuf};
-use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
+use std::sync::{mpsc, Arc};
+use std::time::{Duration, Instant};
 
 static NEXT_DIRECTORY: AtomicU64 = AtomicU64::new(1);
 
@@ -113,6 +115,127 @@ fn creates_active_product_and_audit_without_financial_or_inventory_effects() {
         )
         .expect("UI008_INVENTORY_SCHEMA_CHECK_FAILED");
     assert_eq!(tables, 0);
+    assert_eq!(counts(&data_path), (1, 1, 0, 0, 0, 0));
+}
+
+#[cfg(target_os = "windows")]
+#[test]
+#[ignore = "Requires Windows WebView2 and production assets; hidden functional test, no visual inspection"]
+fn native_ui_submit_creates_product_through_ipc_and_sqlite() {
+    let (directory, data_path, state) = setup();
+    let profile_path = directory.0.join("webview-profile");
+    assert!(
+        !profile_path.exists(),
+        "UI008_WEBVIEW_PROFILE_ALREADY_EXISTS"
+    );
+
+    let mut context: tauri::Context<tauri::Wry> = tauri::generate_context!();
+    let mut windows = std::mem::take(&mut context.config_mut().app.windows);
+    assert_eq!(windows.len(), 1, "UI008_MAIN_WINDOW_CONFIG_MISSING");
+    let window_config = windows.remove(0);
+    let inject_once = Arc::new(AtomicBool::new(false));
+    let page_inject_once = Arc::clone(&inject_once);
+
+    let app = tauri::Builder::default()
+        .any_thread()
+        .manage(state)
+        .manage(AppDatabaseWriteLock::default())
+        .invoke_handler(tauri::generate_handler![super::create_product])
+        .setup(move |app| {
+            tauri::WebviewWindowBuilder::from_config(app, &window_config)?
+                .visible(false)
+                .skip_taskbar(true)
+                .data_directory(profile_path)
+                .on_page_load(move |webview, payload| {
+                    if payload.event() == tauri::webview::PageLoadEvent::Finished
+                        && !page_inject_once.swap(true, Ordering::SeqCst)
+                    {
+                        webview
+                            .eval(
+                                r#"(async () => {
+                                  const deadline = Date.now() + 10000;
+                                  let name = document.querySelector('#product-name');
+                                  while (!name && Date.now() < deadline) {
+                                    await new Promise(resolve => setTimeout(resolve, 25));
+                                    name = document.querySelector('#product-name');
+                                  }
+                                  const description = document.querySelector('#product-description');
+                                  const price = document.querySelector('#product-price');
+                                  if (!name || !description || !price) return;
+                                  const setValue = (element, prototype, value) => {
+                                    Object.getOwnPropertyDescriptor(prototype, 'value').set.call(element, value);
+                                    element.dispatchEvent(new Event('input', { bubbles: true }));
+                                  };
+                                  setValue(name, HTMLInputElement.prototype, 'UI008 native synthetic');
+                                  setValue(description, HTMLTextAreaElement.prototype, 'Temporary IPC data');
+                                  setValue(price, HTMLInputElement.prototype, '12,34');
+                                  await new Promise(resolve => setTimeout(resolve, 50));
+                                  name.form.requestSubmit();
+                                })();"#,
+                            )
+                            .expect("UI008_NATIVE_FORM_INJECTION_FAILED");
+                    }
+                })
+                .build()?;
+            Ok(())
+        })
+        .build(context)
+        .expect("UI008_NATIVE_TAURI_BUILD_FAILED");
+
+    let app_handle = app.handle().clone();
+    let observed_data_path = data_path.clone();
+    let (finished_tx, finished_rx) = mpsc::channel();
+    let monitor = std::thread::spawn(move || {
+        let deadline = Instant::now() + Duration::from_secs(30);
+        loop {
+            let product_exists =
+                database::open_database(&observed_data_path.join("millani-artes.sqlite3"))
+                    .ok()
+                    .and_then(|connection| {
+                        connection
+                            .query_row(
+                                "SELECT COUNT(*) FROM main.products WHERE name = ?1",
+                                ["UI008 native synthetic"],
+                                |row| row.get::<_, i64>(0),
+                            )
+                            .ok()
+                    })
+                    .unwrap_or_default()
+                    == 1;
+            if product_exists {
+                let _ = finished_tx.send(true);
+                app_handle.exit(0);
+                return;
+            }
+            if Instant::now() >= deadline {
+                let _ = finished_tx.send(false);
+                app_handle.exit(1);
+                return;
+            }
+            std::thread::sleep(Duration::from_millis(50));
+        }
+    });
+
+    let exit_code = app.run_return(|_, _| {});
+    let created = finished_rx
+        .recv_timeout(Duration::from_secs(2))
+        .expect("UI008_NATIVE_MONITOR_TIMEOUT");
+    monitor.join().expect("UI008_NATIVE_MONITOR_PANICKED");
+    assert_eq!(exit_code, 0, "UI008_NATIVE_APP_EXIT_FAILED");
+    assert!(created, "UI008_NATIVE_PRODUCT_SUBMISSION_FAILED");
+
+    let connection = database::open_database(&data_path.join("millani-artes.sqlite3"))
+        .expect("UI008_DATABASE_REOPEN_FAILED");
+    let (name, description, price): (String, String, i64) = connection
+        .query_row(
+            "SELECT name, description, suggested_price_cents FROM main.products",
+            [],
+            |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+        )
+        .expect("UI008_PRODUCT_READ_FAILED");
+    assert_eq!(name, "UI008 native synthetic");
+    assert_eq!(description, "Temporary IPC data");
+    assert_eq!(price, 1234);
     assert_eq!(counts(&data_path), (1, 1, 0, 0, 0, 0));
 }
 
