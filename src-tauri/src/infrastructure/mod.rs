@@ -2,6 +2,7 @@ pub(crate) mod account_setup;
 pub(crate) mod category_setup;
 pub(crate) mod entry_setup;
 pub(crate) mod exit_setup;
+pub(crate) mod product_setup;
 pub(crate) mod transfer_setup;
 
 use std::io::Write;
@@ -31,6 +32,7 @@ pub(crate) fn startup() -> tauri::Result<()> {
             let entry_store = entry_setup::initialize_entry_store_at(&data_dir)?;
             let exit_store = exit_setup::initialize_exit_store_at(&data_dir)?;
             let transfer_store = transfer_setup::initialize_transfer_store_at(&data_dir)?;
+            let product_store = product_setup::initialize_product_store_at(&data_dir)?;
             app.manage(AppDatabaseWriteLock::default());
             app.manage(account_setup::AccountSetupState::new(
                 account_store,
@@ -50,6 +52,10 @@ pub(crate) fn startup() -> tauri::Result<()> {
             ));
             app.manage(transfer_setup::TransferSetupState::new(
                 transfer_store,
+                data_dir.clone(),
+            ));
+            app.manage(product_setup::ProductSetupState::new(
+                product_store,
                 data_dir,
             ));
             Ok(())
@@ -60,7 +66,8 @@ pub(crate) fn startup() -> tauri::Result<()> {
             entry_setup::list_accounts,
             entry_setup::create_entry,
             exit_setup::create_exit,
-            transfer_setup::create_transfer
+            transfer_setup::create_transfer,
+            product_setup::create_product
         ])
         .run(tauri::generate_context!())
 }

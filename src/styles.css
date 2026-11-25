@@ -72,6 +72,7 @@ label {
 
 input,
 select,
+textarea,
 button {
   width: 100%;
   min-width: 0;
@@ -82,6 +83,11 @@ button {
   color: #25303b;
   background: #fff;
   font: inherit;
+}
+
+textarea {
+  min-height: 5rem;
+  resize: vertical;
 }
 
 button {

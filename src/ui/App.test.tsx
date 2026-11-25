@@ -50,6 +50,16 @@ test("apresenta cadastro acessivel de categoria", () => {
   expect(screen.getByRole("button", { name: "Salvar categoria" })).toBeTruthy();
 });
 
+test("apresenta cadastro de produto na configuração inicial", () => {
+  render(<App />);
+
+  expect(
+    screen.getByRole("heading", { name: "Cadastrar produto", level: 2 }),
+  ).toBeTruthy();
+  expect(screen.getByRole("textbox", { name: "Nome do produto" })).toBeTruthy();
+  expect(screen.getByRole("button", { name: "Salvar produto" })).toBeTruthy();
+});
+
 test("recarrega contas disponiveis apos criar uma conta", async () => {
   const user = userEvent.setup();
   const id = Array.from({ length: 16 }, (_, index) => index + 1);

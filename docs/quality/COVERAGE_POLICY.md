@@ -553,3 +553,6 @@ LLVM 23.1.1 local: calculate_context_result.rs 24/24 linhas, 3/3 funções e 36/
 ### DSH-009 — cobertura focal
 
 LLVM 23.1.1 local: `calculate_home_expenses.rs` 24/24 linhas e 3/3 funções no perfil full; controle sem os cinco testes unitários DSH-009: 0/24 linhas e 0/3 funções. Stable não reportou branches; regiões/branches não são inferidos como statements. Métrica local somente do arquivo do caso de uso, sem cobertura Rust global ou no CI.
+### UI-008 — formulário de produto (candidato E3 local)
+
+`ProductForm.tsx` atingiu 100% statements (63/63), branches (34/34), functions (7/7) e lines (58/58). `productApi.ts` atingiu 100% statements/functions/lines (1/1 cada; zero branches instrumentados). O Vitest mantém os thresholds críticos 95/95/95/90 nesses arquivos e o global 90/90/90/85; nenhum threshold foi reduzido. Coverage global da execução: 97,02% statements, 92,63% branches, 93,61% functions e 99,29% lines. Testes de caller/UI com mocks não substituem coverage Rust/SQLite, IPC nativo ou invariantes financeiros globais.

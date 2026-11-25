@@ -1058,3 +1058,10 @@ UI-007 foi liberada pelo recibo remoto `release_evidence/released`, blob `ede440
 
 Limites: FIN-021 não foi repetido; a E3 não prova jornada nativa UI→IPC→SQLite, E2E, neutralidade de relatórios ou INV-FIN-003 global. Sem dado real/produção/instalador. O status-sync documental e a nota/readback final ainda pendem; UI-008 permanece bloqueada até o recibo.
 
+## UI-008 — cadastro de produto (candidato local; E3 parcial, release pendente)
+
+UI-001 e PRD-005 foram revalidadas como dependências diretas. O produto permanece template; não cria estoque, venda, movimento ou saldo. O candidato acrescenta `ProductForm`, `productApi`, o comando `create_product` e testes file-backed sem migration/dependência. `npm run quality`, build frontend e build Tauri `--no-bundle --locked`, fmt, Clippy e suítes Rust debug/release passaram localmente na worktree baseada em `6521bd78c8326cb1aaab526dab2345413cc4dd4a`.
+
+Snapshots Edge headless do bundle de produção foram inspecionados em 1024×720 e 313×343. `documentElement.scrollWidth/clientWidth` foi 1009/1009 e 298/298; o formulário não mostrou overflow horizontal, truncamento ou bloqueio visual. Testes file-backed verificam produto ativo + uma auditoria, preservação literal de nome/descrição preenchida, persistência da descrição vazia, sem movimentos/vendas/recebíveis, rejeição sem escrita e rollback/recovery/retry. Testes React/API cobrem rótulos, foco, centavos, erros e retry. Scans de dependências/segredos foram executados, mas seus recibos apontam para o HEAD base, não para um SHA candidato.
+
+Limites: o snapshot headless não é execução Tauri UI→IPC→SQLite; nenhuma submissão de produto foi feita na janela nativa. `LOCALAPPDATA` não isolou o perfil WebView2, então não foi repetida a inspeção nativa; o timestamp do SQLite padrão permaneceu anterior ao lançamento, mas a pasta `EBWebView` foi tocada e preservada. P-REV/P-SEC read-only revisaram o diff atual sem achados P0/P1/P2 (E2). Sem teste com leitor de tela real, WCAG geral, scans do candidato, CI nos SHAs exatos ou recibo/readback. `passes:false`; UI-009 não iniciou.
