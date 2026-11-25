@@ -24,7 +24,7 @@
       "capabilities": [
         {
           "identifier": "main-local-deny",
-          "description": "SEC-001 / ADR-021 / ADR-025 / ADR-026 / ADR-027 / ADR-028: local main webview; account, category, entry, exit and transfer setup commands only. Tests: src/security_tests.rs.",
+          "description": "SEC-001 / ADR-021 / ADR-025 / ADR-026 / ADR-027 / ADR-028 / ADR-030: local main webview; account, category, entry, exit, transfer and product setup commands only. Tests: src/security_tests.rs.",
           "local": true,
           "windows": [],
           "permissions": [
@@ -33,7 +33,8 @@
             "allow-list-accounts",
             "allow-create-entry",
             "allow-create-exit",
-            "allow-create-transfer"
+            "allow-create-transfer",
+            "allow-create-product"
           ],
           "webviews": [
             "main"
