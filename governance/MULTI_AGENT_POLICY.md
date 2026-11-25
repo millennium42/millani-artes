@@ -1,5 +1,7 @@
 # Política de agentes, modelos e esforço
 
+> Arquivo histórico, mantido para rastreabilidade. Deixou de orientar trabalho ativo em 24/11/2026.
+
 ## Regra de economia
 
 Use o menor modelo e esforço que produza uma saída acionável. Não use todos os modelos em cada tarefa: a economia vem de evitar contexto repetido, fan-out inútil e retries. Preço/consumo não foi verificado; esta é uma política de alocação, não uma alegação de economia medida. Disponibilidade e esforços efetivos são os que o cliente expuser na sessão.

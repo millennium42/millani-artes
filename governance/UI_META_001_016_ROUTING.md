@@ -1,5 +1,7 @@
 # Roteamento da Meta UI-001–UI-016
 
+> Arquivo histórico, mantido para rastreabilidade. Deixou de orientar trabalho ativo em 24/11/2026.
+
 ## Decisão e escopo
 
 Decisão humana de 24/11/2026 para esta Meta: usar GPT-6.2 Sol no esforço medium. Esta regra específica prevalece sobre as rotas antigas de modelo e de trabalhadores locais somente enquanto esta Meta estiver ativa. Não altera a política geral do repositório nem autoriza iniciar ou reiniciar inferência local.

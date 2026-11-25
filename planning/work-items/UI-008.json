@@ -25,7 +25,6 @@
     "Scans de segurança e validadores canônicos aplicáveis; inspeção manual do build Tauri com perfil temporário",
     "P-REV read-only; CI source/final e release_evidence no SHA exato"
   ],
-  "agentPlan": "P-INT root GPT-6.2 Sol medium é único escritor, executor dos checks e autor de E3. P-UI/P-QA são papéis do root sem chamadas extras. Um P-REV independente GPT-6.2 Sol medium read-only por diff de produto; P-SEC começa por scanners/testes determinísticos e só ganha delegado se a pergunta for independente. P-PRO/P-TRC/P-MAP por leitura/validadores; P-OPS root; sem worker local. P-ESC GPT-6.2 Sol high apenas após falha medium ou risco P0/P1 concreto. Reserva exata e paths no planning/specs/UI-008.md; amplia antes de nova escrita; libera após CI final e recibo/readback.",
   "evidence": "E2",
   "humanGateRequired": false,
   "passes": false,

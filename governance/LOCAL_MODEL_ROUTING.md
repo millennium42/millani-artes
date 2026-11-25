@@ -1,5 +1,7 @@
 # Roteamento local para desenvolvimento granular
 
+> Arquivo histórico, mantido para rastreabilidade. Deixou de orientar trabalho ativo em 24/11/2026.
+
 ## Decisão e estado
 
 Preparação autorizada em 15/10/2026 para retomar o Millani em uma nova conversa. A pausa do desenvolvimento permanece: CAT-003 → FIN-012 → UI-001 são os itens abertos preservados. Instalar/configurar ferramentas não fecha um work item nem comprova o produto.

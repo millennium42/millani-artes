@@ -11,7 +11,7 @@
     "workItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title", "specPath", "status", "dependencies", "acceptanceCriteria", "checks", "agentPlan", "evidence", "humanGateRequired", "passes", "notes"],
+      "required": ["id", "title", "specPath", "status", "dependencies", "acceptanceCriteria", "checks", "evidence", "humanGateRequired", "passes", "notes"],
       "properties": {
         "id": { "$ref": "#/definitions/id" },
         "title": { "$ref": "#/definitions/description" },
@@ -20,12 +20,19 @@
         "dependencies": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/id" } },
         "acceptanceCriteria": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/description" } },
         "checks": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/description" } },
-        "agentPlan": { "$ref": "#/definitions/description" },
+        "agentPlan": { "$ref": "#/definitions/description", "deprecated": true },
         "evidence": { "enum": ["E0", "E1", "E2", "E3", "E4"] },
         "humanGateRequired": { "type": "boolean" },
         "passes": { "type": "boolean" },
         "notes": { "type": "string" }
       },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "done" } }, "required": ["status"] },
+          "then": {},
+          "else": { "not": { "required": ["agentPlan"] } }
+        }
+      ],
       "if": { "properties": { "passes": { "const": true } }, "required": ["passes"] },
       "then": { "properties": { "status": { "const": "done" }, "evidence": { "enum": ["E3", "E4"] } } }
     }

@@ -1,5 +1,7 @@
 # Escritório de desenvolvimento — personas operacionais
 
+> Arquivo histórico, mantido para rastreabilidade. Deixou de orientar trabalho ativo em 24/11/2026.
+
 Uma persona é um funcionário operacional: resolve uma classe estreita de problema, recebe só o contexto necessário e devolve uma saída limitada. Não é personagem conversacional. Sempre que houver delegação, escolha uma persona; nunca abra todos os departamentos por rotina.
 
 ## Roteador de modelo e esforço

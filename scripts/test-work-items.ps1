@@ -9,7 +9,7 @@ $caseCount = 0
 $valid = @{
     id = 'TST-001'; title = 'Comportamento sintético'; specPath = 'planning/specs/TST-001.md'
     status = 'todo'; dependencies = @(); acceptanceCriteria = @('Critério'); checks = @('Check')
-    agentPlan = 'P-INT'; evidence = 'E0'; humanGateRequired = $false; passes = $false; notes = ''
+    evidence = 'E0'; humanGateRequired = $false; passes = $false; notes = ''
 }
 function Assert-WorkItemCase([string]$Json, [bool]$Expected, [string]$Label) {
     Set-Content -LiteralPath $fixture -Value $Json -Encoding utf8
@@ -69,7 +69,7 @@ try {
     Remove-Item -LiteralPath (Join-Path $taskRoot 'other.json')
     $template = Get-Content (Join-Path (Split-Path $PSScriptRoot -Parent) 'planning/WORK_ITEM_TEMPLATE.json') -Raw | ConvertFrom-Json
     $template.id='TST-003'; $template.specPath='planning/specs/TST-003.md'
-    $template.title='Template instanciado'; $template.acceptanceCriteria=@('Critério sintético'); $template.checks=@('Check sintético'); $template.agentPlan='P-INT'
+    $template.title='Template instanciado'; $template.acceptanceCriteria=@('Critério sintético'); $template.checks=@('Check sintético')
     Assert-WorkItemCase ($template | ConvertTo-Json -Depth 6) $true 'template preenchido'
     foreach ($schemaCase in @('missing','invalid')) {
         $schemaFixture=Join-Path $taskRoot 'schema.txt'
